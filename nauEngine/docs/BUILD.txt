@@ -1,0 +1,12 @@
+||°°°||°°°||°°°||| NAUTILUS ENGINE |||°°°||°°°||°°°||
+
+-Environment variables
+%DEVLIBS% 		--> Root of all External Libraries
+
+-Dependencies
+*GoogleTest		--> Used for Testing project
+*
+*
+*
+*
+||°°°||°°°||°°°||°°°||°°°|||°°°||°°°||°°°||°°°||°°°||
