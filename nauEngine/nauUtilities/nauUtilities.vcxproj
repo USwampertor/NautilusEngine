@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\nauMath.h" />
+    <ClInclude Include="include\nauPlatformDefines.h" />
+    <ClInclude Include="include\nauPlatformMath.h" />
+    <ClInclude Include="include\nauPlatformTypes.h" />
+    <ClInclude Include="include\nauVector2.h" />
+    <ClInclude Include="include\nauWindowsMath.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Source.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}</ProjectGuid>
@@ -94,7 +105,7 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions />
+      <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
@@ -113,7 +124,7 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions />
+      <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
@@ -134,7 +145,7 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions />
+      <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
@@ -157,7 +168,7 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions />
+      <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
