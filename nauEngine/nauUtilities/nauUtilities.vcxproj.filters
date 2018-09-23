@@ -25,9 +25,15 @@
     <ClInclude Include="include\nauWindowsMath.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
+    <ClInclude Include="nauVector3.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="nauVector3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

@@ -14,8 +14,8 @@ using namespace nauEngineSDK;
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
 #include "nauWindowsMath.h"
-using naumath = nauWindowsMath;
+using nauMath = nauWindowsMath;
 #else
 #  include "nauPlatformMath.h"
-using naumath = nauPlatformMath;
+using nauMath = nauPlatformMath;
 #endif

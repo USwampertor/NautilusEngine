@@ -262,5 +262,36 @@ namespace nauEngineSDK {
 
         )
     }
+
+    template<typename T>
+    T floor(T a) {
+      return std::floor(a);
+    }
+
+    template<typename T>
+    T ceil(T a) {
+      return std::ceil(a);
+    }
+
+    template<typename T>
+    T roundHalf(T a) {
+      return std::round(a*2.0f)/2.0f;
+    }
+
+    template<typename T>
+    T round(T a) {
+      return std::round(a);
+    }
+
+    template<typename T>
+    T max(T a, T b) {
+      return std::max(a, b);
+    }
+
+    template<typename T>
+    T min(T a, T b) {
+      return std::min(a, b);
+    }
+
   };
 }
