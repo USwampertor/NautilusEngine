@@ -28,12 +28,27 @@
     <ClInclude Include="nauVector3.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauPrerequisitesUtilh.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlatformUtilities.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="nauVector2i.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="nauVector3.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauVector2.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="nauVector2i.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

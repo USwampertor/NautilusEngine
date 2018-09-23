@@ -15,8 +15,8 @@
 /**
  * #include
  */
+#include "nauPrerequisitesUtilh.h"
 #include "nauMath.h"
-#include "nauPlatformTypes.h"
 /**
 * Description:
 *   This is out simple vector2f, nothing to special about it
@@ -199,7 +199,7 @@ namespace nauEngineSDK {
    * Method Implementation
    */
 
-  //explicit inline Vector2::Vector2(const Vector3& v): x(v.x),y(v.y) {}
+
 
   FORCEINLINE Vector2::Vector2(float nx, float ny) : x(nx), y(ny) {}
 
