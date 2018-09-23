@@ -16,12 +16,12 @@
 #include "nauVector3.h"
 
 namespace nauEngineSDK {
-  const Vector2 Vector2::ZERO = Vector2(0.0f, 0.0f);
-  const Vector2 Vector2::ONES = Vector2(1.0f, 1.0f);
-  const Vector2 Vector2::ONEX = Vector2(1.0f, 0.0f);
-  const Vector2 Vector2::ONEY = Vector2(0.0f, 1.0f);
+  const nauVector2 nauVector2::ZERO = nauVector2(0.0f, 0.0f);
+  const nauVector2 nauVector2::ONES = nauVector2(1.0f, 1.0f);
+  const nauVector2 nauVector2::ONEX = nauVector2(1.0f, 0.0f);
+  const nauVector2 nauVector2::ONEY = nauVector2(0.0f, 1.0f);
   
-  inline Vector2::Vector2(const Vector3& v): x(v.x),y(v.y) {}
+  inline nauVector2::nauVector2(const nauVector3& v): x(v.x),y(v.y) {}
 
 
 }

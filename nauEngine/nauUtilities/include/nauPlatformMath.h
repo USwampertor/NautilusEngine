@@ -11,31 +11,13 @@
 
 #include "nauPlatformTypes.h"
 
-/**
- * TODO:
- * cos
- * sin
- * tan
- * acos
- * asin
- * atan
- * atan2
- * cosh
- * sinh
- * tanh
- * acosh
- * asinh
- * atanh
- * LERP = a + (b-a)*t; t es hasta donde lo quiero t de 0 a 1
- * Extrapolar es mas de 1
- */
 namespace nauEngineSDK {
   struct nauPlatformMath {
 
     static const float  PI;
-    static const double euler;
-    static const double angle;
-    static const double radia;
+    static const float EULER;
+    static const float DEGREE;
+    static const float RADIAN;
     /**
      * @brief Changes from degrees to rads
      * @param T the degree to translate
@@ -47,13 +29,13 @@ namespace nauEngineSDK {
      * Transformation functions
      */
     template<typename T>
-    T degToRad(T degree) {
+    static T degToRad(T degree) {
       return (degree * 0.017453292519f);
     }
 
 
     template<typename T>
-    T radToDeg(T rad) {
+    static T radToDeg(T rad) {
       return (rad * 57.29577951f);
     }
     /**
@@ -62,67 +44,67 @@ namespace nauEngineSDK {
 
 
     template<typename T>
-    T sin(T rad) {
+    static T sin(T rad) {
         return std::sin(rad);
     }
 
     template<typename T>
-    T cos(T rad) {
+    static T cos(T rad) {
         return std::cos(rad);
     }
 
     template<typename T>
-    T tan(T rad) {
+    static T tan(T rad) {
         return std::tan(rad);
     }
 
     template<typename T>
-    T asin(T rad) {
+    static T asin(T rad) {
         return std::asin(rad);
     }
 
     template<typename T>
-    T acos(T rad) {
+    static T acos(T rad) {
         return std::acos(rad);
     }
 
     template<typename T>
-    T atan(T rad) {
+    static T atan(T rad) {
         return std::atan(rad);
     }
 
     template<typename T>
-    T atan2(T t1, T t2) {
+    static T atan2(T t1, T t2) {
         return std::atan2(t1, t2);
     }
 
     template<typename T>
-    T sinh(T rad) {
+    static T sinh(T rad) {
         return std::sinh(rad);
     }
 
     template<typename T>
-    T cosh(T rad) {
+    static T cosh(T rad) {
         return std::cosh(rad);
     }
 
     template<typename T>
-    T tanh(T rad) {
+    static T tanh(T rad) {
         return std::tanh(rad);
     }
 
     template<typename T>
-    T asinh(T rad) {
+    static T asinh(T rad) {
         return std::asinh(rad);
     }
 
     template<typename T>
-    T acosh(T rad) {
+    static T acosh(T rad) {
         return std::acosh(rad);
     }
 
     template<typename T>
-    T atanh(T rad) {
+    static T atanh(T rad) {
         return std::atanh(rad);
     }
 
@@ -131,124 +113,123 @@ namespace nauEngineSDK {
      * Basic math library
      */
     template<typename T>
-    T exp(T power) {
+    static T exp(T power) {
         return std::exp(power)
     }
     
     template<typename T>
-    T pow(T value, T power) {
+    static T pow(T value, T power) {
       return std::pow(value, power);
     }
 
     template<typename T>
-    T abs(T value) {
+    static T abs(T value) {
       return std::abs(value);
     }
 
     template<typename T>
-    T sqr(T value) {
+    static T sqr(T value) {
       return value*value;
     }
     
     template<typename T>
-    T cbc(T value) {
+    static T cbc(T value) {
       return value*value*value;
     }
 
     template <typename T>
-    T sqrt(T value) {
+    static T sqrt(T value) {
       return std::sqrt(value);
     }
 
     template<typename T>
-    T invSqrt(T value) {
+    static T invSqrt(T value) {
       return 1.0f/std::sqrt(value);
     }
 
     template <typename T>
-    T cbrt(T value) {
+    static T cbrt(T value) {
       return std::cbrt(value);
     }
 
     template <typename T>
-    T hypot(T co, T ca) {
+    static T hypot(T co, T ca) {
       return std::hypot(co, ca);
     }
 
 
    
     template<typename T>
-    T floor(T a) {
+    static T floor(T a) {
       return std::floor(a);
     }
 
     template<typename T>
-    T ceil(T a) {
+    static T ceil(T a) {
       return std::ceil(a);
     }
 
     template<typename T>
-    T roundHalf(T a) {
+    static T roundHalf(T a) {
       return std::round(a*2.0f) / 2.0f;
     }
 
     template<typename T>
-    T round(T a) {
+    static T round(T a) {
       return std::round(a);
     }
 
     template<typename T>
-    T max(T a, T b) {
+    static T max(T a, T b) {
       return std::max(a, b);
     }
 
     template<typename T>
-    T min(T a, T b) {
+    static T min(T a, T b) {
       return std::min(a, b);
     }
 
     template<typename T>
-    T max3(T a, T b, T c) {
+    static T max3(T a, T b, T c) {
       return max(max(a, b), c);
     }
     
     template<typename T>
-    T min3(T a, T b, T c) {
+    static T min3(T a, T b, T c) {
       return min(min(a, b), c);
     }
 
     template<typename T>
-    T frac(T fracpart, T* intpart) {
+    static T frac(T fracpart, T* intpart) {
       return std::modf(fracpart, intpart);
     }
 
     template<typename T>
-    T clamp(T number, T bot, T top) {
+    static T clamp(T number, T bot, T top) {
       return std::clamp(number, bot, top);
     }
 
-    template<typename T>
     
     /**
     * Log functions
     */
     template <typename T>
-    T log10(T value) {
+    static T log10(T value) {
       return std::log10(value);
     }
 
     template <typename T>
-    T log2(T value) {
+    static T log2(T value) {
       return std::log2(value);
     }
 
     template <typename T>
-    T logn(T value) {
+    static T logn(T value) {
       return std::log(value);
     }
 
     template <typename T>
-    T logx(T base, T value) {
+    static T logx(T base, T value) {
       return log(value) / log(base);
     }
 
@@ -261,17 +242,17 @@ namespace nauEngineSDK {
      * @return the cosine
      */
     template<typename T>
-    T lerp(T a, T b, float scale) {
+    static T lerp(T a, T b, float scale) {
         return (a + (b - a)* t);
     }
 
     template<typename T>
-    T factorial(T top) {
+    static T factorial(T top) {
         return top == 0 ? 1 : (top * factorial(top - 1));
     }
 
     template<typename T>
-    T fastcos(T rad) {
+    static T fastcos(T rad) {
       return (
         1 -
         (pow(rad, 2) / 2) +
@@ -287,7 +268,7 @@ namespace nauEngineSDK {
     * @return the cosine
     */
     template<typename T>
-    T fastsin(T rad) {
+    static T fastsin(T rad) {
       return (
         rad -
         (pow(rad, 3) / 6) +
@@ -303,7 +284,7 @@ namespace nauEngineSDK {
     * @return the cosine
     */
     template<typename T>
-    T fasttan(T rad) {
+    static T fasttan(T rad) {
       return (
         rad -
         (pow(rad, 3) * 2 / 6) +
@@ -319,7 +300,7 @@ namespace nauEngineSDK {
     * @return the cosine
     */
     template<typename T>
-    T fastacos(T rad) {
+    static T fastacos(T rad) {
     
     }
 
@@ -331,7 +312,7 @@ namespace nauEngineSDK {
     * @return the cosine
     */
     template<typename T>
-    T fastasin(T rad) {
+    static T fastasin(T rad) {
     
     }
 
@@ -343,7 +324,7 @@ namespace nauEngineSDK {
     * @return the cosine
     */
     template<typename T>
-    T fastatan(T rad) {
+    static T fastatan(T rad) {
       return (
         rad -
         (pow(rad, 3) / 3) +
@@ -354,7 +335,7 @@ namespace nauEngineSDK {
 
 
     template<typename T>
-    T fastcosh(T rad) {
+    static T fastcosh(T rad) {
       return (
         1 +
         (pow(rad, 2) / 2) +
@@ -364,21 +345,25 @@ namespace nauEngineSDK {
     }
 
     template<typename T>
-    T fastsinh(T rad) {
+    static T fastsinh(T rad) {
       return (
-        T +
-        ((T*T*T) / 6) +
-        ((T*T*T*T*T) / 120) +
-        ((T*T*T*T*T*T*T) / 5040) +
-        ((T*T*T*T*T*T*T*T*T) / 362880);
+        rad +
+        ((rad*rad*rad) / 6) +
+        ((rad*rad*rad*rad*rad) / 120) +
+        ((rad*rad*rad*rad*rad*rad*rad) / 5040) +
+        ((rad*rad*rad*rad*rad*rad*rad*rad*rad) / 362880);
     }
 
     template<typename T>
-    T fasttanh(T rad) {
+    static T fasttanh(T rad) {
       return (
 
         )
     }
+
+    /**
+     * Collisions
+     */
 
   };
 }

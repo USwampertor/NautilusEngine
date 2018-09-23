@@ -8,25 +8,9 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-#include "nauPlatformMath.h"
 #include <math.h>
-/**
- * TODO:
- * acos
- * asin
- * atan2
- * cosh
- * sinh
- * tanh
- * acosh
- * asinh
- * atanh
- *
-*/
-
-
+#include "nauPlatformMath.h"
 namespace nauEngineSDK {
   struct nauWindowsMath : public nauPlatformMath {
-    
   };
 }

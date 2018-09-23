@@ -1,9 +1,9 @@
 #pragma once
 namespace nauEngineSDK {
-  class Vector3
+  class nauVector3
   {
    public:
-    Vector3() = default;
+    nauVector3() = default;
    public:
   float x;
   float y;

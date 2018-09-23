@@ -15,7 +15,7 @@
 /**
  * #include
  */
-#include "nauPrerequisitesUtilh.h"
+#include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 /**
 * Description:
@@ -25,9 +25,9 @@
 */
 namespace nauEngineSDK {
   //forward declaration
-  class Vector3;
+  class nauVector3;
 
-  class Vector2 {
+  class nauVector2 {
    public:
     /**
      * Constructors
@@ -36,16 +36,16 @@ namespace nauEngineSDK {
     /**
      * @brief the simple default constructor
      */
-    FORCEINLINE Vector2() = default;
+    FORCEINLINE nauVector2() = default;
 
     /**
      * @brief Constructor 0.0f
      */
-    FORCEINLINE Vector2(float nx, float ny);
+    FORCEINLINE nauVector2(float nx, float ny);
     /**
      * @brief Constructor based on a Vector3
      */
-    explicit inline Vector2(const Vector3& v);
+    explicit inline nauVector2(const nauVector3& v);
 
 
     /**
@@ -55,98 +55,98 @@ namespace nauEngineSDK {
 
     float& operator[](uint32 index) const;
     
-    FORCEINLINE Vector2 
-    operator+(const Vector2& v) const;
+    FORCEINLINE nauVector2 
+    operator+(const nauVector2& v) const;
 
-    FORCEINLINE Vector2 
-    operator-(const Vector2& v) const;
+    FORCEINLINE nauVector2 
+    operator-(const nauVector2& v) const;
 
-    FORCEINLINE Vector2 
-    operator*(const Vector2& v) const;
+    FORCEINLINE nauVector2 
+    operator*(const nauVector2& v) const;
 
-    FORCEINLINE Vector2 
-    operator/(const Vector2& v) const;
+    FORCEINLINE nauVector2 
+    operator/(const nauVector2& v) const;
 
-    FORCEINLINE Vector2 
+    FORCEINLINE nauVector2 
     operator+(float plus) const;
 
-    FORCEINLINE Vector2 
+    FORCEINLINE nauVector2 
     operator-(float minus) const;
 
-    FORCEINLINE Vector2 
+    FORCEINLINE nauVector2 
     operator*(float times) const;
 
-    FORCEINLINE Vector2 
+    FORCEINLINE nauVector2 
     operator/(float under) const;
 
     FORCEINLINE float 
-    operator|(const Vector2 v) const;
+    operator|(const nauVector2 v) const;
 
     FORCEINLINE float 
-    operator^(const Vector2 v) const;
+    operator^(const nauVector2 v) const;
 
     bool 
-    operator==(const Vector2& v) const;
+    operator==(const nauVector2& v) const;
 
     bool 
-    operator!=(const Vector2& v) const;
+    operator!=(const nauVector2& v) const;
 
     bool 
-    operator<(const Vector2& v) const;
+    operator<(const nauVector2& v) const;
 
     bool 
-    operator>(const Vector2& v) const;
+    operator>(const nauVector2& v) const;
 
     bool 
-    operator<=(const Vector2& v) const;
+    operator<=(const nauVector2& v) const;
 
     bool 
-    operator>=(const Vector2& v) const;
+    operator>=(const nauVector2& v) const;
 
-    FORCEINLINE Vector2 
+    FORCEINLINE nauVector2 
     operator-() const;
 
-    FORCEINLINE Vector2
-    operator+=(const Vector2& v);
+    FORCEINLINE nauVector2
+    operator+=(const nauVector2& v);
 
-    FORCEINLINE Vector2
-    operator-=(const Vector2& v);
+    FORCEINLINE nauVector2
+    operator-=(const nauVector2& v);
 
-    FORCEINLINE Vector2
-    operator*=(const Vector2& v);
+    FORCEINLINE nauVector2
+    operator*=(const nauVector2& v);
 
-    FORCEINLINE Vector2
-    operator/=(const Vector2& v);
+    FORCEINLINE nauVector2
+    operator/=(const nauVector2& v);
     
-    FORCEINLINE Vector2
+    FORCEINLINE nauVector2
     operator*=(float scale);
 
-    FORCEINLINE Vector2
+    FORCEINLINE nauVector2
     operator/=(float scale);
 
     static FORCEINLINE float 
-    dot(const Vector2& a, const Vector2& b);
+    dot(const nauVector2& a, const nauVector2& b);
 
     static FORCEINLINE float
-    cross(const Vector2& a, const Vector2& b);
+    cross(const nauVector2& a, const nauVector2& b);
 
     static FORCEINLINE float
-    dotScale(const Vector2& a, const Vector2& b);
+    dotScale(const nauVector2& a, const nauVector2& b);
     
     static FORCEINLINE float
-    sqrDistance(const Vector2& a, const Vector2& b);
+    sqrDistance(const nauVector2& a, const nauVector2& b);
 
     static FORCEINLINE float
-    distance(const Vector2& a, const Vector2& b);
+    distance(const nauVector2& a, const nauVector2& b);
 
     void
     setValues(float newX, float newY);
 
     void
-    min(const Vector2& v);
+    min(const nauVector2& v);
 
     void
-    max(const Vector2& v);
+    max(const nauVector2& v);
 
     void
     floor();
@@ -172,7 +172,7 @@ namespace nauEngineSDK {
     float
     sqrMagnitude() const;
 
-    static FORCEINLINE Vector2
+    static FORCEINLINE nauVector2
     normalized();
     
     void
@@ -189,10 +189,10 @@ namespace nauEngineSDK {
     float x;
     float y;
 
-    static const Vector2 ZERO;
-    static const Vector2 ONES;
-    static const Vector2 ONEY;
-    static const Vector2 ONEX;
+    static const nauVector2 ZERO;
+    static const nauVector2 ONES;
+    static const nauVector2 ONEY;
+    static const nauVector2 ONEX;
 
   };
   /**
@@ -201,248 +201,248 @@ namespace nauEngineSDK {
 
 
 
-  FORCEINLINE Vector2::Vector2(float nx, float ny) : x(nx), y(ny) {}
+  FORCEINLINE nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
 
-  FORCEINLINE Vector2::Vector2(float nx, float ny) : x(nx), y(ny) {}
+  FORCEINLINE nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
   /**
    * Overloaded operator declarations
    */
   float&
-    Vector2::operator[](uint32 index) {
+    nauVector2::operator[](uint32 index) {
   }
 
   float&
-    Vector2::operator[](uint32 index) const {
+    nauVector2::operator[](uint32 index) const {
 
   }
   
-  FORCEINLINE Vector2
-  Vector2::operator+(const Vector2& v) const {
-    return Vector2(x+v.x, y+v.y);
+  FORCEINLINE nauVector2
+  nauVector2::operator+(const nauVector2& v) const {
+    return nauVector2(x+v.x, y+v.y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator-(const Vector2& v) const {
-    return Vector2(x - v.x, y - v.y);
+  FORCEINLINE nauVector2
+  nauVector2::operator-(const nauVector2& v) const {
+    return nauVector2(x - v.x, y - v.y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator*(const Vector2& v) const {
-    return Vector2(x * v.x, y * v.y);
+  FORCEINLINE nauVector2
+  nauVector2::operator*(const nauVector2& v) const {
+    return nauVector2(x * v.x, y * v.y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator/(const Vector2& v) const {
-    return Vector2(x / v.x, y / v.y);
+  FORCEINLINE nauVector2
+  nauVector2::operator/(const nauVector2& v) const {
+    return nauVector2(x / v.x, y / v.y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator+(float plus) const {
-    return Vector2(x + plus, y + plus);
+  FORCEINLINE nauVector2
+  nauVector2::operator+(float plus) const {
+    return nauVector2(x + plus, y + plus);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator-(float minus) const {
-    return Vector2(x - minus, y + minus);
+  FORCEINLINE nauVector2
+  nauVector2::operator-(float minus) const {
+    return nauVector2(x - minus, y + minus);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator*(float times) const {
-    return Vector2(x * times, y * times);
+  FORCEINLINE nauVector2
+  nauVector2::operator*(float times) const {
+    return nauVector2(x * times, y * times);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator/(float under) const {
-    return Vector2(x / under, y / under);
+  FORCEINLINE nauVector2
+  nauVector2::operator/(float under) const {
+    return nauVector2(x / under, y / under);
   }
 
   FORCEINLINE float
-  Vector2::operator|(const Vector2 v) const {
+  nauVector2::operator|(const nauVector2 v) const {
     return x * v.x + y * v.y;
   }
 
   FORCEINLINE float
-  Vector2::operator^(const Vector2 v) const {
+  nauVector2::operator^(const nauVector2 v) const {
     return x * v.x - y * v.y;
   }
 
   bool
-  Vector2::operator==(const Vector2& v) const {
+  nauVector2::operator==(const nauVector2& v) const {
     return x == v.x && y == v.y;
   }
 
   bool
-  Vector2::operator!=(const Vector2& v) const {
+  nauVector2::operator!=(const nauVector2& v) const {
     return x != v.x || y != v.y;
   }
 
   bool
-  Vector2::operator<(const Vector2& v) const {
+  nauVector2::operator<(const nauVector2& v) const {
     return x < v.x && y < v.y;
   }
 
   bool
-  Vector2::operator>(const Vector2& v) const {
+  nauVector2::operator>(const nauVector2& v) const {
     return x > v.x && y > v.y;
   }
 
   bool
-  Vector2::operator<=(const Vector2& v) const {
+  nauVector2::operator<=(const nauVector2& v) const {
     return x <= v.x && y <= v.y;
   }
 
   bool
-  Vector2::operator>=(const Vector2& v) const {
+  nauVector2::operator>=(const nauVector2& v) const {
     return x >= v.x && y >= v.y;
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator-() const {
-    return Vector2(-x,-y);
+  FORCEINLINE nauVector2
+  nauVector2::operator-() const {
+    return nauVector2(-x,-y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator+=(const Vector2& v) {
+  FORCEINLINE nauVector2
+  nauVector2::operator+=(const nauVector2& v) {
     x += v.x; 
     y += v.y; 
     return *this;
   }
 
-  FORCEINLINE Vector2
-    Vector2::operator-=(const Vector2& v) {
+  FORCEINLINE nauVector2
+    nauVector2::operator-=(const nauVector2& v) {
     x -= v.x; 
     y -= v.y; 
     return *this;
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator*=(const Vector2& v) {
+  FORCEINLINE nauVector2
+  nauVector2::operator*=(const nauVector2& v) {
     x *= v.x; 
     y *= v.y; 
     return *this;
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator/=(const Vector2& v) {
+  FORCEINLINE nauVector2
+  nauVector2::operator/=(const nauVector2& v) {
     x /= v.x; 
     y /= v.y; 
     return *this;
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator*=(float scale) {
+  FORCEINLINE nauVector2
+  nauVector2::operator*=(float scale) {
     x *= scale; 
     y *= scale; 
     return *this;
   }
 
-  FORCEINLINE Vector2
-  Vector2::operator/=(float scale) {
+  FORCEINLINE nauVector2
+  nauVector2::operator/=(float scale) {
     x /= scale; 
     y /= scale; 
     return *this;
   }
 
   FORCEINLINE float
-  Vector2::dot(const Vector2& a, const Vector2& b) {
+  nauVector2::dot(const nauVector2& a, const nauVector2& b) {
     return a | b;
   }
 
   FORCEINLINE float
-  Vector2::cross(const Vector2& a, const Vector2& b) {
+  nauVector2::cross(const nauVector2& a, const nauVector2& b) {
     return a ^ b;
   }
   FORCEINLINE float
-  Vector2::dotScale(const Vector2& a, const Vector2& b) {
+  nauVector2::dotScale(const nauVector2& a, const nauVector2& b) {
     return (a|b)/a.magnitude();
   }
   FORCEINLINE float
-  Vector2::sqrDistance(const Vector2& a, const Vector2& b) {
-    //return nauMath::pow(a.x-b.x, 2) + nauMath(a.y - b.y, 2);
+  nauVector2::sqrDistance(const nauVector2& a, const nauVector2& b) {
+    return nauMath::pow(a.x-b.x, 2) + nauMath::pow(a.y - b.y, 2);
   }
 
   FORCEINLINE float
-  Vector2::distance(const Vector2& a, const Vector2& b) {
+  nauVector2::distance(const nauVector2& a, const nauVector2& b) {
     //  
   }
 
   void
-  Vector2::setValues(float newX, float newY) {
+  nauVector2::setValues(float newX, float newY) {
     x = newX;
     y = newY;
   }
 
   void
-  Vector2::min(const Vector2& v) {
+  nauVector2::min(const nauVector2& v) {
     if (v.x < x) x = v.x;
     if (v.y < y) y = v.y;
   }
 
   void
-  Vector2::max(const Vector2& v) {
+  nauVector2::max(const nauVector2& v) {
     if (v.x > x) x = v.x;
     if (v.y > y) y = v.y;
   }
 
   void
-  Vector2::floor() {
+  nauVector2::floor() {
     //nauMath::floor(x);
     //nauMath::floor(y);
   }
 
   void
-  Vector2::ceiling() {
+  nauVector2::ceiling() {
     //nauMath::ceil(x);
     //nauMath::ceil(y);
   }
 
   void
-  Vector2::round() {
+  nauVector2::round() {
     //nauMath::round(x);
     //nauMath::round(y);
   }
 
   void
-  Vector2::roundHalf() {
+  nauVector2::roundHalf() {
     //nauMath::roundHalf(x);
     //nauMath::roundHalf(y);
   }
 
   float
-  Vector2::getHighest() const {
+  nauVector2::getHighest() const {
     return 0.0f;
     //return nauMath::max(x, y);
   }
 
   float
-  Vector2::getLowest() const {
+  nauVector2::getLowest() const {
     return 0.0f;
     //return nauMath::min(x, y);
   }
 
   float
-  Vector2::magnitude() const {
+  nauVector2::magnitude() const {
     return 0.0f;
     //return nauMath::sqrt(x*x + y*y);
   }
 
   float
-  Vector2::sqrMagnitude() const {
+  nauVector2::sqrMagnitude() const {
     return (x * x + y * y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::normalized() {
-   return Vector2(0,0);
+  FORCEINLINE nauVector2
+  nauVector2::normalized() {
+   return nauVector2(0,0);
   }
 
   void
-  Vector2::normalize() const {
+  nauVector2::normalize() const {
 
   }
 
   bool
-  Vector2::isZero() const {
+  nauVector2::isZero() const {
     return 0.0f == x && 0.0f == y;
   }
 

@@ -10,7 +10,7 @@
 
 
 #pragma once
-using namespace nauEngineSDK;
+namespace nauEngineSDK{
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
 #include "nauWindowsMath.h"
@@ -19,3 +19,5 @@ using nauMath = nauWindowsMath;
 #  include "nauPlatformMath.h"
 using nauMath = nauPlatformMath;
 #endif
+
+}
