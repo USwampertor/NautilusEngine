@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauVector4.cpp" />
     <ClCompile Include="src\nauAABB.cpp" />
     <ClCompile Include="src\nauBox2d.cpp" />
     <ClCompile Include="src\nauFrustrum.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="include\nauVector2i.h" />
     <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
+    <ClInclude Include="nauVector4.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

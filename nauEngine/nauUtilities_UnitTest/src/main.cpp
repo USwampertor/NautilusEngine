@@ -33,8 +33,10 @@ Your project's .h or .hpp
 
 
 #define MARCOTESTING
+
+
 #ifndef MARCOTESTING
-#define SUMANOTESTING
+  #define IVANTESTING
 #endif
 using namespace nauEngineSDK;
 
@@ -72,7 +74,7 @@ TEST(Utilities, Basic_Types_Limits)
 
 TEST(Utilities, Math_Constants)
 {
-  EXPECT_NEAR(nauMath::PI, 3.141592f, std::numeric_limits<float>::epsilon());
+  EXPECT_NEAR(nauMath::PI, 3.141592f, 0.00001);
 }
 
 TEST(Utilities, Math_Arithmetics)
@@ -80,7 +82,9 @@ TEST(Utilities, Math_Arithmetics)
   EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
 }
 #else
-//Sumano te dejo este pedazo para que yo tambien haga mis dagas
+  #ifdef IVANTESTING
+//Iván te dejo este pedazo para que yo tambien haga mis dagas
 
-//end Sumanos Testing
+//end Iván Testing
+  #endif
 #endif

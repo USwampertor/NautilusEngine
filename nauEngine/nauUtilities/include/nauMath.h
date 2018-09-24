@@ -12,7 +12,6 @@
 #pragma once
 
 #include "nauPrerequisitesUtil.h"
-
 #include "nauPlatformMath.h"
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32

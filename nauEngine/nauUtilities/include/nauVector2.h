@@ -18,16 +18,17 @@
  */
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
+//#include "nauVector3.h"
 
 /**
 * Description:
-*   This is out simple vector2f, nothing to special about it
+*   This is our simple vector2f, nothing to special about it. Its a nice point
 * Sample usage:
 * 	Vector2 foo (2.0f, 3.0f);
 */
 namespace nauEngineSDK {
   //forward declaration
-  class nauVector3;
+  //class nauVector3;
 
   class nauVector2 {
    public:
@@ -47,7 +48,7 @@ namespace nauEngineSDK {
     /**
      * @brief Constructor based on a Vector3
      */
-    explicit inline nauVector2(const nauVector3& v);
+    //explicit inline nauVector2(const nauVector3& v);
 
 
     /**

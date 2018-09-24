@@ -1,12 +1,4 @@
 #include "nauAABB.h"
+namespace nauEngineSDK {
 
-
-
-nauAABB::nauAABB()
-{
-}
-
-
-nauAABB::~nauAABB()
-{
 }

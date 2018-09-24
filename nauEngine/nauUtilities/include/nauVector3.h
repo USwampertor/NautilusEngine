@@ -9,8 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-#ifndef _INC_VECTOR2_H_
-# define _INC_VECTOR2_H_
+#ifndef _INC_VECTOR3_H_
+# define _INC_VECTOR3_H_
 #endif
 
 #include "nauMath.h"
@@ -22,7 +22,7 @@
  */
 
 namespace nauEngineSDK {
-  class nauVector3 {
+  class NAU_UTILITY_EXPORT nauVector3 {
    public:
     /**
      * Constructors
@@ -193,8 +193,6 @@ namespace nauEngineSDK {
   /**
    * Method Implementation
    */
-
-
 
   FORCEINLINE nauVector3::nauVector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz){}
 
