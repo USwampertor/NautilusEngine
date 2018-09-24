@@ -12,11 +12,13 @@
 #ifndef _INC_VECTOR2_H_
 # define _INC_VECTOR2_H_
 #endif
+
 /**
  * #include
  */
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
+
 /**
 * Description:
 *   This is out simple vector2f, nothing to special about it
@@ -53,7 +55,7 @@ namespace nauEngineSDK {
      */
     float& operator[](uint32 index);
 
-    float& operator[](uint32 index) const;
+    float operator[](uint32 index) const;
     
     FORCEINLINE nauVector2 
     operator+(const nauVector2& v) const;
@@ -187,11 +189,15 @@ namespace nauEngineSDK {
      */
 
     float x;
+    
     float y;
 
     static const nauVector2 ZERO;
+    
     static const nauVector2 ONES;
+    
     static const nauVector2 ONEY;
+    
     static const nauVector2 ONEX;
 
   };
@@ -203,17 +209,18 @@ namespace nauEngineSDK {
 
   FORCEINLINE nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
 
-  FORCEINLINE nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
   /**
    * Overloaded operator declarations
    */
   float&
     nauVector2::operator[](uint32 index) {
+    return (&x)[index];
+
   }
 
-  float&
+  float
     nauVector2::operator[](uint32 index) const {
-
+    return (&x)[index];
   }
   
   FORCEINLINE nauVector2
@@ -243,7 +250,7 @@ namespace nauEngineSDK {
 
   FORCEINLINE nauVector2
   nauVector2::operator-(float minus) const {
-    return nauVector2(x - minus, y + minus);
+    return nauVector2(x - minus, y - minus);
   }
 
   FORCEINLINE nauVector2
@@ -352,18 +359,20 @@ namespace nauEngineSDK {
   nauVector2::cross(const nauVector2& a, const nauVector2& b) {
     return a ^ b;
   }
+
   FORCEINLINE float
   nauVector2::dotScale(const nauVector2& a, const nauVector2& b) {
     return (a|b)/a.magnitude();
   }
+
   FORCEINLINE float
   nauVector2::sqrDistance(const nauVector2& a, const nauVector2& b) {
-    return nauMath::pow(a.x-b.x, 2) + nauMath::pow(a.y - b.y, 2);
+    return nauMath::pow(a.x-b.x, 2.0f) + nauMath::pow(a.y - b.y, 2.0f);
   }
 
   FORCEINLINE float
   nauVector2::distance(const nauVector2& a, const nauVector2& b) {
-    //  
+    return nauMath::sqrt(nauMath::sqr(a.x + b.x) + nauMath::sqr(a.y + b.y));
   }
 
   void
@@ -386,44 +395,41 @@ namespace nauEngineSDK {
 
   void
   nauVector2::floor() {
-    //nauMath::floor(x);
-    //nauMath::floor(y);
+    nauMath::floor(x);
+    nauMath::floor(y);
   }
 
   void
   nauVector2::ceiling() {
-    //nauMath::ceil(x);
-    //nauMath::ceil(y);
+    nauMath::ceil(x);
+    nauMath::ceil(y);
   }
 
   void
   nauVector2::round() {
-    //nauMath::round(x);
-    //nauMath::round(y);
+    nauMath::round(x);
+    nauMath::round(y);
   }
 
   void
   nauVector2::roundHalf() {
-    //nauMath::roundHalf(x);
-    //nauMath::roundHalf(y);
+    nauMath::roundHalf(x);
+    nauMath::roundHalf(y);
   }
 
   float
   nauVector2::getHighest() const {
-    return 0.0f;
-    //return nauMath::max(x, y);
+    return nauMath::max(x, y);
   }
 
   float
   nauVector2::getLowest() const {
-    return 0.0f;
-    //return nauMath::min(x, y);
+    return nauMath::min(x, y);
   }
 
   float
   nauVector2::magnitude() const {
-    return 0.0f;
-    //return nauMath::sqrt(x*x + y*y);
+    return nauMath::sqrt(x * x + y * y);
   }
 
   float
@@ -445,8 +451,4 @@ namespace nauEngineSDK {
   nauVector2::isZero() const {
     return 0.0f == x && 0.0f == y;
   }
-
-  
-
-
 }

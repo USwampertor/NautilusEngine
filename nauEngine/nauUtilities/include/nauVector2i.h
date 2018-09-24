@@ -182,8 +182,7 @@ namespace nauEngineSDK {
 
 
   FORCEINLINE nauVector2i::nauVector2i(int32 nx, int32 ny) : x(nx), y(ny) {}
-
-  FORCEINLINE nauVector2i::nauVector2i(int32 nx, int32 ny) : x(nx), y(ny) {}
+  
   /**
    * Overloaded operator declarations
    */
@@ -228,7 +227,7 @@ namespace nauEngineSDK {
 
   FORCEINLINE nauVector2i
     nauVector2i::operator-(int32 minus) const {
-    return nauVector2i(x - minus, y + minus);
+    return nauVector2i(x - minus, y - minus);
   }
 
   FORCEINLINE nauVector2i
@@ -337,10 +336,12 @@ namespace nauEngineSDK {
     nauVector2i::cross(const nauVector2i& a, const nauVector2i& b) {
     return a ^ b;
   }
+
   FORCEINLINE int32
     nauVector2i::dotScale(const nauVector2i& a, const nauVector2i& b) {
     return (a | b) / a.magnitude();
   }
+
   FORCEINLINE int32
   nauVector2i::sqrDistance(const nauVector2i& a, const nauVector2i& b) {
     return nauMath::pow(a.x-b.x, 2) + nauMath::pow(a.y - b.y, 2);
@@ -348,7 +349,7 @@ namespace nauEngineSDK {
 
   FORCEINLINE int32
     nauVector2i::distance(const nauVector2i& a, const nauVector2i& b) {
-    //  
+    return nauMath::sqrt(nauMath::sqr(a.x+b.x)+ nauMath::sqr(a.y + b.y));
   }
 
   void
@@ -369,67 +370,38 @@ namespace nauEngineSDK {
     if (v.y > y) y = v.y;
   }
 
-  void
-    nauVector2i::floor() {
-    //nauMath::floor(x);
-    //nauMath::floor(y);
-  }
-
-  void
-    nauVector2i::ceiling() {
-    //nauMath::ceil(x);
-    //nauMath::ceil(y);
-  }
-
-  void
-    nauVector2i::round() {
-    //nauMath::round(x);
-    //nauMath::round(y);
-  }
-
-  void
-    nauVector2i::roundHalf() {
-    //nauMath::roundHalf(x);
-    //nauMath::roundHalf(y);
+  int32
+  nauVector2i::getHighest() const {
+    return nauMath::max(x, y);
   }
 
   int32
-    nauVector2i::getHighest() const {
-    return 0.0f;
-    //return nauMath::max(x, y);
-  }
-
-  int32
-    nauVector2i::getLowest() const {
-    return 0.0f;
-    //return nauMath::min(x, y);
+  nauVector2i::getLowest() const {
+    return nauMath::min(x, y);
   }
 
   int32
     nauVector2i::magnitude() const {
-    return 0.0f;
-    //return nauMath::sqrt(x*x + y*y);
+    return nauMath::sqrt(x*x + y*y);
   }
 
   int32
-    nauVector2i::sqrMagnitude() const {
+  nauVector2i::sqrMagnitude() const {
     return (x * x + y * y);
   }
 
   FORCEINLINE nauVector2i
-    nauVector2i::normalized() {
+  nauVector2i::normalized() {
     return nauVector2i(0, 0);
   }
 
   void
-    nauVector2i::normalize() const {
-
+  nauVector2i::normalize() const {
+    
   }
 
   bool
-    nauVector2i::isZero() const {
-    return 0.0f == x && 0.0f == y;
+  nauVector2i::isZero() const {
+    return 0 == x && 0 == y;
   }
-
-
 }

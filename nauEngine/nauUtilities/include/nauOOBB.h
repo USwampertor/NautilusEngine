@@ -1,19 +1,22 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauWindowsMath.h
+ * @file nauOOBB.h
  * @author Marco "Swampy" Millan
- * @date 2018/09/20 2018
- * @brief File is in charge of specific math functions that work in windows
- * 
+ * @date 2018/09/23 2018
+ * @brief Object Oriented Boundary Box (OOBB for short) class used for object
+ * boundaries
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-#include "nauPlatformMath.h"
 
 namespace nauEngineSDK {
-  struct NAU_UTILITY_EXPORT nauWindowsMath : public nauPlatformMath {
-    
+  class nauOOBB
+  {
+  public:
+    nauOOBB() = default;
+    ~nauOOBB() = default;
   };
 }
- 
+
+

@@ -10,14 +10,20 @@
 
 
 #pragma once
-namespace nauEngineSDK{
+
+#include "nauPrerequisitesUtil.h"
+
+#include "nauPlatformMath.h"
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
-#include "nauWindowsMath.h"
-using nauMath = nauWindowsMath;
+# include "nauWindowsMath.h"
+#endif
+
+namespace nauEngineSDK {
+#if NAU_PLATFORM == NAU_PLATFORM_WIN32
+  using nauMath = nauWindowsMath;
 #else
-#  include "nauPlatformMath.h"
-using nauMath = nauPlatformMath;
+  using nauMath = nauPlatformMath;
 #endif
 
 }

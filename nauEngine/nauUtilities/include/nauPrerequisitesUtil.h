@@ -1,4 +1,3 @@
-#pragma once
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * @file nauPrerequisitesUtilh.h
@@ -9,14 +8,8 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-#include "nauPlatformDefines.h"
-#if NAU_COMPILER == NAU_COMPILER_CLANG
-  /** @ref scriptBindingMacro */
-# define NAU_SCRIPT_EXPORT(...) __attribute__((annotate("se," #__VA_ARGS__)))
-#else
-  /** @ref scriptBindingMacro */
-# define NAU_SCRIPT_EXPORT(...)
-#endif
+#pragma once
 
+#include "nauPlatformDefines.h"
 #include "nauPlatformTypes.h"                             //Platform types
 #include "nauPlatformUtilities.h"                         //Platform Utilities

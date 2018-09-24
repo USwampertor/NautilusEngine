@@ -19,39 +19,40 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\nauAABB.cpp" />
+    <ClCompile Include="src\nauBox2d.cpp" />
+    <ClCompile Include="src\nauFrustrum.cpp" />
+    <ClCompile Include="src\nauMatrix4.cpp" />
+    <ClCompile Include="src\nauOOBB.cpp" />
+    <ClCompile Include="src\nauPlane.cpp" />
+    <ClCompile Include="src\nauPlatformMath.cpp" />
+    <ClCompile Include="src\nauRay.cpp" />
+    <ClCompile Include="src\nauSphere.cpp" />
+    <ClCompile Include="src\nauTriangle.cpp" />
+    <ClCompile Include="src\nauVector2.cpp" />
+    <ClCompile Include="src\nauVector2i.cpp" />
+    <ClCompile Include="src\nauVector3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\nauAABB.h" />
+    <ClInclude Include="include\nauBox2d.h" />
+    <ClInclude Include="include\nauFrustrum.h" />
     <ClInclude Include="include\nauMath.h" />
+    <ClInclude Include="include\nauMatrix4.h" />
+    <ClInclude Include="include\nauOOBB.h" />
+    <ClInclude Include="include\nauPlane.h" />
     <ClInclude Include="include\nauPlatformDefines.h" />
     <ClInclude Include="include\nauPlatformMath.h" />
     <ClInclude Include="include\nauPlatformTypes.h" />
     <ClInclude Include="include\nauPlatformUtilities.h" />
     <ClInclude Include="include\nauPrerequisitesUtil.h" />
+    <ClInclude Include="include\nauRay.h" />
+    <ClInclude Include="include\nauSphere.h" />
+    <ClInclude Include="include\nauTriangle.h" />
     <ClInclude Include="include\nauVector2.h" />
+    <ClInclude Include="include\nauVector2i.h" />
+    <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
-    <ClInclude Include="nauAABB.h" />
-    <ClInclude Include="nauBox2d.h" />
-    <ClInclude Include="nauFrustrum.h" />
-    <ClInclude Include="nauMatrix4.h" />
-    <ClInclude Include="nauRay.h" />
-    <ClInclude Include="nauSphere.h" />
-    <ClInclude Include="nauTriangle.h" />
-    <ClInclude Include="nauVector2i.h" />
-    <ClInclude Include="nauVector3.h" />
-    <ClInclude Include="nauPlane.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="nauAABB.cpp" />
-    <ClCompile Include="nauBox2d.cpp" />
-    <ClCompile Include="nauFrustrum.cpp" />
-    <ClCompile Include="nauMatrix4.cpp" />
-    <ClCompile Include="nauRay.cpp" />
-    <ClCompile Include="nauSphere.cpp" />
-    <ClCompile Include="nauTriangle.cpp" />
-    <ClCompile Include="nauVector2i.cpp" />
-    <ClCompile Include="nauPlane.cpp" />
-    <ClCompile Include="src\nauPlatformMath.cpp" />
-    <ClCompile Include="src\nauVector2.cpp" />
-    <ClCompile Include="src\Source.cpp" />
-    <ClCompile Include="nauVector3.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

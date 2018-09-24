@@ -10,9 +10,12 @@
 #pragma once
 
 #include "nauPlatformTypes.h"
+#include <cmath>
+#include <algorithm>
+
 
 namespace nauEngineSDK {
-  struct nauPlatformMath {
+  struct NAU_UTILITY_EXPORT nauPlatformMath {
 
     static const float  PI;
     static const float EULER;
@@ -42,7 +45,12 @@ namespace nauEngineSDK {
      * Trigonometric functions
      */
 
-
+    /**
+     * @brief sin function
+     * @param radian to get sin
+     * @return the sin of the radian
+     * 
+     */
     template<typename T>
     static T sin(T rad) {
         return std::sin(rad);
@@ -119,7 +127,7 @@ namespace nauEngineSDK {
     
     template<typename T>
     static T pow(T value, T power) {
-      return std::pow(value, power);
+      return static_cast<T>(std::pow(value, power));
     }
 
     template<typename T>
@@ -139,7 +147,7 @@ namespace nauEngineSDK {
 
     template <typename T>
     static T sqrt(T value) {
-      return std::sqrt(value);
+      return static_cast<T>(std::sqrt(value));
     }
 
     template<typename T>
@@ -258,7 +266,7 @@ namespace nauEngineSDK {
         (pow(rad, 2) / 2) +
         (pow(rad, 4) / 24) -
         (pow(rad, 6) / 720) +
-        (pow(rad, 8) / 40320);
+        (pow(rad, 8) / 40320));
     }
     /**
     * @brief Get the cosine of an angle with Taylor
@@ -274,7 +282,7 @@ namespace nauEngineSDK {
         (pow(rad, 3) / 6) +
         (pow(rad, 5) / 120) -
         (pow(rad, 7) / 5040) +
-        (pow(rad, 9) / 362880);
+        (pow(rad, 9) / 362880));
     }
     /**
     * @brief Get the cosine of an angle with Taylor
@@ -290,7 +298,7 @@ namespace nauEngineSDK {
         (pow(rad, 3) * 2 / 6) +
         (pow(rad, 5) * 16 / 120) -
         (pow(rad, 7) * 272 / 5040) +
-        (pow(rad, 9) * 7936 / 362880);
+        (pow(rad, 9) * 7936 / 362880));
     }
     /**
     * @brief Get the cosine of an angle with Taylor
@@ -301,7 +309,7 @@ namespace nauEngineSDK {
     */
     template<typename T>
     static T fastacos(T rad) {
-    
+      return static_cast<T>(0);
     }
 
     /**
@@ -330,7 +338,7 @@ namespace nauEngineSDK {
         (pow(rad, 3) / 3) +
         (pow(rad, 3) / 5) -
         (pow(rad, 3) / 7) +
-        (pow(rad, 3) / 9);
+        (pow(rad, 3) / 9));
     }
 
 
@@ -341,7 +349,7 @@ namespace nauEngineSDK {
         (pow(rad, 2) / 2) +
         (pow(rad, 4) / 24) +
         (pow(rad, 6) / 720) +
-        (pow(rad, 8) / 40320);
+        (pow(rad, 8) / 40320));
     }
 
     template<typename T>
@@ -351,14 +359,12 @@ namespace nauEngineSDK {
         ((rad*rad*rad) / 6) +
         ((rad*rad*rad*rad*rad) / 120) +
         ((rad*rad*rad*rad*rad*rad*rad) / 5040) +
-        ((rad*rad*rad*rad*rad*rad*rad*rad*rad) / 362880);
+        ((rad*rad*rad*rad*rad*rad*rad*rad*rad) / 362880));
     }
 
     template<typename T>
     static T fasttanh(T rad) {
-      return (
-
-        )
+      return ();
     }
 
     /**
