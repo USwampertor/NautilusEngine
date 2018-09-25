@@ -8,20 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-/*
-Use standard order for readability and to avoid hidden dependencies. In header files use the following order:
-C library
-C++ library
-Other libraries'.h or .hpp
-Your project's .h or .hpp
-While cpp files should use:
-The associate header file for the cpp file (Foo.h if we are in Foo.cpp)
-C library
-C++ library
-Other libraries'.h or .hpp
-Your project's .h or .hpp
-*/
-
 #include <conio.h>
 
 #include <numeric>
@@ -30,7 +16,7 @@ Your project's .h or .hpp
 #include <nauMath.h>
 #include <nauPlatformUtilities.h>
 #include <nauPrerequisitesUtil.h>
-
+#include <nauVector2.h>
 
 #define MARCOTESTING
 
@@ -74,7 +60,12 @@ TEST(Utilities, Basic_Types_Limits)
 
 TEST(Utilities, Math_Constants)
 {
-  EXPECT_NEAR(nauMath::PI, 3.141592f, 0.00001);
+  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
+  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779f);
+  EXPECT_NEAR(nauMath::RADIAN, 0.017453f, 0.00001);
+  //EXPECT_FLOAT_EQ(nauMath::EULER, 2.718281f);
+
+
 }
 
 TEST(Utilities, Math_Arithmetics)

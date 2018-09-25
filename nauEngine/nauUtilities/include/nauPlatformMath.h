@@ -33,13 +33,13 @@ namespace nauEngineSDK {
      */
     template<typename T>
     static T degToRad(T degree) {
-      return (degree * 0.017453292519f);
+      return (degree * RADIAN);
     }
 
 
     template<typename T>
     static T radToDeg(T rad) {
-      return (rad * 57.29577951f);
+      return (rad * DEGREE);
     }
     /**
      * Trigonometric functions
@@ -128,6 +128,11 @@ namespace nauEngineSDK {
     template<typename T>
     static T pow(T value, T power) {
       return static_cast<T>(std::pow(value, power));
+    }
+
+    template<typename T>
+    static T powf(T value, float power) {
+      return static_cast<float>(std::pow(value, power));
     }
 
     template<typename T>
