@@ -27,7 +27,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauMatrix4::inverse() {
+  nauMatrix4::transposed() {
     nauMatrix4 temp = *this;
     for (int i = 0; i< 4; ++i) {
       for (int j = 0; j < 4; ++j) {

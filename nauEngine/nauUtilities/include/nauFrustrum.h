@@ -3,7 +3,7 @@
  * @file nauFrustrum.h
  * @author Marco "Swampy" Millan
  * @date 2018/09/27 2018
- * @brief
+ * @brief Frustrum object for implementation with cameras
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -13,10 +13,31 @@
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 
-class nauFrustrum
-{
-public:
-  nauFrustrum();
-  ~nauFrustrum();
-};
+namespace nauEngineSDK {
+  /**
+  * Description:
+  *   A frustrum object is a pyramidoal form
+  * Sample usage:
+  * 	Camera frustrum
+  */
+  class nauFrustrum
+  {
+  public:
+    
+    /**
+     * Default Constructor
+     */
+    nauFrustrum() = default;
 
+    /**
+     * Default destructor
+     */
+    ~nauFrustrum() = default;
+
+    /**
+     * Member declaration
+     */
+   public:
+    
+  };
+}
