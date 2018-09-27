@@ -23,7 +23,7 @@ namespace nauEngineSDK {
 
 
 
-  FORCEINLINE nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
+  nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
 
   /**
    * Overloaded operator declarations

@@ -5,7 +5,7 @@ namespace nauEngineSDK {
    * Method Implementation
    */
 
-  FORCEINLINE nauVector3::nauVector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz) {}
+  nauVector3::nauVector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz) {}
 
   /**
    * Overloaded operator declarations
@@ -168,19 +168,21 @@ namespace nauEngineSDK {
     return (a | b) / nauMath::sqr(a.magnitude());
   }
 
-  FORCEINLINE float
+  float
   nauVector3::sqrDistance(const nauVector3& a, const nauVector3& b) {
-    return  nauMath::pow(a.x - b.x, 2.0f) +
-      nauMath::pow(a.y - b.y, 2.0f) +
-      nauMath::pow(a.z - b.z, 2.0f);
+    return  
+      nauMath::sqr(a.x - b.x) +
+      nauMath::sqr(a.y - b.y) +
+      nauMath::sqr(a.z - b.z);
   }
 
   FORCEINLINE float
   nauVector3::distance(const nauVector3& a, const nauVector3& b) {
-    return nauMath::sqrt(
-      nauMath::sqr(a.x - b.x) +
-      nauMath::sqr(a.y - b.y) +
-      nauMath::sqr(a.z - b.z));
+    return 
+      nauMath::sqrt(
+        nauMath::sqr(a.x - b.x) +
+        nauMath::sqr(a.y - b.y) +
+        nauMath::sqr(a.z - b.z));
   }
 
   void

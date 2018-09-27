@@ -10,6 +10,10 @@ namespace nauEngineSDK {
     m_minCorner (origin),
     m_maxCorner (origin.x + width, origin.y + height,origin.z + lenght)
     {}
+  
+  /**
+   * Collisions
+   */
   bool
   nauAABB::collidingAABB(const nauAABB& other) {
     return  insideBox(other.m_minCorner) && insideBox(other.m_maxCorner);
@@ -22,8 +26,5 @@ namespace nauEngineSDK {
       (other.z > m_minCorner.z) && (other.z < m_maxCorner.z);
   }
 
-  /**
-   * Collisions
-   */
 
 }

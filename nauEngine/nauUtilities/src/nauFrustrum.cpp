@@ -1,12 +1,5 @@
 #include "nauFrustrum.h"
 
+namespace nauEngineSDK {
 
-
-nauFrustrum::nauFrustrum()
-{
-}
-
-
-nauFrustrum::~nauFrustrum()
-{
 }

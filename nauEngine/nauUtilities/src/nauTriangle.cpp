@@ -1,12 +1,5 @@
 #include "nauTriangle.h"
 
+namespace nauEngineSDK {
 
-
-nauTriangle::nauTriangle()
-{
-}
-
-
-nauTriangle::~nauTriangle()
-{
 }

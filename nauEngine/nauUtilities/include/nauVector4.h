@@ -1,16 +1,25 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauVector4.h
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-
-
-#ifndef _INC_VECTOR4_H_
-# define _INC_VECTOR4_H_
-#endif
 
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 
 namespace nauEngineSDK {
-
-  class nauVector4
+  /**
+  * Description:
+  * Vector with 4 components x y z w
+  * Sample usage:
+  * Orientation vector
+  */
+  class NAU_UTILITY_EXPORT nauVector4
   {
     /**
     * Constructors
@@ -19,23 +28,48 @@ namespace nauEngineSDK {
     /**
      * @brief the simple default constructor
      */
-    FORCEINLINE nauVector4() = default;
+    nauVector4() = default;
 
     /**
      * @brief Constructor 0.0f
      */
-    FORCEINLINE nauVector4(float nx, float ny, float nz, float nw);
+    nauVector4(float nx, float ny, float nz, float nw);
 
     /**
      * Overloaded operator declarations
      */
+
+    /**
+     * @brief returns the number at index position
+     * @param the index where you wanna get the number
+     * @return the object at index
+     * 
+     */
     float& operator[](uint32 index);
 
+    /**
+     * @brief access the number at index position
+     * @param the index where you wanna get the number
+     * @return the object reference at index
+     *
+     */
     float operator[](uint32 index) const;
 
+    /**
+     * @brief Sum of vectors
+     * @param the other vector to add
+     * @return a vector with added objects
+     *
+     */
     FORCEINLINE nauVector4
     operator+(const nauVector4& v) const;
 
+    /**
+     * @brief returns the number at index position
+     * @param the index where you wanna get the number
+     * @return the object at index
+     *
+     */
     FORCEINLINE nauVector4
     operator-(const nauVector4& v) const;
 
@@ -84,22 +118,22 @@ namespace nauEngineSDK {
     FORCEINLINE nauVector4
     operator-() const;
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator+=(const nauVector4& v);
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator-=(const nauVector4& v);
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator*=(const nauVector4& v);
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator/=(const nauVector4& v);
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator*=(float scale);
 
-    FORCEINLINE nauVector4
+    nauVector4&
     operator/=(float scale);
 
     static FORCEINLINE float
@@ -156,15 +190,39 @@ namespace nauEngineSDK {
     float
     magnitude3() const;
 
+    /**
+     * @brief gets the sqrd magnitude of x y z from vector4
+     * @param
+     * @return the sqrMagnitude of the vector
+     *
+     */
     float
     sqrMagnitude3() const;
 
+    /**
+     * @brief returns a normalized vector of same
+     * @param
+     * @return a normalized version of same vector
+     *
+     */
     FORCEINLINE nauVector4
     normalized3();
 
+    /**
+     * @brief normalizes the vector
+     * @param 
+     * @return 
+     * 
+     */
     void
     normalize3() const;
 
+    /**
+     * @brief returns true if all components are 0
+     * @param 
+     * @return true if all components are 0
+     * 
+     */
     bool
     isZero() const;
 
@@ -172,26 +230,56 @@ namespace nauEngineSDK {
     /**
      * Member declaration
      */
-  public:
-
+   public:
+    
+    /**
+     * x component
+     */
     float x;
     
+    /**
+     * y component
+     */
     float y;
     
+    /**
+     * z component
+     */
     float z;
     
+    /**
+     * w component
+     */
     float w;
 
+    /**
+     * nauVector4 that has all values at 0
+     */
     static const nauVector4 ZERO;
 
+    /**
+     * nauVector4 that has all values at 1
+     */
     static const nauVector4 ONES;
 
+    /**
+     * nauVector4 that has x value at 1
+     */
+    static const nauVector4 ONEX;
+    
+    /**
+     * nauVector4 that has y value at 1
+     */
     static const nauVector4 ONEY;
 
-    static const nauVector4 ONEX;
-
+    /**
+     * nauVector4 that has z value at 1
+     */
     static const nauVector4 ONEZ;
 
+    /**
+     * nauVector4 that has w value at 1
+     */
     static const nauVector4 ONEW;
 
   };

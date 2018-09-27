@@ -54,23 +54,30 @@ TEST(Utilities, Basic_Types)
 
 TEST(Utilities, Basic_Types_Limits)
 {
-  EXPECT_TRUE(static_cast<uint8>(-1) == std::numeric_limits<uint8>::max());
+  EXPECT_TRUE(static_cast<uint8>(-1)  == std::numeric_limits<uint8>::max());
   EXPECT_TRUE(static_cast<uint16>(-1) == std::numeric_limits<uint16>::max());
+  EXPECT_TRUE(static_cast<uint32>(-1) == std::numeric_limits<uint32>::max());
+  EXPECT_TRUE(static_cast<uint64>(-1) == std::numeric_limits<uint64>::max());
 }
 
 TEST(Utilities, Math_Constants)
 {
-  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
-  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779f);
-  EXPECT_NEAR(nauMath::RADIAN, 0.017453f, 0.00001);
-  //EXPECT_FLOAT_EQ(nauMath::EULER, 2.718281f);
-
-
+  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592);
+  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779);
+  EXPECT_NEAR(nauMath::RADIAN, 0.017453, 0.00001);
+  EXPECT_FLOAT_EQ(nauMath::EULER, 2.7185969);
 }
 
 TEST(Utilities, Math_Arithmetics)
 {
-  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
+  EXPECT_EQ(nauMath::pow(3, 2), 9);
+  EXPECT_EQ(nauMath::cos(0), 1);
+  EXPECT_EQ(nauMath::sin(0), 0);
+  EXPECT_EQ(nauMath::floor(nauMath::PI), 3);
+  EXPECT_EQ(nauMath::ceil(nauMath::DEGREE), 58);
+  EXPECT_EQ(nauMath::roundHalf(4.6f), 4.5f);
+  EXPECT_EQ(nauMath::sqr(6), 36);
+  EXPECT_EQ(nauMath::sqrt(9), 3);
 }
 #else
   #ifdef IVANTESTING

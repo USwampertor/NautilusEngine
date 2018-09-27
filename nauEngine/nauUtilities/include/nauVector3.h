@@ -32,12 +32,12 @@ namespace nauEngineSDK {
      /**
       * @brief the simple default constructor
       */
-    FORCEINLINE nauVector3() = default;
+    nauVector3() = default;
 
     /**
      * @brief Constructor 0.0f
      */
-    FORCEINLINE nauVector3(float nx, float ny, float nz);
+    nauVector3(float nx, float ny, float nz);
 
     /**
      * Overloaded operator declarations
@@ -124,7 +124,7 @@ namespace nauEngineSDK {
     static FORCEINLINE float
     dotScale(const nauVector3& a, const nauVector3& b);
 
-    static FORCEINLINE float
+    static float
     sqrDistance(const nauVector3& a, const nauVector3& b);
 
     static FORCEINLINE float
@@ -176,19 +176,46 @@ namespace nauEngineSDK {
     /**
      * Member declaration
      */
-  public:
+   public:
+
+    /**
+     * x component
+     */
     float x;
+
+    /**
+     * y component
+     */
     float y;
+
+    /**
+     * z component
+     */
     float z;
 
+    /**
+     * nauVector3 that has all values at 0
+     */
     static const nauVector3 ZERO;
 
+    /**
+     * nauVector3 that has all values at 1
+     */
     static const nauVector3 ONES;
 
-    static const nauVector3 ONEY;
-
+    /**
+     * nauVector3 that has x value at 1
+     */
     static const nauVector3 ONEX;
 
+    /**
+     * nauVector3 that has y value at 1
+     */
+    static const nauVector3 ONEY;
+
+    /**
+     * nauVector3 that has x value at 1
+     */
     static const nauVector3 ONEZ;
   };
   

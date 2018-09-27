@@ -2,10 +2,8 @@
 namespace nauEngineSDK {
   
   nauSphere::nauSphere(const nauVector3& position, float size) 
-  :
-  m_center (position),
-  m_radius (size)
-  {}
+  : m_center (position),
+    m_radius (size) {}
 
   bool
   nauSphere::isEqual(const nauSphere& sphere, float threshold) const {
@@ -16,8 +14,7 @@ namespace nauEngineSDK {
    */
   bool
   nauSphere::collidingSphere(const nauSphere& other) {
-    return 
-      nauMath::sqr(m_radius + other.m_radius) == 
-      nauVector3::sqrDistance(m_center,other.m_center);
+    return nauMath::sqr(m_radius + other.m_radius) == 
+           nauVector3::sqrDistance(m_center,other.m_center);
   }
 }

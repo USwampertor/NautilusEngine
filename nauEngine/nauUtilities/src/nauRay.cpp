@@ -1,12 +1,5 @@
 #include "nauRay.h"
 
+namespace nauEngineSDK {
 
-
-nauRay::nauRay()
-{
-}
-
-
-nauRay::~nauRay()
-{
 }

@@ -17,7 +17,7 @@
 namespace nauEngineSDK {
   struct NAU_UTILITY_EXPORT nauPlatformMath {
 
-    static const float  PI;
+    static const float PI;
     static const float EULER;
     static const float DEGREE;
     static const float RADIAN;
@@ -53,12 +53,12 @@ namespace nauEngineSDK {
      */
     template<typename T>
     static T sin(T rad) {
-        return std::sin(rad);
+        return static_cast<T>(std::sin(rad));
     }
 
     template<typename T>
     static T cos(T rad) {
-        return std::cos(rad);
+        return static_cast<T>(std::cos(rad));
     }
 
     template<typename T>
@@ -256,7 +256,7 @@ namespace nauEngineSDK {
      */
     template<typename T>
     static T lerp(T a, T b, float scale) {
-        return (a + (b - a)* t);
+        return (a + (b - a)* scale);
     }
 
     template<typename T>

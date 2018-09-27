@@ -30,7 +30,7 @@ namespace nauEngineSDK {
   //forward declaration
   class nauVector3;
 
-  class nauVector2 {
+  class NAU_UTILITY_EXPORT nauVector2 {
    public:
     /**
      * Constructors
@@ -39,12 +39,12 @@ namespace nauEngineSDK {
     /**
      * @brief the simple default constructor
      */
-    FORCEINLINE nauVector2() = default;
+    nauVector2() = default;
 
     /**
      * @brief Constructor 0.0f
      */
-    FORCEINLINE nauVector2(float nx, float ny);
+    nauVector2(float nx, float ny);
     /**
      * @brief Constructor based on a Vector3
      */

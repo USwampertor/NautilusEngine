@@ -46,7 +46,10 @@
     <ClCompile Include="src\nauOOBB.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="nauVector4.cpp">
+    <ClCompile Include="src\nauVector4.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauQuaternion.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,7 +111,10 @@
     <ClInclude Include="include\nauOOBB.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="nauVector4.h">
+    <ClInclude Include="include\nauVector4.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauQuaternion.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,17 +1,15 @@
 #include "nauVector4.h"
 
 namespace nauEngineSDK {
-
   /**
    * Method Implementation
    */
 
-  FORCEINLINE nauVector4::nauVector4(float nx, float ny, float nz, float nw)
-    :
-    x(nx),
-    y(ny),
-    z(nz),
-    w(nw) {}
+  nauVector4::nauVector4(float nx, float ny, float nz, float nw)
+    : x(nx),
+      y(ny),
+      z(nz),
+      w(nw) {}
 
   /**
    * Overloaded operator declarations
@@ -112,7 +110,7 @@ namespace nauEngineSDK {
     return nauVector4(-x, -y, -z, -w);
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator+=(const nauVector4& v) {
     x += v.x;
     y += v.y;
@@ -121,7 +119,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator-=(const nauVector4& v) {
     x -= v.x;
     y -= v.y;
@@ -130,7 +128,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator*=(const nauVector4& v) {
     x *= v.x;
     y *= v.y;
@@ -139,7 +137,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator/=(const nauVector4& v) {
     x /= v.x;
     y /= v.y;
@@ -148,7 +146,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator*=(float scale) {
     x *= scale;
     y *= scale;
@@ -157,7 +155,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector4
+  nauVector4&
   nauVector4::operator/=(float scale) {
     x /= scale;
     y /= scale;
