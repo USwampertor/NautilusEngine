@@ -7,19 +7,32 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
+
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 #include "nauMatrix4.h"
 
 namespace nauEngineSDK {
   class NAU_UTILITY_EXPORT nauQuaternion {
-   
-   //public:
+
+   public:
+    
+    /**
+     * Default constructor
+     */
     nauQuaternion() = default;
 
+    /**
+     * @brief Constructor setting values x y z w
+     * @param x y z w components for the quaternion
+     * @return 
+     * 
+     */
     nauQuaternion(const float nx, const float ny, const float nz, const float nw);
    
+    
     FORCEINLINE nauQuaternion
     operator+(const nauQuaternion& other) const;
     

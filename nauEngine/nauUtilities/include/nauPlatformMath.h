@@ -7,6 +7,7 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 #include "nauPlatformTypes.h"
@@ -16,20 +17,15 @@
 
 namespace nauEngineSDK {
   struct NAU_UTILITY_EXPORT nauPlatformMath {
-
-    static const float PI;
-    static const float EULER;
-    static const float DEGREE;
-    static const float RADIAN;
+    /**
+     * Transformation functions
+     */
+    
     /**
      * @brief Changes from degrees to rads
      * @param T the degree to translate
      * @return the degree in rads
      * 
-     */
-
-    /**
-     * Transformation functions
      */
     template<typename T>
     static T degToRad(T degree) {
@@ -376,5 +372,30 @@ namespace nauEngineSDK {
      * Collisions
      */
 
+
+    /**
+     * Constants
+     */
+
+    /**
+     * Constant PI 3.141592~
+     */
+    static const float PI;
+
+
+    /**
+     * Constant EULER 2.71828182
+     */
+    static const float EULER;
+
+    /**
+     * Equivalent degrees of 1 rad
+     */
+    static const float DEGREE;
+
+    /**
+     * Equivalent radians of 1 Degree
+     */
+    static const float RADIAN;
   };
 }

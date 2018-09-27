@@ -1,4 +1,15 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauVector3.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief the nauVector3 member definition
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauVector3.h"
+
 namespace nauEngineSDK {
 
   /**
@@ -105,7 +116,7 @@ namespace nauEngineSDK {
     return nauVector3(-x, -y, -z);
   }
 
-  FORCEINLINE nauVector3
+  nauVector3&
   nauVector3::operator+=(const nauVector3& v) {
     x += v.x;
     y += v.y;
@@ -113,7 +124,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector3
+  nauVector3&
   nauVector3::operator-=(const nauVector3& v) {
     x -= v.x;
     y -= v.y;
@@ -121,7 +132,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector3
+  
+  nauVector3&
   nauVector3::operator*=(const nauVector3& v) {
     x *= v.x;
     y *= v.y;
@@ -129,7 +141,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector3
+  nauVector3&
   nauVector3::operator/=(const nauVector3& v) {
     x /= v.x;
     y /= v.y;
@@ -137,7 +149,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector3
+  nauVector3&
   nauVector3::operator*=(float scale) {
     x *= scale;
     y *= scale;
@@ -145,7 +157,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE nauVector3
+  nauVector3&
   nauVector3::operator/=(float scale) {
     x /= scale;
     y /= scale;

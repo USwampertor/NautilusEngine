@@ -62,10 +62,10 @@ TEST(Utilities, Basic_Types_Limits)
 
 TEST(Utilities, Math_Constants)
 {
-  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592);
-  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779);
+  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
+  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779f);
   EXPECT_NEAR(nauMath::RADIAN, 0.017453, 0.00001);
-  EXPECT_FLOAT_EQ(nauMath::EULER, 2.7185969);
+  EXPECT_FLOAT_EQ(nauMath::EULER, 2.71828182f);
 }
 
 TEST(Utilities, Math_Arithmetics)

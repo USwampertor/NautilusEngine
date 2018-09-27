@@ -1,6 +1,17 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauVector4.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief the nauVector4 member definition
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauVector4.h"
 
 namespace nauEngineSDK {
+  
   /**
    * Method Implementation
    */

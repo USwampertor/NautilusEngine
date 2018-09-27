@@ -1,3 +1,13 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauMatrix4.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief the nauMatrix4 member definition
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauMatrix4.h"
 
 namespace nauEngineSDK {

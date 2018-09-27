@@ -36,7 +36,7 @@ namespace nauEngineSDK{
    public:
 
     /**
-     * Default constructors
+     * Default constructor
      */
     nauMatrix4() {}
 
@@ -92,37 +92,102 @@ namespace nauEngineSDK{
     void
     setValues(int32 value);
 
-
+    /**
+     * @brief + operator overload
+     * @param b the other matrix to add
+     * @return the sum of *this and b
+     * 
+     */
     FORCEINLINE nauMatrix4
     operator+(const nauMatrix4& b);
     
+    /**
+     * @brief - operator overload
+     * @param b the other matrix to substract
+     * @return the difference of *this and b
+     *
+     */
     FORCEINLINE nauMatrix4
     operator-(const nauMatrix4& b);
     
+    /**
+     * @brief * operator overload
+     * @param b the other matrix to multiply
+     * @return the multiplication of *this and b
+     *
+     */
     FORCEINLINE nauMatrix4
     operator*(const nauMatrix4& b);
     
+    /**
+     * @brief += operator overload
+     * @param b the other matrix to add
+     * @return *this summed b
+     *
+     */
     nauMatrix4&
     operator+=(const nauMatrix4& b);
     
+    /**
+     * @brief -= operator overload
+     * @param b the other matrix to substract
+     * @return *this minus b
+     *
+     */
     nauMatrix4&
     operator-=(const nauMatrix4& b);
     
+    /**
+     * @brief *= operator overload
+     * @param b the other matrix to multiply
+     * @return *this summed b
+     *
+     */
     nauMatrix4&
     operator*=(const nauMatrix4& b);
 
+    /**
+     * @brief += operator overload
+     * @param value to add to the matrix
+     * @return naumatrix equal to *this summed value
+     *
+     */
     nauMatrix4&
     operator+=(const float& value);
 
+    /**
+     * @brief -= operator overload
+     * @param value to substract to the matrix
+     * @return naumatrix equal to *this minus value
+     *
+     */
     nauMatrix4&
     operator-=(const float& value);
 
+    /**
+     * @brief *= operator overload
+     * @param value to multiply the matrix
+     * @return naumatrix equal to *this times value
+     *
+     */
     nauMatrix4&
     operator*=(const float& value);
 
+    /**
+     * @brief /= operator overload
+     * @param value to divide to the matrix
+     * @return naumatrix equal to *this folded value
+     *
+     */
     nauMatrix4&
     operator/=(const float& value);
     
+    /**
+     * @brief == operator overload
+     * @param nauMatrix to compare
+     * @return true if *this is equal to b
+     *
+     */
     nauMatrix4
     operator==(const nauMatrix4& b);
    
@@ -131,6 +196,10 @@ namespace nauEngineSDK{
      * Member declaration
      */
    public:
+
+    /**
+     * Matrix component
+     */
     union {
        struct {
          float m00, m01, m02, m03;

@@ -7,6 +7,7 @@
  * Thanks to SIGGRAPH for this one
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 #include "nauPrerequisitesUtil.h"
@@ -19,8 +20,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	We can use the ray to create a raycasting
   */
-  class NAU_UTILITY_EXPORT nauRay
-  {
+  class NAU_UTILITY_EXPORT nauRay {
    public:
     
     /**
@@ -44,8 +44,8 @@ namespace nauEngineSDK {
     /**
      * Collisions
      */
-    
-
+    //bool
+    //collidingRay(const nauRay& other);
 
     /**
      * Member declaration

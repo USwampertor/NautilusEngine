@@ -8,10 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-/**
- * #include
- */
-
 #include "nauVector2.h"
 #include "nauVector3.h"
 
@@ -119,47 +115,47 @@ namespace nauEngineSDK {
     return x >= v.x && y >= v.y;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2
   nauVector2::operator-() const {
     return nauVector2(-x, -y);
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator+=(const nauVector2& v) {
     x += v.x;
     y += v.y;
     return *this;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator-=(const nauVector2& v) {
     x -= v.x;
     y -= v.y;
     return *this;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator*=(const nauVector2& v) {
     x *= v.x;
     y *= v.y;
     return *this;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator/=(const nauVector2& v) {
     x /= v.x;
     y /= v.y;
     return *this;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator*=(float scale) {
     x *= scale;
     y *= scale;
     return *this;
   }
 
-  FORCEINLINE nauVector2
+  nauVector2&
   nauVector2::operator/=(float scale) {
     x /= scale;
     y /= scale;

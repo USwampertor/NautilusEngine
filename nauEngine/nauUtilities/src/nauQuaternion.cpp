@@ -1,4 +1,15 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauQuaternion.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief the nauQuaternion member definition
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauQuaternion.h"
+
 namespace nauEngineSDK {
 
   nauQuaternion::nauQuaternion(const float nx, const float ny, const float nz, const float nw) 

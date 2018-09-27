@@ -10,9 +10,6 @@
 
 #pragma once
 
-/**
- * Includes
- */
 #include <cstdint>
 #include "nauPlatformDefines.h"
 

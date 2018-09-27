@@ -8,6 +8,7 @@
  * SIGGRAPH definition also helped here, thanks
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 #include "nauPrerequisitesUtil.h"
@@ -15,16 +16,50 @@
 #include "nauVector3.h"
 
 namespace nauEngineSDK {
+  /**
+  * Description:
+  *   Object Oriented Bounding Box is a bounding box that fits the size of the object
+  * Sample usage:
+  * 	OOBB
+  */
   class NAU_UTILITY_EXPORT nauOOBB {
    public:
+    
+    /**
+     * Default Constructor
+     */
     nauOOBB() = default;
+
+    /**
+     * Default destructor
+     */
     ~nauOOBB() = default;
 
+    /**
+     * Member declaration
+     */
+
    public:
+    
+    /**
+     * nauVector3 center component
+     */
     nauVector3 center;
+
+    /**
+     * width X component
+     */
     float widthX;
+
+    /**
+     * Height Y component
+     */
     float heightY;
-    float lenghtZ;
+
+    /**
+     * Length Z component
+     */
+    float lengthZ;
   };
 }
 

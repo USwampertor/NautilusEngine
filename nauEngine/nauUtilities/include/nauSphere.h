@@ -20,13 +20,14 @@ namespace nauEngineSDK {
   * Sample usage:
   *   Sphere(4, nauVector3(0,0,0)) generates a sphere with radius 4 at 0,0,0
   */
-  class NAU_UTILITY_EXPORT nauSphere
-  {
+  class NAU_UTILITY_EXPORT nauSphere {
    public:
+
     /**
      * Default Constructor
      */
     nauSphere() = default;
+
     /**
      * @brief Constructor with parameters position and float
      * @param position of the object, float radius of the object
@@ -60,6 +61,7 @@ namespace nauEngineSDK {
     /**
      * Member declaration
      */
+
    public:
     
     /**

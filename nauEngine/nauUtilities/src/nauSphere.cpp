@@ -1,4 +1,15 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauSphere.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/09/27 2018
+ * @brief the nauSphere member definition
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauSphere.h"
+
 namespace nauEngineSDK {
   
   nauSphere::nauSphere(const nauVector3& position, float size) 

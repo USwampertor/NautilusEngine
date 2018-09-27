@@ -8,10 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-
-/**
- * #include
- */
 #include "nauPlatformMath.h"
 
 namespace nauEngineSDK {
@@ -21,6 +17,6 @@ namespace nauEngineSDK {
 
   const float nauPlatformMath::RADIAN = nauPlatformMath::PI/180.0f;
 
-  const float nauPlatformMath::EULER = 
-    nauPlatformMath::pow((1.0f + (1.0f / 10000000000000.0f)), 10000000000000.0f);
+  const float nauPlatformMath::EULER = 2.71828182f;
+    //nauPlatformMath::pow((1.0f + (1.0f / 10000000000000.0f)), 10000000000000.0f);
 }
