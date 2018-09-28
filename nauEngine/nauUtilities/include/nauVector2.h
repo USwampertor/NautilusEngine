@@ -19,6 +19,7 @@
 
 
 namespace nauEngineSDK {
+  //forward declaration?
   class nauVector3;
 
   /**

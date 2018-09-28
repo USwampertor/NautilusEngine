@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauUtilities", "nauUtilities\nauUtilities.vcxproj", "{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauUtilities_UnitTest", "nauUtilities_UnitTest\nauUtilities_UnitTest.vcxproj", "{A537FA4F-0746-4C11-90AB-0A6FD7F85C5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5} = {4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

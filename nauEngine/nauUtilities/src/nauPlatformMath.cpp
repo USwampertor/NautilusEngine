@@ -10,6 +10,9 @@
 
 #include "nauPlatformMath.h"
 
+#include "nauSphere.h"
+#include "nauBox2d.h"
+
 namespace nauEngineSDK {
   const float nauPlatformMath::PI = std::atan(1.0f) * 4.0f;
 
