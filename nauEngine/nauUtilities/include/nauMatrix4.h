@@ -90,7 +90,7 @@ namespace nauEngineSDK{
      * 
      */
     void
-    setValues(int32 value);
+    setValues(float value);
 
     /**
      * @brief + operator overload
@@ -201,6 +201,9 @@ namespace nauEngineSDK{
      * Matrix component
      */
     union {
+       /**
+        * Matrix struct made by 4x4 array row major
+        */
        struct {
          float m00, m01, m02, m03;
          float m10, m11, m12, m13;

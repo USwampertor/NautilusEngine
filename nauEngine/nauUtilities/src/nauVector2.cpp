@@ -17,17 +17,13 @@ namespace nauEngineSDK {
    * Method implementation
    */
 
-
-
   nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
 
-  /**
-   * Overloaded operator declarations
-   */
+  inline nauVector2::nauVector2(const nauVector3& v): x(v.x),y(v.y) {}
+  
   float&
   nauVector2::operator[](uint32 index) {
     return (&x)[index];
-
   }
 
   float
@@ -207,26 +203,26 @@ namespace nauEngineSDK {
 
   void
   nauVector2::floor() {
-    nauMath::floor(x);
-    nauMath::floor(y);
+    x = nauMath::floor(x);
+    y = nauMath::floor(y);
   }
 
   void
   nauVector2::ceiling() {
-    nauMath::ceil(x);
-    nauMath::ceil(y);
+    x = nauMath::ceil(x);
+    y = nauMath::ceil(y);
   }
 
   void
   nauVector2::round() {
-    nauMath::round(x);
-    nauMath::round(y);
+    x = nauMath::round(x);
+    y = nauMath::round(y);
   }
 
   void
   nauVector2::roundHalf() {
-    nauMath::roundHalf(x);
-    nauMath::roundHalf(y);
+   x = nauMath::roundHalf(x);
+   y = nauMath::roundHalf(y);
   }
 
   float
@@ -251,13 +247,17 @@ namespace nauEngineSDK {
 
   FORCEINLINE nauVector2
   nauVector2::normalized() {
-    float unit = nauMath::invSqrt(x*x + y * y);
+    float sqr = nauMath::pow(x, 2.0f) + nauMath::pow(y, 2.0f);
+    NAU_ASSERT(sqr != 0.0f && "The square of the elements is 0!!!");
+    NAU_DEBUG_ONLY(sqrMagnitude());
+
+    float unit = nauMath::invSqrt(sqr);
     return nauVector2((x * unit), (y * unit));
   }
 
   void
   nauVector2::normalize() const {
-
+  
   }
 
   bool
@@ -273,6 +273,5 @@ namespace nauEngineSDK {
 
   const nauVector2 nauVector2::ONEY = nauVector2(0.0f, 1.0f);
   
-  inline nauVector2::nauVector2(const nauVector3& v): x(v.x),y(v.y) {}
 
 }

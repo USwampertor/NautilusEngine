@@ -438,19 +438,10 @@ namespace nauEngineSDK {
     isZero() const;
 
     /**
-     * Member declaration
+     * static const
      */
+
    public:
-
-    /**
-     * x component
-     */
-    int32 x;
-
-    /**
-     * y component
-     */
-    int32 y;
 
     /**
      * vauVector2 with all values 0
@@ -471,6 +462,22 @@ namespace nauEngineSDK {
      * vauVector2 with y value 1
      */
     static const nauVector2i ONEY;
+
+    /**
+     * Member declaration
+     */
+
+   public:
+
+    /**
+     * x component
+     */
+    int32 x;
+
+    /**
+     * y component
+     */
+    int32 y;
 
   };
 

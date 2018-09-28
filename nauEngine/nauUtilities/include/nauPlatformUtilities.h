@@ -10,9 +10,10 @@
 
 #pragma once
 
-#include "nauPlatformTypes.h"
+#include <cassert>
 #include "nauPlatformDefines.h"
-
+#include "nauPlatformTypes.h"
+/*
 namespace nauEngineSDK {
   struct MACAddress {
     uint8 value[6];
@@ -32,4 +33,4 @@ namespace nauEngineSDK {
    private:
     static GPUInfo m_gpuInfo;
   };
-}
+}*/

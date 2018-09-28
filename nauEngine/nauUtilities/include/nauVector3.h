@@ -442,25 +442,10 @@ namespace nauEngineSDK {
     isZero() const;
 
     /**
-     * Member declaration
+     * static const
      */
-
+    
    public:
-
-    /**
-     * x component
-     */
-    float x;
-
-    /**
-     * y component
-     */
-    float y;
-
-    /**
-     * z component
-     */
-    float z;
 
     /**
      * nauVector3 that has all values 0
@@ -486,6 +471,29 @@ namespace nauEngineSDK {
      * nauVector3 that has x value 1
      */
     static const nauVector3 ONEZ;
+
+    /**
+     * Member declaration
+     */
+
+   public:
+
+    /**
+     * x component
+     */
+    float x;
+
+    /**
+     * y component
+     */
+    float y;
+
+    /**
+     * z component
+     */
+    float z;
+
+    
   };
   
 }

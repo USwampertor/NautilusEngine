@@ -18,7 +18,7 @@ namespace nauEngineSDK {
 
   bool
   nauSphere::isEqual(const nauSphere& sphere, float threshold) const {
-    return nauMath::abs(m_radius-sphere.m_radius)<= threshold;
+    return nauMath::abs(m_radius-sphere.m_radius) <= threshold;
   }
   /**
    * Collisions

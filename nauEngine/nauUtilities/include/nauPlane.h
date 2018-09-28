@@ -21,7 +21,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	
   */
-  class nauPlane
+  class nauPlane : public nauVector3
   {
    public:
 
@@ -57,13 +57,7 @@ namespace nauEngineSDK {
     /**
      * W component distance towards origin
      */
-    float w;
-
-    /**
-     * normal vector of the plane towards its facing
-     */
-    nauVector3 m_normal;
-  
+    float d;
   };
 
 }

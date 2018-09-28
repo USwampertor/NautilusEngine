@@ -16,11 +16,8 @@ namespace nauEngineSDK {
    * Method Implementation
    */
 
-  FORCEINLINE nauVector2i::nauVector2i(int32 nx, int32 ny) : x(nx), y(ny) {}
+  nauVector2i::nauVector2i(int32 nx, int32 ny) : x(nx), y(ny) {}
 
-  /**
-   * Overloaded operator declarations
-   */
   int32&
   nauVector2i::operator()(uint32& index) {
     return (&x)[index];

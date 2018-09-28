@@ -455,7 +455,7 @@ namespace nauEngineSDK {
      *
      */
     template <typename T>
-    static T logn(T value) {
+    static T logN(T value) {
       return std::log(value);
     }
 
@@ -466,7 +466,7 @@ namespace nauEngineSDK {
      *
      */
     template <typename T>
-    static T logx(T base, T value) {
+    static T logX(T base, T value) {
       return std::log(value) / std::log(base);
     }
 

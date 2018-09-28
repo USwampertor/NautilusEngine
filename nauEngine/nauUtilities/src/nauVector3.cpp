@@ -18,9 +18,6 @@ namespace nauEngineSDK {
 
   nauVector3::nauVector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz) {}
 
-  /**
-   * Overloaded operator declarations
-   */
   float&
   nauVector3::operator[](uint32 index) {
     return (&x)[index];
@@ -182,19 +179,17 @@ namespace nauEngineSDK {
 
   float
   nauVector3::sqrDistance(const nauVector3& a, const nauVector3& b) {
-    return  
-      nauMath::sqr(a.x - b.x) +
-      nauMath::sqr(a.y - b.y) +
-      nauMath::sqr(a.z - b.z);
+    return nauMath::sqr(a.x - b.x) +
+           nauMath::sqr(a.y - b.y) +
+           nauMath::sqr(a.z - b.z);
   }
 
   FORCEINLINE float
   nauVector3::distance(const nauVector3& a, const nauVector3& b) {
     return 
-      nauMath::sqrt(
-        nauMath::sqr(a.x - b.x) +
-        nauMath::sqr(a.y - b.y) +
-        nauMath::sqr(a.z - b.z));
+      nauMath::sqrt(nauMath::sqr(a.x - b.x) +
+                    nauMath::sqr(a.y - b.y) +
+                    nauMath::sqr(a.z - b.z));
   }
 
   void
@@ -220,30 +215,30 @@ namespace nauEngineSDK {
 
   void
   nauVector3::floor() {
-    nauMath::floor(x);
-    nauMath::floor(y);
-    nauMath::floor(z);
+    x = nauMath::floor(x);
+    y = nauMath::floor(y);
+    z = nauMath::floor(z);
   }
 
   void
   nauVector3::ceiling() {
-    nauMath::ceil(x);
-    nauMath::ceil(y);
-    nauMath::ceil(z);
+    x = nauMath::ceil(x);
+    y = nauMath::ceil(y);
+    z = nauMath::ceil(z);
   }
 
   void
   nauVector3::round() {
-    nauMath::round(x);
-    nauMath::round(y);
-    nauMath::round(z);
+    x = nauMath::round(x);
+    y = nauMath::round(y);
+    z = nauMath::round(z);
   }
 
   void
   nauVector3::roundHalf() {
-    nauMath::roundHalf(x);
-    nauMath::roundHalf(y);
-    nauMath::roundHalf(z);
+    x = nauMath::roundHalf(x);
+    y = nauMath::roundHalf(y);
+    z = nauMath::roundHalf(z);
   }
 
   float
@@ -269,10 +264,7 @@ namespace nauEngineSDK {
   FORCEINLINE nauVector3
   nauVector3::normalized() {
     float unit = nauMath::invSqrt(x*x + y * y + z * z);
-    return nauVector3(
-      (x * unit),
-      (y * unit),
-      (z * unit));
+    return nauVector3((x * unit), (y * unit), (z * unit));
   }
 
   void

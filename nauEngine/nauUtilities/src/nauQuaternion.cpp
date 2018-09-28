@@ -63,7 +63,7 @@ namespace nauEngineSDK {
     return x >= other.x && y >= other.y && z >= other.z && w >= other.w;
   }
 
-  FORCEINLINE nauQuaternion
+  nauQuaternion&
   nauQuaternion::operator+=(const nauQuaternion& other) {
     x += other.x;
     y += other.y;
@@ -72,7 +72,7 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  FORCEINLINE nauQuaternion
+  nauQuaternion&
   nauQuaternion::operator-=(const nauQuaternion& other) {
     x -= other.x;
     y -= other.y;
@@ -81,7 +81,7 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  FORCEINLINE nauQuaternion
+  nauQuaternion&
   nauQuaternion::operator*=(const nauQuaternion& other) {
     x *= other.x;
     y *= other.y;
@@ -90,7 +90,7 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  FORCEINLINE nauQuaternion
+  nauQuaternion&
   nauQuaternion::operator/=(const nauQuaternion& other) {
     x /= other.x;
     y /= other.y;

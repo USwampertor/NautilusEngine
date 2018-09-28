@@ -47,8 +47,8 @@ namespace nauEngineSDK {
   }
 
   void
-  nauMatrix4::setValues(int32 value) {
-    memset(&_m, value,sizeof(_m));
+  nauMatrix4::setValues(float value) {
+    memset(&_m,static_cast<int>(value),sizeof(_m));
   }
 
   nauMatrix4
@@ -72,7 +72,8 @@ namespace nauEngineSDK {
     }
     return temp;
   }
-  FORCEINLINE nauMatrix4
+
+  nauMatrix4
   nauMatrix4::operator*(const nauMatrix4& b) {
     nauMatrix4 temp = ZERO;
     for (uint32 i = 0; i < 4; ++i) {

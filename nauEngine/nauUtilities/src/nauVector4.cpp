@@ -198,19 +198,18 @@ namespace nauEngineSDK {
   FORCEINLINE float
   nauVector4::sqrDistance(const nauVector4& a, const nauVector4& b) {
     return  nauMath::pow(a.x - b.x, 2.0f) +
-      nauMath::pow(a.y - b.y, 2.0f) +
-      nauMath::pow(a.z - b.z, 2.0f) +
-      nauMath::pow(a.w - b.w, 2.0f);
+            nauMath::pow(a.y - b.y, 2.0f) +
+            nauMath::pow(a.z - b.z, 2.0f) +
+            nauMath::pow(a.w - b.w, 2.0f);
 
   }
 
   FORCEINLINE float
   nauVector4::distance(const nauVector4& a, const nauVector4& b) {
-    return nauMath::sqrt(
-      nauMath::sqr(a.x - b.x) +
-      nauMath::sqr(a.y - b.y) +
-      nauMath::sqr(a.z - b.z) +
-      nauMath::sqr(a.w - b.w));
+    return nauMath::sqrt(nauMath::sqr(a.x - b.x) +
+                         nauMath::sqr(a.y - b.y) +
+                         nauMath::sqr(a.z - b.z) +
+                         nauMath::sqr(a.w - b.w));
   }
 
   void
@@ -239,34 +238,34 @@ namespace nauEngineSDK {
 
   void
   nauVector4::floor() {
-    nauMath::floor(x);
-    nauMath::floor(y);
-    nauMath::floor(z);
-    nauMath::floor(w);
+    x = nauMath::floor(x);
+    y = nauMath::floor(y);
+    z = nauMath::floor(z);
+    w = nauMath::floor(w);
   }
 
   void
   nauVector4::ceiling() {
-    nauMath::ceil(x);
-    nauMath::ceil(y);
-    nauMath::ceil(z);
-    nauMath::ceil(w);
+    x = nauMath::ceil(x);
+    y = nauMath::ceil(y);
+    z = nauMath::ceil(z);
+    w = nauMath::ceil(w);
   }
 
   void
   nauVector4::round() {
-    nauMath::round(x);
-    nauMath::round(y);
-    nauMath::round(z);
-    nauMath::round(w);
+    x = nauMath::round(x);
+    y = nauMath::round(y);
+    z = nauMath::round(z);
+    w = nauMath::round(w);
   }
 
   void
   nauVector4::roundHalf() {
-    nauMath::roundHalf(x);
-    nauMath::roundHalf(y);
-    nauMath::roundHalf(z);
-    nauMath::roundHalf(w);
+    x = nauMath::roundHalf(x);
+    y = nauMath::roundHalf(y);
+    z = nauMath::roundHalf(z);
+    w = nauMath::roundHalf(w);
   }
 
   float
@@ -303,11 +302,10 @@ namespace nauEngineSDK {
   nauVector4::normalized3() {
     //return nauVector4(0, 0, 0, 0);
     float unit = nauMath::invSqrt(x*x + y * y + z * z);
-    return nauVector4(
-      (x * unit),
-      (y * unit),
-      (z * unit),
-      w);
+    return nauVector4((x * unit),
+                      (y * unit),
+                      (z * unit),
+                      w);
   }
 
   void
@@ -323,9 +321,9 @@ namespace nauEngineSDK {
 
   const nauVector4 nauVector4::ONES = nauVector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-  const nauVector4 nauVector4::ONEY = nauVector4(1.0f, 0.0f, 0.0f, 0.0f);
+  const nauVector4 nauVector4::ONEX = nauVector4(1.0f, 1.0f, 0.0f, 0.0f);
 
-  const nauVector4 nauVector4::ONEX = nauVector4(0.0f, 1.0f, 0.0f, 0.0f);
+  const nauVector4 nauVector4::ONEY = nauVector4(0.0f, 1.0f, 0.0f, 0.0f);
 
   const nauVector4 nauVector4::ONEZ = nauVector4(0.0f, 0.0f, 1.0f, 0.0f);
 

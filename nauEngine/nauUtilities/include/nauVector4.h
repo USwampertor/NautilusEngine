@@ -463,6 +463,41 @@ namespace nauEngineSDK {
     bool
     isZero() const;
 
+    /**
+     * static const declaration
+     */
+
+   public:
+    /**
+     * nauVector4 that has all values at 0
+     */
+    static const nauVector4 ZERO;
+
+    /**
+     * nauVector4 that has all values at 1
+     */
+    static const nauVector4 ONES;
+
+    /**
+     * nauVector4 that has x value at 1
+     */
+    static const nauVector4 ONEX;
+
+    /**
+     * nauVector4 that has y value at 1
+     */
+    static const nauVector4 ONEY;
+
+    /**
+     * nauVector4 that has z value at 1
+     */
+    static const nauVector4 ONEZ;
+
+    /**
+     * nauVector4 that has w value at 1
+     */
+    static const nauVector4 ONEW;
+
 
     /**
      * Member declaration
@@ -488,36 +523,6 @@ namespace nauEngineSDK {
      * w component
      */
     float w;
-
-    /**
-     * nauVector4 that has all values at 0
-     */
-    static const nauVector4 ZERO;
-
-    /**
-     * nauVector4 that has all values at 1
-     */
-    static const nauVector4 ONES;
-
-    /**
-     * nauVector4 that has x value at 1
-     */
-    static const nauVector4 ONEX;
-    
-    /**
-     * nauVector4 that has y value at 1
-     */
-    static const nauVector4 ONEY;
-
-    /**
-     * nauVector4 that has z value at 1
-     */
-    static const nauVector4 ONEZ;
-
-    /**
-     * nauVector4 that has w value at 1
-     */
-    static const nauVector4 ONEW;
 
   };
   
