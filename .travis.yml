@@ -1,1 +1,5 @@
-return 0;
+language: cpp
+os: linux
+compiler: gcc
+script:
+return 0
