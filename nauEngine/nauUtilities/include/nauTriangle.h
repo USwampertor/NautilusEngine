@@ -18,7 +18,7 @@ namespace nauEngineSDK {
   * Description:
   *   Triangle Primitive with 3 Vectors
   * Sample usage:
-  * 	You could make some nice little quads with it
+  * 	You could make some nice little quads with it, or a mesh, or a model
   */
   class NAU_UTILITY_EXPORT nauTriangle {
    public:

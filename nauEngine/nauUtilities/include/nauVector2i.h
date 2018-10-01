@@ -10,16 +10,13 @@
 
 #pragma once
 
-/**
- * #include
- */
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 
 namespace nauEngineSDK {
   /**
   * Description:
-  *   Vector2 with ints instead of floats
+  *   Vector2 with integers instead of floats
   * Sample usage:
   * 	Vector2i(3,4) can be used for coordinates in a chess like game
   */
