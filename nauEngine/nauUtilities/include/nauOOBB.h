@@ -36,6 +36,19 @@ namespace nauEngineSDK {
     ~nauOOBB() = default;
 
     /**
+     * Collisions
+     */
+
+    /**
+     * @brief Calculates if a OOB is intersecting another
+     * @param other the other OOBB to compute
+     * @return true if colliding
+     * 
+     */
+    bool
+    collidingOOBB(const nauOOBB& other);
+
+    /**
      * Member declaration
      */
 
@@ -47,17 +60,32 @@ namespace nauEngineSDK {
     nauVector3 center;
 
     /**
-     * width X component
+     * local x rotation component
+     */
+    nauVector3 m_xAxis;
+
+    /**
+     * local y rotation component
+     */
+    nauVector3 m_yAxis;
+
+    /**
+     * local z rotation component
+     */
+    nauVector3 m_zAxis;
+
+    /**
+     * half width X component
      */
     float widthX;
 
     /**
-     * Height Y component
+     * half Height Y component
      */
     float heightY;
 
     /**
-     * Length Z component
+     * half Length Z component
      */
     float lengthZ;
   };

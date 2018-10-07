@@ -18,8 +18,8 @@
 
 namespace nauEngineSDK {
   
-  class nauBox2d;
-  class nauSphere;
+  //class nauBox2d;
+  //class nauSphere;
 
   struct NAU_UTILITY_EXPORT nauPlatformMath {
     /**

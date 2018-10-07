@@ -46,7 +46,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collisingPlane(const nauPlane& other);
+    collidingPlane(const nauPlane& other);
 
     /**
      * Member declaration
