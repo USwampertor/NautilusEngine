@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\nauAABB.cpp" />
     <ClCompile Include="src\nauBox2d.cpp" />
+    <ClCompile Include="src\nauDataStream.cpp" />
     <ClCompile Include="src\nauFrustrum.cpp" />
     <ClCompile Include="src\nauMatrix4.cpp" />
     <ClCompile Include="src\nauOOBB.cpp" />
@@ -38,6 +39,7 @@
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h" />
     <ClInclude Include="include\nauBox2d.h" />
+    <ClInclude Include="include\nauDataStream.h" />
     <ClInclude Include="include\nauFrustrum.h" />
     <ClInclude Include="include\nauMath.h" />
     <ClInclude Include="include\nauMatrix4.h" />
@@ -49,6 +51,7 @@
     <ClInclude Include="include\nauPlatformUtilities.h" />
     <ClInclude Include="include\nauPrerequisitesUtil.h" />
     <ClInclude Include="include\nauQuaternion.h" />
+    <ClInclude Include="include\nauRandom.h" />
     <ClInclude Include="include\nauRay.h" />
     <ClInclude Include="include\nauSphere.h" />
     <ClInclude Include="include\nauTriangle.h" />

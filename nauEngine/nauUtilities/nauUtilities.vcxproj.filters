@@ -52,6 +52,9 @@
     <ClCompile Include="src\nauQuaternion.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\nauDataStream.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h">
@@ -115,6 +118,12 @@
       <Filter>Archivos de origen</Filter>
     </ClInclude>
     <ClInclude Include="include\nauQuaternion.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauDataStream.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRandom.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>
