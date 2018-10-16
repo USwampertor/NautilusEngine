@@ -13,12 +13,17 @@ addons:
             - gcc-7
             - g++-7
 
+before_script:
+    - mkdir build
+    - cd build
+    - cmake ..
+
 script:
     #Test running script
     - export CC=gcc-7
     - export CXX=g++-7
     - gcc -v && g++ -v && cmake --version
-    return 0;
+    #return 0;
 
 after_script:
     #deploy default Message
