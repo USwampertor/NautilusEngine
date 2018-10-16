@@ -10,17 +10,19 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - gcc-6
-            - g++-6
-            - cmake
+            - gcc-7
+            - g++-7
 
 script:
     #Test running script
+    - export CC=gcc-7
+    - export CXX=g++-7
+    - gcc -v && g++ -v && cmake --version
     return 0;
 
 after_script:
     #deploy default Message
-
+    - echo "Finished testing\n Results in "
 after_success:
     #deploy Success message
     - echo "success"
