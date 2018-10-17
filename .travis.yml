@@ -3,7 +3,9 @@ sudo: require
 
 language: cpp
 os: linux
-compiler: gcc
+compiler: 
+    - gcc
+    - clang
   
 addons:
     apt:
@@ -20,9 +22,7 @@ before_script:
 
 script:
     #Test running script
-    - export CC=gcc-7
-    - export CXX=g++-7
-    - gcc -v && g++ -v && cmake --version
+    make && make test
     #return 0;
 
 after_script:
