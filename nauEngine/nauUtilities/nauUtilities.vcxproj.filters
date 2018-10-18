@@ -55,6 +55,9 @@
     <ClCompile Include="src\nauDataStream.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\nauRandom.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h">
@@ -124,6 +127,9 @@
       <Filter>Archivos de origen</Filter>
     </ClInclude>
     <ClInclude Include="include\nauRandom.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauStdHeaders.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>

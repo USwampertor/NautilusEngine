@@ -208,7 +208,7 @@ namespace nauEngineSDK {
      */
     template<typename T>
     static T exp(T power) {
-        return std::exp(power)
+      return std::exp(power);
     }
     
     /**

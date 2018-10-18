@@ -14,8 +14,8 @@ namespace nauEngineSDK {
   bool
   nauOOBB::collidingOOBB(const nauOOBB& other) {
     
+    
 
-
-    return true;
+    return other.center.x && this->center.x;
   }
 }
