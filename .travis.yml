@@ -22,8 +22,7 @@ before_script:
 
 script:
     #Test running script
-    make && make test
-    #return 0;
+    return 0;
 
 after_script:
     #deploy default Message
