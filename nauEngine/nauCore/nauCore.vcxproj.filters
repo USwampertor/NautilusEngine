@@ -13,12 +13,16 @@
     <ClInclude Include="include\nauModel.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="nauGraphicsBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauGraphicsBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

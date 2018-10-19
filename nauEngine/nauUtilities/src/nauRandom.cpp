@@ -19,6 +19,7 @@ nauRandomZ::next() {
     nauMath::exp(-((m_seed - nauMath::sqr(m_mean)) / 2.0f*m_deviation));
   m_seed = res;
   return res;
+
 }
 
 }

@@ -21,8 +21,10 @@
   <ItemGroup>
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
+    <ClInclude Include="nauGraphicsBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
   </ItemGroup>
