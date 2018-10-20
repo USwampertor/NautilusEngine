@@ -2,7 +2,7 @@
 class nauMesh
 {
 public:
-  nauMesh();
-  ~nauMesh();
+  nauMesh() = default;
+  ~nauMesh() = default;
 };
 

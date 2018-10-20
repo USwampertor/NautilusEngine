@@ -19,12 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nauGraphicsBuffer.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
-    <ClInclude Include="nauGraphicsBuffer.h" />
+    <ClInclude Include="include\nauVertex.h" />
+    <ClInclude Include="nauShader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauGraphicsBuffer.cpp" />
+    <ClCompile Include="nauShader.cpp" />
+    <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
   </ItemGroup>
@@ -103,7 +106,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -120,7 +123,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -139,7 +142,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -160,7 +163,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>

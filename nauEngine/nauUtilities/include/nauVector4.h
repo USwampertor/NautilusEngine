@@ -34,7 +34,11 @@ namespace nauEngineSDK {
     /**
      * @brief Constructor 0.0f
      */
-    nauVector4(float nx, float ny, float nz, float nw);
+    nauVector4(float nx, float ny = 0.0f, float nz = 0.0f, float nw = 1.0f)
+      : x(nx),
+        y(ny),
+        z(nz),
+        w(nw) {}
 
     /**
      * Overloaded operator declarations

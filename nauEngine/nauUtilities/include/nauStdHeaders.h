@@ -4,9 +4,10 @@
  * @author Marco "Swampy" Millan
  * @date 2018/10/17 2018
  * @brief the std headers for the container used in the engine, USE USING_EASTL
- * for EA stl containers
+ * for EA standard library containers
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 #ifndef  USING_EASTL
@@ -35,7 +36,7 @@
 
 namespace nauEngineSDK {
 #ifndef USING_EASTL
-  template<typename T, typename A = std::allocator<T>()>
+  template<typename T, size_t A = std::allocator<T>()>
   using Array           = std::array<T, A>;
   template<typename T, typename A = std::allocator<T>()>
   using Vector          = std::vector<T, A>;

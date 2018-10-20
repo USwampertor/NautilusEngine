@@ -10,6 +10,7 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 #include "nauMath.h"
+#include <time.h>
 #include "nauPrerequisitesUtil.h"
 namespace nauEngineSDK {
 
@@ -36,7 +37,18 @@ namespace nauEngineSDK {
     nauRandom(float nSeed) : m_seed(nSeed) {}
 
     /**
+     * @brief Initializes the seed based in the current time
+     * overrides the seed if the class was constructed with one
+     * @param 
+     * @return 
+     *
+     */
+    void
+    initialize() { m_seed = static_cast<float>(time(0)); }
+
+    /**
      * @brief calculate a new random and sets it as the next seed
+     * This is the virtual function so each child does its own calculation
      * @param 
      * @return the calculated random number
      *
@@ -75,7 +87,7 @@ namespace nauEngineSDK {
      * @return a created RandomZ object
      *
      */
-    nauRandomZ(float seed = 0, float deviation = 1.0f, float mean = 0.0f) 
+    nauRandomZ(float seed, float deviation = 1.0f, float mean = 0.0f) 
       : nauRandom(seed),
         m_deviation(deviation),
         m_mean(mean) {}
@@ -92,12 +104,12 @@ namespace nauEngineSDK {
    public:
  
     /**
-     * the deviation of the gaussian distribution
+     * the deviation of the Gaussian distribution
      */
     float m_deviation;
 
     /**
-     * The mean of the gaussian distribution
+     * The mean of the Gaussian distribution
      */
     float m_mean;
   };
@@ -105,6 +117,77 @@ namespace nauEngineSDK {
   class nauRandomMC : public nauRandom
   {
    public:
+
+    /**
+     * Default constructor
+     */
+    nauRandomMC() = default;
+
+    /**
+     * Seeded constructor
+     */
+    nauRandomMC(float seed) : nauRandom(seed) {}
+
+    /**
+     * @brief calculate a new random and sets it as the next seed
+     * @param
+     * @return the calculated random number
+     *
+     */
+    float
+    next();
+
+  };
+
+  class nauRandomBM : public nauRandom
+  {
+   public:
+
+    /**
+     * Default constructor
+     */
+    nauRandomBM() = default;
+
+    /**
+     * Seeded constructor
+     */
+    nauRandomBM(float seed) : nauRandom(seed) {}
+
+    /**
+     * @brief calculate a new random and sets it as the next seed
+     * @param
+     * @return the calculated random number
+     *
+     */
+    float
+    next();
+
+    /**
+     * @brief Overridden function to initialize the two random floats with time
+     * @param 
+     * @return 
+     *
+     */
+    void
+    initialize();
+
+   public:
+
+     /**
+      * one of the two randoms generated normally within the equation
+      */
+     float m_z1;
+
+     /**
+      * one of the two randoms generated normally within the equation
+      */
+     float m_z2;
+
+     /**
+      * checks if there is already another random generated and sends it instead
+      * of generating some new pair of values
+      */
+     bool m_inquery;
   };
   
 }

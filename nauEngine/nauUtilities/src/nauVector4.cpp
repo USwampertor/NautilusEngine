@@ -15,13 +15,7 @@ namespace nauEngineSDK {
   /**
    * Method Implementation
    */
-
-  nauVector4::nauVector4(float nx, float ny, float nz, float nw)
-    : x(nx),
-      y(ny),
-      z(nz),
-      w(nw) {}
-
+    
   /**
    * Overloaded operator declarations
    */
