@@ -1,10 +1,21 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMesh.cpp
+ * @file nauSamplerState.h
  * @author Marco "Swampy" Millan
  * @date 2018/10/22 2018
- * @brief Mesh class member definition
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauMesh.h"
+#pragma once
+
+namespace nauEngineSDK {
+  class nauSamplerState
+  {
+  public:
+    nauSamplerState() = default;
+    ~nauSamplerState() {};
+  };
+  
+}
+

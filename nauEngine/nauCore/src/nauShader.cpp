@@ -1,10 +1,11 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMesh.cpp
+ * @file nauShader.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/10/22 2018
- * @brief Mesh class member definition
+ * @brief Shader base class and children member definition
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauMesh.h"
+#include "nauShader.h"
+

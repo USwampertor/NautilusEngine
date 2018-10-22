@@ -19,17 +19,37 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nauDepthStencilView.h" />
+    <ClInclude Include="include\nauDevice.h" />
+    <ClInclude Include="include\nauDeviceContext.h" />
     <ClInclude Include="include\nauGraphicsBuffer.h" />
+    <ClInclude Include="include\nauInputLayout.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
+    <ClInclude Include="include\nauRenderTargetView.h" />
+    <ClInclude Include="include\nauSamplerState.h" />
+    <ClInclude Include="include\nauShader.h" />
+    <ClInclude Include="include\nauShaderResourceView.h" />
+    <ClInclude Include="include\nauSwapChain.h" />
+    <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauVertex.h" />
-    <ClInclude Include="nauShader.h" />
+    <ClInclude Include="include\nauViewPort.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauShader.cpp" />
+    <ClCompile Include="src\nauDepthStencilView.cpp" />
+    <ClCompile Include="src\nauDevice.cpp" />
+    <ClCompile Include="src\nauDeviceContext.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
+    <ClCompile Include="src\nauInputLayout.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
+    <ClCompile Include="src\nauRenderTargetView.cpp" />
+    <ClCompile Include="src\nauSamplerState.cpp" />
+    <ClCompile Include="src\nauShader.cpp" />
+    <ClCompile Include="src\nauShaderResourceView.cpp" />
+    <ClCompile Include="src\nauSwapChain.cpp" />
+    <ClCompile Include="src\nauTexture.cpp" />
+    <ClCompile Include="src\nauViewPort.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

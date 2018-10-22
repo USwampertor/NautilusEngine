@@ -1,10 +1,10 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMesh.cpp
+ * @file nauViewPort.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/10/22 2018
- * @brief Mesh class member definition
+ * @brief ViewPort Base class member definition
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauMesh.h"
+#include "nauViewPort.h"

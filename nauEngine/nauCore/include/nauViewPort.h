@@ -1,10 +1,22 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMesh.cpp
+ * @file nauViewPort.h
  * @author Marco "Swampy" Millan
  * @date 2018/10/22 2018
- * @brief Mesh class member definition
+ * @brief View port class for visualization of screen
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauMesh.h"
+#pragma once
+
+
+namespace nauEngineSDK {
+  class nauViewPort
+  {
+  public:
+    nauViewPort() = default;
+    ~nauViewPort() {};
+  };
+  
+}
+
