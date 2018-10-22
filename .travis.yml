@@ -15,11 +15,6 @@ addons:
             - gcc-7
             - g++-7
 
-before_script:
-    - mkdir build
-    - cd build
-    - cmake ..
-
 script:
     #Test running script
     return 0;
