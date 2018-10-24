@@ -10,11 +10,58 @@
 #pragma once
 
 namespace nauEngineSDK {
+   /**
+    * nauDevice
+    * Description:
+    * 	The responsible for making the managing of the device to draw on screen
+    * Sample usage:
+    * 	
+    */
   class nauDevice
   {
-  public:
+   public:
+    /**
+     * Default constructor
+     */
     nauDevice() = default;
-    ~nauDevice() {};
+
+    /**
+     * Virtual constructor
+     */
+    virtual ~nauDevice() = 0;
+
+    /**
+     * @brief initializes device with the handler given
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool 
+    initializeDevice() = 0;
+
+    /**
+     * @brief renders
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    onRender() = 0;
+
+    /**
+     * Member declaration
+     */
+   public:
+    /**
+     * the width of the window
+     */
+    int m_width;
+
+    /**
+     * the height of the window
+     */
+    int m_height;
+
   };
   
 }

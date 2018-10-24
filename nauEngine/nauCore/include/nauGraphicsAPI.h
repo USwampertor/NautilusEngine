@@ -1,23 +1,29 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMesh.h
+ * @file nauGraphicsAPI.h
  * @author Marco "Swampy" Millan
- * @date 2018/10/22 2018
- * @brief Mesh base class for 3d/2d object generation
+ * @date 2018/10/24 2018
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 namespace nauEngineSDK {
-
   
-  class nauMesh
+  
+  class nauGraphicsAPI
   {
-  public:
-    nauMesh() = default;
-    ~nauMesh() = default;
+   public:
+    nauGraphicsAPI() = default;
+    ~nauGraphicsAPI() {};
+    bool initDevice();
+    void onRender();
+    void setShaders();
+  
   };
   
 }
+
 

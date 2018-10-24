@@ -1,16 +1,16 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauDepthStencilView.h
+ * @file nauDepthStencilState.h
  * @author Marco "Swampy" Millan
- * @date 2018/10/22 2018
+ * @date 2018/10/24 2018
  * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 namespace nauEngineSDK {
-  
    /**
     * nauDepthStencil
     * Description:
@@ -18,19 +18,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauDepthStencilView
+  class nauDepthStencilState
   {
   public:
-
-    /*
-     * Default constructor
+    
+    /**
+     * default constructor
      */
-    nauDepthStencilView() = default;
-
-    /*
+    nauDepthStencilState() = default;
+    
+    /**
      * virtual destructor
      */
-    virtual ~nauDepthStencilView() = 0;
+    virtual ~nauDepthStencilState() = 0;
   };
   
 }

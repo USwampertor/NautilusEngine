@@ -10,11 +10,26 @@
 #pragma once
 
 namespace nauEngineSDK {
+   /**
+    * nauDeviceContext
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauDeviceContext
   {
-  public:
+   public:
+
+    /**
+     * default constructor
+     */
     nauDeviceContext() = default;
-    ~nauDeviceContext() {};
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauDeviceContext() = 0;
   };
   
 }
