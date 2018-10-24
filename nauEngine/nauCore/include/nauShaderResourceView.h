@@ -10,11 +10,27 @@
 #pragma once
 
 namespace nauEngineSDK {
+
+   /**
+    * nauShaderResourceView
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauShaderResourceView
   {
-  public:
+   public:
+
+    /**
+     * Default constructor
+     */
     nauShaderResourceView() = default;
-    ~nauShaderResourceView() {};
+    
+    /**
+     * virtual destructor
+     */
+    virtual ~nauShaderResourceView() = 0;
   };
   
 }

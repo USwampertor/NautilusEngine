@@ -8,10 +8,30 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-class nauRasterizerState
-{
-public:
-  nauRasterizerState() = default;
-  ~nauRasterizerState() {};
-};
+
+namespace nauEngineSDK {
+
+   /**
+    * nauRasterizerState
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
+  class nauRasterizerState
+  {
+  public:
+
+    /**
+     * default constructor
+     */
+    nauRasterizerState() = default;
+
+    /**
+     * Virtual destructor
+     */
+    virtual ~nauRasterizerState() = 0;
+  };
+  
+}
 

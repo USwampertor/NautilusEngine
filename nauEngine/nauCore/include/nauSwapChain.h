@@ -7,14 +7,31 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 namespace nauEngineSDK {
+  
+   /**
+    * nauSwapChain
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauSwapChain
   {
   public:
+
+    /**
+     * default constructor
+     */
     nauSwapChain() = default;
-    ~nauSwapChain() {};
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauSwapChain() = 0;
   };
   
 }

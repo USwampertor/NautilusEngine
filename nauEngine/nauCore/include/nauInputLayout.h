@@ -10,11 +10,26 @@
 #pragma once
 
 namespace nauEngineSDK {
+   /**
+    * nauInputLayout
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauInputLayout
   {
   public:
+    
+    /**
+     * Default constructor
+     */
     nauInputLayout() = default;
-    ~nauInputLayout() {};
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauInputLayout() = 0;
   };
   
 }

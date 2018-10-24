@@ -10,11 +10,27 @@
 #pragma once
 
 namespace nauEngineSDK {
+
+   /**
+    * nauRenderTargetView
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauRenderTargetView
   {
-  public:
+   public:
+
+    /**
+     * default constructor
+     */
     nauRenderTargetView() = default;
-    ~nauRenderTargetView() {};
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauRenderTargetView() = 0;
   };
   
 }

@@ -33,11 +33,30 @@ namespace nauEngineSDK {
      * Virtual destructor for child management
      */
     virtual ~nauShader() = 0;
+
+    /**
+     * @brief sets the shader to the device context
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    setShader() = 0;
+
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    compile() = 0;
+
+
   };
 
   class nauVertexShader   : public nauShader
   {
-
   };
 
   class nauPixelShader    : public nauShader

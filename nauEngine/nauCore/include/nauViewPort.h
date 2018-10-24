@@ -11,6 +11,7 @@
 
 
 namespace nauEngineSDK {
+
   class nauViewPort
   {
   public:

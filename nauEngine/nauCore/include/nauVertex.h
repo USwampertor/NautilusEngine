@@ -12,6 +12,14 @@
 #include <nauVector4.h>
 
 namespace nauEngineSDK {
+
+   /**
+    * nauVertex
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   struct nauVertex
   {
     

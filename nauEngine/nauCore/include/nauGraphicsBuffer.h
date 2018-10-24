@@ -24,7 +24,15 @@ namespace nauEngineSDK {
   class nauGraphicsBuffer
   {
    public:
+
+     /**
+      * default constructor
+      */
     nauGraphicsBuffer() = default;
+
+    /**
+     * virtual destructor
+     */
     virtual ~nauGraphicsBuffer() = 0;
   };
 

@@ -11,12 +11,25 @@
 
 namespace nauEngineSDK {
 
-  
+   /**
+    * nauMesh
+    * Description:
+    * 	
+    * Sample usage:
+    * 	
+    */
   class nauMesh
   {
-  public:
+   public:
+    /**
+     * Default constructor
+     */
     nauMesh() = default;
-    ~nauMesh() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauMesh() = 0;
   };
   
 }

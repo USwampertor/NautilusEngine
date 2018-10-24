@@ -10,11 +10,27 @@
 #pragma once
 
 namespace nauEngineSDK {
+  
+  /**
+   * nauSamplerState
+   * Description:
+   * 	
+   * Sample usage:
+   * 	
+   */
   class nauSamplerState
   {
   public:
+
+    /**
+     * default constructor
+     */
     nauSamplerState() = default;
-    ~nauSamplerState() {};
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauSamplerState() = 0;
   };
   
 }

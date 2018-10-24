@@ -7,13 +7,30 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #pragma once
 
 namespace nauEngineSDK {
+
+  /**
+   * nauTexture
+   * Description:
+   *
+   * Sample usage:
+   *
+   */
   class nauTexture
   {
   public:
+
+    /**
+     * default constructor
+     */
     nauTexture() = default;
+
+    /**
+     * default destructor
+     */
     ~nauTexture() {};
   };
   
