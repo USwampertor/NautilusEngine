@@ -10,7 +10,20 @@
 
 #pragma once
 
+#include "nauPrerequisitesUtil.h"
+#include <iostream>
+
+
+
 namespace nauEngineSDK {
+
+  
+  enum class STREAMMODE 
+  {
+    READ,
+    WRITE
+  };
+
 /**
  * nauDataStream
  * Description:
@@ -27,9 +40,43 @@ public:
   nauDataStream() = default;
 
   /**
+   * Constructor defining the reading or writing flag
+   */
+
+  /**
    * Default destructor
    */
   virtual ~nauDataStream() = 0;
+
+  /**
+   * @brief Checks if the data stream can be read
+   * @param 
+   * @return true if readable 
+   *
+   */
+  virtual bool
+  readable() const {
+    return m_mode == STREAMMODE::READ;
+  }
+
+  /**
+   * @brief Checks if the data stream can be written
+   * @param
+   * @return true if writable
+   *
+   */
+  virtual bool
+  writable() const {
+    return m_mode == STREAMMODE::WRITE;
+  }
+
+ public:
+
+  /**
+   * defines if its in writing or reading mode
+   */
+  STREAMMODE m_mode;
+
 };
 
 /**

@@ -12,7 +12,7 @@
 namespace nauEngineSDK {
   
    /**
-    * nauDepthStencil
+    * nauDepthStencilView
     * Description:
     * 	
     * Sample usage:
@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     */
   class nauDepthStencilView
   {
-  public:
+   public:
 
     /*
      * Default constructor
@@ -31,6 +31,14 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauDepthStencilView() = 0;
+
+    /**
+     * @brief gets the depth stencil vew
+     * @param 
+     * @return 
+     *
+     */
+
   };
   
 }

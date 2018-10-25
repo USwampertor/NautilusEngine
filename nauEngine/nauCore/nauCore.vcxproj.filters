@@ -61,6 +61,9 @@
     <ClInclude Include="include\nauRasterizerState.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauPrerequisitesCore.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauDepthStencilView.cpp">

@@ -7,11 +7,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VertexBufferDX.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="VertexBufferDX.cpp">
+    <ClCompile Include="nauGraphicsBufferDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="nauGraphicsBufferDX.h" />
   </ItemGroup>
 </Project>

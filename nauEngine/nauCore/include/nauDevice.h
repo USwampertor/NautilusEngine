@@ -49,6 +49,24 @@ namespace nauEngineSDK {
     onRender() = 0;
 
     /**
+     * @brief creates a buffer of specific type
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    createBuffer();
+
+    /**
+     * @brief creates a depth stencil view
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    createDepthStencilView();
+
+    /**
      * Member declaration
      */
    public:
