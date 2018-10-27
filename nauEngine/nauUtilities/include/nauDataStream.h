@@ -54,7 +54,7 @@ public:
    * @return true if readable 
    *
    */
-  virtual bool
+  bool
   readable() const {
     return m_mode == STREAMMODE::READ;
   }
@@ -65,10 +65,31 @@ public:
    * @return true if writable
    *
    */
-  virtual bool
+  bool
   writable() const {
     return m_mode == STREAMMODE::WRITE;
   }
+
+  /**
+   * @brief gets to the starting point of the file
+   * @param 
+   * @return 122 31
+   *
+   */
+  virtual void 
+  atStart() = 0;
+
+  /**
+   * @brief gets to the position in the data stated by the user
+   * @param 
+   * @return 
+   *
+   */
+  virtual void
+  atPosition(int position) = 0;
+
+  virtual void
+  load(const char* file) = 0;
 
  public:
 
@@ -124,6 +145,6 @@ class nauMemStream : public nauDataStream
 
 };
 
-}
+} 
 
 
