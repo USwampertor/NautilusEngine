@@ -10,8 +10,12 @@
     <ClCompile Include="nauGraphicsBufferDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nauDeviceDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nauGraphicsBufferDX.h" />
+    <ClInclude Include="nauDeviceDX.h" />
   </ItemGroup>
 </Project>

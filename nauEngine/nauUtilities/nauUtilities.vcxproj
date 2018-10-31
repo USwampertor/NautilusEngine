@@ -138,7 +138,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -150,6 +150,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/build/$(Configuration)/</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -158,7 +160,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -170,6 +172,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/build/$(Configuration)/</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -180,7 +184,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -194,6 +198,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/build/$(Configuration)/</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -204,7 +210,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_UTILITY_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -218,6 +224,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/build/$(Configuration)/</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

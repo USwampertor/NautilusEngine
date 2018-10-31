@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <nauStdHeaders.h>
+#include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
   /**
@@ -34,9 +34,19 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauGraphicsBuffer() = 0;
+
+    virtual void
+    getSize() = 0;
+
+    virtual void
+    setSize() = 0;
+
+  private:
+
+    uint32_t m_bufferSize;
+    uint32_t m_numObjects;
   };
 
-  template<typename TVERTEX, typename... Args>
   class nauVertexBuffer : public nauGraphicsBuffer
   {
    public:
@@ -46,13 +56,17 @@ namespace nauEngineSDK {
      */
     nauVertexBuffer() = default;
 
+
+    virtual ~nauVertexBuffer() = 0;
+
     /**
      * @brief Reserves space in the vertex vector 
      * @param numObjects, the amount of object to allocate
      * @return 
      *
      */
-    virtual void reserve(size_t numObjects) = 0;
+    virtual void 
+    reserve() = 0;
 
     /**
      * @brief Adds an object at the end of the vector
@@ -60,15 +74,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void add(const TVERTEX& vertex) = 0;
-
-    /**
-     * @brief Adds a vector of objects at the end of the vector
-     * @param vertices the vector of objects
-     * @return 
-     *
-     */
-    virtual void add(Vector<TVERTEX&> vertices) = 0;
+    virtual void 
+    add() = 0;
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -76,7 +83,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void clear() = 0;
+    virtual void 
+    clear() = 0;
 
     /**
      * @brief Creates a buffer in the device with the vector data
@@ -84,7 +92,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void createHardware(Args... args) = 0;
+    virtual void 
+    createHardware() = 0;
 
     /**
      * @brief Sets the buffer data into the device context
@@ -92,17 +101,12 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void write(Args... args) = 0;
+    virtual void 
+    write() = 0;
 
-  private:
-
-    /**
-     * Vector of vertex data
-     */
-    Vector<TVERTEX> m_vertexData;
   };
 
-  template<typename TINDEX, typename... Args>
+  
   class nauIndexBuffer : public nauGraphicsBuffer
   {
    public:
@@ -112,6 +116,7 @@ namespace nauEngineSDK {
      */
     nauIndexBuffer() = default;
 
+    virtual ~nauIndexBuffer() = 0;
     /**
   * @brief Reserves space in the vertex vector
   * @param numObjects, the amount of object to allocate
@@ -126,15 +131,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void add(const TINDEX& vertex) = 0;
-
-    /**
-     * @brief Adds a vector of objects at the end of the vector
-     * @param vertices the vector of objects
-     * @return
-     *
-     */
-    virtual void add(Vector<TINDEX&> vertices) = 0;
+    virtual void add() = 0;
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -150,7 +147,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void createHardware(Args... args) = 0;
+    virtual void createHardware() = 0;
 
     /**
      * @brief Sets the buffer data into the device context
@@ -158,7 +155,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void write(Args... args) = 0;
+    virtual void write() = 0;
 
 
   private:
@@ -166,15 +163,17 @@ namespace nauEngineSDK {
     /**
      * Vector of index data
      */
-    Vector<TINDEX> m_indexData;
-
   };
   
-  template<typename TCONSTANT, typename... Args>
   class nauConstantBuffer : public nauGraphicsBuffer
   {
    public:
     nauConstantBuffer() = default;
+
+    /**
+     * virtual dstructor
+     */
+    virtual ~nauConstantBuffer() = 0;
 
     /**
      * @brief Reserves space in the vertex vector
@@ -190,15 +189,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void add(const TCONSTANT& vertex) = 0;
-
-    /**
-     * @brief Adds a vector of objects at the end of the vector
-     * @param vertices the vector of objects
-     * @return
-     *
-     */
-    virtual void add(Vector<TCONSTANT&> vertices) = 0;
+    virtual void add() = 0;
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -214,7 +205,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void createHardware(Args... args) = 0;
+    virtual void createHardware() = 0;
 
     /**
      * @brief Sets the buffer data into the device context
@@ -222,14 +213,7 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void write(Args... args) = 0;
-
-   private:
-    
-    /**
-     * Constant data buffer
-     */
-    Vector<TCONSTANT> m_constantData;
+    virtual void write() = 0;
 
   };
 }

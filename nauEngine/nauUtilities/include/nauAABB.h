@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "nauMath.h"
 #include "nauPrerequisitesUtil.h"
+#include "nauMath.h"
 #include "nauVector3.h"
 
 namespace nauEngineSDK {

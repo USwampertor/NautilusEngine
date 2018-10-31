@@ -55,7 +55,7 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createBuffer();
+    createBuffer() = 0;
 
     /**
      * @brief creates a depth stencil view
@@ -64,7 +64,7 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createDepthStencilView();
+    createDepthStencilView() = 0;
 
     /**
      * Member declaration

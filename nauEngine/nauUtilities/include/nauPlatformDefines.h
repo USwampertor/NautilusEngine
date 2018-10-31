@@ -78,7 +78,7 @@
 # define __PRETTY_FUNCTION__ __FUNCSIG__
 #else
 //No known compiler found, send the error to the output (if any)
-# pragma error "Man, I don't know how you got here, but no known compiler. "
+# pragma error "Man, I don't know how you got here... you working in lolcode right? "
 #endif
 
 /**

@@ -13,8 +13,8 @@
 # define _INC_VECTOR3_H_
 #endif
 
-#include "nauMath.h"
 #include "nauPrerequisitesUtil.h"
+#include "nauMath.h"
 
 /**
  * TODO

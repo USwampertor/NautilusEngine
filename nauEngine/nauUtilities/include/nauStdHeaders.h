@@ -10,7 +10,19 @@
 
 #pragma once
 
+#include <cassert>
+#include <memory>
+#include <cmath>
+#include <sstream>
+
+#define USING_EASTL
+
 #ifndef  USING_EASTL
+//STD objects
+# include <algorithm>
+# include <allocators>
+# include <string>
+//STD Containers
 # include <array>
 # include <vector>
 # include <deque>
@@ -21,7 +33,12 @@
 # include <set>
 # include <map>
 #else
+//STD objects
+# include <EASTL/algorithm.h>
 # include <EASTL/allocator.h>
+# include <EASTL/string.h>
+
+//STD Containers
 # include <EASTL/array.h>
 # include <EASTL/vector.h>
 # include <EASTL/deque.h>
@@ -33,57 +50,112 @@
 # include <EASTL/map.h>
 #endif
 
+namespace nauEngineSDK {
+  using Stream = std::stringstream;
+}
+
 
 namespace nauEngineSDK {
 #ifndef USING_EASTL
   template<typename T, size_t A = std::allocator<T>()>
   using Array           = std::array<T, A>;
+  
   template<typename T, typename A = std::allocator<T>()>
   using Vector          = std::vector<T, A>;
+  
   template<typename T, typename A = std::allocator<T>()>
   using Deque           = std::deque<T, A>;
+  
   template<typename T, typename A = std::allocator<T>()>
   using Forward_list    = std::forward_list<T, A>;
+  
   template<typename T, typename A = std::allocator<T>()>
   using List            = std::list<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
+  
+  template<typename T, typename A = std::deque<T>()>
   using Stack           = std::stack<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
+  
+  template<typename T, typename A = std::deque<T>()>
   using Queue           = std::queue<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
+  
+  template<typename T, typename A = std::vector<T>()>
   using Priority_queue  = std::priority_queue<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
-  using Set             = std::set<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
-  using MultiSet        = std::multiset<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
-  using Map             = std::map<T, A>;
-  template<typename T, typename A = std::allocator<T>()>
-  using MultiMap        = std::multimap<T, A>;
+  
+  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>()>
+  using Set             = std::set<T, B, A>
+  
+  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>()>
+  using MultiSet        = std::multiset<T , B, A>
+  
+  template< typename KEY, 
+            typename T, 
+            typename B = std::less<KEY>, 
+            typename A = std::allocator<std::pair<const KEY, T>>()>
+  using Map             = std::map<KEY, T, B, A>;
+  
+  template< typename KEY,
+            typename T,
+            typename B = std::less<KEY>,
+            typename A = std::allocator<std::pair<const KEY, T>>()>
+  using MultiMap        = std::multimap<KEY, T, B, A>;
+
+  //
+
+  using String          = std::string;
+
 #else
-  template<typename T, typename A = EASTLAllocatorType>
-  using Array           = eastl::array<T, A>;
+  template<typename T, size_t N = 1>
+  using Array           = eastl::array<T, N>;
+  
   template<typename T, typename A = EASTLAllocatorType>
   using Vector          = eastl::vector<T, A>;
+  
+  template<typename T, 
+           typename A = EASTLAllocatorType, 
+           unsigned kDequeSubarraySize = DEQUE_DEFAULT_SUBARRAY_SIZE(T)>
+  using Deque           = eastl::deque<T, A, kDequeSubarraySize>;
+  
   template<typename T, typename A = EASTLAllocatorType>
-  using Deque           = eastl::deque<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using Forward_list    = std::forward_list<T, A>;
+  using Forward_list    = eastl::list<T, A>;
+  
   template<typename T, typename A = EASTLAllocatorType>
   using List            = eastl::list<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
+  
+  template<typename T, typename A = eastl::vector<T>>
   using Stack           = eastl::stack<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
+  
+  template<typename T, 
+           typename A = eastl::deque<T, EASTLAllocatorType, DEQUE_DEFAULT_SUBARRAY_SIZE(T)>>
   using Queue           = eastl::queue<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using Priority_queue  = eastl::priority_queue<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using Set             = eastl::set<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using MultiSet        = eastl::multiset<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using Map             = eastl::map<T, A>;
-  template<typename T, typename A = EASTLAllocatorType>
-  using MultiMap        = eastl::multimap<T, A>;
+  
+  template<typename T, 
+           typename B = eastl::vector<T>, 
+           typename A = eastl::less<typename B::value_type> >
+  using Priority_queue  = eastl::priority_queue<T, B, A>;
+  
+  template<typename KEY, 
+           typename B = eastl::less<KEY>, 
+           typename A = EASTLAllocatorType>
+  using Set             = eastl::set<KEY, B, A>;
+  
+  template<typename KEY, 
+           typename B = eastl::less<KEY>, 
+           typename A = EASTLAllocatorType>
+  using MultiSet        = eastl::multiset<KEY, B, A>;
+  
+  template<typename KEY, typename T, 
+           typename B = eastl::less<KEY>, 
+           typename A = EASTLAllocatorType>
+  using Map             = eastl::map<KEY, B, A>;
+  
+  template<typename KEY, typename T, 
+           typename B = eastl::less<KEY>, 
+           typename A = EASTLAllocatorType>
+  using MultiMap        = eastl::multimap<KEY, B, A>;
+
+  using String          = eastl::string;
+
+
 #endif
+
 }

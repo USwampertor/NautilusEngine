@@ -8,11 +8,29 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+#include <nauGraphicsBuffer.h>
 
-class nauGraphicsBufferDX
-{
-public:
-  nauGraphicsBufferDX() = default;
-  ~nauGraphicsBufferDX() {};
-};
+namespace nauEngineSDK {
+  class nauGraphicsBufferDX : public nauGraphicsBuffer
+  {
+  public:
+    nauGraphicsBufferDX() = default;
+    ~nauGraphicsBufferDX() {};
+  };
+  
+  class nauVertexBufferDX : public nauVertexBuffer
+  {
+  public:
+    nauVertexBufferDX() = default;
+    ~nauVertexBufferDX() {};
+  };
+
+  class nauIndexBufferDX : public nauIndexBuffer
+  {
+  public:
+    nauIndexBufferDX() = default;
+    ~nauIndexBufferDX() {};
+  };
+  
+}
 

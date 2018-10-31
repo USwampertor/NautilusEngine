@@ -93,7 +93,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -109,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -147,7 +147,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -160,9 +160,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="nauDeviceDX.h" />
     <ClInclude Include="nauGraphicsBufferDX.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauDeviceDX.cpp" />
     <ClCompile Include="nauGraphicsBufferDX.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
