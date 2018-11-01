@@ -23,7 +23,7 @@ namespace nauEngineSDK {
   class nauShader
   {
    public:
-
+    
     /**
      * Default constructor of shader
      */
@@ -32,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * Virtual destructor for child management
      */
-    virtual ~nauShader() = 0;
+    virtual ~nauShader() {};
 
     /**
      * @brief sets the shader to the device context
@@ -52,11 +52,11 @@ namespace nauEngineSDK {
     virtual bool
     compile() = 0;
 
-
   };
 
   class nauVertexShader   : public nauShader
   {
+
   };
 
   class nauPixelShader    : public nauShader
@@ -80,5 +80,3 @@ namespace nauEngineSDK {
   };
 
 }
-
-

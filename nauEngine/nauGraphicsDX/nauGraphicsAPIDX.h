@@ -1,38 +1,40 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauGraphicsAPI.h
+ * @file nauGraphicsAPIDX.h
  * @author Marco "Swampy" Millan
- * @date 2018/10/24 2018
- * @brief Base core Graphics API object for graphics interface
+ * @date 2018/10/31 2018
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #pragma once
-#include "nauPrerequisitesCore.h"
+
+#include "nauPrerequisitesDX.h"
+#include <nauGraphicsAPI.h>
 
 namespace nauEngineSDK {
-  
-   /**
-    * nauGraphics
-    * Description:
-    * 	the Graphics Interface for the engine
-    * Sample usage:
-    * 	You cast any of the dynamic libraries with this so it can be used
-    */
-  class nauGraphicsAPI
+
+  /**
+   * nauGraphics
+   * Description:
+   * 	the DirectX implemented base core Graphics API class
+   * Sample usage:
+   * 	You use all the objects in a DirectX context
+   */
+  class nauGraphicsAPIDX : public nauGraphicsAPI
   {
    public:
-    
+
     /**
-     * default constructor
+     * Default Constructor
      */
-    nauGraphicsAPI() = default;
-    
+    nauGraphicsAPIDX() = default;
+
     /**
-     * virtual destructor
+     * default destructor
      */
-    ~nauGraphicsAPI() {};
+    ~nauGraphicsAPIDX() {};
 
     /**
      * @brief initializes the device of the API
@@ -40,29 +42,31 @@ namespace nauEngineSDK {
      * @return true if the initialization went all right
      *
      */
-    virtual bool 
+    bool
     initDevice(void* scrHandler) = 0;
 
     /**
-     * @brief 
-     * @param 
-     * @return 
+     * @brief
+     * @param
+     * @return
      *
      */
-    virtual void 
+    void
     onRender() = 0;
 
     /**
      * @brief gets the info of the shaders and sets the API
-     * @param 
-     * @return 
+     * @param
+     * @return
      *
      */
-    virtual void 
+    void
     setShaders() = 0;
-  
+
+    
+
+
   };
   
 }
-
 

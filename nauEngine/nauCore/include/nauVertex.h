@@ -16,9 +16,9 @@ namespace nauEngineSDK {
    /**
     * nauVertex
     * Description:
-    * 	
+    * 	A vertex object
     * Sample usage:
-    * 	
+    * 	vertex an be used to store information of the mesh
     */
   struct nauVertex
   {

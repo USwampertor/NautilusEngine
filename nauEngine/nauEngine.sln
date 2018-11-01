@@ -11,10 +11,22 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauUtilities_UnitTest", "na
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauGraphicsDX", "nauGraphicsDX\nauGraphicsDX.vcxproj", "{43528801-4BC1-4F7E-849B-97BDE275CCAD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CF3EAAA-5F22-4A20-864A-FDB28FF9D52A} = {7CF3EAAA-5F22-4A20-864A-FDB28FF9D52A}
+		{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5} = {4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauCore", "nauCore\nauCore.vcxproj", "{7CF3EAAA-5F22-4A20-864A-FDB28FF9D52A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5} = {4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauGraphics_UnitTest", "nauGraphics_UnitTest\nauGraphics_UnitTest.vcxproj", "{7ED499A4-3FBB-46FC-8194-EBD0ADF40F88}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43528801-4BC1-4F7E-849B-97BDE275CCAD} = {43528801-4BC1-4F7E-849B-97BDE275CCAD}
+		{7CF3EAAA-5F22-4A20-864A-FDB28FF9D52A} = {7CF3EAAA-5F22-4A20-864A-FDB28FF9D52A}
+		{4CD878BC-5C4E-47A3-BD97-5CBF928B40B5} = {4CD878BC-5C4E-47A3-BD97-5CBF928B40B5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

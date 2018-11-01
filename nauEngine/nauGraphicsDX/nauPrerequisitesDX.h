@@ -1,9 +1,9 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauTestApp.h
+ * @file nauPrerequisitesDX.h
  * @author Marco "Swampy" Millan
  * @date 2018/10/31 2018
- * @brief 
+ * @brief Direct X Prerequisistes
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -11,14 +11,4 @@
 
 
 #include <nauPrerequisitesCore.h>
-
-namespace nauEngineSDK {
-  class nauTestApp
-  {
-  public:
-    nauTestApp() = default;
-    ~nauTestApp() {};
-  };
-
-}
-
+#include <d3d11.h>

@@ -15,12 +15,11 @@
 #include <cmath>
 #include <sstream>
 
-#define USING_EASTL
+//#define USING_EASTL
 
 #ifndef  USING_EASTL
 //STD objects
 # include <algorithm>
-# include <allocators>
 # include <string>
 //STD Containers
 # include <array>
@@ -57,46 +56,46 @@ namespace nauEngineSDK {
 
 namespace nauEngineSDK {
 #ifndef USING_EASTL
-  template<typename T, size_t A = std::allocator<T>()>
-  using Array           = std::array<T, A>;
-  
-  template<typename T, typename A = std::allocator<T>()>
-  using Vector          = std::vector<T, A>;
-  
-  template<typename T, typename A = std::allocator<T>()>
-  using Deque           = std::deque<T, A>;
-  
-  template<typename T, typename A = std::allocator<T>()>
-  using Forward_list    = std::forward_list<T, A>;
-  
-  template<typename T, typename A = std::allocator<T>()>
-  using List            = std::list<T, A>;
-  
-  template<typename T, typename A = std::deque<T>()>
-  using Stack           = std::stack<T, A>;
-  
-  template<typename T, typename A = std::deque<T>()>
-  using Queue           = std::queue<T, A>;
-  
-  template<typename T, typename A = std::vector<T>()>
-  using Priority_queue  = std::priority_queue<T, A>;
-  
-  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>()>
-  using Set             = std::set<T, B, A>
-  
-  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>()>
-  using MultiSet        = std::multiset<T , B, A>
+  template<typename T, size_t A>
+  using Array = std::array<T, A>;
+
+  template<typename T, typename A = std::allocator<T>>
+  using Vector = std::vector<T, A>;
+
+  template<typename T, typename A = std::allocator<T>>
+  using Deque = std::deque<T, A>;
+
+  template<typename T, typename A = std::allocator<T>>
+  using Forward_list = std::forward_list<T, A>;
+
+  template<typename T, typename A = std::allocator<T>>
+  using List = std::list<T, A>;
+
+  template<typename T, typename A = std::deque<T>>
+  using Stack = std::stack<T, A>;
+
+  template<typename T, typename A = std::deque<T>>
+  using Queue = std::queue<T, A>;
+
+  template<typename T, typename A = std::vector<T>>
+  using Priority_queue = std::priority_queue<T, A>;
+
+  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>>
+  using Set = std::set<T, B, A>;
+
+  template<typename T, typename B = std::less<T>, typename A = std::allocator<T>>
+  using MultiSet = std::multiset< T, B, A >;
   
   template< typename KEY, 
             typename T, 
             typename B = std::less<KEY>, 
-            typename A = std::allocator<std::pair<const KEY, T>>()>
+            typename A = std::allocator<std::pair<const KEY, T>>>
   using Map             = std::map<KEY, T, B, A>;
   
   template< typename KEY,
             typename T,
             typename B = std::less<KEY>,
-            typename A = std::allocator<std::pair<const KEY, T>>()>
+            typename A = std::allocator<std::pair<const KEY, T>>>
   using MultiMap        = std::multimap<KEY, T, B, A>;
 
   //

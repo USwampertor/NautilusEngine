@@ -1,24 +1,16 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauTestApp.h
+ * @file nauShaderDX.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/10/31 2018
- * @brief 
+ * @brief Direct X Shader member declaration
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#pragma once
+#include "nauShaderDX.h"
 
-
-#include <nauPrerequisitesCore.h>
 
 namespace nauEngineSDK {
-  class nauTestApp
-  {
-  public:
-    nauTestApp() = default;
-    ~nauTestApp() {};
-  };
+
 
 }
-

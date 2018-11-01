@@ -1,4 +1,4 @@
-#include "nauTestApp.h"
+#include "nauCamera.h"
 
 namespace nauEngineSDK {
 

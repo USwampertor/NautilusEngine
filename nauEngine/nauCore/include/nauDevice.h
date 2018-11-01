@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+#include <nauPrerequisitesCore.h>
 
 namespace nauEngineSDK {
    /**
@@ -37,7 +38,7 @@ namespace nauEngineSDK {
      *
      */
     virtual bool 
-    initializeDevice() = 0;
+    initializeDevice(void* scrHandler) = 0;
 
     /**
      * @brief renders
@@ -73,12 +74,12 @@ namespace nauEngineSDK {
     /**
      * the width of the window
      */
-    int m_width;
+    uint32 m_width;
 
     /**
      * the height of the window
      */
-    int m_height;
+    uint32 m_height;
 
   };
   

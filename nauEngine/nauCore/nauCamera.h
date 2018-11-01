@@ -1,6 +1,6 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauTestApp.h
+ * @file nauCamera.h
  * @author Marco "Swampy" Millan
  * @date 2018/10/31 2018
  * @brief 
@@ -9,16 +9,22 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-
-#include <nauPrerequisitesCore.h>
+#include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
-  class nauTestApp
+  class nauCamera
   {
   public:
-    nauTestApp() = default;
-    ~nauTestApp() {};
+    /**
+     * Default constructor
+     */
+    nauCamera() = default;
+  
+    /**
+     * Default destructor
+     */
+    ~nauCamera() {};
   };
-
+  
 }
 

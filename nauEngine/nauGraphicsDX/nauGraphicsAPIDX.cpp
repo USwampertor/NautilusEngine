@@ -1,24 +1,14 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauTestApp.h
+ * @file nauGraphicsAPIDX.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/10/31 2018
- * @brief 
+ * @brief Direct X graphics API implementation of the base core API
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#pragma once
-
-
-#include <nauPrerequisitesCore.h>
+#include "nauGraphicsAPIDX.h"
 
 namespace nauEngineSDK {
-  class nauTestApp
-  {
-  public:
-    nauTestApp() = default;
-    ~nauTestApp() {};
-  };
 
 }
-

@@ -46,7 +46,7 @@ public:
   /**
    * Default destructor
    */
-  virtual ~nauDataStream() = 0;
+  virtual ~nauDataStream() {};
 
   /**
    * @brief Checks if the data stream can be read
@@ -130,15 +130,6 @@ public:
   getAll() = 0;
 
   /**
-   * @brief returns a string with a block of information from the stream
-   * @param
-   * @return
-   *
-   */
-  virtual String
-  getAll() = 0;
-
-  /**
    * @brief returns true if the stream is at the end of the file
    * @param 
    * @return 
@@ -179,7 +170,7 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
    /**
     * Default Destructor
     */
-   ~nauFileStream() {}
+   ~nauFileStream() { m_stream.flush(); }
 
 };
 
@@ -201,7 +192,7 @@ class NAU_UTILITY_EXPORT nauMemStream : public nauDataStream
   /**
    * Default destructor
    */
-  ~nauMemStream() {}
+  ~nauMemStream() { m_stream.flush(); }
 
 };
 

@@ -8,6 +8,8 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+
+#include "nauPrerequisitesCore.h";
 class nauBaseApp
 {
  public:

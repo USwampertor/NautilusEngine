@@ -9,3 +9,6 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauShader.h"
 
+namespace nauEngineSDK {
+
+}

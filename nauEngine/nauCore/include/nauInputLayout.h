@@ -19,7 +19,7 @@ namespace nauEngineSDK {
     */
   class nauInputLayout
   {
-  public:
+   public:
     
     /**
      * Default constructor
@@ -29,7 +29,19 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauInputLayout() = 0;
+    virtual ~nauInputLayout() {};
+
+    /**
+     * @brief sets the descriptor of the input
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    setInputDescriptor();
+
+
+
   };
   
 }

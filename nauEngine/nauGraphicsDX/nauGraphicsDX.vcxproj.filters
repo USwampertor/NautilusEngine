@@ -3,7 +3,7 @@
   <ItemGroup>
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <Extensions>h;hpp;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -13,9 +13,26 @@
     <ClCompile Include="nauDeviceDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nauShaderDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauInputLayoutDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauGraphicsAPIDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nauGraphicsBufferDX.h" />
     <ClInclude Include="nauDeviceDX.h" />
+    <ClInclude Include="nauPrerequisitesDX.h" />
+    <ClInclude Include="nauShaderDX.h" />
+    <ClInclude Include="nauInputLayoutDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauGraphicsAPIDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
