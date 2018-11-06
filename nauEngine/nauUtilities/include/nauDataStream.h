@@ -20,8 +20,14 @@ namespace nauEngineSDK {
   
   enum class NAU_UTILITY_EXPORT STREAMACCESS
   {
-    READ,
+    READ = 0,
     WRITE
+  };
+
+  enum class NAU_UTILITY_EXPORT STREAMTYPE
+  {
+    FILE = 0,
+    MEMORY
   };
 
 /**
@@ -47,6 +53,18 @@ public:
    * Default destructor
    */
   virtual ~nauDataStream() {};
+
+  /**
+   * STREAMACCESS defined constructor
+   */
+  nauDataStream(STREAMACCESS sAccess) : m_mode(sAccess) {}
+
+  /**
+   * path defined constructor
+   */
+  nauDataStream(const String& path, STREAMACCESS sAccess) 
+    : m_path(path),
+      m_mode(sAccess) {}
 
   /**
    * @brief Checks if the data stream can be read
@@ -101,15 +119,16 @@ public:
    *
    */
   virtual void
-  skip(size_t bytes) = 0;
+  skip(SIZE_T bytes) = 0;
 
   /**
-   * @brief 
+   * @brief returns if the dataStream is a file or memory
    * @param 
-   * @return 
+   * @return returns either a FILE or MEMORY enum if file
    *
    */
-
+  virtual STREAMTYPE
+  isType() = 0;
 
   /**
    * @brief inserts the stream at the end of the stream
@@ -138,6 +157,26 @@ public:
   virtual void
   eof() const = 0;
 
+  /**
+   * @brief returns the name of the dataStream
+   * @param 
+   * @return the String with the name
+   *
+   */
+  const String& getPath() {
+    return m_path;
+  }
+
+  /**
+   * @brief returns the name of the dataStream
+   * @param
+   * @return the String with the name
+   *
+   */
+  STREAMACCESS getStreamAccess() {
+    return m_mode;
+  }
+
  public:
 
   /**
@@ -148,7 +187,7 @@ public:
   /**
    * Stream object to help us move things
    */
-  Stream m_stream;
+  String m_path;
 };
 
 /**
@@ -170,17 +209,27 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
    /**
     * Default Destructor
     */
-   ~nauFileStream() { m_stream.flush(); }
+   ~nauFileStream() {}
+
+   /**
+   * @brief returns if the dataStream is a file or memory
+   * @param 
+   * @return returns either a FILE or MEMORY enum if file
+   *
+   */
+  STREAMTYPE
+  isType();
+
 
 };
 
- /**
-  * nauMemStream
-  * Description:
-  * 	Manages information from the memory
-  * Sample usage:
-  * 	nauMemStream.Open() gets a file or information from the memory
-  */
+/**
+ * nauMemStream
+ * Description:
+ * 	Manages information from the memory
+ * Sample usage:
+ * 	nauMemStream.Open() gets a file or information from the memory
+ */
 class NAU_UTILITY_EXPORT nauMemStream : public nauDataStream
 {
  public:
@@ -192,7 +241,17 @@ class NAU_UTILITY_EXPORT nauMemStream : public nauDataStream
   /**
    * Default destructor
    */
-  ~nauMemStream() { m_stream.flush(); }
+  ~nauMemStream() {}
+
+  /**
+   * @brief returns if the dataStream is a file or memory
+   * @param 
+   * @return returns either a FILE or MEMORY enum if file
+   *
+   */
+  STREAMTYPE
+  isType();
+
 
 };
 

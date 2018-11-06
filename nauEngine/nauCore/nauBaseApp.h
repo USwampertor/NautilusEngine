@@ -10,10 +10,21 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h";
-class nauBaseApp
-{
- public:
-  nauBaseApp() = default;
-  virtual ~nauBaseApp() = 0;
-};
+namespace {
+  class nauBaseApp
+  {
+   public:
+    
+     /**
+     * default constructor
+     */
+    nauBaseApp() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauBaseApp() {};
+  };
+}
+
 

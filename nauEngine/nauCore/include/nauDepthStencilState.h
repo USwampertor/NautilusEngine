@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauDepthStencilState() = 0;
+    virtual ~nauDepthStencilState() {};
 
     /**
      * Member declaration

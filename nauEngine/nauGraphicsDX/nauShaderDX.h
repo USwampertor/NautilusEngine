@@ -14,7 +14,7 @@
 
 namespace nauEngineSDK {
 
-  class nauShaderDX : public nauShader
+  class NAU_DIRECTX_EXPORT nauShaderDX : public nauShader
   {
   public:
 
@@ -26,42 +26,43 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~nauShaderDX() {};
+    virtual ~nauShaderDX() {
+    
+      if (m_d3dBlob != nullptr) {
+        m_d3dBlob->Release();
+        m_d3dBlob = nullptr;
+      }
+    };
 
     /**
-     * @brief sets the shader to the device context
-     * @param
+     * @brief Compiles a shader resource with the info showed with the directX compiler
+     * @param string filename the path or nae of the file
+     *        string entry point, basically the name of the main
+     *        profile of object
+     *        FLAGS for any other information getting of the compiler of the shader
      * @return
      *
      */
-    virtual void
-    setShader() = 0;
+    bool
+    compile(String filename, String entryPoint, String profile, uint32 FLAGS);
 
     /**
-     * @brief 
-     * @param 
-     * @return 
-     *
+     * returns the D3DBLOB
      */
-    virtual bool
-    compile() = 0;
+    void*
+    getData();
 
    public:
 
     /**
-     * DirectX blob resource
+     * DirectX blob resource. It normally has all the important data of the shader
      */
     ID3DBlob* m_d3dBlob = nullptr;
-
-    /**
-     * ImmediateDevice Pointer
-     */
-    ID3D11DeviceContext* pImmediateDevice = nullptr;
 
   };
   
 
-  class nauVertexShaderDX : public nauShaderDX
+  class NAU_DIRECTX_EXPORT nauVertexShaderDX : public nauShaderDX, public nauVertexShader
   {
    public:
     /**
@@ -72,30 +73,25 @@ namespace nauEngineSDK {
     /**
      * Default Constructor
      */
-    ~nauVertexShaderDX() {};
+    ~nauVertexShaderDX() {
+      if (m_pVertexShader != nullptr) {
+        m_pVertexShader->Release();
+        m_pVertexShader = nullptr;
+      }
+    };
 
-    /**
-     * @brief sets the shader to the device context
-     * @param
-     * @return
-     *
-     */
     void
-    setShader() = 0;
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+
+   public:
 
     /**
-     * @brief
-     * @param
-     * @return
-     *
+     * the vertex Shader for DirectX
      */
-    bool
-    compile() = 0;
-
-    
+    ID3D11VertexShader* m_pVertexShader;
   };
 
-  class nauPixelShaderDX : public nauShaderDX
+  class NAU_DIRECTX_EXPORT nauPixelShaderDX : public nauShaderDX, public nauPixelShader
   {
    public:
     /**
@@ -106,29 +102,26 @@ namespace nauEngineSDK {
     /**
      * Default Constructor
      */
-    ~nauPixelShaderDX() {};
+    ~nauPixelShaderDX() {
 
-    /**
-     * @brief sets the shader to the device context
-     * @param
-     * @return
-     *
-     */
+      if (m_pPixelShader != nullptr) {
+        m_pPixelShader->Release();
+        m_pPixelShader = nullptr;
+      }
+    }
+
     void
-    setShader() = 0;
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+
+   public:
 
     /**
-     * @brief
-     * @param
-     * @return
-     *
+     * Pixel Shader for DirectX
      */
-    bool
-    compile() = 0;
-
+    ID3D11PixelShader* m_pPixelShader;
   };
 
-  class nauComputeShaderDX : public nauShaderDX
+  class NAU_DIRECTX_EXPORT nauComputeShaderDX : public nauShaderDX, public nauComputeShader
   {
    public:
     /**
@@ -141,27 +134,19 @@ namespace nauEngineSDK {
      */
     ~nauComputeShaderDX() {};
 
-    /**
-     * @brief sets the shader to the device context
-     * @param
-     * @return
-     *
-     */
     void
-    setShader() = 0;
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+
+   public:
 
     /**
-     * @brief
-     * @param
-     * @return
-     *
+     * Computer shader for DirectX
      */
-    bool
-    compile() = 0;
+    ID3D11ComputeShader* m_pComputeShader;
 
   };
 
-  class nauGeometryShaderDX : public nauShaderDX
+  class NAU_DIRECTX_EXPORT nauGeometryShaderDX : public nauShaderDX, public nauGeometryShader
   {
    public:
     /**
@@ -174,26 +159,17 @@ namespace nauEngineSDK {
      */
     ~nauGeometryShaderDX() {};
 
-    /**
-     * @brief sets the shader to the device context
-     * @param
-     * @return
-     *
-     */
     void
-    setShader() = 0;
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+  
 
     /**
-     * @brief
-     * @param
-     * @return
-     *
+     * 
      */
-    bool
-    compile() = 0;
+    ID3D11GeometryShader* m_pGeometryShader;
   };
 
-  class nauTextureShaderDX : public nauShaderDX
+  class NAU_DIRECTX_EXPORT nauTextureShaderDX : public nauShaderDX, public nauTextureShader
   {
    public:
     /**
@@ -206,23 +182,10 @@ namespace nauEngineSDK {
      */
     ~nauTextureShaderDX() {};
 
-    /**
-     * @brief sets the shader to the device context
-     * @param
-     * @return
-     *
-     */
     void
-    setShader() = 0;
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    
 
-    /**
-     * @brief
-     * @param
-     * @return
-     *
-     */
-    bool
-    compile() = 0;
   };
 
 }

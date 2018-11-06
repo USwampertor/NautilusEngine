@@ -1,30 +1,27 @@
-dist: trusty
-sudo: require
-
-language: cpp
 os: linux
-compiler: 
-    - gcc
-    - clang
-  
+sudo: false
+language: cpp
+compiler: gcc
+
 addons:
-    apt:
-        sources:
-            - ubuntu-toolchain-r-test
-        packages:
-            - gcc-7
-            - g++-7
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
+      - cmake
 
 script:
-    #Test running script
-    return 0;
+  - echo "Creating build directory..."
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - ./TravisTest
 
 after_script:
-    #deploy default Message
-    - echo "Finished testing\n Results in "
-after_success:
-    #deploy Success message
-    - echo "success"
+  - echo "Finished script..."
 
-after_failure:
-    - echo "failure"
+after_success:
+  - echo "Congratulations, you didn't fuck up"

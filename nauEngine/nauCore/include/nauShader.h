@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
   
    /**
@@ -20,7 +22,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauShader
+  class NAU_CORE_EXPORT nauShader
   {
    public:
     
@@ -35,48 +37,118 @@ namespace nauEngineSDK {
     virtual ~nauShader() {};
 
     /**
-     * @brief sets the shader to the device context
-     * @param 
-     * @return 
-     *
-     */
-    virtual void
-    setShader() = 0;
-
-    /**
-     * @brief 
-     * @param 
+     * @brief Compiles a shader resource with the info showed
+     * @param string filename the path or nae of the file
+     *        string entry point, basically the name of the main
+     *        profile of object
+     *        FLAGS for any other information getting of the compiler of the shader
      * @return 
      *
      */
     virtual bool
-    compile() = 0;
+    compile(String filename, String entryPoint, String profile, uint32 FLAGS) = 0;
+
+    /**
+     * @brief returns an object with the info of the shader, normally is a BLOB
+     * @param 
+     * @return the BLOB or the data container
+     *
+     */
+    virtual void*
+    getData() = 0;
+
+    /**
+     * @brief Creates a shader from specific File with a specific encoding
+     * @param void* Device is the device in charge of the shader,
+     *        filename of the shader
+     *        const char entry point of the file
+     * @return
+     *
+     */
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) = 0;
 
   };
 
-  class nauVertexShader   : public nauShader
+  class NAU_CORE_EXPORT nauVertexShader   : public nauShader
   {
+   public:
+
+    /**
+     * Default constructor
+     */
+    nauVertexShader() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual
+    ~nauVertexShader() {};
 
   };
 
-  class nauPixelShader    : public nauShader
+  class NAU_CORE_EXPORT nauPixelShader    : public nauShader
   {
+   public:
 
+    /**
+     * Default constructor
+     */
+     nauPixelShader() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual
+    ~nauPixelShader() {};
   };
 
-  class nauComputeShader  : public nauShader
+  class NAU_CORE_EXPORT nauComputeShader  : public nauShader
   {
+   public:
 
+    /**
+     * Default constructor
+     */
+     nauComputeShader() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual
+    ~nauComputeShader() {};
   };
 
-  class nauGeometryShader : public nauShader
+  class NAU_CORE_EXPORT nauGeometryShader : public nauShader
   {
+   public:
 
+    /**
+     * Default constructor
+     */
+     nauGeometryShader() = default;
+    
+    /**
+     * virtual destructor
+     */
+    virtual
+    ~nauGeometryShader() {};
   };
   
-  class nauTextureShader  : public nauShader
+  class NAU_CORE_EXPORT nauTextureShader  : public nauShader
   {
+   public:
 
+    /**
+     * Default constructor
+     */
+     nauTextureShader() = default;
+    
+    /**
+     * virtual destructor
+     */
+    virtual
+    ~nauTextureShader() {};
   };
 
 }

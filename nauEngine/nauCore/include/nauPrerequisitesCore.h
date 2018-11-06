@@ -20,7 +20,7 @@
 #   if defined( NAU_STATIC_LIB )
 #     define NAU_CORE_EXPORT
 #   else
-#     if defined( NAU_UTILITY_EXPORTS )
+#     if defined( NAU_CORE_EXPORTS )
 #       define NAU_CORE_EXPORT __declspec( dllexport )
 #     else
 #       define NAU_CORE_EXPORT __declspec( dllimport )
@@ -30,7 +30,7 @@
 #   if defined( NAU_STATIC_LIB )
 #     define NAU_CORE_EXPORT
 #   else
-#     if defined( NAU_UTILITY_EXPORTS )
+#     if defined( NAU_CORE_EXPORTS )
 #       define NAU_CORE_EXPORT __attribute__ ((dllexport))
 #     else
 #       define NAU_CORE_EXPORT __attribute__ ((dllimport))

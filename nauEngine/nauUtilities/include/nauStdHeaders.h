@@ -13,7 +13,10 @@
 #include <cassert>
 #include <memory>
 #include <cmath>
+
 #include <sstream>
+#include <fstream>
+#include <iostream>
 
 //#define USING_EASTL
 
@@ -51,6 +54,7 @@
 
 namespace nauEngineSDK {
   using Stream = std::stringstream;
+
 }
 
 
