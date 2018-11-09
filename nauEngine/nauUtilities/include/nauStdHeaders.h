@@ -17,7 +17,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-
+#include <type_traits>
 //#define USING_EASTL
 
 #ifndef  USING_EASTL

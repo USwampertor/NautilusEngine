@@ -8,7 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-#include <conio.h>
 
 #include <numeric>
 #include <gtest/gtest.h>

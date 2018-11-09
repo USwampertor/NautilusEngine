@@ -62,6 +62,7 @@
     <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauVector4.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
+    <ClInclude Include="nauModule.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

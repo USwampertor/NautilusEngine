@@ -132,5 +132,8 @@
     <ClInclude Include="include\nauStdHeaders.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
+    <ClInclude Include="nauModule.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
