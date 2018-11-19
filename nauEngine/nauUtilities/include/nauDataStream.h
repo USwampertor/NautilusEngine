@@ -50,11 +50,6 @@ public:
    */
 
   /**
-   * Default destructor
-   */
-  virtual ~nauDataStream() {};
-
-  /**
    * STREAMACCESS defined constructor
    */
   nauDataStream(STREAMACCESS sAccess) : m_mode(sAccess) {}
@@ -65,6 +60,11 @@ public:
   nauDataStream(const String& path, STREAMACCESS sAccess) 
     : m_path(path),
       m_mode(sAccess) {}
+
+  /**
+   * Default destructor
+   */
+  virtual ~nauDataStream() {};
 
   /**
    * @brief Checks if the data stream can be read
@@ -94,8 +94,8 @@ public:
    * @return 122 31
    *
    */
-  virtual void 
-  atStart() = 0;
+  void 
+  atStart();
 
   /**
    * @brief gets to the position in the data stated by the user
@@ -103,14 +103,17 @@ public:
    * @return 
    *
    */
-  virtual void
-  atPosition(int position) = 0;
+  void
+  atPosition(SIZE_T position);
 
   /**
-   * Loads object to the stream
+   * @brief gets to the ending point of the file
+   * @param
+   * @return
+   *
    */
-  virtual void
-  load(const char* file) = 0;
+  void
+  atEnd();
 
   /**
    * @brief skips a certain amount of bytes defined by the user
@@ -118,8 +121,8 @@ public:
    * @return 
    *
    */
-  virtual void
-  skip(SIZE_T bytes) = 0;
+  void
+  skip(SIZE_T bytes);
 
   /**
    * @brief returns if the dataStream is a file or memory
@@ -131,13 +134,59 @@ public:
   isType() = 0;
 
   /**
-   * @brief inserts the stream at the end of the stream
+   * @brief open a file
+   * @param string of the path where you find the file
+   * @return true if loaded
+   *
+   */
+  virtual bool
+  open(void* path) = 0;
+
+  /**
+   * @brief creates a file
+   * @param string of the path where you find the file
+   * @return true if loaded
+   *
+   */
+  virtual bool
+  create(void* path) = 0;
+
+  /**
+   * @brief creates a file
+   * @param string of the path where you find the file
+   * @return true if loaded
+   *
+   */
+  virtual bool
+  copy(const void* buffer) = 0;
+
+  /**
+   * @brief closes a file
    * @param 
    * @return 
    *
    */
-  virtual void
-  write(const String& source) = 0;
+  void
+  close();
+
+  /**
+   * @brief inserts the stream at the end of the stream
+   * @param path
+   * @return the size of the file that was copied
+   *
+   */
+  SIZE_T
+  write(const String& information);
+
+  /**
+   * @brief inserts the stream at the end of the stream
+   * @param void* the destiny of the information either a buffer or a variable
+   *        size_t the size of the bytes read
+   * @return the size of the file that was copied
+   *
+   */
+  SIZE_T
+  read(void* destiny, SIZE_T size);
 
   /**
    * @brief returns a string with all the info from the stream
@@ -145,17 +194,17 @@ public:
    * @return 
    *
    */
-  virtual String
-  getAll() = 0;
+  void
+  readAll(void* destiny);
 
   /**
    * @brief returns true if the stream is at the end of the file
    * @param 
-   * @return 
+   * @return true if the current position is equal to the size of the vector
    *
    */
-  virtual void
-  eof() const = 0;
+  bool
+  eof() const;
 
   /**
    * @brief returns the name of the dataStream
@@ -163,9 +212,7 @@ public:
    * @return the String with the name
    *
    */
-  const String& getPath() {
-    return m_path;
-  }
+  const String& getPath() { return m_path; }
 
   /**
    * @brief returns the name of the dataStream
@@ -173,10 +220,11 @@ public:
    * @return the String with the name
    *
    */
-  STREAMACCESS getStreamAccess() {
-    return m_mode;
-  }
+  STREAMACCESS getStreamAccess() { return m_mode; }
 
+  /**
+   * Member declaration
+   */
  public:
 
   /**
@@ -185,9 +233,25 @@ public:
   STREAMACCESS m_mode;
 
   /**
+   * the stream of information
+   */
+  Vector<char> m_data;
+
+  /**
    * Stream object to help us move things
    */
   String m_path;
+
+  /**
+   * size of our data stream
+   */
+  SIZE_T m_size;
+
+  /**
+   * Current position of the pointer of the stream
+   */
+  SIZE_T m_currPos;
+
 };
 
 /**
@@ -201,25 +265,27 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
 {
  public:
   
-   /**
-    * Default constructor
-    */
-   nauFileStream() = default;
-
-   /**
-    * Default Destructor
-    */
-   ~nauFileStream() {}
-
-   /**
-   * @brief returns if the dataStream is a file or memory
-   * @param 
-   * @return returns either a FILE or MEMORY enum if file
-   *
+  /**
+   * Default constructor
    */
+  nauFileStream() = default;
+
+  /**
+   * Default Destructor
+   */
+  ~nauFileStream() {}
+
   STREAMTYPE
   isType();
 
+  bool
+  open(void* file);
+
+  bool
+  create(void* file);
+
+  bool
+  copy(const void* buffer);
 
 };
 
@@ -252,6 +318,14 @@ class NAU_UTILITY_EXPORT nauMemStream : public nauDataStream
   STREAMTYPE
   isType();
 
+  bool
+  open(void* path);
+
+  bool
+  create(void* path);
+
+  bool
+  copy(const void* buffer);
 
 };
 

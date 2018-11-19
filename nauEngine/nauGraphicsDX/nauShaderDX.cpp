@@ -62,9 +62,22 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauVertexShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  nauVertexShaderDX::createFromFile(void* pDevice, 
+                                    const char* fileName, 
+                                    const char* entryPoint) {
     HRESULT hr = S_OK;
-    
+    hr = nauShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    if (FAILED(hr)) {
+      printf("Failed to compile Vertex Shader"); 
+    }
+
+    hr = static_cast<ID3D11Device*>(pDevice)->CreateVertexShader(m_d3dBlob->GetBufferPointer(),
+                                                                 m_d3dBlob->GetBufferSize(),
+                                                                 nullptr,
+                                                                 &m_pVertexShader);
+    if (FAILED(hr)) {
+      printf("Failed to create Vertex Shader");
+    }
   }
 
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -73,7 +86,40 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-    nauPixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  nauPixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+    HRESULT hr = S_OK;
+
+  }
+
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauShaderDX.cpp Geometry shader member declaration
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  void
+  nauGeometryShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+    HRESULT hr = S_OK;
+
+  }
+
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauShaderDX.cpp Geometry shader member declaration
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  void
+  nauComputeShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+    HRESULT hr = S_OK;
+
+  }
+
+  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauShaderDX.cpp Geometry shader member declaration
+ */
+ /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  void
+  nauTextureShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
 
   }

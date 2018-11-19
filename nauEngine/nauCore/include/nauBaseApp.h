@@ -9,7 +9,7 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-#include "nauPrerequisitesCore.h";
+#include "nauPrerequisitesCore.h"
 namespace {
   class nauBaseApp
   {

@@ -64,10 +64,10 @@
     <ClInclude Include="include\nauPrerequisitesCore.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauBaseApp.h">
+    <ClInclude Include="include\nauBaseApp.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauCamera.h">
+    <ClInclude Include="include\nauCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,10 +123,10 @@
     <ClCompile Include="src\nauRasterizerState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauBaseApp.cpp">
+    <ClCompile Include="src\nauBaseApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauCamera.cpp">
+    <ClCompile Include="src\nauCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

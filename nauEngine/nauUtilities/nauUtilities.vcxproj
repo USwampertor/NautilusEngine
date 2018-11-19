@@ -44,6 +44,7 @@
     <ClInclude Include="include\nauFrustrum.h" />
     <ClInclude Include="include\nauMath.h" />
     <ClInclude Include="include\nauMatrix4.h" />
+    <ClInclude Include="include\nauModule.h" />
     <ClInclude Include="include\nauOOBB.h" />
     <ClInclude Include="include\nauPlane.h" />
     <ClInclude Include="include\nauPlatformDefines.h" />
@@ -62,7 +63,6 @@
     <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauVector4.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
-    <ClInclude Include="nauModule.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

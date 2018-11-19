@@ -16,7 +16,7 @@ namespace nauEngineSDK {
   
   class nauInputLayoutDX : nauInputLayout
   {
-  public:
+   public:
   
     /**
      * Default Constructor
@@ -28,15 +28,27 @@ namespace nauEngineSDK {
      */
     ~nauInputLayoutDX() {};
   
-    /**
-     * @brief sets information to the input descriptor descriptor
-     * @param 
-     * @return 
-     *
-     */
     void 
     SetInputDesc();
-  
+    
+    void
+    reserve(SIZE_T numObjects);
+
+    void
+    add(void* input);
+
+    void
+    getfromBLOB(void* pReflection, SIZE_T size);
+    
+    void
+    clear();
+
+    void
+    createInputBuffer(void* pDevice, void* pShader);
+
+    void
+    setLayout(void* pImmediateContext);
+
    public:
     ID3D11InputLayout * m_layout;
     std::vector<D3D11_INPUT_ELEMENT_DESC> descvector;

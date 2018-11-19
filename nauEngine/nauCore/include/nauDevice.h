@@ -8,16 +8,16 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-#include <nauPrerequisitesCore.h>
+#include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
-   /**
-    * nauDevice
-    * Description:
-    * 	The responsible for making the managing of the device to draw on screen
-    * Sample usage:
-    * 	
-    */
+  /**
+   * nauDevice
+   * Description:
+   * 	The responsible for making the managing of the device to draw on screen
+   * Sample usage:
+   * 	
+   */
   class nauDevice
   {
    public:

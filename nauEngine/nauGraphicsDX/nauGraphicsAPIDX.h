@@ -63,9 +63,6 @@ namespace nauEngineSDK {
     void
     setShaders() = 0;
 
-    
-
-
   };
   
 }

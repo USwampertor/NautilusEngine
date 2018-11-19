@@ -10,11 +10,11 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauTestApp.cpp">
+    <ClCompile Include="src\nauTestApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nauTestApp.h" />
+    <ClInclude Include="include\nauTestApp.h" />
   </ItemGroup>
 </Project>

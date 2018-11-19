@@ -24,14 +24,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nauGraphicsBufferDX.h" />
-    <ClInclude Include="nauDeviceDX.h" />
-    <ClInclude Include="nauPrerequisitesDX.h" />
-    <ClInclude Include="nauShaderDX.h" />
     <ClInclude Include="nauInputLayoutDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="nauGraphicsAPIDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauDeviceDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauGraphicsBufferDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauPrerequisitesDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauShaderDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
