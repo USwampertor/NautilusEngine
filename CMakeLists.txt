@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(GTESTUtilities)
 
 #included libraries
-include(./nauEngine/nauUtilities_UnitTest/gtestUtilities.cmake)
+include(gtestUtilities.cmake)
 
 #Prerequisites
 set(CMAKE_CXX_FLAGS)
