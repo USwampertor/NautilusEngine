@@ -9,7 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #pragma once
-#include <nauStdHeaders.h>
+
+#include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
 
@@ -36,14 +37,26 @@ namespace nauEngineSDK {
 
     /**
      * @brief Loads a resource from a path
-     * @param 
+     * @param string path of the file, device and device context
      * @return 
      *
      */
     virtual bool
-    loadFromFile();
+    loadFromFile(String path, void* pDevice, void* pDeviceContext) = 0;
 
+    /**
+     * Member declaration
+     */
 
+    /**
+     * width of the texture
+     */
+    uint32 m_width;
+
+    /**
+     * width of the texture
+     */
+    uint32 m_height;
   };
   
 }

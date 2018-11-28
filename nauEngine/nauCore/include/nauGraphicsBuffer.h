@@ -11,13 +11,14 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauVertex.h"
 
 namespace nauEngineSDK {
   /**
    * nauGraphics
    * Description:
    * 	the ABSTRACT father of the vertex, index and constant buffer for 
-   *   rendering information. The object is implemented by the plugins
+   *   rendering information. The object is implemented by the plug ins
    * Sample usage:
    * 	Graphics buffer can be a DirectX buffer or OpenGL
    */
@@ -25,26 +26,16 @@ namespace nauEngineSDK {
   {
    public:
 
-     /**
-      * default constructor
-      */
+    /**
+     * default constructor
+     */
     nauGraphicsBuffer() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauGraphicsBuffer() = 0;
+    virtual ~nauGraphicsBuffer() {}
 
-    virtual void
-    getSize() = 0;
-
-    virtual void
-    setSize() = 0;
-
-  private:
-
-    uint32_t m_bufferSize;
-    uint32_t m_numObjects;
   };
 
   class nauVertexBuffer : public nauGraphicsBuffer
@@ -56,8 +47,20 @@ namespace nauEngineSDK {
      */
     nauVertexBuffer() = default;
 
+    /**
+     * Virtual destructor
+     */
+    virtual ~nauVertexBuffer() {};
 
-    virtual ~nauVertexBuffer() = 0;
+    /**
+     * @brief returns the size of the vector of vertex
+     * @param 
+     * @return 
+     *
+     */
+    SIZE_T
+    size();
+
 
     /**
      * @brief Reserves space in the vertex vector 
@@ -65,8 +68,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void 
-    reserve() = 0;
+    void 
+    reserve(SIZE_T numObjects);
 
     /**
      * @brief Adds an object at the end of the vector
@@ -74,8 +77,17 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void 
-    add() = 0;
+    void 
+    add(const nauVertex& vertex);
+
+    /**
+     * @brief Adds a vector to the vector of objects inside
+     * @param vector of vertices
+     * @return
+     *
+     */
+    void
+    add(Vector<nauVertex>& vertices);
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -83,17 +95,17 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void 
-    clear() = 0;
+    void 
+    clear();
 
     /**
      * @brief Creates a buffer in the device with the vector data
-     * @param Args
+     * @param device and usage
      * @return 
      *
      */
     virtual void 
-    createHardware() = 0;
+    createHardware(void* pDevice, uint32 usage) = 0;
 
     /**
      * @brief Sets the buffer data into the device context
@@ -102,11 +114,17 @@ namespace nauEngineSDK {
      *
      */
     virtual void 
-    write() = 0;
+    write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
+
+   public:
+    
+    /**
+     * vertex vector
+     */
+    Vector<nauVertex> m_vertexData;
 
   };
 
-  
   class nauIndexBuffer : public nauGraphicsBuffer
   {
    public:
@@ -116,64 +134,19 @@ namespace nauEngineSDK {
      */
     nauIndexBuffer() = default;
 
-    virtual ~nauIndexBuffer() = 0;
     /**
-  * @brief Reserves space in the vertex vector
-  * @param numObjects, the amount of object to allocate
-  * @return
-  *
-  */
-    virtual void reserve(size_t numObjects) = 0;
+     * virtual destructor
+     */
+    virtual ~nauIndexBuffer() {}
 
     /**
-     * @brief Adds an object at the end of the vector
-     * @param
-     * @return
+     * @brief returns the size of the vector
+     * @param 
+     * @return the size in bytes 
      *
      */
-    virtual void add() = 0;
-
-    /**
-     * @brief Cleans the vector of all objects inside of it
-     * @param
-     * @return
-     *
-     */
-    virtual void clear() = 0;
-
-    /**
-     * @brief Creates a buffer in the device with the vector data
-     * @param Args
-     * @return
-     *
-     */
-    virtual void createHardware() = 0;
-
-    /**
-     * @brief Sets the buffer data into the device context
-     * @param
-     * @return
-     *
-     */
-    virtual void write() = 0;
-
-
-  private:
-
-    /**
-     * Vector of index data
-     */
-  };
-  
-  class nauConstantBuffer : public nauGraphicsBuffer
-  {
-   public:
-    nauConstantBuffer() = default;
-
-    /**
-     * virtual dstructor
-     */
-    virtual ~nauConstantBuffer() = 0;
+    SIZE_T
+    size();
 
     /**
      * @brief Reserves space in the vertex vector
@@ -181,7 +154,8 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void reserve(size_t numObjects) = 0;
+    void 
+    reserve(SIZE_T numObjects);
 
     /**
      * @brief Adds an object at the end of the vector
@@ -189,7 +163,17 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void add() = 0;
+    void
+    add(const uint32& index);
+
+    /**
+     * @brief Adds a vector to the vector of objects inside
+     * @param vector of INDEXES
+     * @return 
+     *
+     */
+    void 
+    add(Vector<uint32>& indices);
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -197,15 +181,103 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void clear() = 0;
+    void 
+    clear();
 
     /**
      * @brief Creates a buffer in the device with the vector data
-     * @param Args
+     * @param device and usage of the hardware
      * @return
      *
      */
-    virtual void createHardware() = 0;
+    virtual void 
+    createHardware(void* pDevice, uint32 usage) = 0;
+
+    /**
+     * @brief Sets the buffer data into the device context
+     * @param device
+     * @return
+     *
+     */
+    virtual void 
+    write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
+
+   public:
+
+    /**
+     * index data
+     */
+    Vector<uint32> m_indexData;
+
+  };
+  
+  class nauConstantBuffer : public nauGraphicsBuffer
+  {
+   public:
+
+    /**
+     * default constructor
+     */
+    nauConstantBuffer() = default;
+
+    /**
+     * virtual destructor
+     */
+    virtual ~nauConstantBuffer() {}
+
+    /**
+     * @brief returns the size of the vector of vertex
+     * @param
+     * @return the size of the buffer
+     *
+     */
+    SIZE_T
+    size();
+
+    /**
+     * @brief Reserves space in the vertex vector
+     * @param numObjects, the amount of object to allocate
+     * @return
+     *
+     */
+    void 
+    reserve(SIZE_T numObjects);
+
+    /**
+     * @brief Adds an object at the end of the vector
+     * @param
+     * @return
+     *
+     */
+    void 
+    add(const Vector<char>& object);
+
+    /**
+     * @brief Adds an object at the end of the vector
+     * @param the buffer of information
+     * @return
+     *
+     */
+    void 
+    add(Vector<Vector<char>>& objects);
+
+    /**
+     * @brief Cleans the vector of all objects inside of it
+     * @param
+     * @return
+     *
+     */
+    void 
+    clear();
+
+    /**
+     * @brief Creates a buffer in the device with the vector data
+     * @param device to use the object and usage
+     * @return
+     *
+     */
+    virtual void 
+    createHardware(void* pDevice, uint32 usage) = 0;
 
     /**
      * @brief Sets the buffer data into the device context
@@ -213,7 +285,14 @@ namespace nauEngineSDK {
      * @return
      *
      */
-    virtual void write() = 0;
+    virtual void 
+    write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
+
+
+    /**
+     * constant data
+     */
+    Vector<Vector<char>> m_constantData;
 
   };
 }

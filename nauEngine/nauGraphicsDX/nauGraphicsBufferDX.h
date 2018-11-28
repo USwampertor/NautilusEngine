@@ -8,6 +8,8 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+
+#include "nauPrerequisitesDX.h"
 #include <nauGraphicsBuffer.h>
 
 namespace nauEngineSDK {
@@ -15,21 +17,53 @@ namespace nauEngineSDK {
   {
   public:
     nauGraphicsBufferDX() = default;
-    ~nauGraphicsBufferDX() {};
+    ~nauGraphicsBufferDX() {}
+
+   public:
+
+    /**
+     * DirectX buffer
+     */
+    ID3D11Buffer* m_pBuffer = nullptr;
   };
-  
-  class nauVertexBufferDX : public nauVertexBuffer
+
+  class nauVertexBufferDX : public nauVertexBuffer, nauGraphicsBufferDX
   {
   public:
     nauVertexBufferDX() = default;
-    ~nauVertexBufferDX() {};
+    ~nauVertexBufferDX() {}
+
+    void
+    createHardware(void* pDevice, uint32 usage);
+
+    void
+    write(void* pDevice, void* pData, SIZE_T numBytes);
   };
 
-  class nauIndexBufferDX : public nauIndexBuffer
+  class nauIndexBufferDX : public nauIndexBuffer, nauGraphicsBufferDX
   {
   public:
     nauIndexBufferDX() = default;
-    ~nauIndexBufferDX() {};
+    ~nauIndexBufferDX() {}
+
+    void
+    createHardware(void* pDevice, uint32 usage);
+
+    void
+    write(void* pDevice, void* pData, SIZE_T numBytes);
+  };
+
+  class nauConstantBufferDX : public nauConstantBuffer, nauGraphicsBufferDX
+  {
+  public:
+    nauConstantBufferDX() = default;
+    ~nauConstantBufferDX() {}
+
+    void
+    createHardware(void* pDevice, uint32 usage);
+
+    void
+    write(void* pDevice, void* pData, SIZE_T numBytes);
   };
   
 }

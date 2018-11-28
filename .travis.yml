@@ -1,3 +1,4 @@
+dist: trusty
 os: linux
 sudo: false
 language: cpp
@@ -14,10 +15,11 @@ addons:
 
 script:
   - echo "Creating build directory..."
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
   - mkdir build
   - cd build
   - cmake ..
-  - make
+  - make 
   - ./TravisTest
 
 after_script:
@@ -25,3 +27,6 @@ after_script:
 
 after_success:
   - echo "Congratulations, you didn't fuck up"
+
+after_failure:
+  - echo "Build failed. See above for errors"

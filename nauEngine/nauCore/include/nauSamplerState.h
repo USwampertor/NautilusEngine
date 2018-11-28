@@ -31,6 +31,14 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauSamplerState() = 0;
+
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+
   };
   
 }

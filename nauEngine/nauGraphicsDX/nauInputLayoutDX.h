@@ -10,7 +10,10 @@
 #pragma once
 
 #include "nauPrerequisitesDX.h"
+
 #include <nauInputLayout.h>
+
+#include "nauShaderDX.h"
 
 namespace nauEngineSDK {
   
@@ -31,6 +34,14 @@ namespace nauEngineSDK {
     void 
     SetInputDesc();
     
+    //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
+    void
+    setVertex();
+
+    //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
+    void
+    setColor();
+
     void
     reserve(SIZE_T numObjects);
 
@@ -44,14 +55,22 @@ namespace nauEngineSDK {
     clear();
 
     void
-    createInputBuffer(void* pDevice, void* pShader);
+    createInputBuffer(void* pDevice, nauShader* pShader);
 
     void
     setLayout(void* pImmediateContext);
 
    public:
-    ID3D11InputLayout * m_layout;
-    std::vector<D3D11_INPUT_ELEMENT_DESC> descvector;
+
+    /**
+     * the DX11 input layout
+     */
+    ID3D11InputLayout* m_layout;
+
+    /**
+     * the element descriptor vector of the objects in the input layout
+     */
+    std::vector<D3D11_INPUT_ELEMENT_DESC> m_descVector;
   };
   
 }

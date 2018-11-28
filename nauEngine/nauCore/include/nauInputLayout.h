@@ -10,7 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-
+#include "nauShader.h"
 namespace nauEngineSDK {
    /**
     * nauInputLayout
@@ -42,6 +42,14 @@ namespace nauEngineSDK {
     virtual void
     setInputDescriptor() = 0;
 
+    //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
+    virtual void
+    setVertex() = 0;
+
+    //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
+    virtual void
+    setColor() = 0;
+
     /**
      * @brief reserves the space inside the descriptor in general
      * @param size_t the size in number of objects
@@ -61,8 +69,8 @@ namespace nauEngineSDK {
     add(void* input) = 0;
 
     /**
-     * @brief gets the info from a BLOB in general, to set the values
-     * @param 
+     * @brief gets the info from a reflected BLOB in general, to set the values in the layout
+     * @param the BLOB with all the info, the size of the object
      * @return 
      *
      */
@@ -85,7 +93,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    createInputBuffer(void* pDevice, void* pShader) = 0;
+    createInputBuffer(void* pDevice, nauShader* pShader) = 0;
 
     /**
      * @brief sets the layout to the immediate context
