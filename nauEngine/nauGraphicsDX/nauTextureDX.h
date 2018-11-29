@@ -1,37 +1,28 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauCamera.h
+ * @file nauTextureDX.h
  * @author Marco "Swampy" Millan
- * @date 2018/10/31 2018
- * @brief 
+ * @date 2018/11/28 2018
+ * @brief Texture implementation for DirectX
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-#include "nauPrerequisitesCore.h"
-
 namespace nauEngineSDK {
-
-   /**
-    * nauCamera
-    * Description:
-    * 	a nice camera for world implementation
-    * Sample usage:
-    * 	
-    */
-  class NAU_CORE_EXPORT nauCamera
+  class nauTextureDX
   {
   public:
+
     /**
      * Default constructor
      */
-    nauCamera() = default;
-  
+    nauTextureDX() = default;
+
     /**
      * Default destructor
      */
-    ~nauCamera() {};
+    ~nauTextureDX() {}
   };
   
 }

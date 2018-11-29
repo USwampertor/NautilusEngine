@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
    /**
     * nauDeviceContext
@@ -17,7 +19,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauDeviceContext
+  class NAU_CORE_EXPORT nauDeviceContext
   {
    public:
 
@@ -29,7 +31,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauDeviceContext() = 0;
+    virtual ~nauDeviceContext() {}
   };
   
 }

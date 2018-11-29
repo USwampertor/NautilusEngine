@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
   
    /**
@@ -18,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauDepthStencilView
+  class NAU_CORE_EXPORT nauDepthStencilView
   {
    public:
 
@@ -30,7 +32,7 @@ namespace nauEngineSDK {
     /*
      * virtual destructor
      */
-    virtual ~nauDepthStencilView() = 0;
+    virtual ~nauDepthStencilView() {}
 
     /**
      * @brief gets the depth stencil vew

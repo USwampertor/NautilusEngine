@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
   
   /**
@@ -18,7 +20,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class nauSamplerState
+  class NAU_CORE_EXPORT nauSamplerState
   {
   public:
 
@@ -30,15 +32,25 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauSamplerState() = 0;
+    virtual ~nauSamplerState() {}
 
     /**
-     * @brief 
-     * @param 
+     * @brief creates a shader sampler
+     * @param void* device
+     * @return true if created
+     *
+     */
+    virtual bool
+    createShaderSampler(void* pDevice) = 0;
+
+    /**
+     * @brief sets the shader into a device
+     * @param the device
      * @return 
      *
      */
-
+    virtual bool
+    setShaderSampler(void* pd3dDevice) = 0;
   };
   
 }

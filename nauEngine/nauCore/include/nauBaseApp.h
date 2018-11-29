@@ -10,8 +10,17 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-namespace {
-  class nauBaseApp
+
+namespace nauEngineSDK {
+
+   /**
+    * nauBaseApp
+    * Description:
+    * 	base application for different implementation
+    * Sample usage:
+    * 	
+    */
+  class NAU_CORE_EXPORT nauBaseApp
   {
    public:
     

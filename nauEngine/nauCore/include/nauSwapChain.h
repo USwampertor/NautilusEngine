@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
   
    /**
@@ -19,7 +21,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauSwapChain
+  class NAU_CORE_EXPORT nauSwapChain
   {
   public:
 
@@ -31,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauSwapChain() = 0;
+    virtual ~nauSwapChain() {}
   };
   
 }

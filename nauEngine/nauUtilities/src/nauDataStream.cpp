@@ -1,3 +1,9 @@
+/**
+ * @brief 
+ * @param 
+ * @return 
+ *
+ */
 #include "nauDataStream.h"
 
 namespace nauEngineSDK {
@@ -59,7 +65,8 @@ namespace nauEngineSDK {
 
   SIZE_T
   nauDataStream::write(const String& information) {
-   std::copy(information.begin(), information.end(), m_data[m_currPos]);
+   
+    std::copy(information.begin(), information.end(), m_data.begin() + m_currPos);
     //m_data.insert(m_data[m_currPos], information.size(), information);
     //m_currPos += information.size();
     return information.size();
@@ -94,12 +101,13 @@ namespace nauEngineSDK {
 
   bool
   nauFileStream::create(void* file) {
-    
+    return true;
   }
 
   bool
   nauFileStream::copy(const void* buffer) {
     std::memcpy(&m_data[0], buffer, sizeof(buffer));
+    return true;
   }
 
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -116,17 +124,19 @@ namespace nauEngineSDK {
 
   bool
   nauMemStream::open(void* file) {
-    copy(file);
+    return copy(file);
   }
 
   bool
   nauMemStream::create(void* file) {
-
+    (void)(file);
+    return true;
   }
 
   bool
   nauMemStream::copy(const void* buffer) {
     std::memcpy(&m_data[0], buffer, sizeof(buffer));
+    return true;
   }
 
 }

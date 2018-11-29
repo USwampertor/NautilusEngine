@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	You cast any of the dynamic libraries with this so it can be used
     */
-  class nauGraphicsAPI
+  class NAU_CORE_EXPORT nauGraphicsAPI
   {
    public:
     

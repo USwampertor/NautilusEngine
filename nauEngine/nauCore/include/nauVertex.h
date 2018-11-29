@@ -9,7 +9,10 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+
 #include <nauVector4.h>
+
+#include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
 
@@ -20,7 +23,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	vertex an be used to store information of the mesh
     */
-  struct nauVertex
+  struct NAU_CORE_EXPORT nauVertex
   {
     
     /**

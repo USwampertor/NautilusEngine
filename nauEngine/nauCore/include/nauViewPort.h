@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+
 #include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
@@ -19,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauViewPort
+  class NAU_CORE_EXPORT nauViewPort
   {
    public:
     /**
@@ -30,7 +31,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauViewPort() {};
+    virtual ~nauViewPort() {}
 
     /**
      * @brief Creates a viewPort
@@ -39,10 +40,10 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createViewPort(float width, float height, float topLeftX, float topLeftY);
+    createViewPort(float width, float height, float topLeftX, float topLeftY) = 0;
 
     virtual void
-    setViewPort(void* context);
+    setViewPort(void* context) = 0;
 
     /**
      * Member declaration

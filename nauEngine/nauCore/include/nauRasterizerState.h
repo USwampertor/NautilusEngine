@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
 
    /**
@@ -18,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauRasterizerState
+  class NAU_CORE_EXPORT nauRasterizerState
   {
   public:
 
@@ -30,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * Virtual destructor
      */
-    virtual ~nauRasterizerState() = 0;
+    virtual ~nauRasterizerState() {}
   };
   
 }

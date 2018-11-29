@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
 
    /**
@@ -18,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauShaderResourceView
+  class NAU_CORE_EXPORT nauShaderResourceView
   {
    public:
 
@@ -30,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauShaderResourceView() = 0;
+    virtual ~nauShaderResourceView() {}
   };
   
 }

@@ -21,7 +21,7 @@ namespace nauEngineSDK {
    * Sample usage:
    *
    */
-  class nauTexture
+  class NAU_CORE_EXPORT nauTexture
   {
   public:
 
@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~nauTexture() {};
+    ~nauTexture() {}
 
     /**
      * @brief Loads a resource from a path
@@ -47,6 +47,7 @@ namespace nauEngineSDK {
     /**
      * Member declaration
      */
+   public:
 
     /**
      * width of the texture
@@ -57,6 +58,9 @@ namespace nauEngineSDK {
      * width of the texture
      */
     uint32 m_height;
+
+    std::vector<char> m_textureData;
+
   };
   
 }

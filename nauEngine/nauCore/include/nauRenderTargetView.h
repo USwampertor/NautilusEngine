@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesCore.h"
+
 namespace nauEngineSDK {
 
    /**
@@ -18,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauRenderTargetView
+  class NAU_CORE_EXPORT nauRenderTargetView
   {
    public:
 
@@ -30,7 +32,17 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauRenderTargetView() = 0;
+    virtual ~nauRenderTargetView() {}
+
+    /**
+     * @brief Creates a shader resource view
+     * @param void* device and void* swapChain 
+     * @return 
+     *
+     */
+    virtual bool
+    createRenderTargetView(void* pDevice, void* pSwapChain) = 0;
+
   };
   
 }

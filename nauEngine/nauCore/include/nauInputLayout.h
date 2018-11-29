@@ -11,6 +11,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauShader.h"
+
 namespace nauEngineSDK {
    /**
     * nauInputLayout
@@ -19,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauInputLayout
+  class NAU_CORE_EXPORT nauInputLayout
   {
    public:
     

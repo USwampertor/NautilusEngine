@@ -18,7 +18,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class nauDevice
+  class NAU_CORE_EXPORT nauDevice
   {
    public:
     /**
@@ -29,7 +29,7 @@ namespace nauEngineSDK {
     /**
      * Virtual constructor
      */
-    virtual ~nauDevice() = 0;
+    virtual ~nauDevice() {}
 
     /**
      * @brief initializes device with the handler given

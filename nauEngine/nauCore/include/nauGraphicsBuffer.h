@@ -22,7 +22,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	Graphics buffer can be a DirectX buffer or OpenGL
    */
-  class nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauGraphicsBuffer
   {
    public:
 

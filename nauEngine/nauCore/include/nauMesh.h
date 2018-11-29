@@ -29,7 +29,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class nauMesh
+  class NAU_CORE_EXPORT nauMesh
   {
    public:
     /**
@@ -40,7 +40,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauMesh() = 0;
+    virtual ~nauMesh() {}
 
     /**
      * @brief renders the mesh in the given device context
@@ -67,7 +67,7 @@ namespace nauEngineSDK {
      * Texture of mesh
      * This is temporal, it should have a material instead
      */
-    nauTexture m_texture;
+    nauTexture* m_texture;
 
   };
   

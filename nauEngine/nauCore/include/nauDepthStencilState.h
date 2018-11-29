@@ -11,6 +11,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauTexture.h"
 
 namespace nauEngineSDK {
    /**
@@ -34,6 +35,15 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauDepthStencilState() {};
+
+    /**
+     * @brief creates a depth stencyl descriptor
+     * @param void* device and void* immediate context
+     * @return true if able to construct
+     *
+     */
+    virtual void
+    createDepthStencil(void* pDevice, void* pDeviceContext) = 0;
 
     /**
      * Member declaration

@@ -16,6 +16,9 @@
 //#include "nauSphere.h"
 //#include "nauBox2d.h"
 
+#undef min
+#undef max
+
 namespace nauEngineSDK {
   
   //class nauBox2d;
@@ -33,7 +36,8 @@ namespace nauEngineSDK {
      * 
      */
     template<typename T>
-    static T degToRad(T degree) {
+    static T
+    degToRad(T degree) {
       return (degree * RADIAN);
     }
 
@@ -351,7 +355,8 @@ namespace nauEngineSDK {
      *
      */
     template<typename T>
-    static T round(T a) {
+    static T 
+    round(T a) {
       return std::round(a);
     }
 
@@ -362,8 +367,11 @@ namespace nauEngineSDK {
      *
      */
     template<typename T>
-    static T max(T a, T b) {
-      return std::max(a, b);
+    static T
+    max(T a, T b) {
+      return (a < b) ? a : b;
+
+      //return std::max(a, b);
     }
 
     /**
@@ -374,7 +382,10 @@ namespace nauEngineSDK {
      */
     template<typename T>
     static T min(T a, T b) {
-      return std::min(a, b);
+
+      return (a > b) ? a : b;
+
+      //return std::min(a, b);
     }
 
     /**
