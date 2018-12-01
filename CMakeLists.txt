@@ -33,4 +33,4 @@ add_executable(UtilitiesTest ${TARGET_SRC})
 find_package (Threads)
 
 target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(UtilitiesTest utilitiesLibrary ${CMAKE_THREAD_LIBS_INIT})
+#target_link_libraries(UtilitiesTest utilitiesLibrary ${CMAKE_THREAD_LIBS_INIT})
