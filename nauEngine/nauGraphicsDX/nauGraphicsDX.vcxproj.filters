@@ -25,6 +25,12 @@
     <ClCompile Include="nauTextureDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nauSamplerStateDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauDepthStencilDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nauInputLayoutDX.h">
@@ -46,6 +52,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="nauTextureDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauSamplerStateDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauDepthStencilDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

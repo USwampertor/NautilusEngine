@@ -17,7 +17,7 @@
 
 namespace nauEngineSDK {
   
-  class nauInputLayoutDX : nauInputLayout
+  class NAU_DIRECTX_EXPORT nauInputLayoutDX : public nauInputLayout
   {
    public:
   
@@ -29,7 +29,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~nauInputLayoutDX() {};
+    ~nauInputLayoutDX() {}
   
     void 
     SetInputDesc();

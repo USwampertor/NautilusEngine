@@ -98,10 +98,12 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
+      <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -115,10 +117,12 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
+      <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,12 +138,14 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
+      <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,28 +161,34 @@
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <OpenMPSupport>true</OpenMPSupport>
+      <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="nauDepthStencilDX.h" />
     <ClInclude Include="nauGraphicsAPIDX.h" />
     <ClInclude Include="nauInputLayoutDX.h" />
     <ClInclude Include="nauPrerequisitesDX.h" />
     <ClInclude Include="nauDeviceDX.h" />
     <ClInclude Include="nauGraphicsBufferDX.h" />
+    <ClInclude Include="nauSamplerStateDX.h" />
     <ClInclude Include="nauShaderDX.h" />
     <ClInclude Include="nauTextureDX.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauDepthStencilDX.cpp" />
     <ClCompile Include="nauDeviceDX.cpp" />
     <ClCompile Include="nauGraphicsAPIDX.cpp" />
     <ClCompile Include="nauGraphicsBufferDX.cpp" />
     <ClCompile Include="nauInputLayoutDX.cpp" />
+    <ClCompile Include="nauSamplerStateDX.cpp" />
     <ClCompile Include="nauShaderDX.cpp" />
     <ClCompile Include="nauTextureDX.cpp" />
   </ItemGroup>

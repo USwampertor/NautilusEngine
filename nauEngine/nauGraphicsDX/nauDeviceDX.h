@@ -8,16 +8,18 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-#include <nauDevice.h>
+
 #include "nauPrerequisitesDX.h"
 
+#include <nauDevice.h>
+
 namespace nauEngineSDK {
-  class nauDeviceDX : public nauDevice
+  class NAU_DIRECTX_EXPORT nauDeviceDX : public nauDevice
   {
    public:
     nauDeviceDX() = default;
     
-    ~nauDeviceDX() {};
+    ~nauDeviceDX() {}
     
     bool 
     initializeDevice(void* scrHandler);

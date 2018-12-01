@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauCamera.h" />
-    <ClInclude Include="include\nauDepthStencilState.h" />
+    <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />
     <ClInclude Include="include\nauDeviceContext.h" />
@@ -44,7 +44,7 @@
   <ItemGroup>
     <ClCompile Include="src\nauBaseApp.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
-    <ClCompile Include="src\nauDepthStencilState.cpp" />
+    <ClCompile Include="src\nauDepthStencil.cpp" />
     <ClCompile Include="src\nauDepthStencilView.cpp" />
     <ClCompile Include="src\nauDevice.cpp" />
     <ClCompile Include="src\nauDeviceContext.cpp" />
@@ -147,6 +147,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
       <AdditionalDependencies>nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -165,6 +166,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
       <AdditionalDependencies>nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -187,6 +189,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
       <AdditionalDependencies>nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -209,6 +212,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
       <AdditionalDependencies>nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

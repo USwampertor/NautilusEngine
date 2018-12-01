@@ -32,6 +32,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
+    virtual
     ~nauGraphicsAPI() {};
 
     /**

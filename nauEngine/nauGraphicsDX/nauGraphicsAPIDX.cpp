@@ -7,6 +7,7 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 #include "nauGraphicsAPIDX.h"
 
 namespace nauEngineSDK {

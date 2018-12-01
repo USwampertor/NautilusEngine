@@ -13,7 +13,7 @@
 #include <nauGraphicsBuffer.h>
 
 namespace nauEngineSDK {
-  class nauGraphicsBufferDX : public nauGraphicsBuffer
+  class NAU_DIRECTX_EXPORT nauGraphicsBufferDX : public nauGraphicsBuffer
   {
   public:
     nauGraphicsBufferDX() = default;

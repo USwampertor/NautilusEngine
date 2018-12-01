@@ -40,7 +40,9 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-
+    virtual void
+    createDepthStencilViewDescriptor(void* pDevice,
+                                     void* pDeviceContext) = 0;
   };
   
 }

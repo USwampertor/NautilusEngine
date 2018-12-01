@@ -33,6 +33,25 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauShaderResourceView() {}
+
+    /**
+     * @brief Creates a shader resource view
+     * @param void* device
+     * @return true if able to create
+     *
+     */
+    virtual bool
+    createShaderResourceView(void* pDevice) = 0;
+
+    /**
+     * @brief Creates a shader resource view
+     * @param void* device
+     * @return
+     *
+     */
+    virtual void
+    setShaderResourceView(void* pDevice) = 0;
+
   };
   
 }

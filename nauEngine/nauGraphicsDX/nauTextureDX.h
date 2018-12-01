@@ -9,10 +9,14 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
+#include "nauPrerequisitesDX.h"
+
+#include <nauTexture.h>
+
 namespace nauEngineSDK {
-  class nauTextureDX
+  class NAU_DIRECTX_EXPORT nauTextureDX : public nauTexture
   {
-  public:
+   public:
 
     /**
      * Default constructor
@@ -23,7 +27,16 @@ namespace nauEngineSDK {
      * Default destructor
      */
     ~nauTextureDX() {}
+
+    /**
+     * Member declaration
+     */
+   public:
+    
+    /**
+     * ID3D11 texture
+     */
+     ID3D11Texture2D* m_pd3dTexture2D = nullptr;
   };
-  
 }
 

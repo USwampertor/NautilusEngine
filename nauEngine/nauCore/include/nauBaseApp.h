@@ -32,7 +32,8 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~nauBaseApp() {};
+    virtual 
+    ~nauBaseApp() {};
   };
 }
 

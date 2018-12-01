@@ -49,8 +49,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual bool
-    setShaderSampler(void* pd3dDevice) = 0;
+    virtual void
+    setShaderSampler(void* pDevice) = 0;
   };
   
 }

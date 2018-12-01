@@ -11,6 +11,7 @@
 #pragma once
 
 #include "nauPrerequisitesDX.h"
+
 #include <nauGraphicsAPI.h>
 
 namespace nauEngineSDK {
@@ -22,7 +23,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	You use all the objects in a DirectX context
    */
-  class nauGraphicsAPIDX : public nauGraphicsAPI
+  class NAU_DIRECTX_EXPORT nauGraphicsAPIDX : public nauGraphicsAPI
   {
    public:
 
@@ -34,7 +35,7 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~nauGraphicsAPIDX() {};
+    ~nauGraphicsAPIDX() {}
 
     /**
      * @brief initializes the device of the API

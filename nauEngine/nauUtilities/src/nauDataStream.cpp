@@ -92,7 +92,7 @@ namespace nauEngineSDK {
       return false;
     }
     m_data.resize(streamFile.tellg());
-    m_size = streamFile.tellg();
+    m_size = static_cast<SIZE_T>(streamFile.tellg());
     streamFile.seekg(0, streamFile.beg);
     streamFile.read(&m_data[0], std::ios::binary);
     streamFile.close();
