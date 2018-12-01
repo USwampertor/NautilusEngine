@@ -1,5 +1,7 @@
 set(UTILITIES_ROOT nauEngine/nauUtilities CACHE STRING "Utilities source root")
 
+set_target_properties(hello PROPERTIES LINKER_LANGUAGE CXX)
+
 include_directories(SYSTEM
     ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}
     ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/include/
