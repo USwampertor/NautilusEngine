@@ -8,7 +8,7 @@ project(GTESTUtilities)
 
 #included libraries
 include(gtestUtilities.cmake)
-#include(nauUtilities.cmake)
+include(nauUtilities.cmake)
 
 #Prerequisites
 set(CMAKE_CXX_FLAGS)
