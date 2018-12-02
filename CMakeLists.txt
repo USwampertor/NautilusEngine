@@ -10,6 +10,9 @@ project(GTESTUtilities)
 include(gtestUtilities.cmake)
 include(nauUtilities.cmake)
 
+target_link_libraries(UtilitiesTest utilitiesLibrary ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
+
 #Prerequisites
 set(CMAKE_CXX_FLAGS)
 SET(COVERAGE OFF CACHE BOOL "Coverage")
@@ -32,5 +35,4 @@ add_executable(UtilitiesTest ${TARGET_SRC})
 
 find_package (Threads)
 
-target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
-#target_link_libraries(UtilitiesTest utilitiesLibrary ${CMAKE_THREAD_LIBS_INIT})
+
