@@ -1,17 +1,17 @@
 set(UTILITIES_ROOT nauEngine/nauUtilities CACHE STRING "Utilities source root")
 
-set_target_properties(hello PROPERTIES LINKER_LANGUAGE CXX)
 
 include_directories(SYSTEM
-    ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}
-    ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/include/
-    )
+${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}
+${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/include/
+)
 
 set(UTILITIES_SOURCES
-    ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/src/
-    )
+${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/src/
+)
 
 foreach(_source ${UTILITIES_SOURCES})
+    set_target_properties(${_source} PROPERTIES LINKER_LANGUAGE CXX)
     set_source_files_properties(${_source} PROPERTIES GENERATED 1)
 endforeach()
 
