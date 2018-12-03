@@ -51,7 +51,6 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(GTESTUtilities)
 
 #included libraries
-include(Utilities)
 include(gtestUtilities.cmake)
 
 
@@ -76,7 +75,8 @@ SET(TARGET_SRC ./nauEngine/nauUtilities_UnitTest/src/main.cpp)
 #creates an executable which can be used to run in travis
 add_executable(UtilitiesTest ${TARGET_SRC})
 
-target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(UtilitiesTest Utilities ${CMAKE_THREAD_LIBS_INIT})
+
+target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
 
 
