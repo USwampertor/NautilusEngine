@@ -11,8 +11,10 @@
 #pragma once
 
 #include <cassert>
-#include <memory>
 #include <cmath>
+#include <cstring>
+
+#include <memory>
 
 #include <sstream>
 #include <fstream>

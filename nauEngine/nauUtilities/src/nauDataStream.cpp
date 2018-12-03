@@ -48,7 +48,7 @@ namespace nauEngineSDK {
 
   void
   nauDataStream::readAll(void* destiny) {
-    std::memcpy(destiny, &m_data[0], m_data.size());
+    memcpy(destiny, &m_data[0], m_data.size());
   }
 
   SIZE_T
@@ -58,7 +58,7 @@ namespace nauEngineSDK {
                 << "Writing as much as possible \n" << std::endl;
       size = m_data.size() - m_currPos;
     }
-    std::memcpy(destiny, &m_data[m_currPos], size);
+    memcpy(destiny, &m_data[m_currPos], size);
     m_currPos += size;
     return size;
   }
@@ -106,7 +106,7 @@ namespace nauEngineSDK {
 
   bool
   nauFileStream::copy(const void* buffer) {
-    std::memcpy(&m_data[0], buffer, sizeof(buffer));
+    memcpy(&m_data[0], buffer, sizeof(buffer));
     return true;
   }
 
