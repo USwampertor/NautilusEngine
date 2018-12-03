@@ -40,7 +40,7 @@ foreach(_source ${UTILITIES_SOURCES})
 endforeach()
 
 #creates an executable which can be used to run in travis
-add_library(Utilities ${UTILITIES_SOURCES})
+add_library(Utilities SHARED ${UTILITIES_SOURCES})
 
 ################################################################################
 # EXECUTABLE CREATION
