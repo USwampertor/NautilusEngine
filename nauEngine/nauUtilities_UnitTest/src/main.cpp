@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||*/
 /**
  * @file main.cpp
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief Utilities Unit Testing main
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||ï¿½ï¿½ï¿½||*/
 
 #include <numeric>
 #include <gtest/gtest.h>
@@ -24,7 +24,19 @@
 #endif
 using namespace nauEngineSDK;
 
+truct Testing : public ::testing::Test {
+  virtual void SetUp() {
+    fails = 0;
+  }
 
+  virtual void TearDown() {
+    if (fails > 0) {
+      std::cerr << "Testing::TearDown sees failures" << std::endl;
+    }
+  }
+
+  unsigned fails;
+};
 
 int main(int argc, char **argv)
 {
@@ -34,7 +46,7 @@ int main(int argc, char **argv)
   return 0;
 }
 #ifdef MARCOTESTING
-TEST(Utilities, Basic_Types)
+TEST_F(Testing, Basic_Types)
 {
   EXPECT_TRUE(sizeof(int8)   == 1);
   EXPECT_TRUE(sizeof(int16)  == 2);
@@ -50,25 +62,28 @@ TEST(Utilities, Basic_Types)
 
   EXPECT_TRUE(sizeof(float)  == 4);
   EXPECT_TRUE(sizeof(double) == 8);
+  fails += ::testing::Test::HasFailure();
 }
 
-TEST(Utilities, Basic_Types_Limits)
+TEST_F(Testing, Basic_Types_Limits)
 {
   EXPECT_TRUE(static_cast<uint8>(-1)  == std::numeric_limits<uint8>::max());
   EXPECT_TRUE(static_cast<uint16>(-1) == std::numeric_limits<uint16>::max());
   EXPECT_TRUE(static_cast<uint32>(-1) == std::numeric_limits<uint32>::max());
   EXPECT_TRUE(static_cast<uint64>(-1) == std::numeric_limits<uint64>::max());
+  fails += ::testing::Test::HasFailure();
 }
 
-TEST(Utilities, Math_Constants)
+TEST_F(Testing, Math_Constants)
 {
   EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
   EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779f);
   EXPECT_NEAR(nauMath::RADIAN, 0.017453, 0.00001);
   EXPECT_FLOAT_EQ(nauMath::EULER, 2.71828182f);
+  fails += ::testing::Test::HasFailure();
 }
 
-TEST(Utilities, Math_Arithmetics)
+TEST_F(Testing, Math_Arithmetics)
 {
   EXPECT_EQ(nauMath::pow(3, 2), 9);
   EXPECT_EQ(nauMath::cos(0), 1);
@@ -78,11 +93,12 @@ TEST(Utilities, Math_Arithmetics)
   EXPECT_EQ(nauMath::roundHalf(4.6f), 4.5f);
   EXPECT_EQ(nauMath::sqr(6), 36);
   EXPECT_EQ(nauMath::sqrt(9), 3);
+  fails += ::testing::Test::HasFailure();
 }
 #else
   #ifdef IVANTESTING
-//Iván te dejo este pedazo para que yo tambien haga mis dagas
+//Ivï¿½n te dejo este pedazo para que yo tambien haga mis dagas
 
-//end Iván Testing
+//end Ivï¿½n Testing
   #endif
 #endif
