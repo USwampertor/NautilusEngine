@@ -15,6 +15,7 @@ include_directories(UTILITIES_INCLUDE ./nauEngine/nauUtilities/include/)
 #include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
 
 set(UTILITIES_SOURCES 
+    ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
     ./nauEngine/nauUtilities/src/nauAABB.cpp
     ./nauEngine/nauUtilities/src/nauBox2d.cpp
     ./nauEngine/nauUtilities/src/nauDataStream.cpp
@@ -22,7 +23,6 @@ set(UTILITIES_SOURCES
     ./nauEngine/nauUtilities/src/nauMatrix4.cpp
     ./nauEngine/nauUtilities/src/nauOOBB.cpp
     ./nauEngine/nauUtilities/src/nauPlane.cpp
-    ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
     ./nauEngine/nauUtilities/src/nauQuaternion.cpp
     ./nauEngine/nauUtilities/src/nauRandom.cpp
     ./nauEngine/nauUtilities/src/nauRay.cpp
