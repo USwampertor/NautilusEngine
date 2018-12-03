@@ -11,7 +11,6 @@ ${PROJECT_SOURCE_DIR}/${UTILITIES_ROOT}/src/
 )
 
 foreach(_source ${UTILITIES_SOURCES})
-    set_target_properties(${_source} PROPERTIES LINKER_LANGUAGE CXX)
     set_source_files_properties(${_source} PROPERTIES GENERATED 1)
 endforeach()
 

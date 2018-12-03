@@ -1,5 +1,31 @@
 ################################################################################
-# Minimum required build for cmake 
+# LIBRARY CREATION
+################################################################################
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+#Project name
+project(UtilitiesLibrary)
+
+#Prerequisites
+set(CMAKE_CXX_FLAGS)
+SET(COVERAGE OFF CACHE BOOL "Coverage")
+
+#include libraries
+include_directories(UTLITIES_INCLUDE ./nauEngine/nauUtilities/include/)
+
+
+set(UTILITIES_SOURCES ./nauEngine/nauUtilities/src/)
+
+
+foreach(_source ${UTILITIES_SOURCES})
+    set_source_files_properties(${_source} PROPERTIES GENERATED 1)
+endforeach()
+
+#creates an executable which can be used to run in travis
+add_library(Utilities ${TARGET_SRC})
+
+################################################################################
+# EXECUTABLE CREATION
 ################################################################################
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
@@ -7,15 +33,14 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(GTESTUtilities)
 
 #included libraries
+include(Utilities)
 include(gtestUtilities.cmake)
-include(nauUtilities.cmake)
 
-target_link_libraries(UtilitiesTest utilitiesLibrary ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
 
 #Prerequisites
 set(CMAKE_CXX_FLAGS)
 SET(COVERAGE OFF CACHE BOOL "Coverage")
+find_package (Threads)
 
 #This variables are for setting the minimum and maximun requires for unitTesting
 set(UNITTESTING_VERSION_MAJOR 1)
@@ -33,6 +58,7 @@ SET(TARGET_SRC ./nauEngine/nauUtilities_UnitTest/src/main.cpp)
 #creates an executable which can be used to run in travis
 add_executable(UtilitiesTest ${TARGET_SRC})
 
-find_package (Threads)
+target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(UtilitiesTest Utilities ${CMAKE_THREAD_LIBS_INIT})
 
 
