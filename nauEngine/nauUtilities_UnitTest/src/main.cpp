@@ -92,7 +92,7 @@ TEST_F(Testing, Math_Arithmetics)
   EXPECT_EQ(nauMath::ceil(nauMath::DEGREE), 58);
   EXPECT_EQ(nauMath::roundHalf(4.6f), 4.5f);
   EXPECT_EQ(nauMath::sqr(6), 36);
-  EXPECT_EQ(nauMath::sqrt(9), 1);
+  EXPECT_EQ(nauMath::sqrt(9), 3);
   fails += ::testing::Test::HasFailure();
 }
 #else
