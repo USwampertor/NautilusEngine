@@ -1,45 +1,45 @@
-#################################################################################
-## LIBRARY CREATION
-#################################################################################
-#cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-#
-##Project name
-#project(UtilitiesLibrary)
-#
-##Prerequisites
-#set(CMAKE_CXX_FLAGS)
-#SET(COVERAGE OFF CACHE BOOL "Coverage")
-#
-##include libraries
-#include_directories(UTILITIES_INCLUDE ./nauEngine/nauUtilities/include/)
-##include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
-#
-#set(UTILITIES_SOURCES 
-#    ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
-#    ./nauEngine/nauUtilities/src/nauAABB.cpp
-#    ./nauEngine/nauUtilities/src/nauBox2d.cpp
-#    ./nauEngine/nauUtilities/src/nauDataStream.cpp
-#    ./nauEngine/nauUtilities/src/nauFrustrum.cpp
-#    ./nauEngine/nauUtilities/src/nauMatrix4.cpp
-#    ./nauEngine/nauUtilities/src/nauOOBB.cpp
-#    ./nauEngine/nauUtilities/src/nauPlane.cpp
-#    ./nauEngine/nauUtilities/src/nauQuaternion.cpp
-#    ./nauEngine/nauUtilities/src/nauRandom.cpp
-#    ./nauEngine/nauUtilities/src/nauRay.cpp
-#    ./nauEngine/nauUtilities/src/nauSphere.cpp
-#    ./nauEngine/nauUtilities/src/nauTriangle.cpp
-#    ./nauEngine/nauUtilities/src/nauVector2.cpp
-#    ./nauEngine/nauUtilities/src/nauVector2i.cpp
-#    ./nauEngine/nauUtilities/src/nauVector3.cpp
-#    ./nauEngine/nauUtilities/src/nauVector4.cpp
-#    )
-#
-##creates an executable which can be used to run in travis
-#add_library(Utilities SHARED ${UTILITIES_SOURCES})
-#
-#################################################################################
-## EXECUTABLE CREATION
-#################################################################################
+################################################################################
+# LIBRARY CREATION
+################################################################################
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+#Project name
+project(UtilitiesLibrary)
+
+#Prerequisites
+set(CMAKE_CXX_FLAGS)
+SET(COVERAGE OFF CACHE BOOL "Coverage")
+
+#include libraries
+include_directories(UTILITIES_INCLUDE ./nauEngine/nauUtilities/include/)
+#include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
+
+set(UTILITIES_SOURCES 
+    ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
+    ./nauEngine/nauUtilities/src/nauAABB.cpp
+    ./nauEngine/nauUtilities/src/nauBox2d.cpp
+    ./nauEngine/nauUtilities/src/nauDataStream.cpp
+    ./nauEngine/nauUtilities/src/nauFrustrum.cpp
+    ./nauEngine/nauUtilities/src/nauMatrix4.cpp
+    ./nauEngine/nauUtilities/src/nauOOBB.cpp
+    ./nauEngine/nauUtilities/src/nauPlane.cpp
+    ./nauEngine/nauUtilities/src/nauQuaternion.cpp
+    ./nauEngine/nauUtilities/src/nauRandom.cpp
+    ./nauEngine/nauUtilities/src/nauRay.cpp
+    ./nauEngine/nauUtilities/src/nauSphere.cpp
+    ./nauEngine/nauUtilities/src/nauTriangle.cpp
+    ./nauEngine/nauUtilities/src/nauVector2.cpp
+    ./nauEngine/nauUtilities/src/nauVector2i.cpp
+    ./nauEngine/nauUtilities/src/nauVector3.cpp
+    ./nauEngine/nauUtilities/src/nauVector4.cpp
+    )
+
+#creates an executable which can be used to run in travis
+add_library(Utilities SHARED ${UTILITIES_SOURCES})
+
+################################################################################
+# EXECUTABLE CREATION
+################################################################################
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 #Project Name
@@ -70,7 +70,7 @@ SET(TARGET_SRC ./nauEngine/nauUtilities_UnitTest/src/main.cpp)
 #creates an executable which can be used to run in travis
 add_executable(UtilitiesTest ${TARGET_SRC})
 
-#target_link_libraries(UtilitiesTest Utilities ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(UtilitiesTest Utilities ${CMAKE_THREAD_LIBS_INIT})
 
 target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
 

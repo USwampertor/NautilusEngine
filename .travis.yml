@@ -20,7 +20,7 @@ script:
   - cd build
   - cmake ..
   - make 
-  - ./TravisTest
+  - ./UtilitiesTest
 
 after_script:
   - echo "Finished script..."
