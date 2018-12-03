@@ -42,8 +42,8 @@ int main(int argc, char **argv)
 {
 
   ::testing::InitGoogleTest(&argc,argv);
-  std::cout<< RUN_ALL_TESTS();
-  return 0;
+  return RUN_ALL_TESTS();
+  
 }
 #ifdef MARCOTESTING
 TEST_F(Testing, Basic_Types)
