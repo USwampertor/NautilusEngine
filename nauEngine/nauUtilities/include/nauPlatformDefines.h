@@ -13,7 +13,7 @@
 #define NAU_PLATFORM_WIN32      1             //Windows Platform
 #define NAU_PLATFORM_LINUX      2             //Linux Platform
 #define NAU_PLATFORM_OSX        3             //Apple Platform
-#define NAU_PLATFORM_IOS        4             //Iphone Platform
+#define NAU_PLATFORM_IOS        4             //I phone Platform
 #define NAU_PLATFORM_ANDROID    5             //Android Platform
 #define NAU_PLATFORM_PS4        6             //PlayStation 4 Platform
                                               
