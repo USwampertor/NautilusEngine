@@ -19,7 +19,7 @@ set(UTILITIES_SOURCES
     ./nauEngine/nauUtilities/src/nauBox2d.cpp
     ./nauEngine/nauUtilities/src/nauDataStream.cpp
     ./nauEngine/nauUtilities/src/nauFrustrum.cpp
-    ./nauEngine/nauUtilities/src/nauMatrix.cpp
+    ./nauEngine/nauUtilities/src/nauMatrix4.cpp
     ./nauEngine/nauUtilities/src/nauOOBB.cpp
     ./nauEngine/nauUtilities/src/nauPlane.cpp
     ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
@@ -33,7 +33,7 @@ set(UTILITIES_SOURCES
     ./nauEngine/nauUtilities/src/nauVector3.cpp
     ./nauEngine/nauUtilities/src/nauVector4.cpp
     )
-    
+
 #creates an executable which can be used to run in travis
 add_library(Utilities SHARED ${UTILITIES_SOURCES})
 
