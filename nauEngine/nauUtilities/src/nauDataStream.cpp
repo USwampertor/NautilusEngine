@@ -135,7 +135,7 @@ namespace nauEngineSDK {
 
   bool
   nauMemStream::copy(const void* buffer) {
-    std::memcpy(&m_data[0], buffer, sizeof(buffer));
+    memcpy(&m_data[0], buffer, sizeof(buffer));
     return true;
   }
 
