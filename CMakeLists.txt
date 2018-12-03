@@ -11,8 +11,8 @@ set(CMAKE_CXX_FLAGS)
 SET(COVERAGE OFF CACHE BOOL "Coverage")
 
 #include libraries
-include_directories(UTLITIES_INCLUDE ./nauEngine/nauUtilities/include/)
-
+include_directories(UTILITIES_INCLUDE ./nauEngine/nauUtilities/include/)
+include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
 
 set(UTILITIES_SOURCES 
     ./nauEngine/nauUtilities/src/nauAABB.cpp
@@ -40,7 +40,7 @@ foreach(_source ${UTILITIES_SOURCES})
 endforeach()
 
 #creates an executable which can be used to run in travis
-add_library(Utilities ${TARGET_SRC})
+add_library(Utilities ${UTILITIES_SOURCES})
 
 ################################################################################
 # EXECUTABLE CREATION
