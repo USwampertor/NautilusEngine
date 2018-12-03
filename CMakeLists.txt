@@ -14,7 +14,25 @@ SET(COVERAGE OFF CACHE BOOL "Coverage")
 include_directories(UTLITIES_INCLUDE ./nauEngine/nauUtilities/include/)
 
 
-set(UTILITIES_SOURCES ./nauEngine/nauUtilities/src/)
+set(UTILITIES_SOURCES 
+    ./nauEngine/nauUtilities/src/nauAABB.cpp
+    ./nauEngine/nauUtilities/src/nauBox2d.cpp
+    ./nauEngine/nauUtilities/src/nauDataStream.cpp
+    ./nauEngine/nauUtilities/src/nauFrustrum.cpp
+    ./nauEngine/nauUtilities/src/nauMatrix.cpp
+    ./nauEngine/nauUtilities/src/nauOOBB.cpp
+    ./nauEngine/nauUtilities/src/nauPlane.cpp
+    ./nauEngine/nauUtilities/src/nauPlatformMath.cpp
+    ./nauEngine/nauUtilities/src/nauQuaternion.cpp
+    ./nauEngine/nauUtilities/src/nauRandom.cpp
+    ./nauEngine/nauUtilities/src/nauRay.cpp
+    ./nauEngine/nauUtilities/src/nauSphere.cpp
+    ./nauEngine/nauUtilities/src/nauTriangle.cpp
+    ./nauEngine/nauUtilities/src/nauVector2.cpp
+    ./nauEngine/nauUtilities/src/nauVector2i.cpp
+    ./nauEngine/nauUtilities/src/nauVector3.cpp
+    ./nauEngine/nauUtilities/src/nauVector4.cpp
+    )
 
 
 foreach(_source ${UTILITIES_SOURCES})
