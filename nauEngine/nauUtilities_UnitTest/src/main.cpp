@@ -24,7 +24,7 @@
 #endif
 using namespace nauEngineSDK;
 
-truct Testing : public ::testing::Test {
+struct Testing : public ::testing::Test {
   virtual void SetUp() {
     fails = 0;
   }
