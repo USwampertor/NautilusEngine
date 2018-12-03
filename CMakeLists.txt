@@ -12,7 +12,7 @@ SET(COVERAGE OFF CACHE BOOL "Coverage")
 
 #include libraries
 include_directories(UTILITIES_INCLUDE ./nauEngine/nauUtilities/include/)
-include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
+#include_directories(UTILITIES_SOURCE ./nauEngine/nauUtilities/src/)
 
 set(UTILITIES_SOURCES 
     ./nauEngine/nauUtilities/src/nauAABB.cpp
@@ -33,12 +33,7 @@ set(UTILITIES_SOURCES
     ./nauEngine/nauUtilities/src/nauVector3.cpp
     ./nauEngine/nauUtilities/src/nauVector4.cpp
     )
-
-
-foreach(_source ${UTILITIES_SOURCES})
-    set_source_files_properties(${_source} PROPERTIES GENERATED 1)
-endforeach()
-
+    
 #creates an executable which can be used to run in travis
 add_library(Utilities SHARED ${UTILITIES_SOURCES})
 
