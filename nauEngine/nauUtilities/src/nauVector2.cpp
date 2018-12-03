@@ -248,7 +248,7 @@ namespace nauEngineSDK {
   FORCEINLINE nauVector2
   nauVector2::normalized() {
     float sqr = nauMath::pow(x, 2.0f) + nauMath::pow(y, 2.0f);
-    NAU_ASSERT(sqr != 0.0f && "The square of the elements is 0!!!");
+    NAU_ASSERT(sqr != 0.0f );
     NAU_DEBUG_ONLY(sqrMagnitude());
 
     float unit = nauMath::invSqrt(sqr);

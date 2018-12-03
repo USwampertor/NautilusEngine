@@ -91,7 +91,7 @@ namespace nauEngineSDK {
       std::cout << "Couldn't open file at location " << temp << std::endl;
       return false;
     }
-    m_data.resize(streamFile.tellg());
+    m_data.resize(static_cast<SIZE_T>(streamFile.tellg()));
     m_size = static_cast<SIZE_T>(streamFile.tellg());
     streamFile.seekg(0, streamFile.beg);
     streamFile.read(&m_data[0], std::ios::binary);
@@ -101,6 +101,7 @@ namespace nauEngineSDK {
 
   bool
   nauFileStream::create(void* file) {
+    m_data.resize(reinterpret_cast<SIZE_T>(file));
     return true;
   }
 
