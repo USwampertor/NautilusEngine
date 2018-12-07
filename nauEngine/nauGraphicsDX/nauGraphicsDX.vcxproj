@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\nauDepthStencilDX.h" />
+    <ClInclude Include="include\nauDeviceDX.h" />
+    <ClInclude Include="include\nauGraphicsAPIDX.h" />
+    <ClInclude Include="include\nauGraphicsBufferDX.h" />
+    <ClInclude Include="include\nauInputLayoutDX.h" />
+    <ClInclude Include="include\nauMeshDX.h" />
+    <ClInclude Include="include\nauModelDX.h" />
+    <ClInclude Include="include\nauPrerequisitesDX.h" />
+    <ClInclude Include="include\nauSamplerStateDX.h" />
+    <ClInclude Include="include\nauShaderDX.h" />
+    <ClInclude Include="include\nauTextureDX.h" />
+    <ClInclude Include="include\nauViewPortDX.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\nauDepthStencilDX.cpp" />
+    <ClCompile Include="src\nauDeviceDX.cpp" />
+    <ClCompile Include="src\nauGraphicsAPIDX.cpp" />
+    <ClCompile Include="src\nauGraphicsBufferDX.cpp" />
+    <ClCompile Include="src\nauInputLayoutDX.cpp" />
+    <ClCompile Include="src\nauMeshDX.cpp" />
+    <ClCompile Include="src\nauModelDX.cpp" />
+    <ClCompile Include="src\nauSamplerStateDX.cpp" />
+    <ClCompile Include="src\nauShaderDX.cpp" />
+    <ClCompile Include="src\nauTextureDX.cpp" />
+    <ClCompile Include="src\nauViewPortDX.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{43528801-4BC1-4F7E-849B-97BDE275CCAD}</ProjectGuid>
@@ -93,7 +120,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -112,7 +139,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -133,7 +160,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -156,7 +183,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -171,29 +198,6 @@
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="nauDepthStencilDX.h" />
-    <ClInclude Include="nauGraphicsAPIDX.h" />
-    <ClInclude Include="nauInputLayoutDX.h" />
-    <ClInclude Include="nauPrerequisitesDX.h" />
-    <ClInclude Include="nauDeviceDX.h" />
-    <ClInclude Include="nauGraphicsBufferDX.h" />
-    <ClInclude Include="nauSamplerStateDX.h" />
-    <ClInclude Include="nauShaderDX.h" />
-    <ClInclude Include="nauTextureDX.h" />
-    <ClInclude Include="nauViewPortDX.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="nauDepthStencilDX.cpp" />
-    <ClCompile Include="nauDeviceDX.cpp" />
-    <ClCompile Include="nauGraphicsAPIDX.cpp" />
-    <ClCompile Include="nauGraphicsBufferDX.cpp" />
-    <ClCompile Include="nauInputLayoutDX.cpp" />
-    <ClCompile Include="nauSamplerStateDX.cpp" />
-    <ClCompile Include="nauShaderDX.cpp" />
-    <ClCompile Include="nauTextureDX.cpp" />
-    <ClCompile Include="nauViewPortDX.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

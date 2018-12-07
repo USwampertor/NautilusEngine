@@ -13,6 +13,77 @@
 namespace nauEngineSDK {
 
   bool
+  nauTextureDX::loadFromFile(String path, void* pDevice, void* pDeviceContext) {
+    UNREFERENCED_PARAMETER(pDeviceContext);
+    D3D11_TEXTURE2D_DESC descTexture;
+    int byteperpixel = 0;
+    int x = 0;
+    int y = 0;
+    auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
+    HRESULT hr = S_OK;
+
+    if (!m_fileData) {
+      
+      std::cout << "Couldn't load file, loading default file..." << std::endl;
+      stbi_image_free(m_fileData);
+      m_fileData = stbi_load("checkers.jpg", &x, &x, &byteperpixel, 4);
+
+      if (!m_fileData) {
+        std::cout << "Couldn't load default font \n YOU SHOULD FEAR NOW" << std::endl;
+        stbi_image_free(m_fileData);
+        return false;
+      }
+
+
+    }
+
+    m_width   = static_cast<uint32>(x);
+    m_height  = static_cast<uint32>(y);
+    
+    //Have a case if theres no texture cause the idiot didnt make it fine
+
+    memset(&descTexture, 0, sizeof(descTexture));
+
+    descTexture.Width = m_width;
+    descTexture.Height = m_height;
+    descTexture.MipLevels = 1;
+    descTexture.ArraySize = 1;
+    descTexture.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    descTexture.SampleDesc.Count = 1;
+    descTexture.SampleDesc.Quality = 0;
+    descTexture.Usage = D3D11_USAGE_DEFAULT;
+    descTexture.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+    descTexture.CPUAccessFlags = 0;
+    descTexture.MiscFlags = 0;
+
+    D3D11_SUBRESOURCE_DATA texturedataBuffer;
+
+    memset(&texturedataBuffer, 0, sizeof(texturedataBuffer));
+    
+    
+    //Nuestro vector tiene el tamaño de todos los pixeles que se encuentran
+    //En la textura multiplicado por cuanta informacion tiene cada uno
+   
+    
+    texturedataBuffer.pSysMem = m_fileData; 
+    texturedataBuffer.SysMemPitch = m_width * 4;
+   
+    hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateTexture2D(&descTexture, &texturedataBuffer, &m_pd3dTexture2D);
+    if (FAILED(hr)) {
+      return false;
+    }
+    stbi_image_free(m_fileData);
+
+
+
+    createShaderResourceView(reinterpret_cast<ID3D11Device*>(pDevice));
+    setShaderResourceView(reinterpret_cast<ID3D11Device*>(pDevice));
+
+    return true;
+  }
+
+
+  bool
   nauTextureDX::createShaderResourceView(void* pDevice) {
     HRESULT hr = E_FAIL;
     hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateShaderResourceView(m_pd3dTexture2D, 
@@ -56,7 +127,9 @@ namespace nauEngineSDK {
 
   bool
   nauTextureDX::createDepthStencilView(void* pDevice, void* pDeviceContext) {
-    HRESULT hr = E_FAIL;
+    
+    UNREFERENCED_PARAMETER(pDeviceContext);
+    UNREFERENCED_PARAMETER(pDevice);
     return true;
   }
 
@@ -104,7 +177,7 @@ namespace nauEngineSDK {
     }
 
 
-    reinterpret_cast<ID3D11DeviceContext*>(pDevice)->OMSetRenderTargets(1, 
+    reinterpret_cast<ID3D11DeviceContext*>(pDeviceContext)->OMSetRenderTargets(1, 
                                                                         &m_pRenderTargetView, 
                                                                         m_DepthStencilView);
 

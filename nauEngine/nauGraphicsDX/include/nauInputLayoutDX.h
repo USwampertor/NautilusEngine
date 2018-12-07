@@ -32,7 +32,7 @@ namespace nauEngineSDK {
     ~nauInputLayoutDX() {}
   
     void 
-    SetInputDesc();
+    setInputDescriptor();
     
     //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
     void

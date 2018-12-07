@@ -16,6 +16,7 @@ namespace nauEngineSDK {
     m_d3dViewPort.TopLeftY = topLeftY;
     m_d3dViewPort.Width = width;
     m_d3dViewPort.Height = height;
+    return true;
   }
 
   void

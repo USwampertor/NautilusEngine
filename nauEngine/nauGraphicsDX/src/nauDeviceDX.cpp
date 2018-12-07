@@ -1,3 +1,12 @@
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * @file nauDeviceDX.cpp
+ * @author Marco "Swampy" Millan
+ * @date 2018/12/07 2018
+ * @brief Device implementation in DirectX
+ * 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauDeviceDX.h"
 namespace nauEngineSDK {
   bool

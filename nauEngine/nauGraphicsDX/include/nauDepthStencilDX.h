@@ -14,7 +14,6 @@
 
 #include <nauDepthStencil.h>
 
-#include "nauTextureDX.h"
 
 namespace nauEngineSDK {
 
@@ -32,13 +31,6 @@ namespace nauEngineSDK {
      */
     ~nauDepthStencilDX() {}
   
-
-    bool
-    createDepthStencil(void* pDevice,
-                       void* pDeviceContext,
-                       uint32 height,
-                       uint32 width,
-                       nauTexture* texture);
   };
   
 }

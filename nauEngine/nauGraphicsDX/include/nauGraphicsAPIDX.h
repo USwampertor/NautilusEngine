@@ -18,11 +18,12 @@
 #include <nauMesh.h>
 
 #include "nauDeviceDX.h"
+#include "nauGraphicsBufferDX.h"
 #include "nauInputLayoutDX.h"
+#include "nauModelDX.h"
 #include "nauShaderDX.h"
 #include "nauTextureDX.h"
 #include "nauViewPortDX.h"
-
 
 namespace nauEngineSDK {
 
@@ -65,14 +66,12 @@ namespace nauEngineSDK {
     void
     onRender();
 
-    /**
-     * @brief gets the info of the shaders and sets the API
-     * @param
-     * @return
-     *
-     */
     void
-    setShaders();
+    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags);
+
+
+    void
+    test();
 
   public:
 
@@ -86,7 +85,53 @@ namespace nauEngineSDK {
     /**
      * Vertex Shader
      */
+    nauVertexShaderDX m_vertexShader;
 
+    /**
+     * Pixel Shader
+     */
+    nauPixelShaderDX m_pixelShader;
+
+    /**
+     * Input Layout
+     */
+    nauInputLayoutDX m_inputLayout;
+
+    /**
+     * Device 
+     */
+    nauDeviceDX m_device;
+
+    /**
+     * Texture of test object
+     */
+    nauTextureDX m_texture;
+
+    /**
+     * ViewPort
+     */
+    nauViewPortDX m_viewPort;
+
+    /**
+     * MeshList
+     */
+    //Vector<nauMesh> m_meshList;
+    nauModelDX m_meshList;
+
+    /**
+     * Screen depth
+     */
+    float m_screenDepth = 1000.0f;
+
+    /**
+     * Screen near
+     */
+    float m_screenNear = 5.0f;
+
+    /**
+     * Field of View
+     */
+    float m_fov = 0;
   };
   
 }

@@ -13,6 +13,15 @@
 
 namespace nauEngineSDK {
   
+  enum SHADERFLAGS {
+    NONE = 0,
+    PIXEL,
+    VERTEX,
+    COMPUTE,
+    GEOMETRY,
+    TEXTURE
+  };
+
    /**
     * nauGraphics
     * Description:
@@ -55,13 +64,18 @@ namespace nauEngineSDK {
 
     /**
      * @brief gets the info of the shaders and sets the API
-     * @param 
+     * @param device Context | Shader (pixel vertex etc) | SHADERFLAGS
      * @return 
      *
      */
     virtual void 
-    setShaders() = 0;
+    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags ) = 0;
   
+    /**
+     * Graphics test function, it can load a specific object
+     */
+    virtual void
+    test() = 0;
   };
   
 }

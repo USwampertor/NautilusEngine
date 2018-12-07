@@ -12,6 +12,13 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+#include "nauMesh.h"
+
+
 namespace nauEngineSDK {
   /**
    * nauModel
@@ -33,6 +40,56 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~nauModel() {}
+
+    /**
+     * @brief sets the device in the object
+     * @param Device
+     * @return 
+     *
+     */
+    virtual void
+    setDevice(void* pDevice) = 0;
+
+    /**
+     * @brief renders the object in world space
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    render() = 0;
+
+    /**
+     * @brief Loads a model from given path 
+     * @param String filePath
+     * @return 
+     *
+     */
+    virtual void
+    loadFromFile(String filePath) = 0;
+
+    /**
+     * @brief Processes a node from the model
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    processNode(aiNode* node, const aiScene* scene) = 0;
+
+    /**
+     * @brief Processes a mesh from the model
+     * @param 
+     * @return 
+     *
+     */
+    virtual nauMesh*
+    processMesh(aiMesh* mesh, const aiScene* scene) = 0;
+
+  public:
+
+    Vector<nauMesh*> m_meshes;
+
   };
 
 }

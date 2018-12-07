@@ -12,7 +12,7 @@
 
 namespace nauEngineSDK {
   void
-  nauInputLayoutDX::SetInputDesc() {
+  nauInputLayoutDX::setInputDescriptor() {
     
     //VERTEX
     D3D11_INPUT_ELEMENT_DESC inputDesc;
@@ -100,7 +100,8 @@ namespace nauEngineSDK {
 
   void
   nauInputLayoutDX::getfromBLOB(void* pReflection, SIZE_T size) {
-
+    UNREFERENCED_PARAMETER(pReflection);
+    UNREFERENCED_PARAMETER(size);
   }
 
   void

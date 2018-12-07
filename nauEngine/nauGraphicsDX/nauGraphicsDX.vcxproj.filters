@@ -7,64 +7,76 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauGraphicsBufferDX.cpp">
+    <ClInclude Include="include\nauDepthStencilDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauDeviceDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauDeviceDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauShaderDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauGraphicsAPIDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauInputLayoutDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauGraphicsBufferDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauGraphicsAPIDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauInputLayoutDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauTextureDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauPrerequisitesDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauSamplerStateDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauSamplerStateDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauDepthStencilDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauShaderDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauViewPortDX.cpp">
+    </ClInclude>
+    <ClInclude Include="include\nauTextureDX.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="include\nauViewPortDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMeshDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauModelDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nauInputLayoutDX.h">
+    <ClCompile Include="src\nauDepthStencilDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauGraphicsAPIDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauDeviceDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauDeviceDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicsAPIDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauGraphicsBufferDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicsBufferDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauPrerequisitesDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauInputLayoutDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauShaderDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauSamplerStateDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauTextureDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauShaderDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauSamplerStateDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauTextureDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauDepthStencilDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauViewPortDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauViewPortDX.h">
+    </ClCompile>
+    <ClCompile Include="src\nauMeshDX.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="src\nauModelDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
