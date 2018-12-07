@@ -28,6 +28,32 @@ namespace nauEngineSDK {
      */
     ~nauTextureDX() {}
 
+    bool
+    createShaderResourceView(void* pDevice);
+
+    void
+    setShaderResourceView(void* pDevice);
+
+    bool
+    createRenderTargetView(void* pDevice, void* pDeviceContext);
+
+    bool
+    createDepthStencilView(void* pDevice, void* pDeviceContext);
+
+    bool
+    createDepthstencil(void* pDevice,
+                       void* pDeviceContext,
+                       uint32 width,
+                       uint32 height);
+
+    bool
+    createShaderSampler(void* pDevice);
+
+    bool
+    setShaderSampler(void* pDevice);
+
+
+
     /**
      * Member declaration
      */
@@ -36,7 +62,27 @@ namespace nauEngineSDK {
     /**
      * ID3D11 texture
      */
-     ID3D11Texture2D* m_pd3dTexture2D = nullptr;
+    ID3D11Texture2D* m_pd3dTexture2D = nullptr;
+    
+    /**
+     * Depth stencil view
+     */
+    ID3D11DepthStencilView* m_DepthStencilView = nullptr;
+
+    /**
+     * Shader Resource View
+     */
+    ID3D11ShaderResourceView* m_shaderResource = nullptr;
+
+    /**
+     * Render target view
+     */
+    ID3D11RenderTargetView* m_pRenderTargetView = nullptr;
+
+    /**
+     * Sampler state
+     */
+    ID3D11SamplerState* m_sampleState = nullptr;
   };
 }
 

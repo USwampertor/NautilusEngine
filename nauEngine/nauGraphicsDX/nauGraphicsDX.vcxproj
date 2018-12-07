@@ -181,6 +181,7 @@
     <ClInclude Include="nauSamplerStateDX.h" />
     <ClInclude Include="nauShaderDX.h" />
     <ClInclude Include="nauTextureDX.h" />
+    <ClInclude Include="nauViewPortDX.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="nauDepthStencilDX.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="nauSamplerStateDX.cpp" />
     <ClCompile Include="nauShaderDX.cpp" />
     <ClCompile Include="nauTextureDX.cpp" />
+    <ClCompile Include="nauViewPortDX.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

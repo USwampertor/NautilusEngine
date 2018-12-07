@@ -8,15 +8,211 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
+#include <d3d11.h>
+#include <vector>
+#include <stdio.h>
+#include <string>
+#include <windows.h>
 
-#include <numeric>
-#include <gtest/gtest.h>
+#define IDS_APP_TITLE			103
+
+#define IDR_MAINFRAME			128
+#define IDD_GRAFICAS21_DIALOG	102
+#define IDD_ABOUTBOX			103
+#define IDM_ABOUT				104
+#define IDM_EXIT				105
+#define IDI_GRAFICAS21			107
+#define IDI_SMALL				108
+#define IDC_GRAFICAS21			109
+#define IDC_MYICON				2
+#ifndef IDC_STATIC
+#define IDC_STATIC				-1
+#endif
+
+// Predetermined
+//
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+
+#define _APS_NO_MFC					130
+#define _APS_NEXT_RESOURCE_VALUE	129
+#define _APS_NEXT_COMMAND_VALUE		32771
+#define _APS_NEXT_CONTROL_VALUE		1000
+#define _APS_NEXT_SYMED_VALUE		110
+#endif
+#endif
 
 
-#include <nauGraphicsAPI.h>
+using std::vector;
+#define MAX_LOADSTRING 100
 
-using namespace nauEngineSDK;
+//Global variables
+HINSTANCE hInst;
+WCHAR szTitle[MAX_LOADSTRING];
+WCHAR szWindowClass[MAX_LOADSTRING];
 
-int main(int argc, char **argv) {
+HWND g_hWnd;
+//Forward declaration
+ATOM                MyRegisterClass(HINSTANCE hInstance);
+BOOL                InitInstance(HINSTANCE, int);
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+  _In_opt_ HINSTANCE hPrevInstance,
+  _In_ LPWSTR    lpCmdLine,
+  _In_ int       nCmdShow)
+{
+  //Graphics_API GFX_API;
+  UNREFERENCED_PARAMETER(hPrevInstance);
+  UNREFERENCED_PARAMETER(lpCmdLine);
+
+
+
+  // Global chains
+  LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+  LoadStringW(hInstance, IDC_GRAFICAS21, szWindowClass, MAX_LOADSTRING);
+  MyRegisterClass(hInstance);
+
+  //Initialize app
+  if (!InitInstance(hInstance, nCmdShow)) {
+    return FALSE;
+  }
+  //if (FAILED(GFX_API.InitDevice(g_hWnd))) {
+  //  return FALSE;
+  //}
+  HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(1));
+
+  MSG msg;
+
+  //Main Loop
+  while (GetMessage(&msg, nullptr, 0, 0))
+  {
+    if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+    {
+      TranslateMessage(&msg);
+      DispatchMessage(&msg);
+    }
+    //GFX_API.SetShaders();
+    //GFX_API.Render();
+  }
+
+  return (int)msg.wParam;
+}
+
+
+
+/**
+ * @brief Registers the class
+ * @param Handler instance
+ * @return 
+ *
+ */
+ATOM MyRegisterClass(HINSTANCE hInstance)
+{
+  WNDCLASSEXW wcex;
+
+  wcex.cbSize = sizeof(WNDCLASSEX);
+
+  wcex.style = CS_HREDRAW | CS_VREDRAW;
+  wcex.lpfnWndProc = WndProc;
+  wcex.cbClsExtra = 0;
+  wcex.cbWndExtra = 0;
+  wcex.hInstance = hInstance;
+  wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_GRAFICAS21));
+  wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+  wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+  wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
+  wcex.lpszClassName = szWindowClass;
+  wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+  return RegisterClassExW(&wcex);
+}
+
+/**
+ * @brief Initializes the object of the handler
+ * @param 
+ * @return 
+ *
+ */
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+  hInst = hInstance; // Almacenar identificador de instancia en una variable global
+
+  g_hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+    CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+  if (!g_hWnd)
+  {
+    return FALSE;
+  }
+
+  ShowWindow(g_hWnd, nCmdShow);
+  UpdateWindow(g_hWnd);
+
+  return TRUE;
+}
+
+/**
+ * @brief Proccesses the info from the window
+ * @param window handler, message
+ * @return 
+ *
+ */
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+  switch (message)
+  {
+  case WM_COMMAND:
+  {
+    int wmId = LOWORD(wParam);
+    // Analizar las selecciones de menú:
+    switch (wmId)
+    {
+    case IDM_ABOUT:
+      DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+      break;
+    case IDM_EXIT:
+      DestroyWindow(hWnd);
+      break;
+    default:
+      return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+  }
+  break;
+  case WM_PAINT:
+  {
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hWnd, &ps);
+    // TODO: Agregar cualquier código de dibujo que use hDC aquí...
+    EndPaint(hWnd, &ps);
+  }
+  break;
+  case WM_DESTROY:
+    PostQuitMessage(0);
+    break;
+  default:
+    return DefWindowProc(hWnd, message, wParam, lParam);
+  }
   return 0;
+}
+
+// Controlador de mensajes del cuadro Acerca de.
+INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+  UNREFERENCED_PARAMETER(lParam);
+  switch (message)
+  {
+  case WM_INITDIALOG:
+    return (INT_PTR)TRUE;
+
+  case WM_COMMAND:
+    if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+    {
+      EndDialog(hDlg, LOWORD(wParam));
+      return (INT_PTR)TRUE;
+    }
+    break;
+  }
+  return (INT_PTR)FALSE;
 }

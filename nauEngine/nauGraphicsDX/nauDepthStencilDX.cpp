@@ -54,14 +54,14 @@ namespace nauEngineSDK {
     descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
     descDSV.Texture2D.MipSlice = 0;
 
-    hr = pd3dDevice->CreateDepthStencilView(pTextureDX->m_pd3dTexture2D, &descDSV, &m_DepthStencilView);
-    if (FAILED(hr))
-    {
-      return false;
-    }
-
-    pd3dImmediate->OMSetRenderTargets(1, &m_pRenderTargetView, m_DepthStencilView);
-
+    //hr = pd3dDevice->CreateDepthStencilView(pTextureDX->m_pd3dTexture2D, &descDSV, &m_DepthStencilView);
+    //if (FAILED(hr))
+    //{
+    //  return false;
+    //}
+    //
+    //pd3dImmediate->OMSetRenderTargets(1, &m_pRenderTargetView, m_DepthStencilView);
+    //
     return true;
   }
 

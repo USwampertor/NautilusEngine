@@ -12,7 +12,17 @@
 
 #include "nauPrerequisitesDX.h"
 
+#include <DirectXMath.h>
+
 #include <nauGraphicsAPI.h>
+#include <nauMesh.h>
+
+#include "nauDeviceDX.h"
+#include "nauInputLayoutDX.h"
+#include "nauShaderDX.h"
+#include "nauTextureDX.h"
+#include "nauViewPortDX.h"
+
 
 namespace nauEngineSDK {
 
@@ -44,7 +54,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    initDevice(void* scrHandler) = 0;
+    initDevice(void* scrHandler);
 
     /**
      * @brief
@@ -53,7 +63,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    onRender() = 0;
+    onRender();
 
     /**
      * @brief gets the info of the shaders and sets the API
@@ -62,7 +72,20 @@ namespace nauEngineSDK {
      *
      */
     void
-    setShaders() = 0;
+    setShaders();
+
+  public:
+
+
+    //TO DO: TAKE THIS SHITS OUT
+    DirectX::XMMATRIX m_world;
+    DirectX::XMMATRIX m_view;
+    DirectX::XMMATRIX m_projection;
+    //
+
+    /**
+     * Vertex Shader
+     */
 
   };
   

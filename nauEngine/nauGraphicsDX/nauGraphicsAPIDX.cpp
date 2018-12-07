@@ -12,4 +12,19 @@
 
 namespace nauEngineSDK {
 
+  bool
+  nauGraphicsAPIDX::initDevice(void* scrHandler) {
+
+  }
+
+  void
+  nauGraphicsAPIDX::onRender() {
+
+  }
+
+  void
+  nauGraphicsAPIDX::setShaders() {
+
+  }
+
 }

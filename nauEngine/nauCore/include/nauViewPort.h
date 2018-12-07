@@ -42,6 +42,12 @@ namespace nauEngineSDK {
     virtual bool
     createViewPort(float width, float height, float topLeftX, float topLeftY) = 0;
 
+    /**
+     * @brief Sets the viewPort to the device
+     * @param the deviceContext
+     * @return
+     *
+     */
     virtual void
     setViewPort(void* context) = 0;
 
