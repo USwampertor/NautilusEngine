@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <string>
 #include <windows.h>
+#include <nauGraphicsAPIDX.h>
 
 #define IDS_APP_TITLE			103
 
@@ -42,7 +43,7 @@
 #endif
 #endif
 
-
+using namespace nauEngineSDK;
 using std::vector;
 #define MAX_LOADSTRING 100
 
@@ -66,7 +67,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   //Graphics_API GFX_API;
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
-
+  nauGraphicsAPIDX m_api;
 
 
   // Global chains
@@ -78,9 +79,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   if (!InitInstance(hInstance, nCmdShow)) {
     return FALSE;
   }
-  //if (FAILED(GFX_API.InitDevice(g_hWnd))) {
-  //  return FALSE;
-  //}
+  if (!m_api.initDevice(g_hWnd)) {
+    return FALSE;
+  }
+
   HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(1));
 
   MSG msg;
@@ -93,8 +95,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     }
-    //GFX_API.SetShaders();
-    //GFX_API.Render();
+    m_api.onRender();
   }
 
   return (int)msg.wParam;

@@ -93,6 +93,25 @@ namespace nauEngineSDK {
 
   void
   nauGraphicsAPIDX::onRender() {
+    setShaders(m_device.m_pImmediateContext,
+      m_vertexShader.m_pVertexShader,
+      SHADERFLAGS::VERTEX);
+
+    setShaders(m_device.m_pImmediateContext,
+      m_pixelShader.m_pPixelShader,
+      SHADERFLAGS::PIXEL);
+
+    m_inputLayout.setInputDescriptor();
+
+    float color[4] = { 1.0f,0.0f,1.0f,1.0f };
+    m_device.m_pImmediateContext->ClearRenderTargetView(m_texture.m_pRenderTargetView, 
+                                                        color);
+    m_device.m_pImmediateContext->ClearDepthStencilView(m_texture.m_DepthStencilView, 
+                                                        D3D11_CLEAR_DEPTH, 
+                                                        1.0f, 
+                                                        0);
+    m_meshList.render();
+    m_device.m_pSwapChain->Present(DXGI_SWAP_EFFECT_DISCARD, DXGI_PRESENT_DO_NOT_WAIT);
 
   }
 

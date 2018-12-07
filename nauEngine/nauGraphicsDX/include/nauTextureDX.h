@@ -13,11 +13,6 @@
 
 #include <nauTexture.h>
 
-#ifndef STB_IMAGE_IMPLEMENTATION
-# define STB_IMAGE_IMPLEMENTATION
-# include <stb_image.h>
-#endif
-
 namespace nauEngineSDK {
   class NAU_DIRECTX_EXPORT nauTextureDX : public nauTexture
   {
