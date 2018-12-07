@@ -178,5 +178,5 @@ namespace nauEngineSDK {
                                         D3D11_USAGE_DEFAULT);
 
   }
-
+ 
 }

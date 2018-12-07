@@ -133,6 +133,11 @@ namespace nauEngineSDK {
      */
     float m_fov = 0;
   };
-  
+ 
+
+  NAU_DIRECTX_EXPORT nauGraphicsAPIDX* createGraphicsAPI() {
+    return new nauGraphicsAPIDX();
+  }
+
 }
 

@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string>
 #include <windows.h>
-#include <nauGraphicsAPIDX.h>
+#include <nauGraphicsAPI.h>
 
 #define IDS_APP_TITLE			103
 
@@ -59,6 +59,39 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+
+typedef void* (*G_API)();
+
+void* 
+loadDLL(String path) {
+  
+  std::cout << path << std::endl;
+
+  HINSTANCE myDll = LoadLibraryEx(path.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+  if (!myDll) {
+    std::cout << "Could not find dll at given path: " << path << std::endl;
+    std::cout << "Press any key to continue...";
+    return 0;
+  }
+  std::cout << "Loading " << path << "..." << std::endl;
+  
+  G_API t_api = (G_API)GetProcAddress(myDll, "createGraphicsAPI");
+  if (!t_api) {
+    std::cout << "could not find specified function" << std::endl;
+
+    std::cout << "Press any key to continue...";
+
+    FreeLibrary(myDll);
+    return nullptr;
+  }
+  std::cout << "Press any key to continue...";
+  return t_api();
+
+  //FreeLibrary(myDll);
+}
+
+
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   _In_opt_ HINSTANCE hPrevInstance,
   _In_ LPWSTR    lpCmdLine,
@@ -67,19 +100,28 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   //Graphics_API GFX_API;
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
-  nauGraphicsAPIDX m_api;
-
+  
+  //DLL Loading
+  nauGraphicsAPI* m_api;
+  //
 
   // Global chains
   LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
   LoadStringW(hInstance, IDC_GRAFICAS21, szWindowClass, MAX_LOADSTRING);
   MyRegisterClass(hInstance);
 
+  String path = "C:/Users/Marco/Documents/7mo Cuatri/NautilusEngine/nauEngine/lib/x86/nauGraphicsDXd.lib";
+  
+  m_api = reinterpret_cast<nauGraphicsAPI*>(loadDLL(path));
+  if (m_api == nullptr) {
+    std::cout << "Couldn't get DLL";
+  }
+
   //Initialize app
   if (!InitInstance(hInstance, nCmdShow)) {
     return FALSE;
   }
-  if (!m_api.initDevice(g_hWnd)) {
+  if (!m_api->initDevice(g_hWnd)) {
     return FALSE;
   }
 
@@ -95,7 +137,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     }
-    m_api.onRender();
+    m_api->onRender();
   }
 
   return (int)msg.wParam;

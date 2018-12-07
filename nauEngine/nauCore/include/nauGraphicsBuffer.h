@@ -38,7 +38,7 @@ namespace nauEngineSDK {
 
   };
 
-  class nauVertexBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauVertexBuffer : public nauGraphicsBuffer
   {
    public:
 
@@ -50,7 +50,7 @@ namespace nauEngineSDK {
     /**
      * Virtual destructor
      */
-    virtual ~nauVertexBuffer() {};
+    virtual ~nauVertexBuffer() {}
 
     /**
      * @brief returns the size of the vector of vertex
@@ -125,7 +125,7 @@ namespace nauEngineSDK {
 
   };
 
-  class nauIndexBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauIndexBuffer : public nauGraphicsBuffer
   {
    public:
 
@@ -211,7 +211,7 @@ namespace nauEngineSDK {
 
   };
   
-  class nauConstantBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauConstantBuffer : public nauGraphicsBuffer
   {
    public:
 
