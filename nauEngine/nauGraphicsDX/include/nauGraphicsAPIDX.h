@@ -66,10 +66,21 @@ namespace nauEngineSDK {
     void
     onRender();
 
+    /**
+     * @brief Sets the shaders
+     * @param 
+     * @return 
+     *
+     */
     void
     setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags);
 
-
+    /**
+     * @brief This is just a test
+     * @param 
+     * @return 
+     *
+     */
     void
     test();
 
@@ -135,9 +146,11 @@ namespace nauEngineSDK {
   };
  
 
-  NAU_DIRECTX_EXPORT nauGraphicsAPIDX* createGraphicsAPI() {
-    return new nauGraphicsAPIDX();
-  }
+  
 
 }
 
+extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::nauGraphicsAPI* 
+createGraphicsAPI() {
+  return new nauEngineSDK::nauGraphicsAPIDX();
+}

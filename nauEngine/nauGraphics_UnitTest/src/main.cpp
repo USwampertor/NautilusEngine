@@ -49,8 +49,8 @@ using std::vector;
 
 //Global variables
 HINSTANCE hInst;
-WCHAR szTitle[MAX_LOADSTRING];
-WCHAR szWindowClass[MAX_LOADSTRING];
+WCHAR szTitle[MAX_LOADSTRING] = L"myWindow";
+WCHAR szWindowClass[MAX_LOADSTRING] = L"myWindowClass";
 
 HWND g_hWnd;
 //Forward declaration
@@ -67,8 +67,15 @@ loadDLL(String path) {
   
   std::cout << path << std::endl;
 
-  HINSTANCE myDll = LoadLibraryEx(path.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+  char dirPath[MAX_PATH];
+  GetCurrentDirectoryA(MAX_PATH, dirPath);
+  String folderPath(dirPath);
+
+  folderPath = folderPath.append("\\").append(path);
+
+  HINSTANCE myDll = LoadLibraryExA(folderPath.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
   if (!myDll) {
+    DWORD err = GetLastError();
     std::cout << "Could not find dll at given path: " << path << std::endl;
     std::cout << "Press any key to continue...";
     return 0;
@@ -106,11 +113,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   //
 
   // Global chains
-  LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-  LoadStringW(hInstance, IDC_GRAFICAS21, szWindowClass, MAX_LOADSTRING);
+//  LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+//  LoadStringW(hInstance, IDC_GRAFICAS21, szWindowClass, MAX_LOADSTRING);
+
   MyRegisterClass(hInstance);
 
-  String path = "C:/Users/Marco/Documents/7mo Cuatri/NautilusEngine/nauEngine/lib/x86/nauGraphicsDXd.lib";
+  String path = "nauGraphicsDXd.dll";
   
   m_api = reinterpret_cast<nauGraphicsAPI*>(loadDLL(path));
   if (m_api == nullptr) {
@@ -162,12 +170,12 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
   wcex.cbClsExtra = 0;
   wcex.cbWndExtra = 0;
   wcex.hInstance = hInstance;
-  wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_GRAFICAS21));
-  wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+  wcex.hIcon = LoadIconW(hInstance, MAKEINTRESOURCE(IDI_GRAFICAS21));
+  wcex.hCursor = LoadCursorW(nullptr, IDC_ARROW);
   wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
   wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
   wcex.lpszClassName = szWindowClass;
-  wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+  wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
   return RegisterClassExW(&wcex);
 }
@@ -182,8 +190,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
   hInst = hInstance; // Almacenar identificador de instancia en una variable global
 
-  g_hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-    CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+  g_hWnd = CreateWindowExW(0, szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+    CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, nullptr, nullptr, hInstance, nullptr);
 
   if (!g_hWnd)
   {

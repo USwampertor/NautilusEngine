@@ -17,7 +17,6 @@
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
 
-
 namespace nauEngineSDK {
   //forward declaration?
   class nauVector3;

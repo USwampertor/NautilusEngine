@@ -11,6 +11,11 @@
 #include "nauVector2.h"
 #include "nauVector3.h"
 
+
+//TODO: CREATE LIMIT FILES AND DELETE THIS 
+#include <limits>
+
+
 namespace nauEngineSDK {
 
   /**
@@ -247,8 +252,17 @@ namespace nauEngineSDK {
 
   FORCEINLINE nauVector2
   nauVector2::normalized() {
+    NAU_ASSERT(!std::isnan(x) && 
+               !std::isnan(y) && 
+               !std::isinf(x) && 
+               !std::isinf(y) && 
+               "Value X or Y are either infinite or NAN");
+
     float sqr = nauMath::pow(x, 2.0f) + nauMath::pow(y, 2.0f);
-    //NAU_ASSERT(sqr != 0.0f );
+    
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() && 
+               "Square is less than epsilon and that shit is wack");
+    
     NAU_DEBUG_ONLY(sqrMagnitude());
 
     float unit = nauMath::invSqrt(sqr);
