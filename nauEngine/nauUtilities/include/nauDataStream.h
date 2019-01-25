@@ -57,7 +57,7 @@ public:
   /**
    * path defined constructor
    */
-  nauDataStream(const String& path, STREAMACCESS sAccess) 
+  nauDataStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ)
     : m_path(path),
       m_mode(sAccess) {}
 
@@ -269,6 +269,14 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
    * Default constructor
    */
   nauFileStream() = default;
+
+  /**
+   * Parameter based constructor constructor
+   */
+  nauFileStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ) {
+    m_path = path;
+    m_mode = sAccess;
+  }
 
   /**
    * Default Destructor

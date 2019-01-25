@@ -268,7 +268,7 @@ namespace nauEngineSDK {
     float unit = nauMath::invSqrt(sqr);
     return nauVector2((x * unit), (y * unit));
   }
-
+  
   void
   nauVector2::normalize() const {
   

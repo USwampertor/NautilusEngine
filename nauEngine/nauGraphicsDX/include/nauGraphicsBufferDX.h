@@ -45,6 +45,9 @@ namespace nauEngineSDK {
 
     void
     write(void* pDevice, void* pData, SIZE_T numBytes);
+
+    void
+    set(void* pDevice);
   };
 
   class NAU_DIRECTX_EXPORT nauIndexBufferDX : public nauIndexBuffer, nauGraphicsBufferDX
@@ -58,6 +61,9 @@ namespace nauEngineSDK {
 
     void
     write(void* pDevice, void* pData, SIZE_T numBytes);
+
+    void
+    set(void* pDevice);
   };
 
   class NAU_DIRECTX_EXPORT nauConstantBufferDX : public nauConstantBuffer, nauGraphicsBufferDX
@@ -71,6 +77,9 @@ namespace nauEngineSDK {
 
     void
     write(void* pDevice, void* pData, SIZE_T numBytes);
+
+    void
+    set(void* pDevice);
   };
   
 }

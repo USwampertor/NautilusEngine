@@ -45,22 +45,12 @@ namespace nauEngineSDK {
     m_viewPort.setViewPort(m_device.m_pImmediateContext);
     
 
-    m_vertexShader.createFromFile(m_device.m_pd3dDevice, "VS.hlsl", "ColorVertexShader");
-    m_pixelShader.createFromFile(m_device.m_pd3dDevice, "PS.hlsl", "ColorPixelShader");
-
-
-    setShaders(m_device.m_pImmediateContext,
-               m_vertexShader.m_pVertexShader,
-               SHADERFLAGS::VERTEX);
-
-    setShaders(m_device.m_pImmediateContext,
-               m_pixelShader.m_pPixelShader,
-               SHADERFLAGS::PIXEL);
+    m_vertexShader.createFromFile(m_device.m_pd3dDevice, "resources/VS.hlsl", "ColorVertexShader");
+    m_pixelShader.createFromFile(m_device.m_pd3dDevice, "resources/PS.hlsl", "ColorPixelShader");
     
     m_inputLayout.setInputDescriptor();
 
-    m_inputLayout.setVertex();
-    m_inputLayout.setColor();
+    
     m_inputLayout.createInputBuffer(m_device.m_pd3dDevice, &m_vertexShader);
 
     
@@ -86,22 +76,21 @@ namespace nauEngineSDK {
 
     m_meshList.setDevice(m_device.m_pd3dDevice);
     test();
-    m_meshList.loadFromFile("max.obj");
-
+    
     return true;
   }
 
   void
   nauGraphicsAPIDX::onRender() {
     setShaders(m_device.m_pImmediateContext,
-      m_vertexShader.m_pVertexShader,
-      SHADERFLAGS::VERTEX);
+               m_vertexShader.m_pVertexShader,
+               SHADERFLAGS::VERTEX);
 
     setShaders(m_device.m_pImmediateContext,
-      m_pixelShader.m_pPixelShader,
-      SHADERFLAGS::PIXEL);
+               m_pixelShader.m_pPixelShader,
+               SHADERFLAGS::PIXEL);
 
-    m_inputLayout.setInputDescriptor();
+    m_inputLayout.setLayout(m_device.m_pImmediateContext);
 
     float color[4] = { 1.0f,0.0f,1.0f,1.0f };
     m_device.m_pImmediateContext->ClearRenderTargetView(m_texture.m_pRenderTargetView, 
@@ -134,21 +123,29 @@ namespace nauEngineSDK {
 
   void
   nauGraphicsAPIDX::test() {
-    m_meshList;
-    m_meshList.m_meshes.emplace_back();
+    
+    nauMeshDX* m = new nauMeshDX();
+    m->m_vertexBuffer = new nauVertexBufferDX();
+    m->m_indexBuffer = new nauIndexBufferDX();
+    m->m_texture = new nauTextureDX();
+    m_meshList.m_meshes.push_back(m);
     auto& mesh = m_meshList.m_meshes.back();
 
     ID3D11DeviceContext* pImmContext;
+
     m_meshList.m_pDevice->GetImmediateContext(&pImmContext);
-    mesh->m_texture->loadFromFile("sheikah.jpg", 
+    mesh->m_texture->loadFromFile("resources/sheikah.jpg", 
                                   m_meshList.m_pDevice, 
                                   pImmContext);
+
     mesh->m_texture->createShaderSampler(m_meshList.m_pDevice);
     mesh->m_texture->setShaderSampler(m_meshList.m_pDevice);
+
     nauVertex pVertex;
 
     pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
     pVertex.m_color = { 1.0f,0.5f,0.25f,1.0f };
+    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
     pVertex.m_u = 0.0f;
     pVertex.m_v = 1.0f;
 
@@ -156,6 +153,7 @@ namespace nauEngineSDK {
 
     pVertex.m_position = { 0.0f,1.0f,0.0f,1.0f };
     pVertex.m_color = { 0.5f,1.0f, 0.0f,1.0f };
+    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
     pVertex.m_u = 0.5f;
     pVertex.m_v = 0.0f;
 
@@ -163,7 +161,8 @@ namespace nauEngineSDK {
 
     pVertex.m_position = { 1.0f,-1.0f,0.0f,1.0f };
     pVertex.m_color = { 0.25f, 0.5f, 1.0f,1.0f };
-    pVertex.m_u = 1.0f; 
+    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
+    pVertex.m_u = 1.0f;
     pVertex.m_v = 1.0f;
 
     mesh->m_vertexBuffer->add(pVertex);

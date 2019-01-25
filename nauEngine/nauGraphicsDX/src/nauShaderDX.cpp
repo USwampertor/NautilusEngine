@@ -22,9 +22,11 @@ namespace nauEngineSDK {
                        String entryPoint, 
                        String profile, 
                        uint32 FLAGS) {
+    
     HRESULT result = S_OK;
     ID3DBlob* error = nullptr;
-    std::ifstream file(filename);
+    std::ifstream file(filename.c_str());
+    file.open(filename.c_str());
     String shadersource;
     if (!file.is_open())
     {
@@ -65,19 +67,21 @@ namespace nauEngineSDK {
   nauVertexShaderDX::createFromFile(void* pDevice, 
                                     const char* fileName, 
                                     const char* entryPoint) {
-    NAU_ASSERT(m_d3dBlob != nullptr && "Shader blob is NULL");
-    HRESULT hr = S_OK;
+    HRESULT hr = E_FAIL;
     hr = nauShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    NAU_ASSERT(m_d3dBlob != nullptr && "Vertex Shader blob is NULL");
     if (FAILED(hr)) {
-      printf("Failed to compile Vertex Shader"); 
+      printf("Failed to compile Vertex Shader");
+      exit(666);
     }
-
-    hr = static_cast<ID3D11Device*>(pDevice)->CreateVertexShader(m_d3dBlob->GetBufferPointer(),
-                                                                 m_d3dBlob->GetBufferSize(),
-                                                                 nullptr,
-                                                                 &m_pVertexShader);
+    auto pDev = static_cast<ID3D11Device*>(pDevice);
+    hr = pDev->CreateVertexShader(m_d3dBlob->GetBufferPointer(),
+                                  m_d3dBlob->GetBufferSize(),
+                                  nullptr,
+                                  &m_pVertexShader);
     if (FAILED(hr)) {
       printf("Failed to create Vertex Shader");
+      exit(666);
     }
   }
 
@@ -88,7 +92,23 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
   nauPixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
-    HRESULT hr = S_OK;
+    HRESULT hr = E_FAIL;
+    hr = nauShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    NAU_ASSERT(m_d3dBlob != nullptr && "Pixel Shader blob is NULL");
+    if (FAILED(hr)) {
+      printf("Failed to compile Vertex Shader");
+      exit(666);
+    }
+
+    auto pDev = static_cast<ID3D11Device*>(pDevice);
+    hr = pDev->CreatePixelShader(m_d3dBlob->GetBufferPointer(),
+                                 m_d3dBlob->GetBufferSize(),
+                                 nullptr,
+                                 &m_pPixelShader);
+    if (FAILED(hr)) {
+      printf("Failed to create Pixel Shader");
+      exit(666);
+    }
 
   }
 

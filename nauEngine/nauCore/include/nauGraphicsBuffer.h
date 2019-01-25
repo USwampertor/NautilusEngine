@@ -116,6 +116,12 @@ namespace nauEngineSDK {
     virtual void 
     write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
 
+    /**
+     * Sets the device Context with the buffer
+     */
+    virtual void
+    set(void* pDevice) = 0;
+
    public:
     
     /**
@@ -201,6 +207,12 @@ namespace nauEngineSDK {
      */
     virtual void 
     write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
+
+    /**
+     * Sets the device Context with the buffer
+     */
+    virtual void
+    set(void* pDevice) = 0;
 
    public:
 
@@ -288,6 +300,11 @@ namespace nauEngineSDK {
     virtual void 
     write(void* pDevice, void* pData, SIZE_T numBytes) = 0;
 
+    /**
+     * Sets the device Context with the buffer
+     */
+    virtual void
+    set(void* pDevice) = 0;
 
     /**
      * constant data

@@ -32,9 +32,9 @@ namespace nauEngineSDK {
     memset(&InitData, 0, sizeof(InitData));
     InitData.pSysMem = &m_vertexData[0];
 
-    HRESULT hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateBuffer(&bd, 
-                                                                        &InitData, 
-                                                                        &m_pBuffer);
+    auto pDev = reinterpret_cast<ID3D11Device*>(pDevice);
+
+    HRESULT hr = pDev->CreateBuffer(&bd, &InitData, &m_pBuffer);
     if (FAILED(hr)) {
       std::cout << "Failed to create Vertex Buffer you idiot \n" ;
     }
@@ -52,6 +52,14 @@ namespace nauEngineSDK {
 
     //we later discard the original thing because we don't need it anymore
     reinterpret_cast<ID3D11DeviceContext*>(pDevice)->Unmap(m_pBuffer, 0);
+  }
+
+  void
+  nauVertexBufferDX::set(void* pDevice) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+    uint32 str = sizeof(nauVertex);
+    uint32 off = 0;
+    pDC->IASetVertexBuffers(0, 1, &m_pBuffer, &str, &off);
   }
 
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -75,9 +83,8 @@ namespace nauEngineSDK {
     memset(&InitData, 0, sizeof(InitData));
     InitData.pSysMem = &m_indexData[0];
 
-    HRESULT hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateBuffer(&bd, 
-                                                                        &InitData, 
-                                                                        &m_pBuffer);
+    auto pDev = reinterpret_cast<ID3D11Device*>(pDevice);
+    HRESULT hr = pDev->CreateBuffer(&bd, &InitData, &m_pBuffer);
     if (FAILED(hr)) {
       std::cout << "Failed to create Vertex Buffer you idiot \n";
     }
@@ -86,6 +93,12 @@ namespace nauEngineSDK {
   void
   nauIndexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
 
+  }
+
+  void
+  nauIndexBufferDX::set(void* pDevice) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+    pDC->IASetIndexBuffer(this->m_pBuffer, DXGI_FORMAT_R32_UINT, 0);
   }
 
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -119,6 +132,11 @@ namespace nauEngineSDK {
 
   void
   nauConstantBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
+
+  }
+
+  void
+  nauConstantBufferDX::set(void* pDevice) {
 
   }
 }

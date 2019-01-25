@@ -19,12 +19,14 @@ namespace nauEngineSDK {
 
   bool
   nauTextureDX::loadFromFile(String path, void* pDevice, void* pDeviceContext) {
+    
     UNREFERENCED_PARAMETER(pDeviceContext);
     D3D11_TEXTURE2D_DESC descTexture;
     int byteperpixel = 0;
     int x = 0;
     int y = 0;
     auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
+    
     HRESULT hr = S_OK;
 
     if (!m_fileData) {
