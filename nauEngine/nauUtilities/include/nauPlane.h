@@ -21,7 +21,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	
   */
-  class nauPlane : public nauVector3
+  class nauPlane : public Vector3
   {
    public:
 

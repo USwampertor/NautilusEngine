@@ -57,22 +57,22 @@ namespace nauEngineSDK {
     /**
      * nauVector3 center component
      */
-    nauVector3 center;
+    Vector3 center;
 
     /**
      * local x rotation component
      */
-    nauVector3 m_xAxis;
+    Vector3 m_xAxis;
 
     /**
      * local y rotation component
      */
-    nauVector3 m_yAxis;
+    Vector3 m_yAxis;
 
     /**
      * local z rotation component
      */
-    nauVector3 m_zAxis;
+    Vector3 m_zAxis;
 
     /**
      * half width X component

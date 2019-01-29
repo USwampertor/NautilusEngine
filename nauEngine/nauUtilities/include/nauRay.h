@@ -34,7 +34,7 @@ namespace nauEngineSDK {
      * @return
      * 
      */
-     nauRay(const nauVector3& origin, const nauVector3& direction);
+     nauRay(const Vector3& origin, const Vector3& direction);
 
     /**
      * Default destructor
@@ -55,12 +55,12 @@ namespace nauEngineSDK {
     /**
      * position component
      */
-    nauVector3 m_position;
+    Vector3 m_position;
 
     /**
      * direction component
      */
-    nauVector3 m_direction;
+    Vector3 m_direction;
     
   };
   

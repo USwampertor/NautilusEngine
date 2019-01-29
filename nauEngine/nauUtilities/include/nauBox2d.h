@@ -36,7 +36,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauBox2d(const nauVector2& min, const nauVector2& max);
+    nauBox2d(const Vector2& min, const Vector2& max);
 
     /**
      * @brief Constructor with
@@ -44,7 +44,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauBox2d(const nauVector2& origin, float height, float width);
+    nauBox2d(const Vector2& origin, float height, float width);
     
     /**
      * Default Destructor
@@ -71,7 +71,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    insideBox2d(const nauVector2& other);
+    insideBox2d(const Vector2& other);
 
 
     /**
@@ -82,12 +82,12 @@ namespace nauEngineSDK {
     /**
      * lower corner component
      */
-    nauVector2 m_min;
+    Vector2 m_min;
 
     /**
      * higher corner component
      */
-    nauVector2 m_max;
+    Vector2 m_max;
   };
 }
 

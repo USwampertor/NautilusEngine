@@ -37,7 +37,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauAABB(const nauVector3& minTip, const nauVector3& maxTip);
+    nauAABB(const Vector3& minTip, const Vector3& maxTip);
 
     /**
      * @brief Constructor with origin and height width and length of object
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauAABB(const nauVector3& origin, float height, float width, float lenght);
+    nauAABB(const Vector3& origin, float height, float width, float lenght);
     
     /**
      * Collisions
@@ -69,7 +69,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    insideBox(const nauVector3& other);
+    insideBox(const Vector3& other);
     
     /**
      * Member declaration
@@ -79,12 +79,12 @@ namespace nauEngineSDK {
     /**
      * the lower corner component
      */
-    nauVector3 m_minCorner;
+    Vector3 m_minCorner;
 
     /**
      * the higher corner component
      */
-    nauVector3 m_maxCorner;
+    Vector3 m_maxCorner;
 
   };
 }

@@ -22,236 +22,236 @@ namespace nauEngineSDK {
    * Method implementation
    */
 
-  nauVector2::nauVector2(float nx, float ny) : x(nx), y(ny) {}
+  Vector2::Vector2(float nx, float ny) : x(nx), y(ny) {}
 
-  inline nauVector2::nauVector2(const nauVector3& v): x(v.x),y(v.y) {}
+  inline Vector2::Vector2(const Vector3& v): x(v.x),y(v.y) {}
   
   float&
-  nauVector2::operator[](uint32 index) {
+  Vector2::operator[](uint32 index) {
     return (&x)[index];
   }
 
   float
-  nauVector2::operator[](uint32 index) const {
+  Vector2::operator[](uint32 index) const {
     return (&x)[index];
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator+(const nauVector2& v) const {
-    return nauVector2(x + v.x, y + v.y);
+  FORCEINLINE Vector2
+  Vector2::operator+(const Vector2& v) const {
+    return Vector2(x + v.x, y + v.y);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator-(const nauVector2& v) const {
-    return nauVector2(x - v.x, y - v.y);
+  FORCEINLINE Vector2
+  Vector2::operator-(const Vector2& v) const {
+    return Vector2(x - v.x, y - v.y);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator*(const nauVector2& v) const {
-    return nauVector2(x * v.x, y * v.y);
+  FORCEINLINE Vector2
+  Vector2::operator*(const Vector2& v) const {
+    return Vector2(x * v.x, y * v.y);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator/(const nauVector2& v) const {
-    return nauVector2(x / v.x, y / v.y);
+  FORCEINLINE Vector2
+  Vector2::operator/(const Vector2& v) const {
+    return Vector2(x / v.x, y / v.y);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator+(float plus) const {
-    return nauVector2(x + plus, y + plus);
+  FORCEINLINE Vector2
+  Vector2::operator+(float plus) const {
+    return Vector2(x + plus, y + plus);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator-(float minus) const {
-    return nauVector2(x - minus, y - minus);
+  FORCEINLINE Vector2
+  Vector2::operator-(float minus) const {
+    return Vector2(x - minus, y - minus);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator*(float times) const {
-    return nauVector2(x * times, y * times);
+  FORCEINLINE Vector2
+  Vector2::operator*(float times) const {
+    return Vector2(x * times, y * times);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::operator/(float under) const {
-    return nauVector2(x / under, y / under);
+  FORCEINLINE Vector2
+  Vector2::operator/(float under) const {
+    return Vector2(x / under, y / under);
   }
 
   FORCEINLINE float
-  nauVector2::operator|(const nauVector2 v) const {
+  Vector2::operator|(const Vector2 v) const {
     return x * v.x + y * v.y;
   }
 
   FORCEINLINE float
-  nauVector2::operator^(const nauVector2 v) const {
+  Vector2::operator^(const Vector2 v) const {
     return x * v.x - y * v.y;
   }
 
   bool
-  nauVector2::operator==(const nauVector2& v) const {
+  Vector2::operator==(const Vector2& v) const {
     return x == v.x && y == v.y;
   }
 
   bool
-  nauVector2::operator!=(const nauVector2& v) const {
+  Vector2::operator!=(const Vector2& v) const {
     return x != v.x || y != v.y;
   }
 
   bool
-  nauVector2::operator<(const nauVector2& v) const {
+  Vector2::operator<(const Vector2& v) const {
     return x < v.x && y < v.y;
   }
 
   bool
-  nauVector2::operator>(const nauVector2& v) const {
+  Vector2::operator>(const Vector2& v) const {
     return x > v.x && y > v.y;
   }
 
   bool
-  nauVector2::operator<=(const nauVector2& v) const {
+  Vector2::operator<=(const Vector2& v) const {
     return x <= v.x && y <= v.y;
   }
 
   bool
-  nauVector2::operator>=(const nauVector2& v) const {
+  Vector2::operator>=(const Vector2& v) const {
     return x >= v.x && y >= v.y;
   }
 
-  nauVector2
-  nauVector2::operator-() const {
-    return nauVector2(-x, -y);
+  Vector2
+  Vector2::operator-() const {
+    return Vector2(-x, -y);
   }
 
-  nauVector2&
-  nauVector2::operator+=(const nauVector2& v) {
+  Vector2&
+  Vector2::operator+=(const Vector2& v) {
     x += v.x;
     y += v.y;
     return *this;
   }
 
-  nauVector2&
-  nauVector2::operator-=(const nauVector2& v) {
+  Vector2&
+  Vector2::operator-=(const Vector2& v) {
     x -= v.x;
     y -= v.y;
     return *this;
   }
 
-  nauVector2&
-  nauVector2::operator*=(const nauVector2& v) {
+  Vector2&
+  Vector2::operator*=(const Vector2& v) {
     x *= v.x;
     y *= v.y;
     return *this;
   }
 
-  nauVector2&
-  nauVector2::operator/=(const nauVector2& v) {
+  Vector2&
+  Vector2::operator/=(const Vector2& v) {
     x /= v.x;
     y /= v.y;
     return *this;
   }
 
-  nauVector2&
-  nauVector2::operator*=(float scale) {
+  Vector2&
+  Vector2::operator*=(float scale) {
     x *= scale;
     y *= scale;
     return *this;
   }
 
-  nauVector2&
-  nauVector2::operator/=(float scale) {
+  Vector2&
+  Vector2::operator/=(float scale) {
     x /= scale;
     y /= scale;
     return *this;
   }
 
   FORCEINLINE float
-  nauVector2::dot(const nauVector2& a, const nauVector2& b) {
+  Vector2::dot(const Vector2& a, const Vector2& b) {
     return a | b;
   }
 
   FORCEINLINE float
-  nauVector2::cross(const nauVector2& a, const nauVector2& b) {
+  Vector2::cross(const Vector2& a, const Vector2& b) {
     return a ^ b;
   }
 
   FORCEINLINE float
-  nauVector2::dotScale(const nauVector2& a, const nauVector2& b) {
+  Vector2::dotScale(const Vector2& a, const Vector2& b) {
     return (a | b) / a.magnitude();
   }
 
   FORCEINLINE float
-  nauVector2::sqrDistance(const nauVector2& a, const nauVector2& b) {
+  Vector2::sqrDistance(const Vector2& a, const Vector2& b) {
     return nauMath::pow(a.x - b.x, 2.0f) + nauMath::pow(a.y - b.y, 2.0f);
   }
 
   FORCEINLINE float
-  nauVector2::distance(const nauVector2& a, const nauVector2& b) {
+  Vector2::distance(const Vector2& a, const Vector2& b) {
     return nauMath::sqrt(nauMath::sqr(a.x + b.x) + nauMath::sqr(a.y + b.y));
   }
 
   void
-  nauVector2::setValues(float newX, float newY) {
+  Vector2::setValues(float newX, float newY) {
     x = newX;
     y = newY;
   }
 
   void
-  nauVector2::min(const nauVector2& v) {
+  Vector2::min(const Vector2& v) {
     if (v.x < x) x = v.x;
     if (v.y < y) y = v.y;
   }
 
   void
-  nauVector2::max(const nauVector2& v) {
+  Vector2::max(const Vector2& v) {
     if (v.x > x) x = v.x;
     if (v.y > y) y = v.y;
   }
 
   void
-  nauVector2::floor() {
+  Vector2::floor() {
     x = nauMath::floor(x);
     y = nauMath::floor(y);
   }
 
   void
-  nauVector2::ceiling() {
+  Vector2::ceiling() {
     x = nauMath::ceil(x);
     y = nauMath::ceil(y);
   }
 
   void
-  nauVector2::round() {
+  Vector2::round() {
     x = nauMath::round(x);
     y = nauMath::round(y);
   }
 
   void
-  nauVector2::roundHalf() {
+  Vector2::roundHalf() {
    x = nauMath::roundHalf(x);
    y = nauMath::roundHalf(y);
   }
 
   float
-  nauVector2::getHighest() const {
+  Vector2::getHighest() const {
     return nauMath::max(x, y);
   }
 
   float
-  nauVector2::getLowest() const {
+  Vector2::getLowest() const {
     return nauMath::min(x, y);
   }
 
   float
-  nauVector2::magnitude() const {
+  Vector2::magnitude() const {
     return nauMath::sqrt(x * x + y * y);
   }
 
   float
-  nauVector2::sqrMagnitude() const {
+  Vector2::sqrMagnitude() const {
     return (x * x + y * y);
   }
 
-  FORCEINLINE nauVector2
-  nauVector2::normalized() {
+  FORCEINLINE Vector2
+  Vector2::normalized() {
     NAU_ASSERT(!std::isnan(x) && 
                !std::isnan(y) && 
                !std::isinf(x) && 
@@ -266,26 +266,26 @@ namespace nauEngineSDK {
     NAU_DEBUG_ONLY(sqrMagnitude());
 
     float unit = nauMath::invSqrt(sqr);
-    return nauVector2((x * unit), (y * unit));
+    return Vector2((x * unit), (y * unit));
   }
   
   void
-  nauVector2::normalize() const {
+  Vector2::normalize() const {
   
   }
 
   bool
-  nauVector2::isZero() const {
+  Vector2::isZero() const {
     return 0.0f == x && 0.0f == y;
   }
 
-  const nauVector2 nauVector2::ZERO = nauVector2(0.0f, 0.0f);
+  const Vector2 Vector2::ZERO = Vector2(0.0f, 0.0f);
   
-  const nauVector2 nauVector2::ONES = nauVector2(1.0f, 1.0f);
+  const Vector2 Vector2::ONES = Vector2(1.0f, 1.0f);
   
-  const nauVector2 nauVector2::ONEX = nauVector2(1.0f, 0.0f);
+  const Vector2 Vector2::ONEX = Vector2(1.0f, 0.0f);
 
-  const nauVector2 nauVector2::ONEY = nauVector2(0.0f, 1.0f);
+  const Vector2 Vector2::ONEY = Vector2(0.0f, 1.0f);
   
 
 }

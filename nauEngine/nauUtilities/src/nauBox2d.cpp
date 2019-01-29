@@ -16,13 +16,13 @@ namespace nauEngineSDK {
    * Member definition
    */
 
-  nauBox2d::nauBox2d(const nauVector2& min, const nauVector2& max)
+  nauBox2d::nauBox2d(const Vector2& min, const Vector2& max)
     : m_min (min),
       m_max (max) {}
   
-  nauBox2d::nauBox2d(const nauVector2& origin, float height, float width)
+  nauBox2d::nauBox2d(const Vector2& origin, float height, float width)
     : m_min (origin),
-      m_max (nauVector2(origin.x+width,origin.y+height)){}
+      m_max (Vector2(origin.x+width,origin.y+height)){}
 
   bool
   nauBox2d::collidingBox2d(const nauBox2d& other) {
@@ -30,7 +30,7 @@ namespace nauEngineSDK {
   } 
 
   bool
-  nauBox2d::insideBox2d(const nauVector2& other) {
+  nauBox2d::insideBox2d(const Vector2& other) {
     return
       (other.x > m_min.x) && (other.x < m_max.x) &&
       (other.y > m_min.y) && (other.y < m_max.y);

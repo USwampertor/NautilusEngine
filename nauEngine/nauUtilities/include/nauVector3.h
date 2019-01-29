@@ -28,7 +28,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	Vetor3 position = 0,0,0;
   */
-  class NAU_UTILITY_EXPORT nauVector3 
+  class NAU_UTILITY_EXPORT Vector3 
   {
    public:
     /**
@@ -38,12 +38,12 @@ namespace nauEngineSDK {
     /**
      * @brief the simple default constructor
      */
-    nauVector3() = default;
+    Vector3() = default;
 
     /**
      * @brief Constructor 0.0f
      */
-    nauVector3(float nx, float ny, float nz);
+    Vector3(float nx, float ny, float nz);
 
     /**
      * @brief [] operator overload
@@ -69,8 +69,8 @@ namespace nauEngineSDK {
      * @return a vector sum of *this and v
      *
      */
-    FORCEINLINE nauVector3
-    operator+(const nauVector3& v) const;
+    FORCEINLINE Vector3
+    operator+(const Vector3& v) const;
 
     /**
      * @brief - operator overload
@@ -78,8 +78,8 @@ namespace nauEngineSDK {
      * @return a vector difference of *this and v
      *
      */
-    FORCEINLINE nauVector3
-    operator-(const nauVector3& v) const;
+    FORCEINLINE Vector3
+    operator-(const Vector3& v) const;
 
     /**
      * @brief * operator overload
@@ -87,8 +87,8 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times v
      *
      */
-    FORCEINLINE nauVector3
-    operator*(const nauVector3& v) const;
+    FORCEINLINE Vector3
+    operator*(const Vector3& v) const;
 
     /**
      * @brief / operator overload
@@ -96,8 +96,8 @@ namespace nauEngineSDK {
      * @return a vector division of *this divided by v
      *
      */
-    FORCEINLINE nauVector3
-    operator/(const nauVector3& v) const;
+    FORCEINLINE Vector3
+    operator/(const Vector3& v) const;
 
     /**
      * @brief + operator overload
@@ -105,7 +105,7 @@ namespace nauEngineSDK {
      * @return a vector sum of *this + plus
      *
      */
-    FORCEINLINE nauVector3
+    FORCEINLINE Vector3
     operator+(float plus) const;
 
     /**
@@ -114,7 +114,7 @@ namespace nauEngineSDK {
      * @return a vector difference of *this - minus
      *
      */
-    FORCEINLINE nauVector3
+    FORCEINLINE Vector3
     operator-(float minus) const;
 
     /**
@@ -123,7 +123,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times times
      *
      */
-    FORCEINLINE nauVector3
+    FORCEINLINE Vector3
     operator*(float times) const;
 
     /**
@@ -132,7 +132,7 @@ namespace nauEngineSDK {
      * @return a vector divided of *this divided by times
      *
      */
-    FORCEINLINE nauVector3
+    FORCEINLINE Vector3
     operator/(float under) const;
 
     /**
@@ -142,7 +142,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE float
-    operator|(const nauVector3 v) const;
+    operator|(const Vector3 v) const;
 
     /**
      * @brief ^ operator overload for cross product
@@ -151,7 +151,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE float
-    operator^(const nauVector3 v) const;
+    operator^(const Vector3 v) const;
 
     /**
      * @brief == operator overload
@@ -160,7 +160,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator==(const nauVector3& v) const;
+    operator==(const Vector3& v) const;
 
     /**
      * @brief != operator overload
@@ -169,7 +169,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator!=(const nauVector3& v) const;
+    operator!=(const Vector3& v) const;
 
     /**
      * @brief < operator overload
@@ -178,7 +178,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator<(const nauVector3& v) const;
+    operator<(const Vector3& v) const;
 
     /**
      * @brief > operator overload
@@ -187,7 +187,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator>(const nauVector3& v) const;
+    operator>(const Vector3& v) const;
 
     /**
      * @brief <= operator overload
@@ -196,7 +196,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator<=(const nauVector3& v) const;
+    operator<=(const Vector3& v) const;
 
     /**
      * @brief >= operator overload
@@ -205,7 +205,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    operator>=(const nauVector3& v) const;
+    operator>=(const Vector3& v) const;
 
     /**
      * @brief - operator overload
@@ -213,7 +213,7 @@ namespace nauEngineSDK {
      * @return the negative of the vector
      *
      */
-    nauVector3
+    Vector3
     operator-() const;
 
     /**
@@ -222,8 +222,8 @@ namespace nauEngineSDK {
      * @return *this + v components
      *
      */
-    nauVector3&
-    operator+=(const nauVector3& v);
+    Vector3&
+    operator+=(const Vector3& v);
 
     /**
      * @brief -= operator overload
@@ -231,8 +231,8 @@ namespace nauEngineSDK {
      * @return *this - v components
      *
      */
-    nauVector3&
-    operator-=(const nauVector3& v);
+    Vector3&
+    operator-=(const Vector3& v);
 
     /**
      * @brief *= operator overload
@@ -240,8 +240,8 @@ namespace nauEngineSDK {
      * @return *this * v components
      *
      */
-    nauVector3&
-    operator*=(const nauVector3& v);
+    Vector3&
+    operator*=(const Vector3& v);
 
     /**
      * @brief /= operator overload
@@ -249,8 +249,8 @@ namespace nauEngineSDK {
      * @return *this / v components
      *
      */
-    nauVector3&
-    operator/=(const nauVector3& v);
+    Vector3&
+    operator/=(const Vector3& v);
 
     /**
      * @brief *= operator overload
@@ -258,7 +258,7 @@ namespace nauEngineSDK {
      * @return *this * float
      *
      */
-    nauVector3&
+    Vector3&
     operator*=(float scale);
 
     /**
@@ -267,7 +267,7 @@ namespace nauEngineSDK {
      * @return *this / float
      *
      */
-    nauVector3&
+    Vector3&
     operator/=(float scale);
 
     /**
@@ -277,7 +277,7 @@ namespace nauEngineSDK {
      *
      */
     static FORCEINLINE float
-    dot(const nauVector3& a, const nauVector3& b);
+    dot(const Vector3& a, const Vector3& b);
 
     /**
      * @brief the cross product
@@ -286,7 +286,7 @@ namespace nauEngineSDK {
      *
      */
     static FORCEINLINE float
-    cross(const nauVector3& a, const nauVector3& b);
+    cross(const Vector3& a, const Vector3& b);
 
     /**
      * @brief the scale of b over a
@@ -295,7 +295,7 @@ namespace nauEngineSDK {
      *
      */
     static FORCEINLINE float
-    dotScale(const nauVector3& a, const nauVector3& b);
+    dotScale(const Vector3& a, const Vector3& b);
 
     /**
      * @brief the square distance
@@ -304,7 +304,7 @@ namespace nauEngineSDK {
      *
      */
     static float
-    sqrDistance(const nauVector3& a, const nauVector3& b);
+    sqrDistance(const Vector3& a, const Vector3& b);
 
     /**
      * @brief the distance between two points in 2d space
@@ -313,7 +313,7 @@ namespace nauEngineSDK {
      *
      */
     static FORCEINLINE float
-    distance(const nauVector3& a, const nauVector3& b);
+    distance(const Vector3& a, const Vector3& b);
 
     /**
      * @brief sets the value of a nauVector3
@@ -331,7 +331,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    min(const nauVector3& v);
+    min(const Vector3& v);
 
     /**
      * @brief gets the max between two vectors
@@ -340,7 +340,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    max(const nauVector3& v);
+    max(const Vector3& v);
 
     /**
      * @brief floors the components
@@ -420,7 +420,7 @@ namespace nauEngineSDK {
      * @return the normalized vector
      *
      */
-    FORCEINLINE nauVector3
+    FORCEINLINE Vector3
     normalized();
 
     /**
@@ -450,27 +450,27 @@ namespace nauEngineSDK {
     /**
      * nauVector3 that has all values 0
      */
-    static const nauVector3 ZERO;
+    static const Vector3 ZERO;
 
     /**
      * nauVector3 that has all values 1
      */
-    static const nauVector3 ONES;
+    static const Vector3 ONES;
 
     /**
      * nauVector3 that has x value 1
      */
-    static const nauVector3 ONEX;
+    static const Vector3 ONEX;
 
     /**
      * nauVector3 that has y value 1
      */
-    static const nauVector3 ONEY;
+    static const Vector3 ONEY;
 
     /**
      * nauVector3 that has x value 1
      */
-    static const nauVector3 ONEZ;
+    static const Vector3 ONEZ;
 
     /**
      * Member declaration

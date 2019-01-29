@@ -34,7 +34,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauSphere(const nauVector3& position, float size);
+    nauSphere(const Vector3& position, float size);
 
     /**
      * @brief Checks if Two spheres are equal with a difference of x
@@ -72,6 +72,6 @@ namespace nauEngineSDK {
     /**
      * position of Sphere
      */
-    nauVector3 m_center;
+    Vector3 m_center;
   };
 }
