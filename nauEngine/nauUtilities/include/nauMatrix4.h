@@ -14,6 +14,7 @@
 #include "nauVector2.h"
 #include "nauVector3.h"
 #include "nauVector4.h"
+#include "nauMatrix3.h"
 
 namespace nauEngineSDK{
   /**
