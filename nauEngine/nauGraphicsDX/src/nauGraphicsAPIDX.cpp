@@ -36,8 +36,12 @@ namespace nauEngineSDK {
       return false;
     }
     
-    if (!m_viewPort.createViewPort(m_device.m_width, m_device.m_height, 1.0f, 1.0f)) {
-
+    if (!m_viewPort.createViewPort(static_cast<float>(m_device.m_width), 
+                                   static_cast<float>(m_device.m_height), 
+                                   1.0f, 
+                                   1.0f)) {
+      std::cout << "Could not create ViewPort \n";
+      exit(828);
     }
     m_viewPort.setViewPort(m_device.m_pImmediateContext);
     

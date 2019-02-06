@@ -62,7 +62,7 @@ namespace nauEngineSDK {
 
   nauMesh*
   nauModelDX::processMesh(aiMesh* mesh, const aiScene* scene) {
-    nauMeshDX* m;
+    nauMeshDX* m =  new nauMeshDX();
 
     for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
       nauVertex pvertex;

@@ -477,6 +477,16 @@ namespace nauEngineSDK {
     static const Vector2 ONEY;
 
     /**
+     * vauVector2 with y value 1, its literally where is our up in our world
+     */
+    static const Vector2 UP;
+
+    /**
+     * vauVector2 with X value 1, its literally where is our Right in our world
+     */
+    static const Vector2 RIGHT;
+
+    /**
      * Member declaration
      */
 

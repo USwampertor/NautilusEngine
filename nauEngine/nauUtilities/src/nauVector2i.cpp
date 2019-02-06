@@ -252,4 +252,9 @@ namespace nauEngineSDK {
 
   const Vector2i Vector2i::ONEY = Vector2i(0, 1);
 
+  const Vector2i Vector2i::UP = Vector2i(0, 1);
+  
+  const Vector2i Vector2i::RIGHT = Vector2i(1, 0);
+
+
 }

@@ -31,14 +31,14 @@ namespace nauEngineSDK{
   * Sample usage:
   * 	Transformation Matrices can be used with this
   */
-  class nauMatrix4
+  class Matrix4
   {
    public:
 
     /**
      * Default constructor
      */
-    nauMatrix4() {}
+    Matrix4() {}
 
     /**
      * @brief Constructor with value parameter
@@ -46,7 +46,7 @@ namespace nauEngineSDK{
      * @return 
      * 
      */
-    nauMatrix4(int32 value);
+    Matrix4(int32 value);
 
     /**
      * @brief Constructor that copies the info of another matrix
@@ -54,7 +54,7 @@ namespace nauEngineSDK{
      * @return 
      * 
      */
-    nauMatrix4(const nauMatrix4& other);
+    Matrix4(const Matrix4& other);
 
     /**
      * @brief transforms the matrix into the IDENTITY matrix
@@ -93,22 +93,122 @@ namespace nauEngineSDK{
     setValues(float value);
 
     /**
+     * @brief Translates matrix with floats
+     * @param x offset, y offset, z offset
+     * @return 
+     *
+     */
+    void
+    translate(const float& x, const float& y, const float& z);
+
+    /**
+     * @brief Translates matrix with floats
+     * @param x offset, y offset, z offset
+     * @return
+     *
+     */
+    void
+    translate(const Vector3& other);
+
+
+    /**
+     * @brief Scales the object
+     * @param x scale y scale z scale
+     * @return 
+     *
+     */
+    void
+    scale(const float& x, const float &y, const float &z);
+
+    /**
+     * @brief rotates the object over X by rads
+     * @param rads to rotate
+     * @return 
+     *
+     */
+    void
+    rotateX(const float& rads);
+
+    /**
+     * @brief rotates the object over Y by rads
+     * @param rads to rotate
+     * @return 
+     *
+     */
+    void
+    rotateY(const float& rads);
+
+    /**
+     * @brief rotates the object over z by rads
+     * @param rads to rotate
+     * @return 
+     *
+     */
+    void
+    rotateZ(const float& rads);
+
+    /**
+     * @brief rotates over an axis over rads
+     * @param 
+     * @return 
+     *
+     */
+    void
+    rotateAxis(const Vector3& axis, const float& rads);
+
+    /**
+     * @brief for view matrix 
+     * @param position of camera, objective to look, up axis
+     * @return 
+     *
+     */
+    void
+    viewLookAt(const Vector3& camPos, const Vector3& lookAt, const Vector3& upAxis);
+
+    /**
+     * @brief creates an ortographic view
+     * @param width of camera, height of camera, distance between near and far
+     * @return 
+     *
+     */
+    void
+    ortographic(const float& width, const float& height, const float& depth);
+
+    /**
+     * @brief gets the inverse of the matrix (if possible)
+     * @param 
+     * @return 
+     *
+     */
+    void
+    inverse();
+
+    /**
+     * @brief gets the determinant of the matrix
+     * @param 
+     * @return the determinant
+     *
+     */
+    float
+    determinant();
+
+    /**
      * @brief + operator overload
      * @param b the other matrix to add
      * @return the sum of *this and b
      * 
      */
-    FORCEINLINE nauMatrix4
-    operator+(const nauMatrix4& b);
+    FORCEINLINE Matrix4
+    operator+(const Matrix4& b);
     
     /**
      * @brief - operator overload
-     * @param b the other matrix to substract
+     * @param b the other matrix to subtract
      * @return the difference of *this and b
      *
      */
-    FORCEINLINE nauMatrix4
-    operator-(const nauMatrix4& b);
+    FORCEINLINE Matrix4
+    operator-(const Matrix4& b);
     
     /**
      * @brief * operator overload
@@ -116,8 +216,8 @@ namespace nauEngineSDK{
      * @return the multiplication of *this and b
      *
      */
-    FORCEINLINE nauMatrix4
-    operator*(const nauMatrix4& b);
+    FORCEINLINE Matrix4
+    operator*(const Matrix4& b);
     
     /**
      * @brief += operator overload
@@ -125,17 +225,17 @@ namespace nauEngineSDK{
      * @return *this summed b
      *
      */
-    nauMatrix4&
-    operator+=(const nauMatrix4& b);
+    Matrix4&
+    operator+=(const Matrix4& b);
     
     /**
      * @brief -= operator overload
-     * @param b the other matrix to substract
+     * @param b the other matrix to subtract
      * @return *this minus b
      *
      */
-    nauMatrix4&
-    operator-=(const nauMatrix4& b);
+    Matrix4&
+    operator-=(const Matrix4& b);
     
     /**
      * @brief *= operator overload
@@ -143,8 +243,8 @@ namespace nauEngineSDK{
      * @return *this summed b
      *
      */
-    nauMatrix4&
-    operator*=(const nauMatrix4& b);
+    Matrix4&
+    operator*=(const Matrix4& b);
 
     /**
      * @brief += operator overload
@@ -152,7 +252,7 @@ namespace nauEngineSDK{
      * @return naumatrix equal to *this summed value
      *
      */
-    nauMatrix4&
+    Matrix4&
     operator+=(const float& value);
 
     /**
@@ -161,7 +261,7 @@ namespace nauEngineSDK{
      * @return naumatrix equal to *this minus value
      *
      */
-    nauMatrix4&
+    Matrix4&
     operator-=(const float& value);
 
     /**
@@ -170,7 +270,7 @@ namespace nauEngineSDK{
      * @return naumatrix equal to *this times value
      *
      */
-    nauMatrix4&
+    Matrix4&
     operator*=(const float& value);
 
     /**
@@ -179,7 +279,7 @@ namespace nauEngineSDK{
      * @return naumatrix equal to *this folded value
      *
      */
-    nauMatrix4&
+    Matrix4&
     operator/=(const float& value);
     
     /**
@@ -188,8 +288,8 @@ namespace nauEngineSDK{
      * @return true if *this is equal to b
      *
      */
-    nauMatrix4
-    operator==(const nauMatrix4& b);
+    Matrix4
+    operator==(const Matrix4& b);
    
 
     /**
@@ -202,28 +302,28 @@ namespace nauEngineSDK{
      */
     union {
        /**
-        * Matrix struct made by 4x4 array row major
+        * Matrix struct made by 4x4 array column major
         */
        struct {
-         float m00, m01, m02, m03;
-         float m10, m11, m12, m13;
-         float m20, m21, m22, m23;
-         float m30, m31, m32, m33;
+         float m00, m10, m20, m30;
+         float m01, m11, m21, m31;
+         float m02, m12, m22, m32;
+         float m03, m13, m23, m33;
        }_m;
        float m[4][4];
-       nauVector4 vec[4];
+       Vector4 vec[4];
        float fVec[16];
     };
 
     /**
      * ZERO filled Matrix
      */
-    static const nauMatrix4 ZERO;
+    static const Matrix4 ZERO;
 
     /**
      * IDENTITY matrix
      */
-    static const nauMatrix4 IDENTITY;
+    static const Matrix4 IDENTITY;
 
   };
 }

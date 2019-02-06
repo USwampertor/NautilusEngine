@@ -29,17 +29,17 @@ namespace nauEngineSDK {
     /**
      * position of the vertex
      */
-    nauVector4 m_position;
+    Vector4 m_position;
     
     /**
      * color of the vertex
      */
-    nauVector4 m_color;
+    Vector4 m_color;
 
     /**
      * normals of the vertex
      */
-    nauVector4 m_normal;
+    Vector4 m_normal;
 
     /**
      * U (UV's) component of the vertex

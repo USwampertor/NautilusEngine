@@ -20,103 +20,103 @@ namespace nauEngineSDK {
    * Overloaded operator declarations
    */
   float&
-  nauVector4::operator[](uint32 index) {
+  Vector4::operator[](uint32 index) {
     return (&x)[index];
 
   }
 
   float
-  nauVector4::operator[](uint32 index) const {
+  Vector4::operator[](uint32 index) const {
     return (&x)[index];
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator+(const nauVector4& v) const {
-    return nauVector4(x + v.x, y + v.y, z + v.z, w + v.w);
+  FORCEINLINE Vector4
+  Vector4::operator+(const Vector4& v) const {
+    return Vector4(x + v.x, y + v.y, z + v.z, w + v.w);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator-(const nauVector4& v) const {
-    return nauVector4(x - v.x, y - v.y, z - v.z, w - v.w);
+  FORCEINLINE Vector4
+  Vector4::operator-(const Vector4& v) const {
+    return Vector4(x - v.x, y - v.y, z - v.z, w - v.w);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator*(const nauVector4& v) const {
-    return nauVector4(x * v.x, y * v.y, z * v.z, w * v.w);
+  FORCEINLINE Vector4
+  Vector4::operator*(const Vector4& v) const {
+    return Vector4(x * v.x, y * v.y, z * v.z, w * v.w);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator/(const nauVector4& v) const {
-    return nauVector4(x / v.x, y / v.y, z / v.z, w / v.z);
+  FORCEINLINE Vector4
+  Vector4::operator/(const Vector4& v) const {
+    return Vector4(x / v.x, y / v.y, z / v.z, w / v.z);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator+(float plus) const {
-    return nauVector4(x + plus, y + plus, z + plus, w + plus);
+  FORCEINLINE Vector4
+  Vector4::operator+(float plus) const {
+    return Vector4(x + plus, y + plus, z + plus, w + plus);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator-(float minus) const {
-    return nauVector4(x - minus, y - minus, y - minus, w - minus);
+  FORCEINLINE Vector4
+  Vector4::operator-(float minus) const {
+    return Vector4(x - minus, y - minus, y - minus, w - minus);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator*(float times) const {
-    return nauVector4(x * times, y * times, z * times, w * times);
+  FORCEINLINE Vector4
+  Vector4::operator*(float times) const {
+    return Vector4(x * times, y * times, z * times, w * times);
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator/(float under) const {
-    return nauVector4(x / under, y / under, z / under, w / under);
+  FORCEINLINE Vector4
+  Vector4::operator/(float under) const {
+    return Vector4(x / under, y / under, z / under, w / under);
   }
 
   FORCEINLINE float
-  nauVector4::operator|(const nauVector4 v) const {
+  Vector4::operator|(const Vector4 v) const {
     return x * v.x + y * v.y + z * v.z + w * v.w;
   }
 
   FORCEINLINE float
-  nauVector4::operator^(const nauVector4 v) const {
+  Vector4::operator^(const Vector4 v) const {
     return x * v.x - y * v.y - z * v.z - w * v.w;
   }
 
   bool
-  nauVector4::operator==(const nauVector4& v) const {
+  Vector4::operator==(const Vector4& v) const {
     return x == v.x && y == v.y && z == v.z && w == v.w;
   }
 
   bool
-  nauVector4::operator!=(const nauVector4& v) const {
+  Vector4::operator!=(const Vector4& v) const {
     return x != v.x || y != v.y || z == v.z || w == v.w;
   }
 
   bool
-  nauVector4::operator<(const nauVector4& v) const {
+  Vector4::operator<(const Vector4& v) const {
     return x < v.x && y < v.y && z < v.z && w < v.w;
   }
 
   bool
-  nauVector4::operator>(const nauVector4& v) const {
+  Vector4::operator>(const Vector4& v) const {
     return x > v.x && y > v.y && z > v.z && w > v.w;
   }
 
   bool
-  nauVector4::operator<=(const nauVector4& v) const {
+  Vector4::operator<=(const Vector4& v) const {
     return x <= v.x && y <= v.y && z <= v.z && w <= v.w;
   }
 
   bool
-  nauVector4::operator>=(const nauVector4& v) const {
+  Vector4::operator>=(const Vector4& v) const {
     return x >= v.x && y >= v.y && z >= v.z && w >= v.w;
   }
 
-  FORCEINLINE nauVector4
-  nauVector4::operator-() const {
-    return nauVector4(-x, -y, -z, -w);
+  FORCEINLINE Vector4
+  Vector4::operator-() const {
+    return Vector4(-x, -y, -z, -w);
   }
 
-  nauVector4&
-  nauVector4::operator+=(const nauVector4& v) {
+  Vector4&
+  Vector4::operator+=(const Vector4& v) {
     x += v.x;
     y += v.y;
     z += v.z;
@@ -124,8 +124,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  nauVector4&
-  nauVector4::operator-=(const nauVector4& v) {
+  Vector4&
+  Vector4::operator-=(const Vector4& v) {
     x -= v.x;
     y -= v.y;
     z -= v.z;
@@ -133,8 +133,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  nauVector4&
-  nauVector4::operator*=(const nauVector4& v) {
+  Vector4&
+  Vector4::operator*=(const Vector4& v) {
     x *= v.x;
     y *= v.y;
     z *= v.z;
@@ -142,8 +142,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  nauVector4&
-  nauVector4::operator/=(const nauVector4& v) {
+  Vector4&
+  Vector4::operator/=(const Vector4& v) {
     x /= v.x;
     y /= v.y;
     z /= v.z;
@@ -151,8 +151,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  nauVector4&
-  nauVector4::operator*=(float scale) {
+  Vector4&
+  Vector4::operator*=(float scale) {
     x *= scale;
     y *= scale;
     z *= scale;
@@ -160,8 +160,8 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  nauVector4&
-  nauVector4::operator/=(float scale) {
+  Vector4&
+  Vector4::operator/=(float scale) {
     x /= scale;
     y /= scale;
     z /= scale;
@@ -170,27 +170,27 @@ namespace nauEngineSDK {
   }
 
   FORCEINLINE float
-  nauVector4::dot3(const nauVector4& a, const nauVector4& b) {
+  Vector4::dot3(const Vector4& a, const Vector4& b) {
     return a.x * b.x + a.y * b.y + a.z * b.z;
   }
 
   FORCEINLINE float
-  nauVector4::cross(const nauVector4& a, const nauVector4& b) {
+  Vector4::cross(const Vector4& a, const Vector4& b) {
     return a ^ b;
   }
 
   FORCEINLINE float
-  nauVector4::dot4(const nauVector4& a, const nauVector4& b) {
+  Vector4::dot4(const Vector4& a, const Vector4& b) {
     return a | b;
   }
 
   FORCEINLINE float
-  nauVector4::dotScale(const nauVector4& a, const nauVector4& b) {
+  Vector4::dotScale(const Vector4& a, const Vector4& b) {
     return (a | b) / nauMath::sqr(a.magnitude());
   }
 
   FORCEINLINE float
-  nauVector4::sqrDistance(const nauVector4& a, const nauVector4& b) {
+  Vector4::sqrDistance(const Vector4& a, const Vector4& b) {
     return  nauMath::pow(a.x - b.x, 2.0f) +
             nauMath::pow(a.y - b.y, 2.0f) +
             nauMath::pow(a.z - b.z, 2.0f) +
@@ -199,7 +199,7 @@ namespace nauEngineSDK {
   }
 
   FORCEINLINE float
-  nauVector4::distance(const nauVector4& a, const nauVector4& b) {
+  Vector4::distance(const Vector4& a, const Vector4& b) {
     return nauMath::sqrt(nauMath::sqr(a.x - b.x) +
                          nauMath::sqr(a.y - b.y) +
                          nauMath::sqr(a.z - b.z) +
@@ -207,7 +207,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::setValues(float newX, float newY, float newZ, float newW) {
+  Vector4::setValues(float newX, float newY, float newZ, float newW) {
     x = newX;
     y = newY;
     z = newZ;
@@ -215,7 +215,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::min(const nauVector4& v) {
+  Vector4::min(const Vector4& v) {
     if (v.x < x) x = v.x;
     if (v.y < y) y = v.y;
     if (v.z < z) z = v.z;
@@ -223,7 +223,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::max(const nauVector4& v) {
+  Vector4::max(const Vector4& v) {
     if (v.x > x) x = v.x;
     if (v.y > y) y = v.y;
     if (v.z > z) z = v.z;
@@ -231,7 +231,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::floor() {
+  Vector4::floor() {
     x = nauMath::floor(x);
     y = nauMath::floor(y);
     z = nauMath::floor(z);
@@ -239,7 +239,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::ceiling() {
+  Vector4::ceiling() {
     x = nauMath::ceil(x);
     y = nauMath::ceil(y);
     z = nauMath::ceil(z);
@@ -247,7 +247,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::round() {
+  Vector4::round() {
     x = nauMath::round(x);
     y = nauMath::round(y);
     z = nauMath::round(z);
@@ -255,7 +255,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVector4::roundHalf() {
+  Vector4::roundHalf() {
     x = nauMath::roundHalf(x);
     y = nauMath::roundHalf(y);
     z = nauMath::roundHalf(z);
@@ -263,63 +263,63 @@ namespace nauEngineSDK {
   }
 
   float
-  nauVector4::getHighest() const {
+  Vector4::getHighest() const {
     return nauMath::max3(x, y, nauMath::max(z, w));
   }
 
   float
-  nauVector4::getLowest() const {
+  Vector4::getLowest() const {
     return nauMath::max3(x, y, nauMath::max(z, w));
   }
 
   float
-  nauVector4::magnitude() const {
+  Vector4::magnitude() const {
     return nauMath::sqrt(x * x + y * y + z * z + w * w);
   }
 
   float
-  nauVector4::sqrMagnitude() const {
+  Vector4::sqrMagnitude() const {
     return (x * x + y * y + z * z + w * w);
   }
 
   float
-  nauVector4::magnitude3() const {
+  Vector4::magnitude3() const {
     return nauMath::sqrt(x * x + y * y + z * z);
   }
 
   float
-  nauVector4::sqrMagnitude3() const {
+  Vector4::sqrMagnitude3() const {
     return (x * x + y * y + z * z);
   }
 
-  nauVector4
-  nauVector4::normalized3() {
+  Vector4
+  Vector4::normalized3() {
     //return nauVector4(0, 0, 0, 0);
     float unit = nauMath::invSqrt(x*x + y * y + z * z);
-    return nauVector4((x * unit),
+    return Vector4((x * unit),
                       (y * unit),
                       (z * unit),
                       w);
   }
 
   void
-  nauVector4::normalize3() const {
+  Vector4::normalize3() const {
   }
 
   bool
-  nauVector4::isZero() const {
+  Vector4::isZero() const {
     return 0.0f == x && 0.0f == y && 0.0f == z && w == 0.0f;
   }
 
-  const nauVector4 nauVector4::ZERO = nauVector4(0.0f, 0.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ZERO = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
 
-  const nauVector4 nauVector4::ONES = nauVector4(1.0f, 1.0f, 1.0f, 1.0f);
+  const Vector4 Vector4::ONES = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-  const nauVector4 nauVector4::ONEX = nauVector4(1.0f, 1.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ONEX = Vector4(1.0f, 1.0f, 0.0f, 0.0f);
 
-  const nauVector4 nauVector4::ONEY = nauVector4(0.0f, 1.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ONEY = Vector4(0.0f, 1.0f, 0.0f, 0.0f);
 
-  const nauVector4 nauVector4::ONEZ = nauVector4(0.0f, 0.0f, 1.0f, 0.0f);
+  const Vector4 Vector4::ONEZ = Vector4(0.0f, 0.0f, 1.0f, 0.0f);
 
-  const nauVector4 nauVector4::ONEW = nauVector4(0.0f, 0.0f, 0.0f, 1.0f);
+  const Vector4 Vector4::ONEW = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
 }

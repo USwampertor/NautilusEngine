@@ -10,6 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauMatrix4.h"
 
 namespace nauEngineSDK {
 
@@ -20,18 +21,18 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauCamera
+  class NAU_CORE_EXPORT Camera
   {
   public:
     /**
      * Default constructor
      */
-    nauCamera() = default;
+    Camera() = default;
   
     /**
      * Default destructor
      */
-    ~nauCamera() {};
+    ~Camera() {};
   };
   
 }
