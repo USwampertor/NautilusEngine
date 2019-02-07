@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauMatrix3.cpp" />
     <ClCompile Include="src\nauAABB.cpp" />
     <ClCompile Include="src\nauBox2d.cpp" />
     <ClCompile Include="src\nauDataStream.cpp" />
     <ClCompile Include="src\nauFrustrum.cpp" />
+    <ClCompile Include="src\nauMatrix3.cpp" />
     <ClCompile Include="src\nauMatrix4.cpp" />
     <ClCompile Include="src\nauOOBB.cpp" />
     <ClCompile Include="src\nauPlane.cpp" />
@@ -44,6 +44,7 @@
     <ClInclude Include="include\nauDataStream.h" />
     <ClInclude Include="include\nauFrustrum.h" />
     <ClInclude Include="include\nauMath.h" />
+    <ClInclude Include="include\nauMatrix3.h" />
     <ClInclude Include="include\nauMatrix4.h" />
     <ClInclude Include="include\nauModule.h" />
     <ClInclude Include="include\nauOOBB.h" />
@@ -64,7 +65,6 @@
     <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauVector4.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
-    <ClInclude Include="nauMatrix3.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

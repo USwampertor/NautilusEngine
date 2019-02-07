@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauCamera.h" />
+    <ClInclude Include="include\nauCameraManager.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />
@@ -40,12 +41,11 @@
     <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
-    <ClInclude Include="nauCameraManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauCameraManager.cpp" />
     <ClCompile Include="src\nauBaseApp.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
+    <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauDepthStencil.cpp" />
     <ClCompile Include="src\nauDepthStencilView.cpp" />
     <ClCompile Include="src\nauDevice.cpp" />

@@ -58,7 +58,7 @@
     <ClCompile Include="src\nauRandom.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="nauMatrix3.cpp">
+    <ClCompile Include="src\nauMatrix3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -138,7 +138,7 @@
     <ClInclude Include="include\nauModule.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="nauMatrix3.h">
+    <ClInclude Include="include\nauMatrix3.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>

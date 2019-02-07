@@ -18,12 +18,12 @@ namespace nauEngineSDK {
   /**
    * Enum for static specific matrices
    */
-  namespace FORCE_INIT {
-    enum E {
+  
+    enum MAT3 {
       ZERO,
       ONE
     };
-  }
+  
   
    /**
     * Matrix3

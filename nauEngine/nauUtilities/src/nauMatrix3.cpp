@@ -11,9 +11,9 @@
 
 namespace nauEngineSDK {
 
-  const Matrix3 Matrix3::ZERO = Matrix3(FORCE_INIT::ZERO);
+  const Matrix3 Matrix3::ZERO = Matrix3(0);
 
-  const Matrix3 Matrix3::IDENTITY = Matrix3(FORCE_INIT::ONE);
+  const Matrix3 Matrix3::IDENTITY = Matrix3(MAT3::ONE);
 
   Matrix3::Matrix3(const Matrix3& other) {
     _m = other._m;
@@ -22,7 +22,7 @@ namespace nauEngineSDK {
   Matrix3::Matrix3(int32 value) {
     memset(this, 0, sizeof(Matrix3));
 
-    if (FORCE_INIT::ZERO != value) {
+    if (MAT3::ZERO != value) {
       _m.m00 = _m.m11 = _m.m22 = 1.0f;
     }
   }
