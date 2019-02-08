@@ -42,7 +42,7 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual
-    ~nauGraphicsAPI() {};
+    ~nauGraphicsAPI() {}
 
     /**
      * @brief initializes the device of the API

@@ -122,7 +122,17 @@ namespace nauEngineSDK {
     float sin = nauMath::sin(rads);
     float min = (1 - nauMath::cos(rads));
     Matrix4 tmp = *this;
+    axis.normalize();
 
+    m[0][0] = cos + axis.x*axis.x*min;
+    m[1][0] = axis.x*axis.y*min - axis.z;
+    m[2][0] = axis.x*axis.z*min + axis.y*sin;
+    m[0][1] = axis.y*axis.x * min + axis.z * sin;
+    m[1][1] = cos + axis.y*axis.y;
+    m[2][1] = axis.y*axis.z*min - axis.x*sin;
+    m[0][2] = axis.z*axis.x*min - axis.y*sin;
+    m[1][2] = axis.z*axis.y*min + axis.x*sin;
+    m[2][2] = cos + axis.z*axis.z*min;
 
   }
 
