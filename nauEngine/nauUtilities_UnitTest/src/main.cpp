@@ -76,23 +76,23 @@ TEST_F(Testing, Basic_Types_Limits)
 
 TEST_F(Testing, Math_Constants)
 {
-  EXPECT_FLOAT_EQ(nauMath::PI, 3.141592f);
-  EXPECT_FLOAT_EQ(nauMath::DEGREE, 57.295779f);
-  EXPECT_NEAR(nauMath::RADIAN, 0.017453, 0.00001);
-  EXPECT_FLOAT_EQ(nauMath::EULER, 2.71828182f);
+  EXPECT_FLOAT_EQ(Math::PI, 3.141592f);
+  EXPECT_FLOAT_EQ(Math::DEGREE, 57.295779f);
+  EXPECT_NEAR(Math::RADIAN, 0.017453, 0.00001);
+  EXPECT_FLOAT_EQ(Math::EULER, 2.71828182f);
   fails += ::testing::Test::HasFailure();
 }
 
 TEST_F(Testing, Math_Arithmetics)
 {
-  EXPECT_EQ(nauMath::pow(3, 2), 9);
-  EXPECT_EQ(nauMath::cos(0), 1);
-  EXPECT_EQ(nauMath::sin(0), 0);
-  EXPECT_EQ(nauMath::floor(nauMath::PI), 3);
-  EXPECT_EQ(nauMath::ceil(nauMath::DEGREE), 58);
-  EXPECT_EQ(nauMath::roundHalf(4.6f), 4.5f);
-  EXPECT_EQ(nauMath::sqr(6), 36);
-  EXPECT_EQ(nauMath::sqrt(9), 3);
+  EXPECT_EQ(Math::pow(3, 2), 9);
+  EXPECT_EQ(Math::cos(0), 1);
+  EXPECT_EQ(Math::sin(0), 0);
+  EXPECT_EQ(Math::floor(Math::PI), 3);
+  EXPECT_EQ(Math::ceil(Math::DEGREE), 58);
+  EXPECT_EQ(Math::roundHalf(4.6f), 4.5f);
+  EXPECT_EQ(Math::sqr(6), 36);
+  EXPECT_EQ(Math::sqrt(9), 3);
   fails += ::testing::Test::HasFailure();
 }
 #else

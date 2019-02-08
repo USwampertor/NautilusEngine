@@ -20,13 +20,13 @@ namespace nauEngineSDK {
   * Sample usage:
   *   Sphere(4, nauVector3(0,0,0)) generates a sphere with radius 4 at 0,0,0
   */
-  class NAU_UTILITY_EXPORT nauSphere {
+  class NAU_UTILITY_EXPORT Sphere {
    public:
 
     /**
      * Default Constructor
      */
-    nauSphere() = default;
+    Sphere() = default;
 
     /**
      * @brief Constructor with parameters position and float
@@ -34,7 +34,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauSphere(const Vector3& position, float size);
+    Sphere(const Vector3& position, float size);
 
     /**
      * @brief Checks if Two spheres are equal with a difference of x
@@ -43,7 +43,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    isEqual(const nauSphere& sphere, float threshold) const;
+    isEqual(const Sphere& sphere, float threshold) const;
     
     /**
      * Collisions
@@ -56,7 +56,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collidingSphere(const nauSphere& other);
+    collidingSphere(const Sphere& other);
    
     /**
      * Member declaration

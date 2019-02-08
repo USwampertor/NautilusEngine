@@ -20,13 +20,13 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	You could make some nice little quads with it, or a mesh, or a model
   */
-  class NAU_UTILITY_EXPORT nauTriangle {
+  class NAU_UTILITY_EXPORT Triangle {
    public:
     
     /**
      * Default constructor
      */
-    nauTriangle() = default;
+    Triangle() = default;
     
     /**
      * @brief Copy constructor
@@ -34,12 +34,12 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauTriangle(const nauTriangle& b);
+    Triangle(const Triangle& b);
 
     /**
      * Default Destructor
      */
-    ~nauTriangle() = default;
+    ~Triangle() = default;
 
     /**
      * Member declaration

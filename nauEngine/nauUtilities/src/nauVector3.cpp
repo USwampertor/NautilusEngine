@@ -73,9 +73,16 @@ namespace nauEngineSDK {
     return x * v.x + y * v.y + z * v.z;
   }
 
-  FORCEINLINE float
+  FORCEINLINE Vector3
   Vector3::operator^(const Vector3 v) const {
-    return x * v.x - y * v.y - z * v.z;
+    
+    Vector3 tmp;
+
+    tmp.x = (y*v.z) - (z*v.y);
+    tmp.y = (z*v.x) - (x*v.z);
+    tmp.z = (x*v.y) - (y*v.x);
+
+    return tmp;
   }
 
   bool
@@ -167,29 +174,29 @@ namespace nauEngineSDK {
     return a | b;
   }
 
-  FORCEINLINE float
+  FORCEINLINE Vector3
   Vector3::cross(const Vector3& a, const Vector3& b) {
     return a ^ b;
   }
 
   FORCEINLINE float
   Vector3::dotScale(const Vector3& a, const Vector3& b) {
-    return (a | b) / nauMath::sqr(a.magnitude());
+    return (a | b) / Math::sqr(a.magnitude());
   }
 
   float
   Vector3::sqrDistance(const Vector3& a, const Vector3& b) {
-    return nauMath::sqr(a.x - b.x) +
-           nauMath::sqr(a.y - b.y) +
-           nauMath::sqr(a.z - b.z);
+    return Math::sqr(a.x - b.x) +
+           Math::sqr(a.y - b.y) +
+           Math::sqr(a.z - b.z);
   }
 
   FORCEINLINE float
   Vector3::distance(const Vector3& a, const Vector3& b) {
     return 
-      nauMath::sqrt(nauMath::sqr(a.x - b.x) +
-                    nauMath::sqr(a.y - b.y) +
-                    nauMath::sqr(a.z - b.z));
+      Math::sqrt(Math::sqr(a.x - b.x) +
+                    Math::sqr(a.y - b.y) +
+                    Math::sqr(a.z - b.z));
   }
 
   void
@@ -215,45 +222,45 @@ namespace nauEngineSDK {
 
   void
   Vector3::floor() {
-    x = nauMath::floor(x);
-    y = nauMath::floor(y);
-    z = nauMath::floor(z);
+    x = Math::floor(x);
+    y = Math::floor(y);
+    z = Math::floor(z);
   }
 
   void
   Vector3::ceiling() {
-    x = nauMath::ceil(x);
-    y = nauMath::ceil(y);
-    z = nauMath::ceil(z);
+    x = Math::ceil(x);
+    y = Math::ceil(y);
+    z = Math::ceil(z);
   }
 
   void
   Vector3::round() {
-    x = nauMath::round(x);
-    y = nauMath::round(y);
-    z = nauMath::round(z);
+    x = Math::round(x);
+    y = Math::round(y);
+    z = Math::round(z);
   }
 
   void
   Vector3::roundHalf() {
-    x = nauMath::roundHalf(x);
-    y = nauMath::roundHalf(y);
-    z = nauMath::roundHalf(z);
+    x = Math::roundHalf(x);
+    y = Math::roundHalf(y);
+    z = Math::roundHalf(z);
   }
 
   float
   Vector3::getHighest() const {
-    return nauMath::max3(x, y, z);
+    return Math::max3(x, y, z);
   }
 
   float
   Vector3::getLowest() const {
-    return nauMath::min3(x, y, z);
+    return Math::min3(x, y, z);
   }
 
   float
   Vector3::magnitude() const {
-    return nauMath::sqrt(x * x + y * y + z * z);
+    return Math::sqrt(x * x + y * y + z * z);
   }
 
   float
@@ -263,7 +270,7 @@ namespace nauEngineSDK {
 
   FORCEINLINE Vector3
   Vector3::normalized() {
-    float unit = nauMath::invSqrt(x*x + y * y + z * z);
+    float unit = Math::invSqrt(x*x + y * y + z * z);
     return Vector3((x * unit), (y * unit), (z * unit));
   }
 

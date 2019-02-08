@@ -149,8 +149,9 @@ namespace nauEngineSDK {
   
 
 }
-
+MS_ALIGN(16)
 extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::nauGraphicsAPI* 
 createGraphicsAPI() {
   return new nauEngineSDK::nauGraphicsAPIDX();
 }
+GCC_ALIGN(16)

@@ -24,7 +24,7 @@ namespace nauEngineSDK {
   //class nauBox2d;
   //class nauSphere;
 
-  struct NAU_UTILITY_EXPORT nauPlatformMath {
+  struct NAU_UTILITY_EXPORT PlatformMath {
     /**
      * Transformation functions
      */

@@ -15,14 +15,14 @@
 #include "nauMatrix4.h"
 
 namespace nauEngineSDK {
-  class NAU_UTILITY_EXPORT nauQuaternion {
+  class NAU_UTILITY_EXPORT Quaternion {
 
    public:
     
     /**
      * Default constructor
      */
-    nauQuaternion() = default;
+    Quaternion() = default;
 
     /**
      * @brief Constructor setting values x y z w
@@ -30,7 +30,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauQuaternion(const float nx, const float ny, const float nz, const float nw);
+    Quaternion(const float nx, const float ny, const float nz, const float nw);
     
     /**
      * @brief + operator overload
@@ -38,8 +38,8 @@ namespace nauEngineSDK {
      * @return a vector sum of *this and v
      *
      */
-    FORCEINLINE nauQuaternion
-    operator+(const nauQuaternion& other) const;
+    FORCEINLINE Quaternion
+    operator+(const Quaternion& other) const;
     
     /**
      * @brief - operator overload
@@ -47,8 +47,8 @@ namespace nauEngineSDK {
      * @return a vector difference of *this and v
      *
      */
-    FORCEINLINE nauQuaternion
-    operator-(const nauQuaternion& other) const;
+    FORCEINLINE Quaternion
+    operator-(const Quaternion& other) const;
     
     /**
      * @brief * operator overload
@@ -56,8 +56,8 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times v
      *
      */
-    FORCEINLINE nauQuaternion
-    operator*(const nauQuaternion& other) const;
+    FORCEINLINE Quaternion
+    operator*(const Quaternion& other) const;
     
     /**
      * @brief / operator overload
@@ -65,8 +65,8 @@ namespace nauEngineSDK {
      * @return a vector division of *this divided by v
      *
      */
-    FORCEINLINE nauQuaternion
-    operator/(const nauQuaternion& other) const;
+    FORCEINLINE Quaternion
+    operator/(const Quaternion& other) const;
     
     /**
      * @brief == operator overload
@@ -75,7 +75,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE bool
-    operator==(const nauQuaternion& other);
+    operator==(const Quaternion& other);
 
     /**
      * @brief < operator overload
@@ -84,7 +84,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE bool
-    operator<(const nauQuaternion& other);
+    operator<(const Quaternion& other);
 
     /**
      * @brief > operator overload
@@ -93,7 +93,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE bool
-    operator>(const nauQuaternion& other);
+    operator>(const Quaternion& other);
 
     /**
      * @brief <= operator overload
@@ -102,7 +102,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE bool
-    operator<=(const nauQuaternion& other);
+    operator<=(const Quaternion& other);
 
     /**
      * @brief >= operator overload
@@ -111,7 +111,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE bool
-    operator>=(const nauQuaternion& other);
+    operator>=(const Quaternion& other);
     
     /**
      * @brief += operator overload
@@ -119,8 +119,8 @@ namespace nauEngineSDK {
      * @return *this + v components
      *
      */
-    nauQuaternion&
-    operator+=(const nauQuaternion& other);
+    Quaternion&
+    operator+=(const Quaternion& other);
     
     /**
      * @brief -= operator overload
@@ -128,8 +128,8 @@ namespace nauEngineSDK {
      * @return *this - v components
      *
      */
-    nauQuaternion&
-    operator-=(const nauQuaternion& other);
+    Quaternion&
+    operator-=(const Quaternion& other);
     
     /**
      * @brief *= operator overload
@@ -137,8 +137,8 @@ namespace nauEngineSDK {
      * @return *this * v components
      *
      */
-    nauQuaternion&
-    operator*=(const nauQuaternion& other);
+    Quaternion&
+    operator*=(const Quaternion& other);
     
     /**
      * @brief /= operator overload
@@ -146,8 +146,8 @@ namespace nauEngineSDK {
      * @return *this / v components
      *
      */
-    nauQuaternion&
-    operator/=(const nauQuaternion& other);
+    Quaternion&
+    operator/=(const Quaternion& other);
     
     /**
     * @brief ^ operator overload for cross product
@@ -156,7 +156,7 @@ namespace nauEngineSDK {
     *
     */
     FORCEINLINE float
-    operator^(const nauQuaternion& v) const;
+    operator^(const Quaternion& v) const;
     
     /**
      * @brief | operator overload for dot product
@@ -165,7 +165,7 @@ namespace nauEngineSDK {
      *
      */
     FORCEINLINE float
-    operator|(const nauQuaternion& v) const;
+    operator|(const Quaternion& v) const;
     
     /**
      * @brief Rotation in X axis

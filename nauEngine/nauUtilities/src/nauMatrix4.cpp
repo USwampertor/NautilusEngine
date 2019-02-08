@@ -76,8 +76,8 @@ namespace nauEngineSDK {
 
   void
   Matrix4::rotateX(const float& rads) {
-    float cos = nauMath::cos(rads);
-    float sin = nauMath::sin(rads);
+    float cos = Math::cos(rads);
+    float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
     m[0][1] = (cos * m[0][1]) - (sin * m[0][2]);
@@ -90,8 +90,8 @@ namespace nauEngineSDK {
 
   void
   Matrix4::rotateY(const float& rads) {
-    float cos = nauMath::cos(rads);
-    float sin = nauMath::sin(rads);
+    float cos = Math::cos(rads);
+    float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
     m[0][0] = (cos * m[0][0]) + (sin * m[0][2]);
@@ -104,8 +104,8 @@ namespace nauEngineSDK {
 
   void
   Matrix4::rotateZ(const float& rads) {
-    float cos = nauMath::cos(rads);
-    float sin = nauMath::sin(rads);
+    float cos = Math::cos(rads);
+    float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
     m[0][0] = (cos * m[0][0]) - (sin * m[0][1]);
@@ -118,9 +118,9 @@ namespace nauEngineSDK {
 
   void
   Matrix4::rotateAxis(const Vector3& axis, const float& rads) {
-    float cos = nauMath::cos(rads);
-    float sin = nauMath::sin(rads);
-    float min = (1 - nauMath::cos(rads));
+    float cos = Math::cos(rads);
+    float sin = Math::sin(rads);
+    float min = (1 - Math::cos(rads));
     Matrix4 tmp = *this;
     axis.normalize();
 
@@ -140,16 +140,19 @@ namespace nauEngineSDK {
   Matrix4::viewLookAt(const Vector3& camPos, 
                       const Vector3& lookAt, 
                       const Vector3& upAxis) {
-
+    Vector3 zAxis = (lookAt - camPos).normalized();
+    Vector3 xAxis = (upAxis ^ zAxis).normalized();
+    Vector3 yAxis = zAxis ^ xAxis;
   }
 
   void
   Matrix4::ortographic(const float& width, 
                        const float& height, 
-                       const float& depth) {
+                       const float& zNear,
+                       const float& zFar) {
     m[0][0] = 2 / width;
     m[1][1] = 2 / height;
-    m[2][2] = depth / -2;
+    m[2][2] = (zNear - zFar) / -2;
 
   }
 
@@ -242,7 +245,7 @@ namespace nauEngineSDK {
     temp.m[0][2] = m[0][2]; temp.m[1][2] = m[1][2]; temp.m[2][2] = m[2][2];
     m[3][3] = - temp.determinant();
 
-    *this /= det;
+    *this *= (1/det);
   }
 
   float

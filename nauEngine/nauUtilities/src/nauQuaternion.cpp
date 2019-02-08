@@ -12,59 +12,59 @@
 
 namespace nauEngineSDK {
 
-  nauQuaternion::nauQuaternion(const float nx, const float ny, const float nz, const float nw) 
+  Quaternion::Quaternion(const float nx, const float ny, const float nz, const float nw) 
     : x(nx),
       y(ny),
       z(nz),
       w(nw) {}
   
-  FORCEINLINE nauQuaternion
-  nauQuaternion::operator+(const nauQuaternion& other) const {
-    return nauQuaternion(x + other.x, y + other.y, z + other.z, w + other.w);
+  FORCEINLINE Quaternion
+  Quaternion::operator+(const Quaternion& other) const {
+    return Quaternion(x + other.x, y + other.y, z + other.z, w + other.w);
   }
   
-  FORCEINLINE nauQuaternion
-  nauQuaternion::operator-(const nauQuaternion& other) const {
-    return nauQuaternion(x - other.x, y - other.y, z - other.z, w - other.w);
+  FORCEINLINE Quaternion
+  Quaternion::operator-(const Quaternion& other) const {
+    return Quaternion(x - other.x, y - other.y, z - other.z, w - other.w);
   }
   
-  FORCEINLINE nauQuaternion
-  nauQuaternion::operator*(const nauQuaternion& other) const {
-    return nauQuaternion(x * other.x, y * other.y, z * other.z, w * other.w);
+  FORCEINLINE Quaternion
+  Quaternion::operator*(const Quaternion& other) const {
+    return Quaternion(x * other.x, y * other.y, z * other.z, w * other.w);
   }
   
-  FORCEINLINE nauQuaternion
-  nauQuaternion::operator/(const nauQuaternion& other) const {
-    return nauQuaternion(x / other.x, y / other.y, z / other.z, w / other.w);
+  FORCEINLINE Quaternion
+  Quaternion::operator/(const Quaternion& other) const {
+    return Quaternion(x / other.x, y / other.y, z / other.z, w / other.w);
   }
 
   FORCEINLINE bool
-  nauQuaternion::operator==(const nauQuaternion& other) {
+  Quaternion::operator==(const Quaternion& other) {
     return x == other.x && y == other.y && z == other.z && w == other.w;
   }
 
   FORCEINLINE bool
-  nauQuaternion::operator<(const nauQuaternion& other) {
+  Quaternion::operator<(const Quaternion& other) {
     return x < other.x && y < other.y && z < other.z && w < other.w;
   }
 
   FORCEINLINE bool
-  nauQuaternion::operator>(const nauQuaternion& other) {
+  Quaternion::operator>(const Quaternion& other) {
     return x > other.x && y > other.y && z > other.z && w > other.w;
   }
 
   FORCEINLINE bool
-  nauQuaternion::operator<=(const nauQuaternion& other) {
+  Quaternion::operator<=(const Quaternion& other) {
     return x <= other.x && y <= other.y && z <= other.z && w <= other.w;
   }
 
   FORCEINLINE bool
-  nauQuaternion::operator>=(const nauQuaternion& other) {
+  Quaternion::operator>=(const Quaternion& other) {
     return x >= other.x && y >= other.y && z >= other.z && w >= other.w;
   }
 
-  nauQuaternion&
-  nauQuaternion::operator+=(const nauQuaternion& other) {
+  Quaternion&
+  Quaternion::operator+=(const Quaternion& other) {
     x += other.x;
     y += other.y;
     z += other.z;
@@ -72,8 +72,8 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  nauQuaternion&
-  nauQuaternion::operator-=(const nauQuaternion& other) {
+  Quaternion&
+  Quaternion::operator-=(const Quaternion& other) {
     x -= other.x;
     y -= other.y;
     z -= other.z;
@@ -81,8 +81,8 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  nauQuaternion&
-  nauQuaternion::operator*=(const nauQuaternion& other) {
+  Quaternion&
+  Quaternion::operator*=(const Quaternion& other) {
     x *= other.x;
     y *= other.y;
     z *= other.z;
@@ -90,8 +90,8 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  nauQuaternion&
-  nauQuaternion::operator/=(const nauQuaternion& other) {
+  Quaternion&
+  Quaternion::operator/=(const Quaternion& other) {
     x /= other.x;
     y /= other.y;
     z /= other.z;
@@ -100,27 +100,27 @@ namespace nauEngineSDK {
   }
   
   FORCEINLINE float
-  nauQuaternion::operator|(const nauQuaternion& v) const {
+  Quaternion::operator|(const Quaternion& v) const {
     return x * v.x + y * v.y + z * v.z + w * v.w;
   }
   
   FORCEINLINE float
-  nauQuaternion::operator^(const nauQuaternion& v) const {
+  Quaternion::operator^(const Quaternion& v) const {
     return x * v.x - y * v.y - z * v.z - w * v.w;
   }
   
   void
-  nauQuaternion::RotateX(const float& theta) {
+  Quaternion::RotateX(const float& theta) {
     x += theta;
   }
   
   void
-  nauQuaternion::RotateY(const float& theta) {
+  Quaternion::RotateY(const float& theta) {
     y += theta;
   }
   
   void
-  nauQuaternion::RotateZ(const float& theta) {
+  Quaternion::RotateZ(const float& theta) {
     z += theta;
   }
 }

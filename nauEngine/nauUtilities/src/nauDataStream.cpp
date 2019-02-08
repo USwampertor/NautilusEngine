@@ -15,44 +15,44 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauDataStream::close() {
+  DataStream::close() {
     m_data.clear();
     m_size = 0;
     m_currPos = 0;
   }
 
   void
-  nauDataStream::atStart() {
+  DataStream::atStart() {
     m_currPos = 0;
   }
 
   void
-  nauDataStream::atEnd() {
+  DataStream::atEnd() {
     m_currPos = m_data.size();
   }
 
   void
-  nauDataStream::atPosition(SIZE_T position) {
+  DataStream::atPosition(SIZE_T position) {
     m_currPos = position;
   }
 
   void
-  nauDataStream::skip(SIZE_T bytes) {
+  DataStream::skip(SIZE_T bytes) {
     m_currPos += bytes;
   }
 
   bool
-  nauDataStream::eof() const {
+  DataStream::eof() const {
     return m_currPos == m_data.size();
   }
 
   void
-  nauDataStream::readAll(void* destiny) {
+  DataStream::readAll(void* destiny) {
     memcpy(destiny, &m_data[0], m_data.size());
   }
 
   SIZE_T
-  nauDataStream::read(void* destiny, SIZE_T size) {
+  DataStream::read(void* destiny, SIZE_T size) {
     if (m_data.size() - m_currPos < size) {
       std::cout << "Vector subscription out of range " << std::endl
                 << "Writing as much as possible \n" << std::endl;
@@ -64,7 +64,7 @@ namespace nauEngineSDK {
   }
 
   SIZE_T
-  nauDataStream::write(const String& information) {
+  DataStream::write(const String& information) {
    
     std::copy(information.begin(), information.end(), m_data.begin() + m_currPos);
     //m_data.insert(m_data[m_currPos], information.size(), information);
@@ -78,12 +78,12 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   STREAMTYPE
-  nauFileStream::isType() {
+  FileStream::isType() {
     return STREAMTYPE::FILE;
   }
 
   bool
-  nauFileStream::open(void* path) {
+  FileStream::open(void* path) {
 
     String temp = static_cast<const char*>(path);
     std::fstream streamFile(temp, std::ios::binary | std::ios::ate);
@@ -100,13 +100,13 @@ namespace nauEngineSDK {
   }
 
   bool
-  nauFileStream::create(void* file) {
+  FileStream::create(void* file) {
     m_data.resize(reinterpret_cast<SIZE_T>(file));
     return true;
   }
 
   bool
-  nauFileStream::copy(const void* buffer) {
+  FileStream::copy(const void* buffer) {
     memcpy(&m_data[0], buffer, sizeof(buffer));
     return true;
   }
@@ -119,23 +119,23 @@ namespace nauEngineSDK {
 
 
   STREAMTYPE
-  nauMemStream::isType() {
+  MemStream::isType() {
     return STREAMTYPE::MEMORY;
   }
 
   bool
-  nauMemStream::open(void* file) {
+  MemStream::open(void* file) {
     return copy(file);
   }
 
   bool
-  nauMemStream::create(void* file) {
+  MemStream::create(void* file) {
     (void)(file);
     return true;
   }
 
   bool
-  nauMemStream::copy(const void* buffer) {
+  MemStream::copy(const void* buffer) {
     memcpy(&m_data[0], buffer, sizeof(buffer));
     return true;
   }

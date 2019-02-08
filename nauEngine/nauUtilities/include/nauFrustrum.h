@@ -20,19 +20,19 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	Camera frustrum
   */
-  class nauFrustrum
+  class Frustrum
   {
   public:
     
     /**
      * Default Constructor
      */
-    nauFrustrum() = default;
+    Frustrum() = default;
 
     /**
      * Default destructor
      */
-    ~nauFrustrum() = default;
+    ~Frustrum() = default;
 
     /**
      * Member declaration

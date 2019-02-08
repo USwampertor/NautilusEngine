@@ -12,7 +12,7 @@
 
 namespace nauEngineSDK {
   bool
-  nauOOBB::collidingOOBB(const nauOOBB& other) {
+  OOBB::collidingOOBB(const OOBB& other) {
     
     
 

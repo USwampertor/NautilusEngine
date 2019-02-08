@@ -37,13 +37,13 @@ namespace nauEngineSDK {
  * Sample usage:
  * 	NuaDataStream.open Opens a file
  */
-class NAU_UTILITY_EXPORT nauDataStream
+class NAU_UTILITY_EXPORT DataStream
 {
 public:
   /**
    * Default constructor
    */
-  nauDataStream() = default;
+  DataStream() = default;
 
   /**
    * Constructor defining the reading or writing flag
@@ -52,19 +52,19 @@ public:
   /**
    * STREAMACCESS defined constructor
    */
-  nauDataStream(STREAMACCESS sAccess) : m_mode(sAccess) {}
+  DataStream(STREAMACCESS sAccess) : m_mode(sAccess) {}
 
   /**
    * path defined constructor
    */
-  nauDataStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ)
+  DataStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ)
     : m_path(path),
       m_mode(sAccess) {}
 
   /**
    * Default destructor
    */
-  virtual ~nauDataStream() {};
+  virtual ~DataStream() {};
 
   /**
    * @brief Checks if the data stream can be read
@@ -261,19 +261,19 @@ public:
  * Sample usage:
  * 	nauFileStream.Open() opens a file
  */
-class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
+class NAU_UTILITY_EXPORT FileStream : public DataStream
 {
  public:
   
   /**
    * Default constructor
    */
-  nauFileStream() = default;
+  FileStream() = default;
 
   /**
    * Parameter based constructor constructor
    */
-  nauFileStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ) {
+  FileStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ) {
     m_path = path;
     m_mode = sAccess;
   }
@@ -281,7 +281,7 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
   /**
    * Default Destructor
    */
-  ~nauFileStream() {}
+  ~FileStream() {}
 
   STREAMTYPE
   isType();
@@ -304,18 +304,18 @@ class NAU_UTILITY_EXPORT nauFileStream : public nauDataStream
  * Sample usage:
  * 	nauMemStream.Open() gets a file or information from the memory
  */
-class NAU_UTILITY_EXPORT nauMemStream : public nauDataStream
+class NAU_UTILITY_EXPORT MemStream : public DataStream
 {
  public:
   /**
    * Default constructor
    */
-  nauMemStream() = default;
+  MemStream() = default;
 
   /**
    * Default destructor
    */
-  ~nauMemStream() {}
+  ~MemStream() {}
 
   /**
    * @brief returns if the dataStream is a file or memory

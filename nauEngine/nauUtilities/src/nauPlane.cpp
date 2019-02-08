@@ -13,7 +13,7 @@
 namespace nauEngineSDK {
   
   bool
-  nauPlane::collidingPlane(const nauPlane& other) {
+  Plane::collidingPlane(const Plane& other) {
     return x == other.x && y == other.y && z == other.z;
   }
 }

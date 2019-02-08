@@ -14,12 +14,12 @@
 #include "nauBox2d.h"
 
 namespace nauEngineSDK {
-  const float nauPlatformMath::PI = std::atan(1.0f) * 4.0f;
+  const float PlatformMath::PI = std::atan(1.0f) * 4.0f;
 
-  const float nauPlatformMath::DEGREE = 180.0f/nauPlatformMath::PI;
+  const float PlatformMath::DEGREE = 180.0f/PlatformMath::PI;
 
-  const float nauPlatformMath::RADIAN = nauPlatformMath::PI/180.0f;
+  const float PlatformMath::RADIAN = PlatformMath::PI/180.0f;
 
-  const float nauPlatformMath::EULER = 2.71828182f;
+  const float PlatformMath::EULER = 2.71828182f;
     //nauPlatformMath::pow((1.0f + (1.0f / 10000000000000.0f)), 10000000000000.0f);
 }

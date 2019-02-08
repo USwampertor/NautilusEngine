@@ -12,7 +12,7 @@
 
 namespace nauEngineSDK {
 
-  nauTriangle::nauTriangle(const nauTriangle& b) 
+  Triangle::Triangle(const Triangle& b) 
     : m_vert0(b.m_vert0),
       m_vert1(b.m_vert1),
       m_vert2(b.m_vert2) {}

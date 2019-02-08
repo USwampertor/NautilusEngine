@@ -173,7 +173,10 @@ namespace nauEngineSDK{
      *
      */
     void
-    ortographic(const float& width, const float& height, const float& depth);
+    ortographic(const float& width, 
+                const float& height, 
+                const float& zNear, 
+                const float& zFar);
 
     /**
      * @brief gets the inverse of the matrix (if possible)

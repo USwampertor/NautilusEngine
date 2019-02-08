@@ -12,7 +12,7 @@
 #include "nauPlatformMath.h"
 
 namespace nauEngineSDK {
-  struct NAU_UTILITY_EXPORT nauWindowsMath : public nauPlatformMath {
+  struct NAU_UTILITY_EXPORT nauWindowsMath : public PlatformMath {
     
   };
 }

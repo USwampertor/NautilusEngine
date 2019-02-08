@@ -21,19 +21,19 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	
   */
-  class nauPlane : public Vector3
+  class Plane : public Vector3
   {
    public:
 
     /**
      * Default Constructor
      */
-    nauPlane() = default;
+    Plane() = default;
 
     /**
      * Default Destructor
      */
-    ~nauPlane() = default;
+    ~Plane() = default;
 
     /**
      * Collisions
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collidingPlane(const nauPlane& other);
+    collidingPlane(const Plane& other);
 
     /**
      * Member declaration

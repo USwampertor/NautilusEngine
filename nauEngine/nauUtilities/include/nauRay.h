@@ -20,13 +20,13 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	We can use the ray to create a raycasting
   */
-  class NAU_UTILITY_EXPORT nauRay {
+  class NAU_UTILITY_EXPORT Ray {
    public:
     
     /**
      * Default constructor
      */
-    nauRay() = default;
+    Ray() = default;
 
     /**
      * @brief Constructor with parameters
@@ -34,12 +34,12 @@ namespace nauEngineSDK {
      * @return
      * 
      */
-     nauRay(const Vector3& origin, const Vector3& direction);
+     Ray(const Vector3& origin, const Vector3& direction);
 
     /**
      * Default destructor
      */
-    ~nauRay() = default;
+    ~Ray() = default;
    
     /**
      * Collisions

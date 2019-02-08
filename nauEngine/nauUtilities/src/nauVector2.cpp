@@ -180,12 +180,12 @@ namespace nauEngineSDK {
 
   FORCEINLINE float
   Vector2::sqrDistance(const Vector2& a, const Vector2& b) {
-    return nauMath::pow(a.x - b.x, 2.0f) + nauMath::pow(a.y - b.y, 2.0f);
+    return Math::pow(a.x - b.x, 2.0f) + Math::pow(a.y - b.y, 2.0f);
   }
 
   FORCEINLINE float
   Vector2::distance(const Vector2& a, const Vector2& b) {
-    return nauMath::sqrt(nauMath::sqr(a.x + b.x) + nauMath::sqr(a.y + b.y));
+    return Math::sqrt(Math::sqr(a.x + b.x) + Math::sqr(a.y + b.y));
   }
 
   void
@@ -208,41 +208,41 @@ namespace nauEngineSDK {
 
   void
   Vector2::floor() {
-    x = nauMath::floor(x);
-    y = nauMath::floor(y);
+    x = Math::floor(x);
+    y = Math::floor(y);
   }
 
   void
   Vector2::ceiling() {
-    x = nauMath::ceil(x);
-    y = nauMath::ceil(y);
+    x = Math::ceil(x);
+    y = Math::ceil(y);
   }
 
   void
   Vector2::round() {
-    x = nauMath::round(x);
-    y = nauMath::round(y);
+    x = Math::round(x);
+    y = Math::round(y);
   }
 
   void
   Vector2::roundHalf() {
-   x = nauMath::roundHalf(x);
-   y = nauMath::roundHalf(y);
+   x = Math::roundHalf(x);
+   y = Math::roundHalf(y);
   }
 
   float
   Vector2::getHighest() const {
-    return nauMath::max(x, y);
+    return Math::max(x, y);
   }
 
   float
   Vector2::getLowest() const {
-    return nauMath::min(x, y);
+    return Math::min(x, y);
   }
 
   float
   Vector2::magnitude() const {
-    return nauMath::sqrt(x * x + y * y);
+    return Math::sqrt(x * x + y * y);
   }
 
   float
@@ -258,14 +258,14 @@ namespace nauEngineSDK {
                !std::isinf(y) && 
                "Value X or Y are either infinite or NAN");
 
-    float sqr = nauMath::pow(x, 2.0f) + nauMath::pow(y, 2.0f);
+    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f);
     
     NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() && 
                "Square is less than epsilon and that shit is wack");
     
     NAU_DEBUG_ONLY(sqrMagnitude());
 
-    float unit = nauMath::invSqrt(sqr);
+    float unit = Math::invSqrt(sqr);
     return Vector2((x * unit), (y * unit));
   }
   

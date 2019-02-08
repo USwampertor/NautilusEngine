@@ -183,12 +183,12 @@ namespace nauEngineSDK {
 
   FORCEINLINE int32
   Vector2i::sqrDistance(const Vector2i& a, const Vector2i& b) {
-    return nauMath::pow(a.x - b.x, 2) + nauMath::pow(a.y - b.y, 2);
+    return Math::pow(a.x - b.x, 2) + Math::pow(a.y - b.y, 2);
   }
 
   FORCEINLINE int32
   Vector2i::distance(const Vector2i& a, const Vector2i& b) {
-    return nauMath::sqrt(nauMath::sqr(a.x + b.x) + nauMath::sqr(a.y + b.y));
+    return Math::sqrt(Math::sqr(a.x + b.x) + Math::sqr(a.y + b.y));
   }
 
   void
@@ -211,17 +211,17 @@ namespace nauEngineSDK {
 
   int32
   Vector2i::getHighest() const {
-    return nauMath::max(x, y);
+    return Math::max(x, y);
   }
 
   int32
   Vector2i::getLowest() const {
-    return nauMath::min(x, y);
+    return Math::min(x, y);
   }
 
   int32
   Vector2i::magnitude() const {
-    return nauMath::sqrt(x*x + y * y);
+    return Math::sqrt(x*x + y * y);
   }
 
   int32

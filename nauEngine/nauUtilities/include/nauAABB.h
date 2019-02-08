@@ -22,14 +22,14 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	Collision detection of static aligned objects
   */
-  class nauAABB
+  class AABB
   {
    public:
 
     /**
      * Default Constructor
      */
-    nauAABB() = default;
+    AABB() = default;
 
     /**
      * @brief Constructor with corners as parameters
@@ -37,7 +37,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauAABB(const Vector3& minTip, const Vector3& maxTip);
+    AABB(const Vector3& minTip, const Vector3& maxTip);
 
     /**
      * @brief Constructor with origin and height width and length of object
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    nauAABB(const Vector3& origin, float height, float width, float lenght);
+    AABB(const Vector3& origin, float height, float width, float lenght);
     
     /**
      * Collisions
@@ -59,7 +59,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collidingAABB(const nauAABB& other);
+    collidingAABB(const AABB& other);
     
 
     /**

@@ -21,7 +21,7 @@ namespace nauEngineSDK {
     * 	
     */
   template <class T>
-  class nauModule
+  class Module
   {
   public:
 
@@ -72,7 +72,7 @@ namespace nauEngineSDK {
       _instance() = new T(std::forward<Args>(args)...);
       isStartedUp() = true;
 
-      static_cast<nauModule*>(_instance())->onStartUp();
+      static_cast<Module*>(_instance())->onStartUp();
     }
 
     template<class SubType, class... Args>
@@ -89,7 +89,7 @@ namespace nauEngineSDK {
       _instance() = new SubType(std::forward<Args>(args)...);
       isStartedUp() = true;
 
-      static_cast<nauModule*>(_instance())->onStartUp();
+      static_cast<Module*>(_instance())->onStartUp();
     }
 
     static void
@@ -104,7 +104,7 @@ namespace nauEngineSDK {
         //Trying to shut down somethign never started
       }
 
-      static_cast<nauModule*>(_instance())->onShutDown();
+      static_cast<Module*>(_instance())->onShutDown();
       delete _instance();
       isDestroyed() = true;
     }
@@ -119,17 +119,17 @@ namespace nauEngineSDK {
     /**
      * Default constructor
      */
-    nauModule() = default;
+    Module() = default;
 
     /**
      * Virtual destructor
      */
     virtual
-    ~nauModule() = default;
+    ~Module() = default;
 
-    nauModule(nauModule&&) = delete;
+    Module(Module&&) = delete;
 
-    nauModule(const Module&) = delete;
+    Module(const Module&) = delete;
 
     Module&
     operator = (Module&&) = delete;

@@ -22,18 +22,18 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	OOBB
   */
-  class NAU_UTILITY_EXPORT nauOOBB {
+  class NAU_UTILITY_EXPORT OOBB {
    public:
     
     /**
      * Default Constructor
      */
-    nauOOBB() = default;
+    OOBB() = default;
 
     /**
      * Default destructor
      */
-    ~nauOOBB() = default;
+    ~OOBB() = default;
 
     /**
      * Collisions
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collidingOOBB(const nauOOBB& other);
+    collidingOOBB(const OOBB& other);
 
     /**
      * Member declaration

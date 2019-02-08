@@ -11,12 +11,12 @@
 #include "nauAABB.h"
 
 namespace nauEngineSDK {
-  nauAABB::nauAABB(const Vector3& minTip, const Vector3& maxTip) 
+  AABB::AABB(const Vector3& minTip, const Vector3& maxTip) 
     :
     m_minCorner (minTip),
     m_maxCorner (maxTip)
     {}
-  nauAABB::nauAABB(const Vector3& origin, float height, float width, float lenght) 
+  AABB::AABB(const Vector3& origin, float height, float width, float lenght) 
     :
     m_minCorner (origin),
     m_maxCorner (origin.x + width, origin.y + height,origin.z + lenght)
@@ -26,11 +26,11 @@ namespace nauEngineSDK {
    * Collisions
    */
   bool
-  nauAABB::collidingAABB(const nauAABB& other) {
+  AABB::collidingAABB(const AABB& other) {
     return  insideBox(other.m_minCorner) && insideBox(other.m_maxCorner);
   }
   bool
-  nauAABB::insideBox(const Vector3& other) {
+  AABB::insideBox(const Vector3& other) {
     return  
       (other.x > m_minCorner.x) && (other.x < m_maxCorner.x) &&
       (other.y > m_minCorner.y) && (other.y < m_maxCorner.y) &&

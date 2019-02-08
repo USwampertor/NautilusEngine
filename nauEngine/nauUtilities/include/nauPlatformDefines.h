@@ -277,11 +277,13 @@
   /**
    * Something something
    */
-# pragma warning (disable: 4251)
+# pragma warning (disable: 4251) //Type1 needs an interface for Type2
 
-# pragma warning (disable: 4996)
+# pragma warning (disable: 4996) //Deprecated declarations
 
-# pragma warning (disable: 4503)
+# pragma warning (disable: 4503) //Name is too large, but this sh*t is for 16-32
+
+# pragma warning (disable: 4275) //DLL interfaces
   /**
    * Disable: nonstandard extension used: override specifier keyword
    * Happens when a keyboard was used that is not in the C++
