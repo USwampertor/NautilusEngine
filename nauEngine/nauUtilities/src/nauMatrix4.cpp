@@ -55,36 +55,74 @@ namespace nauEngineSDK {
 
   void
   Matrix4::translate(const float& x, const float& y, const float& z) {
-
+    m[3][0] += x;
+    m[3][1] += y;
+    m[3][2] += z;
   }
 
   void
-  Matrix4::translate(const Vector3& other) {
-
+  Matrix4::translate(const Vector3& position) {
+    m[3][0] += position.x;
+    m[3][1] += position.y;
+    m[3][2] += position.z;
   }
 
   void
   Matrix4::scale(const float& x, const float &y, const float &z) {
-
+    m[0][0] = x;
+    m[1][1] = y;
+    m[2][2] = z;
   }
 
   void
   Matrix4::rotateX(const float& rads) {
+    float cos = nauMath::cos(rads);
+    float sin = nauMath::sin(rads);
+    Matrix4 tmp = *this;
 
+    m[0][1] = (cos * m[0][1]) - (sin * m[0][2]);
+    m[1][1] = (cos * m[1][1]) - (sin * m[1][2]);
+    m[2][1] = (cos * m[2][1]) - (sin * m[2][2]);
+    m[0][2] = (cos * m[0][2]) + (sin * m[0][1]);
+    m[1][2] = (cos * m[1][2]) + (sin * m[1][1]);
+    m[2][2] = (cos * m[2][2]) + (sin * m[2][1]);
   }
 
   void
   Matrix4::rotateY(const float& rads) {
+    float cos = nauMath::cos(rads);
+    float sin = nauMath::sin(rads);
+    Matrix4 tmp = *this;
 
+    m[0][0] = (cos * m[0][0]) + (sin * m[0][2]);
+    m[1][0] = (cos * m[1][0]) + (sin * m[1][2]);
+    m[2][0] = (cos * m[2][0]) + (sin * m[2][2]);
+    m[0][2] = (cos * m[0][2]) - (sin * m[0][0]);
+    m[1][2] = (cos * m[1][2]) - (sin * m[1][0]);
+    m[2][2] = (cos * m[2][2]) - (sin * m[2][0]);
   }
 
   void
   Matrix4::rotateZ(const float& rads) {
+    float cos = nauMath::cos(rads);
+    float sin = nauMath::sin(rads);
+    Matrix4 tmp = *this;
 
+    m[0][0] = (cos * m[0][0]) - (sin * m[0][1]);
+    m[1][0] = (cos * m[1][0]) - (sin * m[1][1]);
+    m[2][0] = (cos * m[2][0]) - (sin * m[2][1]);
+    m[0][1] = (cos * m[0][1]) + (sin * m[0][0]);
+    m[1][1] = (cos * m[1][1]) + (sin * m[1][0]);
+    m[2][1] = (cos * m[2][1]) + (sin * m[2][0]);
   }
 
   void
   Matrix4::rotateAxis(const Vector3& axis, const float& rads) {
+    float cos = nauMath::cos(rads);
+    float sin = nauMath::sin(rads);
+    float min = (1 - nauMath::cos(rads));
+    Matrix4 tmp = *this;
+
 
   }
 

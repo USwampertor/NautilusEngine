@@ -109,7 +109,7 @@ namespace nauEngineSDK{
      *
      */
     void
-    translate(const Vector3& other);
+    translate(const Vector3& position);
 
 
     /**
