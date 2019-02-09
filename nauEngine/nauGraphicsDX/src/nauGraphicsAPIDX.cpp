@@ -77,7 +77,7 @@ namespace nauEngineSDK {
 
     m_meshList.setDevice(m_device.m_pd3dDevice);
     test();
-    
+    m_meshList.loadFromFile("max.obj");
     return true;
   }
 

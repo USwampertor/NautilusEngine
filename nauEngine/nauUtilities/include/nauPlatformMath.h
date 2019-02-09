@@ -11,7 +11,7 @@
 #pragma once
 
 #include "nauPlatformTypes.h"
-#include <cmath>
+#include <math.h>
 #include <algorithm>
 //#include "nauSphere.h"
 //#include "nauBox2d.h"

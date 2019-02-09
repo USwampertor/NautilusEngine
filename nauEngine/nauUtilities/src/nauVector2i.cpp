@@ -11,7 +11,8 @@
 #include "nauVector2i.h"
 
 namespace nauEngineSDK {
-  
+  using std::isnan;
+  using std::isinf;
   /**
    * Method Implementation
    */
@@ -229,14 +230,35 @@ namespace nauEngineSDK {
     return (x * x + y * y);
   }
 
-  FORCEINLINE Vector2i
-  Vector2i::normalized() {
-    return Vector2i(0, 0);
+  Vector2i
+  Vector2i::normalized() const {
+
+    float sqr = Math::pow(static_cast<float>(x), 2.0f) + 
+                Math::pow(static_cast<float>(y), 2.0f);
+
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+               "Square is less than epsilon and that shit is wack");
+    
+    NAU_DEBUG_ONLY(sqrMagnitude());
+    
+    float unit = Math::invSqrt(sqr);
+    return Vector2i((x * static_cast<int>(unit)), (y * static_cast<int>(unit)));
   }
 
   void
-  Vector2i::normalize() const {
+  Vector2i::normalize() {
+   
+    float sqr = Math::pow(static_cast<float>(x), 2.0f) +
+                Math::pow(static_cast<float>(y), 2.0f);
 
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+               "Square is less than epsilon and that shit is wack");
+
+    NAU_DEBUG_ONLY(sqrMagnitude());
+
+    float unit = Math::invSqrt(sqr);
+    x *= static_cast<int>(unit);
+    y *= static_cast<int>(unit);
   }
 
   bool

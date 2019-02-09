@@ -11,5 +11,3 @@
 #pragma once
 
 #include <cassert>
-#include "nauPlatformDefines.h"
-#include "nauPlatformTypes.h"

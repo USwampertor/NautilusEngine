@@ -258,7 +258,7 @@
 # define NAU_ASSERT(x) assert(x)
 #else
 # define NAU_DEBUG_ONLY(x)
-# define NAU_ASSERT (x)
+# define NAU_ASSERT(x)
 #endif
 
 /**

@@ -13,10 +13,12 @@
 
 
 //TODO: CREATE LIMIT FILES AND DELETE THIS 
-#include <limits>
+
 
 
 namespace nauEngineSDK {
+  using std::isnan;
+  using std::isinf;
 
   /**
    * Method implementation
@@ -250,17 +252,18 @@ namespace nauEngineSDK {
     return (x * x + y * y);
   }
 
-  FORCEINLINE Vector2
-  Vector2::normalized() {
-    NAU_ASSERT(!std::isnan(x) && 
-               !std::isnan(y) && 
-               !std::isinf(x) && 
-               !std::isinf(y) && 
+  Vector2
+  Vector2::normalized() const {
+
+    NAU_ASSERT(!isnan(x) &&
+               !isnan(y) &&
+               !isinf(x) &&
+               !isinf(y) &&
                "Value X or Y are either infinite or NAN");
 
     float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f);
     
-    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() && 
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
     
     NAU_DEBUG_ONLY(sqrMagnitude());
@@ -270,8 +273,24 @@ namespace nauEngineSDK {
   }
   
   void
-  Vector2::normalize() const {
-  
+  Vector2::normalize() {
+    NAU_ASSERT(!isnan(x) &&
+               !isnan(y) &&
+               !isinf(x) &&
+               !isinf(y) &&
+               "Value X or Y are either infinite or NAN");
+
+    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f);
+
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+               "Square is less than epsilon and that shit is wack");
+
+    NAU_DEBUG_ONLY(sqrMagnitude());
+
+    float unit = Math::invSqrt(sqr);
+
+    x *= unit;
+    y *= unit;
   }
 
   bool

@@ -420,8 +420,8 @@ namespace nauEngineSDK {
      * @return the normalized vector
      *
      */
-    FORCEINLINE Vector3
-    normalized();
+    Vector3
+    normalized() const;
 
     /**
      * @brief normalizes the vector
@@ -430,7 +430,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    normalize() const;
+    normalize();
 
     /**
      * @brief Checks if the vector is empty (0s)

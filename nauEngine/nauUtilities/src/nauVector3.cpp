@@ -11,6 +11,8 @@
 #include "nauVector3.h"
 
 namespace nauEngineSDK {
+  using std::isnan;
+  using std::isinf;
 
   /**
    * Method Implementation
@@ -268,19 +270,56 @@ namespace nauEngineSDK {
     return (x * x + y * y + z * z);
   }
 
-  FORCEINLINE Vector3
-  Vector3::normalized() {
-    float unit = Math::invSqrt(x*x + y * y + z * z);
+  Vector3
+  Vector3::normalized() const {
+
+    NAU_ASSERT(!isnan(x) &&
+               !isnan(y) &&
+               !isnan(z) &&
+               !isinf(x) &&
+               !isinf(y) &&
+               !isinf(z) &&
+               "Value X or Y are either infinite or NAN");
+
+    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
+
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+               "Square is less than epsilon and that shit is wack");
+
+    NAU_DEBUG_ONLY(sqrMagnitude());
+
+    float unit = Math::invSqrt(sqr);
+
     return Vector3((x * unit), (y * unit), (z * unit));
   }
 
   void
-  Vector3::normalize() const {
+  Vector3::normalize() {
+    NAU_ASSERT(!isnan(x) &&
+               !isnan(y) &&
+               !isnan(z) &&
+               !isinf(x) &&
+               !isinf(y) &&
+               !isinf(z) &&
+               "Value X or Y are either infinite or NAN");
 
+    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
+
+    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+               "Square is less than epsilon and that shit is wack");
+
+    NAU_DEBUG_ONLY(sqrMagnitude());
+
+    float unit = Math::invSqrt(sqr);
+
+    x *= unit;
+    y *= unit; 
+    z *= unit;
   }
 
   bool
   Vector3::isZero() const {
+    //return x == y == z == 0.0f;
     return 0.0f == x && 0.0f == y && 0.0f == z;
   }
   

@@ -446,8 +446,8 @@ namespace nauEngineSDK {
      * @return a normalized version of same vector
      *
      */
-    FORCEINLINE Vector4
-    normalized3();
+    Vector4
+    normalized3() const;
 
     /**
      * @brief normalizes the vector
@@ -456,7 +456,7 @@ namespace nauEngineSDK {
      * 
      */
     void
-    normalize3() const;
+    normalize3();
 
     /**
      * @brief returns true if all components are 0

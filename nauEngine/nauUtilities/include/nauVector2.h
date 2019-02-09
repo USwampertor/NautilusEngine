@@ -16,6 +16,7 @@
 
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
+#include <limits>
 
 namespace nauEngineSDK {
   //forward declaration?
@@ -429,8 +430,8 @@ namespace nauEngineSDK {
      * @return the normalized vector
      *
      */
-    FORCEINLINE Vector2
-    normalized();
+    Vector2
+    normalized() const;
 
     /**
      * @brief normalizes the vector
@@ -439,7 +440,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    normalize() const;
+    normalize();
 
     /**
      * @brief Checks if the vector is empty (0s)

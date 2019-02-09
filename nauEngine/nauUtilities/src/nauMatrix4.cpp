@@ -117,12 +117,12 @@ namespace nauEngineSDK {
   }
 
   void
-  Matrix4::rotateAxis(const Vector3& axis, const float& rads) {
+  Matrix4::rotateAxis(const Vector3& constAxis, const float& rads) {
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     float min = (1 - Math::cos(rads));
     Matrix4 tmp = *this;
-    axis.normalize();
+    Vector3 axis = constAxis.normalized();
 
     m[0][0] = cos + axis.x*axis.x*min;
     m[1][0] = axis.x*axis.y*min - axis.z;

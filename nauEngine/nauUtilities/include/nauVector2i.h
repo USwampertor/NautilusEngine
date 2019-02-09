@@ -352,24 +352,6 @@ namespace nauEngineSDK {
      */
     void
     max(const Vector2i& v);
-
-    /**
-     * @brief floors the components
-     * @param
-     * @return
-     *
-     */
-    static Vector2i
-    roundFloor(Vector2i lhs, int32 under);
-    
-    /**
-     * @brief ceils the components
-     * @param
-     * @return
-     *
-     */
-    static Vector2i
-    roundCeiln(Vector2i lhs, int32 under);
     
     /**
      * @brief gets the highest value of the vector
@@ -413,8 +395,8 @@ namespace nauEngineSDK {
      * @return the normalized vector
      *
      */
-    static FORCEINLINE Vector2i
-    normalized();
+    Vector2i 
+    normalized() const;
 
     /**
      * @brief normalizes the vector
@@ -423,7 +405,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    normalize() const;
+    normalize();
 
     /**
      * @brief Checks if the vector is empty (0s)
