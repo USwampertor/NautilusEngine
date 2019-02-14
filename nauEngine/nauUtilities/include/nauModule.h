@@ -16,7 +16,7 @@ namespace nauEngineSDK {
     * nauModule
     * Description:
     * 	An Engine Module that can be started up and shut down manually
-    *   Its a nice done singleton, (I CANT BELIEVE ITS NOT SINGLETON!)
+    *   Its a nicely done singleton, (I CANT BELIEVE ITS NOT SINGLETON!)
     * Sample usage:
     * 	
     */
@@ -44,7 +44,7 @@ namespace nauEngineSDK {
     }
 
     /**
-     * Returns a pointer to the instace
+     * Returns a pointer to the instance
      */
     static T*
       instance() {
@@ -82,7 +82,7 @@ namespace nauEngineSDK {
         "Provided type isnt derived from the same type you are initializing");
     
       if (isStartedUp()) {
-      //Throws exceptio
+      //Throws exception
       //Already started the module dude
     }
 
@@ -96,12 +96,12 @@ namespace nauEngineSDK {
     shutDown() {
       if(isDestroyed()) {
         //Throws exception
-        //Trying to shut down something that literaly was never orn
+        //Trying to shut down something that literally was never born
       }
 
       if (!isStartedUp()) {
         //Throws exception
-        //Trying to shut down somethign never started
+        //Trying to shut down something never started
       }
 
       static_cast<Module*>(_instance())->onShutDown();
