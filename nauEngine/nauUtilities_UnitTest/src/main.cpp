@@ -40,10 +40,11 @@ struct Testing : public ::testing::Test {
 
 int main(int argc, char **argv)
 {
-
+  int stop;
   ::testing::InitGoogleTest(&argc,argv);
-  return RUN_ALL_TESTS();
-  
+  RUN_ALL_TESTS();
+  std::cin >> stop;
+  return 0;
 }
 #ifdef MARCOTESTING
 TEST_F(Testing, Basic_Types)

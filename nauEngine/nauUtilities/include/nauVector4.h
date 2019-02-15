@@ -68,7 +68,7 @@ namespace nauEngineSDK {
      * @return a vector with added objects
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator+(const Vector4& v) const;
 
     /**
@@ -77,7 +77,7 @@ namespace nauEngineSDK {
      * @return the object at index
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator-(const Vector4& v) const;
 
     /**
@@ -86,7 +86,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times v
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator*(const Vector4& v) const;
 
     /**
@@ -95,7 +95,7 @@ namespace nauEngineSDK {
      * @return a vector division of *this divided by v
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator/(const Vector4& v) const;
 
     /**
@@ -104,7 +104,7 @@ namespace nauEngineSDK {
      * @return a vector sum of *this + plus
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator+(float plus) const;
 
     /**
@@ -113,7 +113,7 @@ namespace nauEngineSDK {
      * @return a vector difference of *this - minus
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator-(float minus) const;
 
     /**
@@ -122,7 +122,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times times
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator*(float times) const;
 
     /**
@@ -131,7 +131,7 @@ namespace nauEngineSDK {
      * @return a vector divided of *this divided by times
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator/(float under) const;
 
     /**
@@ -140,7 +140,7 @@ namespace nauEngineSDK {
      * @return dot product
      *
      */
-    FORCEINLINE float
+    float
     operator|(const Vector4 v) const;
 
     /**
@@ -149,7 +149,7 @@ namespace nauEngineSDK {
      * @return cross product
      *
      */
-    FORCEINLINE float
+    float
     operator^(const Vector4 v) const;
 
     /**
@@ -212,7 +212,7 @@ namespace nauEngineSDK {
      * @return the negative of the vector
      *
      */
-    FORCEINLINE Vector4
+    Vector4
     operator-() const;
 
     /**

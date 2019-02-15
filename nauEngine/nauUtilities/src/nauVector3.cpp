@@ -30,52 +30,52 @@ namespace nauEngineSDK {
     return (&x)[index];
   }
 
-  FORCEINLINE Vector3
+  Vector3
    Vector3::operator+(const Vector3& v) const {
     return Vector3(x + v.x, y + v.y, z + v.z);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator-(const Vector3& v) const {
     return Vector3(x - v.x, y - v.y, z - v.z);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator*(const Vector3& v) const {
     return Vector3(x * v.x, y * v.y, z * v.z);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator/(const Vector3& v) const {
     return Vector3(x / v.x, y / v.y, z / v.z);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator+(float plus) const {
     return Vector3(x + plus, y + plus, z + plus);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator-(float minus) const {
     return Vector3(x - minus, y - minus, y - minus);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator*(float times) const {
     return Vector3(x * times, y * times, z * times);
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator/(float under) const {
     return Vector3(x / under, y / under, z / under);
   }
 
-  FORCEINLINE float
+  float
   Vector3::operator|(const Vector3 v) const {
     return x * v.x + y * v.y + z * v.z;
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator^(const Vector3 v) const {
     
     Vector3 tmp;

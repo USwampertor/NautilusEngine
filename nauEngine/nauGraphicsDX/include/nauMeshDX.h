@@ -10,6 +10,8 @@
 #pragma once
 
 #include "nauPrerequisitesDX.h"
+#include "nauGraphicsBufferDX.h"
+
 #include <nauMesh.h>
 
 namespace nauEngineSDK {

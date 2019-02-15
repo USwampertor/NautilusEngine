@@ -28,6 +28,12 @@ namespace nauEngineSDK {
 
   void
   nauModelDX::loadFromFile(String filePath) {
+
+    //char dirPath[MAX_PATH];
+    //GetCurrentDirectoryA(MAX_PATH, dirPath);
+    //String folderPath(dirPath);
+    //std::cout << folderPath;
+
     Assimp::Importer modelImport;
     const aiScene* scene = modelImport.ReadFile(filePath, aiProcess_Triangulate);
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
@@ -63,7 +69,8 @@ namespace nauEngineSDK {
   nauMesh*
   nauModelDX::processMesh(aiMesh* mesh, const aiScene* scene) {
     nauMeshDX* m =  new nauMeshDX();
-
+    m->m_vertexBuffer = new nauVertexBufferDX();
+    m->m_indexBuffer = new nauIndexBufferDX();
     for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
       nauVertex pvertex;
 

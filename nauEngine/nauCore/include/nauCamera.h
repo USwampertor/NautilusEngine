@@ -32,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~Camera() {};
+    ~Camera() {}
   };
   
 }

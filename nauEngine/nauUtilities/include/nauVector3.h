@@ -69,7 +69,7 @@ namespace nauEngineSDK {
      * @return a vector sum of *this and v
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator+(const Vector3& v) const;
 
     /**
@@ -78,7 +78,7 @@ namespace nauEngineSDK {
      * @return a vector difference of *this and v
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator-(const Vector3& v) const;
 
     /**
@@ -87,7 +87,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times v
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator*(const Vector3& v) const;
 
     /**
@@ -96,7 +96,7 @@ namespace nauEngineSDK {
      * @return a vector division of *this divided by v
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator/(const Vector3& v) const;
 
     /**
@@ -105,7 +105,7 @@ namespace nauEngineSDK {
      * @return a vector sum of *this + plus
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator+(float plus) const;
 
     /**
@@ -114,7 +114,7 @@ namespace nauEngineSDK {
      * @return a vector difference of *this - minus
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator-(float minus) const;
 
     /**
@@ -123,7 +123,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times times
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator*(float times) const;
 
     /**
@@ -132,7 +132,7 @@ namespace nauEngineSDK {
      * @return a vector divided of *this divided by times
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator/(float under) const;
 
     /**
@@ -141,7 +141,7 @@ namespace nauEngineSDK {
      * @return dot product
      *
      */
-    FORCEINLINE float
+    float
     operator|(const Vector3 v) const;
 
     /**
@@ -150,7 +150,7 @@ namespace nauEngineSDK {
      * @return cross product
      *
      */
-    FORCEINLINE Vector3
+    Vector3
     operator^(const Vector3 v) const;
 
     /**

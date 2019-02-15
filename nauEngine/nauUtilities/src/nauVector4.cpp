@@ -32,52 +32,52 @@ namespace nauEngineSDK {
     return (&x)[index];
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator+(const Vector4& v) const {
     return Vector4(x + v.x, y + v.y, z + v.z, w + v.w);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator-(const Vector4& v) const {
     return Vector4(x - v.x, y - v.y, z - v.z, w - v.w);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator*(const Vector4& v) const {
     return Vector4(x * v.x, y * v.y, z * v.z, w * v.w);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator/(const Vector4& v) const {
     return Vector4(x / v.x, y / v.y, z / v.z, w / v.z);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator+(float plus) const {
     return Vector4(x + plus, y + plus, z + plus, w + plus);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator-(float minus) const {
     return Vector4(x - minus, y - minus, y - minus, w - minus);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator*(float times) const {
     return Vector4(x * times, y * times, z * times, w * times);
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator/(float under) const {
     return Vector4(x / under, y / under, z / under, w / under);
   }
 
-  FORCEINLINE float
+  float
   Vector4::operator|(const Vector4 v) const {
     return x * v.x + y * v.y + z * v.z + w * v.w;
   }
 
-  FORCEINLINE float
+  float
   Vector4::operator^(const Vector4 v) const {
     return x * v.x - y * v.y - z * v.z - w * v.w;
   }
@@ -112,7 +112,7 @@ namespace nauEngineSDK {
     return x >= v.x && y >= v.y && z >= v.z && w >= v.w;
   }
 
-  FORCEINLINE Vector4
+  Vector4
   Vector4::operator-() const {
     return Vector4(-x, -y, -z, -w);
   }
@@ -171,27 +171,27 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE float
+  float
   Vector4::dot3(const Vector4& a, const Vector4& b) {
     return a.x * b.x + a.y * b.y + a.z * b.z;
   }
 
-  FORCEINLINE float
+  float
   Vector4::cross(const Vector4& a, const Vector4& b) {
     return a ^ b;
   }
 
-  FORCEINLINE float
+  float
   Vector4::dot4(const Vector4& a, const Vector4& b) {
     return a | b;
   }
 
-  FORCEINLINE float
+  float
   Vector4::dotScale(const Vector4& a, const Vector4& b) {
     return (a | b) / Math::sqr(a.magnitude());
   }
 
-  FORCEINLINE float
+  float
   Vector4::sqrDistance(const Vector4& a, const Vector4& b) {
     return  Math::pow(a.x - b.x, 2.0f) +
             Math::pow(a.y - b.y, 2.0f) +
@@ -200,7 +200,7 @@ namespace nauEngineSDK {
 
   }
 
-  FORCEINLINE float
+  float
   Vector4::distance(const Vector4& a, const Vector4& b) {
     return Math::sqrt(Math::sqr(a.x - b.x) +
                          Math::sqr(a.y - b.y) +
