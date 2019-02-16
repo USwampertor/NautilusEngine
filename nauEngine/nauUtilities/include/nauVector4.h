@@ -149,7 +149,7 @@ namespace nauEngineSDK {
      * @return cross product
      *
      */
-    float
+    Vector4
     operator^(const Vector4 v) const;
 
     /**
@@ -293,7 +293,7 @@ namespace nauEngineSDK {
      * @return the cross product between a and b
      *
      */
-    static FORCEINLINE float
+    static FORCEINLINE Vector4
     cross(const Vector4& a, const Vector4& b);
 
     /**

@@ -77,9 +77,15 @@ namespace nauEngineSDK {
     return x * v.x + y * v.y + z * v.z + w * v.w;
   }
 
-  float
+  Vector4
   Vector4::operator^(const Vector4 v) const {
-    return x * v.x - y * v.y - z * v.z - w * v.w;
+    Vector4 tmp;
+
+    tmp.x = (y*v.z) - (z*v.y);
+    tmp.y = (z*v.x) - (x*v.z);
+    tmp.z = (x*v.y) - (y*v.x);
+
+    return tmp;
   }
 
   bool
@@ -176,7 +182,7 @@ namespace nauEngineSDK {
     return a.x * b.x + a.y * b.y + a.z * b.z;
   }
 
-  float
+  Vector4
   Vector4::cross(const Vector4& a, const Vector4& b) {
     return a ^ b;
   }
@@ -203,9 +209,9 @@ namespace nauEngineSDK {
   float
   Vector4::distance(const Vector4& a, const Vector4& b) {
     return Math::sqrt(Math::sqr(a.x - b.x) +
-                         Math::sqr(a.y - b.y) +
-                         Math::sqr(a.z - b.z) +
-                         Math::sqr(a.w - b.w));
+                      Math::sqr(a.y - b.y) +
+                      Math::sqr(a.z - b.z) +
+                      Math::sqr(a.w - b.w));
   }
 
   void
@@ -299,12 +305,17 @@ namespace nauEngineSDK {
     NAU_ASSERT(!isnan(x) &&
                !isnan(y) &&
                !isnan(z) &&
+               !isnan(w) &&
                !isinf(x) &&
                !isinf(y) &&
                !isinf(z) &&
+               !isinf(w) &&
                "Value X or Y are either infinite or NAN");
 
-    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
+    float sqr = Math::pow(x, 2.0f) + 
+                Math::pow(y, 2.0f) + 
+                Math::pow(z, 2.0f) + 
+                Math::pow(w, 2.0f);
 
     NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
@@ -313,23 +324,28 @@ namespace nauEngineSDK {
 
     float unit = Math::invSqrt(sqr);
 
-    return Vector4((x * unit), (y * unit), (z * unit), w);
+    return Vector4((x * unit), (y * unit), (z * unit), (w * unit));
   }
 
   void
   Vector4::normalize3() {
     NAU_ASSERT(!isnan(x) &&
-               !isnan(y) &&
-               !isnan(z) &&
-               !isinf(x) &&
-               !isinf(y) &&
-               !isinf(z) &&
-               "Value X or Y are either infinite or NAN");
+      !isnan(y) &&
+      !isnan(z) &&
+      !isnan(w) &&
+      !isinf(x) &&
+      !isinf(y) &&
+      !isinf(z) &&
+      !isinf(w) &&
+      "Value X or Y are either infinite or NAN");
 
-    float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
+    float sqr = Math::pow(x, 2.0f) +
+      Math::pow(y, 2.0f) +
+      Math::pow(z, 2.0f) +
+      Math::pow(w, 2.0f);
 
     NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
-               "Square is less than epsilon and that shit is wack");
+      "Square is less than epsilon and that shit is wack");
 
     NAU_DEBUG_ONLY(sqrMagnitude());
 
@@ -338,6 +354,7 @@ namespace nauEngineSDK {
     x *= unit;
     y *= unit;
     z *= unit;
+    w *= unit;
   }
 
   bool

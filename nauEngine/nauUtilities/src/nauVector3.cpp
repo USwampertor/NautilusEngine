@@ -197,8 +197,8 @@ namespace nauEngineSDK {
   Vector3::distance(const Vector3& a, const Vector3& b) {
     return 
       Math::sqrt(Math::sqr(a.x - b.x) +
-                    Math::sqr(a.y - b.y) +
-                    Math::sqr(a.z - b.z));
+                 Math::sqr(a.y - b.y) +
+                 Math::sqr(a.z - b.z));
   }
 
   void
