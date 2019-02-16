@@ -502,6 +502,20 @@ namespace nauEngineSDK {
      */
     static const Vector4 ONEW;
 
+    /**
+     * Vector4 that has x value 1
+     */
+    static const Vector4 RIGHT;
+
+    /**
+     * Vector4 with y value 1
+     */
+    static const Vector4 UP;
+
+    /**
+     * Vector4 with z value 1
+     */
+    static const Vector4 FRONT;
 
     /**
      * Member declaration

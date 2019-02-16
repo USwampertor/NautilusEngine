@@ -1,6 +1,6 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauVector3.h
+ * @file Vector3.h
  * @author Marco "Swampy" Millan
  * @date 2018/09/24 2018
  * @brief 3D point
@@ -272,7 +272,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief the dot product
-     * @param a nauVector3 and b nauVector3
+     * @param a Vector3 and b Vector3
      * @return the dot product between a and b
      *
      */
@@ -281,7 +281,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief the cross product
-     * @param a nauVector3 and b nauVector3
+     * @param a Vector3 and b Vector3
      * @return the cross product between a and b
      *
      */
@@ -290,7 +290,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief the scale of b over a
-     * @param a nauVector3 that is the reflection and b nauVector3 that reflects over
+     * @param a Vector3 that is the reflection and b Vector3 that reflects over
      * @return scale of b in a
      *
      */
@@ -299,7 +299,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief the square distance
-     * @param a nauVector3 and b nauVector3
+     * @param a Vector3 and b Vector3
      * @return the square distance between the two points
      *
      */
@@ -308,7 +308,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief the distance between two points in 2d space
-     * @param a nauVector3 and b nauVector3
+     * @param a Vector3 and b Vector3
      * @return the distance between the two points
      *
      */
@@ -316,7 +316,7 @@ namespace nauEngineSDK {
     distance(const Vector3& a, const Vector3& b);
 
     /**
-     * @brief sets the value of a nauVector3
+     * @brief sets the value of a Vector3
      * @param float x and y
      * @return
      *
@@ -448,29 +448,44 @@ namespace nauEngineSDK {
    public:
 
     /**
-     * nauVector3 that has all values 0
+     * Vector3 that has all values 0
      */
     static const Vector3 ZERO;
 
     /**
-     * nauVector3 that has all values 1
+     * Vector3 that has all values 1
      */
     static const Vector3 ONES;
 
     /**
-     * nauVector3 that has x value 1
+     * Vector3 that has x value 1
      */
     static const Vector3 ONEX;
 
     /**
-     * nauVector3 that has y value 1
+     * Vector3 that has y value 1
      */
     static const Vector3 ONEY;
 
     /**
-     * nauVector3 that has x value 1
+     * Vector3 that has x value 1
      */
     static const Vector3 ONEZ;
+
+    /**
+     * Vector3 that has x value 1
+     */
+    static const Vector3 RIGHT;
+
+    /**
+     * Vector3 with y value 1
+     */
+    static const Vector3 UP;
+
+    /**
+     * Vector3 with z value 1
+     */
+    static const Vector3 FRONT;
 
     /**
      * Member declaration

@@ -362,15 +362,22 @@ namespace nauEngineSDK {
     return 0.0f == x && 0.0f == y && 0.0f == z && w == 0.0f;
   }
 
-  const Vector4 Vector4::ZERO = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ZERO   = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
 
-  const Vector4 Vector4::ONES = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+  const Vector4 Vector4::ONES   = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
-  const Vector4 Vector4::ONEX = Vector4(1.0f, 1.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ONEX   = Vector4(1.0f, 1.0f, 0.0f, 0.0f);
 
-  const Vector4 Vector4::ONEY = Vector4(0.0f, 1.0f, 0.0f, 0.0f);
+  const Vector4 Vector4::ONEY   = Vector4(0.0f, 1.0f, 0.0f, 0.0f);
 
-  const Vector4 Vector4::ONEZ = Vector4(0.0f, 0.0f, 1.0f, 0.0f);
+  const Vector4 Vector4::ONEZ   = Vector4(0.0f, 0.0f, 1.0f, 0.0f);
 
-  const Vector4 Vector4::ONEW = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+  const Vector4 Vector4::ONEW   = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+
+  const Vector4 Vector4::RIGHT  = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+
+  const Vector4 Vector4::UP     = Vector4(0.0f, 1.0f, 0.1f, 1.0f);
+
+  const Vector4 Vector4::FRONT  = Vector4(0.0f, 0.0F, 1.0f, 1.0f);
+
 }
