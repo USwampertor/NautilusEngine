@@ -20,19 +20,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauRasterizerState
+  class NAU_CORE_EXPORT RasterizerState
   {
   public:
 
     /**
      * default constructor
      */
-    nauRasterizerState() = default;
+    RasterizerState() = default;
 
     /**
      * Virtual destructor
      */
-    virtual ~nauRasterizerState() {}
+    virtual ~RasterizerState() {}
   };
   
 }

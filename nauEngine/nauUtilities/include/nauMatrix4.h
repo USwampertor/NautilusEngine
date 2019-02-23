@@ -32,14 +32,19 @@ namespace nauEngineSDK{
   * Sample usage:
   * 	Transformation Matrices can be used with this
   */
-  class Matrix4
+  class NAU_UTILITY_EXPORT Matrix4
   {
    public:
 
     /**
      * Default constructor
      */
-    Matrix4() {}
+    Matrix4() = default;
+
+    /**
+     * Default constructor
+     */
+    ~Matrix4() = default;
 
     /**
      * @brief Constructor with value parameter
@@ -314,7 +319,7 @@ namespace nauEngineSDK{
          float m02, m12, m22, m32;
          float m03, m13, m23, m33;
        }_m;
-       float m[4][4];
+       float  m[4][4];
        Vector4 vec[4];
        float fVec[16];
     };

@@ -17,19 +17,19 @@
 
 namespace nauEngineSDK {
 
-  class nauDepthStencilDX : public nauDepthStencil
+  class NAU_DIRECTX_EXPORT DepthStencilDX : public DepthStencil
   {
   public:
 
     /**
      * default constructor
      */
-    nauDepthStencilDX() = default;
+    DepthStencilDX() = default;
 
     /**
      * default destructor
      */
-    ~nauDepthStencilDX() {}
+    ~DepthStencilDX() {}
   
   };
   

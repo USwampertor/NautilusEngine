@@ -21,19 +21,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauSwapChain
+  class NAU_CORE_EXPORT SwapChain
   {
   public:
 
     /**
      * default constructor
      */
-    nauSwapChain() = default;
+    SwapChain() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauSwapChain() {}
+    virtual ~SwapChain() {}
   };
   
 }

@@ -29,6 +29,7 @@
     <ClInclude Include="include\nauGraphicsAPI.h" />
     <ClInclude Include="include\nauGraphicsBuffer.h" />
     <ClInclude Include="include\nauInputLayout.h" />
+    <ClInclude Include="include\nauMaterial.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
     <ClInclude Include="include\nauPrerequisitesCore.h" />
@@ -41,10 +42,8 @@
     <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
-    <ClInclude Include="nauMaterial.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauMaterial.cpp" />
     <ClCompile Include="src\nauBaseApp.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
@@ -55,6 +54,7 @@
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauInputLayout.cpp" />
+    <ClCompile Include="src\nauMaterial.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauRasterizerState.cpp" />

@@ -23,18 +23,18 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	model myScene
     */
-  class NAU_DIRECTX_EXPORT nauModelDX : public nauModel
+  class NAU_DIRECTX_EXPORT ModelDX : public Model
   {
   public:
     /**
      * Default constructor
      */
-    nauModelDX() = default;
+    ModelDX() = default;
 
     /**
      * Default destructor
      */
-    ~nauModelDX() {}
+    ~ModelDX() {}
 
     void
     setDevice(void* pDevice);
@@ -48,7 +48,7 @@ namespace nauEngineSDK {
     void
     processNode(aiNode* node, const aiScene* scene);
 
-    nauMesh*
+    Mesh*
     processMesh(aiMesh* mesh, const aiScene* scene);
 
   public:

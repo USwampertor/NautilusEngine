@@ -13,7 +13,7 @@
 namespace nauEngineSDK {
 
   bool
-  nauGraphicsAPIDX::initDevice(void* scrHandler) {
+  GraphicsAPIDX::initDevice(void* scrHandler) {
 
     m_fov = 0.0f;
     
@@ -54,7 +54,8 @@ namespace nauEngineSDK {
     
     m_inputLayout.createInputBuffer(m_device.m_pd3dDevice, &m_vertexShader);
 
-    
+    m_samplerState.createShaderSampler(m_device.m_pd3dDevice);
+
     m_world = DirectX::XMMatrixIdentity();
 
     DirectX::XMVECTOR position;
@@ -82,7 +83,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauGraphicsAPIDX::onRender() {
+  GraphicsAPIDX::onRender() {
     setShaders(m_device.m_pImmediateContext,
                m_vertexShader.m_pVertexShader,
                SHADERFLAGS::VERTEX);
@@ -102,11 +103,11 @@ namespace nauEngineSDK {
                                                         0);
     m_meshList.render();
     m_device.m_pSwapChain->Present(DXGI_SWAP_EFFECT_DISCARD, DXGI_PRESENT_DO_NOT_WAIT);
-
+    m_samplerState.setShaderSampler(m_device.m_pd3dDevice);
   }
 
   void
-  nauGraphicsAPIDX::setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) {
+  GraphicsAPIDX::setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) {
     if      (SHADERFLAGS::VERTEX == flags) {
       reinterpret_cast<ID3D11DeviceContext*>(pDeviceContext)->VSSetShader(
                                                 reinterpret_cast<ID3D11VertexShader*>(pShader),
@@ -123,12 +124,12 @@ namespace nauEngineSDK {
   }
 
   void
-  nauGraphicsAPIDX::test() {
+  GraphicsAPIDX::test() {
     
-    nauMeshDX* m = new nauMeshDX();
+    MeshDX* m = new MeshDX();
     m->m_vertexBuffer = new nauVertexBufferDX();
     m->m_indexBuffer = new nauIndexBufferDX();
-    m->m_texture = new nauTextureDX();
+    m->m_texture = new TextureDX();
     m_meshList.m_meshes.push_back(m);
     auto& mesh = m_meshList.m_meshes.back();
 
@@ -142,7 +143,7 @@ namespace nauEngineSDK {
     mesh->m_texture->createShaderSampler(m_meshList.m_pDevice);
     mesh->m_texture->setShaderSampler(m_meshList.m_pDevice);
 
-    nauVertex pVertex;
+    Vertex pVertex;
 
     pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
     pVertex.m_color = { 1.0f,0.5f,0.25f,1.0f };

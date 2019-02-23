@@ -22,19 +22,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	depth enabled checks if it should render with depth
     */
-  class NAU_CORE_EXPORT nauDepthStencil
+  class NAU_CORE_EXPORT DepthStencil
   {
    public:
     
     /**
      * default constructor
      */
-    nauDepthStencil() = default;
+    DepthStencil() = default;
     
     /**
      * virtual destructor
      */
-    virtual ~nauDepthStencil() {};
+    virtual ~DepthStencil() {};
 
     /**
      * @brief creates a depth stencil descriptor
@@ -47,7 +47,7 @@ namespace nauEngineSDK {
                        void* pDeviceContext, 
                        uint32 height, 
                        uint32 width,
-                       nauTexture* texture) = 0;
+                       Texture* texture) = 0;
 
     /**
      * Member declaration

@@ -73,7 +73,7 @@
     <ClInclude Include="include\nauCameraManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauMaterial.h">
+    <ClInclude Include="include\nauMaterial.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,7 +138,7 @@
     <ClCompile Include="src\nauCameraManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauMaterial.cpp">
+    <ClCompile Include="src\nauMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

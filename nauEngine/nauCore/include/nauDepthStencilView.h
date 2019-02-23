@@ -20,19 +20,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauDepthStencilView
+  class NAU_CORE_EXPORT DepthStencilView
   {
    public:
 
     /*
      * Default constructor
      */
-    nauDepthStencilView() = default;
+    DepthStencilView() = default;
 
     /*
      * virtual destructor
      */
-    virtual ~nauDepthStencilView() {}
+    virtual ~DepthStencilView() {}
 
     /**
      * @brief gets the depth stencil vew

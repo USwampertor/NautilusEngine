@@ -29,12 +29,12 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVertexBuffer::add(const nauVertex& vertex) {
+  nauVertexBuffer::add(const Vertex& vertex) {
     m_vertexData.push_back(vertex);
   }
 
   void
-  nauVertexBuffer::add(Vector<nauVertex>& vertices) {
+  nauVertexBuffer::add(Vector<Vertex>& vertices) {
     m_vertexData.insert(m_vertexData.end(), vertices.begin(), vertices.end());
   }
 

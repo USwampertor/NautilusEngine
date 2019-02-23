@@ -22,23 +22,23 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	Graphics buffer can be a DirectX buffer or OpenGL
    */
-  class NAU_CORE_EXPORT nauGraphicsBuffer
+  class NAU_CORE_EXPORT GraphicsBuffer
   {
    public:
 
     /**
      * default constructor
      */
-    nauGraphicsBuffer() = default;
+    GraphicsBuffer() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauGraphicsBuffer() {}
+    virtual ~GraphicsBuffer() {}
 
   };
 
-  class NAU_CORE_EXPORT nauVertexBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauVertexBuffer : public GraphicsBuffer
   {
    public:
 
@@ -78,7 +78,7 @@ namespace nauEngineSDK {
      *
      */
     void 
-    add(const nauVertex& vertex);
+    add(const Vertex& vertex);
 
     /**
      * @brief Adds a vector to the vector of objects inside
@@ -87,7 +87,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    add(Vector<nauVertex>& vertices);
+    add(Vector<Vertex>& vertices);
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -127,11 +127,11 @@ namespace nauEngineSDK {
     /**
      * vertex vector
      */
-    Vector<nauVertex> m_vertexData;
+    Vector<Vertex> m_vertexData;
 
   };
 
-  class NAU_CORE_EXPORT nauIndexBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauIndexBuffer : public GraphicsBuffer
   {
    public:
 
@@ -223,7 +223,7 @@ namespace nauEngineSDK {
 
   };
   
-  class NAU_CORE_EXPORT nauConstantBuffer : public nauGraphicsBuffer
+  class NAU_CORE_EXPORT nauConstantBuffer : public GraphicsBuffer
   {
    public:
 

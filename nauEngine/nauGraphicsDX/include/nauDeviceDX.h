@@ -14,12 +14,12 @@
 #include <nauDevice.h>
 
 namespace nauEngineSDK {
-  class NAU_DIRECTX_EXPORT nauDeviceDX : public nauDevice
+  class NAU_DIRECTX_EXPORT DeviceDX : public Device
   {
    public:
-    nauDeviceDX() = default;
+    DeviceDX() = default;
     
-    ~nauDeviceDX() {}
+    ~DeviceDX() {}
     
     bool 
     initializeDevice(void* scrHandler);

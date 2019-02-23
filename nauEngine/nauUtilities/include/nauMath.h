@@ -19,7 +19,7 @@
 
 namespace nauEngineSDK {
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
-  using Math = nauWindowsMath;
+  using Math = WindowsMath;
 #else
   using Math = PlatformMath;
 #endif

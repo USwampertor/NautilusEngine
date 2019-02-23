@@ -16,19 +16,19 @@
 
 namespace nauEngineSDK {
   
-  class NAU_DIRECTX_EXPORT nauSamplerStateDX : public nauSamplerState
+  class NAU_DIRECTX_EXPORT SamplerStateDX : public SamplerState
   {
    public:
 
     /**
      * Default constructor
      */
-    nauSamplerStateDX() = default;
+    SamplerStateDX() = default;
 
     /**
      * default destructor
      */
-    ~nauSamplerStateDX() {}
+    ~SamplerStateDX() {}
 
     bool
     createShaderSampler(void* pDevice);

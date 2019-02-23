@@ -13,7 +13,7 @@
 namespace nauEngineSDK {
 
   bool
-  nauSamplerStateDX::createShaderSampler(void* pDevice) {
+  SamplerStateDX::createShaderSampler(void* pDevice) {
     HRESULT hr = S_OK;
 
     D3D11_SAMPLER_DESC sampler;
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauSamplerStateDX::setShaderSampler(void* pDevice) {
+  SamplerStateDX::setShaderSampler(void* pDevice) {
     ID3D11DeviceContext* immContext;
     reinterpret_cast<ID3D11Device*>(pDevice)->GetImmediateContext(&immContext);
     //First parameter is the register where you are using the texture

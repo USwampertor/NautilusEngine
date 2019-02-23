@@ -18,18 +18,18 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class NAU_CORE_EXPORT nauDevice
+  class NAU_CORE_EXPORT Device
   {
    public:
     /**
      * Default constructor
      */
-    nauDevice() = default;
+    Device() = default;
 
     /**
      * Virtual constructor
      */
-    virtual ~nauDevice() {}
+    virtual ~Device() {}
 
     /**
      * @brief initializes device with the handler given

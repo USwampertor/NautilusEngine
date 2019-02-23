@@ -20,19 +20,19 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class NAU_CORE_EXPORT nauSamplerState
+  class NAU_CORE_EXPORT SamplerState
   {
   public:
 
     /**
      * default constructor
      */
-    nauSamplerState() = default;
+    SamplerState() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauSamplerState() {}
+    virtual ~SamplerState() {}
 
     /**
      * @brief creates a shader sampler

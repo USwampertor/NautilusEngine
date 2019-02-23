@@ -25,18 +25,18 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauMesh
+  class NAU_CORE_EXPORT Mesh
   {
    public:
     /**
      * Default constructor
      */
-    nauMesh() = default;
+    Mesh() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauMesh() {}
+    virtual ~Mesh() {}
 
     /**
      * @brief renders the mesh in the given device context
@@ -63,7 +63,7 @@ namespace nauEngineSDK {
      * Texture of mesh
      * This is temporal, it should have a material instead
      */
-    nauTexture* m_texture;
+    Texture* m_texture;
 
   };
   

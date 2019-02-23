@@ -109,7 +109,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   UNREFERENCED_PARAMETER(lpCmdLine);
   
   //DLL Loading
-  nauGraphicsAPI* m_api;
+  GraphicsAPI* m_api;
   //
 
   // Global chains
@@ -120,7 +120,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
   String path = "nauGraphicsDXd.dll";
   
-  m_api = reinterpret_cast<nauGraphicsAPI*>(loadDLL(path));
+  m_api = reinterpret_cast<GraphicsAPI*>(loadDLL(path));
   if (m_api == nullptr) {
     std::cout << "Couldn't get DLL";
   }

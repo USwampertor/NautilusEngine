@@ -24,7 +24,6 @@ namespace nauEngineSDK {
       ONE
     };
   
-  
    /**
     * Matrix3
     * Description:
@@ -32,7 +31,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class Matrix3
+  class NAU_UTILITY_EXPORT Matrix3
   {
   public:
 

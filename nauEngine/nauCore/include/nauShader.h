@@ -22,19 +22,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauShader
+  class NAU_CORE_EXPORT Shader
   {
    public:
     
     /**
      * Default constructor of shader
      */
-    nauShader() = default;
+    Shader() = default;
 
     /**
      * Virtual destructor for child management
      */
-    virtual ~nauShader() {};
+    virtual ~Shader() {};
 
     /**
      * @brief Compiles a shader resource with the info showed
@@ -70,7 +70,7 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT nauVertexShader   : public nauShader
+  class NAU_CORE_EXPORT nauVertexShader   : public Shader
   {
    public:
 
@@ -87,7 +87,7 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT nauPixelShader    : public nauShader
+  class NAU_CORE_EXPORT nauPixelShader    : public Shader
   {
    public:
 
@@ -103,7 +103,7 @@ namespace nauEngineSDK {
     ~nauPixelShader() {};
   };
 
-  class NAU_CORE_EXPORT nauComputeShader  : public nauShader
+  class NAU_CORE_EXPORT nauComputeShader  : public Shader
   {
    public:
 
@@ -119,7 +119,7 @@ namespace nauEngineSDK {
     ~nauComputeShader() {};
   };
 
-  class NAU_CORE_EXPORT nauGeometryShader : public nauShader
+  class NAU_CORE_EXPORT nauGeometryShader : public Shader
   {
    public:
 
@@ -135,7 +135,7 @@ namespace nauEngineSDK {
     ~nauGeometryShader() {};
   };
   
-  class NAU_CORE_EXPORT nauTextureShader  : public nauShader
+  class NAU_CORE_EXPORT nauTextureShader  : public Shader
   {
    public:
 

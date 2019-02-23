@@ -20,18 +20,18 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauViewPort
+  class NAU_CORE_EXPORT ViewPort
   {
    public:
     /**
      * Default constructor
      */
-    nauViewPort() = default;
+    ViewPort() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauViewPort() {}
+    virtual ~ViewPort() {}
 
     /**
      * @brief Creates a viewPort

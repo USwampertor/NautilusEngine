@@ -20,19 +20,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauInputLayout
+  class NAU_CORE_EXPORT InputLayout
   {
    public:
     
     /**
      * Default constructor
      */
-    nauInputLayout() = default;
+    InputLayout() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauInputLayout() {};
+    virtual ~InputLayout() {};
 
     /**
      * @brief sets the descriptor of the input
@@ -94,7 +94,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    createInputBuffer(void* pDevice, nauShader* pShader) = 0;
+    createInputBuffer(void* pDevice, Shader* pShader) = 0;
 
     /**
      * @brief sets the layout to the immediate context

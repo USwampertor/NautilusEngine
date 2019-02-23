@@ -23,7 +23,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	vertex an be used to store information of the mesh
     */
-  struct NAU_CORE_EXPORT nauVertex
+  struct NAU_CORE_EXPORT Vertex
   {
     
     /**

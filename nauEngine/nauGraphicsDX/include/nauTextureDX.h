@@ -14,19 +14,19 @@
 #include <nauTexture.h>
 
 namespace nauEngineSDK {
-  class NAU_DIRECTX_EXPORT nauTextureDX : public nauTexture
+  class NAU_DIRECTX_EXPORT TextureDX : public Texture
   {
    public:
 
     /**
      * Default constructor
      */
-    nauTextureDX() = default;
+    TextureDX() = default;
 
     /**
      * Default destructor
      */
-    ~nauTextureDX() {}
+    ~TextureDX() {}
 
     bool
     loadFromFile(String path, void* pDevice, void* pDeviceContext);

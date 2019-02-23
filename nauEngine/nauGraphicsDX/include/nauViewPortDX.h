@@ -20,19 +20,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_DIRECTX_EXPORT nauViewPortDX : public nauViewPort
+  class NAU_DIRECTX_EXPORT ViewPortDX : public ViewPort
   {
   public:
 
     /**
      * Default constructor
      */
-    nauViewPortDX() = default;
+    ViewPortDX() = default;
 
     /**
      * Default destructor
      */
-    ~nauViewPortDX() {}
+    ~ViewPortDX() {}
 
     bool
     createViewPort(float width, float height, float topLeftX, float topLeftY);

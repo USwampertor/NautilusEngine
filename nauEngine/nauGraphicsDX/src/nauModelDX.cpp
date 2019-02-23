@@ -12,22 +12,22 @@
 
 namespace nauEngineSDK {
   void
-  nauModelDX::setDevice(void* pDevice) {
+  ModelDX::setDevice(void* pDevice) {
     m_pDevice = reinterpret_cast<ID3D11Device*>(pDevice);
   }
 
   void
-  nauModelDX::render() {
+  ModelDX::render() {
     ID3D11DeviceContext* pImmContext;
     m_pDevice->GetImmediateContext(&pImmContext);
 
     for (auto& mesh : m_meshes) {
-      reinterpret_cast<nauMeshDX*>(mesh)->render(pImmContext);
+      reinterpret_cast<MeshDX*>(mesh)->render(pImmContext);
     }
   }
 
   void
-  nauModelDX::loadFromFile(String filePath) {
+  ModelDX::loadFromFile(String filePath) {
 
     //char dirPath[MAX_PATH];
     //GetCurrentDirectoryA(MAX_PATH, dirPath);
@@ -52,7 +52,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauModelDX::processNode(aiNode* node, const aiScene* scene) {
+  ModelDX::processNode(aiNode* node, const aiScene* scene) {
     ID3D11DeviceContext* pImmContext;
     m_pDevice->GetImmediateContext(&pImmContext);
     
@@ -66,13 +66,13 @@ namespace nauEngineSDK {
     }
   }
 
-  nauMesh*
-  nauModelDX::processMesh(aiMesh* mesh, const aiScene* scene) {
-    nauMeshDX* m =  new nauMeshDX();
+  Mesh*
+  ModelDX::processMesh(aiMesh* mesh, const aiScene* scene) {
+    MeshDX* m =  new MeshDX();
     m->m_vertexBuffer = new nauVertexBufferDX();
     m->m_indexBuffer = new nauIndexBufferDX();
     for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
-      nauVertex pvertex;
+      Vertex pvertex;
 
       pvertex.m_position.x = mesh->mVertices[i].x;
       pvertex.m_position.y = mesh->mVertices[i].y;

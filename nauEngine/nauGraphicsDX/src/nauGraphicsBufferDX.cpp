@@ -24,7 +24,7 @@ namespace nauEngineSDK {
     memset(&bd, 0, sizeof(bd));
 
     bd.Usage = tUsage;
-    bd.ByteWidth = static_cast<uint32>(sizeof(nauVertex)*m_vertexData.size());
+    bd.ByteWidth = static_cast<uint32>(sizeof(Vertex)*m_vertexData.size());
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
     bd.CPUAccessFlags = 0;
 
@@ -57,7 +57,7 @@ namespace nauEngineSDK {
   void
   nauVertexBufferDX::set(void* pDevice) {
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
-    uint32 str = sizeof(nauVertex);
+    uint32 str = sizeof(Vertex);
     uint32 off = 0;
     pDC->IASetVertexBuffers(0, 1, &m_pBuffer, &str, &off);
   }

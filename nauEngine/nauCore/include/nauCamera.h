@@ -32,15 +32,20 @@ namespace nauEngineSDK {
     /**
      * Constructor with parameters
      * Vector3 position of camera
-     * Vector3 Direction of camera
-     * Vector3 Up axis, the default is 0,1,0
+     * Vector3 Front axis, the default is 0,0,1. Should be orthogonal to up
+     * Vector3 Up axis, the default is 0,1,0. Should be orthogonal to front
      */
-    Camera(Vector3 position, Vector3 direction, Vector3 up = Vector3::UP);
+    Camera(Vector3 position, Vector3 objective = Vector3::FRONT) {
+     
+      m_position  = position;
+      m_objective = objective;
+      createView();
+    }
 
     /**
      * Default destructor
      */
-    ~Camera() {}
+    ~Camera() = default;
 
     /**
      * @brief moves forward (or backward) the camera
@@ -50,6 +55,15 @@ namespace nauEngineSDK {
      */
     void
     moveForward(float defaz);
+
+    /**
+     * @brief moves right (or left) the camera
+     * @param float defaz, if negative, it'll go left
+     * @return
+     *
+     */
+    void
+    moveRight(float defaz);
 
     /**
      * @brief rotates the view matrix in a specific axis and angle
@@ -63,17 +77,30 @@ namespace nauEngineSDK {
     /**
      * gets the View Matrix, and if theres no matrix, it builds it
      */
-    void
+    Matrix4
     getView();
 
     /**
+     * creates the View Matrix
+     */
+    void
+    createView();
+
+    /**
      * @brief Rotates around a position given by rad angles
-     * @param vector objective, rad angles
+     * @param vector objective, the axis to rotate around rad angles
      * @return 
      *
      */
     void
-    orbit(Vector3 objective, float rads);
+    orbit(Vector3 objective, Vector3 axis, float rads);
+
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
 
     /**
      * @brief Sets the position of the camera
@@ -111,8 +138,6 @@ namespace nauEngineSDK {
     void
     setObjective(float x, float y, float z);
 
-
-
   public:
 
     /**
@@ -136,9 +161,20 @@ namespace nauEngineSDK {
     Vector3 m_up;
 
     /**
+     * An objective that can be setted by 
+     */
+    Vector3 m_objective;
+
+    /**
      * View Matrix
      */
     Matrix4 m_view;
+
+    /**
+     * Checks if the camera changed, if so, it tells the camera it has to recreate
+     * the view matrix
+     */
+    bool m_dirty;
   };
   
 }

@@ -10,7 +10,7 @@
 #include "nauDeviceDX.h"
 namespace nauEngineSDK {
   bool
-    nauDeviceDX::initializeDevice(void* scrHandler) {
+    DeviceDX::initializeDevice(void* scrHandler) {
     m_handler = reinterpret_cast<HWND>(scrHandler);
     
     HRESULT result = S_OK;
@@ -82,17 +82,17 @@ namespace nauEngineSDK {
   }
 
   void
-  nauDeviceDX::onRender() {
+  DeviceDX::onRender() {
 
   }
 
   bool
-  nauDeviceDX::createBuffer() {
+  DeviceDX::createBuffer() {
     return true;
   }
 
   bool
-  nauDeviceDX::createDepthStencilView() {
+  DeviceDX::createDepthStencilView() {
     return true;
   }
 

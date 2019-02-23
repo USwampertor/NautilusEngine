@@ -21,19 +21,19 @@ namespace nauEngineSDK {
    * Sample usage:
    *
    */
-  class NAU_CORE_EXPORT nauTexture
+  class NAU_CORE_EXPORT Texture
   {
   public:
 
     /**
      * default constructor
      */
-    nauTexture() = default;
+    Texture() = default;
 
     /**
      * default destructor
      */
-    ~nauTexture() {}
+    ~Texture() {}
 
     /**
      * @brief Loads a resource from a path

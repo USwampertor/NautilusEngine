@@ -22,19 +22,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	you can make a nice model with them
     */
-  class nauMeshDX : public nauMesh
+  class NAU_DIRECTX_EXPORT MeshDX : public Mesh
   {
   public:
 
     /**
      * Default constructor
      */
-    nauMeshDX() = default;
+    MeshDX() = default;
 
     /**
      * Default destructor
      */
-    ~nauMeshDX() {}
+    ~MeshDX() {}
 
     void
     render(void* pDeviceContext);

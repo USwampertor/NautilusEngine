@@ -18,7 +18,7 @@
 namespace nauEngineSDK {
 
   bool
-  nauTextureDX::loadFromFile(String path, void* pDevice, void* pDeviceContext) {
+  TextureDX::loadFromFile(String path, void* pDevice, void* pDeviceContext) {
     
     UNREFERENCED_PARAMETER(pDeviceContext);
     D3D11_TEXTURE2D_DESC descTexture;
@@ -91,7 +91,7 @@ namespace nauEngineSDK {
 
 
   bool
-  nauTextureDX::createShaderResourceView(void* pDevice) {
+  TextureDX::createShaderResourceView(void* pDevice) {
     HRESULT hr = E_FAIL;
     hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateShaderResourceView(m_pd3dTexture2D, 
                                                                             nullptr, 
@@ -104,14 +104,14 @@ namespace nauEngineSDK {
   }
 
   void
-  nauTextureDX::setShaderResourceView(void* pDevice) {
+  TextureDX::setShaderResourceView(void* pDevice) {
     ID3D11DeviceContext* immContext;
     reinterpret_cast<ID3D11Device*>(pDevice)->GetImmediateContext(&immContext);
     immContext->PSSetShaderResources(0, 1, &m_shaderResource);
   }
 
   bool
-  nauTextureDX::createRenderTargetView(void* pDevice, void* swapChain) {
+  TextureDX::createRenderTargetView(void* pDevice, void* swapChain) {
     
     HRESULT hr = E_FAIL;
     ID3D11Texture2D* pBackBuffer = nullptr;
@@ -133,7 +133,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  nauTextureDX::createDepthStencilView(void* pDevice, void* pDeviceContext) {
+  TextureDX::createDepthStencilView(void* pDevice, void* pDeviceContext) {
     
     UNREFERENCED_PARAMETER(pDeviceContext);
     UNREFERENCED_PARAMETER(pDevice);
@@ -141,7 +141,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  nauTextureDX::createDepthstencil(void* pDevice,
+  TextureDX::createDepthstencil(void* pDevice,
                                    void* pDeviceContext,
                                    uint32 width,
                                    uint32 height) {
@@ -192,7 +192,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  nauTextureDX::createShaderSampler(void* pDevice) {
+  TextureDX::createShaderSampler(void* pDevice) {
     HRESULT hr = E_FAIL;
 
     D3D11_SAMPLER_DESC sampler;
@@ -225,7 +225,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  nauTextureDX::setShaderSampler(void* pDevice) {
+  TextureDX::setShaderSampler(void* pDevice) {
     
     HRESULT hr = E_FAIL;
 

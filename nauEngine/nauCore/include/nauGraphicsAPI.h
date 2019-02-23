@@ -29,20 +29,20 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	You cast any of the dynamic libraries with this so it can be used
     */
-  class NAU_CORE_EXPORT nauGraphicsAPI
+  class NAU_CORE_EXPORT GraphicsAPI
   {
    public:
     
     /**
      * default constructor
      */
-    nauGraphicsAPI() = default;
+    GraphicsAPI() = default;
     
     /**
      * virtual destructor
      */
     virtual
-    ~nauGraphicsAPI() {}
+    ~GraphicsAPI() {}
 
     /**
      * @brief initializes the device of the API

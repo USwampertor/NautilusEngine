@@ -27,19 +27,19 @@ namespace nauEngineSDK {
    * Sample usage:
    *
    */
-  class NAU_CORE_EXPORT nauModel
+  class NAU_CORE_EXPORT Model
   {
    public:
 
     /**
      * Default constructor
      */
-    nauModel() = default;
+    Model() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauModel() {}
+    virtual ~Model() {}
 
     /**
      * @brief sets the device in the object
@@ -83,12 +83,12 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual nauMesh*
+    virtual Mesh*
     processMesh(aiMesh* mesh, const aiScene* scene) = 0;
 
   public:
 
-    Vector<nauMesh*> m_meshes;
+    Vector<Mesh*> m_meshes;
 
   };
 

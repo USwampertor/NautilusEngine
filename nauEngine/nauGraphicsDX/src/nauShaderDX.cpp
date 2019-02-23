@@ -18,7 +18,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  nauShaderDX::compile(String filename, 
+  ShaderDX::compile(String filename, 
                        String entryPoint, 
                        String profile, 
                        uint32 FLAGS) {
@@ -52,7 +52,7 @@ namespace nauEngineSDK {
   }
 
   void*
-  nauShaderDX::getData() {
+  ShaderDX::getData() {
     return m_d3dBlob;
   }
 
@@ -68,7 +68,7 @@ namespace nauEngineSDK {
                                     const char* fileName, 
                                     const char* entryPoint) {
     HRESULT hr = E_FAIL;
-    hr = nauShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    hr = ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
     NAU_ASSERT(m_d3dBlob != nullptr && "Vertex Shader blob is NULL");
     if (FAILED(hr)) {
       printf("Failed to compile Vertex Shader");
@@ -93,7 +93,7 @@ namespace nauEngineSDK {
   void
   nauPixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = E_FAIL;
-    hr = nauShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    hr = ShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
     NAU_ASSERT(m_d3dBlob != nullptr && "Pixel Shader blob is NULL");
     if (FAILED(hr)) {
       printf("Failed to compile Vertex Shader");

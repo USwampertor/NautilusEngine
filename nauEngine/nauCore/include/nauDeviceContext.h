@@ -19,19 +19,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauDeviceContext
+  class NAU_CORE_EXPORT DeviceContext
   {
    public:
 
     /**
      * default constructor
      */
-    nauDeviceContext() = default;
+    DeviceContext() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauDeviceContext() {}
+    virtual ~DeviceContext() {}
   };
   
 }

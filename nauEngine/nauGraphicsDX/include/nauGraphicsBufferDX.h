@@ -14,18 +14,18 @@
 
 namespace nauEngineSDK {
 
-  class NAU_DIRECTX_EXPORT nauGraphicsBufferDX : public nauGraphicsBuffer
+  class NAU_DIRECTX_EXPORT GraphicsBufferDX : public GraphicsBuffer
   {
    public:
      /**
       * Default constructor
       */
-    nauGraphicsBufferDX() = default;
+    GraphicsBufferDX() = default;
 
     /**
      * Default destructor
      */
-    ~nauGraphicsBufferDX() {}
+    ~GraphicsBufferDX() {}
 
    public:
     /**
@@ -34,7 +34,7 @@ namespace nauEngineSDK {
     ID3D11Buffer* m_pBuffer = nullptr;
   };
 
-  class NAU_DIRECTX_EXPORT nauVertexBufferDX : public nauVertexBuffer, nauGraphicsBufferDX
+  class NAU_DIRECTX_EXPORT nauVertexBufferDX : public nauVertexBuffer, GraphicsBufferDX
   {
   public:
     nauVertexBufferDX() = default;
@@ -50,7 +50,7 @@ namespace nauEngineSDK {
     set(void* pDevice);
   };
 
-  class NAU_DIRECTX_EXPORT nauIndexBufferDX : public nauIndexBuffer, nauGraphicsBufferDX
+  class NAU_DIRECTX_EXPORT nauIndexBufferDX : public nauIndexBuffer, GraphicsBufferDX
   {
   public:
     nauIndexBufferDX() = default;
@@ -66,7 +66,7 @@ namespace nauEngineSDK {
     set(void* pDevice);
   };
 
-  class NAU_DIRECTX_EXPORT nauConstantBufferDX : public nauConstantBuffer, nauGraphicsBufferDX
+  class NAU_DIRECTX_EXPORT nauConstantBufferDX : public nauConstantBuffer, GraphicsBufferDX
   {
   public:
     nauConstantBufferDX() = default;

@@ -2,10 +2,10 @@
 #include "nauGraphicsBufferDX.h"
 namespace nauEngineSDK {
   void
-  nauMeshDX::render(void* pDeviceContext) {
+  MeshDX::render(void* pDeviceContext) {
     uint32 stride;
     uint32 offset;
-    stride = sizeof(nauVertex);
+    stride = sizeof(Vertex);
     offset = 0;
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDeviceContext);
     auto pVB = reinterpret_cast<nauVertexBufferDX*>(m_vertexBuffer);

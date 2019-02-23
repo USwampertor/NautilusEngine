@@ -20,19 +20,19 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauRenderTargetView
+  class NAU_CORE_EXPORT RenderTargetView
   {
    public:
 
     /**
      * default constructor
      */
-    nauRenderTargetView() = default;
+    RenderTargetView() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauRenderTargetView() {}
+    virtual ~RenderTargetView() {}
 
     /**
      * @brief Creates a shader resource view

@@ -17,19 +17,19 @@
 
 namespace nauEngineSDK {
   
-  class NAU_DIRECTX_EXPORT nauInputLayoutDX : public nauInputLayout
+  class NAU_DIRECTX_EXPORT InputLayoutDX : public InputLayout
   {
    public:
   
     /**
      * Default Constructor
      */
-    nauInputLayoutDX() = default;
+    InputLayoutDX() = default;
   
     /**
      * Default destructor
      */
-    ~nauInputLayoutDX() {}
+    ~InputLayoutDX() {}
   
     void 
     setInputDescriptor();
@@ -55,7 +55,7 @@ namespace nauEngineSDK {
     clear();
 
     void
-    createInputBuffer(void* pDevice, nauShader* pShader);
+    createInputBuffer(void* pDevice, Shader* pShader);
 
     void
     setLayout(void* pImmediateContext);

@@ -14,19 +14,19 @@
 
 namespace nauEngineSDK {
 
-  class NAU_DIRECTX_EXPORT nauShaderDX : public nauShader
+  class NAU_DIRECTX_EXPORT ShaderDX : public Shader
   {
   public:
 
     /**
      * Default constructor
      */
-    nauShaderDX() = default;
+    ShaderDX() = default;
 
     /**
      * Default destructor
      */
-    virtual ~nauShaderDX() {
+    virtual ~ShaderDX() {
     
       if (m_d3dBlob != nullptr) {
         m_d3dBlob->Release();
@@ -62,7 +62,7 @@ namespace nauEngineSDK {
   };
   
 
-  class NAU_DIRECTX_EXPORT nauVertexShaderDX : public nauShaderDX//, public nauVertexShader
+  class NAU_DIRECTX_EXPORT nauVertexShaderDX : public ShaderDX//, public nauVertexShader
   {
    public:
     /**
@@ -91,7 +91,7 @@ namespace nauEngineSDK {
     ID3D11VertexShader* m_pVertexShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauPixelShaderDX : public nauShaderDX//, public nauPixelShader
+  class NAU_DIRECTX_EXPORT nauPixelShaderDX : public ShaderDX//, public nauPixelShader
   {
    public:
     /**
@@ -121,7 +121,7 @@ namespace nauEngineSDK {
     ID3D11PixelShader* m_pPixelShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauComputeShaderDX : public nauShaderDX//, public nauComputeShader
+  class NAU_DIRECTX_EXPORT nauComputeShaderDX : public ShaderDX//, public nauComputeShader
   {
    public:
     /**
@@ -146,7 +146,7 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_DIRECTX_EXPORT nauGeometryShaderDX : public nauShaderDX//, public nauGeometryShader
+  class NAU_DIRECTX_EXPORT nauGeometryShaderDX : public ShaderDX//, public nauGeometryShader
   {
    public:
     /**
@@ -169,7 +169,7 @@ namespace nauEngineSDK {
     ID3D11GeometryShader* m_pGeometryShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauTextureShaderDX : public nauShaderDX//, public nauTextureShader
+  class NAU_DIRECTX_EXPORT nauTextureShaderDX : public ShaderDX//, public nauTextureShader
   {
    public:
     /**

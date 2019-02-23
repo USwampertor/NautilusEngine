@@ -20,20 +20,20 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT nauBaseApp
+  class NAU_CORE_EXPORT BaseApp
   {
    public:
     
      /**
      * default constructor
      */
-    nauBaseApp() = default;
+    BaseApp() = default;
 
     /**
      * virtual destructor
      */
     virtual 
-    ~nauBaseApp() {};
+    ~BaseApp() {};
   };
 }
 

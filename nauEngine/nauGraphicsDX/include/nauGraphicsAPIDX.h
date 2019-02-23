@@ -15,6 +15,7 @@
 #include <DirectXMath.h>
 
 #include <nauGraphicsAPI.h>
+#include <nauCamera.h>
 #include <nauMesh.h>
 
 #include "nauDeviceDX.h"
@@ -22,6 +23,7 @@
 #include "nauInputLayoutDX.h"
 #include "nauModelDX.h"
 #include "nauShaderDX.h"
+#include "nauSamplerStateDX.h"
 #include "nauTextureDX.h"
 #include "nauViewPortDX.h"
 
@@ -34,19 +36,19 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	You use all the objects in a DirectX context
    */
-  class NAU_DIRECTX_EXPORT nauGraphicsAPIDX : public nauGraphicsAPI
+  class NAU_DIRECTX_EXPORT GraphicsAPIDX : public GraphicsAPI
   {
    public:
 
     /**
      * Default Constructor
      */
-    nauGraphicsAPIDX() = default;
+    GraphicsAPIDX() = default;
 
     /**
      * default destructor
      */
-    ~nauGraphicsAPIDX() {}
+    ~GraphicsAPIDX() {}
 
     /**
      * @brief initializes the device of the API
@@ -106,28 +108,33 @@ namespace nauEngineSDK {
     /**
      * Input Layout
      */
-    nauInputLayoutDX m_inputLayout;
+    InputLayoutDX m_inputLayout;
 
     /**
      * Device 
      */
-    nauDeviceDX m_device;
+    DeviceDX m_device;
 
     /**
      * Texture of test object
      */
-    nauTextureDX m_texture;
+    TextureDX m_texture;
 
     /**
      * ViewPort
      */
-    nauViewPortDX m_viewPort;
+    ViewPortDX m_viewPort;
 
     /**
      * MeshList
      */
     //Vector<nauMesh> m_meshList;
-    nauModelDX m_meshList;
+    ModelDX m_meshList;
+
+    /**
+     * Sampler state
+     */
+    SamplerStateDX m_samplerState;
 
     /**
      * Screen depth
@@ -150,8 +157,8 @@ namespace nauEngineSDK {
 
 }
 MS_ALIGN(16)
-extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::nauGraphicsAPI* 
+extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::GraphicsAPI* 
 createGraphicsAPI() {
-  return new nauEngineSDK::nauGraphicsAPIDX();
+  return new nauEngineSDK::GraphicsAPIDX();
 }
 GCC_ALIGN(16)
