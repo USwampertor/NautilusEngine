@@ -172,7 +172,16 @@ namespace nauEngineSDK{
     viewLookAt(const Vector3& camPos, const Vector3& lookAt, const Vector3& upAxis);
 
     /**
-     * @brief creates an ortographic view
+     * @brief Creates a perspective matrix
+     * @param field of view, aspect ratio, near plane, far plane
+     * @return 
+     *
+     */
+    void
+    perspective(float FOV, float aspectRatio, float nearPlane, float farPlane);
+
+    /**
+     * @brief creates an ortographic matrix
      * @param width of camera, height of camera, distance between near and far
      * @return 
      *

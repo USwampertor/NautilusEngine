@@ -64,7 +64,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauVertexShaderDX::createFromFile(void* pDevice, 
+  VertexShaderDX::createFromFile(void* pDevice, 
                                     const char* fileName, 
                                     const char* entryPoint) {
     HRESULT hr = E_FAIL;
@@ -91,7 +91,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauPixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  PixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = E_FAIL;
     hr = ShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
     NAU_ASSERT(m_d3dBlob != nullptr && "Pixel Shader blob is NULL");
@@ -118,7 +118,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauGeometryShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  GeometryShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
 
   }
@@ -129,7 +129,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauComputeShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  ComputeShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
 
   }

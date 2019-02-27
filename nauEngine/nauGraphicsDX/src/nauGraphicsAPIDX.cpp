@@ -13,69 +13,71 @@
 namespace nauEngineSDK {
 
   bool
-  GraphicsAPIDX::initDevice(void* scrHandler) {
+    GraphicsAPIDX::initDevice(void* scrHandler) {
 
     m_fov = 0.0f;
-    
+
     if (!m_device.initializeDevice(scrHandler)) {
       std::cout << "Failed to initialize device... \n";
       return false;
     }
     //CreateRenderTargetView
-    if (!m_texture.createRenderTargetView(m_device.m_pd3dDevice, 
-                                          m_device.m_pSwapChain)) {
+    if (!m_texture.createRenderTargetView(m_device.m_pd3dDevice,
+      m_device.m_pSwapChain)) {
       std::cout << "Failed to create Render Target View... \n";
       return false;
     }
     //CreateDepthStencilTexture descriptor
     if (!m_texture.createDepthstencil(m_device.m_pd3dDevice,
-                                      m_device.m_pImmediateContext,
-                                      m_device.m_width,
-                                      m_device.m_height)) {
+      m_device.m_pImmediateContext,
+      m_device.m_width,
+      m_device.m_height)) {
       std::cout << "Failed to create Depth Stencil... \n";
       return false;
     }
-    
-    if (!m_viewPort.createViewPort(static_cast<float>(m_device.m_width), 
-                                   static_cast<float>(m_device.m_height), 
-                                   1.0f, 
-                                   1.0f)) {
+
+    if (!m_viewPort.createViewPort(static_cast<float>(m_device.m_width),
+      static_cast<float>(m_device.m_height),
+      1.0f,
+      1.0f)) {
       std::cout << "Could not create ViewPort \n";
       exit(828);
     }
     m_viewPort.setViewPort(m_device.m_pImmediateContext);
-    
+
 
     m_vertexShader.createFromFile(m_device.m_pd3dDevice, "resources/VS.hlsl", "ColorVertexShader");
     m_pixelShader.createFromFile(m_device.m_pd3dDevice, "resources/PS.hlsl", "ColorPixelShader");
-    
+
     m_inputLayout.setInputDescriptor();
 
-    
+
     m_inputLayout.createInputBuffer(m_device.m_pd3dDevice, &m_vertexShader);
 
     m_samplerState.createShaderSampler(m_device.m_pd3dDevice);
 
-    m_world = DirectX::XMMatrixIdentity();
+    m_world = Matrix4::IDENTITY;
+    m_world.m[0][0] = 10;
 
-    DirectX::XMVECTOR position;
-    position = DirectX::XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
+    m_camera.m_objective.setValues(0.0f, 0.0f, 0.0f);
 
-    DirectX::XMVECTOR objective;
-    objective = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
+    m_camera.m_position.setValues(-10.0f, 0.0f, 0.0f);
 
-    DirectX::XMVECTOR up;
-    up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 1.0f);
+    m_camera.m_up = Vector3::UP;
 
-    m_view = DirectX::XMMatrixLookAtLH(position, objective, up);
+    m_camera.createView();
+    m_fov = (75.0f*3.141592f / 180.0f);
+    m_projection.perspective(m_fov,
+                             static_cast<float>(m_device.m_width / m_device.m_height),
+                             m_screenNear,
+                             m_screenDepth);
 
-    m_projection = DirectX::XMMatrixPerspectiveFovLH((75.0f*3.141592f / 180.0f), 
-                                                     static_cast<float>(m_device.m_width / 
-                                                                        m_device.m_height), 
-                                                     m_screenNear, 
-                                                     m_screenDepth);
+    //m_projection = DirectX::XMMatrixPerspectiveFovLH((75.0f*3.141592f / 180.0f), 
+    //                                                 static_cast<float>(m_device.m_width / 
+    //                                                                    m_device.m_height), 
+    //                                                 m_screenNear, 
+    //                                                 m_screenDepth);
     
-
     m_meshList.setDevice(m_device.m_pd3dDevice);
     //test();
     m_meshList.loadFromFile("resources/max.obj");
@@ -127,8 +129,8 @@ namespace nauEngineSDK {
   GraphicsAPIDX::test() {
     
     MeshDX* m = new MeshDX();
-    m->m_vertexBuffer = new nauVertexBufferDX();
-    m->m_indexBuffer = new nauIndexBufferDX();
+    m->m_vertexBuffer = new VertexBufferDX();
+    m->m_indexBuffer = new IndexBufferDX();
     m->m_texture = new TextureDX();
     m_meshList.m_meshes.push_back(m);
     auto& mesh = m_meshList.m_meshes.back();

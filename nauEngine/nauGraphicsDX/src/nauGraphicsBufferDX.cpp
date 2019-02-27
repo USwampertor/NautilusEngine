@@ -17,7 +17,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauVertexBufferDX::createHardware(void* pDevice, uint32 usage) {
+  VertexBufferDX::createHardware(void* pDevice, uint32 usage) {
     
     D3D11_USAGE tUsage = static_cast<D3D11_USAGE>(usage);
     D3D11_BUFFER_DESC bd;
@@ -41,7 +41,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVertexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
+  VertexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
 
     D3D11_MAPPED_SUBRESOURCE subRes;
     memset(&subRes, 0, sizeof(subRes));
@@ -55,7 +55,7 @@ namespace nauEngineSDK {
   }
 
   void
-  nauVertexBufferDX::set(void* pDevice) {
+  VertexBufferDX::set(void* pDevice) {
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
     uint32 str = sizeof(Vertex);
     uint32 off = 0;
@@ -68,7 +68,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauIndexBufferDX::createHardware(void* pDevice, uint32 usage) {
+  IndexBufferDX::createHardware(void* pDevice, uint32 usage) {
     
     D3D11_USAGE tUsage = static_cast<D3D11_USAGE>(usage);
     D3D11_BUFFER_DESC bd;
@@ -91,12 +91,12 @@ namespace nauEngineSDK {
   }
 
   void
-  nauIndexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
+  IndexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
 
   }
 
   void
-  nauIndexBufferDX::set(void* pDevice) {
+  IndexBufferDX::set(void* pDevice) {
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
     pDC->IASetIndexBuffer(this->m_pBuffer, DXGI_FORMAT_R32_UINT, 0);
   }
@@ -107,7 +107,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauConstantBufferDX::createHardware(void* pDevice, uint32 usage) {
+  ConstantBufferDX::createHardware(void* pDevice, uint32 usage) {
     
     D3D11_USAGE tUsage = static_cast<D3D11_USAGE>(usage);
     D3D11_BUFFER_DESC bd;
@@ -131,12 +131,12 @@ namespace nauEngineSDK {
   }
 
   void
-  nauConstantBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
+  ConstantBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
 
   }
 
   void
-  nauConstantBufferDX::set(void* pDevice) {
+  ConstantBufferDX::set(void* pDevice) {
 
   }
 }

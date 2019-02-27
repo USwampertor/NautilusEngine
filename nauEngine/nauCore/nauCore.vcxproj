@@ -22,10 +22,12 @@
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauCamera.h" />
     <ClInclude Include="include\nauCameraManager.h" />
+    <ClInclude Include="include\nauComponent.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />
     <ClInclude Include="include\nauDeviceContext.h" />
+    <ClInclude Include="include\nauGameObject.h" />
     <ClInclude Include="include\nauGraphicsAPI.h" />
     <ClInclude Include="include\nauGraphicsBuffer.h" />
     <ClInclude Include="include\nauInputLayout.h" />
@@ -47,10 +49,12 @@
     <ClCompile Include="src\nauBaseApp.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
+    <ClCompile Include="src\nauComponent.cpp" />
     <ClCompile Include="src\nauDepthStencil.cpp" />
     <ClCompile Include="src\nauDepthStencilView.cpp" />
     <ClCompile Include="src\nauDevice.cpp" />
     <ClCompile Include="src\nauDeviceContext.cpp" />
+    <ClCompile Include="src\nauGameObject.cpp" />
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauInputLayout.cpp" />

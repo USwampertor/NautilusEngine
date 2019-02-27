@@ -62,18 +62,18 @@ namespace nauEngineSDK {
   };
   
 
-  class NAU_DIRECTX_EXPORT nauVertexShaderDX : public ShaderDX//, public nauVertexShader
+  class NAU_DIRECTX_EXPORT VertexShaderDX : public ShaderDX//, public nauVertexShader
   {
    public:
     /**
      * Default Constructor
      */
-    nauVertexShaderDX() = default;
+    VertexShaderDX() = default;
 
     /**
      * Default Constructor
      */
-    ~nauVertexShaderDX() {
+    ~VertexShaderDX() {
       if (m_pVertexShader != nullptr) {
         m_pVertexShader->Release();
         m_pVertexShader = nullptr;
@@ -91,18 +91,18 @@ namespace nauEngineSDK {
     ID3D11VertexShader* m_pVertexShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauPixelShaderDX : public ShaderDX//, public nauPixelShader
+  class NAU_DIRECTX_EXPORT PixelShaderDX : public ShaderDX//, public nauPixelShader
   {
    public:
     /**
      * Default Constructor
      */
-     nauPixelShaderDX() = default;
+     PixelShaderDX() = default;
 
     /**
      * Default Constructor
      */
-    ~nauPixelShaderDX() {
+    ~PixelShaderDX() {
 
       if (m_pPixelShader != nullptr) {
         m_pPixelShader->Release();
@@ -121,18 +121,18 @@ namespace nauEngineSDK {
     ID3D11PixelShader* m_pPixelShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauComputeShaderDX : public ShaderDX//, public nauComputeShader
+  class NAU_DIRECTX_EXPORT ComputeShaderDX : public ShaderDX//, public nauComputeShader
   {
    public:
     /**
      * Default Constructor
      */
-    nauComputeShaderDX() = default;
+    ComputeShaderDX() = default;
 
     /**
      * Default Constructor
      */
-    ~nauComputeShaderDX() {};
+    ~ComputeShaderDX() {};
 
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
@@ -146,18 +146,18 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_DIRECTX_EXPORT nauGeometryShaderDX : public ShaderDX//, public nauGeometryShader
+  class NAU_DIRECTX_EXPORT GeometryShaderDX : public ShaderDX//, public nauGeometryShader
   {
    public:
     /**
      * Default Constructor
      */
-    nauGeometryShaderDX() = default;
+    GeometryShaderDX() = default;
 
     /**
      * Default Constructor
      */
-    ~nauGeometryShaderDX() {};
+    ~GeometryShaderDX() {};
 
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);

@@ -283,7 +283,7 @@ namespace nauEngineSDK {
 
     float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
 
-    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+    NAU_ASSERT(sqr >= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
 
     NAU_DEBUG_ONLY(sqrMagnitude());
@@ -305,7 +305,7 @@ namespace nauEngineSDK {
 
     float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f) + Math::pow(z, 2.0f);
 
-    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+    NAU_ASSERT(sqr >= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
 
     NAU_DEBUG_ONLY(sqrMagnitude());

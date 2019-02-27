@@ -38,19 +38,19 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT nauVertexBuffer : public GraphicsBuffer
+  class NAU_CORE_EXPORT VertexBuffer : public GraphicsBuffer
   {
    public:
 
     /**
      * Default constructor
      */
-    nauVertexBuffer() = default;
+    VertexBuffer() = default;
 
     /**
      * Virtual destructor
      */
-    virtual ~nauVertexBuffer() {}
+    virtual ~VertexBuffer() {}
 
     /**
      * @brief returns the size of the vector of vertex
@@ -131,19 +131,19 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT nauIndexBuffer : public GraphicsBuffer
+  class NAU_CORE_EXPORT IndexBuffer : public GraphicsBuffer
   {
    public:
 
     /**
      * Default constructor
      */
-    nauIndexBuffer() = default;
+    IndexBuffer() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauIndexBuffer() {}
+    virtual ~IndexBuffer() {}
 
     /**
      * @brief returns the size of the vector
@@ -223,19 +223,19 @@ namespace nauEngineSDK {
 
   };
   
-  class NAU_CORE_EXPORT nauConstantBuffer : public GraphicsBuffer
+  class NAU_CORE_EXPORT ConstantBuffer : public GraphicsBuffer
   {
    public:
 
     /**
      * default constructor
      */
-    nauConstantBuffer() = default;
+    ConstantBuffer() = default;
 
     /**
      * virtual destructor
      */
-    virtual ~nauConstantBuffer() {}
+    virtual ~ConstantBuffer() {}
 
     /**
      * @brief returns the size of the vector of vertex

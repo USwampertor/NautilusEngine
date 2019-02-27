@@ -146,6 +146,13 @@ namespace nauEngineSDK {
   }
 
   void
+    Matrix4::perspective(float FOV, float aspectRatio, float nearPlane, float farPlane) {
+    m[0][0] = 1.0f / Math::tan(FOV);
+    m[1][1] = aspectRatio;
+    m[2][2] = m[3][2] = nearPlane * (farPlane - nearPlane);
+  }
+
+  void
   Matrix4::ortographic(const float& width, 
                        const float& height, 
                        const float& zNear,

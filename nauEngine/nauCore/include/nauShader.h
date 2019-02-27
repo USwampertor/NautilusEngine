@@ -70,85 +70,85 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT nauVertexShader   : public Shader
+  class NAU_CORE_EXPORT VertexShader   : public Shader
   {
    public:
 
     /**
      * Default constructor
      */
-    nauVertexShader() = default;
+    VertexShader() = default;
 
     /**
      * virtual destructor
      */
     virtual
-    ~nauVertexShader() {};
+    ~VertexShader() {};
 
   };
 
-  class NAU_CORE_EXPORT nauPixelShader    : public Shader
+  class NAU_CORE_EXPORT PixelShader    : public Shader
   {
    public:
 
     /**
      * Default constructor
      */
-     nauPixelShader() = default;
+     PixelShader() = default;
 
     /**
      * virtual destructor
      */
     virtual
-    ~nauPixelShader() {};
+    ~PixelShader() {};
   };
 
-  class NAU_CORE_EXPORT nauComputeShader  : public Shader
+  class NAU_CORE_EXPORT ComputeShader  : public Shader
   {
    public:
 
     /**
      * Default constructor
      */
-     nauComputeShader() = default;
+     ComputeShader() = default;
 
     /**
      * virtual destructor
      */
     virtual
-    ~nauComputeShader() {};
+    ~ComputeShader() {};
   };
 
-  class NAU_CORE_EXPORT nauGeometryShader : public Shader
+  class NAU_CORE_EXPORT GeometryShader : public Shader
   {
    public:
 
     /**
      * Default constructor
      */
-     nauGeometryShader() = default;
+     GeometryShader() = default;
     
     /**
      * virtual destructor
      */
     virtual
-    ~nauGeometryShader() {};
+    ~GeometryShader() {};
   };
   
-  class NAU_CORE_EXPORT nauTextureShader  : public Shader
+  class NAU_CORE_EXPORT TextureShader  : public Shader
   {
    public:
 
     /**
      * Default constructor
      */
-     nauTextureShader() = default;
+     TextureShader() = default;
     
     /**
      * virtual destructor
      */
     virtual
-    ~nauTextureShader() {};
+    ~TextureShader() {};
   };
 
 }

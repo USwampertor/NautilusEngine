@@ -19,27 +19,27 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   SIZE_T
-  nauVertexBuffer::size() {
+  VertexBuffer::size() {
     return m_vertexData.size();
   }
 
   void
-  nauVertexBuffer::reserve(SIZE_T numObjects) {
+  VertexBuffer::reserve(SIZE_T numObjects) {
     m_vertexData.reserve(numObjects);
   }
 
   void
-  nauVertexBuffer::add(const Vertex& vertex) {
+  VertexBuffer::add(const Vertex& vertex) {
     m_vertexData.push_back(vertex);
   }
 
   void
-  nauVertexBuffer::add(Vector<Vertex>& vertices) {
+  VertexBuffer::add(Vector<Vertex>& vertices) {
     m_vertexData.insert(m_vertexData.end(), vertices.begin(), vertices.end());
   }
 
   void
-  nauVertexBuffer::clear() {
+  VertexBuffer::clear() {
     m_vertexData.clear();
   }
 
@@ -50,27 +50,27 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   SIZE_T
-  nauIndexBuffer::size() {
+  IndexBuffer::size() {
     return m_indexData.size();
   }
 
   void
-  nauIndexBuffer::reserve(SIZE_T numObjects) {
+  IndexBuffer::reserve(SIZE_T numObjects) {
     m_indexData.reserve(numObjects);
   }
 
   void
-  nauIndexBuffer::add(const uint32& index) {
+  IndexBuffer::add(const uint32& index) {
     m_indexData.push_back(index);
   }
 
   void
-  nauIndexBuffer::add(Vector<uint32>& indices) {
+  IndexBuffer::add(Vector<uint32>& indices) {
     m_indexData.insert(m_indexData.end(), indices.begin(), indices.end());
   }
 
   void
-  nauIndexBuffer::clear() {
+  IndexBuffer::clear() {
     m_indexData.clear();
   }
 
@@ -81,27 +81,27 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   SIZE_T
-  nauConstantBuffer::size() {
+  ConstantBuffer::size() {
     return m_constantData.size();
   }
 
   void
-  nauConstantBuffer::reserve(SIZE_T numObjects) {
+  ConstantBuffer::reserve(SIZE_T numObjects) {
     m_constantData.reserve(numObjects);
   }
 
   void
-  nauConstantBuffer::add(const Vector<char>& object) {
+  ConstantBuffer::add(const Vector<char>& object) {
     m_constantData.push_back(object);
   }
 
   void
-  nauConstantBuffer::add(Vector<Vector<char>>& objects) {
+  ConstantBuffer::add(Vector<Vector<char>>& objects) {
     m_constantData.insert(m_constantData.end(), objects.begin(), objects.end());
   }
 
   void
-  nauConstantBuffer::clear() {
+  ConstantBuffer::clear() {
     m_constantData.clear();
   }
 

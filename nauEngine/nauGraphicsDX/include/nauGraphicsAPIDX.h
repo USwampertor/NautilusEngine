@@ -17,6 +17,8 @@
 #include <nauGraphicsAPI.h>
 #include <nauCamera.h>
 #include <nauMesh.h>
+#include <nauGameObject.h>
+#include <nauMatrix4.h>
 
 #include "nauDeviceDX.h"
 #include "nauGraphicsBufferDX.h"
@@ -90,20 +92,25 @@ namespace nauEngineSDK {
 
 
     //TO DO: TAKE THIS SHITS OUT
-    DirectX::XMMATRIX m_world;
-    DirectX::XMMATRIX m_view;
-    DirectX::XMMATRIX m_projection;
+    Matrix4 m_world;
+    Camera m_camera;
+    Matrix4 m_projection;
     //
+
+    /**
+     * Test GameObject
+     */
+    GameObject m_testModel;
 
     /**
      * Vertex Shader
      */
-    nauVertexShaderDX m_vertexShader;
+    VertexShaderDX m_vertexShader;
 
     /**
      * Pixel Shader
      */
-    nauPixelShaderDX m_pixelShader;
+    PixelShaderDX m_pixelShader;
 
     /**
      * Input Layout

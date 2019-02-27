@@ -8,8 +8,8 @@ namespace nauEngineSDK {
     stride = sizeof(Vertex);
     offset = 0;
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDeviceContext);
-    auto pVB = reinterpret_cast<nauVertexBufferDX*>(m_vertexBuffer);
-    auto pIB = reinterpret_cast<nauIndexBufferDX*>(m_indexBuffer);
+    auto pVB = reinterpret_cast<VertexBufferDX*>(m_vertexBuffer);
+    auto pIB = reinterpret_cast<IndexBufferDX*>(m_indexBuffer);
    
 
     pVB->set(pDeviceContext);

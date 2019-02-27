@@ -69,8 +69,8 @@ namespace nauEngineSDK {
   Mesh*
   ModelDX::processMesh(aiMesh* mesh, const aiScene* scene) {
     MeshDX* m =  new MeshDX();
-    m->m_vertexBuffer = new nauVertexBufferDX();
-    m->m_indexBuffer = new nauIndexBufferDX();
+    m->m_vertexBuffer = new VertexBufferDX();
+    m->m_indexBuffer = new IndexBufferDX();
     for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
       Vertex pvertex;
 

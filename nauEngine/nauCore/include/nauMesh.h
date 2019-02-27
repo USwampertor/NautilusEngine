@@ -52,12 +52,12 @@ namespace nauEngineSDK {
     /**
      * vertex buffer
      */
-    nauVertexBuffer* m_vertexBuffer;
+    VertexBuffer* m_vertexBuffer;
     
     /**
      * Index buffer
      */
-    nauIndexBuffer* m_indexBuffer;
+    IndexBuffer* m_indexBuffer;
 
     /**
      * Texture of mesh
