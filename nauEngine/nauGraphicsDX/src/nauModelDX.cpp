@@ -53,8 +53,8 @@ namespace nauEngineSDK {
 
   void
   ModelDX::processNode(aiNode* node, const aiScene* scene) {
-    ID3D11DeviceContext* pImmContext;
-    m_pDevice->GetImmediateContext(&pImmContext);
+    //ID3D11DeviceContext* pImmContext;
+    //m_pDevice->GetImmediateContext(&pImmContext);
     
     for (unsigned int i = 0; i < node->mNumMeshes; ++i) {
       aiMesh* aimesh = scene->mMeshes[node->mMeshes[i]];

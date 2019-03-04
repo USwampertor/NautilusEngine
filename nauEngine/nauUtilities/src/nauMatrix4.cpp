@@ -54,6 +54,19 @@ namespace nauEngineSDK {
   }
 
   void
+  Matrix4::setValues(float a00, float a10, float a20, float a30,
+                     float a01, float a11, float a21, float a31,
+                     float a02, float a12, float a22, float a32,
+                     float a03, float a13, float a23, float a33) {
+
+    m[0][0] = a00; m[1][0] = a10; m[2][0] = a20; m[3][0] = a30;
+    m[0][1] = a01; m[1][1] = a11; m[2][1] = a21; m[3][1] = a31;
+    m[0][2] = a02; m[1][2] = a12; m[2][2] = a22; m[3][2] = a32;
+    m[0][3] = a03; m[1][3] = a13; m[2][3] = a23; m[3][3] = a33;
+  }
+
+
+  void
   Matrix4::translate(const float& x, const float& y, const float& z) {
     m[3][0] += x;
     m[3][1] += y;
@@ -136,20 +149,46 @@ namespace nauEngineSDK {
 
   }
 
-  void
+  Matrix4
   Matrix4::viewLookAt(const Vector3& camPos, 
                       const Vector3& lookAt, 
                       const Vector3& upAxis) {
-    Vector3 zAxis = (lookAt - camPos).normalized();
-    Vector3 xAxis = (upAxis ^ zAxis).normalized();
-    Vector3 yAxis = zAxis ^ xAxis;
+    
+    Vector3 front = (lookAt - camPos).normalized();
+    Vector3 right = (upAxis ^ front).normalized();
+    Vector3 up = front ^ right;
+
+    Matrix4 view(0);
+
+    view.m[0][0] = right.x;
+    view.m[1][0] = up.x;
+    view.m[2][0] = front.x;
+    view.m[3][0] = 0.0f;
+
+    view.m[0][1] = right.y;
+    view.m[1][1] = up.y;
+    view.m[2][1] = front.y;
+    view.m[3][1] = 0.0f;
+
+    view.m[0][2] = right.z;
+    view.m[1][2] = up.z;
+    view.m[2][2] = front.z;
+    view.m[3][2] = 0.0f;
+
+    view.m[0][3] = (right | -camPos);
+    view.m[1][3] = (up |    -camPos);
+    view.m[2][3] = (front | -camPos);
+    view.m[3][3] = 1.0f;
+    return view;
   }
 
   void
-    Matrix4::perspective(float FOV, float aspectRatio, float nearPlane, float farPlane) {
-    m[0][0] = 1.0f / Math::tan(FOV);
-    m[1][1] = aspectRatio;
-    m[2][2] = m[3][2] = nearPlane * (farPlane - nearPlane);
+  Matrix4::perspective(float FOV, float aspectRatio, float nearPlane, float farPlane) {
+    m[0][0] = 1.0f / Math::tan(FOV/2.0f);
+    m[1][1] = aspectRatio * 1.0f / Math::tan(FOV / 2.0f);
+    m[2][2] = farPlane / (farPlane - nearPlane);
+    m[2][3] = -nearPlane * (farPlane / (farPlane - nearPlane));
+    m[3][2] = 1.0f;
   }
 
   void
@@ -170,102 +209,127 @@ namespace nauEngineSDK {
       std::cout << "This matrix can't have an inverse \n";
       return;
     }
-    Matrix4 temp;
+    Matrix3 temp;
+    Matrix4 tmp2 = *this;
 
     temp.m[0][0] = m[1][1]; temp.m[1][0] = m[2][1]; temp.m[2][0] = m[3][1];
     temp.m[0][1] = m[1][2]; temp.m[1][1] = m[2][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[1][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[0][0] = temp.determinant();
+    tmp2.m[0][0] = temp.determinant();
 
     temp.m[0][0] = m[1][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[1][2]; temp.m[1][1] = m[2][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[1][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[1][0] = - temp.determinant();
+    tmp2.m[1][0] = - temp.determinant();
 
     temp.m[0][0] = m[1][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[1][1]; temp.m[1][1] = m[2][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[1][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[2][0] = temp.determinant();
+    tmp2.m[2][0] = temp.determinant();
 
     temp.m[0][0] = m[1][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[1][1]; temp.m[1][1] = m[2][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[1][2]; temp.m[1][2] = m[2][2]; temp.m[2][2] = m[3][2];
-    m[3][0] = - temp.determinant();
+    tmp2.m[3][0] = - temp.determinant();
 
     temp.m[0][0] = m[0][1]; temp.m[1][0] = m[2][1]; temp.m[2][0] = m[3][1];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[2][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[0][1] = temp.determinant();
+    tmp2.m[0][1] = - temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[2][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[1][1] = - temp.determinant();
+    tmp2.m[1][1] = temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[2][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[2][3]; temp.m[2][2] = m[3][3];
-    m[2][1] = temp.determinant();
+    tmp2.m[2][1] = - temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[2][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[2][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[0][2]; temp.m[1][2] = m[2][2]; temp.m[2][2] = m[3][2];
-    m[3][1] = - temp.determinant();
+    tmp2.m[3][1] = temp.determinant();
 
     temp.m[0][0] = m[0][1]; temp.m[1][0] = m[1][1]; temp.m[2][0] = m[3][1];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[1][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[3][3];
-    m[0][2] = temp.determinant();
+    tmp2.m[0][2] = temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[1][2]; temp.m[2][1] = m[3][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[3][3];
-    m[1][2] = - temp.determinant();
+    tmp2.m[1][2] = - temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[1][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[3][3];
-    m[2][2] = temp.determinant();
+    tmp2.m[2][2] = temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[3][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[1][1]; temp.m[2][1] = m[3][1];
     temp.m[0][2] = m[0][2]; temp.m[1][2] = m[1][2]; temp.m[2][2] = m[3][2];
-    m[3][2] = - temp.determinant();
+    tmp2.m[3][2] = - temp.determinant();
 
     temp.m[0][0] = m[0][1]; temp.m[1][0] = m[1][1]; temp.m[2][0] = m[2][1];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[1][2]; temp.m[2][1] = m[2][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[2][3];
-    m[0][3] = temp.determinant();
+    tmp2.m[0][3] = - temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[2][0];
     temp.m[0][1] = m[0][2]; temp.m[1][1] = m[1][2]; temp.m[2][1] = m[2][2];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[2][3];
-    m[1][3] = - temp.determinant();
+    tmp2.m[1][3] = temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[2][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[1][1]; temp.m[2][1] = m[2][1];
     temp.m[0][2] = m[0][3]; temp.m[1][2] = m[1][3]; temp.m[2][2] = m[2][3];
-    m[2][3] = temp.determinant();
+    tmp2.m[2][3] = - temp.determinant();
 
     temp.m[0][0] = m[0][0]; temp.m[1][0] = m[1][0]; temp.m[2][0] = m[2][0];
     temp.m[0][1] = m[0][1]; temp.m[1][1] = m[1][1]; temp.m[2][1] = m[2][1];
     temp.m[0][2] = m[0][2]; temp.m[1][2] = m[1][2]; temp.m[2][2] = m[2][2];
-    m[3][3] = - temp.determinant();
+    tmp2.m[3][3] = temp.determinant();
 
+    *this = tmp2;
     *this *= (1/det);
   }
 
   float
   Matrix4::determinant() {
-    return (((m[0][0] * m[1][1] * m[2][2] * m[3][3]) +
-             (m[1][0] * m[2][1] * m[3][2] * m[0][3]) +
-             (m[2][0] * m[3][1] * m[0][2] * m[1][3])) -
-             (m[3][0] * m[0][1] * m[1][2] * m[2][3]) +
 
-            ((m[0][3] * m[1][2] * m[2][1] * m[3][0]) +
-             (m[1][3] * m[2][2] * m[3][1] * m[0][0]) +
-             (m[2][3] * m[3][2] * m[0][1] * m[1][0]) +
-             (m[3][3] * m[0][2] * m[1][1] * m[2][0])));
+
+#if NAU_DEBUG_MODE
+    float a;
+    a = (m[0][3] * m[1][2] * m[2][1] * m[3][0]) - (m[0][2] * m[1][3] * m[2][1] * m[3][0]) -
+        (m[0][3] * m[1][1] * m[2][2] * m[3][0]) + (m[0][1] * m[1][3] * m[2][2] * m[3][0]) +
+        (m[0][2] * m[1][1] * m[2][3] * m[3][0]) - (m[0][1] * m[1][2] * m[2][3] * m[3][0]) -
+        (m[0][3] * m[1][2] * m[2][0] * m[3][1]) + (m[0][2] * m[1][3] * m[2][0] * m[3][1]) +
+        (m[0][3] * m[1][0] * m[2][2] * m[3][1]) - (m[0][0] * m[1][3] * m[2][2] * m[3][1]) -
+        (m[0][2] * m[1][0] * m[2][3] * m[3][1]) + (m[0][0] * m[1][2] * m[2][3] * m[3][1]) +
+        (m[0][3] * m[1][1] * m[2][0] * m[3][2]) - (m[0][1] * m[1][3] * m[2][0] * m[3][2]) -
+        (m[0][3] * m[1][0] * m[2][1] * m[3][2]) + (m[0][0] * m[1][3] * m[2][1] * m[3][2]) +
+        (m[0][1] * m[1][0] * m[2][3] * m[3][2]) - (m[0][0] * m[1][1] * m[2][3] * m[3][2]) -
+        (m[0][2] * m[1][1] * m[2][0] * m[3][3]) + (m[0][1] * m[1][2] * m[2][0] * m[3][3]) +
+        (m[0][2] * m[1][0] * m[2][1] * m[3][3]) - (m[0][0] * m[1][2] * m[2][1] * m[3][3]) -
+        (m[0][1] * m[1][0] * m[2][2] * m[3][3]) + (m[0][0] * m[1][1] * m[2][2] * m[3][3]);
+    return a;
+#else
+
+    return (m[0][3] * m[1][2] * m[2][1] * m[3][0]) - (m[0][2] * m[1][3] * m[2][1] * m[3][0]) -
+           (m[0][3] * m[1][1] * m[2][2] * m[3][0]) + (m[0][1] * m[1][3] * m[2][2] * m[3][0]) +
+           (m[0][2] * m[1][1] * m[2][3] * m[3][0]) - (m[0][1] * m[1][2] * m[2][3] * m[3][0]) -
+           (m[0][3] * m[1][2] * m[2][0] * m[3][1]) + (m[0][2] * m[1][3] * m[2][0] * m[3][1]) +
+           (m[0][3] * m[1][0] * m[2][2] * m[3][1]) - (m[0][0] * m[1][3] * m[2][2] * m[3][1]) -
+           (m[0][2] * m[1][0] * m[2][3] * m[3][1]) + (m[0][0] * m[1][2] * m[2][3] * m[3][1]) +
+           (m[0][3] * m[1][1] * m[2][0] * m[3][2]) - (m[0][1] * m[1][3] * m[2][0] * m[3][2]) -
+           (m[0][3] * m[1][0] * m[2][1] * m[3][2]) + (m[0][0] * m[1][3] * m[2][1] * m[3][2]) +
+           (m[0][1] * m[1][0] * m[2][3] * m[3][2]) - (m[0][0] * m[1][1] * m[2][3] * m[3][2]) -
+           (m[0][2] * m[1][1] * m[2][0] * m[3][3]) + (m[0][1] * m[1][2] * m[2][0] * m[3][3]) +
+           (m[0][2] * m[1][0] * m[2][1] * m[3][3]) - (m[0][0] * m[1][2] * m[2][1] * m[3][3]) -
+           (m[0][1] * m[1][0] * m[2][2] * m[3][3]) + (m[0][0] * m[1][1] * m[2][2] * m[3][3]);
+#endif
   }
 
   Matrix4
@@ -296,7 +360,7 @@ namespace nauEngineSDK {
     for (uint32 i = 0; i < 4; ++i) {
       for (uint32 j = 0; j < 4; ++j) {
         for (uint32 k = 0; k < 4; ++k) {
-          temp.m[i][j] += m[i][k] * b.m[k][j];
+          temp.m[j][i] += m[k][i] * b.m[j][k];
         }
       }
     }
@@ -369,7 +433,7 @@ namespace nauEngineSDK {
     for (uint32 i = 0; i < 4; ++i) {
       for (uint32 j = 0; j < 4; ++j) {
         for (uint32 k = 0; k < 4; ++k) {
-          temp.m[i][j] += m[i][k] * b.m[k][j];
+          temp.m[j][i] += m[k][i] * b.m[j][k];
         }
       }
     }
@@ -377,7 +441,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  Matrix4
+  bool
   Matrix4::operator==(const Matrix4& b) {
    for (uint32 i = 0; i < 4; ++i) {
     for (uint32 j = 0; j < 4; ++j) {

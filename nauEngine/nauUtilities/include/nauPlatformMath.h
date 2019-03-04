@@ -629,6 +629,41 @@ namespace nauEngineSDK {
     }
 
     /**
+     * Constants
+     */
+
+    /**
+     * Constant PI 3.141592~
+     */
+    static const float PI;
+
+
+    /**
+     * Constant EULER 2.71828182
+     */
+    static const float EULER;
+
+    /**
+     * Equivalent degrees of 1 rad
+     */
+    static const float DEGREE;
+
+    /**
+     * Equivalent radians of 1 Degree
+     */
+    static const float RADIAN;
+
+    /**
+     * A little number. Used for floating precision
+     */
+    static const float SMALLNUMBER;
+
+    /**
+     * A kinda small number. Used for floating precision, but not as precise as SMALLNUMBER
+     */
+    static const float KINDASMALLNUMBER;
+
+    /**
      * Collisions
      */
 
@@ -657,29 +692,5 @@ namespace nauEngineSDK {
     //  return cornerDistance <= sqr(sphere.m_radius);
     //}
 
-    /**
-     * Constants
-     */
-
-    /**
-     * Constant PI 3.141592~
-     */
-    static const float PI;
-
-
-    /**
-     * Constant EULER 2.71828182
-     */
-    static const float EULER;
-
-    /**
-     * Equivalent degrees of 1 rad
-     */
-    static const float DEGREE;
-
-    /**
-     * Equivalent radians of 1 Degree
-     */
-    static const float RADIAN;
   };
 }

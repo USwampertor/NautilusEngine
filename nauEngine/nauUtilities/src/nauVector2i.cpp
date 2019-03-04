@@ -266,6 +266,15 @@ namespace nauEngineSDK {
     return 0 == x && 0 == y;
   }
 
+  bool
+  Vector2i::isSame(const Vector2i& a, const Vector2i& b) {
+    int same = 0;
+    if (a.x == b.x) { ++same; }
+    if (a.y == b.y) { ++same; }
+    if (2 == same)    { return true; }
+    return false;
+  }
+
   const Vector2i Vector2i::ZERO = Vector2i(0, 0);
 
   const Vector2i Vector2i::ONES = Vector2i(1, 1);

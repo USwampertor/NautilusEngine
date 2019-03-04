@@ -22,4 +22,9 @@ namespace nauEngineSDK {
 
   const float PlatformMath::EULER = 2.71828182f;
     //nauPlatformMath::pow((1.0f + (1.0f / 10000000000000.0f)), 10000000000000.0f);
+
+  const float PlatformMath::KINDASMALLNUMBER = 0.00001f;
+
+  const float PlatformMath::SMALLNUMBER = 0.0000001f;
+
 }

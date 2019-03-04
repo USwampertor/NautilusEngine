@@ -263,7 +263,7 @@ namespace nauEngineSDK {
 
     float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f);
     
-    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+    NAU_ASSERT(sqr >= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
     
     NAU_DEBUG_ONLY(sqrMagnitude());
@@ -282,7 +282,7 @@ namespace nauEngineSDK {
 
     float sqr = Math::pow(x, 2.0f) + Math::pow(y, 2.0f);
 
-    NAU_ASSERT(sqr <= std::numeric_limits<float>::epsilon() &&
+    NAU_ASSERT(sqr >= std::numeric_limits<float>::epsilon() &&
                "Square is less than epsilon and that shit is wack");
 
     NAU_DEBUG_ONLY(sqrMagnitude());
@@ -296,6 +296,15 @@ namespace nauEngineSDK {
   bool
   Vector2::isZero() const {
     return 0.0f == x && 0.0f == y;
+  }
+
+  bool
+  Vector2::isSame(const Vector2& a, const Vector2& b, float error) {
+    int same = 0;
+    if (Math::abs(a.x - b.x) >= error) { ++same; }
+    if (Math::abs(a.y - b.y) >= error) { ++same; }
+    if (2 == same) { return true; }
+    return false;
   }
 
   const Vector2 Vector2::ZERO = Vector2(0.0f, 0.0f);

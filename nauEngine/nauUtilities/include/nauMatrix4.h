@@ -99,6 +99,22 @@ namespace nauEngineSDK{
     setValues(float value);
 
     /**
+     * @brief Sets the value of all the matrix to the parameter
+     * @param the values in order by row (column major)
+     *      | float a00 float a10 float a20 float a30 | 
+     *      | float a01 float a11 float a21 float a31 |
+     *      | float a02 float a12 float a22 float a32 |
+     *      | float a03 float a13 float a23 float a33 |
+     * @return
+     *
+     */
+    void
+    setValues(float a00, float a10, float a20, float a30,
+              float a01, float a11, float a21, float a31,
+              float a02, float a12, float a22, float a32,
+              float a03, float a13, float a23, float a33);
+
+    /**
      * @brief Translates matrix with floats
      * @param x offset, y offset, z offset
      * @return 
@@ -168,7 +184,7 @@ namespace nauEngineSDK{
      * @return 
      *
      */
-    void
+    static Matrix4
     viewLookAt(const Vector3& camPos, const Vector3& lookAt, const Vector3& upAxis);
 
     /**
@@ -306,7 +322,7 @@ namespace nauEngineSDK{
      * @return true if *this is equal to b
      *
      */
-    Matrix4
+    bool
     operator==(const Matrix4& b);
    
 

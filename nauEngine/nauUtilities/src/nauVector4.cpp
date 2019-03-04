@@ -362,6 +362,17 @@ namespace nauEngineSDK {
     return 0.0f == x && 0.0f == y && 0.0f == z && w == 0.0f;
   }
 
+  bool
+  Vector4::isSame(const Vector4& a, const Vector4& b, float error) {
+    int same = 0;
+    if (Math::abs(a.x - b.x) >= error) { ++same; }
+    if (Math::abs(a.y - b.y) >= error) { ++same; }
+    if (Math::abs(a.z - b.z) >= error) { ++same; }
+    if (Math::abs(a.w - b.w) >= error) { ++same; }
+    if (3 == same) { return true; }
+    return false;
+  }
+
   const Vector4 Vector4::ZERO   = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
 
   const Vector4 Vector4::ONES   = Vector4(1.0f, 1.0f, 1.0f, 1.0f);

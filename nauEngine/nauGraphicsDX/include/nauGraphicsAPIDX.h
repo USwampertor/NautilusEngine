@@ -151,12 +151,17 @@ namespace nauEngineSDK {
     /**
      * Screen near
      */
-    float m_screenNear = 5.0f;
+    float m_screenNear = 0.01f;
 
     /**
      * Field of View
      */
     float m_fov = 0;
+
+
+    ConstantBufferDX m_constant;
+
+    CBuffer m_cbuffer;
   };
  
 

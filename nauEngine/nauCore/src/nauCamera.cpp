@@ -99,30 +99,11 @@ namespace nauEngineSDK {
 
   void
   Camera::createView() {
-    Vector3 m_front = (m_objective - m_position).normalized();
-    Vector3 m_right = (m_up ^ m_right).normalized();
-    Vector3 m_up = m_front ^ m_right;
 
-    m_view.m[0][0] = m_right.x; 
-    m_view.m[1][0] = m_up.x; 
-    m_view.m[2][0] = m_front.x;
-    m_view.m[3][3] = 0.0f;
-
-    m_view.m[0][1] = m_right.y; 
-    m_view.m[1][1] = m_up.x; 
-    m_view.m[2][1] = m_front.x;
-    m_view.m[3][3] = 0.0f;
-
-    m_view.m[0][2] = m_right.z; 
-    m_view.m[1][2] = m_up.x; 
-    m_view.m[2][2] = m_front.x;
-    m_view.m[3][3] = 1.0f;
-
-    m_view.m[0][3] = Vector3::dotScale(m_right, m_position); 
-    m_view.m[1][3] = Vector3::dotScale(m_up,    m_position);
-    m_view.m[2][3] = Vector3::dotScale(m_front, m_position);
-    m_view.m[3][3] = 0.0f;
-
+    //We check if the objet is not in the same position as the camera
+    //if it is, we just tell him its looking forward
+    if (!Vector3::isSame(m_position, m_objective)) { m_objective.z = m_position.z + 1.0f; }
+    m_view = Matrix4::viewLookAt(m_position, m_objective, m_up);
     m_dirty = false;
   }
 

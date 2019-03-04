@@ -23,6 +23,7 @@
     <ClInclude Include="include\nauCamera.h" />
     <ClInclude Include="include\nauCameraManager.h" />
     <ClInclude Include="include\nauComponent.h" />
+    <ClInclude Include="include\nauConstantBufferMatrix.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />

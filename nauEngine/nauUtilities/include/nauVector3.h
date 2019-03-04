@@ -442,6 +442,15 @@ namespace nauEngineSDK {
     isZero() const;
 
     /**
+     * @brief Checks if one vector is near the same as another vector based in an error
+     * @param Vector other, error (default is LITTLENUMBER)
+     * @return true if based on the error is the same
+     *
+     */
+    static bool
+    isSame(const Vector3& a, const Vector3& b, float error = Math::SMALLNUMBER);
+
+    /**
      * static const
      */
     

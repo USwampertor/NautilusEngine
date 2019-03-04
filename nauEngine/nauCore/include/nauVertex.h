@@ -10,7 +10,8 @@
 #pragma once
 
 
-#include <nauVector4.h>
+#include <nauMatrix4.h>
+#include <DirectXMath.h>
 
 #include "nauPrerequisitesCore.h"
 
@@ -23,7 +24,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	vertex an be used to store information of the mesh
     */
-  struct NAU_CORE_EXPORT Vertex
+  struct Vertex
   {
     
     /**
@@ -51,6 +52,16 @@ namespace nauEngineSDK {
      */
     float m_v;
 
+  };
+
+  struct CBuffer
+  {
+    Matrix4 m_world, m_view, m_projection;
+  };
+
+  struct DirectBuffer
+  {
+    DirectX::XMMATRIX m_world, m_view, m_projection;
   };
 
 }

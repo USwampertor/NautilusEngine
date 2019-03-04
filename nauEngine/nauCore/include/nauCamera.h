@@ -35,10 +35,11 @@ namespace nauEngineSDK {
      * Vector3 Front axis, the default is 0,0,1. Should be orthogonal to up
      * Vector3 Up axis, the default is 0,1,0. Should be orthogonal to front
      */
-    Camera(Vector3 position, Vector3 objective = Vector3::FRONT) {
+    Camera(Vector3 position, Vector3 objective = Vector3::FRONT, Vector3 up = Vector3::UP) {
      
       m_position  = position;
       m_objective = objective;
+      m_up = up;
       createView();
     }
 

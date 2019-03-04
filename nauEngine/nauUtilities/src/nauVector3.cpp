@@ -322,6 +322,17 @@ namespace nauEngineSDK {
     //return x == y == z == 0.0f;
     return 0.0f == x && 0.0f == y && 0.0f == z;
   }
+
+  bool
+  Vector3::isSame(const Vector3& a, const Vector3& b, float error) {
+    int same = 0;
+    if (Math::abs(a.x - b.x) >= error) { ++same; }
+    if (Math::abs(a.y - b.y) >= error) { ++same; }
+    if (Math::abs(a.z - b.z) >= error) { ++same; }
+    if (3 == same) { return true; }
+    return false;
+  }
+
   
   const Vector3 Vector3::ZERO   = Vector3(0.0f, 0.0f, 0.0f);
 
@@ -335,7 +346,7 @@ namespace nauEngineSDK {
 
   const Vector3 Vector3::RIGHT  = Vector3(1.0f, 0.0f, 0.0f);
 
-  const Vector3 Vector3::UP     = Vector3(0.0f, 1.0f, 0.1f);
+  const Vector3 Vector3::UP     = Vector3(0.0f, 1.0f, 0.0f);
 
   const Vector3 Vector3::FRONT  = Vector3(0.0f, 0.0F, 1.0f);
 

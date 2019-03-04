@@ -15,12 +15,18 @@
 #include <nauPlatformUtilities.h>
 #include <nauPrerequisitesUtil.h>
 #include <nauVector2.h>
+#include <nauMatrix4.h>
+
+#include <DirectXMath.h>
+#include <iostream>
+using namespace DirectX;
+
 
 #define MARCOTESTING
 
 
 #ifndef MARCOTESTING
-  #define IVANTESTING
+# define IVANTESTING
 #endif
 using namespace nauEngineSDK;
 
@@ -40,10 +46,9 @@ struct Testing : public ::testing::Test {
 
 int main(int argc, char **argv)
 {
-  int stop;
   ::testing::InitGoogleTest(&argc,argv);
   RUN_ALL_TESTS();
-  std::cin >> stop;
+  system("pause");
   return 0;
 }
 #ifdef MARCOTESTING
@@ -96,10 +101,153 @@ TEST_F(Testing, Math_Arithmetics)
   EXPECT_EQ(Math::sqrt(9), 3);
   fails += ::testing::Test::HasFailure();
 }
-#else
-  #ifdef IVANTESTING
-//Iv�n te dejo este pedazo para que yo tambien haga mis dagas
 
-//end Iv�n Testing
-  #endif
+TEST_F(Testing, Matrices)
+{
+  Matrix4 nautilusMatrix;
+  XMMATRIX directMatrix;
+
+  nautilusMatrix.setValues(0);
+  directMatrix = XMMatrixSet(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+  Vector3 neye(0, 0, -10);
+  Vector3 nobjective(0, 0, 0);
+  Vector3 nup = Vector3::UP;
+
+  XMVECTOR deye = XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
+  XMVECTOR dobjective = XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
+  XMVECTOR dup = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+
+  nautilusMatrix = Matrix4::viewLookAt(neye, nobjective, nup);
+  directMatrix = XMMatrixLookAtLH(deye, dobjective, dup);
+
+
+  nautilusMatrix.transposed();
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      EXPECT_NEAR(nautilusMatrix.m[i][j], 
+                  directMatrix.r[i].m128_f32[j], 
+                  Math::KINDASMALLNUMBER);
+    }
+  }
+  nautilusMatrix.transposed();
+
+  nautilusMatrix.setValues(0);
+  directMatrix = XMMatrixSet(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+  float FOV = Math::degToRad(75.0f);
+  float ratio = 1920 / 1080;
+  float near = 0.1f;
+  float far = 1000.0f;
+
+  nautilusMatrix.perspective(FOV, ratio, near, far);
+  directMatrix = XMMatrixPerspectiveFovLH(FOV, ratio, near, far);
+
+  nautilusMatrix.transposed();
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      EXPECT_NEAR(nautilusMatrix.m[i][j], 
+                  directMatrix.r[i].m128_f32[j], 
+                  Math::KINDASMALLNUMBER);
+    }
+  }
+  nautilusMatrix.transposed();
+
+  nautilusMatrix.setValues(0);
+
+  nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
+  directMatrix = XMMatrixSet(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
+
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      std::cout << nautilusMatrix.m[j][i] << " ";
+    }
+    std::cout<<"\n";
+  }
+  std::cout << "\n";
+
+  nautilusMatrix.transposed();
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      EXPECT_EQ(nautilusMatrix.m[i][j], directMatrix.r[i].m128_f32[j]);
+    }
+  }
+  nautilusMatrix.transposed();
+
+  float nautilusDet = nautilusMatrix.determinant();
+  XMVECTOR directVector;
+  directVector = XMMatrixDeterminant(directMatrix);
+
+  //Should be both 1051
+  EXPECT_EQ(directVector.m128_f32[0], nautilusDet);
+
+  nautilusMatrix.inverse();
+
+  directMatrix = XMMatrixInverse(&directVector, directMatrix);
+
+  nautilusMatrix.transposed();
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      EXPECT_NEAR(nautilusMatrix.m[i][j], 
+                  directMatrix.r[i].m128_f32[j], 
+                  Math::SMALLNUMBER);
+    }
+  }
+  nautilusMatrix.transposed();
+
+  Matrix4 nautilusMatrix2(0);
+  Matrix4 comparing(0);
+  Matrix4 temp(0);
+
+  nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
+  nautilusMatrix2.setValues(4, 8, 2, 1, 3, 4, 5, 7, 5, 4, 3, 1, 7, 7, 7, 1);
+  
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      std::cout << nautilusMatrix2.m[i][j] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+
+  comparing.setValues(73, 86, 69, 32, 88, 116, 84, 62, 95, 126, 77, 31, 66, 65, 54, 25);
+  temp = nautilusMatrix * nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  temp = nautilusMatrix;
+  temp *= nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  comparing.setValues(7, 11, 4, 7, 9, 11, 8, 11, 13, 6, 6, 7, 8, 9, 14, 4);
+  temp = nautilusMatrix + nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  temp = nautilusMatrix;
+  temp += nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  comparing.setValues(-1, -5, 0, 5, 3, 3, -2, -3, 3, -2, 0, 5, -6, -5, 0, 2);
+  temp = nautilusMatrix - nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  temp = nautilusMatrix;
+  temp -= nautilusMatrix2;
+  EXPECT_TRUE(temp == comparing);
+
+  temp = nautilusMatrix;
+  nautilusMatrix.inverse();
+  temp *= nautilusMatrix;
+
+  for (int i = 0; i < 4; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      EXPECT_NEAR(temp.m[i][j],
+                  Matrix4::IDENTITY.m[i][j],
+                  Math::KINDASMALLNUMBER);
+    }
+  }
+
+
+}
+
+#else
 #endif

@@ -11,7 +11,7 @@
 #include "nauPrerequisitesCore.h"
 #include "nauComponent.h"
 
-#include <nauVector3.h>
+#include <nauMatrix4.h>
 
 namespace nauEngineSDK {
    /**
@@ -48,7 +48,7 @@ namespace nauEngineSDK {
     /**
      * Position of the gameObject in world space
      */
-    Vector3 m_position;
+    Matrix4 m_transform;
 
     /**
      * The vector that saves the properties of the gameObject
