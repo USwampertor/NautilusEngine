@@ -158,10 +158,7 @@ namespace nauEngineSDK {
      */
     float m_fov = 0;
 
-
-    ConstantBufferDX m_constant;
-
-    CBuffer m_cbuffer;
+    ConstantBufferDX m_constantBuffer;
   };
  
 

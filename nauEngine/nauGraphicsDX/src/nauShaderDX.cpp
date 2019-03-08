@@ -36,7 +36,7 @@ namespace nauEngineSDK {
     shadersource = { std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>() };
     file.close();
 
-#ifdef DEBUG
+#ifdef NAU_DEBUG_MODE
     FLAGS |= D3DCOMPILE_DEBUG;
 #endif
 

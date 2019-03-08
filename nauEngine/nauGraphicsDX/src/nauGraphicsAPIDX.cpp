@@ -99,38 +99,23 @@ namespace nauEngineSDK {
 
 
     //TODO: PUT THIS IN THE CONSTANT BUFFER
-    D3D11_BUFFER_DESC bd;
-    memset(&bd, 0, sizeof(bd));
-    bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(DirectBuffer);
-    bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    bd.CPUAccessFlags = 0;
 
-    ID3D11Buffer* buffer = nullptr;
-    DirectBuffer* b = new DirectBuffer();
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_world), sizeof(m_world));
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_camera.getView()), 
+                         sizeof(Matrix4));
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_projection), sizeof(m_projection));
 
-    CBuffer* nauB = new CBuffer();
+    m_constantBuffer.createHardware(m_device.m_pd3dDevice, 0);
 
-    HRESULT hr = m_device.m_pd3dDevice->CreateBuffer(&bd, nullptr, &buffer);
-    if (FAILED(hr)) { return false; }
-
-    m_cbuffer.m_world       = m_world;
-    m_cbuffer.m_view        = m_camera.m_view;
-    m_cbuffer.m_projection  = m_projection;
-
-    b->m_world = directWorld;
-    b->m_view = directView;
-    b->m_projection = directProjection;
-
-    m_device.m_pImmediateContext->UpdateSubresource(buffer, 
-                                                    0, 
+    m_device.m_pImmediateContext->UpdateSubresource(m_constantBuffer.m_pBuffer,
+                                                    0,
                                                     nullptr, 
-                                                    reinterpret_cast<char*>(&b), 
-                                                    0, 
+                                                    &m_constantBuffer.m_constantData[0],
+                                                    m_constantBuffer.m_constantData.size(),
                                                     0);
 
-    m_device.m_pImmediateContext->VSSetConstantBuffers(0, 1, &buffer);
-    m_device.m_pImmediateContext->PSSetConstantBuffers(0, 1, &buffer);
+    m_constantBuffer.setVertexShader(m_device.m_pImmediateContext, 0, 1);
+    m_constantBuffer.setPixelShader(m_device.m_pImmediateContext, 0, 1);
     //end test
     return true;
   }
@@ -138,6 +123,8 @@ namespace nauEngineSDK {
   void
   GraphicsAPIDX::onRender() {
     
+
+
     setShaders(m_device.m_pImmediateContext,
                m_vertexShader.m_pVertexShader,
                SHADERFLAGS::VERTEX);
@@ -145,6 +132,14 @@ namespace nauEngineSDK {
     setShaders(m_device.m_pImmediateContext,
                m_pixelShader.m_pPixelShader,
                SHADERFLAGS::PIXEL);
+    m_device.m_pImmediateContext->UpdateSubresource(m_constantBuffer.m_pBuffer,
+      0,
+      nullptr,
+      &m_constantBuffer.m_constantData[0],
+      0,
+      0);
+    m_constantBuffer.setVertexShader(m_device.m_pImmediateContext, 0, 1);
+    m_constantBuffer.setPixelShader(m_device.m_pImmediateContext, 0, 1);
 
     m_inputLayout.setLayout(m_device.m_pImmediateContext);
 

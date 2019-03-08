@@ -271,7 +271,7 @@ namespace nauEngineSDK {
      *
      */
     void 
-    add(Vector<Vector<char>>& objects);
+    add(char* buffer, SIZE_T sizeofBuffer);
 
     /**
      * @brief Cleans the vector of all objects inside of it
@@ -304,12 +304,17 @@ namespace nauEngineSDK {
      * Sets the device Context with the buffer
      */
     virtual void
-    set(void* pDevice) = 0;
+    setVertexShader(void* pDevice, uint32 slot, uint32 numBuffer) = 0;
+
+    /**
+     * Sets the device Context with the buffer
+     */
+    virtual void
+    setPixelShader(void* pDevice, uint32 slot, uint32 numBuffer) = 0;
 
     /**
      * constant data
      */
-    Vector<Vector<char>> m_constantData;
-
+    Vector<char> m_constantData;
   };
 }

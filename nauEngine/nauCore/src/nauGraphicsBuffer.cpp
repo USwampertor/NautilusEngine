@@ -92,12 +92,13 @@ namespace nauEngineSDK {
 
   void
   ConstantBuffer::add(const Vector<char>& object) {
-    m_constantData.push_back(object);
+
+    m_constantData.insert(m_constantData.end(), object.begin(), object.end());
   }
 
   void
-  ConstantBuffer::add(Vector<Vector<char>>& objects) {
-    m_constantData.insert(m_constantData.end(), objects.begin(), objects.end());
+  ConstantBuffer::add(char* buffer, SIZE_T sizeofBuffer) {
+    m_constantData.insert(m_constantData.end(), buffer, buffer + sizeofBuffer);
   }
 
   void

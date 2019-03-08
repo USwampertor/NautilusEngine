@@ -136,7 +136,15 @@ namespace nauEngineSDK {
   }
 
   void
-  ConstantBufferDX::set(void* pDevice) {
-
+    ConstantBufferDX::setVertexShader(void* pDevice, uint32 slot, uint32 numBuffer) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+    pDC->VSSetConstantBuffers(slot, numBuffer, &m_pBuffer);
   }
+
+  void
+    ConstantBufferDX::setPixelShader(void* pDevice, uint32 slot, uint32 numBuffer) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+    pDC->PSSetConstantBuffers(slot, numBuffer, &m_pBuffer);
+  }
+
 }

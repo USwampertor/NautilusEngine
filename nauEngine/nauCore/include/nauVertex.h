@@ -9,8 +9,9 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-
+#include <nauVector2.h>
 #include <nauMatrix4.h>
+
 #include <DirectXMath.h>
 
 #include "nauPrerequisitesCore.h"
@@ -26,7 +27,22 @@ namespace nauEngineSDK {
     */
   struct Vertex
   {
-    
+    Vertex() {
+      m_position = Vector4::ONEW;
+      m_color = Vector4::ZERO;
+      m_normal = Vector4::ONEW;
+      m_u = 0.0f;
+      m_v = 0.0f;
+    }
+
+
+    Vertex(Vector4 position, Vector4 color, Vector4 normal, Vector2 uv)
+      : m_position(position),
+        m_color(color),
+        m_normal(normal),
+        m_u(uv.x),
+        m_v(uv.y) {}
+
     /**
      * position of the vertex
      */
@@ -52,16 +68,6 @@ namespace nauEngineSDK {
      */
     float m_v;
 
-  };
-
-  struct CBuffer
-  {
-    Matrix4 m_world, m_view, m_projection;
-  };
-
-  struct DirectBuffer
-  {
-    DirectX::XMMATRIX m_world, m_view, m_projection;
   };
 
 }
