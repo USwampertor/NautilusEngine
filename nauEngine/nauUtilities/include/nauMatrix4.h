@@ -232,7 +232,7 @@ namespace nauEngineSDK{
      * @return the sum of *this and b
      * 
      */
-    FORCEINLINE Matrix4
+    Matrix4
     operator+(const Matrix4& b);
     
     /**
@@ -241,7 +241,7 @@ namespace nauEngineSDK{
      * @return the difference of *this and b
      *
      */
-    FORCEINLINE Matrix4
+    Matrix4
     operator-(const Matrix4& b);
     
     /**
@@ -250,7 +250,7 @@ namespace nauEngineSDK{
      * @return the multiplication of *this and b
      *
      */
-    FORCEINLINE Matrix4
+    Matrix4
     operator*(const Matrix4& b);
     
     /**

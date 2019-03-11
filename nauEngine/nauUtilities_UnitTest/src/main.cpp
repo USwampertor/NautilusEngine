@@ -45,9 +45,8 @@ struct Testing : public ::testing::Test {
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc,argv);
-  RUN_ALL_TESTS();
-  system("pause");
-  return 0;
+  return RUN_ALL_TESTS();
+  
 }
 #ifdef MARCOTESTING
 TEST_F(Testing, Basic_Types)
