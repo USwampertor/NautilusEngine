@@ -117,7 +117,7 @@ namespace nauEngineSDK {
     return x >= v.x && y >= v.y && z >= v.z;
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::operator-() const {
     return Vector3(-x, -y, -z);
   }

@@ -54,7 +54,7 @@ namespace nauEngineSDK {
 
   void
   Matrix3::inverse() {
-    float det = determinant();
+    float det = this->determinant();
     if (det == 0.0f) {
       std::cout << "This matrix can't have an inverse \n";
       return;
