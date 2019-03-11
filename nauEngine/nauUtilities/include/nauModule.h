@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "nauPrerequisitesUtil.h"
+
 namespace nauEngineSDK {
   
    /**
@@ -23,42 +25,42 @@ namespace nauEngineSDK {
   template <class T>
   class Module
   {
-  public:
+   public:
 
     /**
      * Returns a reference to the instance
      */
-    static T&
+     static T&
       instance() {
-      if (!isStartedUp()) {
-        //Sends an exception
-        //Error trying to access a module without initialization
-      }
+       if (!isStartedUp()) {
+         //NAU_EXCEPT(InternalErrorException,
+         //           "Trying to access a module but it hasn't been started.");
+       }
 
-      if (isDestroyed()) {
-        //Sends an exception
-        //Error trying to access a destroyed module
-      }
+       if (isDestroyed()) {
+         //NAU_EXCEPT(InternalErrorException,
+         //           "Trying to access a destroyed module.");
+       }
 
-      return *_instace();
-    }
+       return *_instance();
+     }
 
     /**
      * Returns a pointer to the instance
      */
     static T*
-      instance() {
+    instancePtr() {
       if (!isStartedUp()) {
-        //Sends an exception
-        //Error trying to access a module without initialization
+        //NAU_EXCEPT(InternalErrorException,
+        //           "Trying to access a module but it hasn't been started.");
       }
 
       if (isDestroyed()) {
-        //Sends an exception
-        //Error trying to access a destroyed module
+        //NAU_EXCEPT(InternalErrorException,
+        //           "Trying to access a destroyed module.");
       }
 
-      return _instace();
+      return _instance();
     }
 
     template<class... Args>
@@ -69,7 +71,7 @@ namespace nauEngineSDK {
         //Already started Up
       }
 
-      _instance() = new T(std::forward<Args>(args)...);
+      _instance()   = new T(std::forward<Args>(args)...);
       isStartedUp() = true;
 
       static_cast<Module*>(_instance())->onStartUp();
@@ -105,6 +107,7 @@ namespace nauEngineSDK {
       }
 
       static_cast<Module*>(_instance())->onShutDown();
+
       delete _instance();
       isDestroyed() = true;
     }
@@ -132,16 +135,16 @@ namespace nauEngineSDK {
     Module(const Module&) = delete;
 
     Module&
-    operator = (Module&&) = delete;
+    operator=(Module&&) = delete;
 
     Module&
-    operator = (const Module&) = delete;
+    operator=(const Module&) = delete;
 
     virtual void
     onStartUp() {}
 
     virtual void
-    onShutDown {}
+    onShutDown() {}
 
     static T*&
     _instance() {
@@ -160,8 +163,6 @@ namespace nauEngineSDK {
       static bool inst = false;
       return inst;
     }
-
-  };
-  
+  }; 
 }
 

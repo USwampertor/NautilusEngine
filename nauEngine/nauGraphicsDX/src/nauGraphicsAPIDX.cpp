@@ -60,7 +60,7 @@ namespace nauEngineSDK {
 
 
     ///////////// This is for testing the renderer
-    m_fov = Math::degToRad(75.0f);
+    m_fov = Math::degToRad(90.0f);
     m_world = Matrix4::IDENTITY;
 
     m_camera.m_objective.setValues(0.0f, 0.0f, 0.0f);
@@ -69,24 +69,6 @@ namespace nauEngineSDK {
 
     m_camera.createView();
 
-    XMMATRIX directWorld;
-    XMMATRIX directView;
-    XMMATRIX directProjection;
-    XMVECTOR deye = XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
-    XMVECTOR dobjective = XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
-    XMVECTOR dup = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
-
-
-    directView = XMMatrixLookAtLH(deye, dobjective, dup);
-    directView = XMMatrixTranspose(directView);
-    directWorld = XMMatrixIdentity();// XMMatrixSet(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    directProjection = XMMatrixPerspectiveFovLH(m_fov,
-      static_cast<float>(m_device.m_width / m_device.m_height),
-      m_screenNear,
-      m_screenDepth);
-    directProjection = XMMatrixTranspose(directProjection);
-
-
     m_projection.perspective(m_fov,
                              static_cast<float>(m_device.m_width / m_device.m_height),
                              m_screenNear,
@@ -94,7 +76,7 @@ namespace nauEngineSDK {
 
 
     m_meshList.setDevice(m_device.m_pd3dDevice);
-    m_meshList.loadFromFile("resources/max.obj");
+    m_meshList.loadFromFile("resources/teapot.obj");
     //test();
 
 
@@ -133,11 +115,11 @@ namespace nauEngineSDK {
                m_pixelShader.m_pPixelShader,
                SHADERFLAGS::PIXEL);
     m_device.m_pImmediateContext->UpdateSubresource(m_constantBuffer.m_pBuffer,
-      0,
-      nullptr,
-      &m_constantBuffer.m_constantData[0],
-      0,
-      0);
+                                                    0,
+                                                    nullptr,
+                                                    &m_constantBuffer.m_constantData[0],
+                                                    0,
+                                                    0);
     m_constantBuffer.setVertexShader(m_device.m_pImmediateContext, 0, 1);
     m_constantBuffer.setPixelShader(m_device.m_pImmediateContext, 0, 1);
 

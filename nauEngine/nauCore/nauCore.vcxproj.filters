@@ -85,6 +85,12 @@
     <ClInclude Include="include\nauConstantBufferMatrix.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="nauTime.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauClock.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauDepthStencilView.cpp">
@@ -154,6 +160,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauClock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

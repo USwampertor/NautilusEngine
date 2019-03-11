@@ -10,6 +10,7 @@
 
 #pragma once
 #include "nauPrerequisitesCore.h"
+#include <nauModule.h>
 
 namespace nauEngineSDK {
   
@@ -29,7 +30,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	You cast any of the dynamic libraries with this so it can be used
     */
-  class NAU_CORE_EXPORT GraphicsAPI
+  class NAU_CORE_EXPORT GraphicsAPI : public Module<GraphicsAPI>
   {
    public:
     

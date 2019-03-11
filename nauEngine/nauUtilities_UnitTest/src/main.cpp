@@ -17,9 +17,7 @@
 #include <nauVector2.h>
 #include <nauMatrix4.h>
 
-#include <DirectXMath.h>
 #include <iostream>
-using namespace DirectX;
 
 
 #define MARCOTESTING
@@ -104,59 +102,12 @@ TEST_F(Testing, Math_Arithmetics)
 
 TEST_F(Testing, Matrices)
 {
-  Matrix4 nautilusMatrix;
-  XMMATRIX directMatrix;
-
-  nautilusMatrix.setValues(0);
-  directMatrix = XMMatrixSet(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-  Vector3 neye(0, 0, -10);
-  Vector3 nobjective(0, 0, 0);
-  Vector3 nup = Vector3::UP;
-
-  XMVECTOR deye = XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
-  XMVECTOR dobjective = XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
-  XMVECTOR dup = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
-
-  nautilusMatrix = Matrix4::viewLookAt(neye, nobjective, nup);
-  directMatrix = XMMatrixLookAtLH(deye, dobjective, dup);
-
-
-  nautilusMatrix.transposed();
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      EXPECT_NEAR(nautilusMatrix.m[i][j], 
-                  directMatrix.r[i].m128_f32[j], 
-                  Math::KINDASMALLNUMBER);
-    }
-  }
-  nautilusMatrix.transposed();
-
-  nautilusMatrix.setValues(0);
-  directMatrix = XMMatrixSet(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-  float FOV = Math::degToRad(75.0f);
-  float ratio = 1920 / 1080;
-  float near = 0.1f;
-  float far = 1000.0f;
-
-  nautilusMatrix.perspective(FOV, ratio, near, far);
-  directMatrix = XMMatrixPerspectiveFovLH(FOV, ratio, near, far);
-
-  nautilusMatrix.transposed();
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      EXPECT_NEAR(nautilusMatrix.m[i][j], 
-                  directMatrix.r[i].m128_f32[j], 
-                  Math::KINDASMALLNUMBER);
-    }
-  }
-  nautilusMatrix.transposed();
-
-  nautilusMatrix.setValues(0);
+  Matrix4 nautilusMatrix(0);
+  Matrix4 nautilusMatrix2(0);
+  Matrix4 comparing(0);
+  Matrix4 temp(0);
 
   nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
-  directMatrix = XMMatrixSet(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
 
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
@@ -166,38 +117,6 @@ TEST_F(Testing, Matrices)
   }
   std::cout << "\n";
 
-  nautilusMatrix.transposed();
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      EXPECT_EQ(nautilusMatrix.m[i][j], directMatrix.r[i].m128_f32[j]);
-    }
-  }
-  nautilusMatrix.transposed();
-
-  float nautilusDet = nautilusMatrix.determinant();
-  XMVECTOR directVector;
-  directVector = XMMatrixDeterminant(directMatrix);
-
-  //Should be both 1051
-  EXPECT_EQ(directVector.m128_f32[0], nautilusDet);
-
-  nautilusMatrix.inverse();
-
-  directMatrix = XMMatrixInverse(&directVector, directMatrix);
-
-  nautilusMatrix.transposed();
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      EXPECT_NEAR(nautilusMatrix.m[i][j], 
-                  directMatrix.r[i].m128_f32[j], 
-                  Math::SMALLNUMBER);
-    }
-  }
-  nautilusMatrix.transposed();
-
-  Matrix4 nautilusMatrix2(0);
-  Matrix4 comparing(0);
-  Matrix4 temp(0);
 
   nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
   nautilusMatrix2.setValues(4, 8, 2, 1, 3, 4, 5, 7, 5, 4, 3, 1, 7, 7, 7, 1);

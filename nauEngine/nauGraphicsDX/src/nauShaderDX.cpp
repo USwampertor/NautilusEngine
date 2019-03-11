@@ -56,8 +56,6 @@ namespace nauEngineSDK {
     return m_d3dBlob;
   }
 
-
-
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Vertex shader member declaration
