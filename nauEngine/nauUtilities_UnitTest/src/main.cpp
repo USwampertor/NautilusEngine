@@ -43,9 +43,7 @@ struct Testing : public ::testing::Test {
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc,argv);
-  int i = RUN_ALL_TESTS();
-  system("pause");
-  return i;
+  return RUN_ALL_TESTS();
   
 }
 #ifdef MARCOTESTING
@@ -109,30 +107,10 @@ TEST_F(Testing, Matrices)
   Matrix3 nautilusMatrix3(0);
 
   nautilusMatrix3 = Matrix3::IDENTITY;
-  std::cout << nautilusMatrix3.determinant() << std::endl;
-
-  nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
-
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      std::cout << nautilusMatrix.m[j][i] << " ";
-    }
-    std::cout<<"\n";
-  }
-  std::cout << "\n";
-
 
   nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
   nautilusMatrix2.setValues(4, 8, 2, 1, 3, 4, 5, 7, 5, 4, 3, 1, 7, 7, 7, 1);
   
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      std::cout << nautilusMatrix2.m[i][j] << " ";
-    }
-    std::cout << "\n";
-  }
-  std::cout << "\n";
-
   comparing.setValues(73, 86, 69, 32, 88, 116, 84, 62, 95, 126, 77, 31, 66, 65, 54, 25);
   temp = nautilusMatrix * nautilusMatrix2;
   EXPECT_TRUE(temp == comparing);
