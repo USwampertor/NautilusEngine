@@ -209,7 +209,7 @@ namespace nauEngineSDK {
       std::cout << "This matrix can't have an inverse \n";
       return;
     }
-    Matrix3 temp;
+    Matrix3 temp(0);
     Matrix4 tmp2 = *this;
 
     temp.m[0][0] = m[1][1]; temp.m[1][0] = m[2][1]; temp.m[2][0] = m[3][1];

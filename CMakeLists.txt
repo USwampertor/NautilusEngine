@@ -21,6 +21,7 @@ set(UTILITIES_SOURCES
     ./nauEngine/nauUtilities/src/nauDataStream.cpp
     ./nauEngine/nauUtilities/src/nauFrustrum.cpp
     ./nauEngine/nauUtilities/src/nauMatrix4.cpp
+    ./nauEngine/nauUtilities/src/nauMatrix3.cpp
     ./nauEngine/nauUtilities/src/nauOOBB.cpp
     ./nauEngine/nauUtilities/src/nauPlane.cpp
     ./nauEngine/nauUtilities/src/nauQuaternion.cpp

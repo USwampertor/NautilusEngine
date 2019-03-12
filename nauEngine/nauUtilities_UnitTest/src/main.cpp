@@ -21,8 +21,6 @@
 
 
 #define MARCOTESTING
-
-
 #ifndef MARCOTESTING
 # define IVANTESTING
 #endif
@@ -45,7 +43,9 @@ struct Testing : public ::testing::Test {
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc,argv);
-  return RUN_ALL_TESTS();
+  int i = RUN_ALL_TESTS();
+  system("pause");
+  return i;
   
 }
 #ifdef MARCOTESTING
@@ -105,6 +105,11 @@ TEST_F(Testing, Matrices)
   Matrix4 nautilusMatrix2(0);
   Matrix4 comparing(0);
   Matrix4 temp(0);
+
+  Matrix3 nautilusMatrix3(0);
+
+  nautilusMatrix3 = Matrix3::IDENTITY;
+  std::cout << nautilusMatrix3.determinant() << std::endl;
 
   nautilusMatrix.setValues(3, 3, 2, 6, 6, 7, 3, 4, 8, 2, 3, 6, 1, 2, 7, 3);
 
