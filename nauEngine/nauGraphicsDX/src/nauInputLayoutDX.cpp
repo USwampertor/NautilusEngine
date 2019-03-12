@@ -103,7 +103,7 @@ namespace nauEngineSDK {
 
   void
   InputLayoutDX::add(void* input) {
-    //m_descVector.push_back(reinterpret_cast<D3D11_INPUT_ELEMENT_DESC&>(input));
+    m_descVector.push_back(reinterpret_cast<D3D11_INPUT_ELEMENT_DESC&>(input));
   }
 
   void

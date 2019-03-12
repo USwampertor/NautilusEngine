@@ -77,6 +77,7 @@ loadDLL(String path) {
   if (!myDll) {
     DWORD err = GetLastError();
     std::cout << "Could not find dll at given path: " << path << std::endl;
+    std::cout << err << std::endl;
     std::cout << "Press any key to continue...";
     return 0;
   }
@@ -234,7 +235,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
   case WM_PAINT:
   {
     PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hWnd, &ps);
+    //HDC hdc = BeginPaint(hWnd, &ps);
     // TODO: Agregar cualquier código de dibujo que use hDC aquí...
     EndPaint(hWnd, &ps);
   }

@@ -13,7 +13,7 @@ namespace nauEngineSDK {
 
   GameObject::GameObject(const GameObject& other) {
     m_transform = other.m_transform;
-    for (int i = 0; i < other.m_properties.size(); ++i) {
+    for (uint32 i = 0; i < other.m_properties.size(); ++i) {
       m_properties.push_back(other.m_properties[i]);
     }
   }
