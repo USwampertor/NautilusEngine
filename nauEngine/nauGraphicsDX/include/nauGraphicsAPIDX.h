@@ -29,8 +29,8 @@
 #include "nauTextureDX.h"
 #include "nauViewPortDX.h"
 
-namespace nauEngineSDK {
 
+namespace nauEngineSDK {
   /**
    * nauGraphics
    * Description:
@@ -159,6 +159,7 @@ namespace nauEngineSDK {
     float m_fov = 0;
 
     ConstantBufferDX m_constantBuffer;
+
   };
  
 

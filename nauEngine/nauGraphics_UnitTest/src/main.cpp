@@ -15,6 +15,8 @@
 #include <windows.h>
 #include <nauGraphicsAPI.h>
 
+#include <imgui.h>
+
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
@@ -146,7 +148,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     }
+
+    ImGui::Begin("Test Window");
+    ImGui::End();
+
     m_api->onRender();
+    ImGui::Render();
   }
 
   return (int)msg.wParam;

@@ -43,6 +43,16 @@ namespace nauEngineSDK {
      */
     ~GameObject() = default;
   
+    /**
+     * @brief This function acts when the gameObject is created. You should 
+     *        initialize things here
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    init() {}
+
   public:
 
     /**

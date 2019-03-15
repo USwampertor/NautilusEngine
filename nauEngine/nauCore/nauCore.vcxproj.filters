@@ -85,10 +85,13 @@
     <ClInclude Include="include\nauConstantBufferMatrix.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauTime.h">
+    <ClInclude Include="include\nauClock.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauClock.h">
+    <ClInclude Include="include\nauCoreFactory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauTime.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,10 +165,13 @@
     <ClCompile Include="src\nauGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauTime.cpp">
+    <ClCompile Include="src\nauClock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauClock.cpp">
+    <ClCompile Include="src\nauCoreFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -22,8 +22,10 @@
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauCamera.h" />
     <ClInclude Include="include\nauCameraManager.h" />
+    <ClInclude Include="include\nauClock.h" />
     <ClInclude Include="include\nauComponent.h" />
     <ClInclude Include="include\nauConstantBufferMatrix.h" />
+    <ClInclude Include="include\nauCoreFactory.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />
@@ -43,18 +45,17 @@
     <ClInclude Include="include\nauShaderResourceView.h" />
     <ClInclude Include="include\nauSwapChain.h" />
     <ClInclude Include="include\nauTexture.h" />
+    <ClInclude Include="include\nauTime.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
-    <ClInclude Include="nauClock.h" />
-    <ClInclude Include="nauTime.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauClock.cpp" />
-    <ClCompile Include="nauTime.cpp" />
     <ClCompile Include="src\nauBaseApp.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
+    <ClCompile Include="src\nauClock.cpp" />
     <ClCompile Include="src\nauComponent.cpp" />
+    <ClCompile Include="src\nauCoreFactory.cpp" />
     <ClCompile Include="src\nauDepthStencil.cpp" />
     <ClCompile Include="src\nauDepthStencilView.cpp" />
     <ClCompile Include="src\nauDevice.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="src\nauShaderResourceView.cpp" />
     <ClCompile Include="src\nauSwapChain.cpp" />
     <ClCompile Include="src\nauTexture.cpp" />
+    <ClCompile Include="src\nauTime.cpp" />
     <ClCompile Include="src\nauViewPort.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -34,6 +34,23 @@ namespace nauEngineSDK {
      */
     virtual 
     ~BaseApp() {};
+
+    virtual void
+    start() = 0;
+
+    virtual void
+    render() = 0;
+
+    virtual void
+    initApp() = 0;
+
+    virtual void
+    shutDown() = 0;
+
+    virtual void
+    close() = 0;
+
+
   };
 }
 
