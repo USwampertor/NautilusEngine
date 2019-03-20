@@ -93,12 +93,12 @@ namespace nauEngineSDK {
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
-    m[0][1] = (cos * m[0][1]) - (sin * m[0][2]);
-    m[1][1] = (cos * m[1][1]) - (sin * m[1][2]);
-    m[2][1] = (cos * m[2][1]) - (sin * m[2][2]);
-    m[0][2] = (cos * m[0][2]) + (sin * m[0][1]);
-    m[1][2] = (cos * m[1][2]) + (sin * m[1][1]);
-    m[2][2] = (cos * m[2][2]) + (sin * m[2][1]);
+    m[0][1] = (cos * tmp.m[0][1]) - (sin * tmp.m[0][2]);
+    m[1][1] = (cos * tmp.m[1][1]) - (sin * tmp.m[1][2]);
+    m[2][1] = (cos * tmp.m[2][1]) - (sin * tmp.m[2][2]);
+    m[0][2] = (cos * tmp.m[0][2]) + (sin * tmp.m[0][1]);
+    m[1][2] = (cos * tmp.m[1][2]) + (sin * tmp.m[1][1]);
+    m[2][2] = (cos * tmp.m[2][2]) + (sin * tmp.m[2][1]);
   }
 
   void
@@ -107,12 +107,12 @@ namespace nauEngineSDK {
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
-    m[0][0] = (cos * m[0][0]) + (sin * m[0][2]);
-    m[1][0] = (cos * m[1][0]) + (sin * m[1][2]);
-    m[2][0] = (cos * m[2][0]) + (sin * m[2][2]);
-    m[0][2] = (cos * m[0][2]) - (sin * m[0][0]);
-    m[1][2] = (cos * m[1][2]) - (sin * m[1][0]);
-    m[2][2] = (cos * m[2][2]) - (sin * m[2][0]);
+    m[0][0] = (cos * tmp.m[0][0]) + (sin * tmp.m[0][2]);
+    m[1][0] = (cos * tmp.m[1][0]) + (sin * tmp.m[1][2]);
+    m[2][0] = (cos * tmp.m[2][0]) + (sin * tmp.m[2][2]);
+    m[0][2] = (cos * tmp.m[0][2]) - (sin * tmp.m[0][0]);
+    m[1][2] = (cos * tmp.m[1][2]) - (sin * tmp.m[1][0]);
+    m[2][2] = (cos * tmp.m[2][2]) - (sin * tmp.m[2][0]);
   }
 
   void
@@ -121,12 +121,12 @@ namespace nauEngineSDK {
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
 
-    m[0][0] = (cos * m[0][0]) - (sin * m[0][1]);
-    m[1][0] = (cos * m[1][0]) - (sin * m[1][1]);
-    m[2][0] = (cos * m[2][0]) - (sin * m[2][1]);
-    m[0][1] = (cos * m[0][1]) + (sin * m[0][0]);
-    m[1][1] = (cos * m[1][1]) + (sin * m[1][0]);
-    m[2][1] = (cos * m[2][1]) + (sin * m[2][0]);
+    m[0][0] = (cos * tmp.m[0][0]) - (sin * tmp.m[0][1]);
+    m[1][0] = (cos * tmp.m[1][0]) - (sin * tmp.m[1][1]);
+    m[2][0] = (cos * tmp.m[2][0]) - (sin * tmp.m[2][1]);
+    m[0][1] = (cos * tmp.m[0][1]) + (sin * tmp.m[0][0]);
+    m[1][1] = (cos * tmp.m[1][1]) + (sin * tmp.m[1][0]);
+    m[2][1] = (cos * tmp.m[2][1]) + (sin * tmp.m[2][0]);
   }
 
   void

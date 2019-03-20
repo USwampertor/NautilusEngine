@@ -114,6 +114,15 @@ namespace nauEngineSDK {
     setShaders(m_device.m_pImmediateContext,
                m_pixelShader.m_pPixelShader,
                SHADERFLAGS::PIXEL);
+
+    m_constantBuffer.clear();
+    m_world.rotateY(0.001f);
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_world), sizeof(m_world));
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_camera.getView()),
+                                                 sizeof(Matrix4));
+    m_constantBuffer.add(reinterpret_cast<char*>(&m_projection), sizeof(m_projection));
+
+
     m_device.m_pImmediateContext->UpdateSubresource(m_constantBuffer.m_pBuffer,
                                                     0,
                                                     nullptr,

@@ -18,9 +18,15 @@
     <ClInclude Include="include\nauNeuron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="nauNetwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauNeuron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauNetwork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

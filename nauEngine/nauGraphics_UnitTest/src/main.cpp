@@ -149,11 +149,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       DispatchMessage(&msg);
     }
 
-    ImGui::Begin("Test Window");
-    ImGui::End();
+    //ImGui::Begin("Test Window");
+    //ImGui::End();
 
     m_api->onRender();
-    ImGui::Render();
+    //ImGui::Render();
   }
 
   return (int)msg.wParam;
