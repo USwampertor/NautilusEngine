@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT BaseApp
+  class BaseApp
   {
    public:
     
@@ -32,21 +32,48 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual 
-    ~BaseApp() {};
+    virtual
+    ~BaseApp() = default;
 
+
+    /**
+     * Anything that should go before rendering and starting to get inputs but
+     * after the initialization of basic components should go here
+     */
     virtual void
     start() = 0;
 
+    /**
+     * @brief Render state of the base app, here it goes everything to render
+     * @param 
+     * @return 
+     *
+     */
     virtual void
     render() = 0;
 
-    virtual void
-    initApp() = 0;
+    /**
+     * @brief Should be used to initialize the basic components of the objects
+     * @param First one should be the window handler
+     * @return true if all objects were able to initialize, false if one or more didnt
+     *
+     */
+    virtual bool
+    initApp(void* hwnd) = 0;
 
+    /**
+     * @brief Should be used to end or shut down basic Components for the application
+     * @param 
+     * @return 
+     *
+     */
     virtual void
     shutDown() = 0;
 
+    /**
+     * Closes the application. Should be used to terminate one or more components
+     * after shutting down
+     */
     virtual void
     close() = 0;
 

@@ -11,6 +11,7 @@
 #pragma once
 #include "nauPrerequisitesCore.h"
 #include <nauModule.h>
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
   
@@ -46,6 +47,12 @@ namespace nauEngineSDK {
     ~GraphicsAPI() {}
 
     /**
+     * Initializes the basic stuff for the renderer to work
+     */
+    virtual bool
+    init(void* scrHandler) = 0;
+
+    /**
      * @brief initializes the device of the API
      * @param normally you would put a window handler
      * @return true if the initialization went all right
@@ -61,7 +68,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void 
-    onRender() = 0;
+    render() = 0;
 
     /**
      * @brief gets the info of the shaders and sets the API
@@ -71,12 +78,25 @@ namespace nauEngineSDK {
      */
     virtual void 
     setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags ) = 0;
-  
+
     /**
-     * Graphics test function, it can load a specific object
+     * @brief presents the swapchain and swaps it
+     * @param 
+     * @return 
+     *
      */
     virtual void
-    test() = 0;
+    swapBuffer() = 0;
+
+    /**
+     * @brief exposes the device and returns it
+     * @param 
+     * @return the device
+     *
+     */
+    virtual Device*
+    getDevice() = 0;
+
   };
   
 }

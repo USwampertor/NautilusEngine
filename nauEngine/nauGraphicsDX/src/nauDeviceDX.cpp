@@ -96,6 +96,14 @@ namespace nauEngineSDK {
     return true;
   }
 
+  void*
+  DeviceDX::get() {
+    return m_pd3dDevice;
+  }
 
+  void*
+  DeviceDX::getContext() {
+    return m_pImmediateContext;
+  }
 
 }

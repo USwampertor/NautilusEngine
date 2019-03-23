@@ -62,7 +62,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	Mesh can have any model or skeleton
    */
-  class MeshComponent : public Component
+  class NAU_CORE_EXPORT MeshComponent : public Component
   {
   public:
 
@@ -83,7 +83,7 @@ namespace nauEngineSDK {
 
   };
 
-  class ColliderComponent : public Component
+  class NAU_CORE_EXPORT ColliderComponent : public Component
   {
    public:
 

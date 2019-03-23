@@ -17,9 +17,15 @@ namespace nauEngineSDK {
   class NAU_DIRECTX_EXPORT DeviceDX : public Device
   {
    public:
+    /**
+     * Default constructor
+     */
     DeviceDX() = default;
     
-    ~DeviceDX() {}
+    /**
+     * Default destructor
+     */
+    ~DeviceDX() = default;
     
     bool 
     initializeDevice(void* scrHandler);
@@ -32,6 +38,18 @@ namespace nauEngineSDK {
 
     bool
     createDepthStencilView();
+
+    ///GETTERS///
+
+    void*
+    get();
+
+    void*
+    getContext();
+
+    ///EVENTS///
+
+
 
   public:
 

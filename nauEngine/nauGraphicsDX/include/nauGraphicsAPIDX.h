@@ -52,43 +52,39 @@ namespace nauEngineSDK {
      */
     ~GraphicsAPIDX() {}
 
-    /**
-     * @brief initializes the device of the API
-     * @param normally you would put a window handler
-     * @return true if the initialization went all right
-     *
-     */
+    ///INITIALIZERS//
+
+
+    bool
+    init(void* scrHandler);
+
     bool
     initDevice(void* scrHandler);
 
-    /**
-     * @brief
-     * @param
-     * @return
-     *
-     */
-    void
-    onRender();
 
-    /**
-     * @brief Sets the shaders
-     * @param 
-     * @return 
-     *
-     */
+    ///SETTERS///
+
+    
     void
     setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags);
 
-    /**
-     * @brief This is just a test
-     * @param 
-     * @return 
-     *
-     */
-    void
-    test();
 
-  public:
+
+    ///GETTERS///
+
+    
+    Device*
+    getDevice();
+
+    ///GRAPHIC FUNCTIONS///
+
+    void
+    render();
+   
+    void
+    swapBuffer();
+
+   public:
 
 
     //TO DO: TAKE THIS SHITS OUT
@@ -166,6 +162,8 @@ namespace nauEngineSDK {
   
 
 }
+
+
 MS_ALIGN(16)
 extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::GraphicsAPI* 
 createGraphicsAPI() {

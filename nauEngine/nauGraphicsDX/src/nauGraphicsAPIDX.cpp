@@ -13,8 +13,20 @@ using namespace DirectX;
 
 namespace nauEngineSDK {
 
+
   bool
-    GraphicsAPIDX::initDevice(void* scrHandler) {
+  GraphicsAPIDX::init(void* scrHandler) {
+
+    if (!initDevice(scrHandler)) {
+      std::cout << "Failed to initialize device... \n";
+      return false;
+    }
+
+    return true;
+  }
+
+  bool
+  GraphicsAPIDX::initDevice(void* scrHandler) {
 
     m_fov = 0.0f;
 
@@ -51,13 +63,9 @@ namespace nauEngineSDK {
     m_pixelShader.createFromFile(m_device.m_pd3dDevice, "resources/PS.hlsl", "ColorPixelShader");
 
     m_inputLayout.setInputDescriptor();
-
-
     m_inputLayout.createInputBuffer(m_device.m_pd3dDevice, &m_vertexShader);
 
     m_samplerState.createShaderSampler(m_device.m_pd3dDevice);
-
-
 
     ///////////// This is for testing the renderer
     m_fov = Math::degToRad(90.0f);
@@ -80,8 +88,6 @@ namespace nauEngineSDK {
     //test();
 
 
-    //TODO: PUT THIS IN THE CONSTANT BUFFER
-
     m_constantBuffer.add(reinterpret_cast<char*>(&m_world), sizeof(m_world));
     m_constantBuffer.add(reinterpret_cast<char*>(&m_camera.getView()), 
                          sizeof(Matrix4));
@@ -103,7 +109,7 @@ namespace nauEngineSDK {
   }
 
   void
-  GraphicsAPIDX::onRender() {
+  GraphicsAPIDX::render() {
     
 
 
@@ -144,7 +150,6 @@ namespace nauEngineSDK {
     m_samplerState.setShaderSampler(m_device.m_pd3dDevice);
     m_meshList.render();
     
-    m_device.m_pSwapChain->Present(DXGI_SWAP_EFFECT_DISCARD, DXGI_PRESENT_DO_NOT_WAIT);
   }
 
   void
@@ -163,61 +168,14 @@ namespace nauEngineSDK {
     }
   }
 
-  void
-  GraphicsAPIDX::test() {
-    
-    MeshDX* m = new MeshDX();
-    m->m_vertexBuffer = new VertexBufferDX();
-    m->m_indexBuffer = new IndexBufferDX();
-    m->m_texture = new TextureDX();
-    m_meshList.m_meshes.push_back(m);
-    auto& mesh = m_meshList.m_meshes.back();
-
-    ID3D11DeviceContext* pImmContext;
-
-    m_meshList.m_pDevice->GetImmediateContext(&pImmContext);
-    mesh->m_texture->loadFromFile("resources/sheikah.jpg", 
-                                  m_meshList.m_pDevice, 
-                                  pImmContext);
-
-    mesh->m_texture->createShaderSampler(m_meshList.m_pDevice);
-    mesh->m_texture->setShaderSampler(m_meshList.m_pDevice);
-
-    Vertex pVertex;
-
-    pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
-    pVertex.m_color = { 1.0f,0.5f,0.25f,1.0f };
-    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
-    pVertex.m_u = 0.0f;
-    pVertex.m_v = 1.0f;
-
-    mesh->m_vertexBuffer->add(pVertex);
-
-    pVertex.m_position = { 0.0f,1.0f,0.0f,1.0f };
-    pVertex.m_color = { 0.5f,1.0f, 0.0f,1.0f };
-    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
-    pVertex.m_u = 0.5f;
-    pVertex.m_v = 0.0f;
-
-    mesh->m_vertexBuffer->add(pVertex);
-
-    pVertex.m_position = { 1.0f,-1.0f,0.0f,1.0f };
-    pVertex.m_color = { 0.25f, 0.5f, 1.0f,1.0f };
-    pVertex.m_normal = { 0.0f, 0.0f, 0.0f, 1.0f };
-    pVertex.m_u = 1.0f;
-    pVertex.m_v = 1.0f;
-
-    mesh->m_vertexBuffer->add(pVertex);
-
-    mesh->m_indexBuffer->add(0);
-    mesh->m_indexBuffer->add(1);
-    mesh->m_indexBuffer->add(2);
-
-    mesh->m_vertexBuffer->createHardware(m_meshList.m_pDevice,
-                                         D3D11_USAGE_DEFAULT);
-    mesh->m_indexBuffer->createHardware(m_meshList.m_pDevice,
-                                        D3D11_USAGE_DEFAULT);
-
+  Device*
+  GraphicsAPIDX::getDevice() {
+    return &m_device;
   }
- 
+
+
+  void
+  GraphicsAPIDX::swapBuffer() {
+    m_device.m_pSwapChain->Present(DXGI_SWAP_EFFECT_DISCARD, DXGI_PRESENT_DO_NOT_WAIT);
+  }
 }

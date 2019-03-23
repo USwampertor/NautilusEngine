@@ -68,6 +68,25 @@ namespace nauEngineSDK {
     createDepthStencilView() = 0;
 
     /**
+     * @brief Gets the device encapsulated in the Device object
+     * @param
+     * @return the device
+     *
+     */
+    virtual void*
+    get() = 0;
+
+
+    /**
+     * @brief Gets the device Context from the device
+     * @param 
+     * @return the device context
+     *
+     */
+    virtual void*
+    getContext() = 0;
+
+    /**
      * Member declaration
      */
    public:

@@ -11,6 +11,7 @@
 #pragma once
 #include "nauPrerequisitesCore.h"
 #include "nauCamera.h"
+#include <nauModule.h>
 
 namespace nauEngineSDK {
    /**
@@ -20,10 +21,10 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	You can make a nice interpolation with this
     */
-  class CameraManager
+  class NAU_CORE_EXPORT CameraManager : public Module<CameraManager>
   {
   public:
-    
+
     /**
      * Default Constructor
      */
@@ -32,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~CameraManager() {}
+    ~CameraManager() = default;
 
     /**
      * @brief Interpolates from A Camera to B Camera in an amount of time

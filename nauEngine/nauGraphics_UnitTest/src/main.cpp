@@ -8,14 +8,14 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-#include <d3d11.h>
+//#include <d3d11.h>
 #include <vector>
 #include <stdio.h>
 #include <string>
 #include <windows.h>
 #include <nauGraphicsAPI.h>
 
-#include <imgui.h>
+#include "nauTestApp.h"
 
 #define IDS_APP_TITLE			103
 
@@ -44,10 +44,10 @@
 #define _APS_NEXT_SYMED_VALUE		110
 #endif
 #endif
+#define MAX_LOADSTRING 100
 
 using namespace nauEngineSDK;
 using std::vector;
-#define MAX_LOADSTRING 100
 
 //Global variables
 HINSTANCE hInst;
@@ -61,6 +61,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+TestApp m_app;
 
 typedef void* (*G_API)();
 
@@ -107,24 +108,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   _In_ LPWSTR    lpCmdLine,
   _In_ int       nCmdShow)
 {
-  //Graphics_API GFX_API;
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
   
-  //DLL Loading
-  GraphicsAPI* m_api;
-  //
-
-  // Global chains
-//  LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-//  LoadStringW(hInstance, IDC_GRAFICAS21, szWindowClass, MAX_LOADSTRING);
+  //GraphicsAPI* m_api;
 
   MyRegisterClass(hInstance);
 
-  String path = "nauGraphicsDXd.dll";
+  String path = "x86\\nauGraphicsDXd.dll";
   
-  m_api = reinterpret_cast<GraphicsAPI*>(loadDLL(path));
-  if (m_api == nullptr) {
+  m_app.m_api = reinterpret_cast<GraphicsAPI*>(loadDLL(path));
+  if (m_app.m_api == nullptr) {
     std::cout << "Couldn't get DLL";
   }
 
@@ -132,7 +126,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   if (!InitInstance(hInstance, nCmdShow)) {
     return FALSE;
   }
-  if (!m_api->initDevice(g_hWnd)) {
+  if (!m_app.initApp(g_hWnd)) {
     return FALSE;
   }
 
@@ -149,24 +143,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       DispatchMessage(&msg);
     }
 
-    //ImGui::Begin("Test Window");
-    //ImGui::End();
+    
 
-    m_api->onRender();
-    //ImGui::Render();
+    m_app.render();
   }
 
   return (int)msg.wParam;
 }
 
-
-
-/**
- * @brief Registers the class
- * @param Handler instance
- * @return 
- *
- */
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
   WNDCLASSEXW wcex;
@@ -188,15 +172,9 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
   return RegisterClassExW(&wcex);
 }
 
-/**
- * @brief Initializes the object of the handler
- * @param 
- * @return 
- *
- */
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-  hInst = hInstance; // Almacenar identificador de instancia en una variable global
+  hInst = hInstance;
 
   g_hWnd = CreateWindowExW(0, szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
     CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, nullptr, nullptr, hInstance, nullptr);
@@ -212,12 +190,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
   return TRUE;
 }
 
-/**
- * @brief Proccesses the info from the window
- * @param window handler, message
- * @return 
- *
- */
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
   switch (message)
@@ -225,7 +197,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
   case WM_COMMAND:
   {
     int wmId = LOWORD(wParam);
-    // Analizar las selecciones de menú:
     switch (wmId)
     {
     case IDM_ABOUT:
@@ -242,8 +213,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
   case WM_PAINT:
   {
     PAINTSTRUCT ps;
-    //HDC hdc = BeginPaint(hWnd, &ps);
-    // TODO: Agregar cualquier código de dibujo que use hDC aquí...
     EndPaint(hWnd, &ps);
   }
   break;
@@ -256,7 +225,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
   return 0;
 }
 
-// Controlador de mensajes del cuadro Acerca de.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
   UNREFERENCED_PARAMETER(lParam);
