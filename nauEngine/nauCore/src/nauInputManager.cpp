@@ -1,10 +1,14 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauViewPort.cpp
+ * @file nauInputManager.cpp
  * @author Marco "Swampy" Millan
- * @date 2018/10/22 2018
- * @brief ViewPort Base class member definition
+ * @date 2019/03/23 2019
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauViewPort.h"
+#include "nauInputManager.h"
+
+namespace nauEngineSDK {
+
+}

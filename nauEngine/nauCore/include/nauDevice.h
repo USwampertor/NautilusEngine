@@ -18,7 +18,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class NAU_CORE_EXPORT Device
+  class Device
   {
    public:
     /**

@@ -19,7 +19,7 @@ namespace nauEngineSDK {
 
   class NAU_DIRECTX_EXPORT DepthStencilDX : public DepthStencil
   {
-  public:
+   public:
 
     /**
      * default constructor
@@ -29,7 +29,14 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~DepthStencilDX() {}
+    ~DepthStencilDX() = default;
+
+    bool
+    createDepthStencil(void* pDevice,
+                       void* pDeviceContext,
+                       uint32 height,
+                       uint32 width,
+                       Texture* texture);
   
   };
   

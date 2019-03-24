@@ -18,7 +18,7 @@ namespace nauEngineSDK {
 
 
   float
-  Clock::DeltaTime() {
+  Clock::deltaTime() {
     auto now = high_resolution_clock::now();
     milliseconds ms = duration_cast<milliseconds>(now - m_time);
     m_time = now;
@@ -26,7 +26,7 @@ namespace nauEngineSDK {
   }
 
   float
-  Clock::DeltaTime(DELTA as) {
+  Clock::deltaTime(DELTA as) {
     auto now = high_resolution_clock::now();
     milliseconds ms = duration_cast<milliseconds>(now - m_time);
     m_time = now;

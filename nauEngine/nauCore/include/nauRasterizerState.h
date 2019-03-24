@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT RasterizerState
+  class RasterizerState
   {
   public:
 
@@ -32,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * Virtual destructor
      */
-    virtual ~RasterizerState() {}
+    virtual ~RasterizerState() = default;
   };
   
 }

@@ -13,6 +13,8 @@
 #include "nauClock.h"
 
 namespace nauEngineSDK {
+  using namespace std::chrono;
+
    /**
     * Time
     * Description:
@@ -34,17 +36,7 @@ namespace nauEngineSDK {
     ~Timer() = default;
 
     /**
-     * @brief Starts the timer 
-     * @param 
-     * @return 
-     *
-     */
-    void
-    start();
-
-
-    /**
-     * @brief Restarts the elapsed time in the elapsed time member
+     * @brief Restarts the timer and the elapsed time
      * @param 
      * @return 
      *
@@ -53,14 +45,43 @@ namespace nauEngineSDK {
     restart();
 
     /**
-     * @brief Returns the elapsed time between a frame and another
+     * @brief Shows the accumulated time in seconds
      * @param 
-     * @return the time between frames
+     * @return seconds passed since last restart
      *
      */
     float
-    deltaTime();
+    asSeconds();
 
+    /**
+     * @brief Shows the accumulated time in milliseconds
+     * @param
+     * @return milliseconds passed since last restart
+     *
+     */
+    float
+    asMilliseconds();
+
+    /**
+     * @brief Shows the accumulated time in microseconds
+     * @param
+     * @return microseconds passed since last restart
+     *
+     */
+    float
+    asMicroseconds();
+
+  private:
+
+    /**
+     * Accumulated time
+     */
+    float m_totalTime;
+
+    /**
+     * Clock for getting Time
+     */
+    high_resolution_clock::time_point m_time;
   };
   
 }

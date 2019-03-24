@@ -27,6 +27,7 @@
     <ClInclude Include="include\nauMeshDX.h" />
     <ClInclude Include="include\nauModelDX.h" />
     <ClInclude Include="include\nauPrerequisitesDX.h" />
+    <ClInclude Include="include\nauRenderManagerDX.h" />
     <ClInclude Include="include\nauSamplerStateDX.h" />
     <ClInclude Include="include\nauShaderDX.h" />
     <ClInclude Include="include\nauTextureDX.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="src\nauInputLayoutDX.cpp" />
     <ClCompile Include="src\nauMeshDX.cpp" />
     <ClCompile Include="src\nauModelDX.cpp" />
+    <ClCompile Include="src\nauRenderManagerDX.cpp" />
     <ClCompile Include="src\nauSamplerStateDX.cpp" />
     <ClCompile Include="src\nauShaderDX.cpp" />
     <ClCompile Include="src\nauTextureDX.cpp" />

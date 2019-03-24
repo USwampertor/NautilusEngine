@@ -63,19 +63,22 @@ namespace nauEngineSDK {
      *
      */
     float
-    DeltaTime();
+    deltaTime();
 
     /**
      * @brief returns the delta time between the last time it was called
-     * @param
+     * @param how you want to take the time (MICROSECONDS MILISECONDS OR SECONDS)
      * @return the time in the given DELTA parameter
      *
      */
     float
-    DeltaTime(DELTA as);
+    deltaTime(DELTA as);
 
   private:
 
+    /**
+     * Clock for getting time
+     */
     high_resolution_clock::time_point m_time;
   
   };

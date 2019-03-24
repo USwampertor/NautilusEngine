@@ -13,6 +13,7 @@
 #include <nauPrerequisitesCore.h>
 #include <nauBaseApp.h>
 #include <nauGraphicsAPI.h>
+#include <nauTimer.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
@@ -87,7 +88,7 @@ namespace nauEngineSDK {
 
     GraphicsAPI* m_api = nullptr;
 
-    
+    Timer m_timer;
   };
 
 }

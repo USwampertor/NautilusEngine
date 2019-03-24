@@ -17,11 +17,11 @@ namespace nauEngineSDK {
    /**
     * nauSwapChain
     * Description:
-    * 	
+    * 	Swaps the buffer with the backbuffer information. Its an encapsulation
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT SwapChain
+  class SwapChain
   {
   public:
 
@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~SwapChain() {}
+    virtual ~SwapChain() = default;
   };
   
 }

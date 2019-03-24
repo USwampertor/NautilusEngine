@@ -12,5 +12,14 @@
 
 namespace nauEngineSDK {
 
+  bool
+  DepthStencilDX::createDepthStencil(void* pDevice,
+                                     void* pDeviceContext,
+                                     uint32 height,
+                                     uint32 width,
+                                     Texture* texture) {
 
+
+    return true;
+  }
 }

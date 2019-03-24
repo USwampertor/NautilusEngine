@@ -1,9 +1,9 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauDeviceContext.h
+ * @file nauInputManager.h
  * @author Marco "Swampy" Millan
- * @date 2018/10/22 2018
- * @brief 
+ * @date 2019/03/23 2019
+ * @brief Input Manager
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -12,27 +12,20 @@
 #include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
-   /**
-    * nauDeviceContext
-    * Description:
-    * 	
-    * Sample usage:
-    * 	
-    */
-  class NAU_CORE_EXPORT DeviceContext
+  class InputManager
   {
-   public:
+  public:
+    /**
+     * Default constructor
+     */
+    InputManager() = default;
 
     /**
-     * default constructor
+     * Default destructor
      */
-    DeviceContext() = default;
-
-    /**
-     * virtual destructor
-     */
-    virtual ~DeviceContext() {}
+    ~InputManager() = default;
   };
   
 }
+
 

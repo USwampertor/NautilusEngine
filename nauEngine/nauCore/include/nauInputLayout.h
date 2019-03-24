@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT InputLayout
+  class InputLayout
   {
    public:
     
@@ -32,7 +32,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~InputLayout() {};
+    virtual ~InputLayout() = default;
 
     /**
      * @brief sets the descriptor of the input
