@@ -83,7 +83,13 @@ namespace nauEngineSDK {
                              m_screenDepth);
 
     m_meshList.setDevice(&m_device);
-    m_meshList.loadFromFile("resources/teapot.obj");
+    m_meshList.loadFromFile("resources/Vela_Mat_1.X");
+    m_meshList.loadFromFile("resources/Vela_Mat_2.X");
+    m_meshList.loadFromFile("resources/Vela_Mat_3.X");
+    m_meshList.loadFromFile("resources/Vela_Mat_4.X");
+    m_meshList.loadFromFile("resources/Vela_Mat_5.X");
+    m_meshList.loadFromFile("resources/Vela_Mat_6.X");
+    //m_meshList.loadFromFile("resources/Vela.FBX");
     //test();
 
 

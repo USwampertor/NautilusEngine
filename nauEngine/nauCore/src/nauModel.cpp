@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauModel.h"
+#include "nauComponent.h"
 
 namespace nauEngineSDK {
   void
@@ -32,13 +33,15 @@ namespace nauEngineSDK {
     //std::cout << folderPath;
 
     Assimp::Importer modelImport;
-    const aiScene* scene = modelImport.ReadFile(filePath, aiProcess_Triangulate);
+    const aiScene* scene = modelImport.ReadFile(filePath, 
+                                                aiProcessPreset_TargetRealtime_MaxQuality |
+                                                aiProcess_ConvertToLeftHanded);
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 
       String errorMessage = modelImport.GetErrorString();
       std::cout << "Error loading model... Loading default Error Model" << std::endl;
 
-      scene = modelImport.ReadFile("errorModel.stl", aiProcess_Triangulate);
+      scene = modelImport.ReadFile("errorModel.stl", aiProcessPreset_TargetRealtime_MaxQuality);
 
       if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
         std::cout << "Couldn't Load Error model..." << std::endl;
@@ -67,18 +70,32 @@ namespace nauEngineSDK {
     m->m_vertexBuffer = m_device->createVertexBuffer();
     m->m_indexBuffer = m_device->createIndexBuffer();
 
-    for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
+    for (uint32 i = 0; i < mesh->mNumVertices; ++i) {
       Vertex pvertex;
 
       pvertex.m_position.x = mesh->mVertices[i].x;
       pvertex.m_position.y = mesh->mVertices[i].y;
       pvertex.m_position.z = mesh->mVertices[i].z;
 
-      pvertex.m_normal.x = mesh->mNormals[i].x;
-      pvertex.m_normal.y = mesh->mNormals[i].y;
-      pvertex.m_normal.z = mesh->mNormals[i].z;
+      if (mesh->HasNormals()) {
 
-      if (mesh->mTextureCoords[0]) {
+        pvertex.m_normal.x = mesh->mNormals[i].x;
+        pvertex.m_normal.y = mesh->mNormals[i].y;
+        pvertex.m_normal.z = mesh->mNormals[i].z;
+      }
+     
+      if (mesh->HasTangentsAndBitangents())
+      {
+        pvertex.m_tangent.x = mesh->mTangents->x;
+        pvertex.m_tangent.y = mesh->mTangents->y;
+        pvertex.m_tangent.z = mesh->mTangents->z;
+
+        pvertex.m_binormal.x = mesh->mBitangents->x;
+        pvertex.m_binormal.y = mesh->mBitangents->y;
+        pvertex.m_binormal.z = mesh->mBitangents->z;
+      }
+
+      if (mesh->HasTextureCoords(0)) {
         pvertex.m_u = mesh->mTextureCoords[0][i].x;
         pvertex.m_v = mesh->mTextureCoords[0][i].y;
       }
@@ -96,11 +113,15 @@ namespace nauEngineSDK {
       }
     }
 
+    
     if (mesh->mMaterialIndex >= 0) {
-      //aiMaterial *material = s->mMaterials[aimesh->mMaterialIndex];
-      //m_textures = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
-      //
-      //aiMaterial *material = s->mMaterials[aimesh->mMaterialIndex];
+      printf("%f" ,mesh->mMaterialIndex);
+      m->m_material = new Material();
+      aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+      Texture* texture = m_device->createTexture();
+      //texture->loadFromFile() = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
+      
+      //aiMaterial *material = mesh->mMaterials[aimesh->mMaterialIndex];
       //m_textures = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
     }
     m->m_vertexBuffer->createHardware(m_device->get(),0);

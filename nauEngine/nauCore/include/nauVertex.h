@@ -31,6 +31,7 @@ namespace nauEngineSDK {
       m_position = Vector4::ONEW;
       m_color = Vector4::ZERO;
       m_normal = Vector4::ONEW;
+
       m_u = 0.0f;
       m_v = 0.0f;
     }
@@ -68,6 +69,15 @@ namespace nauEngineSDK {
      */
     float m_v;
 
+    /**
+     * Tangent
+     */
+    Vector3 m_tangent;
+
+    /**
+     * Binormal Component
+     */
+    Vector3 m_binormal;
   };
 
 }

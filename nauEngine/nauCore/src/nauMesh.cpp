@@ -8,7 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauMesh.h"
-#include "nauMaterial.h"
 
 namespace nauEngineSDK {
   
