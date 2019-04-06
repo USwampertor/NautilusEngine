@@ -17,12 +17,31 @@
 
 namespace nauEngineSDK {
 
-  enum COMP_FLAG
+  namespace COMPONENT
   {
-    MESH,
-    COLLIDER,
-    SOURCE
-  };
+    enum E
+    {
+      MESH,
+      COLLIDER,
+      SOURCE
+    };
+  }
+
+  /**
+   * The system to control how the textures are loaded
+   */
+  namespace MATERIAL_FLAG {
+    enum E {
+      BASECOLOR         = 0,              // Base Color (Albedo) Lightning
+      NORMAL            = 1,              // Normal Mapping
+      EMISSIVE          = 2,              // Emissive Lightning
+      ROUGHNESS         = 3,              // Roughness Lightning
+      AMBIENT           = 4,              // Ambient Lightning
+      METAL             = 5,              // Metal mapping
+      SPECULAR          = 6,              // Specular mapping
+      DEFAULT           = BASECOLOR,      // Default should redirect to Base color
+    };
+  }
 
 
    /**
@@ -33,7 +52,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	A collider component for a box
     */
-  class NAU_CORE_EXPORT Component
+  class Component
   {
    public:
     /**
@@ -44,17 +63,67 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~Component() = default;
+    virtual ~Component() {}
 
-   public:
+   private:
 
     /**
      * Component flag
      */
-    COMP_FLAG m_type;
+    COMPONENT::E m_type;
 
   };
   
+  /**
+   * Material
+   * Description:
+   *   Material Component for Meshes and GameObjects
+   * Sample usage:
+   *   Material.baseColor
+   */
+  class Material : public Component
+  {
+  public:
+    /**
+     * Default constructor
+     */
+    Material() = default;
+
+    /**
+     * Default destructor
+     */
+    ~Material() = default;
+
+    /**
+     * @brief retrieves the Texture of the Material given by the flag
+     * @param
+     * @return
+     *
+     */
+    Texture*
+    getMaterial(MATERIAL_FLAG::E material = MATERIAL_FLAG::DEFAULT);
+
+    /**
+     * @brief Sets a Texture of the Material, if the object already has one, it
+     *        replaces it
+     * @param Texture* texture, MATERIAL_FLAG defining which texture
+     * @return
+     *
+     */
+    void
+    setMaterial(Texture* texture, MATERIAL_FLAG::E material = MATERIAL_FLAG::DEFAULT);
+
+  private:
+
+    /**
+     * Map for storing all
+     */
+    Map<MATERIAL_FLAG::E, Texture*> m_TextureMap;
+
+  };
+
+
+
   /**
    * MeshComponent
    * Description:
@@ -62,7 +131,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	Mesh can have any model or skeleton
    */
-  class NAU_CORE_EXPORT MeshComponent : public Component
+  class MeshComponent : public Component
   {
   public:
 
@@ -83,20 +152,36 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT ColliderComponent : public Component
+  class Collider : public Component
   {
    public:
 
     /**
      * Default constructor
      */
-     ColliderComponent() = default;
+     Collider() = default;
 
     /**
      * Default destructor
      */
-    ~ColliderComponent() = default;
+    ~Collider() = default;
   };
+
+  class BoxCollider : public Collider
+  {
+    /**
+     * Default constructor
+     */
+    BoxCollider() = default;
+
+    /**
+     * Default destructor
+     */
+    ~BoxCollider() = default;
+
+    
+  };
+
 
 }
 

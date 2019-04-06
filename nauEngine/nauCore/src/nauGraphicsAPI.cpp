@@ -1,23 +1,15 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMaterial.h
+ * @file nauGraphicsAPI.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/02/08 2019
- * @brief Material class for graphics shaders and models
+ * @date 2019/04/03 2019
+ * @brief Graphics API member definition
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#pragma once
-
-#include "nauPrerequisitesCore.h"
-
-#include "nauComponent.h"
-#include "nauTexture.h"
+#include "nauGraphicsAPI.h"
 
 namespace nauEngineSDK {
-  
-  
-  
-  
-  
+  NAU_CORE_EXPORT GraphicsAPI*
+  g_graphicsAPI;
 }

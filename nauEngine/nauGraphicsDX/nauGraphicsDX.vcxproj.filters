@@ -37,13 +37,7 @@
     <ClInclude Include="include\nauViewPortDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauMeshDX.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauModelDX.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRenderManagerDX.h">
+    <ClInclude Include="nauCoreFactoryDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -75,13 +69,7 @@
     <ClCompile Include="src\nauViewPortDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauMeshDX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauModelDX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauRenderManagerDX.cpp">
+    <ClCompile Include="nauCoreFactoryDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

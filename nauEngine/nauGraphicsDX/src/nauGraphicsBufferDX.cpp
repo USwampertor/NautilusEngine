@@ -20,6 +20,7 @@ namespace nauEngineSDK {
   VertexBufferDX::createHardware(void* pDevice, uint32 usage) {
     
     D3D11_USAGE tUsage = static_cast<D3D11_USAGE>(usage);
+    tUsage = D3D11_USAGE_DEFAULT;
     D3D11_BUFFER_DESC bd;
     memset(&bd, 0, sizeof(bd));
 

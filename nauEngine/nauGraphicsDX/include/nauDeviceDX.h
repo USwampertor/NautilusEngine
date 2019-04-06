@@ -13,6 +13,15 @@
 
 #include <nauDevice.h>
 
+#include "nauViewPortDX.h"
+#include "nauShaderDX.h"
+#include "nauTextureDX.h"
+#include "nauInputLayoutDX.h"
+#include "nauViewPortDX.h"
+#include "nauSamplerStateDX.h"
+#include "nauDepthStencilDX.h"
+#include "nauGraphicsBufferDX.h"
+
 namespace nauEngineSDK {
   class NAU_DIRECTX_EXPORT DeviceDX : public Device
   {
@@ -28,28 +37,114 @@ namespace nauEngineSDK {
     ~DeviceDX() = default;
     
     bool 
-    initializeDevice(void* scrHandler);
+    initializeDevice(void* scrHandler) override;
   
     void
-    onRender();
+    onRender() override;
+
+    void
+    draw(int size, int topology = 0, int startIndex = 0, int BaseVertex = 0) override;
 
     bool
-    createBuffer();
+    createBuffer() override;
 
     bool
-    createDepthStencilView();
+    createDepthStencilView() override;
 
     ///GETTERS///
 
     void*
-    get();
+    get() override;
 
     void*
-    getContext();
+    getContext() override;
 
     ///EVENTS///
 
+    ///CONSTRUCTORS///
+    /**
+     * @brief Creates a Vertex Shader
+     * @param
+     * @return a pointer Vertex Shader
+     *
+     */
+    Shader*
+    createVertexShader() override;
 
+    /**
+     * @brief Creates a pixel shader
+     * @param
+     * @return a pointer to Pixel Shader
+     *
+     */
+    Shader*
+    createPixelShader() override;
+
+    /**
+     * @brief Creates a texture
+     * @param
+     * @return a Texture
+     *
+     */
+    Texture*
+    createTexture() override;
+
+    /**
+     * Creates an Input Layout
+     */
+    virtual InputLayout*
+    createInputLayout() override;
+
+    /**
+     * Creates a ViewPort
+     */
+    ViewPort*
+    createViewPort() override;
+
+    /**
+     * @brief Creates a Sampler State
+     * @param
+     * @return a Sampler State
+     *
+     */
+    SamplerState*
+    createSamplerState() override;
+
+    /**
+     * @brief Creates a Depth Stencil
+     * @param
+     * @return a Depth Stencil
+     *
+     */
+    DepthStencil*
+    createDepthStencil() override;
+
+    /**
+     * @brief Creates a Vertex Buffer
+     * @param
+     * @return a vertex Buffer
+     *
+     */
+    VertexBuffer*
+    createVertexBuffer() override;
+
+    /**
+     * @brief Creates an Index Buffer
+     * @param
+     * @return an Index Buffer
+     *
+     */
+    IndexBuffer*
+    createIndexBuffer() override;
+
+    /**
+     * @brief Creates a Constant Buffer
+     * @param
+     * @return a Constant Buffer
+     *
+     */
+    ConstantBuffer*
+    createConstantBuffer() override;
 
   public:
 

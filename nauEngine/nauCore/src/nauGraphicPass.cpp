@@ -1,23 +1,13 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMaterial.h
+ * @file nauGraphicPass.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/02/08 2019
- * @brief Material class for graphics shaders and models
+ * @date 2019/04/04 2019
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#pragma once
-
-#include "nauPrerequisitesCore.h"
-
-#include "nauComponent.h"
-#include "nauTexture.h"
-
+#include "nauGraphicPass.h"
 namespace nauEngineSDK {
-  
-  
-  
-  
-  
+
 }

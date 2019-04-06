@@ -39,16 +39,13 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~Model() {}
+    ~Model() = default;
 
     /**
-     * @brief sets the device in the object
-     * @param Device
-     * @return 
-     *
+     * Sets the device
      */
-    virtual void
-    setDevice(void* pDevice) = 0;
+    void
+    setDevice(Device* dev);
 
     /**
      * @brief renders the object in world space
@@ -56,8 +53,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void
-    render() = 0;
+    void
+    render();
 
     /**
      * @brief Loads a model from given path 
@@ -65,8 +62,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void
-    loadFromFile(String filePath) = 0;
+    void
+    loadFromFile(String filePath);
 
     /**
      * @brief Processes a node from the model
@@ -74,8 +71,8 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual void
-    processNode(aiNode* node, const aiScene* scene) = 0;
+    void
+    processNode(aiNode* node, const aiScene* scene);
 
     /**
      * @brief Processes a mesh from the model
@@ -83,13 +80,13 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    virtual Mesh*
-    processMesh(aiMesh* mesh, const aiScene* scene) = 0;
+    Mesh*
+    processMesh(aiMesh* mesh, const aiScene* scene);
 
   public:
 
     Vector<Mesh*> m_meshes;
-
+    Device* m_device;
   };
 
 }

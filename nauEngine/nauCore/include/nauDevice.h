@@ -10,6 +10,16 @@
 #pragma once
 #include "nauPrerequisitesCore.h"
 
+
+#include "nauViewPort.h"
+#include "nauShader.h"
+#include "nauTexture.h"
+#include "nauInputLayout.h"
+#include "nauViewPort.h"
+#include "nauSamplerState.h"
+#include "nauDepthStencil.h"
+#include "nauGraphicsBuffer.h"
+
 namespace nauEngineSDK {
   /**
    * nauDevice
@@ -29,7 +39,7 @@ namespace nauEngineSDK {
     /**
      * Virtual constructor
      */
-    virtual ~Device() {}
+    virtual ~Device() = default;
 
     /**
      * @brief initializes device with the handler given
@@ -48,6 +58,15 @@ namespace nauEngineSDK {
      */
     virtual void
     onRender() = 0;
+
+    /**
+     * @brief draws the information given
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    draw(int size, int topology = 0, int startIndex = 0, int BaseVertex = 0) = 0;
 
     /**
      * @brief creates a buffer of specific type
@@ -87,6 +106,91 @@ namespace nauEngineSDK {
     getContext() = 0;
 
     /**
+     * @brief Creates a Vertex Shader
+     * @param
+     * @return a pointer Vertex Shader
+     *
+     */
+    virtual Shader*
+    createVertexShader() = 0;
+
+    /**
+     * @brief Creates a pixel shader
+     * @param
+     * @return a pointer to Pixel Shader
+     *
+     */
+    virtual Shader*
+    createPixelShader() = 0;
+
+    /**
+     * @brief Creates a texture
+     * @param
+     * @return a Texture
+     *
+     */
+    virtual Texture*
+    createTexture() = 0;
+
+    /**
+     * Creates an Input Layout
+     */
+    virtual InputLayout*
+    createInputLayout() = 0;
+
+    /**
+     * Creates a ViewPort
+     */
+    virtual ViewPort*
+    createViewPort() = 0;
+
+    /**
+     * @brief Creates a Sampler State
+     * @param
+     * @return a Sampler State
+     *
+     */
+    virtual SamplerState*
+    createSamplerState() = 0;
+
+    /**
+     * @brief Creates a Depth Stencil
+     * @param
+     * @return a Depth Stencil
+     *
+     */
+    virtual DepthStencil*
+    createDepthStencil() = 0;
+
+    /**
+     * @brief Creates a Vertex Buffer
+     * @param
+     * @return a vertex Buffer
+     *
+     */
+    virtual VertexBuffer*
+    createVertexBuffer() = 0;
+
+    /**
+     * @brief Creates an Index Buffer
+     * @param
+     * @return an Index Buffer
+     *
+     */
+    virtual IndexBuffer*
+    createIndexBuffer() = 0;
+
+    /**
+     * @brief Creates a Constant Buffer
+     * @param
+     * @return a Constant Buffer
+     *
+     */
+    virtual ConstantBuffer*
+    createConstantBuffer() = 0;
+
+
+    /**
      * Member declaration
      */
    public:
@@ -102,5 +206,6 @@ namespace nauEngineSDK {
 
   };
   
+
 }
 

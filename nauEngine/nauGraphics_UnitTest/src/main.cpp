@@ -63,9 +63,9 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 TestApp m_app;
 
-typedef void* (*G_API)();
+typedef void* (*G_FACTORY)();
 
-void* 
+void*
 loadDLL(String path) {
   
   std::cout << path << std::endl;
@@ -82,11 +82,11 @@ loadDLL(String path) {
     std::cout << "Could not find dll at given path: " << path << std::endl;
     std::cout << err << std::endl;
     std::cout << "Press any key to continue...";
-    return 0;
+    return nullptr;
   }
   std::cout << "Loading " << path << "..." << std::endl;
   
-  G_API t_api = (G_API)GetProcAddress(myDll, "createGraphicsAPI");
+  G_FACTORY t_api = (G_FACTORY)GetProcAddress(myDll, "createFactory");
   if (!t_api) {
     std::cout << "could not find specified function" << std::endl;
 
@@ -117,11 +117,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
   String path = "x86\\nauGraphicsDXd.dll";
   
-  m_app.m_api = reinterpret_cast<GraphicsAPI*>(loadDLL(path));
-  if (m_app.m_api == nullptr) {
-    std::cout << "Couldn't get DLL";
+  //loadDLL(path);
+
+  m_app.m_factory = reinterpret_cast<CoreFactory*>(loadDLL(path));
+
+  if (m_app.m_factory == nullptr) {
+    throw::std::exception("Factory failed to create");
+    return FALSE;
   }
 
+  
   //Initialize app
   if (!InitInstance(hInstance, nCmdShow)) {
     return FALSE;

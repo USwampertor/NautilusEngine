@@ -276,7 +276,7 @@ namespace nauEngineSDK {
      * @return the dot product between a and b
      *
      */
-    static FORCEINLINE float
+    static float
     dot(const Vector3& a, const Vector3& b);
 
     /**
@@ -285,7 +285,7 @@ namespace nauEngineSDK {
      * @return the cross product between a and b
      *
      */
-    static FORCEINLINE Vector3
+    static Vector3
     cross(const Vector3& a, const Vector3& b);
 
     /**
@@ -294,7 +294,7 @@ namespace nauEngineSDK {
      * @return scale of b in a
      *
      */
-    static FORCEINLINE float
+    static float
     dotScale(const Vector3& a, const Vector3& b);
 
     /**
@@ -312,7 +312,7 @@ namespace nauEngineSDK {
      * @return the distance between the two points
      *
      */
-    static FORCEINLINE float
+    static float
     distance(const Vector3& a, const Vector3& b);
 
     /**

@@ -7,9 +7,7 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-
 #pragma once
-
 #include "nauPrerequisitesUtil.h"
 
 namespace nauEngineSDK {
@@ -23,27 +21,25 @@ namespace nauEngineSDK {
     * 	
     */
   template <class T>
-  class Module
+  class Module 
   {
    public:
 
     /**
      * Returns a reference to the instance
      */
-     static T&
-      instance() {
-       if (!isStartedUp()) {
-         //NAU_EXCEPT(InternalErrorException,
-         //           "Trying to access a module but it hasn't been started.");
-       }
+    static T&
+    instance() {
+      if (!isStartedUp()) {
+        throw::std::exception("Trying to access a module but it hasn't been started.");
+      }
 
-       if (isDestroyed()) {
-         //NAU_EXCEPT(InternalErrorException,
-         //           "Trying to access a destroyed module.");
-       }
+      if (isDestroyed()) {
+        throw::std::exception("Trying to access a destroyed module.");
+      }
 
-       return *_instance();
-     }
+      return *_instance();
+    }
 
     /**
      * Returns a pointer to the instance
@@ -51,27 +47,25 @@ namespace nauEngineSDK {
     static T*
     instancePtr() {
       if (!isStartedUp()) {
-        //NAU_EXCEPT(InternalErrorException,
-        //           "Trying to access a module but it hasn't been started.");
+        throw::std::exception("Trying to access a module but it hasn't been started.");
       }
 
       if (isDestroyed()) {
-        //NAU_EXCEPT(InternalErrorException,
-        //           "Trying to access a destroyed module.");
+        throw::std::exception("Trying to access a destroyed module.");
       }
 
       return _instance();
     }
 
+
     template<class... Args>
     static void
     startUp(Args&& ...args) {
       if (isStartedUp()) {
-        //Throws an exception
-        //Already started Up
+        throw::std::exception("Trying to start an already started module.");
       }
 
-      _instance()   = new T(std::forward<Args>(args)...);
+      _instance() = nau_new<T>(std::forward<Args>(args)...);
       isStartedUp() = true;
 
       static_cast<Module*>(_instance())->onStartUp();
@@ -79,42 +73,51 @@ namespace nauEngineSDK {
 
     template<class SubType, class... Args>
     static void
-    startUp(Args&& ...args) {
+      startUp(Args&& ...args) {
       static_assert(std::is_base_of<T, SubType>::value,
-        "Provided type isnt derived from the same type you are initializing");
-    
-      if (isStartedUp()) {
-      //Throws exception
-      //Already started the module dude
-    }
+                    "Provided type isn't derived from type the Module is initialized with.");
 
-      _instance() = new SubType(std::forward<Args>(args)...);
+      if (isStartedUp()) {
+        throw::std::exception("Trying to start an already started module.");
+      }
+
+      _instance() = nau_new<SubType>(std::forward<Args>(args)...);
+      if (nullptr == _instance()) {
+        throw::std::exception("Instance failed to initialize");
+      }
       isStartedUp() = true;
 
       static_cast<Module*>(_instance())->onStartUp();
     }
 
     static void
-    shutDown() {
-      if(isDestroyed()) {
-        //Throws exception
-        //Trying to shut down something that literally was never born
+      shutDown() {
+      if (isDestroyed()) {
+        throw::std::exception("Trying to shut down an already shut down module.");
       }
 
       if (!isStartedUp()) {
-        //Throws exception
-        //Trying to shut down something never started
+        throw::std::exception("Trying to shut down a module which was never started.");
       }
 
       static_cast<Module*>(_instance())->onShutDown();
 
-      delete _instance();
+      nau_delete(_instance());
       isDestroyed() = true;
     }
 
     static bool
     isStarted() {
       return isStartedUp() && !isDestroyed();
+    }
+
+    static void
+    setModule(T* obj) {
+      _instance() = obj;
+      if (nullptr == _instance()) {
+        throw::std::exception("Instance failed to be set");
+      }
+      isStartedUp() = true;
     }
 
    protected:

@@ -140,7 +140,7 @@ public:
    *
    */
   virtual bool
-  open(void* path) = 0;
+  open(String path) = 0;
 
   /**
    * @brief creates a file
@@ -271,6 +271,11 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
   FileStream() = default;
 
   /**
+   * Default destructor
+   */
+  ~FileStream() = default;
+
+  /**
    * Parameter based constructor constructor
    */
   FileStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ) {
@@ -278,22 +283,20 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
     m_mode = sAccess;
   }
 
-  /**
-   * Default Destructor
-   */
-  ~FileStream() {}
-
   STREAMTYPE
   isType();
 
   bool
-  open(void* file);
+  open(String file);
 
   bool
   create(void* file);
 
   bool
   copy(const void* buffer);
+
+
+  std::fstream m_file;
 
 };
 
@@ -327,7 +330,7 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
   isType();
 
   bool
-  open(void* path);
+  open(String path);
 
   bool
   create(void* path);

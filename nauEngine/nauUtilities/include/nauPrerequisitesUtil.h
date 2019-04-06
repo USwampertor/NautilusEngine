@@ -14,3 +14,4 @@
 #include "nauPlatformTypes.h"                             //Platform types
 #include "nauPlatformUtilities.h"                         //Platform Utilities
 #include "nauStdHeaders.h"                                //Standard headers
+#include "nauMemoryAllocator.h"                           //Memory allocator

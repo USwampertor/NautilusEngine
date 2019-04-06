@@ -10,9 +10,10 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauModule.h"
 
 namespace nauEngineSDK {
-  class InputManager
+  class InputManager : public Module<InputManager>
   {
   public:
     /**

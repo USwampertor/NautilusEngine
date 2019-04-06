@@ -44,7 +44,7 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual
-    ~GraphicsAPI() {}
+    ~GraphicsAPI() = default;
 
     /**
      * Initializes the basic stuff for the renderer to work
@@ -62,15 +62,6 @@ namespace nauEngineSDK {
     initDevice(void* scrHandler) = 0;
 
     /**
-     * @brief 
-     * @param 
-     * @return 
-     *
-     */
-    virtual void 
-    render() = 0;
-
-    /**
      * @brief gets the info of the shaders and sets the API
      * @param device Context | Shader (pixel vertex etc) | SHADERFLAGS
      * @return 
@@ -78,15 +69,6 @@ namespace nauEngineSDK {
      */
     virtual void 
     setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags ) = 0;
-
-    /**
-     * @brief presents the swapchain and swaps it
-     * @param 
-     * @return 
-     *
-     */
-    virtual void
-    swapBuffer() = 0;
 
     /**
      * @brief exposes the device and returns it
@@ -97,8 +79,33 @@ namespace nauEngineSDK {
     virtual Device*
     getDevice() = 0;
 
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual void 
+    render() = 0;
+    
+    /**
+     * @brief presents the Swap chain and swaps it
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    swapBuffer() = 0;
+
+    virtual void
+    onStartUp() override {
+      this->isStartedUp() = true;
+    }
   };
   
+  extern NAU_CORE_EXPORT GraphicsAPI*
+  g_graphicsAPI;
+
 }
 
 

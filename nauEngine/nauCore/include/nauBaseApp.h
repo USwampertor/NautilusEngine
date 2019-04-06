@@ -62,6 +62,15 @@ namespace nauEngineSDK {
     initApp(void* hwnd) = 0;
 
     /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    initUI(void* hwnd) = 0;
+    
+    /**
      * @brief Should be used to end or shut down basic Components for the application
      * @param 
      * @return 

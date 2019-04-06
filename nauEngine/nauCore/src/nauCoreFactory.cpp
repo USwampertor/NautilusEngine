@@ -1,23 +1,16 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauMaterial.h
+ * @file nauCoreFactory.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/02/08 2019
- * @brief Material class for graphics shaders and models
+ * @date 2019/04/04 2019
+ * @brief Core Factory
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#pragma once
-
-#include "nauPrerequisitesCore.h"
-
-#include "nauComponent.h"
-#include "nauTexture.h"
+#include "nauCoreFactory.h"
 
 namespace nauEngineSDK {
-  
-  
-  
-  
-  
+  CoreFactory*
+  g_CoreFactory;
+
 }

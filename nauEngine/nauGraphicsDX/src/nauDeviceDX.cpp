@@ -86,6 +86,12 @@ namespace nauEngineSDK {
 
   }
 
+  void
+  DeviceDX::draw(int size, int topology, int startIndex, int BaseVertex) {
+    m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    m_pImmediateContext->DrawIndexed(size, startIndex, BaseVertex);
+  }
+
   bool
   DeviceDX::createBuffer() {
     return true;
@@ -105,5 +111,56 @@ namespace nauEngineSDK {
   DeviceDX::getContext() {
     return m_pImmediateContext;
   }
+
+  Shader*
+    DeviceDX::createVertexShader() {
+    return new VertexShaderDX();
+  }
+
+  Shader*
+    DeviceDX::createPixelShader() {
+    return new PixelShaderDX();
+  }
+
+  Texture*
+    DeviceDX::createTexture() {
+    return new TextureDX();
+  }
+
+  InputLayout*
+    DeviceDX::createInputLayout() {
+    return new InputLayoutDX();
+  }
+
+  SamplerState*
+    DeviceDX::createSamplerState() {
+    return new SamplerStateDX();
+  }
+
+  ViewPort*
+    DeviceDX::createViewPort() {
+    return new ViewPortDX();
+  }
+
+  DepthStencil*
+    DeviceDX::createDepthStencil() {
+    return new DepthStencilDX();
+  }
+
+  VertexBuffer*
+    DeviceDX::createVertexBuffer() {
+    return new VertexBufferDX();
+  }
+
+  IndexBuffer*
+    DeviceDX::createIndexBuffer() {
+    return new IndexBufferDX();
+  }
+
+  ConstantBuffer*
+    DeviceDX::createConstantBuffer() {
+    return new ConstantBufferDX();
+  }
+
 
 }

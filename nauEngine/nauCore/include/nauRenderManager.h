@@ -12,6 +12,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauComponent.h"
+#include "nauModule.h"
 
 namespace nauEngineSDK {
 
@@ -22,7 +23,7 @@ namespace nauEngineSDK {
     * Sample usage:
     *   render() renders everything
     */
-  class RenderManager
+  class NAU_CORE_EXPORT RenderManager : public Module<RenderManager>
   {
    public:
     /**
@@ -35,8 +36,11 @@ namespace nauEngineSDK {
      */
     virtual ~RenderManager() = default;
 
-    virtual void
-    render(Vector<MeshComponent> m_orderedList) = 0;
+    void
+    render(Vector<MeshComponent> m_orderedList);
+
+    void
+    createRenderTarget();
   };
   
 }

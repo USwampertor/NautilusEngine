@@ -14,6 +14,7 @@
 #include <nauBaseApp.h>
 #include <nauGraphicsAPI.h>
 #include <nauTimer.h>
+#include <nauRenderManager.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
@@ -79,6 +80,9 @@ namespace nauEngineSDK {
     bool
     initApp(void* hwnd);
 
+    bool
+    initUI(void* hwnd);
+
     void
     shutDown();
 
@@ -88,7 +92,11 @@ namespace nauEngineSDK {
 
     GraphicsAPI* m_api = nullptr;
 
+    RenderManager* m_renderManager = nullptr;
+
     Timer m_timer;
+
+    CoreFactory* m_factory = nullptr;
   };
 
 }

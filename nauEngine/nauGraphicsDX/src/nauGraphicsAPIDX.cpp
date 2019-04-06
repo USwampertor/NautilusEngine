@@ -82,8 +82,7 @@ namespace nauEngineSDK {
                              m_screenNear,
                              m_screenDepth);
 
-
-    m_meshList.setDevice(m_device.m_pd3dDevice);
+    m_meshList.setDevice(&m_device);
     m_meshList.loadFromFile("resources/teapot.obj");
     //test();
 

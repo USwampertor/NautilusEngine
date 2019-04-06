@@ -83,9 +83,9 @@ namespace nauEngineSDK {
   }
 
   bool
-  FileStream::open(void* path) {
+  FileStream::open(String path) {
 
-    String temp = static_cast<const char*>(path);
+    String temp = path;
     std::fstream streamFile(temp, std::ios::binary | std::ios::ate);
     if (!streamFile.is_open()) {
       std::cout << "Couldn't open file at location " << temp << std::endl;
@@ -124,8 +124,8 @@ namespace nauEngineSDK {
   }
 
   bool
-  MemStream::open(void* file) {
-    return copy(file);
+  MemStream::open(String file) {
+    return copy(file.c_str());
   }
 
   bool

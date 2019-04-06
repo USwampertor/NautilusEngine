@@ -11,12 +11,13 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include "nauCoreFactory.h"
 #include "nauGraphicsBuffer.h"
-#include "nauTexture.h"
 #include "nauVertex.h"
 
-
 namespace nauEngineSDK {
+
+  class Material;
 
    /**
     * nauMesh
@@ -33,37 +34,42 @@ namespace nauEngineSDK {
      */
     Mesh() = default;
 
+    Mesh(Device* dev) {
+      m_vertexBuffer = dev->createVertexBuffer();
+      m_indexBuffer = dev->createIndexBuffer();
+    }
+
     /**
      * virtual destructor
      */
-    virtual ~Mesh() {}
+    ~Mesh() = default;
 
     /**
      * @brief renders the mesh in the given device context
-     * @param void* usually a device context
+     * @param void* usually a device
      * @return 
      *
      */
-    virtual void 
-    render(void* pDeviceContext) = 0;
+    void 
+    draw(Device* dev);
 
   public:
 
     /**
      * vertex buffer
      */
-    VertexBuffer* m_vertexBuffer;
+    VertexBuffer* m_vertexBuffer = nullptr;
     
     /**
      * Index buffer
      */
-    IndexBuffer* m_indexBuffer;
+    IndexBuffer* m_indexBuffer = nullptr;
 
     /**
      * Texture of mesh
      * This is temporal, it should have a material instead
      */
-    Texture* m_texture;
+    Material* m_material = nullptr;
 
   };
   

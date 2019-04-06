@@ -23,7 +23,6 @@
 #include "nauDeviceDX.h"
 #include "nauGraphicsBufferDX.h"
 #include "nauInputLayoutDX.h"
-#include "nauModelDX.h"
 #include "nauShaderDX.h"
 #include "nauSamplerStateDX.h"
 #include "nauTextureDX.h"
@@ -38,7 +37,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	You use all the objects in a DirectX context
    */
-  class NAU_DIRECTX_EXPORT GraphicsAPIDX : public GraphicsAPI
+  class GraphicsAPIDX : public GraphicsAPI
   {
    public:
 
@@ -50,39 +49,38 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~GraphicsAPIDX() {}
+    ~GraphicsAPIDX() = default;
 
     ///INITIALIZERS//
 
 
-    bool
-    init(void* scrHandler);
+    virtual bool
+    init(void* scrHandler) override;
 
-    bool
-    initDevice(void* scrHandler);
+    virtual bool
+    initDevice(void* scrHandler) override;
 
 
     ///SETTERS///
 
     
-    void
-    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags);
-
+    virtual void
+    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) override;
 
 
     ///GETTERS///
 
     
-    Device*
-    getDevice();
+    virtual Device*
+    getDevice() override;
 
     ///GRAPHIC FUNCTIONS///
 
-    void
-    render();
+    virtual void
+    render() override;
    
-    void
-    swapBuffer();
+    virtual void
+    swapBuffer() override;
 
    public:
 
@@ -132,7 +130,7 @@ namespace nauEngineSDK {
      * MeshList
      */
     //Vector<nauMesh> m_meshList;
-    ModelDX m_meshList;
+    Model m_meshList;
 
     /**
      * Sampler state
@@ -162,11 +160,3 @@ namespace nauEngineSDK {
   
 
 }
-
-
-MS_ALIGN(16)
-extern "C" NAU_DIRECTX_EXPORT nauEngineSDK::GraphicsAPI* 
-createGraphicsAPI() {
-  return new nauEngineSDK::GraphicsAPIDX();
-}
-GCC_ALIGN(16)

@@ -53,6 +53,24 @@ namespace nauEngineSDK {
     virtual void
     init() {}
 
+    /**
+     * @brief Adds a component to the properties of the gameObject
+     * @param The new Component in the vector
+     * @return 
+     *
+     */
+    void
+    addComponent(Component* component);
+
+    /**
+     * @brief Gets a specific Component
+     * @param COMPONENT FLAG
+     * @return the component
+     *
+     */
+    Component*
+    getComponent(COMPONENT::E component);
+
   public:
 
     /**
@@ -64,6 +82,11 @@ namespace nauEngineSDK {
      * The vector that saves the properties of the gameObject
      */
     Vector<Component*> m_properties;
+
+    /**
+     * Object Name
+     */
+    String m_id;
 
   };
   

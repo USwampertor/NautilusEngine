@@ -18,4 +18,10 @@ namespace nauEngineSDK {
     }
   }
 
+
+  void
+  GameObject::addComponent(Component* component) {
+    m_properties.push_back(component);
+  }
+
 }

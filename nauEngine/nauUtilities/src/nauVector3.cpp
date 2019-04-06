@@ -171,17 +171,17 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  FORCEINLINE float
+  float
   Vector3::dot(const Vector3& a, const Vector3& b) {
     return a | b;
   }
 
-  FORCEINLINE Vector3
+  Vector3
   Vector3::cross(const Vector3& a, const Vector3& b) {
     return a ^ b;
   }
 
-  FORCEINLINE float
+  float
   Vector3::dotScale(const Vector3& a, const Vector3& b) {
     return (a | b) / Math::sqr(a.magnitude());
   }
@@ -193,7 +193,7 @@ namespace nauEngineSDK {
            Math::sqr(a.z - b.z);
   }
 
-  FORCEINLINE float
+  float
   Vector3::distance(const Vector3& a, const Vector3& b) {
     return 
       Math::sqrt(Math::sqr(a.x - b.x) +

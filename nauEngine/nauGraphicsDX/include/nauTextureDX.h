@@ -26,7 +26,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~TextureDX() {}
+    ~TextureDX() = default;
 
     bool
     loadFromFile(String path, void* pDevice, void* pDeviceContext);

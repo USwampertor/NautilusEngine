@@ -97,6 +97,15 @@
     <ClInclude Include="include\nauRenderManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauGraphicPass.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauSceneGraph.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauGraphicsBuffer.cpp">
@@ -106,9 +115,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauRenderTargetView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauSamplerState.cpp">
@@ -142,6 +148,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauInputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicsAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauCoreFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicPass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauSceneGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
