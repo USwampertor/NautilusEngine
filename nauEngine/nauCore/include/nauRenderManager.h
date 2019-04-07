@@ -13,6 +13,9 @@
 #include "nauPrerequisitesCore.h"
 #include "nauComponent.h"
 #include "nauModule.h"
+#include "nauGraphicPass.h"
+#include "nauGraphicsAPI.h"
+#include "nauCoreFactory.h"
 
 namespace nauEngineSDK {
 
@@ -37,10 +40,10 @@ namespace nauEngineSDK {
     virtual ~RenderManager() = default;
 
     void
-    render(Vector<MeshComponent> m_orderedList);
+    render(Vector<MeshComponent> m_orderedList, GraphicsAPI* api, CoreFactory* factory);
 
-    void
-    createRenderTarget();
+   public:
+     Vector<GraphicPass*> m_passes;
   };
   
 }

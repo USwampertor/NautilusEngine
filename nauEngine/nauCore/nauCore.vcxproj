@@ -69,6 +69,7 @@
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauNode.cpp" />
+    <ClCompile Include="src\nauRenderManager.cpp" />
     <ClCompile Include="src\nauSamplerState.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauShader.cpp" />

@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~Texture() {}
+    ~Texture() = default;
 
     /**
      * @brief Loads a resource from a path

@@ -42,7 +42,7 @@ namespace nauEngineSDK {
    public:
 
     /**
-     * DirectX sampler state
+     * Sampler state
      */
     ID3D11SamplerState* m_sampleState = nullptr;
   };

@@ -82,10 +82,7 @@ namespace nauEngineSDK {
      */
     ID3D11RenderTargetView* m_pRenderTargetView = nullptr;
 
-    /**
-     * Sampler state
-     */
-    ID3D11SamplerState* m_sampleState = nullptr;
+    
   };
 }
 

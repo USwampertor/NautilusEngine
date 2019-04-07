@@ -440,7 +440,7 @@ namespace nauEngineSDK {
     using const_pointer = const value_type*;
     using reference = value_type & ;
     using const_reference = const value_type&;
-    using size_type = size_t;
+    using size_type = SIZE_T;
     using difference_type = ptrdiff_t;
 
     constexpr StdAlloc() = default;
@@ -473,12 +473,12 @@ namespace nauEngineSDK {
      * @brief Allocate but don't initialize number elements of type T.
      */
     static T*
-      allocate(const size_t num) {
+      allocate(const SIZE_T num) {
       if (0 == num) {
         return nullptr;
       }
 
-      if (num > numeric_limits<SIZE_T >::max() / sizeof(T)) {
+      if (num > std::numeric_limits<SIZE_T >::max() / sizeof(T)) {
         throw nullptr;
       }
 
@@ -494,13 +494,13 @@ namespace nauEngineSDK {
      * @brief Deallocate storage p of deleted elements.
      */
     static void
-      deallocate(pointer p, size_t) {
+      deallocate(pointer p, SIZE_T) {
       nau_free<Alloc>(p);
     }
 
-    static constexpr size_t
+    static constexpr SIZE_T
       max_size() {
-      return numeric_limits<SIZE_T >::max() / sizeof(T);
+      return std::numeric_limits<SIZE_T >::max() / sizeof(T);
     }
 
     static constexpr void

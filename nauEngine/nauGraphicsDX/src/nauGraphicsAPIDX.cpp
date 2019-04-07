@@ -85,9 +85,10 @@ namespace nauEngineSDK {
     //m_meshList.setDevice(&m_device);
 
 
+    ///TESTING MODEL
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
-    com->m_model->setDevice(&m_device);
+    com->m_model->setDevice(getDevice());
     com->m_model->loadFromFile("resources/Vela_Mat_1.X");
     com->m_model->loadFromFile("resources/Vela_Mat_2.X");
     com->m_model->loadFromFile("resources/Vela_Mat_3.X");
@@ -98,6 +99,7 @@ namespace nauEngineSDK {
       Material* mat = new Material();
     }
     m_testModel.addComponent(com);
+    ///
     
 
     //m_meshList.loadFromFile("resources/Vela.FBX");
@@ -156,13 +158,7 @@ namespace nauEngineSDK {
 
     m_inputLayout.setLayout(m_device.m_pImmediateContext);
 
-    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
-    m_device.m_pImmediateContext->ClearRenderTargetView(m_texture.m_pRenderTargetView, 
-                                                        color);
-    m_device.m_pImmediateContext->ClearDepthStencilView(m_texture.m_DepthStencilView, 
-                                                        D3D11_CLEAR_DEPTH, 
-                                                        1.0f, 
-                                                        0);
+    clear();
     m_samplerState.setShaderSampler(m_device.m_pd3dDevice);
     Model* m = static_cast<MeshComponent*>(m_testModel.getComponent(COMPONENT::MESH))->m_model;
     m->render();
@@ -190,6 +186,16 @@ namespace nauEngineSDK {
     return &m_device;
   }
 
+  void
+  GraphicsAPIDX::clear() {
+    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
+    m_device.m_pImmediateContext->ClearRenderTargetView(m_texture.m_pRenderTargetView,
+                                                        color);
+    m_device.m_pImmediateContext->ClearDepthStencilView(m_texture.m_DepthStencilView,
+                                                        D3D11_CLEAR_DEPTH,
+                                                        1.0f,
+                                                        0);
+  }
 
   void
   GraphicsAPIDX::swapBuffer() {

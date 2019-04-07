@@ -82,6 +82,9 @@ namespace nauEngineSDK {
     virtual void
     swapBuffer() override;
 
+    virtual void
+    clear() override;
+
    public:
 
 

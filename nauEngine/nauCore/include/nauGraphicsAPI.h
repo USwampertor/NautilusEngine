@@ -97,6 +97,16 @@ namespace nauEngineSDK {
     virtual void
     swapBuffer() = 0;
 
+
+    /**
+     * @brief clears the information retrieved
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    clear() = 0;
+
     virtual void
     onStartUp() override {
       this->isStartedUp() = true;

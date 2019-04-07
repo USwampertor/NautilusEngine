@@ -9,17 +9,56 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-class GraphicPass
-{
-public:
-  /**
-   * Default constructor
-   */
-  GraphicPass() = default;
 
-  /**
-   * Default destructor
-   */
-  ~GraphicPass() = default;
-};
+#include "nauPrerequisitesCore.h"
+
+#include "nauDepthStencil.h"
+#include "nauGraphicsBuffer.h"
+#include "nauInputLayout.h"
+#include "nauTexture.h"
+
+namespace nauEngineSDK {
+   /**
+    * GraphicsPass
+    * Description:
+    *   Sets what is going to happen in a pass 
+    * Sample usage:
+    * 
+    */
+  class GraphicPass
+  {
+  public:
+    /**
+     * Default constructor
+     */
+    GraphicPass() = default;
+  
+    /**
+     * Default destructor
+     */
+    ~GraphicPass() = default;
+
+    /**
+     * DepthStencil object reference
+     */
+    DepthStencil* m_depthStencil;
+
+    /**
+     * Render Target View
+     */
+    Texture* m_renderTargetOutput;
+
+    /**
+     * Pixel Shader object
+     */
+    PixelShader* m_pixelShader;
+
+    /**
+     * InputLayout
+     */
+    InputLayout* m_inputLayout;
+
+  };
+
+}
 

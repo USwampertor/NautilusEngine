@@ -42,6 +42,9 @@ namespace nauEngineSDK {
     if (!initUI(hwnd))      return false;
     
     m_timer.restart();
+
+    
+
     return true;
 
   }

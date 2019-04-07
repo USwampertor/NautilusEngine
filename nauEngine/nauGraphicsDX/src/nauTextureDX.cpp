@@ -142,9 +142,9 @@ namespace nauEngineSDK {
 
   bool
   TextureDX::createDepthstencil(void* pDevice,
-                                   void* pDeviceContext,
-                                   uint32 width,
-                                   uint32 height) {
+                                void* pDeviceContext,
+                                uint32 width,
+                                uint32 height) {
     HRESULT hr = E_FAIL;
     D3D11_TEXTURE2D_DESC descDepth;
     //This allows us to control what type of depth test Direct3D will do for each pixel.
