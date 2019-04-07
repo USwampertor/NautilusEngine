@@ -65,6 +65,9 @@ namespace nauEngineSDK {
      */
     virtual ~Component() {}
 
+    COMPONENT::E
+    getType();
+
    private:
 
     /**

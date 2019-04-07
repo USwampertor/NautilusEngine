@@ -127,12 +127,6 @@ namespace nauEngineSDK {
     ViewPortDX m_viewPort;
 
     /**
-     * MeshList
-     */
-    //Vector<nauMesh> m_meshList;
-    Model m_meshList;
-
-    /**
      * Sampler state
      */
     SamplerStateDX m_samplerState;

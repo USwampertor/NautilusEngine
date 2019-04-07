@@ -71,6 +71,15 @@ namespace nauEngineSDK {
     Component*
     getComponent(COMPONENT::E component);
 
+    /**
+     * @brief Creates a component from a specified type
+     * @param COMPONENT::E Component
+     * @return 
+     *
+     */
+    void
+    createComponent(COMPONENT::E type);
+
   public:
 
     /**

@@ -106,19 +106,18 @@ namespace nauEngineSDK {
       m->m_vertexBuffer->add(pvertex);
     }
 
-    for (unsigned int f = 0; f < mesh->mNumFaces; ++f) {
+    for (uint32 f = 0; f < mesh->mNumFaces; ++f) {
       aiFace face = mesh->mFaces[f];
-      for (unsigned int j = 0; j < face.mNumIndices; ++j) {
+      for (uint32 j = 0; j < face.mNumIndices; ++j) {
         m->m_indexBuffer->add(face.mIndices[j]);
       }
     }
 
     
-    if (mesh->mMaterialIndex >= 0) {
-      printf("%f" ,mesh->mMaterialIndex);
+    for (uint32 l = 0; l < mesh->mMaterialIndex; ++l) {
       m->m_material = new Material();
       aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-      Texture* texture = m_device->createTexture();
+      //Texture* texture = m_device->createTexture();
       //texture->loadFromFile() = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
       
       //aiMaterial *material = mesh->mMaterials[aimesh->mMaterialIndex];

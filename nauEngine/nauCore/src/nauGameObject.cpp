@@ -18,10 +18,27 @@ namespace nauEngineSDK {
     }
   }
 
+  void
+  GameObject::createComponent(COMPONENT::E type) {
+    if (COMPONENT::MESH == type) {
+      MeshComponent* m = new MeshComponent();
+      m->m_model = new Model();
+      m_properties.push_back(m);
+    }
+  }
 
   void
   GameObject::addComponent(Component* component) {
     m_properties.push_back(component);
   }
+
+  Component*
+  GameObject::getComponent(COMPONENT::E component) {
+    for (auto com : m_properties) {
+      if (component == com->getType()) { return com; }
+    }
+    return nullptr;
+  }
+
 
 }

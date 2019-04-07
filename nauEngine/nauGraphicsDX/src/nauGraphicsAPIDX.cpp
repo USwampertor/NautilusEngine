@@ -82,13 +82,24 @@ namespace nauEngineSDK {
                              m_screenNear,
                              m_screenDepth);
 
-    m_meshList.setDevice(&m_device);
-    m_meshList.loadFromFile("resources/Vela_Mat_1.X");
-    m_meshList.loadFromFile("resources/Vela_Mat_2.X");
-    m_meshList.loadFromFile("resources/Vela_Mat_3.X");
-    m_meshList.loadFromFile("resources/Vela_Mat_4.X");
-    m_meshList.loadFromFile("resources/Vela_Mat_5.X");
-    m_meshList.loadFromFile("resources/Vela_Mat_6.X");
+    //m_meshList.setDevice(&m_device);
+
+
+    MeshComponent* com = new MeshComponent();
+    com->m_model = new Model();
+    com->m_model->setDevice(&m_device);
+    com->m_model->loadFromFile("resources/Vela_Mat_1.X");
+    com->m_model->loadFromFile("resources/Vela_Mat_2.X");
+    com->m_model->loadFromFile("resources/Vela_Mat_3.X");
+    com->m_model->loadFromFile("resources/Vela_Mat_4.X");
+    com->m_model->loadFromFile("resources/Vela_Mat_5.X");
+    com->m_model->loadFromFile("resources/Vela_Mat_6.X");
+    for (auto mesh : com->m_model->m_meshes) {
+      Material* mat = new Material();
+    }
+    m_testModel.addComponent(com);
+    
+
     //m_meshList.loadFromFile("resources/Vela.FBX");
     //test();
 
@@ -153,7 +164,8 @@ namespace nauEngineSDK {
                                                         1.0f, 
                                                         0);
     m_samplerState.setShaderSampler(m_device.m_pd3dDevice);
-    m_meshList.render();
+    Model* m = static_cast<MeshComponent*>(m_testModel.getComponent(COMPONENT::MESH))->m_model;
+    m->render();
     
   }
 

@@ -11,6 +11,12 @@
 #include "nauComponent.h"
 
 namespace  nauEngineSDK {
+
+  COMPONENT::E
+  Component::getType() {
+    return m_type;
+  }
+
   Texture*
   Material::getMaterial(MATERIAL_FLAG::E material) {
     return m_TextureMap[material];

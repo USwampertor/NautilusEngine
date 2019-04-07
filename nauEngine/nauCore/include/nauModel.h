@@ -86,7 +86,7 @@ namespace nauEngineSDK {
   public:
 
     Vector<Mesh*> m_meshes;
-    Device* m_device;
+    Device* m_device = nullptr;
   };
 
 }
