@@ -12,7 +12,7 @@
 
 namespace nauEngineSDK {
   void
-  Model::render() {
+  Model::drawMesh() {
     for (auto& mesh : m_meshes) {
       mesh->draw(m_device);
     }

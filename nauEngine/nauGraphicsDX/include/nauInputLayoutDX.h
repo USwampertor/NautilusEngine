@@ -55,7 +55,7 @@ namespace nauEngineSDK {
     clear();
 
     void
-    createInputBuffer(void* pDevice, Shader* pShader);
+    createInputBuffer(Device* pDevice, Shader* pShader);
 
     void
     setLayout(void* pImmediateContext);

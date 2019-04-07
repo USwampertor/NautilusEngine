@@ -33,7 +33,10 @@ namespace nauEngineSDK {
     createRenderTargetView(Device* pDevice, void* pSwapChain) override;
 
     virtual void
-    set(Device* pDevice, DepthStencil* depthStencil) override;
+    set(Device& pDevice, DepthStencil& depthStencil) override;
+
+    virtual void
+    clearView(Device* pDevice, Vector4 color) override;
 
     ID3D11RenderTargetView* m_pRenderTargetView = nullptr;
   };

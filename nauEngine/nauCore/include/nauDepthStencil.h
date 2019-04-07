@@ -44,10 +44,9 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createDepthStencil(Device* pDevice, 
+    createDepthStencil(Device& pDevice, 
                        uint32 height, 
-                       uint32 width,
-                       void* texture) = 0;
+                       uint32 width) = 0;
 
     /**
      * @brief Cleans the Depths Stencil
@@ -56,7 +55,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    clean() = 0;
+    clearView(Device* pDevice) = 0;
 
     /**
      * Gets the depth stencil

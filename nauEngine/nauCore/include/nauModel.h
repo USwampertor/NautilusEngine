@@ -54,7 +54,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    render();
+    drawMesh();
 
     /**
      * @brief Loads a model from given path 

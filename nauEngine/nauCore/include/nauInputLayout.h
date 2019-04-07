@@ -11,6 +11,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauShader.h"
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
    /**
@@ -94,7 +95,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    createInputBuffer(void* pDevice, Shader* pShader) = 0;
+    createInputBuffer(Device* pDevice, Shader* pShader) = 0;
 
     /**
      * @brief sets the layout to the immediate context

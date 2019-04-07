@@ -66,6 +66,33 @@ namespace nauEngineSDK {
     coordDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     coordDesc.InstanceDataStepRate = 0;
     //add(&coordDesc);
+
+    //TANGENT
+    this->m_descVector.emplace_back();
+    auto& tangentDesc = m_descVector.back();
+
+    memset(&tangentDesc, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
+    tangentDesc.SemanticName = "TANGENT";
+    tangentDesc.SemanticIndex = 0;
+    tangentDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    tangentDesc.InputSlot = 0;
+    tangentDesc.AlignedByteOffset = 0;
+    tangentDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+    tangentDesc.InstanceDataStepRate = 0;
+
+    //TANGENT
+    this->m_descVector.emplace_back();
+    auto& binormal = m_descVector.back();
+
+    memset(&binormal, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
+    binormal.SemanticName = "BINORMAL";
+    binormal.SemanticIndex = 0;
+    binormal.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    binormal.InputSlot = 0;
+    binormal.AlignedByteOffset = 0;
+    binormal.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+    binormal.InstanceDataStepRate = 0;
+
   }
 
   //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE
@@ -118,13 +145,15 @@ namespace nauEngineSDK {
   }
 
   void
-  InputLayoutDX::createInputBuffer(void* pDevice, Shader* pShader) {
-    HRESULT hr = static_cast<ID3D11Device*>(pDevice)->CreateInputLayout(
-                  &m_descVector[0],
-                  (UINT)m_descVector.size(),
-                  static_cast<ShaderDX*>(pShader)->m_d3dBlob->GetBufferPointer(),
-                  static_cast<ShaderDX*>(pShader)->m_d3dBlob->GetBufferSize(),
-                  &m_layout);
+  InputLayoutDX::createInputBuffer(Device* pDevice, Shader* pShader) {
+    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
+    auto pdxShader = reinterpret_cast<ShaderDX*>(pShader);
+
+    HRESULT hr = pd3dDevice->CreateInputLayout(&m_descVector[0],
+                                               (UINT)m_descVector.size(),
+                                               pdxShader->m_d3dBlob->GetBufferPointer(),
+                                               pdxShader->m_d3dBlob->GetBufferSize(),
+                                               &m_layout);
     if (FAILED(hr)) {
       std::cout<<"Failed to create Vertex Buffer you idiot" << std::endl;
     }

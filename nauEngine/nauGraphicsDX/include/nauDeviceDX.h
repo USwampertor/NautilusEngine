@@ -148,7 +148,6 @@ namespace nauEngineSDK {
      */
     HWND m_handler;
 
-
     /**
      * DirectX device pointer
      */

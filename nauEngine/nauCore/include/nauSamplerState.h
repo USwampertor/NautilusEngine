@@ -21,7 +21,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class NAU_CORE_EXPORT SamplerState
+  class SamplerState
   {
   public:
 
@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~SamplerState() {}
+    virtual ~SamplerState() = default;
 
     /**
      * @brief creates a shader sampler
@@ -42,7 +42,7 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createShaderSampler(void* pDevice) = 0;
+    createShaderSampler(Device* pDevice) = 0;
 
     /**
      * @brief sets the shader into a device
@@ -51,7 +51,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    setShaderSampler(void* pDevice) = 0;
+    setShaderSampler(Device* pDevice) = 0;
   };
   
 }

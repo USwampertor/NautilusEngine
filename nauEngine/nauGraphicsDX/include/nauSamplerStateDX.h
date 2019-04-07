@@ -30,11 +30,11 @@ namespace nauEngineSDK {
      */
     ~SamplerStateDX() {}
 
-    bool
-    createShaderSampler(void* pDevice);
+    virtual bool
+    createShaderSampler(Device* pDevice) override;
 
-    void
-    setShaderSampler(void* pDevice);
+    virtual void
+    setShaderSampler(Device* pDevice) override;
     
     /**
      * Member declaration

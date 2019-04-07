@@ -41,13 +41,13 @@ namespace nauEngineSDK {
       return false;
     }
     //CreateDepthStencilTexture descriptor
-    if (!m_depthStencil.createDepthStencil(m_device, 
+    if (!m_depthStencil.createDepthStencil(*m_device, 
                                            m_device->m_width, 
-                                           m_device->m_height,
-                                           m_texture.getAPITexture())) {
+                                           m_device->m_height)) {
       std::cout << "Failed to create Depth Stencil... \n";
       return false;
     }
+    m_renderTarget.set(*m_device, m_depthStencil);
 
     if (!m_viewPort.createViewPort(static_cast<float>(m_device->m_width),
       static_cast<float>(m_device->m_height),
@@ -63,9 +63,9 @@ namespace nauEngineSDK {
     m_pixelShader.createFromFile(m_device->get(), "resources/PS.hlsl", "ColorPixelShader");
 
     m_inputLayout.setInputDescriptor();
-    m_inputLayout.createInputBuffer(m_device->get(), &m_vertexShader);
+    m_inputLayout.createInputBuffer(m_device, &m_vertexShader);
 
-    m_samplerState.createShaderSampler(m_device->get());
+    m_samplerState.createShaderSampler(m_device);
 
     ///////////// This is for testing the renderer
     m_fov = Math::degToRad(90.0f);
@@ -95,9 +95,9 @@ namespace nauEngineSDK {
     com->m_model->loadFromFile("resources/Vela_Mat_4.X");
     com->m_model->loadFromFile("resources/Vela_Mat_5.X");
     com->m_model->loadFromFile("resources/Vela_Mat_6.X");
-    for (auto mesh : com->m_model->m_meshes) {
-      Material* mat = new Material();
-    }
+    //for (auto mesh : com->m_model->m_meshes) {
+    //  Material* mat = new Material();
+    //}
     m_testModel.addComponent(com);
     ///
     
@@ -160,9 +160,9 @@ namespace nauEngineSDK {
     m_inputLayout.setLayout(m_device->getContext());
 
     clear();
-    m_samplerState.setShaderSampler(m_device->get());
+    m_samplerState.setShaderSampler(m_device);
     Model* m = static_cast<MeshComponent*>(m_testModel.getComponent(COMPONENT::MESH))->m_model;
-    m->render();
+    m->drawMesh();
     
   }
 
@@ -189,13 +189,13 @@ namespace nauEngineSDK {
 
   void
   GraphicsAPIDX::clear() {
-    float color[4] = { 0.5f,0.5f,0.5f,1.0f };
-    reinterpret_cast<ID3D11DeviceContext*>(m_device->getContext())->ClearRenderTargetView(m_renderTarget.m_pRenderTargetView,
-                                                        color);
-    reinterpret_cast<ID3D11DeviceContext*>(m_device->getContext())->ClearDepthStencilView(m_depthStencil.m_DepthStencilView,
-                                                        D3D11_CLEAR_DEPTH,
-                                                        1.0f,
-                                                        0);
+    Vector4 col = { 0.5f,0.5f,0.5f,1.0f };
+    auto pContext = reinterpret_cast<ID3D11DeviceContext*>(m_device->getContext());
+    auto pStencil = reinterpret_cast<ID3D11DepthStencilView*>(m_depthStencil.get());
+
+    m_renderTarget.clearView(m_device, col);
+    m_depthStencil.clearView(m_device);
+
   }
 
   void

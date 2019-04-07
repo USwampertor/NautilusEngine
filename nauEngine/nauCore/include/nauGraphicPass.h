@@ -38,6 +38,9 @@ namespace nauEngineSDK {
      */
     ~GraphicPass() = default;
 
+    bool
+    init();
+
     /**
      * DepthStencil object reference
      */

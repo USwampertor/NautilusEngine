@@ -13,9 +13,11 @@
 namespace nauEngineSDK {
 
   bool
-  SamplerStateDX::createShaderSampler(void* pDevice) {
-    HRESULT hr = E_FAIL;
+  SamplerStateDX::createShaderSampler(Device* pDevice) {
 
+    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
+    
+    HRESULT hr = E_FAIL;
     D3D11_SAMPLER_DESC sampler;
 
     //Here we declare the type of filtering
@@ -34,7 +36,7 @@ namespace nauEngineSDK {
     sampler.MaxLOD = D3D11_FLOAT32_MAX;
 
     // Create the texture sampler state.
-    hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateSamplerState(&sampler, &m_sampleState);
+    hr = pd3dDevice->CreateSamplerState(&sampler, &m_sampleState);
     if (FAILED(hr)) {
       throw::std::exception("Failed to create sampler state");
       return false;
@@ -45,14 +47,11 @@ namespace nauEngineSDK {
   }
 
   void
-  SamplerStateDX::setShaderSampler(void* pDevice) {
-
-    ID3D11DeviceContext* immContext;
-    reinterpret_cast<ID3D11Device*>(pDevice)->GetImmediateContext(&immContext);
-
+  SamplerStateDX::setShaderSampler(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
     //First parameter is the register where you are using the texture
     //second is how many times we are going to do this
-    immContext->PSSetSamplers(0, 1, &m_sampleState);
+    pd3dContext->PSSetSamplers(0, 1, &m_sampleState);
 
 
   }

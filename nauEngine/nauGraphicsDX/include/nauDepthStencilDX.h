@@ -32,13 +32,12 @@ namespace nauEngineSDK {
     ~DepthStencilDX() = default;
 
     virtual bool
-    createDepthStencil(Device* pDevice,
+    createDepthStencil(Device& pDevice,
                        uint32 height,
-                       uint32 width,
-                       void* texture) override;
+                       uint32 width) override;
   
     virtual void
-    clean() override;
+    clearView(Device* pDevice) override;
 
     virtual void*
     get() override;
@@ -46,7 +45,8 @@ namespace nauEngineSDK {
     /**
      * Depth stencil view
      */
-    ID3D11DepthStencilView* m_DepthStencilView = nullptr;
+    ID3D11DepthStencilView* m_pDepthStencil = nullptr;
+    ID3D11Texture2D* m_texture = nullptr;
   };
   
 }

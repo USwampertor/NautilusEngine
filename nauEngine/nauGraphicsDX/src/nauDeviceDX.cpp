@@ -21,7 +21,7 @@
 
 namespace nauEngineSDK {
   bool
-    DeviceDX::initializeDevice(void* scrHandler) {
+  DeviceDX::initializeDevice(void* scrHandler) {
     m_handler = reinterpret_cast<HWND>(scrHandler);
     
     HRESULT result = S_OK;
@@ -69,18 +69,18 @@ namespace nauEngineSDK {
       
       D3D_DRIVER_TYPE& dt = driverTypes[driverTypeIndex];
 
-      result = D3D11CreateDeviceAndSwapChain( nullptr,
-                                              dt,
-                                              nullptr,
-                                              deviceFlags,
-                                              &featureLevels[0],
-                                              static_cast<UINT>(featureLevels.size()),
-                                              D3D11_SDK_VERSION,
-                                              &sd,
-                                              &m_pSwapChain,
-                                              &m_pd3dDevice,
-                                              &selectedFL,
-                                              &m_pImmediateContext);
+      result = D3D11CreateDeviceAndSwapChain(nullptr,
+                                             dt,
+                                             nullptr,
+                                             deviceFlags,
+                                             &featureLevels[0],
+                                             static_cast<uint32>(featureLevels.size()),
+                                             D3D11_SDK_VERSION,
+                                             &sd,
+                                             &m_pSwapChain,
+                                             &m_pd3dDevice,
+                                             &selectedFL,
+                                             &m_pImmediateContext);
       if (SUCCEEDED(result)) {
         break;
       }

@@ -29,6 +29,7 @@
 #include "nauViewPortDX.h"
 #include "nauRenderTargetViewDX.h"
 #include "nauDepthStencilDX.h"
+#include "nauShaderResourceViewDX.h"
 
 namespace nauEngineSDK {
   /**
@@ -135,7 +136,10 @@ namespace nauEngineSDK {
      */
     SamplerStateDX m_samplerState;
 
+
     RenderTargetViewDX m_renderTarget;
+
+    ShaderResourceViewDX m_shaderResource;
 
     DepthStencilDX m_depthStencil;
 

@@ -12,15 +12,16 @@
 #include "nauPrerequisitesCore.h"
 #include "nauDevice.h"
 #include "nauDepthStencil.h"
+#include "nauVector4.h"
 
 namespace nauEngineSDK {
 
    /**
     * nauRenderTargetView
     * Description:
-    * 	
+    * 	Render Target View Object
     * Sample usage:
-    * 	
+    * 	Outputs in the passes
     */
   class RenderTargetView
   {
@@ -46,7 +47,10 @@ namespace nauEngineSDK {
     createRenderTargetView(Device* pDevice, void* pSwapChain) = 0;
 
     virtual void
-    set(Device* pDevice, DepthStencil* depthStencil) = 0;
+    set(Device& pDevice, DepthStencil& depthStencil) = 0;
+
+    virtual void
+    clearView(Device* pDevice, Vector4 color) = 0;
 
   };
   
