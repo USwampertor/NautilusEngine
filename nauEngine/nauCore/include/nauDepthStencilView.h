@@ -10,6 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
   
@@ -41,8 +42,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    createDepthStencilViewDescriptor(void* pDevice,
-                                     void* pDeviceContext) = 0;
+    createDepthStencilViewDescriptor(Device* pDevice) = 0;
   };
   
 }

@@ -11,6 +11,8 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
+#include "nauShaderResourceView.h"
 
 namespace nauEngineSDK {
 
@@ -42,77 +44,22 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    loadFromFile(String path, void* pDevice, void* pDeviceContext) = 0;
-
-//////////THIS SHOULD BE ON A SEPARATE OBJECT, BUT BEAR WITH ME FOR A MOMENT
+    loadFromFile(String path, Device* pDevice) = 0;
 
     /**
-     * @brief creates a shader resource view
-     * @param the device
+     * @brief Load a Texture based on memory
+     * @param device and the buffer with the information
      * @return true if able to create
      *
      */
     virtual bool
-    createShaderResourceView(void* pDevice) = 0;
+    loadFromMemory(Device* pDevice, Vector<char> buffer) = 0;
 
     /**
-     * @brief sets the shader resource view in the device
-     * @param 
-     * @return 
-     *
+     * Gets the texture inside of it
      */
-    virtual void
-    setShaderResourceView(void* pDevice) = 0;
-
-    /**
-     * @brief creates a render target view
-     * @param Device and swapChain
-     * @return true if able to create
-     *
-     */
-    virtual bool
-    createRenderTargetView(void* pDevice, void* swapChain) = 0;
-
-    /**
-     * @brief creates a depth stencil view descriptor
-     * @param Device and device context
-     * @return true if able to create
-     *
-     */
-    virtual bool
-    createDepthStencilView(void* pDevice, void* pDeviceContext) = 0;
-
-    /**
-     * @brief creates a depth stencil (which is a texture)
-     * @param Device | Device Context | width of texture | height of texture
-     * @return true if able to create
-     *
-     */
-    virtual bool 
-    createDepthstencil(void* pDevice,
-                       void* pDeviceContext,
-                       uint32 width,
-                       uint32 height) = 0;
-
-    /**
-     * @brief creates the shader sampler
-     * @param Device
-     * @return true if able to create
-     *
-     */
-    virtual bool
-    createShaderSampler(void* pDevice) = 0;
-
-    /**
-     * @brief sets the shader sampler
-     * @param Device
-     * @return true if able to create
-     *
-     */
-    virtual bool
-    setShaderSampler(void* pDevice) = 0;
-
-//////////END OF THE ABERRATION
+    virtual void*
+    getAPITexture() = 0;
 
     /**
      * Member declaration
@@ -132,8 +79,12 @@ namespace nauEngineSDK {
     /**
      * Texture data in bytes
      */
-    std::vector<char> m_textureData;
+    Vector<char> m_textureData;
 
+    /**
+     * 
+     */
+    ShaderResourceView* m_shaderResourceView;
   };
   
 }

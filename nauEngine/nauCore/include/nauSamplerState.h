@@ -10,6 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
   

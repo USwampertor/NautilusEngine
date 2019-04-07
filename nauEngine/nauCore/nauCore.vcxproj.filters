@@ -106,6 +106,9 @@
     <ClInclude Include="include\nauSceneGraph.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauTextureDescriptor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauGraphicsBuffer.cpp">
@@ -117,16 +120,7 @@
     <ClCompile Include="src\nauModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauSamplerState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauShaderResourceView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauCamera.cpp">

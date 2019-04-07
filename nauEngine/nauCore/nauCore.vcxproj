@@ -49,6 +49,7 @@
     <ClInclude Include="include\nauShaderResourceView.h" />
     <ClInclude Include="include\nauSwapChain.h" />
     <ClInclude Include="include\nauTexture.h" />
+    <ClInclude Include="include\nauTextureDescriptor.h" />
     <ClInclude Include="include\nauTimer.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
@@ -70,11 +71,8 @@
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
-    <ClCompile Include="src\nauSamplerState.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauShader.cpp" />
-    <ClCompile Include="src\nauShaderResourceView.cpp" />
-    <ClCompile Include="src\nauTexture.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

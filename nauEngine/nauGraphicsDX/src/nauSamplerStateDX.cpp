@@ -14,7 +14,7 @@ namespace nauEngineSDK {
 
   bool
   SamplerStateDX::createShaderSampler(void* pDevice) {
-    HRESULT hr = S_OK;
+    HRESULT hr = E_FAIL;
 
     D3D11_SAMPLER_DESC sampler;
 
@@ -35,11 +35,10 @@ namespace nauEngineSDK {
 
     // Create the texture sampler state.
     hr = reinterpret_cast<ID3D11Device*>(pDevice)->CreateSamplerState(&sampler, &m_sampleState);
-    if (FAILED(hr))
-    {
+    if (FAILED(hr)) {
+      throw::std::exception("Failed to create sampler state");
       return false;
     }
-    
     
     return true;
 
@@ -47,11 +46,15 @@ namespace nauEngineSDK {
 
   void
   SamplerStateDX::setShaderSampler(void* pDevice) {
+
     ID3D11DeviceContext* immContext;
     reinterpret_cast<ID3D11Device*>(pDevice)->GetImmediateContext(&immContext);
+
     //First parameter is the register where you are using the texture
     //second is how many times we are going to do this
     immContext->PSSetSamplers(0, 1, &m_sampleState);
+
+
   }
 
 }

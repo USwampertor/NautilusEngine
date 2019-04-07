@@ -10,6 +10,9 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
+#include "nauTexture.h"
+#include "nauTextureDescriptor.h"
 
 namespace nauEngineSDK {
 
@@ -20,7 +23,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT ShaderResourceView
+  class ShaderResourceView
   {
    public:
 
@@ -32,7 +35,8 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~ShaderResourceView() {}
+    virtual 
+    ~ShaderResourceView() = default;
 
     /**
      * @brief Creates a shader resource view
@@ -41,7 +45,7 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createShaderResourceView(void* pDevice) = 0;
+    createShaderResourceView(Device* pDevice, void* texture, NAUTEXTUREDESCRIPTOR desc) = 0;
 
     /**
      * @brief Creates a shader resource view
@@ -50,7 +54,9 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    setShaderResourceView(void* pDevice) = 0;
+    setShaderResourceView(Device* pDevice, 
+                          uint32 start = 0, 
+                          uint32 views = 1) = 0;
 
   };
   

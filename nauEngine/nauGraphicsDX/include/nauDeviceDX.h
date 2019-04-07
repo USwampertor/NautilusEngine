@@ -13,14 +13,7 @@
 
 #include <nauDevice.h>
 
-#include "nauViewPortDX.h"
-#include "nauShaderDX.h"
-#include "nauTextureDX.h"
-#include "nauInputLayoutDX.h"
-#include "nauViewPortDX.h"
-#include "nauSamplerStateDX.h"
-#include "nauDepthStencilDX.h"
-#include "nauGraphicsBufferDX.h"
+
 
 namespace nauEngineSDK {
   class NAU_DIRECTX_EXPORT DeviceDX : public Device
@@ -59,6 +52,8 @@ namespace nauEngineSDK {
     void*
     getContext() override;
 
+    void*
+    getSwapChain() override;
     ///EVENTS///
 
     ///CONSTRUCTORS///

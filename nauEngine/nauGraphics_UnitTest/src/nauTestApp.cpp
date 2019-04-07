@@ -31,10 +31,6 @@ namespace nauEngineSDK {
 
     //API INITIALIZATION
     m_api = m_factory->createGraphicsAPI();
-    //if ( g_graphicsAPI().instancePtr() == nullptr) {
-    //  std::cout << "Couldnt make API" << std::endl;
-    //  return false;
-    //}
 
     if (!m_api->init(hwnd)) return false;
     
@@ -65,7 +61,6 @@ namespace nauEngineSDK {
 
   void
   TestApp::shutDown() {
-
     ImGui::DestroyContext();
   }
 

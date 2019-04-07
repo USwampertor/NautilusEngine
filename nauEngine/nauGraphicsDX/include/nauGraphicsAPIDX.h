@@ -27,7 +27,8 @@
 #include "nauSamplerStateDX.h"
 #include "nauTextureDX.h"
 #include "nauViewPortDX.h"
-
+#include "nauRenderTargetViewDX.h"
+#include "nauDepthStencilDX.h"
 
 namespace nauEngineSDK {
   /**
@@ -117,7 +118,7 @@ namespace nauEngineSDK {
     /**
      * Device 
      */
-    DeviceDX m_device;
+    Device* m_device;
 
     /**
      * Texture of test object
@@ -133,6 +134,10 @@ namespace nauEngineSDK {
      * Sampler state
      */
     SamplerStateDX m_samplerState;
+
+    RenderTargetViewDX m_renderTarget;
+
+    DepthStencilDX m_depthStencil;
 
     /**
      * Screen depth

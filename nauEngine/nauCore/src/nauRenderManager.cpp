@@ -16,8 +16,6 @@ namespace nauEngineSDK {
   RenderManager::render(Vector<MeshComponent> m_orderedList, GraphicsAPI* api, CoreFactory* factory) {
     for (auto pass : m_passes) {
 
-
-
     }
   }
 

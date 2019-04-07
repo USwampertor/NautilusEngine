@@ -19,27 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nauCoreFactoryDX.h" />
     <ClInclude Include="include\nauDepthStencilDX.h" />
     <ClInclude Include="include\nauDeviceDX.h" />
     <ClInclude Include="include\nauGraphicsAPIDX.h" />
     <ClInclude Include="include\nauGraphicsBufferDX.h" />
     <ClInclude Include="include\nauInputLayoutDX.h" />
     <ClInclude Include="include\nauPrerequisitesDX.h" />
+    <ClInclude Include="include\nauRenderTargetViewDX.h" />
     <ClInclude Include="include\nauSamplerStateDX.h" />
     <ClInclude Include="include\nauShaderDX.h" />
+    <ClInclude Include="include\nauShaderResourceViewDX.h" />
     <ClInclude Include="include\nauTextureDX.h" />
     <ClInclude Include="include\nauViewPortDX.h" />
-    <ClInclude Include="nauCoreFactoryDX.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauCoreFactoryDX.cpp" />
+    <ClCompile Include="src\nauCoreFactoryDX.cpp" />
     <ClCompile Include="src\nauDepthStencilDX.cpp" />
     <ClCompile Include="src\nauDeviceDX.cpp" />
     <ClCompile Include="src\nauGraphicsAPIDX.cpp" />
     <ClCompile Include="src\nauGraphicsBufferDX.cpp" />
     <ClCompile Include="src\nauInputLayoutDX.cpp" />
+    <ClCompile Include="src\nauRenderTargetViewDX.cpp" />
     <ClCompile Include="src\nauSamplerStateDX.cpp" />
     <ClCompile Include="src\nauShaderDX.cpp" />
+    <ClCompile Include="src\nauShaderResourceViewDX.cpp" />
     <ClCompile Include="src\nauTextureDX.cpp" />
     <ClCompile Include="src\nauViewPortDX.cpp" />
   </ItemGroup>

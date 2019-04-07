@@ -8,6 +8,17 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauDeviceDX.h"
+
+#include "nauViewPortDX.h"
+#include "nauShaderDX.h"
+#include "nauTextureDX.h"
+#include "nauInputLayoutDX.h"
+#include "nauViewPortDX.h"
+#include "nauSamplerStateDX.h"
+#include "nauDepthStencilDX.h"
+#include "nauGraphicsBufferDX.h"
+
+
 namespace nauEngineSDK {
   bool
     DeviceDX::initializeDevice(void* scrHandler) {
@@ -111,6 +122,13 @@ namespace nauEngineSDK {
   DeviceDX::getContext() {
     return m_pImmediateContext;
   }
+
+  void*
+  DeviceDX::getSwapChain() {
+    return m_pSwapChain;
+  }
+
+  ///CREATORS
 
   Shader*
     DeviceDX::createVertexShader() {

@@ -10,6 +10,8 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
+#include "nauDepthStencil.h"
 
 namespace nauEngineSDK {
 
@@ -20,7 +22,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class NAU_CORE_EXPORT RenderTargetView
+  class RenderTargetView
   {
    public:
 
@@ -32,7 +34,7 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual ~RenderTargetView() {}
+    virtual ~RenderTargetView() = default;
 
     /**
      * @brief Creates a shader resource view
@@ -41,7 +43,10 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createRenderTargetView(void* pDevice, void* pSwapChain) = 0;
+    createRenderTargetView(Device* pDevice, void* pSwapChain) = 0;
+
+    virtual void
+    set(Device* pDevice, DepthStencil* depthStencil) = 0;
 
   };
   

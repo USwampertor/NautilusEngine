@@ -12,6 +12,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauTexture.h"
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
    /**
@@ -43,11 +44,25 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createDepthStencil(void* pDevice, 
-                       void* pDeviceContext, 
+    createDepthStencil(Device* pDevice, 
                        uint32 height, 
                        uint32 width,
-                       Texture* texture) = 0;
+                       void* texture) = 0;
+
+    /**
+     * @brief Cleans the Depths Stencil
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    clean() = 0;
+
+    /**
+     * Gets the depth stencil
+     */
+    virtual void*
+    get() = 0;
 
     /**
      * Member declaration

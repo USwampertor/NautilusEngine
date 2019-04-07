@@ -11,16 +11,20 @@
 #include "nauPrerequisitesCore.h"
 
 
-#include "nauViewPort.h"
-#include "nauShader.h"
-#include "nauTexture.h"
-#include "nauInputLayout.h"
-#include "nauViewPort.h"
-#include "nauSamplerState.h"
-#include "nauDepthStencil.h"
-#include "nauGraphicsBuffer.h"
-
 namespace nauEngineSDK {
+
+  ///FORWARD DECLARATIONS
+  class Shader;
+  class DepthStencil;
+  class Texture;
+  class InputLayout;
+  class ViewPort;
+  class IndexBuffer;
+  class VertexBuffer;
+  class ConstantBuffer;
+  class SamplerState;
+  ///
+
   /**
    * nauDevice
    * Description:
@@ -104,6 +108,10 @@ namespace nauEngineSDK {
      */
     virtual void*
     getContext() = 0;
+
+    virtual void*
+    getSwapChain() = 0;
+
 
     /**
      * @brief Creates a Vertex Shader
