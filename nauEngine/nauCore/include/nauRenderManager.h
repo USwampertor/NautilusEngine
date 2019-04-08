@@ -62,6 +62,11 @@ namespace nauEngineSDK {
 
    public:
      Vector<GraphicPass*> m_passes;
+
+
+    Map<String, Texture*> m_rendereableTextures;
+
+
   };
   
 }

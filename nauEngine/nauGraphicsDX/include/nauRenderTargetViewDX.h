@@ -30,7 +30,7 @@ namespace nauEngineSDK {
     ~RenderTargetViewDX() = default;
 
     virtual bool
-    createRenderTargetView(Device* pDevice, void* pSwapChain) override;
+    createRenderTargetView(Device* pDevice, Texture* texture) override;
 
     virtual void
     set(Device& pDevice, DepthStencil& depthStencil) override;

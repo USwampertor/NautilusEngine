@@ -18,6 +18,7 @@ namespace nauEngineSDK {
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
     D3D11_RASTERIZER_DESC rasterizerDesc;
+    memset(&rasterizerDesc, 0, sizeof(rasterizerDesc));
     rasterizerDesc.FillMode = D3D11_FILL_SOLID;
     rasterizerDesc.CullMode = D3D11_CULL_FRONT;
     rasterizerDesc.FrontCounterClockwise = true;

@@ -31,6 +31,7 @@
     <ClInclude Include="include\nauSamplerStateDX.h" />
     <ClInclude Include="include\nauShaderDX.h" />
     <ClInclude Include="include\nauShaderResourceViewDX.h" />
+    <ClInclude Include="include\nauSwapChainDX.h" />
     <ClInclude Include="include\nauTextureDX.h" />
     <ClInclude Include="include\nauViewPortDX.h" />
   </ItemGroup>
@@ -46,6 +47,7 @@
     <ClCompile Include="src\nauSamplerStateDX.cpp" />
     <ClCompile Include="src\nauShaderDX.cpp" />
     <ClCompile Include="src\nauShaderResourceViewDX.cpp" />
+    <ClCompile Include="src\nauSwapChainDX.cpp" />
     <ClCompile Include="src\nauTextureDX.cpp" />
     <ClCompile Include="src\nauViewPortDX.cpp" />
   </ItemGroup>

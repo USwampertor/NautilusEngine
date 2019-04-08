@@ -10,8 +10,10 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-#include "nauDevice.h"
+
 #include "nauDepthStencil.h"
+#include "nauDevice.h"
+#include "nauTexture.h"
 #include "nauVector4.h"
 
 namespace nauEngineSDK {
@@ -39,12 +41,12 @@ namespace nauEngineSDK {
 
     /**
      * @brief Creates a shader resource view
-     * @param void* device and void* swapChain 
+     * @param void* device and Texture*
      * @return 
      *
      */
     virtual bool
-    createRenderTargetView(Device* pDevice, void* pSwapChain) = 0;
+    createRenderTargetView(Device* pDevice, Texture* texture) = 0;
 
     virtual void
     set(Device& pDevice, DepthStencil& depthStencil) = 0;

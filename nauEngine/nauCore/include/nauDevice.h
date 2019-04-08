@@ -25,6 +25,7 @@ namespace nauEngineSDK {
   class SamplerState;
   class ShaderResourceView;
   class DepthStencil;
+  class SwapChain;
   ///
 
   /**
@@ -202,11 +203,29 @@ namespace nauEngineSDK {
     /**
      * @brief Creates a shader resource view
      * @param 
-     * @return a shaderresource view in the given API
+     * @return a shader resource view in the given API
      *
      */
     virtual ShaderResourceView*
     createShaderResourceView() = 0;
+
+    /**
+     * @brief Creates a SwapChain object
+     * @param 
+     * @return a swap Chain based up on the given API
+     *
+     */
+    virtual SwapChain*
+    createSwapChain() = 0;
+
+    /**
+     * @brief gets the backBuffer from the swapChain
+     * @param 
+     * @return 
+     *
+     */
+    virtual Texture*
+    getBackBuffer() = 0;
 
     /**
      * Member declaration
@@ -222,6 +241,10 @@ namespace nauEngineSDK {
      */
     uint32 m_height;
 
+    /**
+     * SwapChain
+     */
+    SwapChain* m_swapChain = nullptr;
   };
   
 

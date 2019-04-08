@@ -64,6 +64,18 @@ namespace nauEngineSDK {
     getView() = 0;
 
     /**
+     * Creates the depth stencil view object
+     */
+    virtual bool
+    createView() = 0;
+
+    /**
+     * Creates the depth stencil state Object
+     */
+    virtual bool
+    createState() = 0;
+
+    /**
      * Member declaration
      */
    public:

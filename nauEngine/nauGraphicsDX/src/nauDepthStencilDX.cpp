@@ -78,4 +78,18 @@ namespace nauEngineSDK {
     pd3dContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH,  1.0f, 0);
   }
 
+
+  bool
+  DepthStencilDX::createView() {
+
+    return true;
+  }
+
+  bool
+  DepthStencilDX::createState() {
+    D3D11_DEPTH_STENCIL_DESC stencilDesc;
+    memset(&stencilDesc, 0, sizeof(stencilDesc));
+    return true;
+  }
+
 }

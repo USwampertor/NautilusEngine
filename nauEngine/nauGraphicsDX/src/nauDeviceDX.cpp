@@ -9,19 +9,22 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauDeviceDX.h"
 
-#include "nauViewPortDX.h"
-#include "nauShaderDX.h"
-#include "nauTextureDX.h"
-#include "nauInputLayoutDX.h"
-#include "nauViewPortDX.h"
-#include "nauSamplerStateDX.h"
 #include "nauDepthStencilDX.h"
 #include "nauGraphicsBufferDX.h"
+#include "nauInputLayoutDX.h"
+#include "nauSamplerStateDX.h"
+#include "nauShaderDX.h"
 #include "nauShaderResourceViewDX.h"
+#include "nauSwapChainDX.h"
+#include "nauTextureDX.h"
+#include "nauViewPortDX.h"
 
 namespace nauEngineSDK {
   bool
   DeviceDX::initializeDevice(void* scrHandler) {
+
+    m_swapChain = new SwapChainDX();
+    
     m_handler = reinterpret_cast<HWND>(scrHandler);
     
     HRESULT result = S_OK;
@@ -77,7 +80,7 @@ namespace nauEngineSDK {
                                              static_cast<uint32>(featureLevels.size()),
                                              D3D11_SDK_VERSION,
                                              &sd,
-                                             &m_pSwapChain,
+                                             &reinterpret_cast<SwapChainDX*>(m_swapChain)->m_pSwapChain,
                                              &m_pd3dDevice,
                                              &selectedFL,
                                              &m_pImmediateContext);
@@ -88,7 +91,7 @@ namespace nauEngineSDK {
     if (FAILED(result)) {
       return false;
     }
-
+    
     return true;
   }
 
@@ -125,63 +128,86 @@ namespace nauEngineSDK {
 
   void*
   DeviceDX::getSwapChain() {
-    return m_pSwapChain;
+    return reinterpret_cast<IDXGISwapChain*>(m_swapChain->get());
+  }
+
+  Texture*
+  DeviceDX::getBackBuffer() {
+
+    Texture* backBuffer = new TextureDX();
+    ID3D11Texture2D* pd3dTexture;
+    auto pd3dSwapChain = reinterpret_cast<IDXGISwapChain*>(m_swapChain->get());
+    HRESULT hr = E_FAIL;
+
+    hr = pd3dSwapChain->GetBuffer(0,
+                                  __uuidof(ID3D11Texture2D),
+                                  reinterpret_cast<LPVOID*>(&pd3dTexture));
+    if (FAILED(hr)) {
+      throw::std::exception("Failed to get back buffer");
+    }
+    reinterpret_cast<TextureDX*>(backBuffer)->m_pd3dTexture2D = pd3dTexture;
+    return backBuffer;
   }
 
   ///CREATORS
 
   Shader*
-    DeviceDX::createVertexShader() {
+  DeviceDX::createVertexShader() {
     return new VertexShaderDX();
   }
 
   Shader*
-    DeviceDX::createPixelShader() {
+  DeviceDX::createPixelShader() {
     return new PixelShaderDX();
   }
 
   Texture*
-    DeviceDX::createTexture() {
+  DeviceDX::createTexture() {
     return new TextureDX();
   }
 
   InputLayout*
-    DeviceDX::createInputLayout() {
+  DeviceDX::createInputLayout() {
     return new InputLayoutDX();
   }
 
   SamplerState*
-    DeviceDX::createSamplerState() {
+  DeviceDX::createSamplerState() {
     return new SamplerStateDX();
   }
 
   ViewPort*
-    DeviceDX::createViewPort() {
+  DeviceDX::createViewPort() {
     return new ViewPortDX();
   }
 
   DepthStencil*
-    DeviceDX::createDepthStencil() {
+  DeviceDX::createDepthStencil() {
     return new DepthStencilDX();
   }
 
   VertexBuffer*
-    DeviceDX::createVertexBuffer() {
+  DeviceDX::createVertexBuffer() {
     return new VertexBufferDX();
   }
 
   IndexBuffer*
-    DeviceDX::createIndexBuffer() {
+  DeviceDX::createIndexBuffer() {
     return new IndexBufferDX();
   }
 
   ConstantBuffer*
-    DeviceDX::createConstantBuffer() {
+  DeviceDX::createConstantBuffer() {
     return new ConstantBufferDX();
   }
 
   ShaderResourceView*
   DeviceDX::createShaderResourceView() {
     return new ShaderResourceViewDX();
+  }
+
+  SwapChain*
+  DeviceDX::createSwapChain() {
+    return new SwapChainDX();
   }
 }

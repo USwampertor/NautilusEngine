@@ -42,6 +42,13 @@ namespace nauEngineSDK {
     virtual void*
     getView() override;
 
+    virtual bool
+    createView() override;
+
+    virtual bool
+    createState() override;
+
+
     /**
      * Depth stencil view
      */
@@ -51,6 +58,11 @@ namespace nauEngineSDK {
      * Texture of the depth stencil
      */
     ID3D11Texture2D* m_pDepthStencilTexture = nullptr;
+
+    /**
+     * Depth Stencil State
+     */
+    ID3D11DepthStencilState* m_pDepthStencilState = nullptr;
   };
   
 }

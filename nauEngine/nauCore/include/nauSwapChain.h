@@ -7,10 +7,10 @@
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-
 #pragma once
-
 #include "nauPrerequisitesCore.h"
+
+#include "nauTexture.h"
 
 namespace nauEngineSDK {
   
@@ -34,6 +34,18 @@ namespace nauEngineSDK {
      * virtual destructor
      */
     virtual ~SwapChain() = default;
+
+    /**
+     * Returns the swapChain encapsulated in the class
+     */
+    virtual void*
+    get() = 0;
+
+    /**
+     * Retrieves a texture based up on the backBuffer
+     */
+    virtual void
+    getBackBuffer(Texture* ref) = 0;
   };
   
 }

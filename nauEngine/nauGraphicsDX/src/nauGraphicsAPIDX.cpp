@@ -34,9 +34,9 @@ namespace nauEngineSDK {
       std::cout << "Failed to initialize device... \n";
       return false;
     }
-
+    
     //CreateRenderTargetView
-    if (!m_renderTarget.createRenderTargetView(m_device, m_device->getSwapChain())) {
+    if (!m_renderTarget.createRenderTargetView(m_device, m_device->getBackBuffer())) {
       std::cout << "Failed to create Render Target View... \n";
       return false;
     }
@@ -49,9 +49,9 @@ namespace nauEngineSDK {
     }
 
     if (!m_viewPort.createViewPort(static_cast<float>(m_device->m_width),
-      static_cast<float>(m_device->m_height),
-      1.0f,
-      1.0f)) {
+                                   static_cast<float>(m_device->m_height),
+                                   1.0f,
+                                   1.0f)) {
       std::cout << "Could not create ViewPort \n";
       exit(828);
     }

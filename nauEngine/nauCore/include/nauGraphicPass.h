@@ -17,15 +17,17 @@
 #include "nauGraphicsBuffer.h"
 #include "nauInputLayout.h"
 #include "nauTexture.h"
+#include "nauRenderTargetView.h"
 
 namespace nauEngineSDK {
-   /**
-    * GraphicsPass
-    * Description:
-    *   Sets what is going to happen in a pass 
-    * Sample usage:
-    * 
-    */
+  
+  /**
+   * GraphicsPass
+   * Description:
+   *   Sets what is going to happen in a pass 
+   * Sample usage:
+   * 
+   */
   class NAU_CORE_EXPORT GraphicPass
   {
   public:
@@ -60,6 +62,11 @@ namespace nauEngineSDK {
     bool
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
+    void
+    render();
+
+
+
     /**
      * DepthStencil object reference
      */
@@ -88,7 +95,7 @@ namespace nauEngineSDK {
     /**
      * TextureObjects
      */
-    List<Texture*> m_textures;
+    Map<String, RenderTargetView*> m_renderTargets;
 
   };
 
@@ -106,6 +113,31 @@ namespace nauEngineSDK {
     GBPass() = default;
 
     ~GBPass() = default;
+
+    //bool
+    //  init(Device* pDevice) override;
+    //
+    //void
+    //  setPixelShader(Device* pDevice) override;
+    //
+    //void
+    //  setVertexShader(Device* pDevice) override;
+    //
+    //void
+    //  setLayout(Device* pDevice) override;
+    //
+    //void
+    //  setShaderSampler(Device* pDevice) override;
+    //
+    //bool
+    //  loadPixelShader(Device* pDevice, String fileName, String entry) override;
+    //
+    //bool
+    //  loadVertexShader(Device* pDevice, String fileName, String entry) override;
+    //
+    //void
+    //  render() override;
+
 
     //void
     //init(Device* pDevice) override;

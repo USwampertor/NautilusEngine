@@ -12,22 +12,15 @@
 namespace nauEngineSDK {
   
   bool
-  RenderTargetViewDX::createRenderTargetView(Device* pDevice, void* pSwapChain) {
+  RenderTargetViewDX::createRenderTargetView(Device* pDevice, Texture* texture) {
+    
     HRESULT hr = E_FAIL;
+    auto pd3dTexture = reinterpret_cast<ID3D11Texture2D*>(texture->getAPITexture());
 
-    ID3D11Texture2D* pBackBuffer = nullptr;
-
-    auto pd3dSwapChain = reinterpret_cast<IDXGISwapChain*>(pSwapChain);
-
-    hr = pd3dSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<LPVOID*>(&pBackBuffer));
-    if (FAILED(hr)) {
-      throw::std::exception("Failed to create RenderTargetView");
-      //return false;
-    }
+    
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
-    hr = pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &m_pRenderTargetView);
+    hr = pd3dDevice->CreateRenderTargetView(pd3dTexture, nullptr, &m_pRenderTargetView);
     //Releases the back buffer
-    pBackBuffer->Release();
     return true;
   }
 
@@ -40,7 +33,6 @@ namespace nauEngineSDK {
     pd3dContext->OMSetRenderTargets(1,&m_pRenderTargetView, nullptr);
 
   }
-
 
   void
   RenderTargetViewDX::clearView(Device* pDevice, Vector4 color) {
