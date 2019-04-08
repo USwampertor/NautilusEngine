@@ -147,8 +147,7 @@ namespace nauEngineSDK {
   void
   InputLayoutDX::createInputBuffer(Device* pDevice, Shader* pShader) {
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
-    auto pdxShader = reinterpret_cast<ShaderDX*>(pShader);
-
+    auto pdxShader = reinterpret_cast<VertexShaderDX*>(pShader);
     HRESULT hr = pd3dDevice->CreateInputLayout(&m_descVector[0],
                                                (UINT)m_descVector.size(),
                                                pdxShader->m_d3dBlob->GetBufferPointer(),
@@ -161,6 +160,7 @@ namespace nauEngineSDK {
 
   void
   InputLayoutDX::setLayout(void* pImmediateContext) {
-    static_cast<ID3D11DeviceContext*>(pImmediateContext)->IASetInputLayout(m_layout);
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pImmediateContext);
+    pd3dContext->IASetInputLayout(m_layout);
   }
 }

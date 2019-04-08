@@ -29,7 +29,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~InputLayoutDX() {}
+    ~InputLayoutDX() = default;
   
     void 
     setInputDescriptor();

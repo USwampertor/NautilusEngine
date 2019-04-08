@@ -10,54 +10,6 @@
 #include "nauGraphicPass.h"
 namespace nauEngineSDK {
 
-  ///DEFAULT RENDER PASS INFORMATION///
-  bool
-  GraphicPass::init(Device* pDevice) {
-    return true;
-  }
-
-  void
-  GraphicPass::setPixelShader(Device* pDevice) {
-
-  }
-
-  void
-  GraphicPass::setVertexShader(Device* pDevice) {
-
-  }
-
-  void
-  GraphicPass::setLayout(Device* pDevice) {
-
-  }
-
-  void
-  GraphicPass::setShaderSampler(Device* pDevice) {
-
-  }
-
-  bool
-  GraphicPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  bool
-  GraphicPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  void
-  GraphicPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
-
-
-  }
-
-  void
-  GraphicPass::updatePass() {
-
-
-  }
-
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   /**
    * nauGraphicPass.cpp 
@@ -83,8 +35,8 @@ namespace nauEngineSDK {
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
-    m_buffer->setVertexShader(pDevice);
-    m_buffer->setPixelShader(pDevice);
+    m_buffer->setVertexShader(pDevice->getContext());
+    m_buffer->setPixelShader(pDevice->getContext());
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
@@ -116,34 +68,44 @@ namespace nauEngineSDK {
 
   bool
     GBPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    m_pixelShader->createFromFile(pDevice, fileName.c_str(), entry.c_str());
+    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   bool
   GBPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    m_vertexShader->createFromFile(pDevice, fileName.c_str(), entry.c_str());
+    
+    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   void
   GBPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+    m_buffer->createHardware(pDevice->get(), 0);
+    
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
-    m_buffer->setVertexShader(pDevice);
-    m_buffer->setPixelShader(pDevice);
+    m_buffer->setVertexShader(pDevice->getContext());
+    m_buffer->setPixelShader(pDevice->getContext());
     m_inputLayout->setLayout(pDevice->getContext());
 
     m_renderTarget->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
+
+    for (auto model : m_orderedList) {
+      model->m_model->drawMesh();
+      //for (auto mesh : model->m_model->m_meshes) {
+      //  mesh->draw(pDevice);
+      //}
+    }
   }
 
   void
   GBPass::updatePass() {
     m_info.WorldMat.rotateY(0.001f);
+    m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.Projection), sizeof(Matrix4));
-
 
   }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/

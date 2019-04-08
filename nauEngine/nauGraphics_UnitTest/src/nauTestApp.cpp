@@ -32,7 +32,7 @@ namespace nauEngineSDK {
       ImGui::Text((obj->getGameObject()->m_id).c_str());
     }
     ImGui::End();
-
+    
     ImGui::SetNextWindowPos(ImVec2(m_api->getWindowSize().x - 100,
                                    10));
     ImGui::Begin("Hour", 0, ImGuiWindowFlags_MenuBar);
@@ -56,15 +56,15 @@ namespace nauEngineSDK {
 
     //API INITIALIZATION
     m_api = m_factory->createGraphicsAPI();
-
+    m_renderManager = new RenderManager();
     if (!m_api->init(hwnd)) return false;
-    if (!m_renderManager->init(m_api->getDevice())) return false;
     //UI INITIALIZATION
     if (!initUI(hwnd))      return false;
     
 
     m_sceneGraph.init();
 
+    if (!m_renderManager->init(m_api->getDevice())) return false;
     //Last object to initiate should be the clock
     m_timer.restart();
 

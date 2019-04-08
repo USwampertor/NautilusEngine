@@ -24,7 +24,7 @@ namespace nauEngineSDK {
                        String profile, 
                        uint32 FLAGS) {
     
-    HRESULT result = S_OK;
+    HRESULT result = E_FAIL;
     ID3DBlob* error = nullptr;
     std::ifstream file(filename.c_str());
     file.open(filename.c_str());
@@ -44,6 +44,7 @@ namespace nauEngineSDK {
     result = D3DCompile(shadersource.c_str(), shadersource.size(), filename.c_str(), 0, 0, entryPoint.c_str(), profile.c_str(), FLAGS, 0, &m_d3dBlob, &error);
     if (error)
     {
+      //throw::std::exception("Error at getting buffer");
       std::cout << "Error at getting buffer" << error->GetBufferPointer() << std::endl;
       error->Release();
       return false;
@@ -66,6 +67,9 @@ namespace nauEngineSDK {
   VertexShaderDX::createFromFile(void* pDevice, 
                                  const char* fileName, 
                                  const char* entryPoint) {
+    char dirPath[MAX_PATH];
+    GetCurrentDirectoryA(MAX_PATH, dirPath);
+    String folderPath(dirPath);
     HRESULT hr = E_FAIL;
     hr = ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
     NAU_ASSERT(m_d3dBlob != nullptr && "Vertex Shader blob is NULL");

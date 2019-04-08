@@ -77,10 +77,10 @@ namespace nauEngineSDK {
     write(void* pDevice, void* pData, SIZE_T numBytes);
 
     void
-    setVertexShader(void* pDevice, uint32 slot = 0, uint32 numBuffer = 1);
+    setVertexShader(void* pContext, uint32 slot = 0, uint32 numBuffer = 1);
 
     void
-    setPixelShader(void* pDevice, uint32 slot = 0, uint32 numBuffer = 1);
+    setPixelShader(void* pContext, uint32 slot = 0, uint32 numBuffer = 1);
 
     virtual bool
     updateSubResource(void* pContext,

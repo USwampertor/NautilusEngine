@@ -25,7 +25,7 @@
 
 namespace nauEngineSDK {
   
-  class NAU_CORE_EXPORT GraphicPass
+  class GraphicPass
   {
   public:
     /**
@@ -36,34 +36,7 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    virtual ~GraphicPass() = default;
-
-    virtual bool
-    init(Device* pDevice) = 0;
-
-    virtual void
-    setPixelShader(Device* pDevice) = 0;
-
-    virtual void
-    setVertexShader(Device* pDevice) = 0;
-
-    virtual void
-    setLayout(Device* pDevice) = 0;
-
-    virtual void
-    setShaderSampler(Device* pDevice) = 0;
-
-    virtual bool
-    loadPixelShader(Device* pDevice, String fileName, String entry) = 0;
-
-    virtual bool
-    loadVertexShader(Device* pDevice, String fileName, String entry) = 0;
-
-    virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) = 0;
-
-    virtual void
-    updatePass() = 0;
+    ~GraphicPass() = default;
 
     /**
      * Render Target View
@@ -107,39 +80,39 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_CORE_EXPORT GBPass : public GraphicPass
+  class GBPass : public GraphicPass
   {
   public:
     GBPass() = default;
 
     ~GBPass() = default;
 
-    virtual bool
-    init(Device* pDevice) override;
-    
-    virtual void
-    setPixelShader(Device* pDevice) override;
-    
-    virtual void
-    setVertexShader(Device* pDevice) override;
-    
-    virtual void
-    setLayout(Device* pDevice) override;
-    
-    virtual void
-    setShaderSampler(Device* pDevice) override;
-    
-    virtual bool
-    loadPixelShader(Device* pDevice, String fileName, String entry) override;
-    
-    virtual bool
-    loadVertexShader(Device* pDevice, String fileName, String entry) override;
-    
-    virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    bool
+    init(Device* pDevice);
 
-    virtual void
-    updatePass() override;
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+    updatePass();
 
     GBPassInfo m_info;
   };
@@ -176,7 +149,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 
@@ -212,7 +185,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 
@@ -248,7 +221,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 
@@ -284,7 +257,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 
@@ -320,7 +293,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 
@@ -356,7 +329,7 @@ namespace nauEngineSDK {
     render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
 
     void
-      updatePass();
+    updatePass();
 
   };
 

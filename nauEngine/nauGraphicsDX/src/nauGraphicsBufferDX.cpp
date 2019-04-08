@@ -137,14 +137,14 @@ namespace nauEngineSDK {
   }
 
   void
-  ConstantBufferDX::setVertexShader(void* pDevice, uint32 slot, uint32 numBuffer) {
-    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+  ConstantBufferDX::setVertexShader(void* pContext, uint32 slot, uint32 numBuffer) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pContext);
     pDC->VSSetConstantBuffers(slot, numBuffer, &m_pBuffer);
   }
 
   void
-  ConstantBufferDX::setPixelShader(void* pDevice, uint32 slot, uint32 numBuffer) {
-    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pDevice);
+  ConstantBufferDX::setPixelShader(void* pContext, uint32 slot, uint32 numBuffer) {
+    auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pContext);
     pDC->PSSetConstantBuffers(slot, numBuffer, &m_pBuffer);
   }
 
@@ -153,9 +153,8 @@ namespace nauEngineSDK {
                                       uint32 subresource, 
                                       uint32 row, 
                                       uint32 depth) {
-
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pContext);
-    pDC->UpdateSubresource(m_pBuffer, subresource, nullptr, &m_constantData[0], row, depth);
+    pDC->UpdateSubresource(m_pBuffer, subresource, nullptr, &m_constantData, row, depth);
     return true;
   }
 

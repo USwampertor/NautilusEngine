@@ -160,7 +160,7 @@ namespace nauEngineSDK {
 
   Shader*
   DeviceDX::createPixelShader() {
-    return new PixelShaderDX();
+    return nau_new<PixelShaderDX>();
   }
 
   Texture*
