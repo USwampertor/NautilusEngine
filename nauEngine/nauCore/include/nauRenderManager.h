@@ -39,8 +39,26 @@ namespace nauEngineSDK {
      */
     virtual ~RenderManager() = default;
 
+    /**
+     * @brief initiates the RenderManager
+     * @param Device as long as I cant get the global instance
+     * @return 
+     *
+     */
+    bool
+    init(GraphicsAPI* api);
+
+    /**
+     * @brief Manages the rendering and renders by pass
+     * @param meshes to render, Graphics API
+     * @return 
+     *
+     */
     void
-    render(Vector<MeshComponent> m_orderedList, GraphicsAPI* api, CoreFactory* factory);
+    render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* api);
+
+    void
+    addPass(GraphicPass* pass);
 
    public:
      Vector<GraphicPass*> m_passes;

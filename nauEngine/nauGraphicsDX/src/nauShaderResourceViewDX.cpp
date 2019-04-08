@@ -20,9 +20,7 @@ namespace nauEngineSDK {
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     auto pd3dTexture2D = reinterpret_cast<ID3D11Texture2D*>(texture);
 
-    hr = pd3dDevice->CreateShaderResourceView(pd3dTexture2D,
-                                              nullptr,
-                                              &m_shaderResourceView);
+    hr = pd3dDevice->CreateShaderResourceView(pd3dTexture2D, nullptr, &m_shaderResourceView);
     if (FAILED(hr)) {
       std::cout << "Failed to create shader resource View" << std::endl;
       return false;

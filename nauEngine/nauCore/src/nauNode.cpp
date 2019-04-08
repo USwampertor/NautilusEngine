@@ -41,13 +41,33 @@ namespace nauEngineSDK {
     m_children.push_back(node);
   }
 
+  void
+  Node::addChildAt(Node* node, uint32 at) {
+
+    if (at > m_children.size()) {
+      m_children.push_back(node);
+      return;
+    }
+    m_children.insert(m_children.begin() + at, node);
+  }
 
   Node*
   Node::getChild(int pos) {
     return m_children[pos];
   }
 
-
+  Vector<Node*>
+  Node::getAllChildren() {
+    Vector<Node*> allChildren;
+    for (auto child : m_children) {
+      allChildren.push_back(child);
+      Vector<Node*> thisChildChildren = child->getAllChildren();
+      allChildren.insert(allChildren.end(), 
+                         thisChildChildren.begin(), 
+                          thisChildChildren.end());
+    }
+    return allChildren;
+  }
   
 }
 

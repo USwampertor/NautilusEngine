@@ -27,7 +27,6 @@
     <ClInclude Include="include\nauConstantBufferMatrix.h" />
     <ClInclude Include="include\nauCoreFactory.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
-    <ClInclude Include="include\nauDepthStencilView.h" />
     <ClInclude Include="include\nauDevice.h" />
     <ClInclude Include="include\nauGameObject.h" />
     <ClInclude Include="include\nauGraphicPass.h" />
@@ -35,7 +34,6 @@
     <ClInclude Include="include\nauGraphicsBuffer.h" />
     <ClInclude Include="include\nauInputLayout.h" />
     <ClInclude Include="include\nauInputManager.h" />
-    <ClInclude Include="include\nauMaterial.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
     <ClInclude Include="include\nauNode.h" />
@@ -60,13 +58,11 @@
     <ClCompile Include="src\nauClock.cpp" />
     <ClCompile Include="src\nauComponent.cpp" />
     <ClCompile Include="src\nauCoreFactory.cpp" />
-    <ClCompile Include="src\nauDevice.cpp" />
     <ClCompile Include="src\nauGameObject.cpp" />
     <ClCompile Include="src\nauGraphicPass.cpp" />
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauInputManager.cpp" />
-    <ClCompile Include="src\nauMaterial.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauNode.cpp" />

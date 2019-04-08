@@ -15,6 +15,7 @@
 #include <nauGraphicsAPI.h>
 #include <nauTimer.h>
 #include <nauRenderManager.h>
+#include <nauSceneGraph.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
@@ -97,6 +98,8 @@ namespace nauEngineSDK {
     Timer m_timer;
 
     CoreFactory* m_factory = nullptr;
+
+    SceneGraph m_sceneGraph;
   };
 
 }

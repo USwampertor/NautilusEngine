@@ -58,7 +58,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief Loads a model from given path 
-     * @param String filePath
+     * @param String filePath 
      * @return 
      *
      */

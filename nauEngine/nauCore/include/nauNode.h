@@ -15,7 +15,7 @@
 
 
 namespace nauEngineSDK {
-  class Node
+  class NAU_CORE_EXPORT Node
   {
   public:
   
@@ -76,6 +76,16 @@ namespace nauEngineSDK {
     addChild(Node* node);
 
     /**
+     * @brief Adds a child at a given position in the vector
+     * @param new Node and position in the list
+     * @return 
+     *
+     */
+    void
+    addChildAt(Node* node, uint32 at);
+
+
+    /**
      * @brief Gets the children at a given position
      * @param the position of the vector
      * @return the node at the given position
@@ -83,6 +93,10 @@ namespace nauEngineSDK {
      */
     Node*
     getChild(int pos);
+
+
+    Vector<Node*>
+    getAllChildren();
 
    private:
     /**

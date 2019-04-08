@@ -66,8 +66,7 @@ namespace nauEngineSDK {
     IndexBuffer* m_indexBuffer = nullptr;
 
     /**
-     * Texture of mesh
-     * This is temporal, it should have a material instead
+     * Material embedded in the mesh
      */
     Material* m_material = nullptr;
 

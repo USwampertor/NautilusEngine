@@ -63,8 +63,8 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
   VertexShaderDX::createFromFile(void* pDevice, 
-                                    const char* fileName, 
-                                    const char* entryPoint) {
+                                 const char* fileName, 
+                                 const char* entryPoint) {
     HRESULT hr = E_FAIL;
     hr = ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
     NAU_ASSERT(m_d3dBlob != nullptr && "Vertex Shader blob is NULL");

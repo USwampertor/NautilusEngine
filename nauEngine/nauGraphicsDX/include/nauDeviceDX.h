@@ -29,30 +29,30 @@ namespace nauEngineSDK {
      */
     ~DeviceDX() = default;
     
-    bool 
+    virtual bool 
     initializeDevice(void* scrHandler) override;
   
-    void
+    virtual void
     onRender() override;
 
-    void
+    virtual void
     draw(int size, int topology = 0, int startIndex = 0, int BaseVertex = 0) override;
 
-    bool
+    virtual bool
     createBuffer() override;
 
-    bool
+    virtual bool
     createDepthStencilView() override;
 
     ///GETTERS///
 
-    void*
+    virtual void*
     get() override;
 
-    void*
+    virtual void*
     getContext() override;
 
-    void*
+    virtual void*
     getSwapChain() override;
     ///EVENTS///
 
@@ -63,7 +63,7 @@ namespace nauEngineSDK {
      * @return a pointer Vertex Shader
      *
      */
-    Shader*
+    virtual Shader*
     createVertexShader() override;
 
     /**
@@ -72,7 +72,7 @@ namespace nauEngineSDK {
      * @return a pointer to Pixel Shader
      *
      */
-    Shader*
+    virtual Shader*
     createPixelShader() override;
 
     /**
@@ -81,7 +81,7 @@ namespace nauEngineSDK {
      * @return a Texture
      *
      */
-    Texture*
+    virtual Texture*
     createTexture() override;
 
     /**
@@ -93,7 +93,7 @@ namespace nauEngineSDK {
     /**
      * Creates a ViewPort
      */
-    ViewPort*
+    virtual ViewPort*
     createViewPort() override;
 
     /**
@@ -102,7 +102,7 @@ namespace nauEngineSDK {
      * @return a Sampler State
      *
      */
-    SamplerState*
+    virtual SamplerState*
     createSamplerState() override;
 
     /**
@@ -111,7 +111,7 @@ namespace nauEngineSDK {
      * @return a Depth Stencil
      *
      */
-    DepthStencil*
+    virtual DepthStencil*
     createDepthStencil() override;
 
     /**
@@ -120,7 +120,7 @@ namespace nauEngineSDK {
      * @return a vertex Buffer
      *
      */
-    VertexBuffer*
+    virtual VertexBuffer*
     createVertexBuffer() override;
 
     /**
@@ -129,7 +129,7 @@ namespace nauEngineSDK {
      * @return an Index Buffer
      *
      */
-    IndexBuffer*
+    virtual IndexBuffer*
     createIndexBuffer() override;
 
     /**
@@ -138,9 +138,11 @@ namespace nauEngineSDK {
      * @return a Constant Buffer
      *
      */
-    ConstantBuffer*
+    virtual ConstantBuffer*
     createConstantBuffer() override;
 
+    virtual ShaderResourceView*
+    createShaderResourceView() override;
   public:
 
     /**

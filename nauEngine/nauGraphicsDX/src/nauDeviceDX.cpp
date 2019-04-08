@@ -17,7 +17,7 @@
 #include "nauSamplerStateDX.h"
 #include "nauDepthStencilDX.h"
 #include "nauGraphicsBufferDX.h"
-
+#include "nauShaderResourceViewDX.h"
 
 namespace nauEngineSDK {
   bool
@@ -180,5 +180,8 @@ namespace nauEngineSDK {
     return new ConstantBufferDX();
   }
 
-
+  ShaderResourceView*
+  DeviceDX::createShaderResourceView() {
+    return new ShaderResourceViewDX();
+  }
 }

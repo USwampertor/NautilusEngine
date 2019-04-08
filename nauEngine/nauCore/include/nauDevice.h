@@ -23,6 +23,8 @@ namespace nauEngineSDK {
   class VertexBuffer;
   class ConstantBuffer;
   class SamplerState;
+  class ShaderResourceView;
+  class DepthStencil;
   ///
 
   /**
@@ -197,6 +199,14 @@ namespace nauEngineSDK {
     virtual ConstantBuffer*
     createConstantBuffer() = 0;
 
+    /**
+     * @brief Creates a shader resource view
+     * @param 
+     * @return a shaderresource view in the given API
+     *
+     */
+    virtual ShaderResourceView*
+    createShaderResourceView() = 0;
 
     /**
      * Member declaration

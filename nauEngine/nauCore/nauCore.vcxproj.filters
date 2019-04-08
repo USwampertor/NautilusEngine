@@ -7,9 +7,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\nauDepthStencilView.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauDevice.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -70,9 +67,6 @@
     <ClInclude Include="include\nauCameraManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauMaterial.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauComponent.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -129,9 +123,6 @@
     <ClCompile Include="src\nauCameraManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauMaterial.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -145,9 +136,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauGraphicsAPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauCoreFactory.cpp">

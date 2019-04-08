@@ -31,7 +31,7 @@ namespace nauEngineSDK {
    * The system to control how the textures are loaded
    */
   namespace MATERIAL_FLAG {
-    enum E {
+    enum NAU_CORE_EXPORT E {
       BASECOLOR         = 0,              // Base Color (Albedo) Lightning
       NORMAL            = 1,              // Normal Mapping
       EMISSIVE          = 2,              // Emissive Lightning
@@ -52,7 +52,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	A collider component for a box
     */
-  class Component
+  class NAU_CORE_EXPORT Component
   {
    public:
     /**
@@ -84,7 +84,7 @@ namespace nauEngineSDK {
    * Sample usage:
    *   Material.baseColor
    */
-  class Material : public Component
+  class NAU_CORE_EXPORT Material : public Component
   {
   public:
     /**
@@ -104,7 +104,7 @@ namespace nauEngineSDK {
      *
      */
     Texture*
-    getMaterial(MATERIAL_FLAG::E material = MATERIAL_FLAG::DEFAULT);
+    getMaterial(MATERIAL_FLAG::E material);
 
     /**
      * @brief Sets a Texture of the Material, if the object already has one, it

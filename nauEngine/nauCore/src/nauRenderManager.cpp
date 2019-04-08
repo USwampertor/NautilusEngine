@@ -12,11 +12,23 @@
 
 namespace nauEngineSDK {
 
-  void
-  RenderManager::render(Vector<MeshComponent> m_orderedList, GraphicsAPI* api, CoreFactory* factory) {
-    for (auto pass : m_passes) {
+  bool
+  RenderManager::init(GraphicsAPI* api) {
 
-    }
+
+    return true;
+  }
+
+  void
+  RenderManager::render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* api) {
+    
+    
+    
+  }
+
+  void
+  RenderManager::addPass(GraphicPass* pass) {
+
   }
 
 }

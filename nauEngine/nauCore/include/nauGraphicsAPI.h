@@ -10,7 +10,10 @@
 
 #pragma once
 #include "nauPrerequisitesCore.h"
+
 #include <nauModule.h>
+#include <nauVector2.h>
+
 #include "nauDevice.h"
 
 namespace nauEngineSDK {
@@ -106,6 +109,9 @@ namespace nauEngineSDK {
      */
     virtual void
     clear() = 0;
+
+    virtual Vector2
+    getWindowSize() = 0;
 
     virtual void
     onStartUp() override {

@@ -13,6 +13,7 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauDepthStencil.h"
+#include "nauDevice.h"
 #include "nauGraphicsBuffer.h"
 #include "nauInputLayout.h"
 #include "nauTexture.h"
@@ -25,7 +26,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 
     */
-  class GraphicPass
+  class NAU_CORE_EXPORT GraphicPass
   {
   public:
     /**
@@ -39,7 +40,25 @@ namespace nauEngineSDK {
     ~GraphicPass() = default;
 
     bool
-    init();
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
 
     /**
      * DepthStencil object reference
@@ -61,6 +80,35 @@ namespace nauEngineSDK {
      */
     InputLayout* m_inputLayout;
 
+    /**
+     * Sampler State
+     */
+    SamplerState* m_sampler;
+
+    /**
+     * TextureObjects
+     */
+    List<Texture*> m_textures;
+
+  };
+
+
+   /**
+    * GBPass
+    * Description:
+    *   Render pass specific for graphic buffer implementation
+    * Sample usage:
+    *   gets all the objects and renders them
+    */
+  class NAU_CORE_EXPORT GBPass : public GraphicPass
+  {
+
+    GBPass() = default;
+
+    ~GBPass() = default;
+
+    //void
+    //init(Device* pDevice) override;
   };
 
 }

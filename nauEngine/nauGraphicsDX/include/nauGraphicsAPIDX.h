@@ -87,6 +87,9 @@ namespace nauEngineSDK {
     virtual void
     clear() override;
 
+    virtual Vector2
+    getWindowSize() override;
+
    public:
 
 
@@ -99,7 +102,7 @@ namespace nauEngineSDK {
     /**
      * Test GameObject
      */
-    GameObject m_testModel;
+    GameObject m_testGameObject;
 
     /**
      * Vertex Shader

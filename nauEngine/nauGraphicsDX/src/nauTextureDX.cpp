@@ -22,9 +22,9 @@ namespace nauEngineSDK {
     
     D3D11_TEXTURE2D_DESC descTexture;
     NAUTEXTUREDESCRIPTOR nauDesc;
-    int byteperpixel = 0;
-    int x = 0;
-    int y = 0;
+    int32 byteperpixel = 0;
+    int32 x = 0;
+    int32 y = 0;
     auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
     
     HRESULT hr = S_OK;
@@ -80,11 +80,9 @@ namespace nauEngineSDK {
     }
     stbi_image_free(m_fileData);
 
+    m_shaderResourceView = pDevice->createShaderResourceView();
 
-
-    m_shaderResourceView->createShaderResourceView(pDevice, 
-                                                   m_pd3dTexture2D, 
-                                                   nauDesc);
+    m_shaderResourceView->createShaderResourceView(pDevice, m_pd3dTexture2D, nauDesc);
     m_shaderResourceView->setShaderResourceView(pDevice);
 
     return true;
@@ -92,6 +90,7 @@ namespace nauEngineSDK {
 
   bool
   TextureDX::loadFromMemory(Device* pDevice, Vector<char> buffer) {
+
     return true;
   }
 

@@ -103,6 +103,12 @@ namespace nauEngineSDK {
         pvertex.m_u = 0.0f; pvertex.m_v = 0.0f;
       }
 
+      //If it didnt have normals, but did have tangent and binormals, we calculate normals
+      if (!mesh->HasNormals() && mesh->HasTangentsAndBitangents()) {
+
+      }
+
+
       m->m_vertexBuffer->add(pvertex);
     }
 
@@ -115,6 +121,7 @@ namespace nauEngineSDK {
 
     
     for (uint32 l = 0; l < mesh->mMaterialIndex; ++l) {
+
       //m->m_material = new Material();
       //aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
       //Texture* texture = m_device->createTexture();

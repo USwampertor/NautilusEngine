@@ -40,13 +40,17 @@ namespace nauEngineSDK {
     clearView(Device* pDevice) override;
 
     virtual void*
-    get() override;
+    getView() override;
 
     /**
      * Depth stencil view
      */
-    ID3D11DepthStencilView* m_pDepthStencil = nullptr;
-    ID3D11Texture2D* m_texture = nullptr;
+    ID3D11DepthStencilView* m_pDepthStencilView = nullptr;
+
+    /**
+     * Texture of the depth stencil
+     */
+    ID3D11Texture2D* m_pDepthStencilTexture = nullptr;
   };
   
 }

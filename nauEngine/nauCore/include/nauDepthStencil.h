@@ -61,7 +61,7 @@ namespace nauEngineSDK {
      * Gets the depth stencil
      */
     virtual void*
-    get() = 0;
+    getView() = 0;
 
     /**
      * Member declaration
@@ -71,7 +71,7 @@ namespace nauEngineSDK {
     /**
      * defines if it should render things based in a depth
      */
-    bool m_depthEnable;
+    bool m_depthEnable =  true;
 
     /**
      * Determines if the whole screen is drawing or not
