@@ -47,7 +47,7 @@ namespace nauEngineSDK {
      *
      */
     bool
-    init(GraphicsAPI* api);
+    init(Device* pDevice);
 
     /**
      * @brief Manages the rendering and renders by pass
@@ -61,12 +61,25 @@ namespace nauEngineSDK {
     void
     addPass(GraphicPass* pass);
 
+    /**
+     * @brief Creates a ScreenAligned
+     * @param 
+     * @return 
+     *
+     */
     Vector<MeshComponent*>
-    createScreenAlignedQuad();
+    createScreenAlignedQuad(Device* pDevice);
+
+    void
+    update();
 
    public:
     
+
+
     Map<String, Texture*> m_rendereableTextures;
+
+    ///Basic Stuff
 
     float m_fov;
 
@@ -76,11 +89,29 @@ namespace nauEngineSDK {
 
     float m_light;
 
+    ///Matrices
+    
     Camera m_mainCamera;
 
     Matrix4 m_world;
 
     Matrix4 m_projection;
+
+    ///Rendering Passes
+
+    GBPass m_gbPass;
+
+    SSAOPass m_ssaoPass;
+
+    ReductionPass m_reductionPass;
+
+    BlurPass m_blurPass;
+
+    LightningPass m_lightningPass;
+
+    LuminancePass m_luminancePass;
+
+    FinalPass m_finalPass;
 
   };
   

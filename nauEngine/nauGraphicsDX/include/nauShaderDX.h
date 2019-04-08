@@ -38,7 +38,7 @@ namespace nauEngineSDK {
     compile(String filename, String entryPoint, String profile, uint32 FLAGS) override;
 
     virtual void*
-    getData() = 0;
+    getData() override;
 
     virtual void
     set(Device* pDevice) = 0;
@@ -104,8 +104,8 @@ namespace nauEngineSDK {
       }
     }
 
-    void
-    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
 
     virtual void
     set(Device* pDevice) override;
@@ -129,10 +129,10 @@ namespace nauEngineSDK {
     /**
      * Default Constructor
      */
-    ~ComputeShaderDX() {};
+    ~ComputeShaderDX() = default;
 
-    void
-    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
 
     virtual void
     set(Device* pDevice) override;
@@ -157,10 +157,10 @@ namespace nauEngineSDK {
     /**
      * Default Constructor
      */
-    ~GeometryShaderDX() {};
+    ~GeometryShaderDX() = default;
 
-    void
-    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
   
     virtual void
     set(Device* pDevice) override;
@@ -182,10 +182,10 @@ namespace nauEngineSDK {
     /**
      * Default Constructor
      */
-    ~TextureShaderDX() {};
+    ~TextureShaderDX() = default;
 
-    void
-    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
     
     virtual void
     set(Device* pDevice) override;

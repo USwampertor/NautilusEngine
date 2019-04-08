@@ -103,6 +103,9 @@
     <ClInclude Include="include\nauTextureDescriptor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauPassPerInfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauGraphicsBuffer.cpp">

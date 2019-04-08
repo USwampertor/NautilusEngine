@@ -22,10 +22,12 @@ namespace nauEngineSDK {
   class IndexBuffer;
   class VertexBuffer;
   class ConstantBuffer;
+  class RenderTargetView;
   class SamplerState;
   class ShaderResourceView;
   class DepthStencil;
   class SwapChain;
+  class RasterizerState;
   ///
 
   /**
@@ -219,6 +221,24 @@ namespace nauEngineSDK {
     createSwapChain() = 0;
 
     /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual RenderTargetView*
+    createRenderTargetView() = 0;
+    
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual RasterizerState*
+    createRasterizer() = 0;
+
+    /**
      * @brief gets the backBuffer from the swapChain
      * @param 
      * @return 
@@ -226,6 +246,8 @@ namespace nauEngineSDK {
      */
     virtual Texture*
     getBackBuffer() = 0;
+
+
 
     /**
      * Member declaration

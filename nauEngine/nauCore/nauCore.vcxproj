@@ -37,6 +37,7 @@
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
     <ClInclude Include="include\nauNode.h" />
+    <ClInclude Include="include\nauPassPerInfo.h" />
     <ClInclude Include="include\nauPrerequisitesCore.h" />
     <ClInclude Include="include\nauRasterizerState.h" />
     <ClInclude Include="include\nauRenderManager.h" />

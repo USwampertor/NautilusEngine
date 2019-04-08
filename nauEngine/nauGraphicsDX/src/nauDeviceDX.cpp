@@ -12,6 +12,8 @@
 #include "nauDepthStencilDX.h"
 #include "nauGraphicsBufferDX.h"
 #include "nauInputLayoutDX.h"
+#include "nauRasterizerStateDX.h"
+#include "nauRenderTargetViewDX.h"
 #include "nauSamplerStateDX.h"
 #include "nauShaderDX.h"
 #include "nauShaderResourceViewDX.h"
@@ -209,5 +211,15 @@ namespace nauEngineSDK {
   SwapChain*
   DeviceDX::createSwapChain() {
     return new SwapChainDX();
+  }
+
+  RenderTargetView*
+  DeviceDX::createRenderTargetView() {
+    return new RenderTargetViewDX();
+  }
+
+  RasterizerState*
+  DeviceDX::createRasterizer() {
+    return new RasterizerStateDX();
   }
 }

@@ -28,7 +28,7 @@ namespace nauEngineSDK {
     /**
      * default destructor
      */
-    ~SamplerStateDX() {}
+    ~SamplerStateDX() = default;
 
     virtual bool
     createShaderSampler(Device* pDevice) override;

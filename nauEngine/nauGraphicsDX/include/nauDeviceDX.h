@@ -96,6 +96,13 @@ namespace nauEngineSDK {
 
     virtual SwapChain*
     createSwapChain() override;
+
+    virtual RenderTargetView*
+    createRenderTargetView() override;
+
+    virtual RasterizerState*
+    createRasterizer() override;
+
   public:
 
     /**

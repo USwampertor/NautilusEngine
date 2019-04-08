@@ -35,19 +35,6 @@ namespace nauEngineSDK {
       return false;
     }
     
-    //CreateRenderTargetView
-    if (!m_renderTarget.createRenderTargetView(m_device, m_device->getBackBuffer())) {
-      std::cout << "Failed to create Render Target View... \n";
-      return false;
-    }
-    //CreateDepthStencilTexture descriptor
-    if (!m_depthStencil.createDepthStencil(*m_device, 
-                                           m_device->m_width, 
-                                           m_device->m_height)) {
-      std::cout << "Failed to create Depth Stencil... \n";
-      return false;
-    }
-
     if (!m_viewPort.createViewPort(static_cast<float>(m_device->m_width),
                                    static_cast<float>(m_device->m_height),
                                    1.0f,
@@ -57,30 +44,8 @@ namespace nauEngineSDK {
     }
     m_viewPort.setViewPort(m_device->getContext());
 
-
-    m_vertexShader.createFromFile(m_device->get(), "resources/VS.hlsl", "ColorVertexShader");
-    m_pixelShader.createFromFile(m_device->get(), "resources/PS.hlsl", "ColorPixelShader");
-
-    m_inputLayout.setInputDescriptor();
-    m_inputLayout.createInputBuffer(m_device, &m_vertexShader);
-
-    m_samplerState.createShaderSampler(m_device);
-    m_renderTarget.set(*m_device, m_depthStencil);
-
     ///////////// This is for testing the renderer
-    m_fov = Math::degToRad(90.0f);
-    m_world = Matrix4::IDENTITY;
-
-    m_camera.m_objective.setValues(0.0f, 0.0f, 0.0f);
-    m_camera.m_position.setValues(0.0f, 0.0f, -10.0f);
-    m_camera.m_up = Vector3::UP;
-
-    m_camera.createView();
-
-    m_projection.perspective(m_fov,
-                             static_cast<float>(m_device->m_width / m_device->m_height),
-                             m_screenNear,
-                             m_screenDepth);
+    
 
     //m_meshList.setDevice(&m_device);
 
@@ -150,21 +115,6 @@ namespace nauEngineSDK {
     
   }
 
-  void
-  GraphicsAPIDX::setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) {
-
-    auto devContext = reinterpret_cast<ID3D11DeviceContext*>(pDeviceContext);
-
-    if      (SHADERFLAGS::VERTEX == flags) {
-      auto vertexShader = reinterpret_cast<ID3D11VertexShader*>(pShader);
-      devContext->VSSetShader(vertexShader, 0, 0);
-    }
-
-    else if (SHADERFLAGS::PIXEL == flags) {
-      auto pixelShader = reinterpret_cast<ID3D11PixelShader*>(pShader);
-      devContext->PSSetShader( pixelShader, 0, 0);
-    }
-  }
 
   Device*
   GraphicsAPIDX::getDevice() {

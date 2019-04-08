@@ -16,18 +16,13 @@
 #include "nauDevice.h"
 #include "nauGraphicsBuffer.h"
 #include "nauInputLayout.h"
-#include "nauTexture.h"
+#include "nauPassPerInfo.h"
 #include "nauRenderTargetView.h"
+#include "nauRasterizerState.h"
+#include "nauTexture.h"
 
 namespace nauEngineSDK {
   
-  /**
-   * GraphicsPass
-   * Description:
-   *   Sets what is going to happen in a pass 
-   * Sample usage:
-   * 
-   */
   class NAU_CORE_EXPORT GraphicPass
   {
   public:
@@ -65,7 +60,10 @@ namespace nauEngineSDK {
     void
     render();
 
-
+    /**
+     * Render Target View
+     */
+    RenderTargetView* m_renderTarget;
 
     /**
      * DepthStencil object reference
@@ -75,12 +73,12 @@ namespace nauEngineSDK {
     /**
      * Pixel Shader object
      */
-    PixelShader* m_pixelShader;
+    Shader* m_pixelShader;
 
     /**
      * Vertex Shader
      */
-    VertexShader* m_vertexShader;
+    Shader* m_vertexShader;
 
     /**
      * InputLayout
@@ -98,23 +96,15 @@ namespace nauEngineSDK {
     ConstantBuffer* m_buffer;
 
     /**
-     * TextureObjects
+     * Rasterizer State
      */
-    Map<String, RenderTargetView*> m_renderTargets;
+    RasterizerState* m_rasterizer;
 
   };
 
-
-   /**
-    * GBPass
-    * Description:
-    *   Render pass specific for graphic buffer implementation
-    * Sample usage:
-    *   gets all the objects and renders them
-    */
   class NAU_CORE_EXPORT GBPass : public GraphicPass
   {
-
+  public:
     GBPass() = default;
 
     ~GBPass() = default;
@@ -142,11 +132,13 @@ namespace nauEngineSDK {
     
     void
     render();
+
+    GBPassInfo m_info;
   };
 
   class NAU_CORE_EXPORT SSAOPass : public GraphicPass
   {
-
+  public:
     SSAOPass() = default;
 
     ~SSAOPass() = default;
@@ -178,7 +170,7 @@ namespace nauEngineSDK {
 
   class NAU_CORE_EXPORT ReductionPass : public GraphicPass
   {
-
+  public:
     ReductionPass() = default;
 
     ~ReductionPass() = default;
@@ -210,7 +202,7 @@ namespace nauEngineSDK {
 
   class NAU_CORE_EXPORT BlurPass : public GraphicPass
   {
-
+  public:
     BlurPass() = default;
 
     ~BlurPass() = default;
@@ -240,12 +232,12 @@ namespace nauEngineSDK {
     render();
   };
 
-  class NAU_CORE_EXPORT LIghtning : public GraphicPass
+  class NAU_CORE_EXPORT LightningPass : public GraphicPass
   {
+  public:
+    LightningPass() = default;
 
-    LIghtning() = default;
-
-    ~LIghtning() = default;
+    ~LightningPass() = default;
 
     bool
     init(Device* pDevice);
@@ -272,12 +264,44 @@ namespace nauEngineSDK {
     render();
   };
 
-  class NAU_CORE_EXPORT LIghtning : public GraphicPass
+  class NAU_CORE_EXPORT LuminancePass : public GraphicPass
   {
+  public:
+    LuminancePass() = default;
 
-    LIghtning() = default;
+    ~LuminancePass() = default;
 
-    ~LIghtning() = default;
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
+  class NAU_CORE_EXPORT FinalPass : public GraphicPass
+  {
+   public:
+    FinalPass() = default;
+
+    ~FinalPass() = default;
 
     bool
     init(Device* pDevice);
