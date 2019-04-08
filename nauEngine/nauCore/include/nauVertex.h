@@ -28,13 +28,12 @@ namespace nauEngineSDK {
   struct Vertex
   {
     Vertex() {
-      m_position = Vector4::ONEW;
-      m_color = Vector4::ZERO;
-      m_normal = Vector4::ONEW;
-      m_tangent = Vector3::ZERO;
-      m_binormal = Vector3::ZERO;
-      m_u = 0.0f;
-      m_v = 0.0f;
+      m_position  = Vector4::ONEW;
+      m_color     = Vector4::ZERO;
+      m_normal    = Vector4::ONEW;
+      m_uv        = Vector2::ZERO;
+      m_tangent   = Vector3::ZERO;
+      m_binormal  = Vector3::ZERO;
     }
 
 
@@ -42,8 +41,7 @@ namespace nauEngineSDK {
       : m_position(position),
         m_color(color),
         m_normal(normal),
-        m_u(uv.x),
-        m_v(uv.y) {}
+        m_uv(uv) {}
 
     /**
      * position of the vertex
@@ -63,12 +61,7 @@ namespace nauEngineSDK {
     /**
      * U (UV's) component of the vertex
      */
-    float m_u;
-
-    /**
-     * V (UV's) component of the vertex
-     */
-    float m_v;
+    Vector2 m_uv;
 
     /**
      * Tangent
@@ -76,7 +69,7 @@ namespace nauEngineSDK {
     Vector3 m_tangent;
 
     /**
-     * Binormal Component
+     * Bi normal Component
      */
     Vector3 m_binormal;
   };

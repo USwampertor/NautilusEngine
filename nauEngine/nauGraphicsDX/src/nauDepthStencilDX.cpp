@@ -86,9 +86,30 @@ namespace nauEngineSDK {
   }
 
   bool
-  DepthStencilDX::createState() {
+  DepthStencilDX::createState(Device* pDevice) {
+
+
+    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
+
+    HRESULT hr = E_FAIL;
+
     D3D11_DEPTH_STENCIL_DESC stencilDesc;
     memset(&stencilDesc, 0, sizeof(stencilDesc));
+
+    stencilDesc.BackFace;
+    stencilDesc.DepthEnable = true;
+    stencilDesc.DepthFunc;
+    stencilDesc.DepthWriteMask;
+    stencilDesc.FrontFace;
+    stencilDesc.StencilEnable;
+    stencilDesc.StencilReadMask;
+    stencilDesc.StencilWriteMask;
+
+    hr = pd3dDevice->CreateDepthStencilState(&stencilDesc, &m_pDepthStencilState);
+      if (FAILED(hr)) {
+        return false;
+    }
+
     return true;
   }
 

@@ -71,26 +71,22 @@ namespace nauEngineSDK {
     Vertex pVertex;
     pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
     pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
-    pVertex.m_u = 0.0f;
-    pVertex.m_v = 1.0f;
+    pVertex.m_uv = { 0.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { -1.0f,1.0f,0.0f,1.0f };
     pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
-    pVertex.m_u = 0.0f;
-    pVertex.m_v = 0.0f;
+    pVertex.m_uv = { 1.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { 1.0f,1.0f,0.0f,1.0f };
     pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
-    pVertex.m_u = 1.0f;
-    pVertex.m_v = 0.0f;
+    pVertex.m_uv = { 1.0f, 0.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { 1.0f,-1.0f,0.0f,1.0f };
     pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
-    pVertex.m_u = 1.0f;
-    pVertex.m_v = 1.0f;
+    pVertex.m_uv = { 1.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
     m->m_indexBuffer->add(0);

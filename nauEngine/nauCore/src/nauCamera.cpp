@@ -102,7 +102,7 @@ namespace nauEngineSDK {
 
     //We check if the objet is not in the same position as the camera
     //if it is, we just tell him its looking forward
-    if (!Vector3::isSame(m_position, m_objective)) { m_objective.z = m_position.z + 1.0f; }
+    if (Vector3::isSame(m_position, m_objective)) { m_objective.z = m_position.z + 1.0f; }
     m_view = Matrix4::viewLookAt(m_position, m_objective, m_up);
     m_dirty = false;
   }

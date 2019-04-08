@@ -78,7 +78,7 @@ namespace nauEngineSDK {
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
     com->m_model->setDevice(m_api->getDevice());
-    com->m_model->loadFromFile("resources/Vela.FBX");
+    com->m_model->loadFromFile("resources/teapot.obj");
     //Material* m = new Material();
     //Texture* pTexture = m_api->getDevice()->createTexture();
     //pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());

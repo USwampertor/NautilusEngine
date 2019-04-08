@@ -154,7 +154,12 @@ namespace nauEngineSDK {
                                       uint32 row, 
                                       uint32 depth) {
     auto pDC = reinterpret_cast<ID3D11DeviceContext*>(pContext);
-    pDC->UpdateSubresource(m_pBuffer, subresource, nullptr, &m_constantData, row, depth);
+    pDC->UpdateSubresource(m_pBuffer, 
+                           subresource, 
+                           nullptr, 
+                           &m_constantData[0], 
+                           m_constantData.size(), 
+                           depth); 
     return true;
   }
 

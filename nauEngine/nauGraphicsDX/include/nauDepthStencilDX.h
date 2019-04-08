@@ -46,7 +46,7 @@ namespace nauEngineSDK {
     createView() override;
 
     virtual bool
-    createState() override;
+    createState(Device* pDevice) override;
 
 
     /**

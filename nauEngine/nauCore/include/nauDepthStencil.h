@@ -73,7 +73,7 @@ namespace nauEngineSDK {
      * Creates the depth stencil state Object
      */
     virtual bool
-    createState() = 0;
+    createState(Device* pDevice) = 0;
 
     /**
      * Member declaration

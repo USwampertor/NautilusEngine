@@ -40,6 +40,7 @@ namespace nauEngineSDK {
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
+    //if (!m_depthStencil->createState(pDevice)) return false;
     m_renderTarget->set(*pDevice, *m_depthStencil);
     m_sampler->createSampler(pDevice);
     m_buffer->clear();
@@ -100,15 +101,12 @@ namespace nauEngineSDK {
 
     for (auto model : m_orderedList) {
       model->m_model->drawMesh();
-      //for (auto mesh : model->m_model->m_meshes) {
-      //  mesh->draw(pDevice);
-      //}
     }
   }
 
   void
   GBPass::updatePass() {
-    m_info.WorldMat.rotateY(0.001f);
+    //m_info.WorldMat.rotateY(0.001f);
     m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));

@@ -175,9 +175,9 @@ namespace nauEngineSDK {
     view.m[2][2] = front.z;
     view.m[3][2] = 0.0f;
 
-    view.m[0][3] = (right | -camPos);
-    view.m[1][3] = (up |    -camPos);
-    view.m[2][3] = (front | -camPos);
+    view.m[0][3] = -(right  | camPos);
+    view.m[1][3] = -(up     | camPos);
+    view.m[2][3] = -(front  | camPos);
     view.m[3][3] = 1.0f;
     return view;
   }

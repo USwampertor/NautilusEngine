@@ -81,11 +81,11 @@ namespace nauEngineSDK {
       pvertex.m_position.z = mesh->mVertices[i].z;
 
       if (mesh->HasTextureCoords(0)) {
-        pvertex.m_u = mesh->mTextureCoords[0][i].x;
-        pvertex.m_v = mesh->mTextureCoords[0][i].y;
+        pvertex.m_uv.x = mesh->mTextureCoords[0][i].x;
+        pvertex.m_uv.y = mesh->mTextureCoords[0][i].y;
       }
       else {
-        pvertex.m_u = 0.0f; pvertex.m_v = 0.0f;
+        pvertex.m_uv.x = 0.0f; pvertex.m_uv.y = 0.0f;
       }
       
       if (mesh->HasNormals()) {
