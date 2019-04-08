@@ -9,11 +9,12 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #include "nauSamplerStateDX.h"
+#include "nauDeviceDX.h"
 
 namespace nauEngineSDK {
 
   bool
-  SamplerStateDX::createShaderSampler(Device* pDevice) {
+  SamplerStateDX::createSampler(Device* pDevice) {
 
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     
@@ -47,11 +48,11 @@ namespace nauEngineSDK {
   }
 
   void
-  SamplerStateDX::setShaderSampler(Device* pDevice) {
+  SamplerStateDX::setSampler(Device* pDevice, uint32 registration, uint32 times) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
     //First parameter is the register where you are using the texture
     //second is how many times we are going to do this
-    pd3dContext->PSSetSamplers(0, 1, &m_sampleState);
+    pd3dContext->PSSetSamplers(registration, times, &m_sampleState);
 
 
   }

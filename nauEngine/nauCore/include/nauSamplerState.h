@@ -13,13 +13,15 @@
 #include "nauDevice.h"
 
 namespace nauEngineSDK {
-  
+
+
+  class Device;
   /**
    * nauSamplerState
    * Description:
-   * 	
+   *    Sampler state for API implementation
    * Sample usage:
-   * 	
+   *    
    */
   class NAU_CORE_EXPORT SamplerState
   {
@@ -33,8 +35,8 @@ namespace nauEngineSDK {
     /**
      * virtual destructor
      */
-    virtual 
-    ~SamplerState() = default;
+    virtual
+      ~SamplerState() = default;
 
     /**
      * @brief creates a shader sampler
@@ -43,17 +45,17 @@ namespace nauEngineSDK {
      *
      */
     virtual bool
-    createShaderSampler(Device* pDevice) = 0;
+    createSampler(Device* pDevice) = 0;
 
     /**
      * @brief sets the shader into a device
      * @param the device
-     * @return 
+     * @return
      *
      */
     virtual void
-    setShaderSampler(Device* pDevice) = 0;
+    setSampler(Device* pDevice, uint32 registration = 0, uint32 times = 1) = 0;
   };
-  
+
 }
 

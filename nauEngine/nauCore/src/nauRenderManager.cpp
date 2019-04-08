@@ -15,11 +15,11 @@ namespace nauEngineSDK {
   bool
   RenderManager::init(Device* pDevice) {
 
-    m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
-    m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
-    m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
-    m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
-    m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
+    //m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
+    //m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
+    //m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
+    //m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
+    //m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
 
     if (!m_gbPass.init(pDevice));
 
@@ -42,9 +42,9 @@ namespace nauEngineSDK {
   }
 
   void
-  RenderManager::render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* api) {
+  RenderManager::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
     
-    m_gbPass.render();
+    m_gbPass.render(m_orderedList, pDevice);
     
   }
 
@@ -55,9 +55,54 @@ namespace nauEngineSDK {
 
   Vector<MeshComponent*>
   RenderManager::createScreenAlignedQuad(Device* pDevice) {
+    Vector<MeshComponent*> quads;
     MeshComponent* quad = new MeshComponent();
     quad->m_model = new Model();
+    Mesh* m = new Mesh();
+    
+    m->m_indexBuffer = pDevice->createIndexBuffer();
+    m->m_vertexBuffer = pDevice->createVertexBuffer();
+    m->m_indexBuffer->reserve(3);
+    m->m_vertexBuffer->reserve(3);
 
+    Vertex pVertex;
+    pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
+    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_u = 0.0f;
+    pVertex.m_v = 1.0f;
+    m->m_vertexBuffer->add(pVertex);
+
+    pVertex.m_position = { -1.0f,1.0f,0.0f,1.0f };
+    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_u = 0.0f;
+    pVertex.m_v = 0.0f;
+    m->m_vertexBuffer->add(pVertex);
+
+    pVertex.m_position = { 1.0f,1.0f,0.0f,1.0f };
+    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_u = 1.0f;
+    pVertex.m_v = 0.0f;
+    m->m_vertexBuffer->add(pVertex);
+
+    pVertex.m_position = { 1.0f,-1.0f,0.0f,1.0f };
+    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_u = 1.0f;
+    pVertex.m_v = 1.0f;
+    m->m_vertexBuffer->add(pVertex);
+
+    m->m_indexBuffer->add(0);
+    m->m_indexBuffer->add(1);
+    m->m_indexBuffer->add(2);
+    m->m_indexBuffer->add(2);
+    m->m_indexBuffer->add(3);
+    m->m_indexBuffer->add(0);
+
+    m->m_indexBuffer->createHardware(pDevice->get(),0);
+
+    m->m_vertexBuffer->createHardware(pDevice->get(),0);
+    quad->m_model->m_meshes.push_back(m);
+    quads.push_back(quad);
+    return quads;
   }
 
   void
@@ -65,8 +110,10 @@ namespace nauEngineSDK {
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();
     m_gbPass.m_info.Projection = m_projection;
-    //constantbuffer add everything
-    //Constant Buffer setPixel and Vertez
+
+    m_gbPass.updatePass();
+    //constan tbuffer add everything
+    //Constant Buffer setPixel and Vertex
 
   }
 }

@@ -72,23 +72,27 @@ namespace nauEngineSDK {
      */
     ~TestApp() = default;
 
-    void
-    start();
+    virtual void
+    start() override;
 
-    void
-    render();
+    virtual void
+    render() override;
 
-    bool
-    initApp(void* hwnd);
+    virtual bool
+    initApp(void* hwnd) override;
 
-    bool
-    initUI(void* hwnd);
+    virtual bool
+    initUI(void* hwnd) override;
 
-    void
-    shutDown();
+    virtual void
+    shutDown() override;
 
-    void
-    close();
+    virtual void
+    close() override;
+
+    virtual void
+    update() override;
+
 
 
     GraphicsAPI* m_api = nullptr;

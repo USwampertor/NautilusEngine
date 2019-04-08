@@ -37,7 +37,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class Device
+  class NAU_CORE_EXPORT Device
   {
    public:
     /**
@@ -114,9 +114,23 @@ namespace nauEngineSDK {
     virtual void*
     getContext() = 0;
 
+    /**
+     * @brief Creates a texture based up on the backbuffer
+     * @param 
+     * @return 
+     *
+     */
     virtual void*
     getSwapChain() = 0;
 
+    /**
+     * @brief gets the backBuffer from the swapChain
+     * @param 
+     * @return 
+     *
+     */
+    virtual Texture*
+    getBackBuffer() = 0;
 
     /**
      * @brief Creates a Vertex Shader
@@ -238,14 +252,6 @@ namespace nauEngineSDK {
     virtual RasterizerState*
     createRasterizer() = 0;
 
-    /**
-     * @brief gets the backBuffer from the swapChain
-     * @param 
-     * @return 
-     *
-     */
-    virtual Texture*
-    getBackBuffer() = 0;
 
 
 

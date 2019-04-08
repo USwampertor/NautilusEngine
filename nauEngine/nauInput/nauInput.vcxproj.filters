@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nauInputManager.h">
+    <ClInclude Include="include\nauPrerequisitesInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauPrerequisitesInput.h">
+    <ClInclude Include="include\nauInputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauInputManager.cpp">
+    <ClCompile Include="src\nauInputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

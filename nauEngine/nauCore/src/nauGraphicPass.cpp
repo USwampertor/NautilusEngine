@@ -47,7 +47,13 @@ namespace nauEngineSDK {
   }
 
   void
-  GraphicPass::render() {
+  GraphicPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+  GraphicPass::updatePass() {
 
 
   }
@@ -59,7 +65,7 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   bool
-    GBPass::init(Device* pDevice) {
+  GBPass::init(Device* pDevice) {
 
     m_pixelShader   = pDevice->createPixelShader();
     m_vertexShader  = pDevice->createVertexShader();
@@ -77,12 +83,14 @@ namespace nauEngineSDK {
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
+    m_buffer->setVertexShader(pDevice);
+    m_buffer->setPixelShader(pDevice);
+    m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
 
-    //m_sampler->createShaderSampler(pDevice);
+    m_sampler->createSampler(pDevice);
     m_renderTarget->set(*pDevice, *m_depthStencil);
-
     return true;
   }
 
@@ -113,13 +121,29 @@ namespace nauEngineSDK {
   }
 
   bool
-    GBPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+  GBPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
     m_vertexShader->createFromFile(pDevice, fileName.c_str(), entry.c_str());
     return true;
   }
 
   void
-    GBPass::render() {
+  GBPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+    m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
+    m_buffer->setVertexShader(pDevice);
+    m_buffer->setPixelShader(pDevice);
+    m_inputLayout->setLayout(pDevice->getContext());
+
+    m_renderTarget->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+    m_depthStencil->clearView(pDevice);
+  }
+
+  void
+  GBPass::updatePass() {
+    m_info.WorldMat.rotateY(0.001f);
+    m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m_info.Projection), sizeof(Matrix4));
+
 
   }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -163,7 +187,13 @@ namespace nauEngineSDK {
   }
 
   void
-    SSAOPass::render() {
+    SSAOPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+    SSAOPass::updatePass() {
 
 
   }
@@ -209,7 +239,13 @@ namespace nauEngineSDK {
   }
 
   void
-    ReductionPass::render() {
+    ReductionPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+    ReductionPass::updatePass() {
 
 
   }
@@ -254,7 +290,13 @@ namespace nauEngineSDK {
   }
 
   void
-    BlurPass::render() {
+    BlurPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+    BlurPass::updatePass() {
 
 
   }
@@ -299,7 +341,13 @@ namespace nauEngineSDK {
   }
 
   void
-    LightningPass::render() {
+    LightningPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+    LightningPass::updatePass() {
 
 
   }
@@ -344,7 +392,13 @@ namespace nauEngineSDK {
   }
 
   void
-    LuminancePass::render() {
+    LuminancePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
+
+  }
+
+  void
+    LuminancePass::updatePass() {
 
 
   }
@@ -389,9 +443,14 @@ namespace nauEngineSDK {
   }
 
   void
-    FinalPass::render() {
+    FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
 
   }
 
+  void
+    FinalPass::updatePass() {
+
+
+  }
 }

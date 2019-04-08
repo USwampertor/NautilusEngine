@@ -7,6 +7,12 @@ namespace nauEngineSDK {
   }
 
   void
+  TestApp::update() {
+    m_renderManager->update();
+
+  }
+
+  void
   TestApp::render() {
     
 
@@ -36,8 +42,7 @@ namespace nauEngineSDK {
 
     
 
-    m_renderManager->render(meshes, m_api);
-    m_api->render();
+    m_renderManager->render(meshes, m_api->getDevice());
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     m_api->swapBuffer();
@@ -53,7 +58,7 @@ namespace nauEngineSDK {
     m_api = m_factory->createGraphicsAPI();
 
     if (!m_api->init(hwnd)) return false;
-    
+    if (!m_renderManager->init(m_api->getDevice())) return false;
     //UI INITIALIZATION
     if (!initUI(hwnd))      return false;
     

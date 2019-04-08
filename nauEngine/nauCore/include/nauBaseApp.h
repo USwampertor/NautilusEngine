@@ -53,6 +53,15 @@ namespace nauEngineSDK {
     render() = 0;
 
     /**
+     * @brief Updates events and inputs
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    update() = 0;
+
+    /**
      * @brief Should be used to initialize the basic components of the objects
      * @param First one should be the window handler
      * @return true if all objects were able to initialize, false if one or more didnt

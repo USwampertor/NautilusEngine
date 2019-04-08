@@ -33,6 +33,8 @@ namespace nauEngineSDK {
 
   }
 
+
+
   void
   RenderTargetViewDX::clearView(Device* pDevice, Vector4 color) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());

@@ -65,7 +65,9 @@ namespace nauEngineSDK {
 
     ///SETTERS///
 
-    
+    /**
+     * DEPRECATED: DO NOT USE
+     */
     virtual void
     setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) override;
 
@@ -78,12 +80,18 @@ namespace nauEngineSDK {
 
     ///GRAPHIC FUNCTIONS///
 
+    /**
+     * DEPRECATED: DO NOT USE
+     */
     virtual void
     render() override;
    
     virtual void
     swapBuffer() override;
 
+    /**
+     * DEPRECATED: DO NOT USE
+     */
     virtual void
     clear() override;
 
@@ -91,33 +99,6 @@ namespace nauEngineSDK {
     getWindowSize() override;
 
    public:
-
-
-    //TO DO: TAKE THIS SHITS OUT
-    Matrix4 m_world;
-    Camera m_camera;
-    Matrix4 m_projection;
-    //
-
-    /**
-     * Test GameObject
-     */
-    GameObject m_testGameObject;
-
-    /**
-     * Vertex Shader
-     */
-    VertexShaderDX* m_vertexShader;
-
-    /**
-     * Pixel Shader
-     */
-    PixelShaderDX* m_pixelShader;
-
-    /**
-     * Input Layout
-     */
-    InputLayoutDX m_inputLayout;
 
     /**
      * Device 
@@ -128,35 +109,6 @@ namespace nauEngineSDK {
      * ViewPort
      */
     ViewPortDX m_viewPort;
-
-    /**
-     * Sampler state
-     */
-    SamplerStateDX m_samplerState;
-
-
-    RenderTargetViewDX m_renderTarget;
-
-    ShaderResourceViewDX m_shaderResource;
-
-    DepthStencilDX m_depthStencil;
-
-    /**
-     * Screen depth
-     */
-    float m_screenDepth = 1000.0f;
-
-    /**
-     * Screen near
-     */
-    float m_screenNear = 0.01f;
-
-    /**
-     * Field of View
-     */
-    float m_fov = 0;
-
-    ConstantBufferDX m_constantBuffer;
 
   };
  

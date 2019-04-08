@@ -147,7 +147,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     }
-
+    m_app.update();
     
 
     m_app.render();

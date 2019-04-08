@@ -9,13 +9,12 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #pragma once
-
 #include "nauPrerequisitesDX.h"
 
 #include <nauSamplerState.h>
 
 namespace nauEngineSDK {
-  
+
   class NAU_DIRECTX_EXPORT SamplerStateDX : public SamplerState
   {
    public:
@@ -31,10 +30,10 @@ namespace nauEngineSDK {
     ~SamplerStateDX() = default;
 
     virtual bool
-    createShaderSampler(Device* pDevice) override;
+    createSampler(Device* pDevice) override;
 
     virtual void
-    setShaderSampler(Device* pDevice) override;
+    setSampler(Device* pDevice, uint32 registration = 0, uint32 times = 1) override;
     
     /**
      * Member declaration

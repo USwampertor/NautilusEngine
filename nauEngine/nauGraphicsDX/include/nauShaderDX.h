@@ -82,7 +82,7 @@ namespace nauEngineSDK {
     /**
      * the vertex Shader for DirectX
      */
-    ID3D11VertexShader* m_pVertexShader;
+    ID3D11VertexShader* m_pVertexShader = nullptr;
   };
 
   class NAU_DIRECTX_EXPORT PixelShaderDX : public ShaderDX
@@ -115,7 +115,7 @@ namespace nauEngineSDK {
     /**
      * Pixel Shader for DirectX
      */
-    ID3D11PixelShader* m_pPixelShader;
+    ID3D11PixelShader* m_pPixelShader = nullptr;
   };
 
   class NAU_DIRECTX_EXPORT ComputeShaderDX : public ShaderDX

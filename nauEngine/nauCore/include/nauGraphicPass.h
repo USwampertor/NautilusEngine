@@ -12,6 +12,7 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include "nauComponent.h"
 #include "nauDepthStencil.h"
 #include "nauDevice.h"
 #include "nauGraphicsBuffer.h"
@@ -19,6 +20,7 @@
 #include "nauPassPerInfo.h"
 #include "nauRenderTargetView.h"
 #include "nauRasterizerState.h"
+#include "nauSamplerState.h"
 #include "nauTexture.h"
 
 namespace nauEngineSDK {
@@ -34,71 +36,74 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    ~GraphicPass() = default;
+    virtual ~GraphicPass() = default;
 
-    bool
-    init(Device* pDevice);
+    virtual bool
+    init(Device* pDevice) = 0;
 
-    void
-    setPixelShader(Device* pDevice);
+    virtual void
+    setPixelShader(Device* pDevice) = 0;
 
-    void
-    setVertexShader(Device* pDevice);
+    virtual void
+    setVertexShader(Device* pDevice) = 0;
 
-    void
-    setLayout(Device* pDevice);
+    virtual void
+    setLayout(Device* pDevice) = 0;
 
-    void
-    setShaderSampler(Device* pDevice);
+    virtual void
+    setShaderSampler(Device* pDevice) = 0;
 
-    bool
-    loadPixelShader(Device* pDevice, String fileName, String entry);
+    virtual bool
+    loadPixelShader(Device* pDevice, String fileName, String entry) = 0;
 
-    bool
-    loadVertexShader(Device* pDevice, String fileName, String entry);
+    virtual bool
+    loadVertexShader(Device* pDevice, String fileName, String entry) = 0;
 
-    void
-    render();
+    virtual void
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) = 0;
+
+    virtual void
+    updatePass() = 0;
 
     /**
      * Render Target View
      */
-    RenderTargetView* m_renderTarget;
+    RenderTargetView* m_renderTarget = nullptr;
 
     /**
      * DepthStencil object reference
      */
-    DepthStencil* m_depthStencil;
+    DepthStencil* m_depthStencil = nullptr;
 
     /**
      * Pixel Shader object
      */
-    Shader* m_pixelShader;
+    Shader* m_pixelShader = nullptr;
 
     /**
      * Vertex Shader
      */
-    Shader* m_vertexShader;
+    Shader* m_vertexShader = nullptr;
 
     /**
      * InputLayout
      */
-    InputLayout* m_inputLayout;
+    InputLayout* m_inputLayout = nullptr;
 
     /**
      * Sampler State
      */
-    SamplerState* m_sampler;
+    SamplerState* m_sampler = nullptr;
 
     /**
      * Constant Buffer
      */
-    ConstantBuffer* m_buffer;
+    ConstantBuffer* m_buffer = nullptr;
 
     /**
      * Rasterizer State
      */
-    RasterizerState* m_rasterizer;
+    RasterizerState* m_rasterizer = nullptr;
 
   };
 
@@ -109,29 +114,32 @@ namespace nauEngineSDK {
 
     ~GBPass() = default;
 
-    bool
-    init(Device* pDevice);
+    virtual bool
+    init(Device* pDevice) override;
     
-    void
-    setPixelShader(Device* pDevice);
+    virtual void
+    setPixelShader(Device* pDevice) override;
     
-    void
-    setVertexShader(Device* pDevice);
+    virtual void
+    setVertexShader(Device* pDevice) override;
     
-    void
-    setLayout(Device* pDevice);
+    virtual void
+    setLayout(Device* pDevice) override;
     
-    void
-    setShaderSampler(Device* pDevice);
+    virtual void
+    setShaderSampler(Device* pDevice) override;
     
-    bool
-    loadPixelShader(Device* pDevice, String fileName, String entry);
+    virtual bool
+    loadPixelShader(Device* pDevice, String fileName, String entry) override;
     
-    bool
-    loadVertexShader(Device* pDevice, String fileName, String entry);
+    virtual bool
+    loadVertexShader(Device* pDevice, String fileName, String entry) override;
     
-    void
-    render();
+    virtual void
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+
+    virtual void
+    updatePass() override;
 
     GBPassInfo m_info;
   };
@@ -165,7 +173,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
   class NAU_CORE_EXPORT ReductionPass : public GraphicPass
@@ -197,7 +209,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
   class NAU_CORE_EXPORT BlurPass : public GraphicPass
@@ -229,7 +245,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
   class NAU_CORE_EXPORT LightningPass : public GraphicPass
@@ -261,7 +281,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
   class NAU_CORE_EXPORT LuminancePass : public GraphicPass
@@ -293,7 +317,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
   class NAU_CORE_EXPORT FinalPass : public GraphicPass
@@ -325,7 +353,11 @@ namespace nauEngineSDK {
     loadVertexShader(Device* pDevice, String fileName, String entry);
 
     void
-    render();
+    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+
   };
 
 

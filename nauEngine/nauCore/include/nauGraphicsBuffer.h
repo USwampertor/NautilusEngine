@@ -304,13 +304,22 @@ namespace nauEngineSDK {
      * Sets the device Context with the buffer
      */
     virtual void
-    setVertexShader(void* pDevice, uint32 slot, uint32 numBuffer) = 0;
+    setVertexShader(void* pDevice, uint32 slot = 0, uint32 numBuffer = 1) = 0;
 
     /**
      * Sets the device Context with the buffer
      */
     virtual void
-    setPixelShader(void* pDevice, uint32 slot, uint32 numBuffer) = 0;
+    setPixelShader(void* pDevice, uint32 slot = 0, uint32 numBuffer = 1) = 0;
+
+    /**
+     * Updates the subresource
+     */
+    virtual bool
+    updateSubResource(void* pContext,
+                      uint32 subresource = 0, 
+                      uint32 row = 0, 
+                      uint32 depth = 0) = 0;
 
     /**
      * constant data
