@@ -61,10 +61,10 @@
     <ClCompile Include="src\nauMatrix3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="nauFileSystem.cpp">
+    <ClCompile Include="src\nauMemoryAllocator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauMemoryAllocator.cpp">
+    <ClCompile Include="src\nauFileSystem.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -147,10 +147,10 @@
     <ClInclude Include="include\nauMatrix3.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="nauFileSystem.h">
+    <ClInclude Include="include\nauMemoryAllocator.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauMemoryAllocator.h">
+    <ClInclude Include="include\nauFileSystem.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
 
 namespace nauEngineSDK {
 
@@ -33,6 +34,16 @@ namespace nauEngineSDK {
      * Virtual destructor
      */
     virtual ~RasterizerState() = default;
+
+    /**
+     * @brief Creates a rasterizer state to 
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    createRasterizerState(Device* pDevice) = 0;
+
   };
   
 }

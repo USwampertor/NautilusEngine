@@ -26,6 +26,7 @@
     <ClInclude Include="include\nauGraphicsBufferDX.h" />
     <ClInclude Include="include\nauInputLayoutDX.h" />
     <ClInclude Include="include\nauPrerequisitesDX.h" />
+    <ClInclude Include="include\nauRasterizerStateDX.h" />
     <ClInclude Include="include\nauRenderTargetViewDX.h" />
     <ClInclude Include="include\nauSamplerStateDX.h" />
     <ClInclude Include="include\nauShaderDX.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="src\nauGraphicsAPIDX.cpp" />
     <ClCompile Include="src\nauGraphicsBufferDX.cpp" />
     <ClCompile Include="src\nauInputLayoutDX.cpp" />
+    <ClCompile Include="src\nauRasterizerStateDX.cpp" />
     <ClCompile Include="src\nauRenderTargetViewDX.cpp" />
     <ClCompile Include="src\nauSamplerStateDX.cpp" />
     <ClCompile Include="src\nauShaderDX.cpp" />

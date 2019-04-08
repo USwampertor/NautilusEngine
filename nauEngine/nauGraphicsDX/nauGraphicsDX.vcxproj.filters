@@ -46,6 +46,9 @@
     <ClInclude Include="include\nauShaderResourceViewDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauRasterizerStateDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauDepthStencilDX.cpp">
@@ -82,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauShaderResourceViewDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauRasterizerStateDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

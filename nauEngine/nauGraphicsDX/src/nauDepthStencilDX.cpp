@@ -54,7 +54,7 @@ namespace nauEngineSDK {
     descDSV.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
     descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
     descDSV.Texture2D.MipSlice = 0;
-
+   
     hr = pd3dDevice->CreateDepthStencilView(m_pDepthStencilTexture,
                                             &descDSV,
                                             &m_pDepthStencilView);

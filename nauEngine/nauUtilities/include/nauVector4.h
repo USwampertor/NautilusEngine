@@ -11,6 +11,7 @@
 
 #include "nauPrerequisitesUtil.h"
 #include "nauMath.h"
+#include "nauVector3.h"
 
 namespace nauEngineSDK {
   /**
@@ -38,6 +39,12 @@ namespace nauEngineSDK {
       : x(nx),
         y(ny),
         z(nz),
+        w(nw) {}
+
+    Vector4(Vector3 vector, float nw = 1.0f)
+      : x(vector.x),
+        y(vector.y),
+        z(vector.z),
         w(nw) {}
 
     /**

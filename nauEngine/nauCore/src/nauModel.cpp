@@ -41,7 +41,9 @@ namespace nauEngineSDK {
       String errorMessage = modelImport.GetErrorString();
       std::cout << "Error loading model... Loading default Error Model" << std::endl;
 
-      scene = modelImport.ReadFile("errorModel.stl", aiProcessPreset_TargetRealtime_MaxQuality);
+      scene = modelImport.ReadFile("resources/errorModel.stl", 
+                                   aiProcessPreset_TargetRealtime_MaxQuality |
+                                   aiProcess_ConvertToLeftHanded);
 
       if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
         std::cout << "Couldn't Load Error model..." << std::endl;
@@ -54,18 +56,19 @@ namespace nauEngineSDK {
   void
   Model::processNode(aiNode* node, const aiScene* scene) {
 
-    for (unsigned int i = 0; i < node->mNumMeshes; ++i) {
+    for (uint32 i = 0; i < node->mNumMeshes; ++i) {
       aiMesh* aimesh = scene->mMeshes[node->mMeshes[i]];
       m_meshes.push_back(processMesh(aimesh, scene));
     }
 
-    for (unsigned int i = 0; i < node->mNumChildren; ++i) {
+    for (uint32 i = 0; i < node->mNumChildren; ++i) {
       processNode(node->mChildren[i], scene);
     }
   }
 
   Mesh*
   Model::processMesh(aiMesh* mesh, const aiScene* scene) {
+
     Mesh* m = new Mesh();
     m->m_vertexBuffer = m_device->createVertexBuffer();
     m->m_indexBuffer = m_device->createIndexBuffer();
@@ -77,24 +80,6 @@ namespace nauEngineSDK {
       pvertex.m_position.y = mesh->mVertices[i].y;
       pvertex.m_position.z = mesh->mVertices[i].z;
 
-      if (mesh->HasNormals()) {
-
-        pvertex.m_normal.x = mesh->mNormals[i].x;
-        pvertex.m_normal.y = mesh->mNormals[i].y;
-        pvertex.m_normal.z = mesh->mNormals[i].z;
-      }
-     
-      if (mesh->HasTangentsAndBitangents())
-      {
-        pvertex.m_tangent.x = mesh->mTangents->x;
-        pvertex.m_tangent.y = mesh->mTangents->y;
-        pvertex.m_tangent.z = mesh->mTangents->z;
-
-        pvertex.m_binormal.x = mesh->mBitangents->x;
-        pvertex.m_binormal.y = mesh->mBitangents->y;
-        pvertex.m_binormal.z = mesh->mBitangents->z;
-      }
-
       if (mesh->HasTextureCoords(0)) {
         pvertex.m_u = mesh->mTextureCoords[0][i].x;
         pvertex.m_v = mesh->mTextureCoords[0][i].y;
@@ -102,10 +87,28 @@ namespace nauEngineSDK {
       else {
         pvertex.m_u = 0.0f; pvertex.m_v = 0.0f;
       }
+      
+      if (mesh->HasNormals()) {
 
-      //If it didnt have normals, but did have tangent and binormals, we calculate normals
+        pvertex.m_normal.x = mesh->mNormals->x;
+        pvertex.m_normal.y = mesh->mNormals->y;
+        pvertex.m_normal.z = mesh->mNormals->z;
+      }
+     
+      if (mesh->HasTangentsAndBitangents()) {
+        pvertex.m_tangent.y = mesh->mTangents->y;
+        pvertex.m_tangent.x = mesh->mTangents->x;
+        pvertex.m_tangent.z = mesh->mTangents->z;
+
+        pvertex.m_binormal.x = mesh->mBitangents->x;
+        pvertex.m_binormal.y = mesh->mBitangents->y;
+        pvertex.m_binormal.z = mesh->mBitangents->z;
+      }
+
+
+      //If it didn't have normals, but did have tangent and bi normals, we calculate normals
       if (!mesh->HasNormals() && mesh->HasTangentsAndBitangents()) {
-
+        pvertex.m_normal = Vector4(pvertex.m_tangent ^ pvertex.m_binormal, 1.0f);
       }
 
 
