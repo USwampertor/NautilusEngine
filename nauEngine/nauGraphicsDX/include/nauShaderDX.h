@@ -40,6 +40,9 @@ namespace nauEngineSDK {
     virtual void*
     getData() override;
 
+    virtual void*
+    getShader() = 0;
+
     virtual void
     set(Device* pDevice) = 0;
 
@@ -77,6 +80,9 @@ namespace nauEngineSDK {
     virtual void
     set(Device* pDevice) override;
 
+    virtual void*
+    getShader() override;
+
    public:
 
     /**
@@ -110,6 +116,8 @@ namespace nauEngineSDK {
     virtual void
     set(Device* pDevice) override;
 
+    virtual void*
+    getShader() override;
    public:
 
     /**
@@ -137,6 +145,8 @@ namespace nauEngineSDK {
     virtual void
     set(Device* pDevice) override;
 
+    virtual void*
+    getShader() override;
    public:
 
     /**
@@ -165,12 +175,22 @@ namespace nauEngineSDK {
     virtual void
     set(Device* pDevice) override;
 
+    virtual void*
+    getShader() override;
+
     /**
-     * 
+     * Geometry Shader
      */
     ID3D11GeometryShader* m_pGeometryShader;
   };
 
+   /**
+    * TextureShader
+    * Description:
+    *     CURRENTLY NOT SUPPORTED
+    * Sample usage:
+    * 
+    */
   class NAU_DIRECTX_EXPORT TextureShaderDX : public ShaderDX
   {
    public:
@@ -190,6 +210,8 @@ namespace nauEngineSDK {
     virtual void
     set(Device* pDevice) override;
 
+    virtual void*
+    getShader() override;
   };
 
 }

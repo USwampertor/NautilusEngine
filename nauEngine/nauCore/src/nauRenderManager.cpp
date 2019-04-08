@@ -22,9 +22,6 @@ namespace nauEngineSDK {
     //m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
     //m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
 
-    ///BUFFER INITIALIZATION
-    if (!m_gbPass.init(pDevice)) return false;
-
     ///DEFAULT OBJECT INITIALIZATION
 
     m_fov = Math::degToRad(90.0f);
@@ -40,6 +37,9 @@ namespace nauEngineSDK {
                              static_cast<float>(pDevice->m_width / pDevice->m_height),
                              m_screenNear,
                              m_screenFar);
+
+    ///BUFFER INITIALIZATION
+    if (!m_gbPass.init(pDevice)) return false;
 
     return true;
   }

@@ -79,13 +79,13 @@ namespace nauEngineSDK {
     com->m_model = new Model();
     com->m_model->setDevice(m_api->getDevice());
     com->m_model->loadFromFile("resources/Vela.FBX");
-    Material* m = new Material();
-    Texture* pTexture = m_api->getDevice()->createTexture();
-    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
-    m->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
-    for (i; i < com->m_model->m_meshes.size(); ++i) {
-      (com->m_model->m_meshes[0])->m_material = m;
-    }
+    //Material* m = new Material();
+    //Texture* pTexture = m_api->getDevice()->createTexture();
+    //pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    //m->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    //for (i; i < com->m_model->m_meshes.size(); ++i) {
+    //  (com->m_model->m_meshes[0])->m_material = m;
+    //}
 
     testModel->addComponent(com);
     model->setGameObject(testModel);

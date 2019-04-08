@@ -17,6 +17,7 @@ namespace nauEngineSDK {
   
   class Device;
 
+
    /**
     * nauShader
     * Description:
@@ -59,6 +60,17 @@ namespace nauEngineSDK {
      */
     virtual void*
     getData() = 0;
+
+  
+    /**
+     * @brief Returns the shader encapsulated inside the class
+     * @param 
+     * @return the void* data of the shader
+     *
+     */
+    virtual void*
+    getShader() = 0;
+
 
     /**
      * @brief Sets the device with the shader inside

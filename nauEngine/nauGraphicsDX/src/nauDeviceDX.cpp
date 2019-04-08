@@ -118,6 +118,19 @@ namespace nauEngineSDK {
     return true;
   }
 
+  void
+  DeviceDX::setShader(void* shader, SHADERFLAGS::E flags) {
+
+    if      (SHADERFLAGS::VERTEX == flags) {
+      auto vertexShader = reinterpret_cast<ID3D11VertexShader*>(shader);
+      m_pImmediateContext->VSSetShader(vertexShader, 0, 0);
+    }
+    else if (SHADERFLAGS::PIXEL == flags) {
+      auto pixelShader = reinterpret_cast<ID3D11PixelShader*>(shader);
+      m_pImmediateContext->PSSetShader(pixelShader, 0, 0);
+    }
+  }
+
   void*
   DeviceDX::get() {
     return m_pd3dDevice;

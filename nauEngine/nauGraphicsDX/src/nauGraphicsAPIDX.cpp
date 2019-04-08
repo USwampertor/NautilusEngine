@@ -60,11 +60,6 @@ namespace nauEngineSDK {
     
   }
 
-  void
-  GraphicsAPIDX::setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) {
-
-  }
-
   Device*
   GraphicsAPIDX::getDevice() {
     return m_device;

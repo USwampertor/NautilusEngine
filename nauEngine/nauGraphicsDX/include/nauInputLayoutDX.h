@@ -65,7 +65,7 @@ namespace nauEngineSDK {
     /**
      * the DX11 input layout
      */
-    ID3D11InputLayout* m_layout;
+    ID3D11InputLayout* m_layout = nullptr;
 
     /**
      * the element descriptor vector of the objects in the input layout

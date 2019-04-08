@@ -40,20 +40,26 @@ namespace nauEngineSDK {
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
-
-    m_sampler->createSampler(pDevice);
     m_renderTarget->set(*pDevice, *m_depthStencil);
+    m_sampler->createSampler(pDevice);
+    m_buffer->clear();
+    Matrix4 m = { 0 };
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+
+    m_buffer->createHardware(pDevice->get(), 0);
     return true;
   }
 
   void
     GBPass::setPixelShader(Device* pDevice) {
-
+    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
   }
 
   void
     GBPass::setVertexShader(Device* pDevice) {
-
+    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
   }
 
   void
@@ -81,8 +87,9 @@ namespace nauEngineSDK {
 
   void
   GBPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
-    m_buffer->createHardware(pDevice->get(), 0);
     
+    setPixelShader(pDevice);
+    setVertexShader(pDevice);
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
     m_buffer->setVertexShader(pDevice->getContext());
     m_buffer->setPixelShader(pDevice->getContext());

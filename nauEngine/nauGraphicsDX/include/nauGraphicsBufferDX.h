@@ -71,7 +71,7 @@ namespace nauEngineSDK {
     ~ConstantBufferDX() {}
 
     void
-    createHardware(void* pDevice, uint32 usage);
+    createHardware(void* pDevice, uint32 usage = 0);
 
     void
     write(void* pDevice, void* pData, SIZE_T numBytes);

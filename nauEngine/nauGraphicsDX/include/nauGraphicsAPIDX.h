@@ -65,12 +65,6 @@ namespace nauEngineSDK {
 
     ///SETTERS///
 
-    /**
-     * DEPRECATED: DO NOT USE
-     */
-    virtual void
-    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags) override;
-
 
     ///GETTERS///
 

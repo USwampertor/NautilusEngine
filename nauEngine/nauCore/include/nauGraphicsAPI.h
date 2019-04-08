@@ -17,15 +17,7 @@
 #include "nauDevice.h"
 
 namespace nauEngineSDK {
-  
-  enum SHADERFLAGS {
-    NONE = 0,
-    PIXEL,
-    VERTEX,
-    COMPUTE,
-    GEOMETRY,
-    TEXTURE
-  };
+ 
 
    /**
     * nauGraphics
@@ -64,14 +56,6 @@ namespace nauEngineSDK {
     virtual bool 
     initDevice(void* scrHandler) = 0;
 
-    /**
-     * @brief gets the info of the shaders and sets the API
-     * @param device Context | Shader (pixel vertex etc) | SHADERFLAGS
-     * @return 
-     *
-     */
-    virtual void 
-    setShaders(void* pDeviceContext, void* pShader, SHADERFLAGS flags ) = 0;
 
     /**
      * @brief exposes the device and returns it

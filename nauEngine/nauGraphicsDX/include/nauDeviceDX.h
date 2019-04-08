@@ -15,6 +15,7 @@
 
 
 namespace nauEngineSDK {
+
   class NAU_DIRECTX_EXPORT DeviceDX : public Device
   {
    public:
@@ -42,6 +43,10 @@ namespace nauEngineSDK {
 
     virtual bool
     createDepthStencilView() override;
+
+    virtual void
+    setShader(void* shader, SHADERFLAGS::E flags) override;
+
 
     ///GETTERS///
 

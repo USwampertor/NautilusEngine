@@ -58,6 +58,7 @@ namespace nauEngineSDK {
     return m_d3dBlob;
   }
 
+
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Vertex shader member declaration
@@ -94,6 +95,10 @@ namespace nauEngineSDK {
     pd3dContext->VSSetShader(m_pVertexShader, 0, 0);
   }
 
+  void*
+  VertexShaderDX::getShader() {
+    return m_pVertexShader;
+  }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Pixel shader member declaration
@@ -127,6 +132,10 @@ namespace nauEngineSDK {
     pd3dContext->PSSetShader(m_pPixelShader, 0, 0);
   }
 
+  void*
+  PixelShaderDX::getShader() {
+    return m_pPixelShader;
+  }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
@@ -143,6 +152,10 @@ namespace nauEngineSDK {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
   }
 
+  void*
+  GeometryShaderDX::getShader() {
+    return m_pGeometryShader;
+  }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
@@ -157,6 +170,11 @@ namespace nauEngineSDK {
   void
   ComputeShaderDX::set(Device* pDevice) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+  }
+
+  void*
+  ComputeShaderDX::getShader() {
+    return m_pComputeShader;
   }
 
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -175,4 +193,8 @@ namespace nauEngineSDK {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
   }
 
+  void*
+  TextureShaderDX::getShader() {
+    return nullptr;
+  }
 }

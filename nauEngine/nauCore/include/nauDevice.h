@@ -14,21 +14,33 @@
 namespace nauEngineSDK {
 
   ///FORWARD DECLARATIONS
-  class Shader;
-  class DepthStencil;
-  class Texture;
-  class InputLayout;
-  class ViewPort;
-  class IndexBuffer;
-  class VertexBuffer;
   class ConstantBuffer;
+  class DepthStencil;
+  class IndexBuffer;
+  class InputLayout;
+  class RasterizerState;
   class RenderTargetView;
   class SamplerState;
+  class Shader;
   class ShaderResourceView;
-  class DepthStencil;
   class SwapChain;
-  class RasterizerState;
+  class Texture;
+  class VertexBuffer;
+  class ViewPort;
   ///
+
+  namespace SHADERFLAGS {
+    enum E {
+      NONE = 0,
+      PIXEL,
+      VERTEX,
+      COMPUTE,
+      GEOMETRY,
+      TEXTURE
+    };
+
+  }
+
 
   /**
    * nauDevice
@@ -94,6 +106,12 @@ namespace nauEngineSDK {
      */
     virtual bool
     createDepthStencilView() = 0;
+
+    /**
+     * Set Shader into the component
+     */
+    virtual void
+    setShader(void* shader, SHADERFLAGS::E flags) = 0;
 
     /**
      * @brief Gets the device encapsulated in the Device object
