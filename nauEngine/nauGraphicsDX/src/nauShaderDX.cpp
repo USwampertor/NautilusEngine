@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauShaderDX.h"
+#include "nauDeviceDX.h"
 
 
 namespace nauEngineSDK {
@@ -83,6 +84,12 @@ namespace nauEngineSDK {
     }
   }
 
+  void
+  VertexShaderDX::set(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+    pd3dContext->VSSetShader(m_pVertexShader, 0, 0);
+  }
+
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Pixel shader member declaration
@@ -110,6 +117,12 @@ namespace nauEngineSDK {
 
   }
 
+  void
+  PixelShaderDX::set(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+    pd3dContext->PSSetShader(m_pPixelShader, 0, 0);
+  }
+
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
@@ -119,6 +132,11 @@ namespace nauEngineSDK {
   GeometryShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
 
+  }
+
+  void
+  GeometryShaderDX::set(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
   }
 
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -132,14 +150,25 @@ namespace nauEngineSDK {
 
   }
 
+  void
+  ComputeShaderDX::set(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+  }
+
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
  */
  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   void
-  nauTextureShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
+  TextureShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
 
   }
+
+  void
+  TextureShaderDX::set(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+  }
+
 }

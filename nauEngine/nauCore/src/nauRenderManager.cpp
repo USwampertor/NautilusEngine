@@ -31,4 +31,9 @@ namespace nauEngineSDK {
 
   }
 
+  Vector<MeshComponent*>
+  RenderManager::createScreenAlignedQuad() {
+
+  }
+
 }

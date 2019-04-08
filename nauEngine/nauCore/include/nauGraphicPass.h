@@ -73,14 +73,14 @@ namespace nauEngineSDK {
     DepthStencil* m_depthStencil;
 
     /**
-     * Render Target View
-     */
-    Texture* m_renderTargetOutput;
-
-    /**
      * Pixel Shader object
      */
     PixelShader* m_pixelShader;
+
+    /**
+     * Vertex Shader
+     */
+    VertexShader* m_vertexShader;
 
     /**
      * InputLayout
@@ -91,6 +91,11 @@ namespace nauEngineSDK {
      * Sampler State
      */
     SamplerState* m_sampler;
+
+    /**
+     * Constant Buffer
+     */
+    ConstantBuffer* m_buffer;
 
     /**
      * TextureObjects
@@ -114,34 +119,191 @@ namespace nauEngineSDK {
 
     ~GBPass() = default;
 
-    //bool
-    //  init(Device* pDevice) override;
-    //
-    //void
-    //  setPixelShader(Device* pDevice) override;
-    //
-    //void
-    //  setVertexShader(Device* pDevice) override;
-    //
-    //void
-    //  setLayout(Device* pDevice) override;
-    //
-    //void
-    //  setShaderSampler(Device* pDevice) override;
-    //
-    //bool
-    //  loadPixelShader(Device* pDevice, String fileName, String entry) override;
-    //
-    //bool
-    //  loadVertexShader(Device* pDevice, String fileName, String entry) override;
-    //
-    //void
-    //  render() override;
-
-
-    //void
-    //init(Device* pDevice) override;
+    bool
+    init(Device* pDevice);
+    
+    void
+    setPixelShader(Device* pDevice);
+    
+    void
+    setVertexShader(Device* pDevice);
+    
+    void
+    setLayout(Device* pDevice);
+    
+    void
+    setShaderSampler(Device* pDevice);
+    
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+    
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+    
+    void
+    render();
   };
+
+  class NAU_CORE_EXPORT SSAOPass : public GraphicPass
+  {
+
+    SSAOPass() = default;
+
+    ~SSAOPass() = default;
+
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
+  class NAU_CORE_EXPORT ReductionPass : public GraphicPass
+  {
+
+    ReductionPass() = default;
+
+    ~ReductionPass() = default;
+
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
+  class NAU_CORE_EXPORT BlurPass : public GraphicPass
+  {
+
+    BlurPass() = default;
+
+    ~BlurPass() = default;
+
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
+  class NAU_CORE_EXPORT LIghtning : public GraphicPass
+  {
+
+    LIghtning() = default;
+
+    ~LIghtning() = default;
+
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
+  class NAU_CORE_EXPORT LIghtning : public GraphicPass
+  {
+
+    LIghtning() = default;
+
+    ~LIghtning() = default;
+
+    bool
+    init(Device* pDevice);
+
+    void
+    setPixelShader(Device* pDevice);
+
+    void
+    setVertexShader(Device* pDevice);
+
+    void
+    setLayout(Device* pDevice);
+
+    void
+    setShaderSampler(Device* pDevice);
+
+    bool
+    loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+    loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+    render();
+  };
+
 
 }
 

@@ -114,9 +114,6 @@
     <ClCompile Include="src\nauModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

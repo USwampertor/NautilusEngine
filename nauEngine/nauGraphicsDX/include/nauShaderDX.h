@@ -26,31 +26,22 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    virtual ~ShaderDX() {
-    
+    virtual 
+    ~ShaderDX() {
       if (m_d3dBlob != nullptr) {
         m_d3dBlob->Release();
         m_d3dBlob = nullptr;
       }
     };
 
-    /**
-     * @brief Compiles a shader resource with the info showed with the directX compiler
-     * @param string filename the path or nae of the file
-     *        string entry point, basically the name of the main
-     *        profile of object
-     *        FLAGS for any other information getting of the compiler of the shader
-     * @return
-     *
-     */
-    bool
-    compile(String filename, String entryPoint, String profile, uint32 FLAGS);
+    virtual bool
+    compile(String filename, String entryPoint, String profile, uint32 FLAGS) override;
 
-    /**
-     * returns the D3DBLOB
-     */
-    void*
-    getData();
+    virtual void*
+    getData() = 0;
+
+    virtual void
+    set(Device* pDevice) = 0;
 
    public:
 
@@ -62,7 +53,7 @@ namespace nauEngineSDK {
   };
   
 
-  class NAU_DIRECTX_EXPORT VertexShaderDX : public ShaderDX//, public nauVertexShader
+  class NAU_DIRECTX_EXPORT VertexShaderDX : public ShaderDX
   {
    public:
     /**
@@ -80,8 +71,11 @@ namespace nauEngineSDK {
       }
     };
 
-    void
-    createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
+    virtual void
+    createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
+
+    virtual void
+    set(Device* pDevice) override;
 
    public:
 
@@ -91,7 +85,7 @@ namespace nauEngineSDK {
     ID3D11VertexShader* m_pVertexShader;
   };
 
-  class NAU_DIRECTX_EXPORT PixelShaderDX : public ShaderDX//, public nauPixelShader
+  class NAU_DIRECTX_EXPORT PixelShaderDX : public ShaderDX
   {
    public:
     /**
@@ -113,6 +107,9 @@ namespace nauEngineSDK {
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
 
+    virtual void
+    set(Device* pDevice) override;
+
    public:
 
     /**
@@ -121,7 +118,7 @@ namespace nauEngineSDK {
     ID3D11PixelShader* m_pPixelShader;
   };
 
-  class NAU_DIRECTX_EXPORT ComputeShaderDX : public ShaderDX//, public nauComputeShader
+  class NAU_DIRECTX_EXPORT ComputeShaderDX : public ShaderDX
   {
    public:
     /**
@@ -137,6 +134,9 @@ namespace nauEngineSDK {
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
 
+    virtual void
+    set(Device* pDevice) override;
+
    public:
 
     /**
@@ -146,7 +146,7 @@ namespace nauEngineSDK {
 
   };
 
-  class NAU_DIRECTX_EXPORT GeometryShaderDX : public ShaderDX//, public nauGeometryShader
+  class NAU_DIRECTX_EXPORT GeometryShaderDX : public ShaderDX
   {
    public:
     /**
@@ -162,6 +162,8 @@ namespace nauEngineSDK {
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
   
+    virtual void
+    set(Device* pDevice) override;
 
     /**
      * 
@@ -169,22 +171,24 @@ namespace nauEngineSDK {
     ID3D11GeometryShader* m_pGeometryShader;
   };
 
-  class NAU_DIRECTX_EXPORT nauTextureShaderDX : public ShaderDX//, public nauTextureShader
+  class NAU_DIRECTX_EXPORT TextureShaderDX : public ShaderDX
   {
    public:
     /**
      * Default Constructor
      */
-    nauTextureShaderDX() = default;
+    TextureShaderDX() = default;
 
     /**
      * Default Constructor
      */
-    ~nauTextureShaderDX() {};
+    ~TextureShaderDX() {};
 
     void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint);
     
+    virtual void
+    set(Device* pDevice) override;
 
   };
 

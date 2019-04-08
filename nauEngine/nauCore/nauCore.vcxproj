@@ -68,7 +68,6 @@
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
-    <ClCompile Include="src\nauShader.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -16,6 +16,7 @@
 #include "nauGraphicPass.h"
 #include "nauGraphicsAPI.h"
 #include "nauCoreFactory.h"
+#include "nauCamera.h"
 
 namespace nauEngineSDK {
 
@@ -60,12 +61,26 @@ namespace nauEngineSDK {
     void
     addPass(GraphicPass* pass);
 
+    Vector<MeshComponent*>
+    createScreenAlignedQuad();
+
    public:
-     Vector<GraphicPass*> m_passes;
-
-
+    
     Map<String, Texture*> m_rendereableTextures;
 
+    float m_fov;
+
+    float m_screenNear;
+
+    float m_screenFar;
+
+    float m_light;
+
+    Camera m_mainCamera;
+
+    Matrix4 m_world;
+
+    Matrix4 m_projection;
 
   };
   

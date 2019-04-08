@@ -107,12 +107,12 @@ namespace nauEngineSDK {
     /**
      * Vertex Shader
      */
-    VertexShaderDX m_vertexShader;
+    VertexShaderDX* m_vertexShader;
 
     /**
      * Pixel Shader
      */
-    PixelShaderDX m_pixelShader;
+    PixelShaderDX* m_pixelShader;
 
     /**
      * Input Layout
@@ -123,11 +123,6 @@ namespace nauEngineSDK {
      * Device 
      */
     Device* m_device;
-
-    /**
-     * Texture of test object
-     */
-    TextureDX m_texture;
 
     /**
      * ViewPort

@@ -15,6 +15,8 @@
 
 namespace nauEngineSDK {
   
+  class Device;
+
    /**
     * nauShader
     * Description:
@@ -34,7 +36,8 @@ namespace nauEngineSDK {
     /**
      * Virtual destructor for child management
      */
-    virtual ~Shader() {};
+    virtual 
+    ~Shader() = default;
 
     /**
      * @brief Compiles a shader resource with the info showed
@@ -58,6 +61,15 @@ namespace nauEngineSDK {
     getData() = 0;
 
     /**
+     * @brief Sets the device with the shader inside
+     * @param Device
+     * @return 
+     *
+     */
+    virtual void
+    set(Device* pDevice) = 0;
+
+    /**
      * @brief Creates a shader from specific File with a specific encoding
      * @param void* Device is the device in charge of the shader,
      *        filename of the shader
@@ -69,86 +81,4 @@ namespace nauEngineSDK {
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) = 0;
 
   };
-
-  class NAU_CORE_EXPORT VertexShader   : public Shader
-  {
-   public:
-
-    /**
-     * Default constructor
-     */
-    VertexShader() = default;
-
-    /**
-     * virtual destructor
-     */
-    virtual
-    ~VertexShader() {};
-
-  };
-
-  class NAU_CORE_EXPORT PixelShader    : public Shader
-  {
-   public:
-
-    /**
-     * Default constructor
-     */
-     PixelShader() = default;
-
-    /**
-     * virtual destructor
-     */
-    virtual
-    ~PixelShader() {};
-  };
-
-  class NAU_CORE_EXPORT ComputeShader  : public Shader
-  {
-   public:
-
-    /**
-     * Default constructor
-     */
-     ComputeShader() = default;
-
-    /**
-     * virtual destructor
-     */
-    virtual
-    ~ComputeShader() {};
-  };
-
-  class NAU_CORE_EXPORT GeometryShader : public Shader
-  {
-   public:
-
-    /**
-     * Default constructor
-     */
-     GeometryShader() = default;
-    
-    /**
-     * virtual destructor
-     */
-    virtual
-    ~GeometryShader() {};
-  };
-  
-  class NAU_CORE_EXPORT TextureShader  : public Shader
-  {
-   public:
-
-    /**
-     * Default constructor
-     */
-     TextureShader() = default;
-    
-    /**
-     * virtual destructor
-     */
-    virtual
-    ~TextureShader() {};
-  };
-
 }

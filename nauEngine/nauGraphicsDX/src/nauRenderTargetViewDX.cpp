@@ -20,7 +20,6 @@ namespace nauEngineSDK {
     
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     hr = pd3dDevice->CreateRenderTargetView(pd3dTexture, nullptr, &m_pRenderTargetView);
-    //Releases the back buffer
     return true;
   }
 
