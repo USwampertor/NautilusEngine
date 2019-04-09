@@ -112,7 +112,7 @@ namespace nauEngineSDK {
 
   void
   RenderManager::update() {
-    m_world.rotateY(0.001f);
+    m_world.rotateY(0.0005f);
 
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();
