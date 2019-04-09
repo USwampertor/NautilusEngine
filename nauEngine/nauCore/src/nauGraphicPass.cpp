@@ -32,19 +32,22 @@ namespace nauEngineSDK {
     if (!m_depthStencil->createDepthStencil(*pDevice, 
                                             pDevice->m_width, 
                                             pDevice->m_height)) return false;
+    if (!m_depthStencil->createView(pDevice))return false;
+    m_renderTarget->set(*pDevice, *m_depthStencil);
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
+
     m_buffer->setVertexShader(pDevice->getContext());
     m_buffer->setPixelShader(pDevice->getContext());
+
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
-    //if (!m_depthStencil->createState(pDevice)) return false;
-    m_renderTarget->set(*pDevice, *m_depthStencil);
     m_sampler->createSampler(pDevice);
-    m_buffer->clear();
+
     Matrix4 m = { 0 };
+    m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
@@ -54,34 +57,33 @@ namespace nauEngineSDK {
   }
 
   void
-    GBPass::setPixelShader(Device* pDevice) {
+  GBPass::setPixelShader(Device* pDevice) {
     pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
   }
 
   void
-    GBPass::setVertexShader(Device* pDevice) {
+  GBPass::setVertexShader(Device* pDevice) {
     pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
   }
 
   void
-    GBPass::setLayout(Device* pDevice) {
+  GBPass::setLayout(Device* pDevice) {
 
   }
 
   void
-    GBPass::setShaderSampler(Device* pDevice) {
+  GBPass::setShaderSampler(Device* pDevice) {
 
   }
 
   bool
-    GBPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+  GBPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
     m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   bool
   GBPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    
     m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
@@ -91,9 +93,12 @@ namespace nauEngineSDK {
     
     setPixelShader(pDevice);
     setVertexShader(pDevice);
+
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
+    
     m_buffer->setVertexShader(pDevice->getContext());
     m_buffer->setPixelShader(pDevice->getContext());
+    
     m_inputLayout->setLayout(pDevice->getContext());
 
     m_renderTarget->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -106,7 +111,6 @@ namespace nauEngineSDK {
 
   void
   GBPass::updatePass() {
-    //m_info.WorldMat.rotateY(0.001f);
     m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));

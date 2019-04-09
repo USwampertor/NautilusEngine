@@ -150,7 +150,7 @@ namespace nauEngineSDK {
   DeviceDX::getBackBuffer() {
 
     Texture* backBuffer = new TextureDX();
-    ID3D11Texture2D* pd3dTexture;
+    ID3D11Texture2D* pd3dTexture = nullptr;
     auto pd3dSwapChain = reinterpret_cast<IDXGISwapChain*>(m_swapChain->get());
     HRESULT hr = E_FAIL;
 

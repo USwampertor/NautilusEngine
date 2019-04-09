@@ -20,13 +20,13 @@ namespace nauEngineSDK {
     D3D11_RASTERIZER_DESC rasterizerDesc;
     memset(&rasterizerDesc, 0, sizeof(rasterizerDesc));
     rasterizerDesc.FillMode = D3D11_FILL_SOLID;
-    rasterizerDesc.CullMode = D3D11_CULL_FRONT;
-    rasterizerDesc.FrontCounterClockwise = true;
-    rasterizerDesc.DepthBias = false;
+    rasterizerDesc.CullMode = D3D11_CULL_BACK;
+    rasterizerDesc.FrontCounterClockwise = false;
+    rasterizerDesc.DepthBias = 0;
     rasterizerDesc.DepthBiasClamp = 0;
     rasterizerDesc.SlopeScaledDepthBias = 0;
-    rasterizerDesc.DepthClipEnable = true;
-    rasterizerDesc.ScissorEnable = true;
+    rasterizerDesc.DepthClipEnable = true;  
+    rasterizerDesc.ScissorEnable = false;
     rasterizerDesc.MultisampleEnable = false;
     rasterizerDesc.AntialiasedLineEnable = false;
     hr = pd3dDevice->CreateRasterizerState(&rasterizerDesc, &m_rasterizer);

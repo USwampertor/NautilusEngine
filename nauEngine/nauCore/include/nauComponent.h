@@ -12,6 +12,7 @@
 #include "nauPrerequisitesCore.h"
 #include "nauMesh.h"
 #include "nauModel.h"
+#include "nauTexture.h"
 
 #include <nauMath.h>
 

@@ -28,7 +28,7 @@ namespace nauEngineSDK {
     m_world = Matrix4::IDENTITY;
 
     m_mainCamera.m_objective.setValues(0.0f, 0.0f, 0.0f);
-    m_mainCamera.m_position.setValues(0.0f, 0.0f, -10.0f);
+    m_mainCamera.m_position.setValues(0.0f, 0.0f, -250.0f);
     m_mainCamera.m_up = Vector3::UP;
 
     m_mainCamera.createView();
@@ -70,22 +70,22 @@ namespace nauEngineSDK {
 
     Vertex pVertex;
     pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
-    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_color = { 1.0f,1.0f,1.0f,1.0f };
     pVertex.m_uv = { 0.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { -1.0f,1.0f,0.0f,1.0f };
-    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_color = { 1.0f,1.0f,1.0f,1.0f };
     pVertex.m_uv = { 1.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { 1.0f,1.0f,0.0f,1.0f };
-    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_color = { 1.0f,1.0f,1.0f,1.0f };
     pVertex.m_uv = { 1.0f, 0.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { 1.0f,-1.0f,0.0f,1.0f };
-    pVertex.m_position = { 1.0f,1.0f,1.0f,1.0f };
+    pVertex.m_color = { 1.0f,1.0f,1.0f,1.0f };
     pVertex.m_uv = { 1.0f, 1.0f };
     m->m_vertexBuffer->add(pVertex);
 
@@ -106,6 +106,9 @@ namespace nauEngineSDK {
 
   void
   RenderManager::update() {
+    m_world.rotateY(0.001f);
+
+
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();
     m_gbPass.m_info.Projection = m_projection;

@@ -40,7 +40,7 @@ namespace nauEngineSDK {
       std::cout << "Failed to create Vertex Buffer you idiot \n" ;
     }
   }
-
+   
   void
   VertexBufferDX::write(void* pDevice, void* pData, SIZE_T numBytes) {
 

@@ -78,14 +78,78 @@ namespace nauEngineSDK {
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
     com->m_model->setDevice(m_api->getDevice());
-    com->m_model->loadFromFile("resources/teapot.obj");
-    //Material* m = new Material();
-    //Texture* pTexture = m_api->getDevice()->createTexture();
-    //pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
-    //m->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
-    //for (i; i < com->m_model->m_meshes.size(); ++i) {
-    //  (com->m_model->m_meshes[0])->m_material = m;
-    //}
+    com->m_model->loadFromFile("resources/Vela.FBX");
+    Material* mat = new Material();
+    Texture* pTexture = m_api->getDevice()->createTexture();
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[0])->m_material = mat;
+    
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[1])->m_material = mat;
+
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[2])->m_material = mat;
+
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[3])->m_material = mat;
+    
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[4])->m_material = mat;
+
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[5])->m_material = mat;
+
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::METAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::NORMAL);
+    pTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    mat->setMaterial(pTexture, MATERIAL_FLAG::BASECOLOR);
+    (com->m_model->m_meshes[6])->m_material = mat;
 
     testModel->addComponent(com);
     model->setGameObject(testModel);

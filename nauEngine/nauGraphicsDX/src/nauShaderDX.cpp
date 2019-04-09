@@ -42,10 +42,10 @@ namespace nauEngineSDK {
 #endif
 
     result = D3DCompile(shadersource.c_str(), shadersource.size(), filename.c_str(), 0, 0, entryPoint.c_str(), profile.c_str(), FLAGS, 0, &m_d3dBlob, &error);
-    if (error)
-    {
-      //throw::std::exception("Error at getting buffer");
-      std::cout << "Error at getting buffer" << error->GetBufferPointer() << std::endl;
+    if (FAILED(result)) {
+      throw::std::exception("Error at getting buffer");
+      exit(223);
+      //std::cout << "Error at getting buffer" << error->GetBufferPointer() << std::endl;
       error->Release();
       return false;
     }

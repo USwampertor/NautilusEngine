@@ -74,9 +74,9 @@ namespace nauEngineSDK {
     memset(&tangentDesc, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
     tangentDesc.SemanticName = "TANGENT";
     tangentDesc.SemanticIndex = 0;
-    tangentDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    tangentDesc.Format = DXGI_FORMAT_R32G32B32_FLOAT;
     tangentDesc.InputSlot = 0;
-    tangentDesc.AlignedByteOffset = 0;
+    tangentDesc.AlignedByteOffset = 56;
     tangentDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     tangentDesc.InstanceDataStepRate = 0;
 
@@ -87,9 +87,9 @@ namespace nauEngineSDK {
     memset(&binormal, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
     binormal.SemanticName = "BINORMAL";
     binormal.SemanticIndex = 0;
-    binormal.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    binormal.Format = DXGI_FORMAT_R32G32B32_FLOAT;
     binormal.InputSlot = 0;
-    binormal.AlignedByteOffset = 0;
+    binormal.AlignedByteOffset = 68;
     binormal.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     binormal.InstanceDataStepRate = 0;
 

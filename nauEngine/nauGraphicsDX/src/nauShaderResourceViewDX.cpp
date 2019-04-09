@@ -32,7 +32,7 @@ namespace nauEngineSDK {
   void
   ShaderResourceViewDX::setShaderResourceView(Device* pDevice, uint32 start, uint32 views) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
-    pd3dContext->PSSetShaderResources(0, 1, &m_shaderResourceView);
+    pd3dContext->PSSetShaderResources(start, views, &m_shaderResourceView);
   }
 
 }

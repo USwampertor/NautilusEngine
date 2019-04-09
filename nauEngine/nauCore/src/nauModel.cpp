@@ -14,6 +14,14 @@ namespace nauEngineSDK {
   void
   Model::drawMesh() {
     for (auto& mesh : m_meshes) {
+      NAUTEXTUREDESCRIPTOR* desc = new NAUTEXTUREDESCRIPTOR();
+      ShaderResourceView* shaderResource = m_device->createShaderResourceView();
+      shaderResource->createShaderResourceView(m_device, 
+        mesh->m_material->getMaterial(MATERIAL_FLAG::BASECOLOR)->getAPITexture(),
+                                               *desc);
+
+
+      shaderResource->setShaderResourceView(m_device);
       mesh->draw(m_device);
     }
   }
@@ -125,11 +133,11 @@ namespace nauEngineSDK {
     
     for (uint32 l = 0; l < mesh->mMaterialIndex; ++l) {
 
-      //m->m_material = new Material();
-      //aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-      //Texture* texture = m_device->createTexture();
+      m->m_material = new Material();
+      aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+      Texture* texture = m_device->createTexture();
       //texture->loadFromFile() = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
-      
+      //
       //aiMaterial *material = mesh->mMaterials[aimesh->mMaterialIndex];
       //m_textures = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
     }

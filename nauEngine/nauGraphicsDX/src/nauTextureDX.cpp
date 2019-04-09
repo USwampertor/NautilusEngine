@@ -80,8 +80,8 @@ namespace nauEngineSDK {
     }
     stbi_image_free(m_fileData);
 
-    m_shaderResourceView = pDevice->createShaderResourceView();
 
+    m_shaderResourceView = pDevice->createShaderResourceView();
     m_shaderResourceView->createShaderResourceView(pDevice, m_pd3dTexture2D, nauDesc);
     m_shaderResourceView->setShaderResourceView(pDevice);
 

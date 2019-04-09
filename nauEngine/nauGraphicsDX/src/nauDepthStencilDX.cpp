@@ -46,22 +46,7 @@ namespace nauEngineSDK {
       throw::std::exception("Failed to create depth stencil");
     }
 
-    //In the case of the DirectX API, we need a depth stencil view
-    D3D11_DEPTH_STENCIL_VIEW_DESC descDSV;
-
-    memset(&descDSV, 0, sizeof(descDSV));
-
-    descDSV.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-    descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-    descDSV.Texture2D.MipSlice = 0;
-   
-    hr = pd3dDevice->CreateDepthStencilView(m_pDepthStencilTexture,
-                                            &descDSV,
-                                            &m_pDepthStencilView);
-
-    if (FAILED(hr)) {
-      throw::std::exception("Failed to create depth stencil view");
-    }
+    
 
     return true;
   }
@@ -80,8 +65,25 @@ namespace nauEngineSDK {
 
 
   bool
-  DepthStencilDX::createView() {
+  DepthStencilDX::createView(Device* pDevice) {
+    //In the case of the DirectX API, we need a depth stencil view
+    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
+    HRESULT hr = E_FAIL;
+    D3D11_DEPTH_STENCIL_VIEW_DESC descDSV;
 
+    memset(&descDSV, 0, sizeof(descDSV));
+
+    descDSV.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+    descDSV.Texture2D.MipSlice = 0;
+
+    hr = pd3dDevice->CreateDepthStencilView(m_pDepthStencilTexture,
+                                            &descDSV,
+                                            &m_pDepthStencilView);
+
+    if (FAILED(hr)) {
+      throw::std::exception("Failed to create depth stencil view");
+    }
     return true;
   }
 
