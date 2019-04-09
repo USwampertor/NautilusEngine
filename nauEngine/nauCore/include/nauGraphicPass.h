@@ -115,6 +115,9 @@ namespace nauEngineSDK {
     updatePass();
 
     GBPassInfo m_info;
+
+    Texture* m_Output[4];
+
   };
 
   class NAU_CORE_EXPORT SSAOPass : public GraphicPass

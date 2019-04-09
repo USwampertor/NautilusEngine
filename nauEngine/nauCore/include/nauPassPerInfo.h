@@ -14,16 +14,18 @@
 
 
 namespace nauEngineSDK {
-struct PassPerInfo
-{
-
-};
-
-struct GBPassInfo : public PassPerInfo 
-{
-  Matrix4 WorldMat;
-  Matrix4 ViewMat;
-  Matrix4 Projection;
-};
+  struct PassPerInfo
+  {
+  
+  };
+  
+  struct GBPassInfo : public PassPerInfo 
+  {
+    Matrix4 WorldMat;
+    Matrix4 ViewMat;
+    Matrix4 Projection;
+    float fNear;
+    float fFar;
+  };
 
 }

@@ -21,6 +21,12 @@ namespace nauEngineSDK {
     m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("REDUCTION", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("BLURV", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("AMBIENT", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("LUMINANCE", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("LIGHTNING", pDevice->createTexture()));
+
 
     ///DEFAULT OBJECT INITIALIZATION
 
@@ -108,10 +114,11 @@ namespace nauEngineSDK {
   RenderManager::update() {
     m_world.rotateY(0.001f);
 
-
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();
     m_gbPass.m_info.Projection = m_projection;
+    m_gbPass.m_info.fNear = m_screenNear;
+    m_gbPass.m_info.fFar = m_screenFar;
 
     m_gbPass.updatePass();
     //constan tbuffer add everything

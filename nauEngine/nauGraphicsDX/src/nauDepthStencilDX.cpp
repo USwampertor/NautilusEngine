@@ -29,11 +29,11 @@ namespace nauEngineSDK {
     descDepth.Height = height;
     descDepth.MipLevels = 1;
     descDepth.ArraySize = 1;
-    descDepth.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    descDepth.Format = DXGI_FORMAT_R24G8_TYPELESS;
     descDepth.SampleDesc.Count = 1;
     descDepth.SampleDesc.Quality = 0;
     descDepth.Usage = D3D11_USAGE_DEFAULT;
-    descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+    descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL | D3D11_BIND_SHADER_RESOURCE;
     descDepth.CPUAccessFlags = 0;
     descDepth.MiscFlags = 0;
 
@@ -74,7 +74,7 @@ namespace nauEngineSDK {
     memset(&descDSV, 0, sizeof(descDSV));
 
     descDSV.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-    descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+    descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
     descDSV.Texture2D.MipSlice = 0;
 
     hr = pd3dDevice->CreateDepthStencilView(m_pDepthStencilTexture,
@@ -99,7 +99,7 @@ namespace nauEngineSDK {
     memset(&stencilDesc, 0, sizeof(stencilDesc));
 
     stencilDesc.DepthEnable = true;
-    stencilDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
+    stencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
     stencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
     stencilDesc.StencilEnable = false;
     stencilDesc.StencilReadMask;
@@ -120,7 +120,7 @@ namespace nauEngineSDK {
   void
   DepthStencilDX::setState(Device* pDevice) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
-    pd3dContext->OMSetDepthStencilState(m_pDepthStencilState, 0);
+    pd3dContext->OMSetDepthStencilState(m_pDepthStencilState, 1);
   }
 
 }

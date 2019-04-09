@@ -28,19 +28,23 @@ namespace nauEngineSDK {
     m_depthStencil  = pDevice->createDepthStencil();
     m_rasterizer    = pDevice->createRasterizer();
 
+
+
     if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
     if (!m_depthStencil->createDepthStencil(*pDevice, 
-                                            pDevice->m_width, 
-                                            pDevice->m_height)) return false;
+                                            pDevice->m_height, 
+                                            pDevice->m_width)) return false;
 
-    if (!m_depthStencil->createView(pDevice)) return false;
 
 
     m_depthStencil->createState(pDevice);
     m_depthStencil->setState(pDevice);
     
+    if (!m_depthStencil->createView(pDevice)) return false;
 
     m_renderTarget->set(*pDevice, *m_depthStencil);
+
+
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
@@ -54,10 +58,17 @@ namespace nauEngineSDK {
     m_sampler->createSampler(pDevice);
 
     Matrix4 m = { 0 };
+    float f = 0;
     m_buffer->clear();
+
+    //Mat world view projection
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    //Near and Far
+    //m_buffer->m_constantData.emplace_back(sizeof(float) * 50);
+    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
+    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
 
     m_buffer->createHardware(pDevice->get(), 0);
     return true;
@@ -104,7 +115,7 @@ namespace nauEngineSDK {
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
     
     m_buffer->setVertexShader(pDevice->getContext());
-    m_buffer->setPixelShader(pDevice->getContext());
+    //m_buffer->setPixelShader(pDevice->getContext());
     
     m_inputLayout->setLayout(pDevice->getContext());
 
@@ -122,6 +133,8 @@ namespace nauEngineSDK {
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.Projection), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m_info.fNear), sizeof(float));
+    m_buffer->add(reinterpret_cast<char*>(&m_info.fFar), sizeof(float));
 
   }
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/

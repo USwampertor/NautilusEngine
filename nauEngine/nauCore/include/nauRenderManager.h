@@ -83,9 +83,9 @@ namespace nauEngineSDK {
 
     float m_fov;
 
-    float m_screenNear = 0.01;
+    float m_screenNear = 0.01f;
 
-    float m_screenFar = 1000;
+    float m_screenFar = 1000.0f;
 
     float m_light;
 
