@@ -15,7 +15,7 @@ namespace nauEngineSDK {
   bool
   RenderManager::init(Device* pDevice) {
 
-
+    ///Rendereable Textures
     m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
@@ -46,7 +46,7 @@ namespace nauEngineSDK {
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice)) return false;
-
+    //if (!m_lightningPass.init(pDevice)) return false;
     return true;
   }
 
@@ -54,7 +54,7 @@ namespace nauEngineSDK {
   RenderManager::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
     
     m_gbPass.render(m_orderedList, pDevice);
-    
+    //m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 
   void
@@ -121,6 +121,9 @@ namespace nauEngineSDK {
     m_gbPass.m_info.fFar = m_screenFar;
 
     m_gbPass.updatePass();
+
+
+
     //constan tbuffer add everything
     //Constant Buffer setPixel and Vertex
 

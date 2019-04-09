@@ -261,6 +261,8 @@ namespace nauEngineSDK {
     void
     updatePass();
 
+
+    LGPassInfo m_lightInfo;
   };
 
   class NAU_CORE_EXPORT LuminancePass : public GraphicPass

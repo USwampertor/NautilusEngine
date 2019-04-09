@@ -361,17 +361,54 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
     LightningPass::init(Device* pDevice) {
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+
+
+
+    if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    if (!m_depthStencil->createDepthStencil(*pDevice,
+      pDevice->m_height,
+      pDevice->m_width)) return false;
+
+
+
+    m_depthStencil->createState(pDevice);
+    m_depthStencil->setState(pDevice);
+
+    if (!m_depthStencil->createView(pDevice)) return false;
+
+    m_renderTarget->set(*pDevice, *m_depthStencil);
+
+
+
+    if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
+
+    m_buffer->setVertexShader(pDevice->getContext());
+    m_buffer->setPixelShader(pDevice->getContext());
+
+    m_rasterizer->createRasterizerState(pDevice);
+    m_inputLayout->setInputDescriptor();
+    m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
+    m_sampler->createSampler(pDevice);
     return true;
   }
 
   void
     LightningPass::setPixelShader(Device* pDevice) {
-
+    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
   }
 
   void
     LightningPass::setVertexShader(Device* pDevice) {
-
+    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
   }
 
   void
@@ -386,11 +423,13 @@ namespace nauEngineSDK {
 
   bool
     LightningPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   bool
     LightningPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 

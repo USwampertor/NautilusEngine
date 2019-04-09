@@ -26,6 +26,8 @@ namespace nauEngineSDK {
     Matrix4 Projection;
     float fNear;
     float fFar;
+
+    Texture* m_position;
   };
 
   struct AOPassInfo : public PassPerInfo
@@ -53,7 +55,13 @@ namespace nauEngineSDK {
 
   struct LGPassInfo : public PassPerInfo
   {
+    float fSpecPower;
+    Vector3 fLightPos;
+    Vector4 vViewPosition;
 
+    Texture* m_normal;
+    Texture* m_color;
+    Texture* m_position;
   };
 
   struct LMPassInfo : public PassPerInfo
