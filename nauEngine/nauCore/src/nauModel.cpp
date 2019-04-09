@@ -14,14 +14,13 @@ namespace nauEngineSDK {
   void
   Model::drawMesh() {
     for (auto& mesh : m_meshes) {
-      NAUTEXTUREDESCRIPTOR* desc = new NAUTEXTUREDESCRIPTOR();
-      ShaderResourceView* shaderResource = m_device->createShaderResourceView();
-      shaderResource->createShaderResourceView(m_device, 
-        mesh->m_material->getMaterial(MATERIAL_FLAG::BASECOLOR)->getAPITexture(),
-                                               *desc);
 
 
-      shaderResource->setShaderResourceView(m_device);
+
+      SamplerState* sampler = m_device->createSamplerState();
+      sampler->createSampler(m_device);
+      sampler->setSampler(m_device);
+      (mesh->m_material)->getMaterial(MATERIAL_FLAG::BASECOLOR)->m_shaderResourceView->setShaderResourceView(m_device);
       mesh->draw(m_device);
     }
   }

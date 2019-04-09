@@ -76,6 +76,12 @@ namespace nauEngineSDK {
     createState(Device* pDevice) = 0;
 
     /**
+     * Sets the Stencil State
+     */
+    virtual void
+    setState(Device* pDevice) = 0;
+
+    /**
      * Member declaration
      */
    public:

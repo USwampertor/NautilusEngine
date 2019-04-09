@@ -48,6 +48,8 @@ namespace nauEngineSDK {
     virtual bool
     createState(Device* pDevice) override;
 
+    virtual void
+    setState(Device* pDevice) override;
 
     /**
      * Depth stencil view

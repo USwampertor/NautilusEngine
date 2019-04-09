@@ -100,7 +100,7 @@ namespace nauEngineSDK {
 
     stencilDesc.BackFace;
     stencilDesc.DepthEnable = true;
-    stencilDesc.DepthFunc;
+    stencilDesc.DepthFunc = D3D11_COMPARISON_GREATER;
     stencilDesc.DepthWriteMask;
     stencilDesc.FrontFace;
     stencilDesc.StencilEnable;
@@ -113,6 +113,12 @@ namespace nauEngineSDK {
     }
 
     return true;
+  }
+
+  void
+  DepthStencilDX::setState(Device* pDevice) {
+    auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+    pd3dContext->OMSetDepthStencilState(m_pDepthStencilState, 0);
   }
 
 }

@@ -28,7 +28,7 @@ namespace nauEngineSDK {
     m_world = Matrix4::IDENTITY;
 
     m_mainCamera.m_objective.setValues(0.0f, 0.0f, 0.0f);
-    m_mainCamera.m_position.setValues(0.0f, 0.0f, -250.0f);
+    m_mainCamera.m_position.setValues(0.0f, 0.0f, -100.0f);
     m_mainCamera.m_up = Vector3::UP;
 
     m_mainCamera.createView();
