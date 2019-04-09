@@ -116,7 +116,6 @@ namespace nauEngineSDK {
 
     GBPassInfo m_info;
 
-    Texture* m_Output[4];
 
   };
 

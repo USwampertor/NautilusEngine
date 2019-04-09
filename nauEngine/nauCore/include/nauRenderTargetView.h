@@ -49,10 +49,20 @@ namespace nauEngineSDK {
     createRenderTargetView(Device* pDevice, Texture* texture) = 0;
 
     virtual void
-    set(Device& pDevice, DepthStencil& depthStencil) = 0;
+    set(Device& pDevice, DepthStencil& depthStencil, int position = 1) = 0;
 
     virtual void
     clearView(Device* pDevice, Vector4 color) = 0;
+
+    virtual void*
+    getRendereableTexture(Device* pDevice) = 0;
+
+    virtual void*
+    getRenderTarget() = 0;
+
+    float m_width;
+
+    float m_height;
 
   };
   

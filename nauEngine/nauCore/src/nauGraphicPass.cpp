@@ -115,7 +115,6 @@ namespace nauEngineSDK {
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
     
     m_buffer->setVertexShader(pDevice->getContext());
-    //m_buffer->setPixelShader(pDevice->getContext());
     
     m_inputLayout->setLayout(pDevice->getContext());
 
@@ -143,22 +142,77 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-    SSAOPass::init(Device* pDevice) {
+  SSAOPass::init(Device* pDevice) {
+
+    m_pixelShader   = pDevice->createPixelShader();
+    m_vertexShader  = pDevice->createVertexShader();
+    m_buffer        = pDevice->createConstantBuffer();
+    m_renderTarget  = pDevice->createRenderTargetView();
+    m_sampler       = pDevice->createSamplerState();
+    m_inputLayout   = pDevice->createInputLayout();
+    m_depthStencil  = pDevice->createDepthStencil();
+    m_rasterizer    = pDevice->createRasterizer();
+
+
+
+    if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    if (!m_depthStencil->createDepthStencil(*pDevice, 
+                                            pDevice->m_height, 
+                                            pDevice->m_width)) return false;
+
+
+
+    m_depthStencil->createState(pDevice);
+    m_depthStencil->setState(pDevice);
+    
+    if (!m_depthStencil->createView(pDevice)) return false;
+
+    m_renderTarget->set(*pDevice, *m_depthStencil);
+
+
+
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/SSAOPass.hlsl", "ps_main")) return false;
+
+    m_buffer->setVertexShader(pDevice->getContext());
+    m_buffer->setPixelShader(pDevice->getContext());
+
+    m_rasterizer->createRasterizerState(pDevice);
+    m_inputLayout->setInputDescriptor();
+    m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
+    m_sampler->createSampler(pDevice);
+
+    Matrix4 m = { 0 };
+    float f = 0;
+    m_buffer->clear();
+
+    //Mat world view projection
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
+    //Near and Far
+    //m_buffer->m_constantData.emplace_back(sizeof(float) * 50);
+    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
+    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
+
+    m_buffer->createHardware(pDevice->get(), 0);
+    return true;
+
     return true;
   }
 
   void
-    SSAOPass::setPixelShader(Device* pDevice) {
-
+  SSAOPass::setPixelShader(Device* pDevice) {
+    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
   }
 
   void
-    SSAOPass::setVertexShader(Device* pDevice) {
-
+  SSAOPass::setVertexShader(Device* pDevice) {
+    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
   }
 
   void
-    SSAOPass::setLayout(Device* pDevice) {
+  SSAOPass::setLayout(Device* pDevice) {
 
   }
 
@@ -168,23 +222,32 @@ namespace nauEngineSDK {
   }
 
   bool
-    SSAOPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+  SSAOPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   bool
-    SSAOPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+  SSAOPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   void
-    SSAOPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  SSAOPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+    setPixelShader(pDevice);
+    setVertexShader(pDevice);
+
+    m_buffer->setPixelShader(pDevice->getContext());
 
 
+    for (auto model : m_orderedList) {
+      model->m_model->drawMesh();
+    }
   }
 
   void
-    SSAOPass::updatePass() {
+  SSAOPass::updatePass() {
 
 
   }
@@ -195,17 +258,17 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-    ReductionPass::init(Device* pDevice) {
+  ReductionPass::init(Device* pDevice) {
     return true;
   }
 
   void
-    ReductionPass::setPixelShader(Device* pDevice) {
+  ReductionPass::setPixelShader(Device* pDevice) {
 
   }
 
   void
-    ReductionPass::setVertexShader(Device* pDevice) {
+  ReductionPass::setVertexShader(Device* pDevice) {
 
   }
 

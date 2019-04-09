@@ -28,4 +28,42 @@ namespace nauEngineSDK {
     float fFar;
   };
 
+  struct AOPassInfo : public PassPerInfo
+  {
+    Matrix4 invViewProjection;
+    float fNear;
+    float fFar;
+    float sampleRadius;
+    float intensity;
+    float scale;
+    float bias;
+    Vector4 clearColor;
+
+  };
+
+  struct RDPassInfo : public PassPerInfo
+  {
+
+  };
+
+  struct BLPassInfo : public PassPerInfo
+  {
+
+  };
+
+  struct LGPassInfo : public PassPerInfo
+  {
+
+  };
+
+  struct LMPassInfo : public PassPerInfo
+  {
+
+  };
+
+  struct FNPassInfo : public PassPerInfo
+  {
+
+  };
+
 }

@@ -117,12 +117,16 @@ namespace nauEngineSDK {
     void
     setMaterial(Texture* texture, MATERIAL_FLAG::E material = MATERIAL_FLAG::DEFAULT);
 
-  private:
+    bool m_base, m_normal, m_emissive, m_roughness, m_ambient, m_specular, m_metal;
+  
+   private:
 
     /**
      * Map for storing all
      */
     Map<MATERIAL_FLAG::E, Texture*> m_TextureMap;
+
+
 
   };
 

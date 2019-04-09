@@ -33,7 +33,7 @@ namespace nauEngineSDK {
       
       std::cout << "Couldn't load file, loading default file..." << std::endl;
       stbi_image_free(m_fileData);
-      m_fileData = stbi_load("checkers.jpg", &x, &x, &byteperpixel, 4);
+      m_fileData = stbi_load("resources/checkers.jpg", &x, &x, &byteperpixel, 4);
 
       if (!m_fileData) {
         std::cout << "Couldn't load default font \n YOU SHOULD FEAR NOW" << std::endl;

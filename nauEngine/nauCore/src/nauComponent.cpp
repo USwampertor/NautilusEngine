@@ -25,5 +25,38 @@ namespace  nauEngineSDK {
   void
   Material::setMaterial(Texture* texture, MATERIAL_FLAG::E material) {
     m_TextureMap.insert(std::make_pair(material, texture));
+
+    if (MATERIAL_FLAG::BASECOLOR == material) {
+
+      m_base = true;
+    }
+    else if (MATERIAL_FLAG::NORMAL == material) {
+
+      m_normal = true;
+    }
+    else if (MATERIAL_FLAG::EMISSIVE == material) {
+
+      m_emissive = true;
+    }
+    else if (MATERIAL_FLAG::ROUGHNESS == material) {
+
+      m_roughness = true;
+    }
+    else if (MATERIAL_FLAG::AMBIENT == material) {
+
+      m_ambient = true;
+    }
+    else if (MATERIAL_FLAG::SPECULAR == material) {
+
+      m_specular = true;
+    }
+    else if (MATERIAL_FLAG::METAL == material) {
+
+      m_metal = true;
+    }
+    else {
+      m_base = true;
+    }
+
   }
 }

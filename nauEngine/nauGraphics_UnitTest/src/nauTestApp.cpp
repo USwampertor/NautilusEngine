@@ -170,15 +170,15 @@ namespace nauEngineSDK {
     Texture* pEyesTexture = m_api->getDevice()->createTexture();
     pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_BaseColor.tga", m_api->getDevice());
     mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::BASECOLOR);
-    pEyesTexture = m_api->getDevice()->createTexture();
-    pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Metallic.tga", m_api->getDevice());
-    mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::METAL);
-    pEyesTexture = m_api->getDevice()->createTexture();
-    pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Normal.tga", m_api->getDevice());
-    mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::NORMAL);
-    pEyesTexture = m_api->getDevice()->createTexture();
-    pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Roughness.tga", m_api->getDevice());
-    mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::ROUGHNESS);
+    //pEyesTexture = m_api->getDevice()->createTexture();
+    //pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Metallic.tga", m_api->getDevice());
+    //mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::METAL);
+    //pEyesTexture = m_api->getDevice()->createTexture();
+    //pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Normal.tga", m_api->getDevice());
+    //mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::NORMAL);
+    //pEyesTexture = m_api->getDevice()->createTexture();
+    //pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_Roughness.tga", m_api->getDevice());
+    //mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[6])->m_material = mat6;
 
     testModel->addComponent(com);
