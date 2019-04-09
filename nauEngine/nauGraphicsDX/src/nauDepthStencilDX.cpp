@@ -98,14 +98,16 @@ namespace nauEngineSDK {
     D3D11_DEPTH_STENCIL_DESC stencilDesc;
     memset(&stencilDesc, 0, sizeof(stencilDesc));
 
-    stencilDesc.BackFace;
     stencilDesc.DepthEnable = true;
-    stencilDesc.DepthFunc = D3D11_COMPARISON_GREATER;
-    stencilDesc.DepthWriteMask;
-    stencilDesc.FrontFace;
-    stencilDesc.StencilEnable;
+    stencilDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
+    stencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    stencilDesc.StencilEnable = false;
     stencilDesc.StencilReadMask;
     stencilDesc.StencilWriteMask;
+    const D3D11_DEPTH_STENCILOP_DESC defaultDesc =
+    { D3D11_STENCIL_OP_KEEP, D3D11_STENCIL_OP_KEEP, D3D11_STENCIL_OP_KEEP,D3D11_COMPARISON_ALWAYS };
+    stencilDesc.FrontFace = defaultDesc;
+    stencilDesc.BackFace = defaultDesc;
 
     hr = pd3dDevice->CreateDepthStencilState(&stencilDesc, &m_pDepthStencilState);
       if (FAILED(hr)) {

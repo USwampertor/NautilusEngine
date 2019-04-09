@@ -32,7 +32,14 @@ namespace nauEngineSDK {
     if (!m_depthStencil->createDepthStencil(*pDevice, 
                                             pDevice->m_width, 
                                             pDevice->m_height)) return false;
-    if (!m_depthStencil->createView(pDevice))return false;
+
+    if (!m_depthStencil->createView(pDevice)) return false;
+
+
+    m_depthStencil->createState(pDevice);
+    m_depthStencil->setState(pDevice);
+    
+
     m_renderTarget->set(*pDevice, *m_depthStencil);
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;

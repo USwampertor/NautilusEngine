@@ -16,19 +16,19 @@ namespace nauEngineSDK {
   RenderManager::init(Device* pDevice) {
 
 
-    //m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
-    //m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
-    //m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
-    //m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
-    //m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("DEPTH", pDevice->createTexture()));
+    m_rendereableTextures.insert(std::make_pair("EMISSIVE", pDevice->createTexture()));
 
     ///DEFAULT OBJECT INITIALIZATION
 
     m_fov = Math::degToRad(90.0f);
     m_world = Matrix4::IDENTITY;
 
-    m_mainCamera.m_objective.setValues(0.0f, 0.0f, 0.0f);
-    m_mainCamera.m_position.setValues(0.0f, 0.0f, -100.0f);
+    m_mainCamera.m_objective.setValues(0.0f, 100.0f, 0.0f);
+    m_mainCamera.m_position.setValues(0.0f, 100.0f, -100.0f);
     m_mainCamera.m_up = Vector3::UP;
 
     m_mainCamera.createView();
