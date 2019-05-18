@@ -18,47 +18,47 @@ namespace nauEngineSDK {
       z(nz),
       w(nw) {}
   
-  FORCEINLINE Quaternion
+  Quaternion
   Quaternion::operator+(const Quaternion& other) const {
     return Quaternion(x + other.x, y + other.y, z + other.z, w + other.w);
   }
   
-  FORCEINLINE Quaternion
+  Quaternion
   Quaternion::operator-(const Quaternion& other) const {
     return Quaternion(x - other.x, y - other.y, z - other.z, w - other.w);
   }
   
-  FORCEINLINE Quaternion
+  Quaternion
   Quaternion::operator*(const Quaternion& other) const {
     return Quaternion(x * other.x, y * other.y, z * other.z, w * other.w);
   }
   
-  FORCEINLINE Quaternion
+  Quaternion
   Quaternion::operator/(const Quaternion& other) const {
     return Quaternion(x / other.x, y / other.y, z / other.z, w / other.w);
   }
 
-  FORCEINLINE bool
+  bool
   Quaternion::operator==(const Quaternion& other) {
     return x == other.x && y == other.y && z == other.z && w == other.w;
   }
 
-  FORCEINLINE bool
+  bool
   Quaternion::operator<(const Quaternion& other) {
     return x < other.x && y < other.y && z < other.z && w < other.w;
   }
 
-  FORCEINLINE bool
+  bool
   Quaternion::operator>(const Quaternion& other) {
     return x > other.x && y > other.y && z > other.z && w > other.w;
   }
 
-  FORCEINLINE bool
+  bool
   Quaternion::operator<=(const Quaternion& other) {
     return x <= other.x && y <= other.y && z <= other.z && w <= other.w;
   }
 
-  FORCEINLINE bool
+  bool
   Quaternion::operator>=(const Quaternion& other) {
     return x >= other.x && y >= other.y && z >= other.z && w >= other.w;
   }
@@ -99,12 +99,12 @@ namespace nauEngineSDK {
     return *this;
   }
   
-  FORCEINLINE float
+  float
   Quaternion::operator|(const Quaternion& v) const {
     return x * v.x + y * v.y + z * v.z + w * v.w;
   }
   
-  FORCEINLINE float
+  float
   Quaternion::operator^(const Quaternion& v) const {
     return x * v.x - y * v.y - z * v.z - w * v.w;
   }

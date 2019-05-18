@@ -26,28 +26,41 @@ namespace nauEngineSDK {
 
     /**
      * @brief Constructor setting values x y z w
-     * @param x y z w components for the quaternion
+     * @param x component for the quaternion
+     * @param y component for the quaternion
+     * @param z component for the quaternion
+     * @param w component for the quaternion
      * @return 
      * 
      */
     Quaternion(const float nx, const float ny, const float nz, const float nw);
     
     /**
+     * @brief Copy constructor based up on another quaternion
+     * @param the other quaternion to copy
+     * @return 
+     *
+     */
+    Quaternion(const Quaternion& matrix) {
+
+    }
+
+    /**
      * @brief + operator overload
      * @param b the other matrix to add
      * @return a vector sum of *this and v
      *
      */
-    FORCEINLINE Quaternion
+    Quaternion
     operator+(const Quaternion& other) const;
     
     /**
      * @brief - operator overload
-     * @param b the other matrix to substract
+     * @param b the other matrix to subtract
      * @return a vector difference of *this and v
      *
      */
-    FORCEINLINE Quaternion
+    Quaternion
     operator-(const Quaternion& other) const;
     
     /**
@@ -56,7 +69,7 @@ namespace nauEngineSDK {
      * @return a vector multiplication of *this times v
      *
      */
-    FORCEINLINE Quaternion
+    Quaternion
     operator*(const Quaternion& other) const;
     
     /**
@@ -65,7 +78,7 @@ namespace nauEngineSDK {
      * @return a vector division of *this divided by v
      *
      */
-    FORCEINLINE Quaternion
+    Quaternion
     operator/(const Quaternion& other) const;
     
     /**
@@ -74,7 +87,7 @@ namespace nauEngineSDK {
      * @return true if this components are == to v components
      *
      */
-    FORCEINLINE bool
+    bool
     operator==(const Quaternion& other);
 
     /**
@@ -83,7 +96,7 @@ namespace nauEngineSDK {
      * @return true if this components are < to v components
      *
      */
-    FORCEINLINE bool
+    bool
     operator<(const Quaternion& other);
 
     /**
@@ -92,7 +105,7 @@ namespace nauEngineSDK {
      * @return true if this components are > to v components
      *
      */
-    FORCEINLINE bool
+    bool
     operator>(const Quaternion& other);
 
     /**
@@ -101,7 +114,7 @@ namespace nauEngineSDK {
      * @return true if this components are <= to v components
      *
      */
-    FORCEINLINE bool
+    bool
     operator<=(const Quaternion& other);
 
     /**
@@ -110,7 +123,7 @@ namespace nauEngineSDK {
      * @return true if this components are >= to v components
      *
      */
-    FORCEINLINE bool
+    bool
     operator>=(const Quaternion& other);
     
     /**
@@ -155,7 +168,7 @@ namespace nauEngineSDK {
     * @return cross product
     *
     */
-    FORCEINLINE float
+    float
     operator^(const Quaternion& v) const;
     
     /**
@@ -164,7 +177,7 @@ namespace nauEngineSDK {
      * @return dot product
      *
      */
-    FORCEINLINE float
+    float
     operator|(const Quaternion& v) const;
     
     /**
