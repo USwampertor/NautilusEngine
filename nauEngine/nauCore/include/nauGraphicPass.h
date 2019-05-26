@@ -337,6 +337,39 @@ namespace nauEngineSDK {
 
   };
 
+  class NAU_CORE_EXPORT ComputePass : public GraphicPass
+  {
+  public:
+    ComputePass() = default;
+    ~ComputePass() = default;
+
+    bool
+      init(Device* pDevice);
+
+    void
+      setPixelShader(Device* pDevice);
+
+    void
+      setVertexShader(Device* pDevice);
+
+    void
+      setLayout(Device* pDevice);
+
+    void
+      setShaderSampler(Device* pDevice);
+
+    bool
+      loadPixelShader(Device* pDevice, String fileName, String entry);
+
+    bool
+      loadVertexShader(Device* pDevice, String fileName, String entry);
+
+    void
+      render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+
+    void
+      updatePass();
+  };
 
 }
 

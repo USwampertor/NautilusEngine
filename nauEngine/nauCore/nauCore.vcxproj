@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -52,8 +52,12 @@
     <ClInclude Include="include\nauTimer.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
+    <ClInclude Include="nauBone.h" />
+    <ClInclude Include="nauWeight.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauBone.cpp" />
+    <ClCompile Include="nauWeight.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauClock.cpp" />

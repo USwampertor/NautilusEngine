@@ -56,7 +56,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice);
+    render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi);
 
     void
     addPass(GraphicPass* pass);

@@ -46,15 +46,16 @@ namespace nauEngineSDK {
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice)) return false;
-    //if (!m_lightningPass.init(pDevice)) return false;
+    if (!m_lightningPass.init(pDevice)) return false;
     return true;
   }
 
   void
-  RenderManager::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  RenderManager::render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi) {
     
+    Device* pDevice = pApi->getDevice();
     m_gbPass.render(m_orderedList, pDevice);
-    //m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 
   void

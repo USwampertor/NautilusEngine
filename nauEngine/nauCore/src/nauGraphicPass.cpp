@@ -44,13 +44,8 @@ namespace nauEngineSDK {
 
     m_renderTarget->set(*pDevice, *m_depthStencil);
 
-
-
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
-
-    m_buffer->setVertexShader(pDevice->getContext());
-    m_buffer->setPixelShader(pDevice->getContext());
 
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
@@ -65,10 +60,6 @@ namespace nauEngineSDK {
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
-    //Near and Far
-    //m_buffer->m_constantData.emplace_back(sizeof(float) * 50);
-    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
-    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
 
     m_buffer->createHardware(pDevice->get(), 0);
     return true;
@@ -169,20 +160,15 @@ namespace nauEngineSDK {
 
     m_renderTarget->set(*pDevice, *m_depthStencil);
 
-
-
     if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/SSAOPass.hlsl", "ps_main")) return false;
-
-    m_buffer->setVertexShader(pDevice->getContext());
-    m_buffer->setPixelShader(pDevice->getContext());
 
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
     m_sampler->createSampler(pDevice);
 
-    Matrix4 m = { 0 };
+    Matrix4 m = {0};
     float f = 0;
     m_buffer->clear();
 
@@ -190,10 +176,6 @@ namespace nauEngineSDK {
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
-    //Near and Far
-    //m_buffer->m_constantData.emplace_back(sizeof(float) * 50);
-    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
-    //m_buffer->add(reinterpret_cast<char*>(f), sizeof(float));
 
     m_buffer->createHardware(pDevice->get(), 0);
     return true;
@@ -360,7 +342,7 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-    LightningPass::init(Device* pDevice) {
+  LightningPass::init(Device* pDevice) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -372,71 +354,65 @@ namespace nauEngineSDK {
 
 
 
-    if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
-    if (!m_depthStencil->createDepthStencil(*pDevice,
-      pDevice->m_height,
-      pDevice->m_width)) return false;
-
-
-
-    m_depthStencil->createState(pDevice);
-    m_depthStencil->setState(pDevice);
-
-    if (!m_depthStencil->createView(pDevice)) return false;
-
-    m_renderTarget->set(*pDevice, *m_depthStencil);
-
-
+    //if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    //if (!m_depthStencil->createDepthStencil(*pDevice,
+    //  pDevice->m_height,
+    //  pDevice->m_width)) return false;
+    //
+    //m_depthStencil->createState(pDevice);
+    //m_depthStencil->setState(pDevice);
+    //
+    //if (!m_depthStencil->createView(pDevice)) return false;
+    //
+    //m_renderTarget->set(*pDevice, *m_depthStencil);
 
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
 
-    m_buffer->setVertexShader(pDevice->getContext());
-    m_buffer->setPixelShader(pDevice->getContext());
-
-    m_rasterizer->createRasterizerState(pDevice);
-    m_inputLayout->setInputDescriptor();
-    m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
-    m_sampler->createSampler(pDevice);
+    //m_rasterizer->createRasterizerState(pDevice);
+    //m_inputLayout->setInputDescriptor();
+    //m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
+    //m_sampler->createSampler(pDevice);
     return true;
   }
 
   void
-    LightningPass::setPixelShader(Device* pDevice) {
+  LightningPass::setPixelShader(Device* pDevice) {
     pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
   }
 
   void
-    LightningPass::setVertexShader(Device* pDevice) {
+  LightningPass::setVertexShader(Device* pDevice) {
     pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
   }
 
   void
-    LightningPass::setLayout(Device* pDevice) {
+  LightningPass::setLayout(Device* pDevice) {
 
   }
 
   void
-    LightningPass::setShaderSampler(Device* pDevice) {
+  LightningPass::setShaderSampler(Device* pDevice) {
 
   }
 
   bool
-    LightningPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+  LightningPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
     m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   bool
-    LightningPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+  LightningPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
     m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
 
   void
-    LightningPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  LightningPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
-
+    setVertexShader(pDevice);
+    setPixelShader(pDevice);
   }
 
   void

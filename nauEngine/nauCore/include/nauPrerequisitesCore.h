@@ -12,6 +12,12 @@
 
 #include <nauPrerequisitesUtil.h>        //Here we add the utilities export
 
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+
 /**
 * Library export specifics
 */

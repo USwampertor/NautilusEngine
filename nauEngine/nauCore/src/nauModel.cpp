@@ -20,8 +20,7 @@ namespace nauEngineSDK {
       SamplerState* sampler = m_device->createSamplerState();
       sampler->createSampler(m_device);
       sampler->setSampler(m_device);
-      (mesh->m_material)->getMaterial(MATERIAL_FLAG::BASECOLOR)->m_shaderResourceView->setShaderResourceView(m_device);
-      
+      (mesh->m_material)->getMaterial(MATERIAL_FLAG::BASECOLOR)->m_shaderResourceView->setShaderResourceView(m_device); 
       if (mesh->m_material->m_metal && (mesh->m_material)->getMaterial(MATERIAL_FLAG::EMISSIVE) != nullptr) {
         (mesh->m_material)->getMaterial(MATERIAL_FLAG::METAL)->m_shaderResourceView->setShaderResourceView(m_device, 1);
       }
@@ -33,7 +32,7 @@ namespace nauEngineSDK {
       }
       mesh->draw(m_device);
     }
-  }
+  } 
 
   void
   Model::setDevice(Device* dev) {
