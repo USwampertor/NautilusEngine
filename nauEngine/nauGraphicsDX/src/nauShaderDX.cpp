@@ -18,6 +18,7 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Shader member declaration
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
   bool
   ShaderDX::compile(String filename, 
                        String entryPoint, 
@@ -67,6 +68,12 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Vertex shader member declaration
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
+  bool
+  VertexShaderDX::init() {
+    return true;
+  }
+
   void
   VertexShaderDX::createFromFile(void* pDevice, 
                                  const char* fileName, 
@@ -107,6 +114,12 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Pixel shader member declaration
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
+  bool
+  PixelShaderDX::init() {
+    return true;
+  }
+  
   void
   PixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = E_FAIL;
@@ -144,6 +157,12 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Geometry shader member declaration
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
+  bool
+  GeometryShaderDX::init() {
+    return true;
+  }
+  
   void
   GeometryShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
@@ -164,6 +183,15 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Geometry shader member declaration
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
+  bool
+  ComputeShaderDX::init() {
+
+    HRESULT hr = E_FAIL;
+
+    return true;
+  }
+  
   void
   ComputeShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;
@@ -185,6 +213,13 @@ namespace nauEngineSDK {
  * nauShaderDX.cpp Geometry shader member declaration
  */
  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
+  bool
+  TextureShaderDX::init() {
+    return true;
+  }
+
+  
   void
   TextureShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = S_OK;

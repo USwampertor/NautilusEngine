@@ -41,6 +41,12 @@ namespace nauEngineSDK {
     ~Shader() = default;
 
     /**
+     * Initializes the shader
+     */
+    virtual bool
+    init() = 0;
+
+    /**
      * @brief Compiles a shader resource with the info showed
      * @param string filename the path or nae of the file
      *        string entry point, basically the name of the main

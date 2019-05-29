@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauBaseApp.h" />
+    <ClInclude Include="include\nauBone.h" />
     <ClInclude Include="include\nauCamera.h" />
     <ClInclude Include="include\nauCameraManager.h" />
     <ClInclude Include="include\nauClock.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="include\nauRasterizerState.h" />
     <ClInclude Include="include\nauRenderManager.h" />
     <ClInclude Include="include\nauRenderTargetView.h" />
+    <ClInclude Include="include\nauResourceManager.h" />
     <ClInclude Include="include\nauSamplerState.h" />
     <ClInclude Include="include\nauSceneGraph.h" />
     <ClInclude Include="include\nauShader.h" />
@@ -52,12 +54,10 @@
     <ClInclude Include="include\nauTimer.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
-    <ClInclude Include="nauBone.h" />
-    <ClInclude Include="nauWeight.h" />
+    <ClInclude Include="include\nauWeight.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauBone.cpp" />
-    <ClCompile Include="nauWeight.cpp" />
+    <ClCompile Include="src\nauBone.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauClock.cpp" />
@@ -72,8 +72,10 @@
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
+    <ClCompile Include="src\nauResourceManager.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
+    <ClCompile Include="src\nauWeight.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -35,6 +35,9 @@ namespace nauEngineSDK {
     };
 
     virtual bool
+    init() = 0;
+
+    virtual bool
     compile(String filename, String entryPoint, String profile, uint32 FLAGS) override;
 
     virtual void*
@@ -74,6 +77,9 @@ namespace nauEngineSDK {
       }
     };
 
+    virtual bool
+    init() override;
+
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
 
@@ -110,6 +116,9 @@ namespace nauEngineSDK {
       }
     }
 
+    virtual bool
+    init() override;
+
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
 
@@ -138,6 +147,9 @@ namespace nauEngineSDK {
      * Default Constructor
      */
     ~ComputeShaderDX() = default;
+
+    virtual bool
+    init() override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -168,6 +180,9 @@ namespace nauEngineSDK {
      * Default Constructor
      */
     ~GeometryShaderDX() = default;
+
+    virtual bool
+    init() override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -203,6 +218,9 @@ namespace nauEngineSDK {
      * Default Constructor
      */
     ~TextureShaderDX() = default;
+
+    virtual bool
+    init() override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;

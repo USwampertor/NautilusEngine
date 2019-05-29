@@ -126,7 +126,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -134,8 +134,8 @@
       <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -145,7 +145,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -153,8 +153,8 @@
       <PreprocessorDefinitions>NAU_DIRECTX_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -166,7 +166,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -176,8 +176,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;OpenCL.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -189,7 +189,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauCore/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -199,8 +199,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxguid.lib;assimp-vc140-mt.lib;OpenCL.lib;nauUtilities.lib;EASTL.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>

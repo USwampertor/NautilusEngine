@@ -10,9 +10,10 @@
 #pragma once
 
 #include <nauPrerequisitesCore.h>
+
+#include <CL/cl_d3d11.h>
 #include <d3d11.h>
 #include <d3dcompiler.h>
-
 
 /**
  * Library export specifics
