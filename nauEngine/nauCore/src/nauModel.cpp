@@ -15,8 +15,6 @@ namespace nauEngineSDK {
   Model::drawMesh() {
     for (auto& mesh : m_meshes) {
 
-
-
       SamplerState* sampler = m_device->createSamplerState();
       sampler->createSampler(m_device);
       sampler->setSampler(m_device);

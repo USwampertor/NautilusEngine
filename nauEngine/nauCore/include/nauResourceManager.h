@@ -8,7 +8,6 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
-
 #include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
