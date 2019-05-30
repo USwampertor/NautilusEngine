@@ -189,6 +189,34 @@ namespace nauEngineSDK {
 
     HRESULT hr = E_FAIL;
 
+    Vector<cl::Platform> allPlatforms;
+    cl::Platform::get(&allPlatforms);
+    if (allPlatforms.size() == 0) {
+      std::cout << "no platforms found \n";
+      return false;
+    }
+
+    for (auto platform : allPlatforms) {
+      std::cout << platform.getInfo<CL_PLATFORM_NAME>() << "\n";
+      std::cout << platform.getInfo<CL_PLATFORM_PROFILE>() << "\n";
+
+      std::cout << std::endl;
+    }
+
+    cl::Platform defaultPlatform = allPlatforms[0];
+    std::cout << "using platform: " << defaultPlatform.getInfo<CL_PLATFORM_NAME>() << std::endl;
+
+    Vector<cl::Device> all_devices;
+    defaultPlatform.getDevices(CL_DEVICE_TYPE_ALL, &all_devices);
+    if (all_devices.size() == 0) {
+      std::cout << "No devices found. \n";
+      return false;
+    }
+
+    cl::Device defaultDevice = all_devices[0];
+    std::cout << "using platform: " << defaultDevice.getInfo<CL_DEVICE_NAME>() << std::endl;
+
+
     return true;
   }
   

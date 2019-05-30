@@ -16,6 +16,45 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
+  void
+  GraphicPass::setPixelShader(Device* pDevice) {
+    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
+  }
+
+  void
+  GraphicPass::setVertexShader(Device* pDevice) {
+    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
+  }
+
+  void
+  GraphicPass::setComputeShader(Device* pDevice) {
+    pDevice->setShader(m_computeShader->getShader(), SHADERFLAGS::COMPUTE);
+  }
+
+  bool
+  GraphicPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
+    return true;
+  }
+
+  bool
+  GraphicPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
+    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
+    return true;
+  }
+
+  bool
+  GraphicPass::loadComputeShader(Device* pDevice, String fileName, String entry) {
+    m_computeShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
+    return true;
+  }
+
+  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  /**
+   * nauGraphicPass.cpp 
+   */
+  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
   bool
   GBPass::init(Device* pDevice) {
 
@@ -44,6 +83,15 @@ namespace nauEngineSDK {
 
     m_renderTarget->set(*pDevice, *m_depthStencil);
 
+    if (!m_pixelShader->init()) { 
+      std::cout << "Couldn't initiate the Pixel shader of the geometric pass" << std::endl;
+      exit(442);
+    }
+    if (!m_vertexShader->init()) {
+      std::cout << "Couldn't initiate the Vertex shader of the geometric pass" << std::endl;
+      exit(445);
+    }
+
     if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
 
@@ -65,16 +113,7 @@ namespace nauEngineSDK {
     return true;
   }
 
-  void
-  GBPass::setPixelShader(Device* pDevice) {
-    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
-  }
-
-  void
-  GBPass::setVertexShader(Device* pDevice) {
-    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
-  }
-
+ 
   void
   GBPass::setLayout(Device* pDevice) {
 
@@ -83,18 +122,6 @@ namespace nauEngineSDK {
   void
   GBPass::setShaderSampler(Device* pDevice) {
 
-  }
-
-  bool
-  GBPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
-  }
-
-  bool
-  GBPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
   }
 
   void
@@ -184,35 +211,13 @@ namespace nauEngineSDK {
   }
 
   void
-  SSAOPass::setPixelShader(Device* pDevice) {
-    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
-  }
-
-  void
-  SSAOPass::setVertexShader(Device* pDevice) {
-    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
-  }
-
-  void
   SSAOPass::setLayout(Device* pDevice) {
 
   }
 
   void
-    SSAOPass::setShaderSampler(Device* pDevice) {
+  SSAOPass::setShaderSampler(Device* pDevice) {
 
-  }
-
-  bool
-  SSAOPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
-  }
-
-  bool
-  SSAOPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
   }
 
   void
@@ -245,43 +250,23 @@ namespace nauEngineSDK {
   }
 
   void
-  ReductionPass::setPixelShader(Device* pDevice) {
+  ReductionPass::setLayout(Device* pDevice) {
 
   }
 
   void
-  ReductionPass::setVertexShader(Device* pDevice) {
+  ReductionPass::setShaderSampler(Device* pDevice) {
 
   }
 
   void
-    ReductionPass::setLayout(Device* pDevice) {
-
-  }
-
-  void
-    ReductionPass::setShaderSampler(Device* pDevice) {
-
-  }
-
-  bool
-    ReductionPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  bool
-    ReductionPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  void
-    ReductionPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  ReductionPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
 
   }
 
   void
-    ReductionPass::updatePass() {
+  ReductionPass::updatePass() {
 
 
   }
@@ -291,48 +276,28 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-    BlurPass::init(Device* pDevice) {
+  BlurPass::init(Device* pDevice) {
     return true;
   }
 
   void
-    BlurPass::setPixelShader(Device* pDevice) {
+  BlurPass::setLayout(Device* pDevice) {
 
   }
 
   void
-    BlurPass::setVertexShader(Device* pDevice) {
+  BlurPass::setShaderSampler(Device* pDevice) {
 
   }
 
   void
-    BlurPass::setLayout(Device* pDevice) {
-
-  }
-
-  void
-    BlurPass::setShaderSampler(Device* pDevice) {
-
-  }
-
-  bool
-    BlurPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  bool
-    BlurPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  void
-    BlurPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  BlurPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
 
   }
 
   void
-    BlurPass::updatePass() {
+  BlurPass::updatePass() {
 
 
   }
@@ -377,16 +342,6 @@ namespace nauEngineSDK {
   }
 
   void
-  LightningPass::setPixelShader(Device* pDevice) {
-    pDevice->setShader(m_pixelShader->getShader(), SHADERFLAGS::PIXEL);
-  }
-
-  void
-  LightningPass::setVertexShader(Device* pDevice) {
-    pDevice->setShader(m_vertexShader->getShader(), SHADERFLAGS::VERTEX);
-  }
-
-  void
   LightningPass::setLayout(Device* pDevice) {
 
   }
@@ -394,18 +349,6 @@ namespace nauEngineSDK {
   void
   LightningPass::setShaderSampler(Device* pDevice) {
 
-  }
-
-  bool
-  LightningPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    m_pixelShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
-  }
-
-  bool
-  LightningPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    m_vertexShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
-    return true;
   }
 
   void
@@ -416,7 +359,7 @@ namespace nauEngineSDK {
   }
 
   void
-    LightningPass::updatePass() {
+  LightningPass::updatePass() {
 
 
   }
@@ -426,100 +369,96 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-    LuminancePass::init(Device* pDevice) {
+  LuminancePass::init(Device* pDevice) {
     return true;
   }
 
   void
-    LuminancePass::setPixelShader(Device* pDevice) {
+  LuminancePass::setLayout(Device* pDevice) {
 
   }
 
   void
-    LuminancePass::setVertexShader(Device* pDevice) {
+  LuminancePass::setShaderSampler(Device* pDevice) {
 
   }
 
   void
-    LuminancePass::setLayout(Device* pDevice) {
-
-  }
-
-  void
-    LuminancePass::setShaderSampler(Device* pDevice) {
-
-  }
-
-  bool
-    LuminancePass::loadPixelShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  bool
-    LuminancePass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
-  void
-    LuminancePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  LuminancePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
 
   }
 
   void
-    LuminancePass::updatePass() {
+  LuminancePass::updatePass() {
 
 
   }
+  
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   /**
    * nauGraphicPass.cpp 
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  
   bool
-    FinalPass::init(Device* pDevice) {
+  FinalPass::init(Device* pDevice) {
     return true;
   }
 
   void
-    FinalPass::setPixelShader(Device* pDevice) {
+  FinalPass::setLayout(Device* pDevice) {
 
   }
 
   void
-    FinalPass::setVertexShader(Device* pDevice) {
+  FinalPass::setShaderSampler(Device* pDevice) {
 
   }
 
   void
-    FinalPass::setLayout(Device* pDevice) {
+  FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+
 
   }
 
   void
-    FinalPass::setShaderSampler(Device* pDevice) {
+  FinalPass::updatePass() {
+
 
   }
+
+  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  /**
+   * nauGraphicPass.cpp 
+   */
+  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   bool
-    FinalPass::loadPixelShader(Device* pDevice, String fileName, String entry) {
+  ComputePass::init(Device* pDevice) {
     return true;
   }
 
-  bool
-    FinalPass::loadVertexShader(Device* pDevice, String fileName, String entry) {
-    return true;
-  }
-
   void
-    FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
-
+  ComputePass::setLayout(Device* pDevice) {
 
   }
 
   void
-    FinalPass::updatePass() {
+  ComputePass::setShaderSampler(Device* pDevice) {
+
+  }
+
+  void
+  ComputePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
 
   }
+
+  void
+  ComputePass::updatePass() {
+
+
+  }
+
 }
