@@ -38,6 +38,17 @@ namespace nauEngineSDK {
     ~Texture() = default;
 
     /**
+     * @brief Initializes a texture as an empty object
+     * @param Device object
+     * @param int32 width of the texture
+     * @param int32 height of the texture
+     * @return true if able to create
+     *
+     */
+    virtual bool
+    init(Device* pDevice, int32 width, int32 height) = 0;
+
+    /**
      * @brief Loads a resource from a path
      * @param string path of the file, device and device context
      * @return 

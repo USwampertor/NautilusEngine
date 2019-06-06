@@ -40,7 +40,7 @@ namespace nauEngineSDK {
     ~GraphicPass() {}
 
     virtual bool
-    init(Device* pDevice) = 0;
+    init(Device* pDevice, Map<String, Texture*> textures) = 0;
 
     void
     setPixelShader(Device* pDevice);
@@ -131,7 +131,7 @@ namespace nauEngineSDK {
     ~GBPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*>) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -147,14 +147,6 @@ namespace nauEngineSDK {
 
     GBPassInfo m_info;
 
-    Texture* m_normalTexture = nullptr;
-
-    Texture* m_depthTexture = nullptr;
-
-    Texture* m_colorTexture = nullptr;
-
-    Texture* m_Texture = nullptr;
-
   };
 
   class NAU_CORE_EXPORT SSAOPass : public GraphicPass
@@ -165,7 +157,7 @@ namespace nauEngineSDK {
     ~SSAOPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -189,7 +181,7 @@ namespace nauEngineSDK {
     ~ReductionPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -213,7 +205,7 @@ namespace nauEngineSDK {
     ~BlurPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -237,8 +229,8 @@ namespace nauEngineSDK {
     ~LightningPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
-
+    init(Device* pDevice, Map<String, Texture*> textures) override;
+    
     virtual void
     setLayout(Device* pDevice) override;
 
@@ -262,7 +254,7 @@ namespace nauEngineSDK {
     ~LuminancePass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -286,7 +278,7 @@ namespace nauEngineSDK {
     ~FinalPass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;
@@ -310,7 +302,7 @@ namespace nauEngineSDK {
     ~ComputePass() = default;
 
     virtual bool
-    init(Device* pDevice) override;
+    init(Device* pDevice, Map<String, Texture*> textures) override;
 
     virtual void
     setLayout(Device* pDevice) override;

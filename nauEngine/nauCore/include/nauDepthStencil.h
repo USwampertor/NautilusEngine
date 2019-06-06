@@ -39,7 +39,9 @@ namespace nauEngineSDK {
 
     /**
      * @brief creates a depth stencil descriptor
-     * @param void* device and void* immediate context
+     * @param Device device
+     * @param height of the viewport
+     * @param width of the viewport
      * @return true if able to construct
      *
      */
@@ -50,7 +52,7 @@ namespace nauEngineSDK {
 
     /**
      * @brief Cleans the Depths Stencil
-     * @param 
+     * @param Device
      * @return 
      *
      */

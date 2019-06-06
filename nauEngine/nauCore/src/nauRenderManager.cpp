@@ -27,6 +27,10 @@ namespace nauEngineSDK {
     m_rendereableTextures.insert(std::make_pair("LUMINANCE", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("LIGHTNING", pDevice->createTexture()));
 
+    for (auto texture : m_rendereableTextures) {
+      (texture.second)->init(pDevice, pDevice->m_width, pDevice->m_height);
+    }
+
     ///DEFAULT OBJECT INITIALIZATION
     m_fov = Math::degToRad(90.0f);
     m_world = Matrix4::IDENTITY;
@@ -43,12 +47,12 @@ namespace nauEngineSDK {
                              m_screenFar);
 
     ///BUFFER INITIALIZATION
-    if (!m_gbPass.init(pDevice)) return false;
-    if (!m_ssaoPass.init(pDevice)) return false;
-    if (!m_blurPass.init(pDevice)) return false;
-    if (!m_lightningPass.init(pDevice)) return false;
-    if (!m_luminancePass.init(pDevice)) return false;
-    if (!m_finalPass.init(pDevice)) return false;
+    if (!m_gbPass.init(pDevice,m_rendereableTextures)) return false;
+    if (!m_ssaoPass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_blurPass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
 
     return true;
   }
@@ -60,7 +64,7 @@ namespace nauEngineSDK {
     
     m_gbPass.render(m_orderedList, pDevice);
 
-    //m_ssaoPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_ssaoPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);

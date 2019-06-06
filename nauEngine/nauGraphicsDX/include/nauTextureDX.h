@@ -29,6 +29,9 @@ namespace nauEngineSDK {
     ~TextureDX() = default;
 
     virtual bool
+    init(Device* pDevice, int32 width, int32 height) override;
+
+    virtual bool
     loadFromFile(String path, Device* pDevice) override;
 
     virtual bool

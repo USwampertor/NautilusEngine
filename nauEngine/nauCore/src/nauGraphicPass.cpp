@@ -56,7 +56,7 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   bool
-  GBPass::init(Device* pDevice) {
+  GBPass::init(Device* pDevice, Map<String, Texture*> textures) {
 
     m_pixelShader   = pDevice->createPixelShader();
     m_vertexShader  = pDevice->createVertexShader();
@@ -72,6 +72,9 @@ namespace nauEngineSDK {
     m_info.m_depth = pDevice->createRenderTargetView();
 
     if (!m_info.m_color->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    if (!m_info.m_emissive->createRenderTargetView(pDevice, textures["EMISSIVE"])) return false;
+    if (!m_info.m_normal->createRenderTargetView(pDevice, textures["NORMAL"])) return false;
+    if (!m_info.m_emissive->createRenderTargetView(pDevice, textures["DEPTH"])) return false;
     if (!m_depthStencil->createDepthStencil(*pDevice, 
                                             pDevice->m_height, 
                                             pDevice->m_width)) return false;
@@ -162,7 +165,7 @@ namespace nauEngineSDK {
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  SSAOPass::init(Device* pDevice) {
+  SSAOPass::init(Device* pDevice, Map<String, Texture*> textures) {
 
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
@@ -197,9 +200,9 @@ namespace nauEngineSDK {
     m_buffer->setPixelShader(pDevice->getContext());
 
 
-    for (auto model : m_orderedList) {
-      model->m_model->drawMesh();
-    }
+    //for (auto model : m_orderedList) {
+    //  model->m_model->drawMesh();
+    //}
   }
 
   void
@@ -214,7 +217,7 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  ReductionPass::init(Device* pDevice) {
+  ReductionPass::init(Device* pDevice, Map<String, Texture*> textures) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -257,7 +260,7 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  BlurPass::init(Device* pDevice) {
+  BlurPass::init(Device* pDevice, Map<String, Texture*> textures) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -300,7 +303,7 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  LightningPass::init(Device* pDevice) {
+  LightningPass::init(Device* pDevice, Map<String, Texture*> textures) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -344,7 +347,7 @@ namespace nauEngineSDK {
    */
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
-  LuminancePass::init(Device* pDevice) {
+  LuminancePass::init(Device* pDevice, Map<String, Texture*> textures) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -389,7 +392,7 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  FinalPass::init(Device* pDevice) {
+  FinalPass::init(Device* pDevice, Map<String, Texture*> textures) {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
@@ -434,7 +437,7 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   bool
-  ComputePass::init(Device* pDevice) {
+  ComputePass::init(Device* pDevice, Map<String, Texture*> textures) {
     return true;
   }
 
