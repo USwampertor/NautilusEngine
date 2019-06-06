@@ -58,6 +58,12 @@ namespace nauEngineSDK {
     void
     render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi);
 
+    /**
+     * @brief Adds a pass to the rendering pipeline
+     * @param new Pass
+     * @return 
+     *
+     */
     void
     addPass(GraphicPass* pass);
 
@@ -70,12 +76,13 @@ namespace nauEngineSDK {
     Vector<MeshComponent*>
     createScreenAlignedQuad(Device* pDevice);
 
+    /**
+     * Updates the render pipeline
+     */
     void
     update();
 
    public:
-    
-
 
     Map<String, Texture*> m_rendereableTextures;
 

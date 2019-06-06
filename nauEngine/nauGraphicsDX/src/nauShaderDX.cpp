@@ -42,7 +42,17 @@ namespace nauEngineSDK {
     FLAGS |= D3DCOMPILE_DEBUG;
 #endif
 
-    result = D3DCompile(shadersource.c_str(), shadersource.size(), filename.c_str(), 0, 0, entryPoint.c_str(), profile.c_str(), FLAGS, 0, &m_d3dBlob, &error);
+    result = D3DCompile(shadersource.c_str(), 
+                        shadersource.size(), 
+                        filename.c_str(),
+                        0, 
+                        D3D_COMPILE_STANDARD_FILE_INCLUDE, 
+                        entryPoint.c_str(), 
+                        profile.c_str(), 
+                        FLAGS, 
+                        0, 
+                        &m_d3dBlob, 
+                        &error);
     if (FAILED(result)) {
       String errorString = static_cast<char*>(error->GetBufferPointer());
       std::cout << "Error at getting buffer" << errorString << std::endl;
@@ -50,6 +60,7 @@ namespace nauEngineSDK {
       if (error != nullptr) {
         error->Release();
       }
+      printf("Exiting with code 223. For further information, read error 223");
       exit(223);
       return false;
     }

@@ -66,10 +66,12 @@ namespace nauEngineSDK {
     m_inputLayout   = pDevice->createInputLayout();
     m_depthStencil  = pDevice->createDepthStencil();
     m_rasterizer    = pDevice->createRasterizer();
+    m_info.m_color  = pDevice->createRenderTargetView();
+    m_info.m_emissive = pDevice->createRenderTargetView();
+    m_info.m_normal = pDevice->createRenderTargetView();
+    m_info.m_depth = pDevice->createRenderTargetView();
 
-
-
-    if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    if (!m_info.m_color->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
     if (!m_depthStencil->createDepthStencil(*pDevice, 
                                             pDevice->m_height, 
                                             pDevice->m_width)) return false;
@@ -81,7 +83,7 @@ namespace nauEngineSDK {
     
     if (!m_depthStencil->createView(pDevice)) return false;
 
-    m_renderTarget->set(*pDevice, *m_depthStencil);
+    m_info.m_color->set(*pDevice, *m_depthStencil);
 
     if (!m_pixelShader->init()) { 
       std::cout << "Couldn't initiate the Pixel shader of the geometric pass" << std::endl;
@@ -136,7 +138,7 @@ namespace nauEngineSDK {
     
     m_inputLayout->setLayout(pDevice->getContext());
 
-    m_renderTarget->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+    m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
     for (auto model : m_orderedList) {
@@ -162,50 +164,17 @@ namespace nauEngineSDK {
   bool
   SSAOPass::init(Device* pDevice) {
 
-    m_pixelShader   = pDevice->createPixelShader();
-    m_vertexShader  = pDevice->createVertexShader();
-    m_buffer        = pDevice->createConstantBuffer();
-    m_renderTarget  = pDevice->createRenderTargetView();
-    m_sampler       = pDevice->createSamplerState();
-    m_inputLayout   = pDevice->createInputLayout();
-    m_depthStencil  = pDevice->createDepthStencil();
-    m_rasterizer    = pDevice->createRasterizer();
-
-
-
-    if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
-    if (!m_depthStencil->createDepthStencil(*pDevice, 
-                                            pDevice->m_height, 
-                                            pDevice->m_width)) return false;
-
-
-
-    m_depthStencil->createState(pDevice);
-    m_depthStencil->setState(pDevice);
-    
-    if (!m_depthStencil->createView(pDevice)) return false;
-
-    m_renderTarget->set(*pDevice, *m_depthStencil);
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
 
     if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/SSAOPass.hlsl", "ps_main")) return false;
-
-    m_rasterizer->createRasterizerState(pDevice);
-    m_inputLayout->setInputDescriptor();
-    m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
-    m_sampler->createSampler(pDevice);
-
-    Matrix4 m = {0};
-    float f = 0;
-    m_buffer->clear();
-
-    //Mat world view projection
-    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
-    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
-    m_buffer->add(reinterpret_cast<char*>(&m), sizeof(Matrix4));
-
-    m_buffer->createHardware(pDevice->get(), 0);
-    return true;
 
     return true;
   }
@@ -246,6 +215,18 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
   ReductionPass::init(Device* pDevice) {
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/ReductionPass.hlsl", "ps_main")) return false;
+
     return true;
   }
 
@@ -277,6 +258,18 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
   BlurPass::init(Device* pDevice) {
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/Blur.hlsl", "ps_main")) return false;
+
     return true;
   }
 
@@ -317,27 +310,9 @@ namespace nauEngineSDK {
     m_depthStencil = pDevice->createDepthStencil();
     m_rasterizer = pDevice->createRasterizer();
 
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/LightningPass.hlsl", "ps_main")) return false;
 
-
-    //if (!m_renderTarget->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
-    //if (!m_depthStencil->createDepthStencil(*pDevice,
-    //  pDevice->m_height,
-    //  pDevice->m_width)) return false;
-    //
-    //m_depthStencil->createState(pDevice);
-    //m_depthStencil->setState(pDevice);
-    //
-    //if (!m_depthStencil->createView(pDevice)) return false;
-    //
-    //m_renderTarget->set(*pDevice, *m_depthStencil);
-
-    if (!loadVertexShader(pDevice, "resources/VS.hlsl", "vs_main")) return false;
-    if (!loadPixelShader(pDevice, "resources/PS.hlsl", "ps_main")) return false;
-
-    //m_rasterizer->createRasterizerState(pDevice);
-    //m_inputLayout->setInputDescriptor();
-    //m_inputLayout->createInputBuffer(pDevice, m_vertexShader);
-    //m_sampler->createSampler(pDevice);
     return true;
   }
 
@@ -370,6 +345,18 @@ namespace nauEngineSDK {
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   bool
   LuminancePass::init(Device* pDevice) {
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/LuminancePass.hlsl", "ps_main")) return false;
+
     return true;
   }
 
@@ -403,6 +390,18 @@ namespace nauEngineSDK {
   
   bool
   FinalPass::init(Device* pDevice) {
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_renderTarget = pDevice->createRenderTargetView();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+
+    if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
+    if (!loadPixelShader(pDevice, "resources/FinalPass.hlsl", "ps_main")) return false;
+
     return true;
   }
 

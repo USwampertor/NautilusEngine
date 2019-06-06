@@ -27,9 +27,7 @@ namespace nauEngineSDK {
     m_rendereableTextures.insert(std::make_pair("LUMINANCE", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("LIGHTNING", pDevice->createTexture()));
 
-
     ///DEFAULT OBJECT INITIALIZATION
-
     m_fov = Math::degToRad(90.0f);
     m_world = Matrix4::IDENTITY;
 
@@ -46,7 +44,12 @@ namespace nauEngineSDK {
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice)) return false;
+    if (!m_ssaoPass.init(pDevice)) return false;
+    if (!m_blurPass.init(pDevice)) return false;
     if (!m_lightningPass.init(pDevice)) return false;
+    if (!m_luminancePass.init(pDevice)) return false;
+    if (!m_finalPass.init(pDevice)) return false;
+
     return true;
   }
 
@@ -54,8 +57,14 @@ namespace nauEngineSDK {
   RenderManager::render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi) {
     
     Device* pDevice = pApi->getDevice();
+    
     m_gbPass.render(m_orderedList, pDevice);
+
+    //m_ssaoPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 
   void
@@ -113,19 +122,29 @@ namespace nauEngineSDK {
 
   void
   RenderManager::update() {
+    
     m_world.rotateY(0.0005f);
-
+    
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();
     m_gbPass.m_info.Projection = m_projection;
     m_gbPass.m_info.fNear = m_screenNear;
     m_gbPass.m_info.fFar = m_screenFar;
-
     m_gbPass.updatePass();
 
+    m_ssaoPass.updatePass();
+
+    m_blurPass.updatePass();
+
+    m_lightningPass.updatePass();
+
+    m_luminancePass.updatePass();
+
+    m_finalPass.updatePass();
 
 
-    //constan tbuffer add everything
+
+    //constant buffer add everything
     //Constant Buffer setPixel and Vertex
 
   }

@@ -27,7 +27,10 @@ namespace nauEngineSDK {
     float fNear;
     float fFar;
 
-    Texture* m_position;
+    RenderTargetView* m_color;
+    RenderTargetView* m_emissive;
+    RenderTargetView* m_normal;
+    RenderTargetView* m_depth;
   };
 
   struct AOPassInfo : public PassPerInfo
@@ -41,6 +44,8 @@ namespace nauEngineSDK {
     float bias;
     Vector4 clearColor;
 
+    RenderTargetView* m_normal;
+    RenderTargetView* m_depth;
   };
 
   struct RDPassInfo : public PassPerInfo
@@ -50,28 +55,49 @@ namespace nauEngineSDK {
 
   struct BLPassInfo : public PassPerInfo
   {
-
+    Vector2 viewPortDimensions;
+    RenderTargetView* m_ambient;
+    RenderTargetView* m_reduction;
   };
 
   struct LGPassInfo : public PassPerInfo
   {
     float fSpecPower;
+    float fNear;
+    float fFar;
+    float skyBoxRotation;
+
     Vector3 fLightPos;
     Vector4 vViewPosition;
+    Matrix4 invViewProjection;
 
-    Texture* m_normal;
-    Texture* m_color;
-    Texture* m_position;
+    RenderTargetView* m_albedo;
+    RenderTargetView* m_normal;
+    RenderTargetView* m_irradiance;
+    RenderTargetView* m_ambient;
+    RenderTargetView* m_specular;
+    RenderTargetView* m_depth;
+    RenderTargetView* m_emissive;
+
   };
 
   struct LMPassInfo : public PassPerInfo
   {
+    RenderTargetView* m_color;
+    RenderTargetView* m_emissive;
 
+    float m_threshold;
   };
 
   struct FNPassInfo : public PassPerInfo
   {
+    float m_bloomMultiplier;
+    float m_midPointGrey;
 
+    RenderTargetView* m_color;
+    RenderTargetView* m_emissive;
+    RenderTargetView* m_luminance;
+    
   };
 
 }

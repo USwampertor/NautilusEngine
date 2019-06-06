@@ -117,6 +117,10 @@ namespace nauEngineSDK {
      */
     RasterizerState* m_rasterizer = nullptr;
 
+    /**
+     * The textures passed to the graphic pass to manage and update
+     */
+    Map<String, Texture*> m_parentTexture;
   };
 
   class GBPass : public GraphicPass
@@ -143,6 +147,13 @@ namespace nauEngineSDK {
 
     GBPassInfo m_info;
 
+    Texture* m_normalTexture = nullptr;
+
+    Texture* m_depthTexture = nullptr;
+
+    Texture* m_colorTexture = nullptr;
+
+    Texture* m_Texture = nullptr;
 
   };
 
