@@ -197,7 +197,7 @@ namespace nauEngineSDK {
   
   bool
   ComputeShaderDX::init(Device* pDevice) {
-
+    auto pd3dDevice = reinterpret_cast<ID3D11DeviceContext*>(pDevice->get());
     Vector<cl::Platform> allPlatforms;
     Vector<cl::Platform> availablePlatforms;
     Vector<cl::Device> allDevices;
@@ -212,7 +212,7 @@ namespace nauEngineSDK {
     for (auto platform : allPlatforms) {
       String sharingInfo = platform.getInfo<CL_PLATFORM_EXTENSIONS>();
 
-      size_t found = sharingInfo.find("cl_khr_dx11_sharing");
+      size_t found = sharingInfo.find("cl_khr_d3d11_sharing");
       if (found != String::npos) { 
         printf("Available Platform for CL shader"); 
         availablePlatforms.push_back(platform);
@@ -230,7 +230,7 @@ namespace nauEngineSDK {
 
     cl_context_properties properties[] = {
       CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(m_defaultPlatform()),
-      CL_CONTEXT_D3D11_DEVICE_KHR, reinterpret_cast<intptr_t>(pDevice),
+      CL_CONTEXT_D3D11_DEVICE_KHR, reinterpret_cast<intptr_t>(pd3dDevice),
       CL_CONTEXT_INTEROP_USER_SYNC, CL_FALSE,
       0
     };
@@ -240,6 +240,17 @@ namespace nauEngineSDK {
                                                "clGetDeviceIDsFromD3D11KHR"));
 
     uint32 devices = 0;
+    uint32 result = retriever(m_defaultPlatform(),
+                              CL_D3D11_DEVICE_KHR, 
+                              reinterpret_cast<void*>(pd3dDevice),
+                              CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
+                              0,
+                              nullptr,
+                              &devices);
+
+    if (CL_SUCCESS != result) {
+      throw::std::exception("Couldn't find a device suited for D3D11 sharing");
+    }
 
     return true;
   }
