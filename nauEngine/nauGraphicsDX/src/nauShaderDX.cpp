@@ -197,11 +197,14 @@ namespace nauEngineSDK {
   
   bool
   ComputeShaderDX::init(Device* pDevice) {
-    auto pd3dDevice = reinterpret_cast<ID3D11DeviceContext*>(pDevice->get());
+    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     Vector<cl::Platform> allPlatforms;
     Vector<cl::Platform> availablePlatforms;
     Vector<cl_device_id> allDevices;
     Vector<cl::Device> availableDevices;
+    String platformName;
+    String platformProfile;
+    String sharingInfo;
 
     cl::Platform::get(&allPlatforms);
     if (allPlatforms.size() == 0) {
@@ -210,8 +213,9 @@ namespace nauEngineSDK {
     }
 
     for (auto platform : allPlatforms) {
-      String sharingInfo = platform.getInfo<CL_PLATFORM_EXTENSIONS>();
-
+      platformName = platform.getInfo<CL_PLATFORM_NAME>();
+      platformProfile = platform.getInfo<CL_PLATFORM_PROFILE>();
+      sharingInfo = platform.getInfo<CL_PLATFORM_EXTENSIONS>();
       size_t found = sharingInfo.find("cl_khr_d3d11_sharing");
       if (found != String::npos) { 
         printf("Available Platform for CL shader"); 
@@ -223,60 +227,85 @@ namespace nauEngineSDK {
       throw::std::exception("No available platform for d3d11 sharing with cl");
     }
 
-    m_defaultPlatform = availablePlatforms[0];
+    uint32 devices = 0;
+    cl_int result = 0;
+    bool possibleToShare = false;
+
+    for (auto platform : availablePlatforms) {
+      platformName = platform.getInfo<CL_PLATFORM_NAME>();
+      platformProfile = platform.getInfo<CL_PLATFORM_PROFILE>();
+      sharingInfo = platform.getInfo<CL_PLATFORM_EXTENSIONS>();
+      clGetDeviceIDsFromD3D11KHR_fn retriever = nullptr;
+
+      cl_context_properties properties[] = {
+        CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(platform()),
+        CL_CONTEXT_D3D11_DEVICE_KHR, reinterpret_cast<intptr_t>(pd3dDevice),
+        CL_CONTEXT_INTEROP_USER_SYNC, CL_FALSE,
+        0
+      };
+      
+      retriever = reinterpret_cast<clGetDeviceIDsFromD3D11KHR_fn>(
+        clGetExtensionFunctionAddressForPlatform(platform(),
+                                                 "clGetDeviceIDsFromD3D11KHR"));
+      result = retriever(platform(),
+                         CL_D3D11_DEVICE_KHR, 
+                         reinterpret_cast<void*>(pd3dDevice),
+                         CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
+                         0,
+                         nullptr,
+                         &devices);
+
+
+
+      if (CL_SUCCESS == result) {
+        //We found that the platform can host sharing devices
+        allDevices.clear();
+        allDevices.reserve(devices);
+        retriever(platform(),
+                  CL_D3D11_DEVICE_KHR,
+                  reinterpret_cast<void*>(pd3dDevice),
+                  CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
+                  devices,
+                  &allDevices[0],
+                  nullptr);
+        if (CL_SUCCESS == result) {
+          //We found a series of available devices that can be used
+          for (auto devs : allDevices) {
+            
+            m_defaultContext = cl::Context({ m_defaultDevice },
+                                           properties,
+                                           nullptr,
+                                           nullptr,
+                                           &result);
+            if (CL_SUCCESS == result) {
+              //We made a context, found a device and a platform available to share
+              m_defaultPlatform = platform;
+              m_defaultDevice = devs;
+              possibleToShare = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    if (!possibleToShare) {
+      throw::std::exception("IMPOSSIBLE TO SHARE BETWEEN CL AND D3D11");
+    }
+
     std::cout << "using platform: "
               << m_defaultPlatform.getInfo<CL_PLATFORM_NAME>()
               << std::endl;
-
-    cl_context_properties properties[] = {
-      CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(m_defaultPlatform()),
-      CL_CONTEXT_D3D11_DEVICE_KHR, reinterpret_cast<intptr_t>(pd3dDevice),
-      CL_CONTEXT_INTEROP_USER_SYNC, CL_FALSE,
-      0
-    };
-
-    clGetDeviceIDsFromD3D11KHR_fn retriever = reinterpret_cast<clGetDeviceIDsFromD3D11KHR_fn>(
-      clGetExtensionFunctionAddressForPlatform(m_defaultPlatform(), 
-                                               "clGetDeviceIDsFromD3D11KHR"));
-
-    uint32 devices = 0;
-    cl_int result = retriever(m_defaultPlatform(),
-                              CL_D3D11_DEVICE_KHR, 
-                              reinterpret_cast<void*>(pd3dDevice),
-                              CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
-                              0,
-                              nullptr,
-                              &devices);
-
-    if (CL_SUCCESS != result) {
-      throw::std::exception("Couldn't find a device suited for D3D11 sharing");
-    }
-
-    allDevices.reserve(devices);
-    retriever(m_defaultPlatform(),
-              CL_D3D11_DEVICE_KHR,
-              reinterpret_cast<void*>(pd3dDevice),
-              CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
-              devices,
-              &allDevices[0],
-              nullptr);
-    if (CL_SUCCESS != result) {
-      throw::std::exception("Couldn't retrieve devices suited for D3D11 sharing");
-    }
-    m_defaultDevice = allDevices[0];
-    m_defaultContext = cl::Context({ m_defaultDevice },
-                                   properties, 
-                                   nullptr, 
-                                   nullptr, 
-                                   &result);
-
-    if (CL_SUCCESS != result) {
-      throw::std::exception("Couldn't create context for CL with D3D11");
-    }
-    return true;
+    std::cout << "using device: "
+              << m_defaultDevice.getInfo<CL_DEVICE_NAME>()
+              << std::endl;
+    std::cout << "using context: "
+              << m_defaultContext.getInfo<CL_CONTEXT_PROPERTIES>()[0]
+              << std::endl;
 
     m_commandQueue = cl::CommandQueue(m_defaultContext, m_defaultDevice);
-
+    
+    return true;
   }
   
   void
