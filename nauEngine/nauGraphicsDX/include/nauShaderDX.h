@@ -186,6 +186,13 @@ namespace nauEngineSDK {
      * The default device created from the D3D11 Device
      */
     cl::Device m_defaultDevice;
+
+    /**
+     * A command queue object for managing cl instructions
+     */
+    cl::CommandQueue m_commandQueue;
+
+
   };
 
   class NAU_DIRECTX_EXPORT GeometryShaderDX : public ShaderDX

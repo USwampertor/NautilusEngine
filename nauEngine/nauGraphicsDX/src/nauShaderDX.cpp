@@ -200,7 +200,7 @@ namespace nauEngineSDK {
     auto pd3dDevice = reinterpret_cast<ID3D11DeviceContext*>(pDevice->get());
     Vector<cl::Platform> allPlatforms;
     Vector<cl::Platform> availablePlatforms;
-    Vector<cl::Device> allDevices;
+    Vector<cl_device_id> allDevices;
     Vector<cl::Device> availableDevices;
 
     cl::Platform::get(&allPlatforms);
@@ -240,7 +240,7 @@ namespace nauEngineSDK {
                                                "clGetDeviceIDsFromD3D11KHR"));
 
     uint32 devices = 0;
-    uint32 result = retriever(m_defaultPlatform(),
+    cl_int result = retriever(m_defaultPlatform(),
                               CL_D3D11_DEVICE_KHR, 
                               reinterpret_cast<void*>(pd3dDevice),
                               CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
@@ -252,7 +252,31 @@ namespace nauEngineSDK {
       throw::std::exception("Couldn't find a device suited for D3D11 sharing");
     }
 
+    allDevices.reserve(devices);
+    retriever(m_defaultPlatform(),
+              CL_D3D11_DEVICE_KHR,
+              reinterpret_cast<void*>(pd3dDevice),
+              CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
+              devices,
+              &allDevices[0],
+              nullptr);
+    if (CL_SUCCESS != result) {
+      throw::std::exception("Couldn't retrieve devices suited for D3D11 sharing");
+    }
+    m_defaultDevice = allDevices[0];
+    m_defaultContext = cl::Context({ m_defaultDevice },
+                                   properties, 
+                                   nullptr, 
+                                   nullptr, 
+                                   &result);
+
+    if (CL_SUCCESS != result) {
+      throw::std::exception("Couldn't create context for CL with D3D11");
+    }
     return true;
+
+    m_commandQueue = cl::CommandQueue(m_defaultContext, m_defaultDevice);
+
   }
   
   void
