@@ -13,7 +13,6 @@
 #include <nauDevice.h>
 
 
-
 namespace nauEngineSDK {
 
   class NAU_DIRECTX_EXPORT DeviceDX : public Device
@@ -47,7 +46,14 @@ namespace nauEngineSDK {
     virtual void
     setShader(void* shader, SHADERFLAGS::E flags) override;
 
+    virtual void
+    setRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                     DepthStencil& depthStencil) override;
 
+    virtual void
+    clearAllRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                          Vector4 clearColor) override;
+    
     ///GETTERS///
 
     virtual void*
@@ -70,6 +76,9 @@ namespace nauEngineSDK {
 
     virtual Shader*
     createPixelShader() override;
+
+    virtual Shader*
+    createComputeShader() override;
 
     virtual Texture*
     createTexture() override;

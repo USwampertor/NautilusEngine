@@ -119,6 +119,12 @@ namespace nauEngineSDK {
   }
 
   void
+  DeviceDX::clearAllRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                                  Vector4 clearColor) {
+
+  }
+
+  void
   DeviceDX::setShader(void* shader, SHADERFLAGS::E flags) {
 
     if      (SHADERFLAGS::VERTEX == flags) {
@@ -129,6 +135,24 @@ namespace nauEngineSDK {
       auto pixelShader = reinterpret_cast<ID3D11PixelShader*>(shader);
       m_pImmediateContext->PSSetShader(pixelShader, 0, 0);
     }
+  }
+
+  void
+  DeviceDX::setRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                             DepthStencil& depthStencil) {
+    
+    Vector<ID3D11RenderTargetView*> mpd3dRenderTargetArray;
+    mpd3dRenderTargetArray.reserve(renderTargets.size());
+
+    auto pd3dDepthStencil = reinterpret_cast<ID3D11DepthStencilView*>(depthStencil.getView());
+    
+    for (auto pTarget : renderTargets) {
+      auto pd3dTarget = reinterpret_cast<ID3D11RenderTargetView*>(pTarget->getRenderTarget());
+      mpd3dRenderTargetArray.push_back(pd3dTarget);
+    }
+    m_pImmediateContext->OMSetRenderTargets(renderTargets.size(),
+                                            mpd3dRenderTargetArray.data(),
+                                            pd3dDepthStencil);
   }
 
   void*
@@ -174,6 +198,11 @@ namespace nauEngineSDK {
   Shader*
   DeviceDX::createPixelShader() {
     return nau_new<PixelShaderDX>();
+  }
+
+  Shader*
+  DeviceDX::createComputeShader() {
+    return nau_new<ComputeShaderDX>();
   }
 
   Texture*

@@ -86,13 +86,20 @@ namespace nauEngineSDK {
     
     if (!m_depthStencil->createView(pDevice)) return false;
 
-    m_info.m_color->set(*pDevice, *m_depthStencil);
+    Vector<RenderTargetView*> renderTargets;
+    renderTargets.push_back(m_info.m_color);
+    renderTargets.push_back(m_info.m_emissive);
+    renderTargets.push_back(m_info.m_normal);
+    renderTargets.push_back(m_info.m_depth);
 
-    if (!m_pixelShader->init()) { 
+
+    pDevice->setRenderTargets(renderTargets, *m_depthStencil);
+
+    if (!m_pixelShader->init(pDevice)) { 
       std::cout << "Couldn't initiate the Pixel shader of the geometric pass" << std::endl;
       exit(442);
     }
-    if (!m_vertexShader->init()) {
+    if (!m_vertexShader->init(pDevice)) {
       std::cout << "Couldn't initiate the Vertex shader of the geometric pass" << std::endl;
       exit(445);
     }
@@ -142,6 +149,7 @@ namespace nauEngineSDK {
     m_inputLayout->setLayout(pDevice->getContext());
 
     m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+    m_info.m_emissive->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
     for (auto model : m_orderedList) {
@@ -175,6 +183,7 @@ namespace nauEngineSDK {
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
     m_rasterizer = pDevice->createRasterizer();
+
 
     if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/SSAOPass.hlsl", "ps_main")) return false;
@@ -401,6 +410,10 @@ namespace nauEngineSDK {
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
     m_rasterizer = pDevice->createRasterizer();
+    m_info.m_color = pDevice->createRenderTargetView();
+
+    m_colorTexture = textures["COLOR"];
+    if (!m_info.m_color->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
 
     if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/FinalPass.hlsl", "ps_main")) return false;
@@ -420,7 +433,17 @@ namespace nauEngineSDK {
 
   void
   FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+    setPixelShader(pDevice);
+    setVertexShader(pDevice);
 
+    m_buffer->setPixelShader(pDevice->getContext());
+
+
+    for (auto model : m_orderedList) {
+      model->m_model->m_meshes[0]->m_material->setMaterial(m_colorTexture, 
+                                                           MATERIAL_FLAG::BASECOLOR);
+      model->m_model->drawMesh();
+    }
 
   }
 
@@ -438,6 +461,10 @@ namespace nauEngineSDK {
 
   bool
   ComputePass::init(Device* pDevice, Map<String, Texture*> textures) {
+    
+    m_computeShader = pDevice->createComputeShader();
+
+    m_computeShader->init(pDevice);
     return true;
   }
 

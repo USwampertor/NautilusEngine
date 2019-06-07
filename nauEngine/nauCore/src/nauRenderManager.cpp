@@ -53,6 +53,7 @@ namespace nauEngineSDK {
     if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
 
     return true;
   }
@@ -68,7 +69,7 @@ namespace nauEngineSDK {
     m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
     m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
-    m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    //m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 
   void
@@ -85,8 +86,8 @@ namespace nauEngineSDK {
     
     m->m_indexBuffer = pDevice->createIndexBuffer();
     m->m_vertexBuffer = pDevice->createVertexBuffer();
-    m->m_indexBuffer->reserve(3);
-    m->m_vertexBuffer->reserve(3);
+    m->m_indexBuffer->reserve(6);
+    m->m_vertexBuffer->reserve(4);
 
     Vertex pVertex;
     pVertex.m_position = { -1.0f,-1.0f,0.0f,1.0f };
@@ -119,8 +120,13 @@ namespace nauEngineSDK {
     m->m_indexBuffer->createHardware(pDevice->get(),0);
 
     m->m_vertexBuffer->createHardware(pDevice->get(),0);
+    m->m_material = new Material();
     quad->m_model->m_meshes.push_back(m);
+    quad->m_model->setDevice(pDevice);
     quads.push_back(quad);
+
+
+
     return quads;
   }
 

@@ -292,6 +292,10 @@ namespace nauEngineSDK {
     virtual void
     updatePass() override;
 
+    Texture* m_colorTexture;
+
+    FNPassInfo m_info;
+
   };
 
   class NAU_CORE_EXPORT ComputePass : public GraphicPass

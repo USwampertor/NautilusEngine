@@ -35,7 +35,7 @@ namespace nauEngineSDK {
     };
 
     virtual bool
-    init() = 0;
+    init(Device* pDevice) = 0;
 
     virtual bool
     compile(String filename, String entryPoint, String profile, uint32 FLAGS) override;
@@ -78,7 +78,7 @@ namespace nauEngineSDK {
     };
 
     virtual bool
-    init() override;
+    init(Device* pDevice) override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -117,7 +117,7 @@ namespace nauEngineSDK {
     }
 
     virtual bool
-    init() override;
+    init(Device* pDevice) override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -149,7 +149,7 @@ namespace nauEngineSDK {
     ~ComputeShaderDX() = default;
 
     virtual bool
-    init() override;
+    init(Device* pDevice) override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -159,13 +159,33 @@ namespace nauEngineSDK {
 
     virtual void*
     getShader() override;
+
    public:
 
     /**
      * Computer shader for DirectX
      */
     ID3D11ComputeShader* m_pComputeShader;
+    
+    /**
+     * Kernel object for computing with CL
+     */
+    cl::Kernel m_kernel;
+    
+    /**
+     * Default platform for computing
+     */
+    cl::Platform m_defaultPlatform;
 
+    /**
+     * The cContext for the CL computing
+     */
+    cl::Context m_defaultContext;
+
+    /**
+     * The default device created from the D3D11 Device
+     */
+    cl::Device m_defaultDevice;
   };
 
   class NAU_DIRECTX_EXPORT GeometryShaderDX : public ShaderDX
@@ -182,7 +202,7 @@ namespace nauEngineSDK {
     ~GeometryShaderDX() = default;
 
     virtual bool
-    init() override;
+    init(Device* pDevice) override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;
@@ -197,6 +217,8 @@ namespace nauEngineSDK {
      * Geometry Shader
      */
     ID3D11GeometryShader* m_pGeometryShader;
+
+    
   };
 
    /**
@@ -220,7 +242,7 @@ namespace nauEngineSDK {
     ~TextureShaderDX() = default;
 
     virtual bool
-    init() override;
+    init(Device* pDevice) override;
 
     virtual void
     createFromFile(void* pDevice, const char* fileName, const char* entryPoint) override;

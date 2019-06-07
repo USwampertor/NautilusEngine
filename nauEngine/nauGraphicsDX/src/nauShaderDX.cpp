@@ -81,7 +81,7 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  VertexShaderDX::init() {
+  VertexShaderDX::init(Device* pDevice) {
     return true;
   }
 
@@ -127,7 +127,7 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  PixelShaderDX::init() {
+  PixelShaderDX::init(Device* pDevice) {
     return true;
   }
   
@@ -170,7 +170,7 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  GeometryShaderDX::init() {
+  GeometryShaderDX::init(Device* pDevice) {
     return true;
   }
   
@@ -196,37 +196,50 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  ComputeShaderDX::init() {
-
-    HRESULT hr = E_FAIL;
+  ComputeShaderDX::init(Device* pDevice) {
 
     Vector<cl::Platform> allPlatforms;
+    Vector<cl::Platform> availablePlatforms;
+    Vector<cl::Device> allDevices;
+    Vector<cl::Device> availableDevices;
+
     cl::Platform::get(&allPlatforms);
     if (allPlatforms.size() == 0) {
-      std::cout << "no platforms found \n";
-      return false;
+      std::cout << "No platforms found. \n";
+      throw::std::exception("No support in this machine for Open CL");
     }
 
     for (auto platform : allPlatforms) {
-      std::cout << platform.getInfo<CL_PLATFORM_NAME>() << "\n";
-      std::cout << platform.getInfo<CL_PLATFORM_PROFILE>() << "\n";
+      String sharingInfo = platform.getInfo<CL_PLATFORM_EXTENSIONS>();
 
-      std::cout << std::endl;
+      size_t found = sharingInfo.find("cl_khr_dx11_sharing");
+      if (found != String::npos) { 
+        printf("Available Platform for CL shader"); 
+        availablePlatforms.push_back(platform);
+      } 
     }
 
-    cl::Platform defaultPlatform = allPlatforms[0];
-    std::cout << "using platform: " << defaultPlatform.getInfo<CL_PLATFORM_NAME>() << std::endl;
-
-    Vector<cl::Device> all_devices;
-    defaultPlatform.getDevices(CL_DEVICE_TYPE_ALL, &all_devices);
-    if (all_devices.size() == 0) {
-      std::cout << "No devices found. \n";
-      return false;
+    if (availablePlatforms.empty()) {
+      throw::std::exception("No available platform for d3d11 sharing with cl");
     }
 
-    cl::Device defaultDevice = all_devices[0];
-    std::cout << "using platform: " << defaultDevice.getInfo<CL_DEVICE_NAME>() << std::endl;
+    m_defaultPlatform = availablePlatforms[0];
+    std::cout << "using platform: "
+              << m_defaultPlatform.getInfo<CL_PLATFORM_NAME>()
+              << std::endl;
 
+    cl_context_properties properties[] = {
+      CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(m_defaultPlatform()),
+      CL_CONTEXT_D3D11_DEVICE_KHR, reinterpret_cast<intptr_t>(pDevice),
+      CL_CONTEXT_INTEROP_USER_SYNC, CL_FALSE,
+      0
+    };
+
+    clGetDeviceIDsFromD3D11KHR_fn retriever = reinterpret_cast<clGetDeviceIDsFromD3D11KHR_fn>(
+      clGetExtensionFunctionAddressForPlatform(m_defaultPlatform(), 
+                                               "clGetDeviceIDsFromD3D11KHR"));
+
+    uint32 devices = 0;
 
     return true;
   }
@@ -240,6 +253,7 @@ namespace nauEngineSDK {
   void
   ComputeShaderDX::set(Device* pDevice) {
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice->getContext());
+    pd3dContext->CSSetShader(m_pComputeShader, 0, 0);
   }
 
   void*
@@ -254,7 +268,7 @@ namespace nauEngineSDK {
  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   
   bool
-  TextureShaderDX::init() {
+  TextureShaderDX::init(Device* pDevice) {
     return true;
   }
 

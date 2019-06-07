@@ -9,7 +9,7 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 #include "nauPrerequisitesCore.h"
-
+#include <nauVector4.h>
 
 namespace nauEngineSDK {
 
@@ -108,20 +108,44 @@ namespace nauEngineSDK {
     createDepthStencilView() = 0;
 
     /**
-     * Set Shader into the component
+     * @brief Sets the shader into the device
+     * @param the shader pointer object
+     * @param SHADERFLAGS flag denoting the type of shader
+     * @return 
+     *
      */
     virtual void
     setShader(void* shader, SHADERFLAGS::E flags) = 0;
 
     /**
-     * @brief Gets the device encapsulated in the Device object
+     * @brief Clears the render target views with a color
+     * @param The color to clear
+     * @return 
+     *
+     */
+    virtual void
+    clearAllRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                          Vector4 clearColor) = 0;
+
+    /**
+     * @brief Gets the API device encapsulated in the Device object
      * @param
-     * @return the device
+     * @return the API device
      *
      */
     virtual void*
     get() = 0;
 
+    /**
+     * @brief Sets multiple render targets to the device context
+     * @param Vector<RenderTargetView*> the list of pointers Render Target Views
+     * @param Depth Stencil reference
+     * @return 
+     *
+     */
+    virtual void
+    setRenderTargets(Vector<RenderTargetView*> renderTargets, 
+                     DepthStencil& depthStencil) = 0;
 
     /**
      * @brief Gets the device Context from the device
@@ -133,7 +157,7 @@ namespace nauEngineSDK {
     getContext() = 0;
 
     /**
-     * @brief Creates a texture based up on the backbuffer
+     * @brief Creates a texture based up on the back buffer
      * @param 
      * @return 
      *
@@ -167,6 +191,15 @@ namespace nauEngineSDK {
      */
     virtual Shader*
     createPixelShader() = 0;
+
+    /**
+     * @brief Creates a pixel shader
+     * @param
+     * @return a pointer to Pixel Shader
+     *
+     */
+    virtual Shader*
+    createComputeShader() = 0;
 
     /**
      * @brief Creates a texture

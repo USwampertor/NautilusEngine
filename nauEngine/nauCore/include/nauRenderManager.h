@@ -120,6 +120,8 @@ namespace nauEngineSDK {
 
     FinalPass m_finalPass;
 
+    ComputePass m_computePass;
+
   };
   
 }

@@ -44,7 +44,7 @@ namespace nauEngineSDK {
      * Initializes the shader
      */
     virtual bool
-    init() = 0;
+    init(Device* pDevice) = 0;
 
     /**
      * @brief Compiles a shader resource with the info showed
