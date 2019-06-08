@@ -37,7 +37,7 @@ namespace nauEngineSDK {
     m_width = rectangle.right - rectangle.left;
     m_height = rectangle.bottom - rectangle.top;
 
-    uint32 deviceFlags = 0;
+    uint32 deviceFlags = D3D11_CREATE_DEVICE_SINGLETHREADED;
 
 #if defined (NAU_DEBUG_MODE)
     deviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
@@ -134,6 +134,10 @@ namespace nauEngineSDK {
     else if (SHADERFLAGS::PIXEL == flags) {
       auto pixelShader = reinterpret_cast<ID3D11PixelShader*>(shader);
       m_pImmediateContext->PSSetShader(pixelShader, 0, 0);
+    }
+    else if (SHADERFLAGS::COMPUTE == flags) {
+      auto pixelShader = reinterpret_cast<ID3D11ComputeShader*>(shader);
+      m_pImmediateContext->CSSetShader(pixelShader, 0, 0);
     }
   }
 

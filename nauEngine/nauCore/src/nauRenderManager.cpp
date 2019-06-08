@@ -52,7 +52,7 @@ namespace nauEngineSDK {
     if (!m_blurPass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
-    if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
 
     return true;

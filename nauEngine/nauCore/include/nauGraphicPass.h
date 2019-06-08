@@ -320,6 +320,8 @@ namespace nauEngineSDK {
     virtual void
     updatePass() override;
 
+    Texture* m_colorTexture;
+
   };
 
 }

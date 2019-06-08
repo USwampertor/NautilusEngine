@@ -101,9 +101,9 @@ namespace nauEngineSDK {
     }
     auto pDev = static_cast<ID3D11Device*>(pDevice);
     hr = pDev->CreateVertexShader(m_d3dBlob->GetBufferPointer(),
-                                  m_d3dBlob->GetBufferSize(),
-                                  nullptr,
-                                  &m_pVertexShader);
+      m_d3dBlob->GetBufferSize(),
+      nullptr,
+      &m_pVertexShader);
     if (FAILED(hr)) {
       printf("Failed to create Vertex Shader");
       exit(666);
@@ -197,7 +197,7 @@ namespace nauEngineSDK {
   
   bool
   ComputeShaderDX::init(Device* pDevice) {
-    auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
+    auto pd3dDevice = (pDevice->get());
     Vector<cl::Platform> allPlatforms;
     Vector<cl::Platform> availablePlatforms;
     Vector<cl_device_id> allDevices;
@@ -249,7 +249,7 @@ namespace nauEngineSDK {
                                                  "clGetDeviceIDsFromD3D11KHR"));
       result = retriever(platform(),
                          CL_D3D11_DEVICE_KHR, 
-                         reinterpret_cast<void*>(pd3dDevice),
+                         pd3dDevice,
                          CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
                          0,
                          nullptr,
@@ -263,7 +263,7 @@ namespace nauEngineSDK {
         allDevices.reserve(devices);
         retriever(platform(),
                   CL_D3D11_DEVICE_KHR,
-                  reinterpret_cast<void*>(pd3dDevice),
+                  pd3dDevice,
                   CL_PREFERRED_DEVICES_FOR_D3D11_KHR,
                   devices,
                   &allDevices[0],
@@ -310,7 +310,25 @@ namespace nauEngineSDK {
   
   void
   ComputeShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
-    HRESULT hr = S_OK;
+    char dirPath[MAX_PATH];
+    GetCurrentDirectoryA(MAX_PATH, dirPath);
+    String folderPath(dirPath);
+    HRESULT hr = E_FAIL;
+    hr = ShaderDX::compile(fileName, entryPoint, "cs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
+    NAU_ASSERT(m_d3dBlob != nullptr && "Compute Shader blob is NULL");
+    if (FAILED(hr)) {
+      printf("Failed to compile Compute Shader");
+      exit(666);
+    }
+    auto pDev = static_cast<ID3D11Device*>(pDevice);
+    hr = pDev->CreateComputeShader(m_d3dBlob->GetBufferPointer(),
+      m_d3dBlob->GetBufferSize(),
+      nullptr,
+      &m_pComputeShader);
+    if (FAILED(hr)) {
+      printf("Failed to create Compute Shader");
+      exit(666);
+    }
 
   }
 
