@@ -3,7 +3,7 @@
  * @file main.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/10/24 2018
- * @brief Graphics testing with different graphic apis
+ * @brief Graphics testing with different graphic API
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -12,7 +12,6 @@
 #include <vector>
 #include <stdio.h>
 #include <string>
-#include <windows.h>
 #include <nauGraphicsAPI.h>
 
 #include "nauTestApp.h"

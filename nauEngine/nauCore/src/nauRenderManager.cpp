@@ -15,6 +15,13 @@ namespace nauEngineSDK {
   bool
   RenderManager::init(Device* pDevice) {
 
+
+#if NAU_DEBUG_MODE
+# if NAU_COMPILER_MSVC == NAU_COMPILER_MSVC
+    String outputString = "Initializing Render Manager";
+    OutputDebugString(outputString.c_str());
+# endif
+#endif
     ///Rendereable Textures
     m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));

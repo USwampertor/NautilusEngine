@@ -58,6 +58,13 @@ namespace nauEngineSDK {
   bool
   GBPass::init(Device* pDevice, Map<String, Texture*> textures) {
 
+//#if NAU_DEBUG_MODE
+//# if NAU_COMPILER_MSVC
+//    String outputString = "Initiating Geometric Buffer...";
+//    OutputDebugString(outputString.c_str());
+//# endif
+//#endif
+
     m_pixelShader   = pDevice->createPixelShader();
     m_vertexShader  = pDevice->createVertexShader();
     m_buffer        = pDevice->createConstantBuffer();
@@ -511,7 +518,7 @@ namespace nauEngineSDK {
   void
   ComputePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
 
-
+    setComputeShader(pDevice);
   }
 
   void

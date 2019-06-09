@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     descTexture.Height = m_height;
     descTexture.MipLevels = 1;
     descTexture.ArraySize = 1;
-    descTexture.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    descTexture.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
     descTexture.SampleDesc.Count = 1;
     descTexture.SampleDesc.Quality = 0;
     descTexture.Usage = D3D11_USAGE_DEFAULT;
@@ -61,15 +61,23 @@ namespace nauEngineSDK {
   bool
   TextureDX::loadFromFile(String path, Device* pDevice) {
     
+    HRESULT hr = E_FAIL;
+    
     D3D11_TEXTURE2D_DESC descTexture;
     NAUTEXTUREDESCRIPTOR nauDesc;
     D3D11_SUBRESOURCE_DATA texturedataBuffer;
     int32 byteperpixel = 0;
     int32 x = 0;
     int32 y = 0;
+
     auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
     
-    HRESULT hr = E_FAIL;
+#if NAU_DEBUG_MODE
+# if NAU_COMPILER_MSVC == NAU_COMPILER_MSVC
+    String outputString = String("Loading texture ") + path + "\n";
+    OutputDebugString(outputString.c_str());
+# endif
+#endif
 
     if (!m_fileData) {
       
@@ -82,8 +90,6 @@ namespace nauEngineSDK {
         stbi_image_free(m_fileData);
         return false;
       }
-
-
     }
 
     m_width   = static_cast<uint32>(x);
@@ -101,16 +107,23 @@ namespace nauEngineSDK {
     nauDesc.descCount       = descTexture.SampleDesc.Count = 1;
     nauDesc.descQuality     = descTexture.SampleDesc.Quality = 0;
     nauDesc.usage           = descTexture.Usage = D3D11_USAGE_DEFAULT;
-    nauDesc.bindFlags       = descTexture.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+    nauDesc.bindFlags       = descTexture.BindFlags = D3D11_BIND_RENDER_TARGET | 
+                                                      D3D11_BIND_SHADER_RESOURCE;
     nauDesc.cpuAccessFlags  = descTexture.CPUAccessFlags = 0;
     nauDesc.miscFlags       = descTexture.MiscFlags = 0;
 
 
     memset(&texturedataBuffer, 0, sizeof(texturedataBuffer));
    
+    Vector<float> convertedData;
+
+    //convertedData.resize(m_width * m_height * 16);
+    //for (int i = 0; i < m_width * m_height * 4; ++i) {
+    //  convertedData[i] = static_cast<float>(m_fileData[i] / 255);
+    //}
     
-    texturedataBuffer.pSysMem = m_fileData; 
-    texturedataBuffer.SysMemPitch = m_width * 4;
+    texturedataBuffer.pSysMem = m_fileData;
+    texturedataBuffer.SysMemPitch = m_width * sizeof(char) * 4;
    
     auto pd3dDevice = reinterpret_cast<ID3D11Device*>(pDevice->get());
     hr = pd3dDevice->CreateTexture2D(&descTexture, 

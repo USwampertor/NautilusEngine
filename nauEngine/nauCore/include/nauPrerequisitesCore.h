@@ -48,3 +48,7 @@
 # define NAU_CORE_EXPORT __attribute__ ((visibility ("default")))
 # define NAU_CORE_HIDDEN __attribute__ ((visibility ("hidden")))
 #endif
+
+#if NAU_COMPILER == NAU_COMPILER_MSVC
+#include <windows.h>
+#endif
