@@ -35,14 +35,17 @@
     <ClInclude Include="include\nauGraphicsBuffer.h" />
     <ClInclude Include="include\nauInputLayout.h" />
     <ClInclude Include="include\nauInputManager.h" />
+    <ClInclude Include="include\nauLogger.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
+    <ClInclude Include="include\nauMuscleWeight.h" />
     <ClInclude Include="include\nauNode.h" />
     <ClInclude Include="include\nauPassPerInfo.h" />
     <ClInclude Include="include\nauPrerequisitesCore.h" />
     <ClInclude Include="include\nauRasterizerState.h" />
     <ClInclude Include="include\nauRenderManager.h" />
     <ClInclude Include="include\nauRenderTargetView.h" />
+    <ClInclude Include="include\nauResource.h" />
     <ClInclude Include="include\nauResourceManager.h" />
     <ClInclude Include="include\nauSamplerState.h" />
     <ClInclude Include="include\nauSceneGraph.h" />
@@ -54,9 +57,11 @@
     <ClInclude Include="include\nauTimer.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
-    <ClInclude Include="include\nauWeight.h" />
+    <ClInclude Include="include\nauVertexWeight.h" />
+    <ClInclude Include="nauAnimation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nauAnimation.cpp" />
     <ClCompile Include="src\nauBone.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
@@ -68,14 +73,16 @@
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauInputManager.cpp" />
+    <ClCompile Include="src\nauLogger.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
+    <ClCompile Include="src\nauMuscleWeight.cpp" />
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
+    <ClCompile Include="src\nauResource.cpp" />
     <ClCompile Include="src\nauResourceManager.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
-    <ClCompile Include="src\nauWeight.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

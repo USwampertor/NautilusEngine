@@ -72,6 +72,21 @@ namespace nauEngineSDK {
      * Bi normal Component
      */
     Vector3 m_binormal;
+
+    /**
+     * Bone Weight 1
+     */
+    int m_boneWeight1;
+
+    /**
+     * Bone Weight 2
+     */
+    int m_boneWeight2;
+    
+    /**
+     * Bone Weight 3
+     */
+    int m_boneWeight3;
   };
 
 }

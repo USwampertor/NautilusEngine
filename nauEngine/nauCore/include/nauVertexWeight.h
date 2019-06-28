@@ -13,11 +13,14 @@
 
 
 namespace nauEngineSDK {
-  class nauWeight
+  struct VertexWeight
   {
-  public:
-    nauWeight() = default;
-    ~nauWeight() = default;
+
+
+
+
+    uint32 _ID;
+    float _weight;
   };
   
 }

@@ -39,4 +39,15 @@ namespace nauEngineSDK {
     }
     return static_cast<float>(ms.count());
   }
+
+  String
+  Clock::hour() {
+    String time;
+
+
+
+
+    return time;
+  }
+
 }

@@ -17,12 +17,12 @@ namespace nauEngineSDK {
 
 
 #if NAU_DEBUG_MODE
-# if NAU_COMPILER_MSVC == NAU_COMPILER_MSVC
+# if NAU_COMPILER == NAU_COMPILER_MSVC
     String outputString = "Initializing Render Manager";
     OutputDebugString(outputString.c_str());
 # endif
 #endif
-    ///Rendereable Textures
+    ///Renderable Textures
     m_rendereableTextures.insert(std::make_pair("NORMAL", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));
@@ -60,7 +60,7 @@ namespace nauEngineSDK {
     if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
     if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
-    if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
 
     return true;
   }
@@ -72,10 +72,10 @@ namespace nauEngineSDK {
     
     m_gbPass.render(m_orderedList, pDevice);
 
-    m_ssaoPass.render(createScreenAlignedQuad(pDevice), pDevice);
-    m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
-    m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
-    m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
+    //m_ssaoPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    //m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    //m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    //m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
     //m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 

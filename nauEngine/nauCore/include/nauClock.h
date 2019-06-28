@@ -74,6 +74,15 @@ namespace nauEngineSDK {
     float
     deltaTime(DELTA as);
 
+    /**
+     * @brief Returns a string with the exact hour in the computer
+     * @param 
+     * @return the string at x hour, minute, second and millisecond
+     *
+     */
+    String
+    hour();
+
   private:
 
     /**

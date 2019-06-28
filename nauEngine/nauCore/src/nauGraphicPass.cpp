@@ -448,6 +448,7 @@ namespace nauEngineSDK {
     if (!loadVertexShader(pDevice, "resources/QuadVS.hlsl", "vs_main")) return false;
     if (!loadPixelShader(pDevice, "resources/QuadPS.hlsl", "ps_main")) return false;
 
+
     m_rasterizer->createRasterizerState(pDevice);
     m_inputLayout->setInputDescriptor();
     m_inputLayout->createInputBuffer(pDevice, m_vertexShader);

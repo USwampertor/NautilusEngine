@@ -1,14 +1,15 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauWeight.cpp
+ * @file nauAnimation.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/05/23 2019
- * @brief Weight member definition
+ * @date 2019/06/27 2019
+ * @brief Animation implementation
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauWeight.h"
+#include "nauAnimation.h"
 
 namespace nauEngineSDK {
 
 }
+

@@ -112,7 +112,19 @@
     <ClInclude Include="include\nauResourceManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauWeight.h">
+    <ClInclude Include="include\nauVertexWeight.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauLogger.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMuscleWeight.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauResource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauAnimation.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -171,7 +183,16 @@
     <ClCompile Include="src\nauResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauWeight.cpp">
+    <ClCompile Include="src\nauLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMuscleWeight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauAnimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,7 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-#include "nauWeight.h"
+#include "nauVertexWeight.h"
 
 #include <nauMatrix4.h>
 
@@ -45,6 +45,10 @@ namespace nauEngineSDK {
      * in local space of the vertices
      */
     Matrix4 m_offset;
+
+    /**
+     * Vertex Weight
+     */
 
   };
   

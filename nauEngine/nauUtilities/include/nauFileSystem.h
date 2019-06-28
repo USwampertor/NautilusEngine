@@ -3,7 +3,7 @@
  * @file nauFileSystem.h
  * @author Marco "Swampy" Millan
  * @date 2019/03/29 2019
- * @brief File System managment
+ * @brief File System management
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -35,7 +35,18 @@ namespace nauEngineSDK {
      *
      */
     String
-    getWorkingPath();
+    getAbsolutePath();
+
+    /**
+     * @brief returns the working path where it is right now
+     * @param 
+     * @return 
+     *
+     */
+    String
+    getRelativePath();
+
+
 
   };
   
