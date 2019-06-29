@@ -10,38 +10,41 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauAnimationBone.h"
 
 namespace nauEngineSDK {
-  class nauAnimation
-  {
-  public:
-  
-    /**
-     * Default constructor
-     */
-    nauAnimation() = default;
-  
-    /**
-     * Default destructor
-     */
-    ~nauAnimation() = default;
+struct Animation
+{
+public:
 
+  /**
+   * Default constructor
+   */
+  Animation() = default;
 
-    /**
-     * Duration of the animation
-     */
-    double m_duration;
+  /**
+   * Default destructor
+   */
+  ~Animation() = default;
 
-    /**
-     * how many ticks per second is this animation made
-     */
-    double m_ticksPerSecond;
+  /**
+   * String name of the animation
+   */
+  String m_name;
 
-    /**
-     * The channels
-     */
+  /**
+   * Duration of the animation in ticks
+   */
+  double m_duration;
 
-  };
+  /**
+   * how many ticks per second is this animation made
+   */
+  double m_ticksPerSecond;
+
+  /**
+   * The channels
+   */
+  Vector<AnimationBone> m_channels;
+};
 }
-
-

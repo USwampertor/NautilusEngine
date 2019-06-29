@@ -127,6 +127,15 @@
     <ClInclude Include="nauAnimation.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="nauModelNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauAnimationBone.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauAnimator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauGraphicsBuffer.cpp">
@@ -192,7 +201,7 @@
     <ClCompile Include="src\nauResource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauAnimation.cpp">
+    <ClCompile Include="nauAnimator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

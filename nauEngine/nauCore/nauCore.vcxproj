@@ -59,9 +59,12 @@
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
     <ClInclude Include="nauAnimation.h" />
+    <ClInclude Include="nauAnimationBone.h" />
+    <ClInclude Include="nauAnimator.h" />
+    <ClInclude Include="nauModelNode.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauAnimation.cpp" />
+    <ClCompile Include="nauAnimator.cpp" />
     <ClCompile Include="src\nauBone.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />

@@ -13,15 +13,10 @@
 
 
 namespace nauEngineSDK {
-  struct VertexWeight
-  {
-
-
-
-
-    uint32 _ID;
-    float _weight;
-  };
-  
+struct VertexWeight
+{
+  uint32 _ID;
+  float _weight;
+};  
 }
 

@@ -1,15 +1,14 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauAnimation.cpp
+ * @file nauAnimator.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/06/27 2019
- * @brief Animation implementation
+ * @date 2019/06/29 2019
+ * @brief 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauAnimation.h"
+#include "nauAnimator.h"
 
 namespace nauEngineSDK {
 
 }
-
