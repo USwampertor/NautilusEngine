@@ -13,6 +13,7 @@
 #include "nauMesh.h"
 #include "nauModel.h"
 #include "nauTexture.h"
+#include "nauMaterial.h"
 
 #include <nauMath.h>
 
@@ -27,23 +28,6 @@ namespace nauEngineSDK {
       SOURCE
     };
   }
-
-  /**
-   * The system to control how the textures are loaded
-   */
-  namespace MATERIAL_FLAG {
-    enum NAU_CORE_EXPORT E {
-      BASECOLOR         = 0,              // Base Color (Albedo) Lightning
-      NORMAL            = 1,              // Normal Mapping
-      EMISSIVE          = 2,              // Emissive Lightning
-      ROUGHNESS         = 3,              // Roughness Lightning
-      AMBIENT           = 4,              // Ambient Lightning
-      METAL             = 5,              // Metal mapping
-      SPECULAR          = 6,              // Specular mapping
-      DEFAULT           = BASECOLOR,      // Default should redirect to Base color
-    };
-  }
-
 
    /**
     * Component

@@ -283,18 +283,17 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
     m_mode = sAccess;
   }
 
-  STREAMTYPE
-  isType();
+  virtual STREAMTYPE
+  isType() override;
 
-  bool
-  open(String file);
+  virtual bool
+  open(String file) override;
 
-  bool
-  create(void* file);
+  virtual bool
+  create(void* file) override;
 
-  bool
-  copy(const void* buffer);
-
+  virtual bool
+  copy(const void* buffer) override;
 
   std::fstream m_file;
 
@@ -318,7 +317,7 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
   /**
    * Default destructor
    */
-  ~MemStream() {}
+  ~MemStream() = default;
 
   /**
    * @brief returns if the dataStream is a file or memory
@@ -326,17 +325,17 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
    * @return returns either a FILE or MEMORY enum if file
    *
    */
-  STREAMTYPE
-  isType();
+  virtual STREAMTYPE
+  isType() override;
 
-  bool
-  open(String path);
+  virtual bool
+  open(String path) override;
 
-  bool
-  create(void* path);
+  virtual bool
+  create(void* path) override;
 
-  bool
-  copy(const void* buffer);
+  virtual bool
+  copy(const void* buffer) override;
 
 };
 

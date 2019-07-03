@@ -22,6 +22,8 @@
     <ClInclude Include="include\nauAnimation.h" />
     <ClInclude Include="include\nauAnimationBone.h" />
     <ClInclude Include="include\nauAnimator.h" />
+    <ClInclude Include="include\nauAudioClip.h" />
+    <ClInclude Include="include\nauAudioSource.h" />
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauBone.h" />
     <ClInclude Include="include\nauCamera.h" />
@@ -39,6 +41,7 @@
     <ClInclude Include="include\nauInputLayout.h" />
     <ClInclude Include="include\nauInputManager.h" />
     <ClInclude Include="include\nauLogger.h" />
+    <ClInclude Include="include\nauMaterial.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
     <ClInclude Include="include\nauModelNode.h" />
@@ -63,13 +66,11 @@
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
-    <ClInclude Include="nauAudioClip.h" />
-    <ClInclude Include="nauAudioSource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauAudioClip.cpp" />
-    <ClCompile Include="nauAudioSource.cpp" />
     <ClCompile Include="src\nauAnimator.cpp" />
+    <ClCompile Include="src\nauAudioClip.cpp" />
+    <ClCompile Include="src\nauAudioSource.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauClock.cpp" />
@@ -81,6 +82,7 @@
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
     <ClCompile Include="src\nauInputManager.cpp" />
     <ClCompile Include="src\nauLogger.cpp" />
+    <ClCompile Include="src\nauMaterial.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />
     <ClCompile Include="src\nauModel.cpp" />
     <ClCompile Include="src\nauMuscleWeight.cpp" />

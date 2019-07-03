@@ -56,6 +56,10 @@ public:
 
   Map<String, Sptr<Resource>> m;
 
+private:
+
+  String defaultResources = "./defaultResources/";
+
 };
   
 }

@@ -139,10 +139,13 @@
     <ClInclude Include="include\nauModelNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauAudioClip.h">
+    <ClInclude Include="include\nauAudioClip.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauAudioSource.h">
+    <ClInclude Include="include\nauAudioSource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMaterial.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,10 +210,13 @@
     <ClCompile Include="src\nauAnimator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauAudioClip.cpp">
+    <ClCompile Include="src\nauAudioClip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauAudioSource.cpp">
+    <ClCompile Include="src\nauAudioSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
