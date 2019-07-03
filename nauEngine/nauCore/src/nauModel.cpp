@@ -139,7 +139,7 @@ namespace nauEngineSDK {
     
     for (uint32 l = 0; l < mesh->mMaterialIndex; ++l) {
 
-      m->m_material = new Material();
+      m->m_material = new MaterialComponent();
       aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
       Texture* texture = m_device->createTexture();
       //texture->loadFromFile() = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");

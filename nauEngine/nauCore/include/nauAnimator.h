@@ -10,6 +10,8 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauAnimation.h"
+#include "nauComponent.h"
 
 namespace nauEngineSDK {
 
@@ -21,7 +23,7 @@ namespace nauEngineSDK {
   * Sample usage:
   *   Animator.Play("foo") will play the animation with the given name
   */
-class Animator
+class Animator : Component
 {
 public:
   /**
@@ -35,9 +37,25 @@ public:
   ~Animator() = default;
 
   void
-    Play(String name);
+  play(String name);
 
+  Vector<String>
+  getList();
+  
+  void
+  crossFade();
 
+  void
+  update();
+
+  void
+  reset();
+
+  float speed;
+  
+  Animation* m_active;
+
+  Vector<Animation> m_animations;
 
 };
 }

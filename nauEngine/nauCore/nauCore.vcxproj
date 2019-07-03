@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nauAnimation.h" />
+    <ClInclude Include="include\nauAnimationBone.h" />
+    <ClInclude Include="include\nauAnimator.h" />
     <ClInclude Include="include\nauBaseApp.h" />
     <ClInclude Include="include\nauBone.h" />
     <ClInclude Include="include\nauCamera.h" />
@@ -38,6 +41,7 @@
     <ClInclude Include="include\nauLogger.h" />
     <ClInclude Include="include\nauMesh.h" />
     <ClInclude Include="include\nauModel.h" />
+    <ClInclude Include="include\nauModelNode.h" />
     <ClInclude Include="include\nauMuscleWeight.h" />
     <ClInclude Include="include\nauNode.h" />
     <ClInclude Include="include\nauPassPerInfo.h" />
@@ -51,6 +55,7 @@
     <ClInclude Include="include\nauSceneGraph.h" />
     <ClInclude Include="include\nauShader.h" />
     <ClInclude Include="include\nauShaderResourceView.h" />
+    <ClInclude Include="include\nauSkeleton.h" />
     <ClInclude Include="include\nauSwapChain.h" />
     <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauTextureDescriptor.h" />
@@ -58,14 +63,13 @@
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
-    <ClInclude Include="nauAnimation.h" />
-    <ClInclude Include="nauAnimationBone.h" />
-    <ClInclude Include="nauAnimator.h" />
-    <ClInclude Include="nauModelNode.h" />
+    <ClInclude Include="nauAudioClip.h" />
+    <ClInclude Include="nauAudioSource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauAnimator.cpp" />
-    <ClCompile Include="src\nauBone.cpp" />
+    <ClCompile Include="nauAudioClip.cpp" />
+    <ClCompile Include="nauAudioSource.cpp" />
+    <ClCompile Include="src\nauAnimator.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauClock.cpp" />
@@ -82,7 +86,6 @@
     <ClCompile Include="src\nauMuscleWeight.cpp" />
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
-    <ClCompile Include="src\nauResource.cpp" />
     <ClCompile Include="src\nauResourceManager.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />

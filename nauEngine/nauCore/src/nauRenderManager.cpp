@@ -127,7 +127,7 @@ namespace nauEngineSDK {
     m->m_indexBuffer->createHardware(pDevice->get(),0);
 
     m->m_vertexBuffer->createHardware(pDevice->get(),0);
-    m->m_material = new Material();
+    m->m_material = new MaterialComponent();
     quad->m_model->m_meshes.push_back(m);
     quad->m_model->setDevice(pDevice);
     quads.push_back(quad);

@@ -57,6 +57,9 @@
 namespace nauEngineSDK {
   using Stream = std::stringstream;
 
+  template<typename T>
+  using Sptr = std::shared_ptr<T>;
+
 }
 
 

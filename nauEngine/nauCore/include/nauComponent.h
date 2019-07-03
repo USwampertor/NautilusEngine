@@ -85,18 +85,18 @@ namespace nauEngineSDK {
    * Sample usage:
    *   Material.baseColor
    */
-  class NAU_CORE_EXPORT Material : public Component
+  class NAU_CORE_EXPORT MaterialComponent : public Component
   {
   public:
     /**
      * Default constructor
      */
-    Material() = default;
+    MaterialComponent() = default;
 
     /**
      * Default destructor
      */
-    ~Material() = default;
+    ~MaterialComponent() = default;
 
     /**
      * @brief retrieves the Texture of the Material given by the flag
@@ -125,8 +125,6 @@ namespace nauEngineSDK {
      * Map for storing all
      */
     Map<MATERIAL_FLAG::E, Texture*> m_TextureMap;
-
-
 
   };
 

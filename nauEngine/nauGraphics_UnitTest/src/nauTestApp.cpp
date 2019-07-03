@@ -80,7 +80,7 @@ namespace nauEngineSDK {
     com->m_model->setDevice(m_api->getDevice());
     com->m_model->loadFromFile("resources/Vela.FBX");
     
-    Material* mat1 = new Material();
+    MaterialComponent* mat1 = new MaterialComponent();
     Texture* pGunsTexture = m_api->getDevice()->createTexture();
     pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::BASECOLOR);
@@ -105,7 +105,7 @@ namespace nauEngineSDK {
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[1])->m_material = mat1;
 
-    Material* mat2 = new Material();
+    MaterialComponent* mat2 = new MaterialComponent();
     Texture* pLegsTexture = m_api->getDevice()->createTexture();
     pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_BaseColor.tga", m_api->getDevice());
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::BASECOLOR);
@@ -121,7 +121,7 @@ namespace nauEngineSDK {
     (com->m_model->m_meshes[2])->m_material = mat2;
 
     
-    Material* mat3 = new Material();
+    MaterialComponent* mat3 = new MaterialComponent();
     Texture* pMechTexture = m_api->getDevice()->createTexture();
     pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_BaseColor.tga", m_api->getDevice());
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::BASECOLOR);
@@ -136,7 +136,7 @@ namespace nauEngineSDK {
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[3])->m_material = mat3;
 
-    Material* mat4 = new Material();
+    MaterialComponent* mat4 = new MaterialComponent();
     Texture* pCharTexture = m_api->getDevice()->createTexture();
     pCharTexture->loadFromFile("resources/Vela/Vela_Char_BaseColor.tga", m_api->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::BASECOLOR);
@@ -151,7 +151,7 @@ namespace nauEngineSDK {
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[4])->m_material = mat4;
     
-    Material* mat5 = new Material();
+    MaterialComponent* mat5 = new MaterialComponent();
     Texture* pPlateTexture = m_api->getDevice()->createTexture();
     pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_BaseColor.tga", m_api->getDevice());
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::BASECOLOR);
@@ -166,7 +166,7 @@ namespace nauEngineSDK {
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[5])->m_material = mat5;
 
-    Material* mat6 = new Material();
+    MaterialComponent* mat6 = new MaterialComponent();
     Texture* pEyesTexture = m_api->getDevice()->createTexture();
     pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_BaseColor.tga", m_api->getDevice());
     mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::BASECOLOR);

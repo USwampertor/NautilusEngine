@@ -22,19 +22,8 @@ namespace nauEngineSDK {
     * Sample usage:
     *   Without a bone you would be only flesh and goo in the floor
     */
-  class Bone
+  struct Bone
   {
-  public:
-    /**
-     * Default constructor
-     */
-    Bone() = default;
-
-    /**
-     * Default destructor
-     */
-    ~Bone() = default;
-
     /**
      * Name of the bone
      */

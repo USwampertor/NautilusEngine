@@ -13,6 +13,7 @@
 #include "nauPrerequisitesCore.h"
 #include "nauDevice.h"
 #include "nauShaderResourceView.h"
+#include "nauResource.h"
 
 namespace nauEngineSDK {
 
@@ -23,7 +24,7 @@ namespace nauEngineSDK {
    * Sample usage:
    *
    */
-  class NAU_CORE_EXPORT Texture
+  class NAU_CORE_EXPORT Texture : Resource
   {
   public:
 

@@ -18,12 +18,12 @@ namespace  nauEngineSDK {
   }
 
   Texture*
-  Material::getMaterial(MATERIAL_FLAG::E material) {
+  MaterialComponent::getMaterial(MATERIAL_FLAG::E material) {
     return m_TextureMap[material];
   }
 
   void
-  Material::setMaterial(Texture* texture, MATERIAL_FLAG::E material) {
+  MaterialComponent::setMaterial(Texture* texture, MATERIAL_FLAG::E material) {
     m_TextureMap.insert(std::make_pair(material, texture));
 
     if (MATERIAL_FLAG::BASECOLOR == material) {

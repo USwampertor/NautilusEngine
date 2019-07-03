@@ -12,27 +12,23 @@
 #include "nauPrerequisitesCore.h"
 
 namespace nauEngineSDK {
-  class Resource
+
+  namespace RESOURCET
   {
-  public:
-    /**
-     * Default constructor
-     */
-    Resource() = default;
+    enum E
+    {
+      AUDIO         = 1<<0,
+      TEXTURE       = 1<<1,
+      CUBEMAP       = 1<<2,
+      MATERIAL      = 1<<3,
+      MODEL         = 1<<4
+    };
+  }
+
+
+struct Resource
+{
   
-    /**
-     * Default destructor
-     */
-    ~Resource() = default;
-  };
+};
 
-  class TextureResource : Resource
-  {
-
-  };
-
-  class SoundResource : Resource
-  {
-
-  };
 }

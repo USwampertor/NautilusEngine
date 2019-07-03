@@ -17,7 +17,7 @@
 
 namespace nauEngineSDK {
 
-  class Material;
+  class MaterialComponent;
 
    /**
     * nauMesh
@@ -68,7 +68,7 @@ namespace nauEngineSDK {
     /**
      * Material embedded in the mesh
      */
-    Material* m_material = nullptr;
+    MaterialComponent* m_material = nullptr;
 
   };
   

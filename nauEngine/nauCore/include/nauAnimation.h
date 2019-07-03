@@ -16,17 +16,6 @@ namespace nauEngineSDK {
 struct Animation
 {
 public:
-
-  /**
-   * Default constructor
-   */
-  Animation() = default;
-
-  /**
-   * Default destructor
-   */
-  ~Animation() = default;
-
   /**
    * String name of the animation
    */
@@ -46,5 +35,16 @@ public:
    * The channels
    */
   Vector<AnimationBone> m_channels;
+
+  /**
+   * the actual frame
+   */
+  double m_frame;
+
+  /**
+   * is it looping?
+   */
+  bool m_loop;
+
 };
 }
