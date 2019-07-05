@@ -15,31 +15,31 @@
 #include <nauMatrix4.h>
 
 namespace nauEngineSDK {
-   /**
-    * nauBone
-    * Description:
-    *   A bone object for meshes to control vertex and animations
-    * Sample usage:
-    *   Without a bone you would be only flesh and goo in the floor
-    */
-  struct Bone
-  {
-    /**
-     * Name of the bone
-     */
-    String m_name;
+/**
+ * nauBone
+ * Description:
+ *   A bone object for meshes to control vertex and animations
+ * Sample usage:
+ *   Without a bone you would be only flesh and goo in the floor
+ */
+struct Bone
+{
+  /**
+   * Name of the bone
+   */
+  String m_name;
 
-    /**
-     * the offset of the bone against the hierarchy to have its transformations 
-     * in local space of the vertices
-     */
-    Matrix4 m_offset;
+  /**
+   * the offset of the bone against the hierarchy to have its transformations 
+   * in local space of the vertices
+   */
+  Matrix4 m_offset;
 
-    /**
-     * Vertex Weight
-     */
+  /**
+   * Vertex Weight
+   */
 
-  };
+};
   
 }
 

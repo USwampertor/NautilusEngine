@@ -86,16 +86,16 @@ namespace nauEngineSDK {
   FileStream::open(String path) {
 
     String temp = path;
-    std::fstream streamFile(temp, std::ios::binary | std::ios::ate);
-    if (!streamFile.is_open()) {
+    m_file.open(temp, std::ios::binary | std::ios::ate);
+    if (!m_file.is_open()) {
       std::cout << "Couldn't open file at location " << temp << std::endl;
       return false;
     }
-    m_data.resize(static_cast<SIZE_T>(streamFile.tellg()));
-    m_size = static_cast<SIZE_T>(streamFile.tellg());
-    streamFile.seekg(0, streamFile.beg);
-    streamFile.read(&m_data[0], std::ios::binary);
-    streamFile.close();
+    m_data.resize(static_cast<SIZE_T>(m_file.tellg()));
+    m_size = static_cast<SIZE_T>(m_file.tellg());
+    m_file.seekg(0, m_file.beg);
+    m_file.read(&m_data[0], std::ios::binary);
+    m_file.close();
     return true;
   }
 

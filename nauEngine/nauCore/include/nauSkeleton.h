@@ -13,8 +13,8 @@
 #include "nauBone.h"
 
 namespace nauEngineSDK {
-  struct Skeleton
-  {
-    Vector<Bone> m;
-  };
+struct Skeleton
+{
+  Vector<Bone> m;
+};
 }

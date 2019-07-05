@@ -13,6 +13,11 @@ namespace nauEngineSDK {
 
   void
   Material::load(String path) {
+    FileStream mat;
+    mat.open(path);
+    mat.m_data.data();
+
+    char* pch = std::strtok(mat.m_data.data(), "=");
 
   }
 

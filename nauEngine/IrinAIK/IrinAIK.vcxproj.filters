@@ -18,13 +18,10 @@
     <ClInclude Include="include\nauNeuron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauNetwork.h">
+    <ClInclude Include="include\nauNetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nauNeuralLayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauSkeletalNetwork.h">
+    <ClInclude Include="include\nauNeuralLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,13 +29,10 @@
     <ClCompile Include="src\nauNeuron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauNetwork.cpp">
+    <ClCompile Include="src\nauNetwork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauNeuralLayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauSkeletalNetwork.cpp">
+    <ClCompile Include="src\nauNeuralLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -37,14 +37,8 @@ namespace nauEngineSDK {
     m_device = dev;
   }
 
-
   void
   Model::loadFromFile(String filePath) {
-
-    //char dirPath[MAX_PATH];
-    //GetCurrentDirectoryA(MAX_PATH, dirPath);
-    //String folderPath(dirPath);
-    //std::cout << folderPath;
 
     Assimp::Importer modelImport;
     const aiScene* scene = modelImport.ReadFile(filePath, 
@@ -136,17 +130,7 @@ namespace nauEngineSDK {
       }
     }
 
-    
-    for (uint32 l = 0; l < mesh->mMaterialIndex; ++l) {
 
-      m->m_material = new MaterialComponent();
-      aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-      Texture* texture = m_device->createTexture();
-      //texture->loadFromFile() = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
-      //
-      //aiMaterial *material = mesh->mMaterials[aimesh->mMaterialIndex];
-      //m_textures = loadMaterials(material, aiTextureType_SPECULAR, "texture_diffuse");
-    }
     m->m_vertexBuffer->createHardware(m_device->get(),0);
     m->m_indexBuffer->createHardware(m_device->get(),0);
 

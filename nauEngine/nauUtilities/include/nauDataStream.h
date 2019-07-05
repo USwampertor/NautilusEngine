@@ -12,23 +12,19 @@
 
 #include "nauPrerequisitesUtil.h"
 
-
-
-
 namespace nauEngineSDK {
-
   
-  enum class NAU_UTILITY_EXPORT STREAMACCESS
-  {
-    READ = 0,
-    WRITE
-  };
+enum class NAU_UTILITY_EXPORT STREAMACCESS
+{
+  READ = 0,
+  WRITE
+};
 
-  enum class NAU_UTILITY_EXPORT STREAMTYPE
-  {
-    FILE = 0,
-    MEMORY
-  };
+enum class NAU_UTILITY_EXPORT STREAMTYPE
+{
+  FILE = 0,
+  MEMORY
+};
 
 /**
  * nauDataStream

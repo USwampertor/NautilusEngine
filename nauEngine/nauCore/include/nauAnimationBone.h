@@ -16,13 +16,13 @@
 #include <nauQuaternion.h>
 
 namespace nauEngineSDK {
- /**
-  * AnimationBone
-  * Description:
-  *   A Bone transformation to be applied to a bone to match an animation 
-  * Sample usage:
-  * 
-  */
+/**
+ * AnimationBone
+ * Description:
+ *   A Bone transformation to be applied to a bone to match an animation 
+ * Sample usage:
+ * 
+ */
 struct AnimationBone {
   /**
    * Name of the Animation node. Matches a bone of the model

@@ -19,15 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\nauNetwork.h" />
+    <ClInclude Include="include\nauNeuralLayer.h" />
     <ClInclude Include="include\nauNeuron.h" />
-    <ClInclude Include="nauNetwork.h" />
-    <ClInclude Include="nauNeuralLayer.h" />
-    <ClInclude Include="nauSkeletalNetwork.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauNetwork.cpp" />
-    <ClCompile Include="nauNeuralLayer.cpp" />
-    <ClCompile Include="nauSkeletalNetwork.cpp" />
+    <ClCompile Include="src\nauNetwork.cpp" />
+    <ClCompile Include="src\nauNeuralLayer.cpp" />
     <ClCompile Include="src\nauNeuron.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

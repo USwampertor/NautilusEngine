@@ -13,76 +13,78 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauMesh.h"
-
+#include "nauSkeleton.h"
 
 namespace nauEngineSDK {
+/**
+ * nauModel
+ * Description:
+ * 	Its an object made from a set of meshes, textures and whatnot
+ * Sample usage:
+ *
+ */
+class NAU_CORE_EXPORT Model
+{
+ public:
+
   /**
-   * nauModel
-   * Description:
-   * 	Its an object made from a set of meshes, textures and whatnot
-   * Sample usage:
+   * Default constructor
+   */
+  Model() = default;
+
+  /**
+   * virtual destructor
+   */
+  ~Model() = default;
+
+  /**
+   * Sets the device
+   */
+  void
+  setDevice(Device* dev);
+
+  /**
+   * @brief renders the object in world space
+   * @param 
+   * @return 
    *
    */
-  class NAU_CORE_EXPORT Model
-  {
-   public:
+  void
+  drawMesh();
 
-    /**
-     * Default constructor
-     */
-    Model() = default;
+  /**
+   * @brief Loads a model from given path 
+   * @param String filePath 
+   * @return 
+   *
+   */
+  void
+  loadFromFile(String filePath);
 
-    /**
-     * virtual destructor
-     */
-    ~Model() = default;
+  /**
+   * @brief Processes a node from the model
+   * @param 
+   * @return 
+   *
+   */
+  void
+  processNode(aiNode* node, const aiScene* scene);
 
-    /**
-     * Sets the device
-     */
-    void
-    setDevice(Device* dev);
+  /**
+   * @brief Processes a mesh from the model
+   * @param 
+   * @return 
+   *
+   */
+  Mesh*
+  processMesh(aiMesh* mesh, const aiScene* scene);
 
-    /**
-     * @brief renders the object in world space
-     * @param 
-     * @return 
-     *
-     */
-    void
-    drawMesh();
+public:
 
-    /**
-     * @brief Loads a model from given path 
-     * @param String filePath 
-     * @return 
-     *
-     */
-    void
-    loadFromFile(String filePath);
+  Vector<Mesh*> m_meshes;
+  Device* m_device = nullptr;
 
-    /**
-     * @brief Processes a node from the model
-     * @param 
-     * @return 
-     *
-     */
-    void
-    processNode(aiNode* node, const aiScene* scene);
+  Sptr<Skeleton> m_skeleton;
 
-    /**
-     * @brief Processes a mesh from the model
-     * @param 
-     * @return 
-     *
-     */
-    Mesh*
-    processMesh(aiMesh* mesh, const aiScene* scene);
-
-  public:
-
-    Vector<Mesh*> m_meshes;
-    Device* m_device = nullptr;
-  };
-
+};
 }
