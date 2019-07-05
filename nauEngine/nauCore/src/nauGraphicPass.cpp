@@ -10,6 +10,8 @@
 #include "nauGraphicPass.h"
 namespace nauEngineSDK {
 
+#pragma region BASE PASS
+  
   /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
   /**
    * nauGraphicPass.cpp 
@@ -48,37 +50,39 @@ namespace nauEngineSDK {
     m_computeShader->createFromFile(pDevice->get(), fileName.c_str(), entry.c_str());
     return true;
   }
+#pragma endregion HERE ARE THE BASE FUNCTIONS OF THE GRAPHIC PASS
 
-  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-  /**
-   * nauGraphicPass.cpp 
-   */
-  /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+#pragma region GEOMETRY PASS
+
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauGraphicPass.cpp 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
   bool
-  GBPass::init(Device* pDevice, Map<String, Texture*> textures) {
+    GBPass::init(Device* pDevice, Map<String, Texture*> textures) {
 
-//#if NAU_DEBUG_MODE
-//# if NAU_COMPILER_MSVC
-//    String outputString = "Initiating Geometric Buffer...";
-//    OutputDebugString(outputString.c_str());
-//# endif
-//#endif
+    //#if NAU_DEBUG_MODE
+    //# if NAU_COMPILER_MSVC
+    //    String outputString = "Initiating Geometric Buffer...";
+    //    OutputDebugString(outputString.c_str());
+    //# endif
+    //#endif
 
-    m_pixelShader   = pDevice->createPixelShader();
-    m_vertexShader  = pDevice->createVertexShader();
-    m_buffer        = pDevice->createConstantBuffer();
-    m_renderTarget  = pDevice->createRenderTargetView();
-    m_sampler       = pDevice->createSamplerState();
-    m_inputLayout   = pDevice->createInputLayout();
-    m_depthStencil  = pDevice->createDepthStencil();
-    m_rasterizer    = pDevice->createRasterizer();
-    m_info.m_color  = pDevice->createRenderTargetView();
+    m_pixelShader = pDevice->createPixelShader();
+    m_vertexShader = pDevice->createVertexShader();
+    m_buffer = pDevice->createConstantBuffer();
+    m_sampler = pDevice->createSamplerState();
+    m_inputLayout = pDevice->createInputLayout();
+    m_depthStencil = pDevice->createDepthStencil();
+    m_rasterizer = pDevice->createRasterizer();
+    m_info.m_color = pDevice->createRenderTargetView();
     m_info.m_emissive = pDevice->createRenderTargetView();
     m_info.m_normal = pDevice->createRenderTargetView();
     m_info.m_depth = pDevice->createRenderTargetView();
 
-    if (!m_info.m_color->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
+    if (!m_info.m_color->createRenderTargetView(pDevice, textures["COLOR"])) return false;
     if (!m_info.m_emissive->createRenderTargetView(pDevice, textures["EMISSIVE"])) return false;
     if (!m_info.m_normal->createRenderTargetView(pDevice, textures["NORMAL"])) return false;
     if (!m_info.m_emissive->createRenderTargetView(pDevice, textures["DEPTH"])) return false;
@@ -86,23 +90,20 @@ namespace nauEngineSDK {
                                             pDevice->m_height, 
                                             pDevice->m_width)) return false;
 
-
-
     m_depthStencil->createState(pDevice);
     m_depthStencil->setState(pDevice);
-    
+
     if (!m_depthStencil->createView(pDevice)) return false;
 
-    Vector<RenderTargetView*> renderTargets;
-    renderTargets.push_back(m_info.m_color);
-    renderTargets.push_back(m_info.m_emissive);
-    renderTargets.push_back(m_info.m_normal);
-    renderTargets.push_back(m_info.m_depth);
+    m_renderTargets.reserve(4);
+    m_renderTargets.push_back(m_info.m_color);
+    m_renderTargets.push_back(m_info.m_emissive);
+    m_renderTargets.push_back(m_info.m_normal);
+    m_renderTargets.push_back(m_info.m_depth);
 
 
-    pDevice->setRenderTargets(renderTargets, *m_depthStencil);
 
-    if (!m_pixelShader->init(pDevice)) { 
+    if (!m_pixelShader->init(pDevice)) {
       std::cout << "Couldn't initiate the Pixel shader of the geometric pass" << std::endl;
       exit(442);
     }
@@ -132,7 +133,7 @@ namespace nauEngineSDK {
     return true;
   }
 
- 
+
   void
   GBPass::setLayout(Device* pDevice) {
 
@@ -145,14 +146,16 @@ namespace nauEngineSDK {
 
   void
   GBPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
-    
+
+    pDevice->setRenderTargets(m_renderTargets, *m_depthStencil);
+
     setPixelShader(pDevice);
     setVertexShader(pDevice);
 
     m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
-    
+
     m_buffer->setVertexShader(pDevice->getContext());
-    
+
     m_inputLayout->setLayout(pDevice->getContext());
 
     m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
@@ -165,7 +168,7 @@ namespace nauEngineSDK {
   }
 
   void
-  GBPass::updatePass() {
+    GBPass::updatePass() {
     m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));
@@ -174,6 +177,8 @@ namespace nauEngineSDK {
     m_buffer->add(reinterpret_cast<char*>(&m_info.fFar), sizeof(float));
 
   }
+#pragma endregion GEOMETRY PASS FUNCTIONS
+
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauGraphicPass.cpp 
@@ -185,7 +190,6 @@ namespace nauEngineSDK {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
@@ -237,7 +241,6 @@ namespace nauEngineSDK {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
@@ -280,7 +283,6 @@ namespace nauEngineSDK {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
@@ -323,7 +325,6 @@ namespace nauEngineSDK {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
@@ -367,7 +368,6 @@ namespace nauEngineSDK {
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
@@ -409,17 +409,17 @@ namespace nauEngineSDK {
   
   bool
   FinalPass::init(Device* pDevice, Map<String, Texture*> textures) {
+    
     m_pixelShader = pDevice->createPixelShader();
     m_vertexShader = pDevice->createVertexShader();
     m_buffer = pDevice->createConstantBuffer();
-    m_renderTarget = pDevice->createRenderTargetView();
     m_sampler = pDevice->createSamplerState();
     m_inputLayout = pDevice->createInputLayout();
     m_depthStencil = pDevice->createDepthStencil();
     m_rasterizer = pDevice->createRasterizer();
     m_info.m_color = pDevice->createRenderTargetView();
+
     if (!m_info.m_color->createRenderTargetView(pDevice, pDevice->getBackBuffer())) return false;
-    
     if (!m_depthStencil->createDepthStencil(*pDevice,
                                             pDevice->m_height,
                                             pDevice->m_width)) return false;
@@ -432,9 +432,8 @@ namespace nauEngineSDK {
 
     m_colorTexture = textures["COLOR"];
     
-    Vector<RenderTargetView*> renderTargets;
-    renderTargets.push_back(m_info.m_color);
-    pDevice->setRenderTargets(renderTargets, *m_depthStencil);
+    
+    m_renderTargets.push_back(m_info.m_color);
 
     if (!m_pixelShader->init(pDevice)) {
       std::cout << "Couldn't initiate the Pixel shader of the geometric pass" << std::endl;
@@ -469,6 +468,7 @@ namespace nauEngineSDK {
 
   void
   FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+    pDevice->setRenderTargets(m_renderTargets, *m_depthStencil);
     setPixelShader(pDevice);
     setVertexShader(pDevice);
 

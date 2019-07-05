@@ -73,11 +73,6 @@ namespace nauEngineSDK {
     updatePass() = 0;
 
     /**
-     * Render Target View
-     */
-    RenderTargetView* m_renderTarget = nullptr;
-
-    /**
      * DepthStencil object reference
      */
     DepthStencil* m_depthStencil = nullptr;
@@ -120,7 +115,7 @@ namespace nauEngineSDK {
     /**
      * The textures passed to the graphic pass to manage and update
      */
-    Map<String, Texture*> m_parentTexture;
+    Vector<RenderTargetView*> m_renderTargets;
   };
 
   class GBPass : public GraphicPass

@@ -55,11 +55,11 @@ namespace nauEngineSDK {
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice,m_rendereableTextures)) return false;
-    if (!m_ssaoPass.init(pDevice, m_rendereableTextures)) return false;
-    if (!m_blurPass.init(pDevice, m_rendereableTextures)) return false;
-    if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
-    if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
-    //if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_ssaoPass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_blurPass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
+    //if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
 
     return true;
@@ -76,7 +76,7 @@ namespace nauEngineSDK {
     //m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
     //m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
     //m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
-    //m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
   }
 
   void
@@ -104,7 +104,7 @@ namespace nauEngineSDK {
 
     pVertex.m_position = { -1.0f,1.0f,0.0f,1.0f };
     pVertex.m_color = { 1.0f,1.0f,1.0f,1.0f };
-    pVertex.m_uv = { 1.0f, 1.0f };
+    pVertex.m_uv = { 0.0f, 0.0f };
     m->m_vertexBuffer->add(pVertex);
 
     pVertex.m_position = { 1.0f,1.0f,0.0f,1.0f };
@@ -120,19 +120,17 @@ namespace nauEngineSDK {
     m->m_indexBuffer->add(0);
     m->m_indexBuffer->add(1);
     m->m_indexBuffer->add(2);
+    m->m_indexBuffer->add(0);
     m->m_indexBuffer->add(2);
     m->m_indexBuffer->add(3);
-    m->m_indexBuffer->add(0);
 
     m->m_indexBuffer->createHardware(pDevice->get(),0);
-
     m->m_vertexBuffer->createHardware(pDevice->get(),0);
+
     m->m_material = new MaterialComponent();
     quad->m_model->m_meshes.push_back(m);
     quad->m_model->setDevice(pDevice);
     quads.push_back(quad);
-
-
 
     return quads;
   }
