@@ -15,6 +15,7 @@
 #include <cstring>
 
 #include <memory>
+#include <mutex>
 
 #include <sstream>
 #include <fstream>
@@ -59,6 +60,8 @@ namespace nauEngineSDK {
 
   template<typename T>
   using Sptr = std::shared_ptr<T>;
+
+  using Mutex = std::mutex;
 
 }
 

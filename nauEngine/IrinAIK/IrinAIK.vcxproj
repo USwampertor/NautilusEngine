@@ -21,9 +21,13 @@
   <ItemGroup>
     <ClInclude Include="include\nauNeuron.h" />
     <ClInclude Include="nauNetwork.h" />
+    <ClInclude Include="nauNeuralLayer.h" />
+    <ClInclude Include="nauSkeletalNetwork.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="nauNetwork.cpp" />
+    <ClCompile Include="nauNeuralLayer.cpp" />
+    <ClCompile Include="nauSkeletalNetwork.cpp" />
     <ClCompile Include="src\nauNeuron.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

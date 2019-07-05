@@ -9,23 +9,49 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
 
-//#include <nauPrerequisitesCore.h>
-#include "nauNeuron.h"
-
+#include "nauNeuralLayer.h"
 
 namespace nauEngineSDK {
-  class Network
-  {
-  public:
-    /**
-     * Default Constructor
-     */
-    Network() = default;
-  
-    /**
-     * Default destructor
-     */
-    ~Network() = default;
-  };
+class NeuralNetwork
+{
+public:
+  /**
+   * Default Constructor
+   */
+  NeuralNetwork() = default;
+
+  /**
+   * Default destructor
+   */
+  ~NeuralNetwork() = default;
+
+  /**
+   * Initializes the neural network
+   */
+  void
+  init();
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  clean();
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  adjust();
+
+  Vector<
+
+
+};
 }
 
