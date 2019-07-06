@@ -81,9 +81,19 @@ class NAU_CORE_EXPORT Model
 
 public:
 
+  /**
+   * Mesh vector with the information of the model
+   */
   Vector<Mesh*> m_meshes;
+
+  /**
+   * Device reference 
+   */
   Device* m_device = nullptr;
 
+  /**
+   * Skeleton shared resource
+   */
   Sptr<Skeleton> m_skeleton;
 
 };

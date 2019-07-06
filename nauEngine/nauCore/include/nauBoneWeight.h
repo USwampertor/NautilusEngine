@@ -19,7 +19,8 @@ namespace nauEngineSDK {
     int m_ID;
 
     /**
-     * The weight in the 
+     * The weight in the bone. Shouldn't be higher than 1 and will be 1
+     * In the case that there is only one bone affecting a vertex
      */
     float m_weight;
 

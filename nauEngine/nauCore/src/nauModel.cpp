@@ -59,6 +59,8 @@ namespace nauEngineSDK {
       return;
     }
     processNode(scene->mRootNode, scene);
+
+
   }
 
   void
@@ -67,6 +69,7 @@ namespace nauEngineSDK {
     for (uint32 i = 0; i < node->mNumMeshes; ++i) {
       aiMesh* aimesh = scene->mMeshes[node->mMeshes[i]];
       m_meshes.push_back(processMesh(aimesh, scene));
+
     }
 
     for (uint32 i = 0; i < node->mNumChildren; ++i) {

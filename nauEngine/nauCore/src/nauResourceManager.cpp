@@ -19,6 +19,11 @@ namespace nauEngineSDK {
   Sptr<Resource>
   ResourceManager::load(String path) {
 
+    Sptr<Resource> resource = std::make_shared<Resource>();
+
+
+
+    return resource;
   }
 
   void
@@ -29,6 +34,9 @@ namespace nauEngineSDK {
   bool 
   ResourceManager::canDecode() {
 
+
+
+    return true;
   }
 
 

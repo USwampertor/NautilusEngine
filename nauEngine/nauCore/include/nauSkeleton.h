@@ -13,8 +13,45 @@
 #include "nauBone.h"
 
 namespace nauEngineSDK {
-struct Skeleton
+class Skeleton
 {
-  Vector<Bone> m;
+public:
+
+  /**
+   * Default constructor
+   */
+  Skeleton() = default;
+
+  /**
+   * Constructor with a const skeleton as parameter
+   */
+  Skeleton(const Skeleton& other);
+
+  /**
+   * Default destructor
+   */
+  ~Skeleton() = default;
+
+  /**
+   * @brief Initializes the skeleton with a series of bones and 
+   * @param the bones to make the tree
+   * @return 
+   *
+   */
+  void
+  init(Vector<Bone*> bones);
+
+private:
+
+  /**
+   * ID of the Skeleton
+   */
+  int m_ID;
+
+  /**
+   * Root of the Bone
+   */
+  Bone* m_root;
+
 };
 }

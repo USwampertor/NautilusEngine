@@ -43,7 +43,17 @@ struct Bone
   /**
    * Vertex Weight
    */
-  Vector<Sptr<VertexWeight>> m_weights;
+  Vector<VertexWeight*> m_weights;
+
+  /**
+   * The parent of the bone
+   */
+  Bone* m_parent = nullptr;
+
+  /**
+   * List of children
+   */
+  Vector<Bone*> m_children;
 };
   
 }

@@ -91,6 +91,7 @@
     <ClCompile Include="src\nauRenderManager.cpp" />
     <ClCompile Include="src\nauResourceManager.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
+    <ClCompile Include="src\nauSkeleton.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

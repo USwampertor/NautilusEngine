@@ -15,6 +15,7 @@
 #include <DirectXMath.h>
 
 #include "nauPrerequisitesCore.h"
+#include "nauBoneWeight.h"
 
 namespace nauEngineSDK {
 
@@ -72,6 +73,27 @@ struct Vertex
    * Bi normal Component
    */
   Vector3 m_binormal;
+
+  /**
+   * Bone 0 reference
+   */
+  BoneWeight m_bone0;
+
+  /**
+   * Bone 1 reference
+   */
+  BoneWeight m_bone1;
+
+  /**
+   * Bone 2 reference
+   */
+  BoneWeight m_bone2;
+
+  /**
+   * Bone 3 reference
+   */
+  BoneWeight m_bone3;
+
 };
 
 }
