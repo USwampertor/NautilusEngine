@@ -1,8 +1,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauWeight.h
+ * @file nauBoneWeight.h
  * @author Marco "Swampy" Millan
- * @date 2019/05/23 2019
+ * @date 2019/07/05 2019
  * @brief 
  * 
  */
@@ -11,12 +11,17 @@
 
 #include "nauPrerequisitesCore.h"
 
-
 namespace nauEngineSDK {
-struct VertexWeight
-{
-  uint32 m_ID;
-  float m_weight;
-};  
-}
+  struct BoneWeight {
+    /**
+     * The bone's ID that will deform a vertex
+     */
+    int m_ID;
 
+    /**
+     * The weight in the 
+     */
+    float m_weight;
+
+  };
+}

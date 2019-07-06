@@ -5,159 +5,174 @@
       <UniqueIdentifier>{5be860de-13b7-41ed-a96c-46cd516c77c7}</UniqueIdentifier>
       <Extensions>h;hpp;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\Primitives">
+      <UniqueIdentifier>{e1a16006-8946-4c84-8ee6-72dde7d8053e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\FileSystem">
+      <UniqueIdentifier>{e797d014-a78f-40bc-964e-328e7c5e06a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Mathematics">
+      <UniqueIdentifier>{0896baa4-27f6-43fb-832a-5aafd363332f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Allocator">
+      <UniqueIdentifier>{7f0f550a-adce-4648-9a1c-968a0f14d412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\System">
+      <UniqueIdentifier>{73c48d4b-7b4f-4b1c-b97a-79e154ddbbf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAABB.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\nauBox2d.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauFrustrum.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMatrix4.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauPlane.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauPlatformMath.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauRay.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauSphere.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauTriangle.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauVector2.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauVector2i.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauVector3.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauOOBB.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauVector4.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauQuaternion.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\nauDataStream.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauRandom.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMatrix3.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMemoryAllocator.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\FileSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\nauFileSystem.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauFrustrum.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMatrix3.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMatrix4.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMemoryAllocator.cpp">
+      <Filter>Archivos de origen\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauOOBB.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauPlane.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauPlatformMath.cpp">
+      <Filter>Archivos de origen\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauQuaternion.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauRandom.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauRay.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="src\nauRotator.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauSphere.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauTriangle.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauVector2.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauVector2i.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauVector3.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauVector4.cpp">
+      <Filter>Archivos de origen\Mathematics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="include\nauBox2d.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauFrustrum.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMath.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMatrix4.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPlane.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPlatformDefines.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPlatformMath.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPlatformTypes.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPlatformUtilities.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauPrerequisitesUtil.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRay.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauSphere.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauTriangle.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauVector2.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauVector2i.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauVector3.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauWindowsMath.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauOOBB.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauVector4.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauQuaternion.h">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="include\nauDataStream.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRandom.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauStdHeaders.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauModule.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMatrix3.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMemoryAllocator.h">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\FileSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\nauFileSystem.h">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauFrustrum.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMath.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMatrix3.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMatrix4.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMemoryAllocator.h">
+      <Filter>Archivos de origen\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauOOBB.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlane.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauModule.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlatformDefines.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlatformMath.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlatformTypes.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPlatformUtilities.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauQuaternion.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRandom.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRay.h">
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="include\nauRotator.h">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauSphere.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauTriangle.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauVector2.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauVector2i.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauVector3.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauVector4.h">
+      <Filter>Archivos de origen\Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauPrerequisitesUtil.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauStdHeaders.h">
+      <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauWindowsMath.h">
+      <Filter>Archivos de origen\System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

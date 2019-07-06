@@ -36,9 +36,14 @@ struct Bone
   Matrix4 m_offset;
 
   /**
+   * ID of the bone in the tree
+   */
+  int m_ID;
+
+  /**
    * Vertex Weight
    */
-
+  Vector<Sptr<VertexWeight>> m_weights;
 };
   
 }

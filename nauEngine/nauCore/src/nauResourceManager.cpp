@@ -11,4 +11,28 @@
 
 namespace nauEngineSDK {
 
+  void
+  ResourceManager::init(Device* pDevice) {
+
+  }
+
+  Sptr<Resource>
+  ResourceManager::load(String path) {
+
+  }
+
+  void
+  ResourceManager::flush() {
+
+  }
+
+  bool 
+  ResourceManager::canDecode() {
+
+  }
+
+
+
+
+
 }

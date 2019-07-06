@@ -11,6 +11,7 @@
 #include "nauModule.h"
 #include "nauPrerequisitesCore.h"
 #include "nauResource.h"
+#include "nauTexture.h"
 
 namespace nauEngineSDK {
   
@@ -43,23 +44,20 @@ public:
    *
    */
   void
-  init();
+  init(Device* pDevice);
 
-  static Resource
+  Sptr<Resource>
   load(String path);
 
-  static void
+  void
   flush();
 
-  static bool
+  bool
   canDecode();
-
-  Map<String, Sptr<Resource>> m;
 
 private:
 
-  String defaultResources = "./defaultResources/";
-
+  Map<String, Sptr<Resource>> m;
 };
   
 }

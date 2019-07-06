@@ -18,75 +18,60 @@
 
 namespace nauEngineSDK {
 
-   /**
-    * nauVertex
-    * Description:
-    * 	A vertex object
-    * Sample usage:
-    * 	vertex an be used to store information of the mesh
-    */
-  struct Vertex
-  {
-    Vertex() {
-      m_position  = Vector4::ONEW;
-      m_color     = Vector4::ZERO;
-      m_normal    = Vector4::ONEW;
-      m_uv        = Vector2::ZERO;
-      m_tangent   = Vector3::ZERO;
-      m_binormal  = Vector3::ZERO;
-    }
+/**
+ * nauVertex
+ * Description:
+ * 	A vertex object
+ * Sample usage:
+ * 	vertex an be used to store information of the mesh
+ */
+struct Vertex
+{
+  Vertex() {
+    m_position  = Vector4::ONEW;
+    m_color     = Vector4::ZERO;
+    m_normal    = Vector4::ONEW;
+    m_uv        = Vector2::ZERO;
+    m_tangent   = Vector3::ZERO;
+    m_binormal  = Vector3::ZERO;
+  }
 
 
-    Vertex(Vector4 position, Vector4 color, Vector4 normal, Vector2 uv)
-      : m_position(position),
-        m_color(color),
-        m_normal(normal),
-        m_uv(uv) {}
+  Vertex(Vector4 position, Vector4 color, Vector4 normal, Vector2 uv)
+    : m_position(position),
+      m_color(color),
+      m_normal(normal),
+      m_uv(uv) {}
 
-    /**
-     * position of the vertex
-     */
-    Vector4 m_position;
-    
-    /**
-     * color of the vertex
-     */
-    Vector4 m_color;
+  /**
+   * position of the vertex
+   */
+  Vector4 m_position;
+  
+  /**
+   * color of the vertex
+   */
+  Vector4 m_color;
 
-    /**
-     * normals of the vertex
-     */
-    Vector4 m_normal;
+  /**
+   * normals of the vertex
+   */
+  Vector4 m_normal;
 
-    /**
-     * U (UV's) component of the vertex
-     */
-    Vector2 m_uv;
+  /**
+   * U (UV's) component of the vertex
+   */
+  Vector2 m_uv;
 
-    /**
-     * Tangent
-     */
-    Vector3 m_tangent;
+  /**
+   * Tangent
+   */
+  Vector3 m_tangent;
 
-    /**
-     * Bi normal Component
-     */
-    Vector3 m_binormal;
-
-    /**
-     * Bone Weight 1
-     */
-    int m_boneWeight1;
-
-    /**
-     * Bone Weight 2
-     */
-    int m_boneWeight2;
-    
-    /**
-     * Bone Weight 3
-     */
-    int m_boneWeight3;
-  };
+  /**
+   * Bi normal Component
+   */
+  Vector3 m_binormal;
+};
 
 }
