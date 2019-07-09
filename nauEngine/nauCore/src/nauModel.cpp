@@ -65,16 +65,39 @@ namespace nauEngineSDK {
 
   void
   Model::processNode(aiNode* node, const aiScene* scene) {
+    
+    Map<String, Bone*> boneMap;
 
     for (uint32 i = 0; i < node->mNumMeshes; ++i) {
       aiMesh* aimesh = scene->mMeshes[node->mMeshes[i]];
       m_meshes.push_back(processMesh(aimesh, scene));
+      if (aimesh->HasBones()) {
+        for (uint32 j = 0; j < aimesh->mNumBones; ++j) {
+          Bone* newBone = new Bone();
+          aimesh->mBones[j]->mName = newBone->m_name;
+          newBone->m_weights.resize(aimesh->mBones[j]->mNumWeights);
+          
+          aiMatrix4x4 m = aimesh->mBones[j]->mOffsetMatrix;
 
+          newBone->m_offset.setValues(m.a1, m.b1, m.c1, m.d1,
+                                      m.a2, m.b2, m.c2, m.d2,
+                                      m.a3, m.b3, m.c3, m.d3,
+                                      m.a4, m.b4, m.c4, m.d4);
+
+          boneMap.insert(std::make_pair(newBone->m_name, newBone));
+        }
+      }
     }
+
+    
+    m_skeleton->init(boneMap);
 
     for (uint32 i = 0; i < node->mNumChildren; ++i) {
       processNode(node->mChildren[i], scene);
     }
+
+
+
   }
 
   Mesh*

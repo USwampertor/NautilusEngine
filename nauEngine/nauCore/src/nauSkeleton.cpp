@@ -23,5 +23,22 @@ namespace nauEngineSDK {
 
   }
 
+  void
+  Skeleton::init(Map<String, Bone *> bones) {
+
+
+  }
+
+  Bone*
+  Skeleton::getRoot() {
+    return m_root;
+  }
+
+  int
+  Skeleton::getID() {
+    return m_ID;
+  }
+
+
 
 }

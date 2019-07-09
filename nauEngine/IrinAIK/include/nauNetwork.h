@@ -10,6 +10,7 @@
 #pragma once
 
 #include "nauNeuralLayer.h"
+#include <vector>
 
 namespace nauEngineSDK {
 class NeuralNetwork
@@ -49,7 +50,7 @@ public:
   void
   adjust();
 
-  Vector<
+  std::vector<NeuralLayer*> m_layers;
 
 
 };

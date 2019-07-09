@@ -23,23 +23,51 @@ public:
   Skeleton() = default;
 
   /**
-   * Constructor with a const skeleton as parameter
-   */
-  Skeleton(const Skeleton& other);
-
-  /**
    * Default destructor
    */
   ~Skeleton() = default;
 
   /**
-   * @brief Initializes the skeleton with a series of bones and 
+   * Constructor with reference copy
+   */
+  Skeleton(const Skeleton& other);
+
+  /**
+   * @brief Initializes the skeleton with a series of bones
    * @param the bones to make the tree
    * @return 
    *
    */
   void
   init(Vector<Bone*> bones);
+
+  /**
+   * @brief Initializes the skeleton with a map of bones
+   * @param the Map<String, Bone*> object with all bones
+   * @return 
+   *
+   */
+  void
+  init(Map<String, Bone*> bones);
+
+  /**
+   * @brief returns the Bone* that is the root of the skeleton
+   * @param 
+   * @return the Bone* root of the skeleton
+   *
+   */
+  Bone*
+  getRoot();
+
+  /**
+   * @brief returns the ID of the skeleton inside a model
+   * @param 
+   * @return the int ID of the skeleton 
+   *
+   */
+  int
+  getID();
+
 
 private:
 
