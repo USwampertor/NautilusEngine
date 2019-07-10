@@ -24,6 +24,20 @@ namespace nauEngineSDK {
  */
 struct Bone
 {
+  Bone() = default;
+
+  ~Bone() = default;
+
+  Bone(const aiBone& other) {
+    m_name = other.mName.C_Str();
+    m_weights.resize(other.mNumWeights);
+    aiMatrix4x4 m = other.mOffsetMatrix;
+    m_offset.setValues(m.a1, m.b1, m.c1, m.d1,
+                       m.a2, m.b2, m.c2, m.d2,
+                       m.a3, m.b3, m.c3, m.d3,
+                       m.a4, m.b4, m.c4, m.d4);
+  }
+
   /**
    * Name of the bone
    */

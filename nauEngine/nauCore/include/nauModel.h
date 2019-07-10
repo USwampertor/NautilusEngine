@@ -38,6 +38,12 @@ class NAU_CORE_EXPORT Model
   ~Model() = default;
 
   /**
+   * Returns true if there is any bone in the model
+   */
+  bool
+  hasBones();
+
+  /**
    * Sets the device
    */
   void
@@ -95,6 +101,14 @@ public:
    * Skeleton shared resource
    */
   Sptr<Skeleton> m_skeleton;
+
+private:
+  /**
+   * 
+   */
+  bool
+  m_hasBones = false;
+
 
 };
 }

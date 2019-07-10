@@ -11,6 +11,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauBone.h"
+#include "nauModelNode.h"
 
 namespace nauEngineSDK {
 class Skeleton
@@ -49,6 +50,17 @@ public:
    */
   void
   init(Map<String, Bone*> bones);
+
+  /**
+   * @brief Initializes the skeleton with a map of bones and the nodes of the model scene
+   * @param Map<String, Bone*> the bones of the model
+   * @param Vector<ModelNode*> The nodes in the model scene controlling the hierarchy
+   * @return 
+   *
+   */
+  void
+  init(Map<String, Bone *> bones, Vector<aiNode*> nodes);
+
 
   /**
    * @brief returns the Bone* that is the root of the skeleton

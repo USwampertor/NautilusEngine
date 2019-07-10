@@ -19,14 +19,24 @@ namespace nauEngineSDK {
   void
   Skeleton::init(Vector<Bone*> bones) {
 
-
-
   }
 
   void
   Skeleton::init(Map<String, Bone *> bones) {
 
 
+  }
+
+  void
+  Skeleton::init(Map<String, Bone *> bones, Vector<aiNode*> nodes) {
+    for (auto node : nodes) {
+      std::cout << "Node " << node->mName.C_Str() << std::endl;
+      if (node->mParent == nullptr) {
+        
+      }
+      node->mChildren;
+      node->mName;
+    }
   }
 
   Bone*
