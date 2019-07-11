@@ -8,7 +8,7 @@ namespace nauEngineSDK {
 
   void
   TestApp::update() {
-    m_renderManager->update();
+    RenderManager::instance().update();
 
   }
 
@@ -35,14 +35,14 @@ namespace nauEngineSDK {
     
     ImGui::SetNextWindowPos(ImVec2(m_api->getWindowSize().x - 100,
                                    10));
-    ImGui::Begin("Hour", 0, ImGuiWindowFlags_MenuBar);
-    ImGui::Text("%f", m_timer.asSeconds());
+    ImGui::Begin("Delta Time", 0, ImGuiWindowFlags_MenuBar);
+    ImGui::Text("%f", Clock::instance().deltaTime());
     ImGui::End();
     ImGui::EndFrame();
 
     
 
-    m_renderManager->render(meshes, m_api);
+    RenderManager::instance().render(meshes, m_api);
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     m_api->swapBuffer();
@@ -56,20 +56,25 @@ namespace nauEngineSDK {
 
     //API INITIALIZATION
     m_api = m_factory->createGraphicsAPI();
-    m_renderManager = new RenderManager();
+    RenderManager::startUp();
     if (!m_api->init(hwnd)) return false;
 
     ResourceManager::startUp();
     ResourceManager::instance().init(m_api->getDevice());
+    
+
     //UI INITIALIZATION
     if (!initUI(hwnd))      return false;
-    
 
     m_sceneGraph.init();
 
-    if (!m_renderManager->init(m_api->getDevice())) return false;
+    if (!RenderManager::instance().init(m_api->getDevice())) return false;
     //Last object to initiate should be the clock
     m_timer.restart();
+
+    Clock::startUp();
+    
+    Logger::startUp();
 
     ///TESTING MODEL
     int i = 0;

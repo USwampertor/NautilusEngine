@@ -25,7 +25,7 @@ namespace nauEngineSDK {
   }
 
 
-  class Logger : Module<Logger>
+  class NAU_CORE_EXPORT Logger : public Module<Logger>
   {
   public:
     /**

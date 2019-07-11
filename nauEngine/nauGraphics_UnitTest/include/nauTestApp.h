@@ -17,6 +17,7 @@
 #include <nauRenderManager.h>
 #include <nauSceneGraph.h>
 #include <nauResourceManager.h>
+#include <nauLogger.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>
@@ -97,8 +98,6 @@ namespace nauEngineSDK {
 
 
     GraphicsAPI* m_api = nullptr;
-
-    RenderManager* m_renderManager = nullptr;
 
     Timer m_timer;
 

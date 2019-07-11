@@ -72,12 +72,7 @@ namespace nauEngineSDK {
 
     auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
     
-#if NAU_DEBUG_MODE
-# if NAU_COMPILER_MSVC == NAU_COMPILER_MSVC
-    String outputString = String("Loading texture ") + path + "\n";
-    OutputDebugString(outputString.c_str());
-# endif
-#endif
+    Logger::instance().toConsole("Loading path" + path);
 
     if (!m_fileData) {
       

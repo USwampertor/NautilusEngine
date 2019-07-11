@@ -12,6 +12,7 @@
 #include "nauPrerequisitesDX.h"
 
 #include <nauTexture.h>
+#include <nauLogger.h>
 
 namespace nauEngineSDK {
   class NAU_DIRECTX_EXPORT TextureDX : public Texture
