@@ -23,7 +23,7 @@ namespace nauEngineSDK {
  * Sample usage:
  * 
  */
-class ResourceManager : Module<ResourceManager>
+class NAU_CORE_EXPORT ResourceManager : public Module<ResourceManager>
 {
 public:
 
@@ -58,6 +58,8 @@ public:
 private:
 
   Map<String, Sptr<Resource>> m;
+
+  Device* m_pDevice;
 };
   
 }

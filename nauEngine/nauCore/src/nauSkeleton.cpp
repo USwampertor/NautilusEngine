@@ -29,10 +29,16 @@ namespace nauEngineSDK {
 
   void
   Skeleton::init(Map<String, Bone *> bones, Vector<aiNode*> nodes) {
+    m_root = new Bone();
     for (auto node : nodes) {
       std::cout << "Node " << node->mName.C_Str() << std::endl;
-      if (node->mParent == nullptr) {
-        
+      if (node->mParent->mName.C_Str() == "RootNode" || 
+          node->mParent->mParent == nullptr) {
+        String rootName = node->mName.C_Str();
+        m_root = bones[rootName];
+        for (int i = 0; i < node->mNumChildren; ++i) {
+          m_root->m_children.push_back(bones[node->mChildren[i]->mName.C_Str()]);
+        }
       }
       node->mChildren;
       node->mName;

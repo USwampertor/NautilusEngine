@@ -91,7 +91,7 @@ private:
   /**
    * Root of the Bone
    */
-  Bone* m_root;
+  Bone* m_root = nullptr;
 
 };
 }

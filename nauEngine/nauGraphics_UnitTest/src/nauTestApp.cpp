@@ -58,6 +58,9 @@ namespace nauEngineSDK {
     m_api = m_factory->createGraphicsAPI();
     m_renderManager = new RenderManager();
     if (!m_api->init(hwnd)) return false;
+
+    ResourceManager::startUp();
+    ResourceManager::instance().init(m_api->getDevice());
     //UI INITIALIZATION
     if (!initUI(hwnd))      return false;
     

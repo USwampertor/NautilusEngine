@@ -13,7 +13,7 @@ namespace nauEngineSDK {
 
   void
   ResourceManager::init(Device* pDevice) {
-
+    m_pDevice = pDevice;
   }
 
   Sptr<Resource>
