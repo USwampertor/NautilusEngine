@@ -13,17 +13,22 @@
 #include "nauModule.h"
 
 #include <chrono>
+#include <ctime>
 
 namespace nauEngineSDK {
   using namespace std::chrono;
 
-  enum DELTA
+  namespace DELTA
+  {
+  enum E
   {
     MICROSECOND         = 0,    //Returns the value in microseconds 
     MILLISECOND         = 1,    //Returns the value in milliseconds
     DELTASECOND         = 2     //Returns the value in seconds
 
   };
+
+  }
 
 
    /**
@@ -53,7 +58,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    initialize();
+    init();
 
 
     /**
@@ -72,7 +77,7 @@ namespace nauEngineSDK {
      *
      */
     float
-    deltaTime(DELTA as);
+    deltaTime(DELTA::E as);
 
     /**
      * @brief Returns a string with the exact hour in the computer

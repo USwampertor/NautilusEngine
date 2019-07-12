@@ -3,8 +3,8 @@
  * @file nauGraphicPass.h
  * @author Marco "Swampy" Millan
  * @date 2019/04/04 2019
- * @brief Graphics managment for passes. It stores a series of objects to be called
- *        up on passes
+ * @brief Graphics management for passes. It stores a series of objects to be 
+ *        called up on passes
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -17,6 +17,7 @@
 #include "nauDevice.h"
 #include "nauGraphicsBuffer.h"
 #include "nauInputLayout.h"
+#include "nauLogger.h"
 #include "nauPassPerInfo.h"
 #include "nauRenderTargetView.h"
 #include "nauRasterizerState.h"

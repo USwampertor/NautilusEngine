@@ -12,7 +12,7 @@
 namespace nauEngineSDK {
 
   void
-  Clock::initialize() {
+  Clock::init() {
     m_time = high_resolution_clock::now();
   }
 
@@ -26,7 +26,7 @@ namespace nauEngineSDK {
   }
 
   float
-  Clock::deltaTime(DELTA as) {
+  Clock::deltaTime(DELTA::E as) {
     auto now = high_resolution_clock::now();
     milliseconds ms = duration_cast<milliseconds>(now - m_time);
     m_time = now;
@@ -42,12 +42,22 @@ namespace nauEngineSDK {
 
   String
   Clock::hour() {
-    String time;
+    String hour = "";
+    std::time_t timeStamp;
 
+    system_clock::time_point today = system_clock::now();
 
+    timeStamp = system_clock::to_time_t(today);
+    std::tm localTime = *localtime(&timeStamp);
 
+    hour += std::to_string(localTime.tm_hour);
+    hour += ": ";
+    hour += std::to_string(localTime.tm_min);
+    hour += ": ";
+    hour += std::to_string(localTime.tm_sec);
+    hour += "\n";
 
-    return time;
+    return hour;
   }
 
 }

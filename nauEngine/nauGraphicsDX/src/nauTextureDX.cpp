@@ -72,7 +72,9 @@ namespace nauEngineSDK {
 
     auto m_fileData = stbi_load(path.c_str(), &x, &y, &byteperpixel, 4);
     
-    Logger::instance().toConsole("Loading path" + path);
+#if NAU_DEBUG_MODE
+    Logger::instance().toIDE("Loading path " + path + " \n");
+#endif
 
     if (!m_fileData) {
       
