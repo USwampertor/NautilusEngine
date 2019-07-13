@@ -83,8 +83,8 @@ namespace nauEngineSDK {
         auto node = scene->mRootNode->FindNode(bone.second->m_name.c_str());
         modelNodes.push_back(node);
       }
-      m_skeleton = new Skeleton();
-      m_skeleton->init(sceneBones, modelNodes);
+      //Sptr<Resource*> res = ResourceManager::instance().create(filePath, RESOURCETYPE::SKELETON);
+      //m_skeleton->init(sceneBones, modelNodes);
     }
   }
 

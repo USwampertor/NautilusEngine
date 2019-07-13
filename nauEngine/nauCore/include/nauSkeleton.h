@@ -13,9 +13,10 @@
 #include "nauBone.h"
 #include "nauModelNode.h"
 #include "nauLogger.h"
+#include "nauResource.h"
 
 namespace nauEngineSDK {
-class Skeleton
+class Skeleton : public Resource
 {
 public:
 
@@ -50,6 +51,12 @@ public:
    * @return 
    *
    */
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::SKELETON; }
+
+  virtual bool
+  load(String path) override;
+
   void
   init(Map<String, Bone*> bones);
 

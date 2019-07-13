@@ -12,10 +12,21 @@
 #include "nauModule.h"
 #include "nauPrerequisitesCore.h"
 #include "nauResource.h"
-#include "nauTexture.h"
+#include "nauGraphicsAPI.h"
 
 namespace nauEngineSDK {
-  
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauResourceManager.h 
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
+  class Texture;
+  class Skeleton;
+  class Model;
+
+
+
 /**
  * ResourceManager
  * Description:
@@ -49,6 +60,9 @@ public:
 
   Sptr<Resource*>
   load(String path);
+
+  Sptr<Resource*>
+  create(String name, RESOURCETYPE::E type);
 
   void
   flush();

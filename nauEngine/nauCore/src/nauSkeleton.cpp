@@ -16,6 +16,12 @@ namespace nauEngineSDK {
 
   }
 
+  bool
+  Skeleton::load(String path) {
+
+    return true;
+  }
+
   void
   Skeleton::init(Vector<Bone*> bones) {
 
@@ -54,7 +60,6 @@ namespace nauEngineSDK {
                                LOGGER_LEVEL::ERRORED);
 #endif
     }
-
   }
 
   void

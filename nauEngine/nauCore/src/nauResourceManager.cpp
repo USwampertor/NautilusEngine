@@ -9,6 +9,11 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauResourceManager.h"
 
+
+#include "nauTexture.h"
+#include "nauModel.h"
+#include "nauSkeleton.h"
+
 namespace nauEngineSDK {
 
   void
@@ -19,7 +24,7 @@ namespace nauEngineSDK {
   Sptr<Resource*>
   ResourceManager::load(String path) {
 
-    Sptr<Resource*> resource = std::make_shared<Resource*>();
+    Sptr<Resource*> resource;
 
     if (!canDecode(path)) {
 #if NAU_DEBUG_MODE
@@ -34,6 +39,42 @@ namespace nauEngineSDK {
   void
   ResourceManager::flush() {
 
+  }
+
+  Sptr<Resource*>
+  ResourceManager::create(String name, RESOURCETYPE::E type) {
+    Sptr<Resource*> resource;
+    uint32 lastDot;
+
+    lastDot = name.find_last_of('.');
+    String newExtension = name.substr(0, lastDot);
+    
+    if (RESOURCETYPE::SKELETON == type) {
+      newExtension += ".skl";
+    }
+    else if (RESOURCETYPE::AUDIO == type) {
+
+      newExtension += ".aud";
+    }
+    else if (RESOURCETYPE::CUBEMAP == type) {
+
+      newExtension += ".ddx";
+    }
+    else if (RESOURCETYPE::MATERIAL == type) {
+
+      newExtension += ".mtl";
+    }
+    else if (RESOURCETYPE::MODEL == type) {
+
+      newExtension += ".fbx";
+    }
+    else if (RESOURCETYPE::TEXTURE == type) {
+
+      newExtension += ".png";
+    }
+    m.insert(std::make_pair(name, resource));
+
+    return resource;
   }
 
   bool 
