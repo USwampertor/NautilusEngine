@@ -85,9 +85,7 @@ namespace nauEngineSDK {
       }
       m_skeleton = new Skeleton();
       m_skeleton->init(sceneBones, modelNodes);
-    
     }
-    
   }
 
   void

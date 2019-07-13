@@ -30,18 +30,49 @@ namespace nauEngineSDK {
   void
   Skeleton::init(Map<String, Bone *> bones, Vector<aiNode*> nodes) {
     m_root = new Bone();
+    aiNode* rootNode = nullptr;
+
     for (auto node : nodes) {
-      std::cout << "Node " << node->mName.C_Str() << std::endl;
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Bone");
+#endif
       if (node->mParent->mName.C_Str() == "RootNode" || 
           node->mParent->mParent == nullptr) {
-        String rootName = node->mName.C_Str();
-        m_root = bones[rootName];
-        for (int i = 0; i < node->mNumChildren; ++i) {
-          m_root->m_children.push_back(bones[node->mChildren[i]->mName.C_Str()]);
-        }
+        rootNode = node;
+        break;
+      }
+    }
+
+
+    if (rootNode != nullptr) {
+      m_root = bones[rootNode->mName.C_Str()];
+      processBone(bones, rootNode, m_root);
+    }
+    else {
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Couldn't find a Root Node in the node Vector",
+                               LOGGER_LEVEL::ERRORED);
+#endif
+    }
+
+  }
+
+  void
+  Skeleton::processBone(Map<String, Bone *> bones, aiNode* node, Bone* actualBone) {
+    
+    for (int i = 0; i < node->mNumChildren; ++i) {
+      if (bones[node->mChildren[i]->mName.C_Str()] != nullptr) {
+        Bone* newBone = bones[node->mChildren[i]->mName.C_Str()];
+        newBone->m_parent = actualBone;
+        actualBone->m_children.push_back(newBone);
+        processBone(bones, node->mChildren[i], newBone);
+      }
+      else {
+        processBone(bones, node->mChildren[i], actualBone);
       }
     }
   }
+
 
   Bone*
   Skeleton::getRoot() {

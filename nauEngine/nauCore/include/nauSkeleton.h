@@ -12,6 +12,7 @@
 #include "nauPrerequisitesCore.h"
 #include "nauBone.h"
 #include "nauModelNode.h"
+#include "nauLogger.h"
 
 namespace nauEngineSDK {
 class Skeleton
@@ -44,6 +45,7 @@ public:
 
   /**
    * @brief Initializes the skeleton with a map of bones
+   *        Use this if bones have already references to parents and children
    * @param the Map<String, Bone*> object with all bones
    * @return 
    *
@@ -61,6 +63,16 @@ public:
   void
   init(Map<String, Bone *> bones, Vector<aiNode*> nodes);
 
+  /**
+   * @brief Processes the children of the nodes of Assimp and puts them on the final
+   *        skeleton
+   * @param Map<String, Bone*> the bones of the model
+   * @param Vector<ModelNode*> The nodes in the model scene controlling the hierarchy
+   * @return
+   *
+   */
+  void
+  processBone(Map<String, Bone *> bones, aiNode* node, Bone* actualBone);
 
   /**
    * @brief returns the Bone* that is the root of the skeleton
