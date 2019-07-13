@@ -100,7 +100,7 @@ public:
   /**
    * Skeleton shared resource
    */
-  Sptr<Skeleton> m_skeleton;
+  Skeleton* m_skeleton = nullptr;
 
 private:
   /**

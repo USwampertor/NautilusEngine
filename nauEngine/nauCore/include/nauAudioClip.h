@@ -13,10 +13,24 @@
 #include "nauResource.h"
 
 namespace nauEngineSDK {
-struct AudioClip : Resource
+class NAU_CORE_EXPORT AudioClip : public Resource
 {
- 
+  public:
+  /**
+   * Default constructor
+   */
+  AudioClip() = default;
 
+  /**
+   * Default destructor
+   */
+  ~AudioClip() = default;
+
+  virtual bool
+  load(String path) override;
+  
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::AUDIO; }
 
 };
 }

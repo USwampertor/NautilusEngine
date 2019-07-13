@@ -13,22 +13,53 @@
 
 namespace nauEngineSDK {
 
-  namespace RESOURCET
+  namespace RESOURCETYPE
   {
-    enum E
-    {
-      AUDIO         = 1<<0,
-      TEXTURE       = 1<<1,
-      CUBEMAP       = 1<<2,
-      MATERIAL      = 1<<3,
-      MODEL         = 1<<4
-    };
+  enum E
+  {
+    NONE          = 0,
+    AUDIO         = 1<<0,
+    TEXTURE       = 1<<1,
+    CUBEMAP       = 1<<2,
+    MATERIAL      = 1<<3,
+    MODEL         = 1<<4,
+    SKELETON      = 1<<5,
+  };
   }
 
 
-struct Resource
+class NAU_CORE_EXPORT Resource
 {
-  
+public:
+  /**
+   * Default constructor
+   */
+  Resource() = default;
+
+  /**
+   * Default destructor
+   */
+  virtual
+  ~Resource() = default;
+
+  /**
+   * @brief Virtual function that child will override to load things its way
+   * @param String path of the object to load
+   * @return true if able to load it, false if not able
+   *
+   */
+  virtual bool 
+  load(String path) = 0;
+
+  /**
+   * @brief Virtual function that child will override to define the type of the
+   *        object
+   * @param 
+   * @return the RESOURCETYPE the object is 
+   *
+   */
+  virtual RESOURCETYPE::E
+  getType() = 0;
 };
 
 }

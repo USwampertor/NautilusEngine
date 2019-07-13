@@ -77,7 +77,7 @@ namespace nauEngineSDK {
  * nauDataStream.cpp File stream member definition
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-  STREAMTYPE
+  STREAMTYPE::E
   FileStream::isType() {
     return STREAMTYPE::FILE;
   }
@@ -118,7 +118,7 @@ namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 
-  STREAMTYPE
+  STREAMTYPE::E
   MemStream::isType() {
     return STREAMTYPE::MEMORY;
   }

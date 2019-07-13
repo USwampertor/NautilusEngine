@@ -16,12 +16,17 @@ namespace nauEngineSDK {
     m_pDevice = pDevice;
   }
 
-  Sptr<Resource>
+  Sptr<Resource*>
   ResourceManager::load(String path) {
 
-    Sptr<Resource> resource = std::make_shared<Resource>();
+    Sptr<Resource*> resource = std::make_shared<Resource*>();
 
-
+    if (!canDecode(path)) {
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE(" object at path: " + path + " is not a valid format");
+      return nullptr;
+#endif
+    }
 
     return resource;
   }
@@ -32,9 +37,7 @@ namespace nauEngineSDK {
   }
 
   bool 
-  ResourceManager::canDecode() {
-
-
+  ResourceManager::canDecode(String path) {
 
     return true;
   }

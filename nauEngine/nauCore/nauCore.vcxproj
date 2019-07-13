@@ -56,6 +56,7 @@
     <ClInclude Include="include\nauResource.h" />
     <ClInclude Include="include\nauResourceManager.h" />
     <ClInclude Include="include\nauSamplerState.h" />
+    <ClInclude Include="include\nauScene.h" />
     <ClInclude Include="include\nauSceneGraph.h" />
     <ClInclude Include="include\nauShader.h" />
     <ClInclude Include="include\nauShaderResourceView.h" />
@@ -67,10 +68,10 @@
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
-    <ClInclude Include="nauScene.h" />
+    <ClInclude Include="nauCodec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauScene.cpp" />
+    <ClCompile Include="nauCodec.cpp" />
     <ClCompile Include="src\nauAnimator.cpp" />
     <ClCompile Include="src\nauAudioClip.cpp" />
     <ClCompile Include="src\nauAudioSource.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="src\nauNode.cpp" />
     <ClCompile Include="src\nauRenderManager.cpp" />
     <ClCompile Include="src\nauResourceManager.cpp" />
+    <ClCompile Include="src\nauScene.cpp" />
     <ClCompile Include="src\nauSceneGraph.cpp" />
     <ClCompile Include="src\nauSkeleton.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />

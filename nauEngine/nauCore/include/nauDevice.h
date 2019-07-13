@@ -60,7 +60,8 @@ namespace nauEngineSDK {
     /**
      * Virtual constructor
      */
-    virtual ~Device() = default;
+    virtual 
+    ~Device() = default;
 
     /**
      * @brief initializes device with the handler given

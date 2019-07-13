@@ -1,15 +1,15 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauScene.cpp
+ * @file nauPath.cpp
  * @author Marco "Swampy" Millan
  * @date 2019/07/12 2019
- * @brief 
+ * @brief Path object
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauScene.h"
+#include "nauPath.h"
 
 
 namespace nauEngineSDK {
-  
+
 }

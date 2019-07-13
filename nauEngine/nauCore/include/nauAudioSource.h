@@ -13,23 +13,44 @@
 #include "nauAudioClip.h"
 
 namespace nauEngineSDK {
-class AudioEmitter
+class AudioSource
 {
 public:
-  AudioEmitter() = default;
+  /**
+   * Default constructor
+   */
+  AudioSource() = default;
 
-  ~AudioEmitter() = default;
+  /**
+   * Default destructor
+   */
+  ~AudioSource() = default;
 
+  /**
+   * @brief Starts the audio Object
+   * @param 
+   * @return 
+   *
+   */
   void
   play();
 
+  /**
+   * Stops the audio Object
+   */
   void
   stop();
 
+  /**
+   * Starts only once the audio Object
+   */
   void
   playOneShot();
 
-  AudioClip m_clip;
+  /**
+   * Audio clip object stored inside
+   */
+  Sptr<AudioClip> m_clip;
 
 };
 }

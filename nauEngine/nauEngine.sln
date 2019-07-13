@@ -32,6 +32,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauInput", "nauInput\nauInp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IrinAIK", "IrinAIK\IrinAIK.vcxproj", "{F9CE766F-6176-45D5-9D90-420E09720E4F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nauFMODAudio", "nauFMODAudio\nauFMODAudio.vcxproj", "{ECA886AA-467D-46EE-87FB-2D48CA3D184C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -96,6 +98,14 @@ Global
 		{F9CE766F-6176-45D5-9D90-420E09720E4F}.Release|x64.Build.0 = Release|x64
 		{F9CE766F-6176-45D5-9D90-420E09720E4F}.Release|x86.ActiveCfg = Release|Win32
 		{F9CE766F-6176-45D5-9D90-420E09720E4F}.Release|x86.Build.0 = Release|Win32
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Debug|x64.ActiveCfg = Debug|x64
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Debug|x64.Build.0 = Debug|x64
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Debug|x86.ActiveCfg = Debug|Win32
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Debug|x86.Build.0 = Debug|Win32
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Release|x64.ActiveCfg = Release|x64
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Release|x64.Build.0 = Release|x64
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Release|x86.ActiveCfg = Release|Win32
+		{ECA886AA-467D-46EE-87FB-2D48CA3D184C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

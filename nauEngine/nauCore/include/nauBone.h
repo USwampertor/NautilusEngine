@@ -38,6 +38,7 @@ struct Bone
                        m.a4, m.b4, m.c4, m.d4);
   }
 
+
   /**
    * Name of the bone
    */

@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #pragma once
+#include "nauLogger.h"
 #include "nauModule.h"
 #include "nauPrerequisitesCore.h"
 #include "nauResource.h"
@@ -46,18 +47,18 @@ public:
   void
   init(Device* pDevice);
 
-  Sptr<Resource>
+  Sptr<Resource*>
   load(String path);
 
   void
   flush();
 
   bool
-  canDecode();
+  canDecode(String path);
 
 private:
 
-  Map<String, Sptr<Resource>> m;
+  Map<String, Sptr<Resource*>> m;
 
   Device* m_pDevice;
 };

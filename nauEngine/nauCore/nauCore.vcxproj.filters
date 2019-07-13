@@ -163,7 +163,10 @@
     <ClInclude Include="include\nauInputManager.h">
       <Filter>Source Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="nauScene.h">
+    <ClInclude Include="include\nauScene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nauCodec.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -240,7 +243,10 @@
     <ClCompile Include="src\nauSkeleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nauScene.cpp">
+    <ClCompile Include="src\nauScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nauCodec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

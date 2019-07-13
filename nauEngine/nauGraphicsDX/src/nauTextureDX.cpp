@@ -146,9 +146,14 @@ namespace nauEngineSDK {
     return true;
   }
 
-
   void*
   TextureDX::getAPITexture() {
     return m_pd3dTexture2D;
   }
+
+  bool
+  TextureDX::load(String path) {
+    return true;
+  }
+
 }

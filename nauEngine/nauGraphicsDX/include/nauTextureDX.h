@@ -38,9 +38,11 @@ namespace nauEngineSDK {
     virtual bool
     loadFromMemory(Device* pDevice, Vector<char> buffer) override;
 
-    
     virtual void*
     getAPITexture() override;
+
+    virtual bool
+    load(String path) override;
 
     /**
      * Member declaration

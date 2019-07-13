@@ -14,17 +14,26 @@
 
 namespace nauEngineSDK {
   
-enum class NAU_UTILITY_EXPORT STREAMACCESS
+
+namespace STREAMACCESS
+{
+enum E
 {
   READ = 0,
   WRITE
 };
+}
 
-enum class NAU_UTILITY_EXPORT STREAMTYPE
+
+namespace STREAMTYPE
+{
+enum E
 {
   FILE = 0,
   MEMORY
 };
+  
+}
 
 /**
  * nauDataStream
@@ -48,12 +57,12 @@ public:
   /**
    * STREAMACCESS defined constructor
    */
-  DataStream(STREAMACCESS sAccess) : m_mode(sAccess) {}
+  DataStream(STREAMACCESS::E sAccess) : m_mode(sAccess) {}
 
   /**
    * path defined constructor
    */
-  DataStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ)
+  DataStream(const String& path, STREAMACCESS::E sAccess = STREAMACCESS::READ)
     : m_path(path),
       m_mode(sAccess) {}
 
@@ -126,7 +135,7 @@ public:
    * @return returns either a FILE or MEMORY enum if file
    *
    */
-  virtual STREAMTYPE
+  virtual STREAMTYPE::E
   isType() = 0;
 
   /**
@@ -216,7 +225,7 @@ public:
    * @return the String with the name
    *
    */
-  STREAMACCESS getStreamAccess() { return m_mode; }
+  STREAMACCESS::E getStreamAccess() { return m_mode; }
 
   /**
    * Member declaration
@@ -226,7 +235,7 @@ public:
   /**
    * defines if its in writing or reading mode
    */
-  STREAMACCESS m_mode;
+  STREAMACCESS::E m_mode;
 
   /**
    * the stream of information
@@ -274,12 +283,12 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
   /**
    * Parameter based constructor constructor
    */
-  FileStream(const String& path, STREAMACCESS sAccess = STREAMACCESS::READ) {
+  FileStream(const String& path, STREAMACCESS::E sAccess = STREAMACCESS::READ) {
     m_path = path;
     m_mode = sAccess;
   }
 
-  virtual STREAMTYPE
+  virtual STREAMTYPE::E
   isType() override;
 
   virtual bool
@@ -321,7 +330,7 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
    * @return returns either a FILE or MEMORY enum if file
    *
    */
-  virtual STREAMTYPE
+  virtual STREAMTYPE::E
   isType() override;
 
   virtual bool

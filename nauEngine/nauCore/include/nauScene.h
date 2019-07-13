@@ -13,19 +13,19 @@
 #include "nauSceneGraph.h"
 
 namespace nauEngineSDK {
-class nauScene
+class Scene
 {
 
 public:
   /**
    * Default constructor
    */
-  nauScene() = default;
+  Scene() = default;
   
   /**
    * Default destructor
    */
-  ~nauScene() = default;
+  ~Scene() = default;
 
   /**
    * @brief 
@@ -34,9 +34,25 @@ public:
    *
    */
   SceneGraph*
-  getSceneGraph() {
-    return m_sceneGraph;
-  }
+  getSceneGraph();
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  loadScene(String path);
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  saveScene(String path);
 
 private:
 

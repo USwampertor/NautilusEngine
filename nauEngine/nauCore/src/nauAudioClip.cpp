@@ -10,5 +10,8 @@
 #include "nauAudioClip.h"
 
 namespace nauEngineSDK {
-
+  bool
+  AudioClip::load(String path) {
+    return true;
+  }
 }

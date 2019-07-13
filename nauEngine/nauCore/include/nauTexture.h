@@ -24,7 +24,7 @@ namespace nauEngineSDK {
    * Sample usage:
    *
    */
-  class NAU_CORE_EXPORT Texture : Resource
+  class NAU_CORE_EXPORT Texture 
   {
   public:
 
@@ -73,9 +73,12 @@ namespace nauEngineSDK {
     virtual void*
     getAPITexture() = 0;
 
-    /**
-     * Member declaration
-     */
+    virtual bool
+    load(String path) = 0;
+
+    virtual RESOURCETYPE::E
+    getType() { return RESOURCETYPE::TEXTURE; }
+
    public:
 
     /**

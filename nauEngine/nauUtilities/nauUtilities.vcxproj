@@ -28,6 +28,7 @@
     <ClCompile Include="src\nauMatrix4.cpp" />
     <ClCompile Include="src\nauMemoryAllocator.cpp" />
     <ClCompile Include="src\nauOOBB.cpp" />
+    <ClCompile Include="src\nauPath.cpp" />
     <ClCompile Include="src\nauPlane.cpp" />
     <ClCompile Include="src\nauPlatformMath.cpp" />
     <ClCompile Include="src\nauQuaternion.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="include\nauMemoryAllocator.h" />
     <ClInclude Include="include\nauModule.h" />
     <ClInclude Include="include\nauOOBB.h" />
+    <ClInclude Include="include\nauPath.h" />
     <ClInclude Include="include\nauPlane.h" />
     <ClInclude Include="include\nauPlatformDefines.h" />
     <ClInclude Include="include\nauPlatformMath.h" />

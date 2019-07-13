@@ -40,8 +40,6 @@ namespace nauEngineSDK {
           m_root->m_children.push_back(bones[node->mChildren[i]->mName.C_Str()]);
         }
       }
-      node->mChildren;
-      node->mName;
     }
   }
 
