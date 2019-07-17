@@ -17,51 +17,15 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{a0bcc58b-9e73-4526-9a29-e0129362ed1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphic Interfaces">
+      <UniqueIdentifier>{bf88c845-e3f0-41f1-9021-b993379a0c43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{e3caf9ef-1993-4aaa-9e8d-e5f227e91beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\nauDevice.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauGraphicsBuffer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauInputLayout.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMesh.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauModel.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRenderTargetView.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauSamplerState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauShader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauShaderResourceView.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauSwapChain.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauTexture.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauVertex.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauViewPort.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauGraphicsAPI.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRasterizerState.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauPrerequisitesCore.h">
@@ -70,40 +34,16 @@
     <ClInclude Include="include\nauBaseApp.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauDepthStencil.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauCameraManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauComponent.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauConstantBufferMatrix.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauClock.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauCoreFactory.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauTimer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauRenderManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauGraphicPass.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauSceneGraph.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauTextureDescriptor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauPassPerInfo.h">
@@ -118,13 +58,7 @@
     <ClInclude Include="include\nauVertexWeight.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauLogger.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauMuscleWeight.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauResource.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauSkeleton.h">
@@ -137,9 +71,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauAudioSource.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMaterial.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauBoneWeight.h">
@@ -169,33 +100,84 @@
     <ClInclude Include="nauCodec.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauDevice.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauDepthStencil.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauGraphicsAPI.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauGraphicsBuffer.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauInputLayout.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauLogger.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauCameraManager.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauClock.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRenderManager.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauTexture.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauSwapChain.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauShaderResourceView.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauShader.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauSamplerState.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRasterizerState.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauRenderTargetView.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauViewPort.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauTextureDescriptor.h">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauResource.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauComponent.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauCoreFactory.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauGraphicPass.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMaterial.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMesh.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauModel.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\nauGraphicsBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauCameraManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauClock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauGraphicsAPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauCoreFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauGraphicPass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauNode.cpp">
@@ -204,16 +186,7 @@
     <ClCompile Include="src\nauSceneGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauRenderManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauMuscleWeight.cpp">
@@ -223,9 +196,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauAudioSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -248,6 +218,42 @@
     </ClCompile>
     <ClCompile Include="nauCodec.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicsAPI.cpp">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicsBuffer.cpp">
+      <Filter>Source Files\Graphic Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauLogger.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauCameraManager.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauClock.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauRenderManager.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauComponent.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauCoreFactory.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicPass.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMaterial.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMesh.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauModel.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

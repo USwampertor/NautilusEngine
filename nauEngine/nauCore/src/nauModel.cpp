@@ -71,7 +71,7 @@ namespace nauEngineSDK {
     processNode(scene->mRootNode, scene);
 
     if (m_hasBones) {
-      for (int i = 0; i < scene->mNumMeshes; ++i) {
+      for (uint32 i = 0; i < scene->mNumMeshes; ++i) {
         if (scene->mMeshes[i]->HasBones()) {
           for (uint32 j = 0; j < scene->mMeshes[i]->mNumBones; ++j) {
             Bone* newBone = new Bone(*scene->mMeshes[i]->mBones[j]);
@@ -83,7 +83,6 @@ namespace nauEngineSDK {
         auto node = scene->mRootNode->FindNode(bone.second->m_name.c_str());
         modelNodes.push_back(node);
       }
-      //Sptr<Resource*> res = ResourceManager::instance().create(filePath, RESOURCETYPE::SKELETON);
       //m_skeleton->init(sceneBones, modelNodes);
     }
   }

@@ -14,6 +14,7 @@
 
 #include "nauMesh.h"
 #include "nauSkeleton.h"
+#include "nauResourceManager.h"
 
 namespace nauEngineSDK {
 /**

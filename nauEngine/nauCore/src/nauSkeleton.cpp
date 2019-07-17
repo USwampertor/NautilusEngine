@@ -65,7 +65,7 @@ namespace nauEngineSDK {
   void
   Skeleton::processBone(Map<String, Bone *> bones, aiNode* node, Bone* actualBone) {
     
-    for (int i = 0; i < node->mNumChildren; ++i) {
+    for (uint32 i = 0; i < node->mNumChildren; ++i) {
       if (bones[node->mChildren[i]->mName.C_Str()] != nullptr) {
         Bone* newBone = bones[node->mChildren[i]->mName.C_Str()];
         newBone->m_parent = actualBone;
