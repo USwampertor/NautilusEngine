@@ -95,17 +95,10 @@ namespace nauEngineSDK {
     virtual void
     update() override;
 
-
-
-    GraphicsAPI* m_api = nullptr;
-
-    Timer m_timer;
-
     CoreFactory* m_factory = nullptr;
 
     SceneGraph m_sceneGraph;
 
-    
   };
 
 }

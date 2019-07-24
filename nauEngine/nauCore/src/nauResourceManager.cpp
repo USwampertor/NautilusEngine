@@ -54,7 +54,6 @@ namespace nauEngineSDK {
       resource = std::static_pointer_cast<Resource>(std::make_shared<Skeleton>());
     }
     else if (RESOURCETYPE::AUDIO == type) {
-
       newExtension += ".aud";
     }
     else if (RESOURCETYPE::CUBEMAP == type) {

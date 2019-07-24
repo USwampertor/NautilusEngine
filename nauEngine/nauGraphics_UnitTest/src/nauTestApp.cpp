@@ -20,7 +20,7 @@ namespace nauEngineSDK {
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
     ImGui::SetNextWindowPos(ImVec2(30, 10));
-    ImGui::SetNextWindowSize(ImVec2(300, m_api->getWindowSize().y - 200));
+    ImGui::SetNextWindowSize(ImVec2(300, g_graphicsAPI->getWindowSize().y - 200));
     ImGui::Begin("SceneGraph", 0, ImGuiWindowFlags_MenuBar);
     ImGui::Text("Scene 1");
     Vector<MeshComponent*> meshes;
@@ -33,7 +33,7 @@ namespace nauEngineSDK {
     }
     ImGui::End();
     
-    ImGui::SetNextWindowPos(ImVec2(m_api->getWindowSize().x - 100,
+    ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 100,
                                    10));
     ImGui::Begin("Current Hour", 0, ImGuiWindowFlags_MenuBar);
     ImGui::Text(Clock::instance().hour().c_str());
@@ -42,10 +42,10 @@ namespace nauEngineSDK {
 
     
 
-    RenderManager::instance().render(meshes, m_api);
+    RenderManager::instance().render(meshes, g_graphicsAPI);
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-    m_api->swapBuffer();
+    g_graphicsAPI->swapBuffer();
 
     
 
@@ -59,19 +59,22 @@ namespace nauEngineSDK {
     Logger::instance().init();
 
     //API INITIALIZATION
-    m_api = m_factory->createGraphicsAPI();
-    if (!m_api->init(hwnd)) return false;
+
+    g_graphicsAPI = m_factory->createGraphicsAPI();
+    g_graphicsAPI->init(hwnd);
+    //g_graphicsAPI = m_factory->createGraphicsAPI();
+    //if (!g_graphicsAPI->init(hwnd)) return false;
 
     //RESOURCE MANAGER INITIALIZATION
     ResourceManager::startUp();
-    ResourceManager::instance().init(m_api->getDevice());
+    ResourceManager::instance().init(g_graphicsAPI->getDevice());
     
     //UI INITIALIZATION
     if (!initUI(hwnd))      return false;
 
     //RENDER MANAGER INITIALIZATION
     RenderManager::startUp();
-    if (!RenderManager::instance().init(m_api->getDevice())) return false;
+    if (!RenderManager::instance().init(g_graphicsAPI->getDevice())) return false;
 
     //CLOCK INITIALIZATION
     Clock::startUp();
@@ -79,8 +82,6 @@ namespace nauEngineSDK {
 
     //SCENEGRAPH INITIALIZATION
     m_sceneGraph.init();
-
-    m_timer.restart();
     ///TESTING MODEL
     int i = 0;
     
@@ -90,98 +91,98 @@ namespace nauEngineSDK {
     testModel->m_id = "Vela";
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
-    com->m_model->setDevice(m_api->getDevice());
+    com->m_model->setDevice(g_graphicsAPI->getDevice());
     com->m_model->loadFromFile("resources/VelaAnimated.FBX");
     
     MaterialComponent* mat1 = new MaterialComponent();
-    Texture* pGunsTexture = m_api->getDevice()->createTexture();
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    Texture* pGunsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::BASECOLOR);
-    pGunsTexture = m_api->getDevice()->createTexture();
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    pGunsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::METAL);
-    pGunsTexture = m_api->getDevice()->createTexture();
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    pGunsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::NORMAL);
-    pGunsTexture = m_api->getDevice()->createTexture();
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    pGunsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[0])->m_material = mat1;
     
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", m_api->getDevice());
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::BASECOLOR);
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", m_api->getDevice());
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::METAL);
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", m_api->getDevice());
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Normal.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::NORMAL);
-    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", m_api->getDevice());
+    pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[1])->m_material = mat1;
 
     MaterialComponent* mat2 = new MaterialComponent();
-    Texture* pLegsTexture = m_api->getDevice()->createTexture();
-    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_BaseColor.tga", m_api->getDevice());
+    Texture* pLegsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_BaseColor.tga", g_graphicsAPI->getDevice());
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::BASECOLOR);
-    pLegsTexture = m_api->getDevice()->createTexture();
-    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Metallic.tga", m_api->getDevice());
+    pLegsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Metallic.tga", g_graphicsAPI->getDevice());
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::METAL);
-    pLegsTexture = m_api->getDevice()->createTexture();
-    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Normal.tga", m_api->getDevice());
+    pLegsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Normal.tga", g_graphicsAPI->getDevice());
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::NORMAL);
-    pLegsTexture = m_api->getDevice()->createTexture();
-    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Roughness.tga", m_api->getDevice());
+    pLegsTexture = g_graphicsAPI->getDevice()->createTexture();
+    pLegsTexture->loadFromFile("resources/Vela/Vela_Legs_Roughness.tga", g_graphicsAPI->getDevice());
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[2])->m_material = mat2;
 
     
     MaterialComponent* mat3 = new MaterialComponent();
-    Texture* pMechTexture = m_api->getDevice()->createTexture();
-    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_BaseColor.tga", m_api->getDevice());
+    Texture* pMechTexture = g_graphicsAPI->getDevice()->createTexture();
+    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_BaseColor.tga", g_graphicsAPI->getDevice());
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::BASECOLOR);
-    pMechTexture = m_api->getDevice()->createTexture();
-    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Metallic.tga", m_api->getDevice());
+    pMechTexture = g_graphicsAPI->getDevice()->createTexture();
+    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Metallic.tga", g_graphicsAPI->getDevice());
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::METAL);
-    pMechTexture = m_api->getDevice()->createTexture();
-    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Normal.tga", m_api->getDevice());
+    pMechTexture = g_graphicsAPI->getDevice()->createTexture();
+    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Normal.tga", g_graphicsAPI->getDevice());
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::NORMAL);
-    pMechTexture = m_api->getDevice()->createTexture();
-    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Roughness.tga", m_api->getDevice());
+    pMechTexture = g_graphicsAPI->getDevice()->createTexture();
+    pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_Roughness.tga", g_graphicsAPI->getDevice());
     mat3->setMaterial(pMechTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[3])->m_material = mat3;
 
     MaterialComponent* mat4 = new MaterialComponent();
-    Texture* pCharTexture = m_api->getDevice()->createTexture();
-    pCharTexture->loadFromFile("resources/Vela/Vela_Char_BaseColor.tga", m_api->getDevice());
+    Texture* pCharTexture = g_graphicsAPI->getDevice()->createTexture();
+    pCharTexture->loadFromFile("resources/Vela/Vela_Char_BaseColor.tga", g_graphicsAPI->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::BASECOLOR);
-    pCharTexture = m_api->getDevice()->createTexture();
-    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Metallic.tga", m_api->getDevice());
+    pCharTexture = g_graphicsAPI->getDevice()->createTexture();
+    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Metallic.tga", g_graphicsAPI->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::METAL);
-    pCharTexture = m_api->getDevice()->createTexture();
-    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Normal.tga", m_api->getDevice());
+    pCharTexture = g_graphicsAPI->getDevice()->createTexture();
+    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Normal.tga", g_graphicsAPI->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::NORMAL);
-    pCharTexture = m_api->getDevice()->createTexture();
-    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Roughness.tga", m_api->getDevice());
+    pCharTexture = g_graphicsAPI->getDevice()->createTexture();
+    pCharTexture->loadFromFile("resources/Vela/Vela_Char_Roughness.tga", g_graphicsAPI->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[4])->m_material = mat4;
     
     MaterialComponent* mat5 = new MaterialComponent();
-    Texture* pPlateTexture = m_api->getDevice()->createTexture();
-    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_BaseColor.tga", m_api->getDevice());
+    Texture* pPlateTexture = g_graphicsAPI->getDevice()->createTexture();
+    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_BaseColor.tga", g_graphicsAPI->getDevice());
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::BASECOLOR);
-    pPlateTexture = m_api->getDevice()->createTexture();
-    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Metallic.tga", m_api->getDevice());
+    pPlateTexture = g_graphicsAPI->getDevice()->createTexture();
+    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Metallic.tga", g_graphicsAPI->getDevice());
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::METAL);
-    pPlateTexture = m_api->getDevice()->createTexture();
-    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Normal.tga", m_api->getDevice());
+    pPlateTexture = g_graphicsAPI->getDevice()->createTexture();
+    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Normal.tga", g_graphicsAPI->getDevice());
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::NORMAL);
-    pPlateTexture = m_api->getDevice()->createTexture();
-    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Roughness.tga", m_api->getDevice());
+    pPlateTexture = g_graphicsAPI->getDevice()->createTexture();
+    pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_Roughness.tga", g_graphicsAPI->getDevice());
     mat5->setMaterial(pPlateTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[5])->m_material = mat5;
 
     MaterialComponent* mat6 = new MaterialComponent();
-    Texture* pEyesTexture = m_api->getDevice()->createTexture();
-    pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_BaseColor.tga", m_api->getDevice());
+    Texture* pEyesTexture = g_graphicsAPI->getDevice()->createTexture();
+    pEyesTexture->loadFromFile("resources/Vela/Vela_EyeCornea_BaseColor.tga", g_graphicsAPI->getDevice());
     mat6->setMaterial(pEyesTexture, MATERIAL_FLAG::BASECOLOR);
     (com->m_model->m_meshes[6])->m_material = mat6;
 
@@ -200,8 +201,8 @@ namespace nauEngineSDK {
     if (!ImGui_ImplWin32_Init(hwnd)) return false;
 
 
-    auto dev     = reinterpret_cast<ID3D11Device*>(m_api->getDevice()->get());
-    auto context = reinterpret_cast<ID3D11DeviceContext*>(m_api->getDevice()->getContext());
+    auto dev     = reinterpret_cast<ID3D11Device*>(g_graphicsAPI->getDevice()->get());
+    auto context = reinterpret_cast<ID3D11DeviceContext*>(g_graphicsAPI->getDevice()->getContext());
 
     return ImGui_ImplDX11_Init(dev, context);
   }

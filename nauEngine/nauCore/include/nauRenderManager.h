@@ -11,12 +11,13 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-#include "nauComponent.h"
-#include "nauModule.h"
-#include "nauGraphicPass.h"
-#include "nauGraphicsAPI.h"
-#include "nauCoreFactory.h"
 #include "nauCamera.h"
+#include "nauComponent.h"
+#include "nauCoreFactory.h"
+#include "nauGraphicsAPI.h"
+#include "nauGraphicPass.h"
+#include "nauLogger.h"
+#include "nauModule.h"
 
 namespace nauEngineSDK {
 
