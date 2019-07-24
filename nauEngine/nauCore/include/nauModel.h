@@ -101,7 +101,7 @@ public:
   /**
    * Skeleton shared resource
    */
-  Sptr<Skeleton*> m_skeleton;
+  Sptr<Skeleton> m_skeleton;
 
 private:
   /**

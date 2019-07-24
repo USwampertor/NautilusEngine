@@ -58,10 +58,10 @@ public:
   void
   init(Device* pDevice);
 
-  Sptr<Resource*>
+  Sptr<Resource>
   load(String path);
 
-  Sptr<Resource*>
+  Sptr<Resource>
   create(String name, RESOURCETYPE::E type);
 
   void
@@ -72,7 +72,7 @@ public:
 
 private:
 
-  Map<String, Sptr<Resource*>> m;
+  Map<String, Sptr<Resource>> m;
 
   Device* m_pDevice;
 };

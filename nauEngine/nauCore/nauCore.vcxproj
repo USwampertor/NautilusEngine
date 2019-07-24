@@ -30,6 +30,7 @@
     <ClInclude Include="include\nauCamera.h" />
     <ClInclude Include="include\nauCameraManager.h" />
     <ClInclude Include="include\nauClock.h" />
+    <ClInclude Include="include\nauCodec.h" />
     <ClInclude Include="include\nauComponent.h" />
     <ClInclude Include="include\nauConstantBufferMatrix.h" />
     <ClInclude Include="include\nauCoreFactory.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="include\nauGraphicPass.h" />
     <ClInclude Include="include\nauGraphicsAPI.h" />
     <ClInclude Include="include\nauGraphicsBuffer.h" />
+    <ClInclude Include="include\nauInput.h" />
     <ClInclude Include="include\nauInputLayout.h" />
     <ClInclude Include="include\nauInputManager.h" />
     <ClInclude Include="include\nauLogger.h" />
@@ -68,22 +70,22 @@
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
-    <ClInclude Include="nauCodec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nauCodec.cpp" />
     <ClCompile Include="src\nauAnimator.cpp" />
     <ClCompile Include="src\nauAudioClip.cpp" />
     <ClCompile Include="src\nauAudioSource.cpp" />
     <ClCompile Include="src\nauCamera.cpp" />
     <ClCompile Include="src\nauCameraManager.cpp" />
     <ClCompile Include="src\nauClock.cpp" />
+    <ClCompile Include="src\nauCodec.cpp" />
     <ClCompile Include="src\nauComponent.cpp" />
     <ClCompile Include="src\nauCoreFactory.cpp" />
     <ClCompile Include="src\nauGameObject.cpp" />
     <ClCompile Include="src\nauGraphicPass.cpp" />
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
+    <ClCompile Include="src\nauInput.cpp" />
     <ClCompile Include="src\nauInputManager.cpp" />
     <ClCompile Include="src\nauLogger.cpp" />
     <ClCompile Include="src\nauMaterial.cpp" />

@@ -21,10 +21,10 @@ namespace nauEngineSDK {
     m_pDevice = pDevice;
   }
 
-  Sptr<Resource*>
+  Sptr<Resource>
   ResourceManager::load(String path) {
 
-    Sptr<Resource*> resource;
+    Sptr<Resource> resource;
 
     if (!canDecode(path)) {
 #if NAU_DEBUG_MODE
@@ -41,9 +41,9 @@ namespace nauEngineSDK {
 
   }
 
-  Sptr<Resource*>
+  Sptr<Resource>
   ResourceManager::create(String name, RESOURCETYPE::E type) {
-    Sptr<Resource*> resource;
+    Sptr<Resource> resource;
     uint32 lastDot;
 
     lastDot = name.find_last_of('.');
@@ -51,6 +51,7 @@ namespace nauEngineSDK {
     
     if (RESOURCETYPE::SKELETON == type) {
       newExtension += ".skl";
+      resource = std::static_pointer_cast<Resource>(std::make_shared<Skeleton>());
     }
     else if (RESOURCETYPE::AUDIO == type) {
 

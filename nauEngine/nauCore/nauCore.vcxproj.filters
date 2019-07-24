@@ -49,19 +49,10 @@
     <ClInclude Include="include\nauPassPerInfo.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauBone.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauResourceManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauVertexWeight.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauMuscleWeight.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauSkeleton.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauModelNode.h">
@@ -71,9 +62,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauAudioSource.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\nauBoneWeight.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauAnimation.h">
@@ -95,9 +83,6 @@
       <Filter>Source Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="include\nauScene.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="nauCodec.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="include\nauDevice.h">
@@ -175,6 +160,24 @@
     <ClInclude Include="include\nauModel.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauCodec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauInput.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauMuscleWeight.h">
+      <Filter>Source Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauBoneWeight.h">
+      <Filter>Source Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauBone.h">
+      <Filter>Source Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauSkeleton.h">
+      <Filter>Source Files\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauTimer.cpp">
@@ -187,9 +190,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauMuscleWeight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauAudioClip.cpp">
@@ -210,13 +210,7 @@
     <ClCompile Include="src\nauInputManager.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauSkeleton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="nauCodec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauGraphicsAPI.cpp">
@@ -254,6 +248,18 @@
     </ClCompile>
     <ClCompile Include="src\nauModel.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauCodec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauInput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauMuscleWeight.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauSkeleton.cpp">
+      <Filter>Source Files\Animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
