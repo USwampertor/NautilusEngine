@@ -10,9 +10,4 @@ namespace nauEngineSDK {
   GAInputDevice::get() {
 
   }
-
-  DEVICE::TYPE
-  GAInputDevice::getType() {
-
-  }
 }

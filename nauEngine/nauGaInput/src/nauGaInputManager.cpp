@@ -13,6 +13,7 @@ namespace nauEngineSDK {
   void
   GAInputManager::init() {
 
+    //Default Devices
     GAInputDevice* device = new GAInputDevice();
     device->init(DEVICE::KEYBOARD, 
       reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceKeyboard>()));
@@ -22,6 +23,10 @@ namespace nauEngineSDK {
     device->init(DEVICE::MOUSE,
       reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceMouse>()));
     addDevice(device);
+  }
+
+  void
+  GAInputManager::update() {
 
   }
 
@@ -41,7 +46,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  GAInputManager::isJoyStickPresent(KEY::CODE keycode) {
+  GAInputManager::isJoyStickPresent(uint32 keycode) {
   
   }
 
@@ -112,11 +117,6 @@ namespace nauEngineSDK {
 
   float
   GAInputManager::getAxis(AXIS::E axis) {
-  
-  }
-
-  void
-  GAInputManager::setState(KEY::CODE key) {
   
   }
 

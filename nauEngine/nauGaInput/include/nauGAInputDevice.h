@@ -26,9 +26,6 @@ public:
   virtual void*
   get() override;
 
-  virtual DEVICE::TYPE
-  getType() override;
-
 private:
 
   gainput::DeviceId m_ID;

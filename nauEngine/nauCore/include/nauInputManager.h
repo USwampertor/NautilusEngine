@@ -41,13 +41,22 @@ public:
   init() = 0;
 
   /**
-   * @brief returns the plugin-managed object in charge of the management of objects
+   * @brief 
    * @param 
    * @return 
    *
    */
-  virtual void*
-  getManager() = 0;
+  virtual void
+  update() = 0;
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  virtual void
+  registerKey(KEY::CODE key, DEVICE::TYPE type) = 0;
 
   /**
    * @brief 
@@ -56,7 +65,25 @@ public:
    *
    */
   void
-  addDevice(InputDevice* device) { m_devices.push_back(device); }
+  addDevice(InputDevice* device) { m_devices[device->getType()].push_back(device); }
+
+  /**
+   * @brief Maps (Or lets you remap, a button to a specific Key or action)
+   * @param 
+   * @return 
+   *
+   */
+  virtual void
+  mapButton(uint32 ID, DEVICE::TYPE deviceType, KEY::CODE toMap) = 0;
+
+  /**
+   * @brief returns the plugin-managed object in charge of the management of objects
+   * @param 
+   * @return 
+   *
+   */
+  virtual void*
+  getManager() = 0;
 
   /**
    * @brief 
@@ -83,7 +110,7 @@ public:
    *
    */
   virtual bool
-  isJoyStickPresent(KEY::CODE keycode) = 0;
+  isJoyStickPresent(uint32 id) = 0;
 
   /**
    * @brief returns if any key or button is being pressed
@@ -176,6 +203,24 @@ public:
   getMousePosition() = 0;
 
   /**
+   * @brief returns true if there was any mouse movement between the last frame and this one
+   * @param 
+   * @return 
+   *
+   */
+  virtual bool
+  mouseMoved() = 0;
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  virtual float
+  getMouseDelta() = 0;
+
+  /**
    * @brief 
    * @param 
    * @return 
@@ -211,15 +256,16 @@ public:
   virtual float
   getAxis(AXIS::E axis) = 0;
 
-  virtual void
-  setState(KEY::CODE) = 0;
-
-  virtual void
-  registerKey(KEY::CODE key, DEVICE::TYPE type) = 0;
-
 private:
 
-  Vector<InputDevice*> m_devices;
+  Vector<Vector<InputDevice*>> m_devices;
+
+  Vector2 m_mousePosition;
+
+  float m_mousePositionDelta;
+
+  float m_mouseScrollDelta;
+
 };
 }
 
