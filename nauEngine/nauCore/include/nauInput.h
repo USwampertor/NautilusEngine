@@ -14,6 +14,17 @@
 namespace nauEngineSDK 
 {
 
+namespace DEVICE
+{
+enum TYPE
+{
+  NONE                = 0,
+  MOUSE               = 1,
+  KEYBOARD            = 2,
+  JOYSTICK            = 3
+};
+}
+
 namespace KEY
 {
 enum CODE
@@ -182,7 +193,7 @@ enum CODE
   JOYSTICK3BUTTON17 = 160,
   JOYSTICK3BUTTON18 = 161,
   JOYSTICK3BUTTON19 = 162,
-
+  LASTINPUT         = 163
 };
 }
 
@@ -195,19 +206,7 @@ enum E
 };
 }
 
-class Input
-{
-public:
 
-  /**
-   * Default constructor
-   */
-  Input() = default;
 
-  /**
-   * Default destructor
-   */
-  ~Input() = default;
-};
 }
 

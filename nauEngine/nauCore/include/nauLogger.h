@@ -13,92 +13,97 @@
 
 #include "nauModule.h"
 
+#define LGRWARNINGSIGN " \U000026A0 "
+#define LGRERROREDSIGN " \U0001F6D1 "
+#define LGRSUCCESSSIGN " \U00002714 "
+#define LGRDEBUGGRSIGN " \U0001F47E "
+
 namespace nauEngineSDK {
 
-  namespace LOGGER_LEVEL {
-    enum E
-    {
-      DEBUG = 0,
-      WARNING,
-      ERRORED
-    };
-  }
-
-
-  class NAU_CORE_EXPORT Logger : public Module<Logger>
+namespace LOGGER_LEVEL {
+  enum E
   {
-  public:
-    /**
-     * Default constructor
-     */
-    Logger() = default;
-  
-    /**
-     * Default destructor
-     */
-    ~Logger() = default;
-
-    /**
-     * @brief Initializes the logger
-     * @param 
-     * @return 
-     *
-     */
-    void
-    init();
-
-    /**
-     * @brief Clears the logger
-     * @param 
-     * @return 
-     *
-     */
-    void
-    clear();
-
-    /**
-     * @brief adds a new string to the logger
-     * @param 
-     * @return 
-     *
-     */
-    void
-    add(String newEntry);
-
-    /**
-     * @brief Prints a string to the IDE being used
-     * @param String new Entry
-     * @return 
-     *
-     */
-    void
-    toIDE(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
-
-    /**
-     * @brief Prints a string on the screen
-     * @param String new Entry
-     * @return 
-     *
-     */
-    void
-    toScreen(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
-
-    /**
-     * @brief Prints a string to the Console Object
-     * @param String new Entry
-     * @return 
-     *
-     */
-    void
-    toConsole(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
-
-  private:
-
-    /**
-     * The object that will hold all entries
-     */
-    Vector<String> _m;
-
+    DEBUG = 0,
+    WARNING,
+    ERRORED,
+    SUCCESS
   };
+}
+
+class NAU_CORE_EXPORT Logger : public Module<Logger>
+{
+public:
+  /**
+   * Default constructor
+   */
+  Logger() = default;
+
+  /**
+   * Default destructor
+   */
+  ~Logger() = default;
+
+  /**
+   * @brief Initializes the logger
+   * @param 
+   * @return 
+   *
+   */
+  void
+  init();
+
+  /**
+   * @brief Clears the logger
+   * @param 
+   * @return 
+   *
+   */
+  void
+  clear();
+
+  /**
+   * @brief adds a new string to the logger
+   * @param 
+   * @return 
+   *
+   */
+  void
+  add(String newEntry);
+
+  /**
+   * @brief Prints a string to the IDE being used
+   * @param String new Entry
+   * @return 
+   *
+   */
+  void
+  toIDE(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
+
+  /**
+   * @brief Prints a string on the screen
+   * @param String new Entry
+   * @return 
+   *
+   */
+  void
+  toScreen(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
+
+  /**
+   * @brief Prints a string to the Console Object
+   * @param String new Entry
+   * @return 
+   *
+   */
+  void
+  toConsole(String newEntry, LOGGER_LEVEL::E level = LOGGER_LEVEL::DEBUG);
+
+private:
+
+  /**
+   * The object that will hold all entries
+   */
+  Vector<String> _m;
+
+};
 }
 

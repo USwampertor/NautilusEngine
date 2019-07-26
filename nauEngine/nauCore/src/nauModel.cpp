@@ -21,7 +21,7 @@ namespace nauEngineSDK {
   Model::drawMesh() {
     for (auto& mesh : m_meshes) {
 
-      SamplerState* sampler = m_device->createSamplerState();
+      SamplerState* sampler = g_graphicsAPI->getDevice()->createSamplerState();
       sampler->createSampler(m_device);
       sampler->setSampler(m_device);
       (mesh->m_material)->getMaterial(MATERIAL_FLAG::BASECOLOR)->m_shaderResourceView->setShaderResourceView(m_device); 

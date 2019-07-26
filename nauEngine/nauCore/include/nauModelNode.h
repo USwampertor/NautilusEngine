@@ -28,7 +28,7 @@ struct ModelNode
     if (other.mParent != nullptr) {
       m_parent = new ModelNode(*other.mParent);
     }
-    for (int i = 0; i < other.mNumChildren; ++i) {
+    for (uint32 i = 0; i < other.mNumChildren; ++i) {
       m_children.push_back(new ModelNode(*other.mChildren[i]));
     }
   }

@@ -54,8 +54,6 @@ namespace nauEngineSDK {
   SIZE_T
   DataStream::read(void* destiny, SIZE_T size) {
     if (m_data.size() - m_currPos < size) {
-      std::cout << "Vector subscription out of range " << std::endl
-                << "Writing as much as possible \n" << std::endl;
       size = m_data.size() - m_currPos;
     }
     memcpy(destiny, &m_data[m_currPos], size);

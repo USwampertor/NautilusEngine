@@ -18,7 +18,7 @@ namespace nauEngineSDK {
   GraphicsAPIDX::init(void* scrHandler) {
     m_device = new DeviceDX();
     if (!initDevice(scrHandler)) {
-      std::cout << "Failed to initialize device... \n";
+      Logger::instance().toIDE("Failed to initialize device", LOGGER_LEVEL::ERRORED);
       return false;
     }
 
@@ -29,7 +29,6 @@ namespace nauEngineSDK {
   GraphicsAPIDX::initDevice(void* scrHandler) {
 
     if (!m_device->initializeDevice(scrHandler)) {
-      std::cout << "Failed to initialize device... \n";
       return false;
     }
     
@@ -37,21 +36,11 @@ namespace nauEngineSDK {
                                    static_cast<float>(m_device->m_height),
                                    0.0f,
                                    0.0f)) {
-      std::cout << "Could not create ViewPort \n";
+      Logger::instance().toIDE("Failed to initialize device", LOGGER_LEVEL::ERRORED);
       exit(828);
     }
+    Logger::instance().toIDE("Created Device", LOGGER_LEVEL::SUCCESS);
     m_viewPort.setViewPort(m_device->getContext());
-
-    ///////////// This is for testing the renderer
-    
-
-    //m_meshList.setDevice(&m_device);
-
-
-    
-    ///
-   
-    //test()
     return true;
   }
 

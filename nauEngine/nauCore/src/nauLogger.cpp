@@ -31,16 +31,13 @@ namespace nauEngineSDK {
 
     String outputString;
 
-    if (LOGGER_LEVEL::DEBUG == level)   { outputString = newEntry; }
-    if (LOGGER_LEVEL::ERRORED == level) { 
-      outputString = "---ERROR---"; 
-      outputString += newEntry; 
-    }
-    if (LOGGER_LEVEL::WARNING == level) {
-      outputString = "---WARNING---";
-      outputString += newEntry;
-    }
+    if      (LOGGER_LEVEL::DEBUG   == level) { outputString = LGRDEBUGGRSIGN; }
+    else if (LOGGER_LEVEL::ERRORED == level) { outputString = LGRERROREDSIGN; }
+    else if (LOGGER_LEVEL::WARNING == level) { outputString = LGRWARNINGSIGN; }
+    else if (LOGGER_LEVEL::SUCCESS == level) { outputString = LGRSUCCESSSIGN; }
 
+    outputString += newEntry; 
+    outputString += " \n ";
 
 #if NAU_COMPILER == NAU_COMPILER_MSVC
     OutputDebugString(newEntry.c_str());

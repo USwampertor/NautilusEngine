@@ -17,7 +17,7 @@ namespace nauEngineSDK {
 
     Logger::instance().toIDE("Initializing RenderManager");
 
-    ///Renderable Textures
+    ///Render able Textures
     m_rendereableTextures.insert(std::make_pair("NORMAL", g_graphicsAPI->getDevice()->createTexture()));
     m_rendereableTextures.insert(std::make_pair("POSITION", pDevice->createTexture()));
     m_rendereableTextures.insert(std::make_pair("COLOR", pDevice->createTexture()));

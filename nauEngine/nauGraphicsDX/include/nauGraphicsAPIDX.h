@@ -14,11 +14,12 @@
 
 #include <DirectXMath.h>
 
-#include <nauGraphicsAPI.h>
 #include <nauCamera.h>
-#include <nauMesh.h>
 #include <nauGameObject.h>
+#include <nauGraphicsAPI.h>
+#include <nauLogger.h>
 #include <nauMatrix4.h>
+#include <nauMesh.h>
 
 #include "nauDeviceDX.h"
 #include "nauGraphicsBufferDX.h"

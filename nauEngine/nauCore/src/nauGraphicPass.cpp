@@ -118,7 +118,6 @@ namespace nauEngineSDK {
     m_sampler->createSampler(pDevice);
 
     Matrix4 m = { 0 };
-    float f = 0;
     m_buffer->clear();
 
     //Mat world view projection

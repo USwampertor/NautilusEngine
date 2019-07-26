@@ -11,7 +11,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauModule.h"
-#include "nauInput.h"
+#include "nauInputDevice.h"
 
 #include <nauVector3.h>
 #include <nauVector2.h>
@@ -28,6 +28,7 @@ public:
   /**
    * Default destructor
    */
+  virtual
   ~InputManager() = default;
   
   /**
@@ -36,8 +37,8 @@ public:
    * @return 
    *
    */
-  void
-  init();
+  virtual void
+  init() = 0;
 
   /**
    * @brief returns the plugin-managed object in charge of the management of objects
@@ -45,8 +46,8 @@ public:
    * @return 
    *
    */
-  void*
-  getManager();
+  virtual void*
+  getManager() = 0;
 
   /**
    * @brief 
@@ -54,8 +55,8 @@ public:
    * @return 
    *
    */
-  bool
-  registerDevice(KEY::CODE newkey);
+  void
+  addDevice(InputDevice* device) { m_devices.push_back(device); }
 
   /**
    * @brief 
@@ -63,8 +64,8 @@ public:
    * @return 
    *
    */
-  bool
-  isMousePresent();
+  virtual bool
+  isMousePresent() = 0;
 
   /**
    * @brief 
@@ -72,8 +73,8 @@ public:
    * @return 
    *
    */
-  bool
-  isKeyBoardPresent();
+  virtual bool
+  isKeyBoardPresent() = 0;
 
   /**
    * @brief 
@@ -81,8 +82,8 @@ public:
    * @return 
    *
    */
-  bool
-  isJoyStickPresent(KEY::CODE keycode);
+  virtual bool
+  isJoyStickPresent(KEY::CODE keycode) = 0;
 
   /**
    * @brief returns if any key or button is being pressed
@@ -90,8 +91,8 @@ public:
    * @return 
    *
    */
-  bool
-  getKeyDown(KEY::CODE keycode);
+  virtual bool
+  getKeyDown(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -99,8 +100,8 @@ public:
    * @return 
    *
    */
-  bool
-  getKeyUp(KEY::CODE keycode);
+  virtual bool
+  getKeyUp(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -108,8 +109,8 @@ public:
    * @return 
    *
    */
-  bool
-  getKey(KEY::CODE keycode);
+  virtual bool
+  getKey(KEY::CODE keycode) = 0;
 
   /**
    * @brief returns if any key or button is being pressed
@@ -117,8 +118,8 @@ public:
    * @return 
    *
    */
-  bool
-  getButtonDown(KEY::CODE keycode);
+  virtual bool
+  getButtonDown(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -126,8 +127,8 @@ public:
    * @return 
    *
    */
-  bool
-  getButtonUp(KEY::CODE keycode);
+  virtual bool
+  getButtonUp(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -135,8 +136,8 @@ public:
    * @return 
    *
    */
-  bool
-  getButton(KEY::CODE keycode);
+  virtual bool
+  getButton(KEY::CODE keycode) = 0;
 
   /**
    * @brief returns if any key or button is being pressed
@@ -144,8 +145,8 @@ public:
    * @return 
    *
    */
-  bool
-  getMouseButtonDown(KEY::CODE keycode);
+  virtual bool
+  getMouseButtonDown(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -153,8 +154,8 @@ public:
    * @return 
    *
    */
-  bool
-  getMouseButtonUp(KEY::CODE keycode);
+  virtual bool
+  getMouseButtonUp(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -162,8 +163,8 @@ public:
    * @return 
    *
    */
-  bool
-  getMouseButton(KEY::CODE keycode);
+  virtual bool
+  getMouseButton(KEY::CODE keycode) = 0;
 
   /**
    * @brief 
@@ -171,8 +172,8 @@ public:
    * @return 
    *
    */
-  Vector2
-  getMousePosition();
+  virtual Vector2
+  getMousePosition() = 0;
 
   /**
    * @brief 
@@ -180,8 +181,8 @@ public:
    * @return 
    *
    */
-  float
-  getScrollDelta();
+  virtual float
+  getScrollDelta() = 0;
 
   /**
    * @brief returns the acceleration given at the last frame
@@ -189,8 +190,8 @@ public:
    * @return 
    *
    */
-  Vector3
-  acceleration();
+  virtual Vector3
+  acceleration() = 0;
 
   /**
    * @brief Returns true if any key is being pressed
@@ -198,8 +199,8 @@ public:
    * @return true if theres any key being pressed
    *
    */
-  bool
-  anyKey();
+  virtual bool
+  anyKey() = 0;
 
   /**
    * @brief 
@@ -207,14 +208,18 @@ public:
    * @return 
    *
    */
-  float
-  getAxis(AXIS::E axis);
+  virtual float
+  getAxis(AXIS::E axis) = 0;
+
+  virtual void
+  setState(KEY::CODE) = 0;
+
+  virtual void
+  registerKey(KEY::CODE key, DEVICE::TYPE type) = 0;
 
 private:
 
-  void
-  setState(KEY::CODE);
-
+  Vector<InputDevice*> m_devices;
 };
 }
 
