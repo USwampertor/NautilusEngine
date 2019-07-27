@@ -37,7 +37,13 @@ namespace nauEngineSDK {
     update() override;
 
     virtual void
-    registerKey(KEY::CODE key, DEVICE::TYPE type) override;
+    removeDevice(InputDevice* device) override;
+
+    virtual void
+    mapButton(uint32 ID, DEVICE::TYPE deviceType, KEY::CODE toMap) override;
+
+    virtual void
+    mapButton(InputDevice* device, KEY::CODE newKey) override;
 
     virtual void*
     getManager() override;
@@ -91,11 +97,13 @@ namespace nauEngineSDK {
     anyKey() override;
 
     virtual float
-    getAxis(AXIS::E axis) override;
+    getAxis(uint32 ID, AXIS::E axis, JOYSTICK::E joystick) override;
 
     gainput::InputManager m_manager;
 
-    gainput::InputMap m_map;
+    gainput::InputMap m_inputMap;
+
+    Map<KEY::CODE, gainput::DeviceButtonId> m_keyMap;
 
   };
 }

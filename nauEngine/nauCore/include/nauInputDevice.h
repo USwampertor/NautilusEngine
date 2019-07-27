@@ -49,6 +49,21 @@ namespace nauEngineSDK {
     get() = 0;
 
     /**
+     * @brief Cleans the device input information. This function only cleans base properties
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    clean() {
+      m_isActive = false;
+      m_leftHorizontalAxis = 0.0f;
+      m_leftVerticalAxis = 0.0f;
+      m_rightHorizontalAxis = 0.0f;
+      m_rightVerticalAxis = 0.0f;
+    }
+
+    /**
      * @brief Returns the type this device is
      * @param 
      * @return DEVICE::TYPE enum type of device
@@ -66,25 +81,53 @@ namespace nauEngineSDK {
     uint32
     getID() { return m_ID; }
 
-  private:
+    void
+    setActive(bool activeState) { m_isActive = activeState; }
+
+    bool
+    isActive() { return m_isActive; }
+
+    float
+    getAxis(JOYSTICK::E side, AXIS::E axis) {
+      return (JOYSTICK::LEFT == side) ? 
+        (AXIS::HORIZONTAL == axis) ? m_leftHorizontalAxis  : m_leftVerticalAxis : 
+        (AXIS::HORIZONTAL == axis) ? m_rightHorizontalAxis : m_rightVerticalAxis;
+    }
+
+  protected:
     /**
      * The type of this device
      */
     DEVICE::TYPE m_device;
 
     /**
-     * The horizontal axis value the device has right now
+     * The horizontal left axis value the device has right now
      */
-    float m_horizontalAxis;
+    float m_leftHorizontalAxis;
 
     /**
-     * The vertical value the device has right now
+     * The vertical left axis value the device has right now
      */
-    float m_verticalAxis;
+    float m_leftVerticalAxis;
+
+    /**
+     * The horizontal right axis value the device has right now
+     */
+    float m_rightHorizontalAxis;
+
+    /**
+     * The vertical right axis value the device has right now
+     */
+    float m_rightVerticalAxis;
 
     /**
      * Device ID
      */
     uint32 m_ID;
+
+    /**
+     * Is the device active? Should the Manager receive inputs from it?
+     */
+    bool m_isActive;
   };
 }

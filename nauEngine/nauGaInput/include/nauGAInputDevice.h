@@ -26,9 +26,9 @@ public:
   virtual void*
   get() override;
 
-private:
+  virtual void
+  clean() override;
 
-  gainput::DeviceId m_ID;
 };
 
 }

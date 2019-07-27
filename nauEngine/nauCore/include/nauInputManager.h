@@ -55,8 +55,8 @@ public:
    * @return 
    *
    */
-  virtual void
-  registerKey(KEY::CODE key, DEVICE::TYPE type) = 0;
+  void
+  addDevice(InputDevice* device) { m_devices[device->getType()].push_back(device); }
 
   /**
    * @brief 
@@ -64,8 +64,8 @@ public:
    * @return 
    *
    */
-  void
-  addDevice(InputDevice* device) { m_devices[device->getType()].push_back(device); }
+  virtual void
+  removeDevice(InputDevice* device) = 0;
 
   /**
    * @brief Maps (Or lets you remap, a button to a specific Key or action)
@@ -75,6 +75,15 @@ public:
    */
   virtual void
   mapButton(uint32 ID, DEVICE::TYPE deviceType, KEY::CODE toMap) = 0;
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  virtual void
+  mapButton(InputDevice* device, KEY::CODE newKey) = 0;
 
   /**
    * @brief returns the plugin-managed object in charge of the management of objects
@@ -254,9 +263,9 @@ public:
    *
    */
   virtual float
-  getAxis(AXIS::E axis) = 0;
+  getAxis(uint32 ID, AXIS::E axis, JOYSTICK::E joystick) = 0;
 
-private:
+protected:
 
   Vector<Vector<InputDevice*>> m_devices;
 
