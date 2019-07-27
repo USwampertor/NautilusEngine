@@ -74,7 +74,10 @@ public:
    *
    */
   virtual void
-  mapButton(uint32 ID, DEVICE::TYPE deviceType, KEY::CODE toMap) = 0;
+  mapButton(uint32 ID, 
+            DEVICE::TYPE deviceType, 
+            KEY::CODE toMap, 
+            bool isFloat = false) = 0;
 
   /**
    * @brief 
@@ -83,7 +86,9 @@ public:
    *
    */
   virtual void
-  mapButton(InputDevice* device, KEY::CODE newKey) = 0;
+  mapButton(InputDevice* device, 
+            KEY::CODE newKey, 
+            bool isFloat = false) = 0;
 
   /**
    * @brief returns the plugin-managed object in charge of the management of objects

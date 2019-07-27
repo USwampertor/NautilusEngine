@@ -40,10 +40,15 @@ namespace nauEngineSDK {
     removeDevice(InputDevice* device) override;
 
     virtual void
-    mapButton(uint32 ID, DEVICE::TYPE deviceType, KEY::CODE toMap) override;
+    mapButton(uint32 ID, 
+              DEVICE::TYPE deviceType, 
+              KEY::CODE toMap, 
+              bool isFloat = false) override;
 
     virtual void
-    mapButton(InputDevice* device, KEY::CODE newKey) override;
+    mapButton(InputDevice* device, 
+              KEY::CODE newKey, 
+              bool isFloat = false) override;
 
     virtual void*
     getManager() override;

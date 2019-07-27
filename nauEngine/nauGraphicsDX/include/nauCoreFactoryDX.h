@@ -79,8 +79,6 @@ namespace nauEngineSDK {
   MS_ALIGN(16)
   extern "C" NAU_DIRECTX_EXPORT CoreFactory*
   createFactory() {
-  
-    
     return new CoreFactoryDX();
   }
   GCC_ALIGN(16)
