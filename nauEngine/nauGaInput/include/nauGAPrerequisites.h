@@ -19,7 +19,7 @@ namespace nauEngineSDK {
 #   if defined( NAU_STATIC_LIB )
 #     define NAU_GAINPUT_EXPORT
 #   else
-#     if defined( NAU_DIRECTX_EXPORTS )
+#     if defined( NAU_GAINPUT_EXPORTS )
 #       define NAU_GAINPUT_EXPORT __declspec( dllexport )
 #     else
 #       define NAU_GAINPUT_EXPORT __declspec( dllimport )
@@ -29,7 +29,7 @@ namespace nauEngineSDK {
 #   if defined( NAU_STATIC_LIB )
 #     define NAU_GAINPUT_EXPORT
 #   else
-#     if defined( NAU_DIRECTX_EXPORTS )
+#     if defined( NAU_GAINPUT_EXPORTS )
 #       define NAU_GAINPUT_EXPORT __attribute__ ((dllexport))
 #     else
 #       define NAU_GAINPUT_EXPORT __attribute__ ((dllimport))

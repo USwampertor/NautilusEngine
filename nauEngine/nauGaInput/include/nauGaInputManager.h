@@ -16,7 +16,7 @@
 #include <nauInputManager.h>
 
 namespace nauEngineSDK {
-  class GAInputManager : public InputManager
+  class NAU_GAINPUT_EXPORT GAInputManager : public InputManager
   {
   public:
     /**
@@ -109,7 +109,7 @@ namespace nauEngineSDK {
     gainput::InputMap m_inputMap;
 
     Map<KEY::CODE, gainput::DeviceButtonId> m_keyMap;
-
+    
   };
 }
 

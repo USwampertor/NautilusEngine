@@ -106,8 +106,5 @@ namespace nauEngineSDK {
     ViewPortDX m_viewPort;
 
   };
- 
-
-  
 
 }

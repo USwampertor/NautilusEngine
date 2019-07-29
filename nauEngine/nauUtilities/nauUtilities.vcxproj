@@ -22,6 +22,7 @@
     <ClCompile Include="src\nauAABB.cpp" />
     <ClCompile Include="src\nauBox2d.cpp" />
     <ClCompile Include="src\nauDataStream.cpp" />
+    <ClCompile Include="src\nauDynamicLibrary.cpp" />
     <ClCompile Include="src\nauFileSystem.cpp" />
     <ClCompile Include="src\nauFrustrum.cpp" />
     <ClCompile Include="src\nauMatrix3.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="include\nauAABB.h" />
     <ClInclude Include="include\nauBox2d.h" />
     <ClInclude Include="include\nauDataStream.h" />
+    <ClInclude Include="include\nauDynamicLibrary.h" />
     <ClInclude Include="include\nauFileSystem.h" />
     <ClInclude Include="include\nauFrustrum.h" />
     <ClInclude Include="include\nauMath.h" />

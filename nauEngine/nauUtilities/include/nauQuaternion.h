@@ -42,7 +42,7 @@ namespace nauEngineSDK {
      *
      */
     Quaternion(const Quaternion& matrix) {
-
+      *this = matrix;
     }
 
     /**

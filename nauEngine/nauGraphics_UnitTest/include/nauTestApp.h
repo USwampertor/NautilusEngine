@@ -18,6 +18,7 @@
 #include <nauSceneGraph.h>
 #include <nauResourceManager.h>
 #include <nauLogger.h>
+#include <nauDynamicLibrary.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>

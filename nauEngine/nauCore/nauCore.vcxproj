@@ -86,7 +86,6 @@
     <ClCompile Include="src\nauGraphicPass.cpp" />
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
-    <ClCompile Include="src\nauInput.cpp" />
     <ClCompile Include="src\nauLogger.cpp" />
     <ClCompile Include="src\nauMaterial.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />

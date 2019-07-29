@@ -225,9 +225,6 @@
     <ClCompile Include="src\nauModel.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauInput.cpp">
-      <Filter>Source Files\Input</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauMuscleWeight.cpp">
       <Filter>Source Files\Animation</Filter>
     </ClCompile>

@@ -7,12 +7,12 @@ namespace nauEngineSDK {
     m_ID = reinterpret_cast<uint32>(data);
     clean();
   }
-
+  
   void*
   GAInputDevice::get() {
-
+    return reinterpret_cast<void*>(m_ID);
   }
-
+  
   void
   GAInputDevice::clean() {
     InputDevice::clean();

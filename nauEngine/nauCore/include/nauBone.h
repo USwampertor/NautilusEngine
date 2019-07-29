@@ -12,6 +12,11 @@
 #include "nauPrerequisitesCore.h"
 #include "nauVertexWeight.h"
 
+#include <assimp/config.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include <nauMatrix4.h>
 
 namespace nauEngineSDK {

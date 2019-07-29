@@ -48,6 +48,15 @@ enum TYPE
 };
 }
 
+namespace AXIS
+{
+enum E
+{
+  HORIZONTAL          = 1 << 0,
+  VERTICAL            = 1 << 1
+};
+}
+
 namespace KEY
 {
 enum CODE
@@ -413,13 +422,5 @@ enum CODE
 };
 }
 
-namespace AXIS
-{
-enum E
-{
-  HORIZONTAL        = 1 << 0,
-  VERTICAL          = 1 << 1
-};
-}
 }
 

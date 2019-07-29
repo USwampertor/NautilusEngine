@@ -14,7 +14,7 @@
 #include "nauInput.h"
 
 namespace nauEngineSDK {
-  class NAU_CORE_EXPORT InputDevice
+  class InputDevice
   {
   public:
     /**

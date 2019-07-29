@@ -40,7 +40,6 @@ namespace nauEngineSDK {
     hr = pd3dDevice->CreateSamplerState(&sampler, &m_sampleState);
     if (FAILED(hr)) {
       throw::std::exception("Failed to create sampler state");
-      return false;
     }
     
     return true;

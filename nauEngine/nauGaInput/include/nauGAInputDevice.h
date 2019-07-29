@@ -10,10 +10,11 @@
 #pragma once
 
 #include "nauGAPrerequisites.h"
+
 #include <nauInputDevice.h>
 
 namespace nauEngineSDK {
-class GAInputDevice : public InputDevice
+class NAU_GAINPUT_EXPORT GAInputDevice : public InputDevice
 {
 public:
   GAInputDevice() = default;
@@ -22,13 +23,12 @@ public:
 
   virtual void
   init(DEVICE::TYPE type, void* data) override;
-
+  
   virtual void*
   get() override;
-
+  
   virtual void
   clean() override;
-
 };
 
 }

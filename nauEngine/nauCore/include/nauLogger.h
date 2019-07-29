@@ -13,10 +13,10 @@
 
 #include "nauModule.h"
 
-#define LGRWARNINGSIGN " \U000026A0 "
-#define LGRERROREDSIGN " \U0001F6D1 "
-#define LGRSUCCESSSIGN " \U00002714 "
-#define LGRDEBUGGRSIGN " \U0001F47E "
+#define LGRWARNINGSIGN " !WARNING! "
+#define LGRERROREDSIGN " !!ERROR!! "
+#define LGRSUCCESSSIGN " -SUCCESS- "
+#define LGRDEBUGGRSIGN " --DEBUG-- "
 
 namespace nauEngineSDK {
 

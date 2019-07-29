@@ -272,12 +272,24 @@ public:
 
 protected:
 
+  /**
+   * Devices registered in the Manager
+   */
   Vector<Vector<InputDevice*>> m_devices;
 
+  /**
+   * Position of the mouse on screen
+   */
   Vector2 m_mousePosition;
 
+  /**
+   * Delta position between last frame and this one
+   */
   float m_mousePositionDelta;
 
+  /**
+   * Mouse scroll delta between last frame and this one
+   */
   float m_mouseScrollDelta;
 
 };
