@@ -325,12 +325,9 @@ namespace nauEngineSDK {
 
   bool
   Vector3::isSame(const Vector3& a, const Vector3& b, float error) {
-    int same = 0;
-    if (Math::abs(a.x - b.x) <= error) { ++same; }
-    if (Math::abs(a.y - b.y) <= error) { ++same; }
-    if (Math::abs(a.z - b.z) <= error) { ++same; }
-    if (3 == same) { return true; }
-    return false;
+    return Math::abs(a.x - b.x) <= error &&
+           Math::abs(a.y - b.y) <= error &&
+           Math::abs(a.z - b.z) <= error;
   }
 
   

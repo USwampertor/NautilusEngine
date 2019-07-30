@@ -317,7 +317,9 @@ namespace nauEngineSDK {
 
     /**
      * @brief sets the value of a Vector3
-     * @param float x and y
+     * @param float x
+     * @param float y
+     * @param float z
      * @return
      *
      */
