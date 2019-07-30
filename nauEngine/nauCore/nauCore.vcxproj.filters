@@ -181,6 +181,9 @@
     <ClInclude Include="include\nauInputDevice.h">
       <Filter>Source Files\Input</Filter>
     </ClInclude>
+    <ClInclude Include="nauAnimationManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -257,6 +260,9 @@
     </ClCompile>
     <ClCompile Include="src\nauGameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="nauAnimationManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

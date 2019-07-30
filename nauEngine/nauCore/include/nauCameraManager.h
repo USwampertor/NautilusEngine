@@ -61,14 +61,14 @@ namespace nauEngineSDK {
      *
      */
     Matrix4
-    getViewMatrix( String id);
+    getViewMatrix(String id);
 
   private:
 
     /**
      * List of all generated cameras in the session
      */
-    Vector<Camera> m_cameraList;
+    Vector<Camera*> m_cameraList;
 
     /**
      * Pointer to active camera

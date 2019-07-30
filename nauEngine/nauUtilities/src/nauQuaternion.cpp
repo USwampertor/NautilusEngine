@@ -12,12 +12,6 @@
 
 namespace nauEngineSDK {
 
-  Quaternion::Quaternion(const float nx, const float ny, const float nz, const float nw) 
-    : x(nx),
-      y(ny),
-      z(nz),
-      w(nw) {}
-  
   Quaternion
   Quaternion::operator+(const Quaternion& other) const {
     return Quaternion(x + other.x, y + other.y, z + other.z, w + other.w);
@@ -30,6 +24,9 @@ namespace nauEngineSDK {
   
   Quaternion
   Quaternion::operator*(const Quaternion& other) const {
+
+
+
     return Quaternion(x * other.x, y * other.y, z * other.z, w * other.w);
   }
   
@@ -123,4 +120,16 @@ namespace nauEngineSDK {
   Quaternion::RotateZ(const float& theta) {
     z += theta;
   }
+
+  void
+  Quaternion::setEulerDegrees(float x, float y, float z) {
+
+  }
+
+  void
+  Quaternion::setEulerRadians(float x, float y, float z) {
+
+  }
+
+
 }
