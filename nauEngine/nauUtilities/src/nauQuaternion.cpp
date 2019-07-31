@@ -46,6 +46,20 @@ namespace nauEngineSDK {
   }
   
   Quaternion
+  Quaternion::operator/(const Quaternion& other) const {
+    
+    float divider = Math::sqr(other.x) + 
+                    Math::sqr(other.y) + 
+                    Math::sqr(other.z) + 
+                    Math::sqr(other.w);
+
+    return Quaternion((other.w * x - other.x * w - other.y * z + other.z * y) / divider,
+                      (other.w * y + other.x * z - other.y * w - other.z * x) / divider,
+                      (other.w * z - other.x * y + other.y * x - other.z * w) / divider,
+                      (other.w * w + other.x * x + other.y * y + other.z * z) / divider);
+  }
+
+  Quaternion
   Quaternion::operator/(const float& scale) const {
     return Quaternion(x / scale, y / scale, z / scale, w / scale);
   }
@@ -111,15 +125,32 @@ namespace nauEngineSDK {
   Quaternion&
   Quaternion::operator*=(const Quaternion& other) {
     Vector3 oldImaginary = Vector3(x, y, z);
+    
     Vector3 otherImaginary = Vector3(other.x, other.y, other.z);
+    
     float nW = w * other.w - (oldImaginary | otherImaginary);
 
     Vector3 newImaginary = otherImaginary * w + 
                            oldImaginary * other.w + 
                            oldImaginary ^ newImaginary;
+
     *this = Quaternion(nW, newImaginary);
   }
   
+  Quaternion&
+  Quaternion::operator/=(const Quaternion& other) {
+
+    float divider = Math::sqr(other.x) +
+                    Math::sqr(other.y) +
+                    Math::sqr(other.z) +
+                    Math::sqr(other.w);
+
+    *this = Quaternion((other.w * x - other.x * w - other.y * z + other.z * y) / divider,
+                       (other.w * y + other.x * z - other.y * w - other.z * x) / divider,
+                       (other.w * z - other.x * y + other.y * x - other.z * w) / divider,
+                       (other.w * w + other.x * x + other.y * y + other.z * z) / divider);
+  }
+
   Quaternion&
   Quaternion::operator*=(float scale) {
     x *= scale;
@@ -256,13 +287,13 @@ namespace nauEngineSDK {
 
   bool
   Quaternion::isSame(const Quaternion& a, const Quaternion& b, float error) {
-    return Math::abs(a.x - b.x) <= error &&
-           Math::abs(a.y - b.y) <= error &&
-           Math::abs(a.z - b.z) <= error;
+    return Math::isNearSame(a.x, b.x, error) &&
+           Math::isNearSame(a.y, b.y, error) &&
+           Math::isNearSame(a.z, b.z, error);
   }
   
   Vector3
-  Quaternion::rotateAround(const float& theta, Vector3 toRotate, Vector3 axis) {
+  Quaternion::rotateAroundRadians(const float& theta, Vector3 toRotate, Vector3 axis) {
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
     Vector3 axisToRotate = axis.normalized();
     Quaternion q = { theta,axisToRotate };
@@ -276,7 +307,21 @@ namespace nauEngineSDK {
   }
 
   Vector3
-  Quaternion::rotateEuler(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis) {
+    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+    Vector3 axisToRotate = axis.normalized();
+    Quaternion q = { Math::degToRad(theta),axisToRotate };
+
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+
+    Quaternion result = q * p * qInverse;
+    return Vector3(result.x, result.y, result.z);
+  }
+
+  Vector3
+  Quaternion::rotateEulerRadians(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
 
     Quaternion qX = { xAngle, Vector3::RIGHT };
@@ -298,20 +343,121 @@ namespace nauEngineSDK {
     return Vector3(resultZ.x, resultZ.y, resultZ.z);
   }
 
+  Vector3
+  Quaternion::rotateEulerDegrees(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
+    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+
+    Quaternion qX = { Math::degToRad(xAngle), Vector3::RIGHT };
+    Quaternion qY = { Math::degToRad(yAngle), Vector3::UP };
+    Quaternion qZ = { Math::degToRad(zAngle), Vector3::FRONT };
+  
+    qX.toNormRotator();
+    qY.toNormRotator();
+    qZ.toNormRotator();
+
+    Quaternion qInverseX = qX.inversed();
+    Quaternion qInverseY = qY.inversed();
+    Quaternion qInverseZ = qZ.inversed();
+
+    Quaternion resultX = qX * p       * qInverseX;
+    Quaternion resultY = qY * resultX * qInverseY;
+    Quaternion resultZ = qZ * resultY * qInverseZ;
+
+    return Vector3(resultZ.x, resultZ.y, resultZ.z);
+  }
+
   void
   Quaternion::setEulerDegrees(float newX, float newY, float newZ) {
-    x = newX;
-    z = newY;
-    z = newZ;
-    w = 0;
+    newX = Math::degToRad(newX * 0.5f);
+    newY = Math::degToRad(newY * 0.5f);
+    newZ = Math::degToRad(newZ * 0.5f);
+  
+    float sinX = Math::sin(newX);
+    float sinY = Math::sin(newY);
+    float sinZ = Math::sin(newZ);
+
+    float cosX = Math::cos(newX);
+    float cosY = Math::cos(newY);
+    float cosZ = Math::cos(newZ);
+
+    w = (cosX * cosY * cosZ) + (sinX + sinY + sinZ);
+    x = (sinX * cosY * cosZ) - (cosX + sinY + sinZ);
+    y = (sinX * cosY * sinZ) + (cosX + sinY + cosZ);
+    z = (cosX * cosY * sinZ) - (sinX + sinY + cosZ);
   }
 
   void
   Quaternion::setEulerRadians(float newX, float newY, float newZ) {
-    x = newX;
-    z = newY;
-    z = newZ;
-    w = 0;
+    newX *= 0.5f;
+    newY *= 0.5f;
+    newZ *= 0.5f;
+
+    float sinX = Math::sin(newX);
+    float sinY = Math::sin(newY);
+    float sinZ = Math::sin(newZ);
+
+    float cosX = Math::cos(newX);
+    float cosY = Math::cos(newY);
+    float cosZ = Math::cos(newZ);
+
+    w = (cosX * cosY * cosZ) + (sinX + sinY + sinZ);
+    x = (sinX * cosY * cosZ) - (cosX + sinY + sinZ);
+    y = (sinX * cosY * sinZ) + (cosX + sinY + cosZ);
+    z = (cosX * cosY * sinZ) - (sinX + sinY + cosZ);
+  }
+
+  Vector3
+  Quaternion::toEulerDegrees() {
+
+
+    Vector3 angles;
+    
+    angles.y = Math::radToDeg(Math::asin(2.0f * (x * y + z * w)));
+
+    //North pole axis
+    if (Math::isNearSame(x * y + z * w, 0.5f)) {
+      angles.x = Math::radToDeg(2 * Math::atan2(x, w));
+      angles.z = 0.0f;
+    }
+    //South Pole axis
+    else if (Math::isNearSame(x * y + z * w, -0.5f)) {
+      angles.x = Math::radToDeg(2 * Math::atan2(x, w));
+      angles.z = 0.0f;
+    }
+    //No troubles
+    else {
+      angles.z = Math::radToDeg(Math::atan2(2.0f * (w * y - x * z),
+                                            1.0f - 2.0f * (y * y + z * z)));
+      angles.x = Math::radToDeg(Math::atan2(2.0f * (w * x - y * z),
+                                            1.0f - 2.0f * (x * x + y * y)));
+    }
+    return angles;
+  }
+
+  Vector3
+  Quaternion::toEulerRadians() {
+    Vector3 angles;
+    
+    angles.y = Math::asin(2.0f * (x * y + z * w));
+
+    //North pole axis
+    if (Math::isNearSame(x * y + z * w, 0.5f)) {
+      angles.x = 2 * Math::atan2(x, w);
+      angles.z = 0.0f;
+    }
+    //South Pole axis
+    else if (Math::isNearSame(x * y + z * w, -0.5f)) {
+      angles.x = 2 * Math::atan2(x, w);
+      angles.z = 0.0f;
+    }
+    //No troubles
+    else {
+      angles.z = Math::atan2(2.0f * (w * y - x * z),
+                             1.0f - 2.0f * (y * y + z * z));
+      angles.x = Math::atan2(2.0f * (w * x - y * z),
+                             1.0f - 2.0f * (x * x + y * y));
+    }
+    return angles;
   }
 
   const Quaternion Quaternion::ZERO   = Quaternion(0.0f);

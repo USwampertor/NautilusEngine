@@ -305,15 +305,43 @@ namespace nauEngineSDK {
 
     /**
      * @brief computes hypotenuse of given CA and CO
-     * @param Opposite leg and adjacent leg
+     * @param Opposite leg
+     * @param Adjacent leg
      * @return value^2
      *
      */
     template <typename T>
-    static T hypot(T co, T ca) {
+    static T 
+    hypot(T co, T ca) {
       return std::hypot(co, ca);
     }
 
+    /**
+     * @brief returns the value a with the sign of b
+     * @param A magnitude value
+     * @param B sign value
+     * @return magnitude of A with sign of B
+     *
+     */
+    template <typename T>
+    static T 
+    copySign(T a, T b) {
+      return std::copysignf(a, b);
+    }
+
+    /**
+     * @brief returns true if two values are almost the same, given a threshold
+     * @param A value
+     * @param B value
+     * @param threshold value to take as reference. Default is SMALLNUMBER
+     * @return True if the absolute difference is lesser than the threshold
+     *
+     */
+    template <typename T>
+    static bool
+    isNearSame(T a, T b, T threshold = SMALLNUMBER) {
+      return Math::abs(a - b) <= threshold;
+    }
 
     /**
      * @brief floors the given value to the nearest integer

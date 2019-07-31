@@ -123,6 +123,15 @@ class NAU_UTILITY_EXPORT Quaternion {
   operator*(const Quaternion& other) const;
   
   /**
+   * @brief / operator overload with quaternions
+   * @param the quaternion to divide
+   * @return a quaternion divided by another quaternion
+   *
+   */
+  Quaternion
+  operator/(const Quaternion& other) const;
+
+  /**
    * @brief / operator overload
    * @param the scale to divide
    * @return a quaternion divided by scale
@@ -229,6 +238,15 @@ class NAU_UTILITY_EXPORT Quaternion {
    */
   Quaternion&
   operator*=(const Quaternion& other);
+
+  /**
+   * @brief /= operator overload with quaternions
+   * @param the other quaternion to divide
+   * @return *this / q components
+   *
+   */
+  Quaternion&
+  operator/=(const Quaternion& other);
 
   /**
    * @brief *= operator overload
@@ -435,7 +453,7 @@ class NAU_UTILITY_EXPORT Quaternion {
    * @brief Checks if the quaternion is (almost) the same as another quaternion
    * @param the quaternion A
    * @param the quaternion B
-   * @param the quaternion the threshold
+   * @param the quaternion the threshold. Default is Math::SMALLNUMBER
    * @return true if, given the threshold, are the same
    *
    */
@@ -451,7 +469,18 @@ class NAU_UTILITY_EXPORT Quaternion {
    * 
    */
   static Vector3
-  rotateAround(const float& theta, Vector3 toRotate, Vector3 axis);
+  rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis);
+
+  /**
+   * @brief Rotates an amount of rad angles around a given axis
+   * @param theta angle to rotate
+   * @param Vector3 vector to rotate
+   * @param Vector3 around what axis
+   * @return Vector3 rotated over axis
+   * 
+   */
+  static Vector3
+  rotateAroundRadians(const float& theta, Vector3 toRotate, Vector3 axis);
 
   /**
    * @brief Rotates an amount of x y z radians over the axis x y and z
@@ -463,7 +492,19 @@ class NAU_UTILITY_EXPORT Quaternion {
    *
    */
   static Vector3
-  rotateEuler(Vector3 toRotate, float xAngle, float yAngle, float zAngle);
+  rotateEulerDegrees(Vector3 toRotate, float xAngle, float yAngle, float zAngle);
+
+  /**
+   * @brief Rotates an amount of x y z radians over the axis x y and z
+   * @param Vector3 to rotate around those angles
+   * @param float x radian angle to rotate over X axis
+   * @param float y radian angle to rotate over Y axis
+   * @param float z radian angle to rotate over Z axis
+   * @return Vector3 rotated over the angles given
+   *
+   */
+  static Vector3
+  rotateEulerRadians(Vector3 toRotate, float xAngle, float yAngle, float zAngle);
 
   /**
    * @brief Creates a rotator quaternion to rotate a vector around it based on degrees
@@ -486,6 +527,24 @@ class NAU_UTILITY_EXPORT Quaternion {
    */
   void
   setEulerRadians(float newX, float newY, float newZ);
+
+  /**
+   * @brief returns a vector filled with degrees in x y and z from the quaternion
+   * @param 
+   * @return 
+   *
+   */
+  Vector3
+  toEulerDegrees();
+
+  /**
+   * @brief returns a vector filled with degrees in x y and z from the quaternion
+   * @param 
+   * @return 
+   *
+   */
+  Vector3
+  toEulerRadians();
 
   /**
    * Pure quaternion definition
