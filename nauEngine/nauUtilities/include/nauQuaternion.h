@@ -443,34 +443,30 @@ class NAU_UTILITY_EXPORT Quaternion {
   isSame(const Quaternion& a, const Quaternion& b, float error = Math::SMALLNUMBER);
 
   /**
-   * @brief Rotation in X axis
+   * @brief Rotates an amount of rad angles around a given axis
    * @param theta angle to rotate
-   * @return
-   *
-   */
-  void
-  RotateX(const float& theta);
-  
-  /**
-   * @brief Rotation in Y axis
-   * @param theta angle to rotate
-   * @return
-   *
-   */
-  void
-  RotateY(const float& theta);
-  
-  /**
-   * @brief Rotation in Z axis
-   * @param theta angle to rotate
-   * @return 
+   * @param Vector3 vector to rotate
+   * @param Vector3 around what axis
+   * @return Vector3 rotated over axis
    * 
    */
-  void
-  RotateZ(const float& theta);
- 
+  static Vector3
+  rotateAround(const float& theta, Vector3 toRotate, Vector3 axis);
+
   /**
-   * @brief Sets the quaternion based in Euler Degrees
+   * @brief Rotates an amount of x y z radians over the axis x y and z
+   * @param Vector3 to rotate around those angles
+   * @param float x radian angle to rotate over X axis
+   * @param float y radian angle to rotate over Y axis
+   * @param float z radian angle to rotate over Z axis
+   * @return Vector3 rotated over the angles given
+   *
+   */
+  static Vector3
+  rotateEuler(Vector3 toRotate, float xAngle, float yAngle, float zAngle);
+
+  /**
+   * @brief Creates a rotator quaternion to rotate a vector around it based on degrees
    * @param float x degree
    * @param float y degree
    * @param float z degree
@@ -478,10 +474,10 @@ class NAU_UTILITY_EXPORT Quaternion {
    *
    */
   void
-  setEulerDegrees(float x, float y, float z);
+  setEulerDegrees(float newX, float newY, float newZ);
 
   /**
-   * @brief Sets the quaternion based in Euler Radians
+   * @brief Creates a rotator quaternion to rotate a vector around it based on radians
    * @param float x radians
    * @param float y radians
    * @param float z radians
@@ -489,7 +485,7 @@ class NAU_UTILITY_EXPORT Quaternion {
    *
    */
   void
-  setEulerRadians(float x, float y, float z);
+  setEulerRadians(float newX, float newY, float newZ);
 
   /**
    * Pure quaternion definition

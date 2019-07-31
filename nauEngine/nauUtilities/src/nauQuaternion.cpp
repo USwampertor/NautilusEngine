@@ -260,30 +260,58 @@ namespace nauEngineSDK {
            Math::abs(a.y - b.y) <= error &&
            Math::abs(a.z - b.z) <= error;
   }
-
-  void
-  Quaternion::RotateX(const float& theta) {
-    x += theta;
-  }
   
-  void
-  Quaternion::RotateY(const float& theta) {
-    y += theta;
+  Vector3
+  Quaternion::rotateAround(const float& theta, Vector3 toRotate, Vector3 axis) {
+    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+    Vector3 axisToRotate = axis.normalized();
+    Quaternion q = { theta,axisToRotate };
+
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+
+    Quaternion result = q * p * qInverse;
+    return Vector3(result.x, result.y, result.z);
   }
+
+  Vector3
+  Quaternion::rotateEuler(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
+    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+
+    Quaternion qX = { xAngle, Vector3::RIGHT };
+    Quaternion qY = { yAngle, Vector3::UP };
+    Quaternion qZ = { zAngle, Vector3::FRONT };
   
-  void
-  Quaternion::RotateZ(const float& theta) {
-    z += theta;
+    qX.toNormRotator();
+    qY.toNormRotator();
+    qZ.toNormRotator();
+
+    Quaternion qInverseX = qX.inversed();
+    Quaternion qInverseY = qY.inversed();
+    Quaternion qInverseZ = qZ.inversed();
+
+    Quaternion resultX = qX * p       * qInverseX;
+    Quaternion resultY = qY * resultX * qInverseY;
+    Quaternion resultZ = qZ * resultY * qInverseZ;
+
+    return Vector3(resultZ.x, resultZ.y, resultZ.z);
   }
 
   void
-  Quaternion::setEulerDegrees(float x, float y, float z) {
-
+  Quaternion::setEulerDegrees(float newX, float newY, float newZ) {
+    x = newX;
+    z = newY;
+    z = newZ;
+    w = 0;
   }
 
   void
-  Quaternion::setEulerRadians(float x, float y, float z) {
-
+  Quaternion::setEulerRadians(float newX, float newY, float newZ) {
+    x = newX;
+    z = newY;
+    z = newZ;
+    w = 0;
   }
 
   const Quaternion Quaternion::ZERO   = Quaternion(0.0f);
