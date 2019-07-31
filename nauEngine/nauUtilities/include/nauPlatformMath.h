@@ -340,7 +340,7 @@ namespace nauEngineSDK {
     template <typename T>
     static bool
     isNearSame(T a, T b, T threshold = SMALLNUMBER) {
-      return Math::abs(a - b) <= threshold;
+      return abs(a - b) <= threshold;
     }
 
     /**

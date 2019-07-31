@@ -135,6 +135,7 @@ namespace nauEngineSDK {
                            oldImaginary ^ newImaginary;
 
     *this = Quaternion(nW, newImaginary);
+    return *this;
   }
   
   Quaternion&
@@ -149,6 +150,7 @@ namespace nauEngineSDK {
                        (other.w * y + other.x * z - other.y * w - other.z * x) / divider,
                        (other.w * z - other.x * y + other.y * x - other.z * w) / divider,
                        (other.w * w + other.x * x + other.y * y + other.z * z) / divider);
+    return *this;
   }
 
   Quaternion&
@@ -157,6 +159,7 @@ namespace nauEngineSDK {
     y *= scale;
     z *= scale;
     w *= scale;
+    return *this;
   }
 
   Quaternion&
@@ -165,6 +168,7 @@ namespace nauEngineSDK {
     y /= scale;
     z /= scale;
     w /= scale;
+    return *this;
   }
 
   float
@@ -189,7 +193,7 @@ namespace nauEngineSDK {
 
   float
   Quaternion::angularDifferenceDeg(const Quaternion& a, const Quaternion& b) {
-    Math::radToDeg(Quaternion::angularDifferenceRad(a, b));
+    return Math::radToDeg(Quaternion::angularDifferenceRad(a, b));
   }
 
   void

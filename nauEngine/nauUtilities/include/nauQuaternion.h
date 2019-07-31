@@ -546,6 +546,10 @@ class NAU_UTILITY_EXPORT Quaternion {
   Vector3
   toEulerRadians();
 
+#ifdef PURE
+# undef PURE
+#endif
+
   /**
    * Pure quaternion definition
    */
