@@ -13,6 +13,8 @@
 #include "nauAnimation.h"
 #include "nauComponent.h"
 
+#include "nauLogger.h"
+
 namespace nauEngineSDK {
 
  /**
@@ -39,8 +41,14 @@ public:
   void
   play(String name);
 
+  void
+  play();
+
   Vector<String>
-  getList();
+  getAnimationNames();
+
+  Vector<Animation*>
+  getAnimations();
   
   void
   crossFade();
@@ -51,11 +59,20 @@ public:
   void
   reset();
 
+  void
+  stop();
+
+  void
+  pause();
+
   float speed;
   
-  Animation* m_active;
+  Animation* m_current;
 
-  Vector<Animation> m_animations;
+  Vector<Animation*> m_animations;
 
+  bool m_active;
+
+  float m_frame;
 };
 }

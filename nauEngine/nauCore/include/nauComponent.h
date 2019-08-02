@@ -15,6 +15,8 @@
 #include "nauTexture.h"
 #include "nauMaterial.h"
 
+#include "nauResourceManager.h"
+
 #include <nauMath.h>
 
 namespace nauEngineSDK {
@@ -25,7 +27,9 @@ namespace nauEngineSDK {
     {
       MESH,
       COLLIDER,
-      SOURCE
+      SOURCE,
+      ANIMATOR,
+      MATERIAL
     };
   }
 
@@ -139,6 +143,17 @@ namespace nauEngineSDK {
      * A mesh list, which is a model
      */
     Model* m_model;
+
+  };
+
+  class AnimatorComponent : public Component
+  {
+  public:
+    AnimatorComponent() = default;
+
+    ~AnimatorComponent() = default;
+
+    Animator* m;
 
   };
 

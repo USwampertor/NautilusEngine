@@ -12,16 +12,49 @@
 namespace nauEngineSDK {
   void
   Animator::play(String name) {
+    for (auto animation : m_animations) {
+      if (animation->m_name == name) {
+        m_current = animation;
+        m_active = true;
+        return;
+      }
+    }
+#if NAU_DEBUG_MODE
+    Logger::instance().toIDE("Couldn't find an animation with that name", 
+                             LOGGER_LEVEL::ERRORED);
+#endif
+    Logger::instance().toConsole("Couldn't find an animation with that name",
+                                 LOGGER_LEVEL::ERRORED);
+  }
 
+  void
+  Animator::play() {
+    m_active = true;
+  }
+
+  void
+  Animator::pause() {
+    m_active = false;
+  }
+
+  void
+  Animator::stop() {
+    m_active = false;
+    m_frame = 0.0f;
   }
 
   Vector<String>
-  Animator::getList() {
+  Animator::getAnimationNames() {
     Vector<String> animations;
     for (auto animation : m_animations) {
-      animations.push_back(animation.m_name);
+      animations.push_back(animation->m_name);
     }
     return animations;
+  }
+
+  Vector<Animation*>
+  Animator::getAnimations() {
+    return m_animations;
   }
 
   void
@@ -31,11 +64,11 @@ namespace nauEngineSDK {
 
   void
   Animator::update() {
-  
+    
   }
 
   void
   Animator::reset() {
-
+    m_frame = 0.0f;
   }
 }

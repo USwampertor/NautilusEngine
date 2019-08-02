@@ -16,28 +16,28 @@ namespace nauEngineSDK {
     m_time = high_resolution_clock::now();
   }
 
-
-  float
-  Clock::deltaTime() {
+  void
+  Clock::update() {
     auto now = high_resolution_clock::now();
     milliseconds ms = duration_cast<milliseconds>(now - m_time);
     m_time = now;
-    return static_cast<float>(ms.count());
+    m_delta = static_cast<float>(ms.count());
+  }
+
+  float
+  Clock::deltaTime() {
+    return m_delta;
   }
 
   float
   Clock::deltaTime(DELTA::E as) {
-    auto now = high_resolution_clock::now();
-    milliseconds ms = duration_cast<milliseconds>(now - m_time);
-    m_time = now;
-
     if      (DELTA::DELTASECOND == as) {
-      return static_cast<float>(ms.count() * 0.001f);
+      m_delta * 0.001f;
     }
     else if (DELTA::MICROSECOND == as) {
-      return static_cast<float>(ms.count() * 1000.0f);
+      m_delta * 1000.0f;
     }
-    return static_cast<float>(ms.count());
+    return m_delta;
   }
 
   String

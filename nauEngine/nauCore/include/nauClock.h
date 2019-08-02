@@ -88,6 +88,15 @@ namespace nauEngineSDK {
     String
     hour();
 
+    /**
+     * @brief updates the delta value
+     * @param 
+     * @return 
+     *
+     */
+    void
+    update();
+
   private:
 
     /**
@@ -95,6 +104,10 @@ namespace nauEngineSDK {
      */
     high_resolution_clock::time_point m_time;
   
+    /**
+     * the delta time value between the last frame and this one
+     */
+    float m_delta;
   };
   
 }

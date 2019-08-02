@@ -13,6 +13,7 @@
 #include "nauTexture.h"
 #include "nauModel.h"
 #include "nauSkeleton.h"
+#include "nauAnimator.h"
 
 namespace nauEngineSDK {
 

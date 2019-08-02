@@ -9,6 +9,7 @@ namespace nauEngineSDK {
   void
   TestApp::update() {
     RenderManager::instance().update();
+    Clock::instance().update();
 
   }
 
@@ -62,8 +63,6 @@ namespace nauEngineSDK {
 
     g_graphicsAPI = m_factory->createGraphicsAPI();
     g_graphicsAPI->init(hwnd);
-    //g_graphicsAPI = m_factory->createGraphicsAPI();
-    //if (!g_graphicsAPI->init(hwnd)) return false;
 
     //RESOURCE MANAGER INITIALIZATION
     ResourceManager::startUp();

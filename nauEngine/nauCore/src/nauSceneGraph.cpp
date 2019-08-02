@@ -89,4 +89,9 @@ namespace nauEngineSDK {
     return m_sceneRoot->getAllChildren();
   }
 
+  Vector<Node*>
+  SceneGraph::getFiltered() {
+    return m_sceneRoot->getAllChildren();
+  }
+
 }

@@ -4,7 +4,10 @@
 namespace nauEngineSDK {
   void
   AnimationManager::animate(Vector<GameObject*> gameobjects) {
-  
+    for (auto puppet : gameobjects) {
+      puppet->getComponent(COMPONENT::ANIMATOR);
+
+    }
   }
 
   void

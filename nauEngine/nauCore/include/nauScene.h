@@ -56,10 +56,9 @@ public:
 
 private:
 
-  SceneGraph* m_sceneGraph;
+  SceneGraph* m_sceneGraph = nullptr;
 
 };
-
 }
 
 

@@ -18,12 +18,15 @@ namespace nauEngineSDK {
   enum E
   {
     NONE          = 0,
-    AUDIO         = 1<<0,
-    TEXTURE       = 1<<1,
-    CUBEMAP       = 1<<2,
-    MATERIAL      = 1<<3,
-    MODEL         = 1<<4,
-    SKELETON      = 1<<5,
+    AUDIO         ,
+    TEXTURE       ,
+    CUBEMAP       ,
+    MATERIAL      ,
+    MODEL         ,
+    SKELETON      ,
+    ANIMATOR      ,
+    SCENE         ,
+    PROJECT       
   };
   }
 

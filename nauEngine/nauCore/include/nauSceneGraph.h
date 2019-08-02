@@ -61,8 +61,23 @@ namespace nauEngineSDK {
     void
     setAt(Node* newNode, String referenceId, uint32 childLocation = 0);
 
+    /**
+     * @brief Returns all objects in the scene graph
+     * @param 
+     * @return Vector<Node*> all children GameObjects in nodes
+     *
+     */
     Vector<Node*>
     getSceneGameObjects();
+
+    /**
+     * @brief Gets all gameObject children in scene with a given parameter
+     * @param Parameter type of filter
+     * @return Vector<Node*> all filtered children GameObjects in nodes
+     *
+     */
+    Vector<Node*>
+    getFiltered();
 
   private:
 
