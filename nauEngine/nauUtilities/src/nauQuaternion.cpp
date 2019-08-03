@@ -41,7 +41,7 @@ namespace nauEngineSDK {
 
     Vector3 newImaginary = otherImaginary * w + 
                            oldImaginary * other.w + 
-                           oldImaginary ^ newImaginary;
+                           oldImaginary ^ otherImaginary;
     return Quaternion(nW, newImaginary);
   }
   
@@ -132,7 +132,7 @@ namespace nauEngineSDK {
 
     Vector3 newImaginary = otherImaginary * w + 
                            oldImaginary * other.w + 
-                           oldImaginary ^ newImaginary;
+                           oldImaginary ^ otherImaginary;
 
     *this = Quaternion(nW, newImaginary);
     return *this;
@@ -310,6 +310,34 @@ namespace nauEngineSDK {
     return Vector3(result.x, result.y, result.z);
   }
 
+  void
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 axis) {
+    Quaternion p = *this;
+    Vector3 axisToRotate = axis.normalized();
+    Quaternion q = { Math::degToRad(theta), axisToRotate };
+
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+
+    Quaternion result = q * p * qInverse;
+    *this = result;
+  }
+
+  void
+  Quaternion::rotateAroundRadians(const float& theta, Vector3 axis) {
+    Quaternion p = *this;
+    Vector3 axisToRotate = axis.normalized();
+    Quaternion q = { theta, axisToRotate };
+
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+
+    Quaternion result = q * p * qInverse;
+    *this = result;
+  }
+
   Vector3
   Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis) {
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
@@ -463,6 +491,27 @@ namespace nauEngineSDK {
     }
     return angles;
   }
+
+  Matrix3
+  Quaternion::rotationMatrix() {
+
+    Matrix3 m;
+
+    m.m[0][0] = 1 - 2 * (y * y) - 2 * (z * z);
+    m.m[1][0] =     2 * (x * y) - 2 * (z * w);
+    m.m[2][0] =     2 * (x * z) + 2 * (y * w);
+
+    m.m[0][1] =     2 * (x * y) + 2 * (z * w);
+    m.m[1][1] = 1 - 2 * (x * x) - 2 * (z * z);
+    m.m[2][1] =     2 * (y * z) - 2 * (x * w);
+    
+    m.m[0][2] =     2 * (x * z) - 2 * (y * w);
+    m.m[1][2] =     2 * (y * z) + 2 * (x * w);
+    m.m[2][2] = 1 - 2 * (x * x) - 2 * (y * y);
+
+    return m;
+  }
+
 
   const Quaternion Quaternion::ZERO   = Quaternion(0.0f);
   

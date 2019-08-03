@@ -10,8 +10,10 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-#include "nauScene.h"
+
+#include "nauLogger.h"
 #include "nauModule.h"
+#include "nauScene.h"
 
 namespace nauEngineSDK {
 class SceneManager : public Module<SceneManager>
@@ -65,8 +67,8 @@ public:
 
   /**
    * @brief Loads a scene with a given ID
-   * @param 
-   * @return 
+   * @param ID of the Scene in the TO-BE-COMPILED list
+   * @return true if able to load
    *
    */
   bool
@@ -82,7 +84,7 @@ private:
   /**
    * Vector of all scenes loaded in the project
    */
-  Vector<Sptr<Scene>> m_ProjectScenes;
+  Vector<Sptr<Scene>> m_projectScenes;
 
   /**
    * Vector of TO-BE-COMPILED scenes

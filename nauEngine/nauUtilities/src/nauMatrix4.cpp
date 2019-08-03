@@ -65,6 +65,23 @@ namespace nauEngineSDK {
     m[0][3] = a03; m[1][3] = a13; m[2][3] = a23; m[3][3] = a33;
   }
 
+  void
+  Matrix4::setValues(Matrix3 mat3, bool offsetX, bool offsetY) {
+
+    int x = offsetX ? 1 : 0;
+    int y = offsetY ? 1 : 0;
+
+    m[0+x][0+y] = mat3.m[0][0];  m[1+x][0+y] = mat3.m[1][0]; m[2+x][0+y] = mat3.m[2][0];
+    m[0+x][1+y] = mat3.m[0][1];  m[1+x][1+y] = mat3.m[1][1]; m[2+x][1+y] = mat3.m[2][1];
+    m[0+x][2+y] = mat3.m[0][2];  m[1+x][2+y] = mat3.m[1][2]; m[2+x][2+y] = mat3.m[2][2];
+  }
+
+  void
+  Matrix4::setValues(Matrix3 mat3) {
+    m[0][0] = mat3.m[0][0];  m[1][0] = mat3.m[1][0]; m[2][0] = mat3.m[2][0];
+    m[0][1] = mat3.m[0][1];  m[1][1] = mat3.m[1][1]; m[2][1] = mat3.m[2][1];
+    m[0][2] = mat3.m[0][2];  m[1][2] = mat3.m[1][2]; m[2][2] = mat3.m[2][2];
+  }
 
   void
   Matrix4::translate(const float& x, const float& y, const float& z) {

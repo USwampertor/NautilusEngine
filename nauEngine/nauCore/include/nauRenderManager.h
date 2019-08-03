@@ -97,13 +97,15 @@ namespace nauEngineSDK {
 
     float m_light;
 
-    ///Matrices
+    ///Test Matrices
     
     Camera m_mainCamera;
 
     Matrix4 m_world;
 
     Matrix4 m_projection;
+
+    Quaternion m_testQuaternion;
 
     ///Rendering Passes
 

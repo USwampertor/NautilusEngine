@@ -28,6 +28,15 @@ public:
   ~Scene() = default;
 
   /**
+   * @brief Initializes the scene
+   * @param 
+   * @return 
+   *
+   */
+  void
+  init();
+
+  /**
    * @brief 
    * @param 
    * @return 
@@ -54,9 +63,29 @@ public:
   void
   saveScene(String path);
 
+  /**
+   * @brief Sets the name of the scene
+   * @param String name of the scene
+   * @return 
+   *
+   */
+  void
+  setName(String newName);
+
+  /**
+   * @brief Returns the name of the scene
+   * @param 
+   * @return String nameof the scene
+   *
+   */
+  String
+  getName();
+
 private:
 
   SceneGraph* m_sceneGraph = nullptr;
+
+  String m_name;
 
 };
 }

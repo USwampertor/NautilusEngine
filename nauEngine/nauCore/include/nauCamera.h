@@ -10,7 +10,9 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
-#include "nauMatrix4.h"
+
+#include <nauMatrix4.h>
+#include <nauQuaternion.h>
 
 namespace nauEngineSDK {
 

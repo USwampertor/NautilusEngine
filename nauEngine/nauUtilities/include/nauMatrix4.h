@@ -115,8 +115,30 @@ namespace nauEngineSDK{
               float a03, float a13, float a23, float a33);
 
     /**
+     * @brief Sets a Matrix3 inside a Matrix4
+     * @param Matrix 3
+     * @param offset from left to right
+     * @param offset from top to bottom
+     * @return 
+     *
+     */
+    void
+    setValues(Matrix3 mat3, bool offsetX, bool offsetY);
+
+    /**
+     * @brief Sets a Matrix3 inside a Matrix4 in the top left corner
+     * @param Matrix3 m
+     * @return 
+     *
+     */
+    void
+    setValues(Matrix3 mat3);
+
+    /**
      * @brief Translates matrix with floats
-     * @param x offset, y offset, z offset
+     * @param x offset
+     * @param y offset
+     * @param z offset
      * @return 
      *
      */
@@ -125,7 +147,7 @@ namespace nauEngineSDK{
 
     /**
      * @brief Translates matrix with floats
-     * @param x offset, y offset, z offset
+     * @param Vector3 offset position
      * @return
      *
      */
@@ -135,7 +157,9 @@ namespace nauEngineSDK{
 
     /**
      * @brief Scales the object
-     * @param x scale y scale z scale
+     * @param x scale
+     * @param y scale
+     * @param z scale
      * @return 
      *
      */

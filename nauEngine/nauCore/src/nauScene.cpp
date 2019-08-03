@@ -11,6 +11,12 @@
 
 
 namespace nauEngineSDK {
+
+  void
+  Scene::init() {
+
+  }
+
   SceneGraph*
   Scene::getSceneGraph() {
     return m_sceneGraph;
@@ -25,4 +31,17 @@ namespace nauEngineSDK {
   Scene::saveScene(String path) {
 
   }
+
+  String
+  Scene::getName() {
+    return m_name;
+  }
+
+  void
+  Scene::setName(String newName) {
+
+  }
+
+
+
 }

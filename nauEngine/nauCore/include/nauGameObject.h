@@ -12,6 +12,7 @@
 #include "nauComponent.h"
 
 #include <nauMatrix4.h>
+#include <nauQuaternion.h>
 
 namespace nauEngineSDK {
    /**
