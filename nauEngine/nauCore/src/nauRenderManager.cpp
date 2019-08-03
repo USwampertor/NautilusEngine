@@ -136,7 +136,7 @@ namespace nauEngineSDK {
   void
   RenderManager::update() {
     
-    m_testQuaternion.rotateAroundDegrees(1, Vector3::UP);
+    m_testQuaternion.rotateAroundDegrees(40.0f, Vector3::UP);
     m_world.setValues(m_testQuaternion.rotationMatrix());
     //m_world.rotateY(0.0005f);
     

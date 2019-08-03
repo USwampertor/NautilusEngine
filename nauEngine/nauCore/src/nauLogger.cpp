@@ -37,10 +37,10 @@ namespace nauEngineSDK {
     else if (LOGGER_LEVEL::SUCCESS == level) { outputString = LGRSUCCESSSIGN; }
 
     outputString += newEntry; 
-    outputString += " \n ";
 
 #if NAU_COMPILER == NAU_COMPILER_MSVC
     OutputDebugString(newEntry.c_str());
+    OutputDebugString("\n");
 # elif NAU_COMPILER == NAU_COMPILER_GNUC
 #endif
   }

@@ -50,7 +50,7 @@ namespace nauEngineSDK {
     
     float divider = Math::sqr(other.x) + 
                     Math::sqr(other.y) + 
-                    Math::sqr(other.z) + 
+                    Math::sqr(other.z) +
                     Math::sqr(other.w);
 
     return Quaternion((other.w * x - other.x * w - other.y * z + other.z * y) / divider,
@@ -262,7 +262,7 @@ namespace nauEngineSDK {
 
   void
   Quaternion::toNormRotator() {
-    float halfAngle = Math::degToRad(w) * 0.5f;
+    float halfAngle = w * 0.5f;
     x *= Math::sin(halfAngle);
     y *= Math::sin(halfAngle);
     z *= Math::sin(halfAngle);
@@ -396,6 +396,38 @@ namespace nauEngineSDK {
     Quaternion resultZ = qZ * resultY * qInverseZ;
 
     return Vector3(resultZ.x, resultZ.y, resultZ.z);
+  }
+
+  void
+  Quaternion::rotateAroundX(const float& theta) {
+    Quaternion q = Quaternion::RIGHT;
+    q.w = theta;
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+    Quaternion result = q * *this *qInverse;
+  }
+
+  void
+  Quaternion::rotateAroundY(const float& theta) {
+    Quaternion q = Quaternion::UP;
+    q.w = theta;
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+    Quaternion result = q * *this *qInverse;
+  }
+
+  void
+  Quaternion::rotateAroundZ(const float& theta) {
+
+    Quaternion q = Quaternion::FRONT;
+    q.w = theta;
+    q.toNormRotator();
+
+    Quaternion qInverse = q.inversed();
+    Quaternion result = q * *this *qInverse;
+    *this = result;
   }
 
   void

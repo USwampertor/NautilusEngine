@@ -12,6 +12,7 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauModule.h"
+#include <iostream>
 
 #define LGRWARNINGSIGN " !WARNING! "
 #define LGRERROREDSIGN " !!ERROR!! "

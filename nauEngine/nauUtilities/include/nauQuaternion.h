@@ -316,6 +316,33 @@ class NAU_UTILITY_EXPORT Quaternion {
   angularDifferenceDeg(const Quaternion& a, const Quaternion& b);
 
   /**
+   * @brief Rotates around X axis
+   * @param Theta radians
+   * @return 
+   *
+   */
+  void
+  rotateAroundX(const float& theta);
+
+  /**
+   * @brief Rotates around Y axis
+   * @param Theta radians
+   * @return 
+   *
+   */
+  void
+  rotateAroundY(const float& theta);
+
+  /**
+   * @brief Rotates around Z axis
+   * @param Theta radians
+   * @return 
+   *
+   */
+  void
+  rotateAroundZ(const float& theta);
+
+  /**
    * @brief sets the values of the quaternion
    * @param float x
    * @param float y

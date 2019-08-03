@@ -16,6 +16,7 @@
 #include <nauPrerequisitesUtil.h>
 #include <nauVector2.h>
 #include <nauMatrix4.h>
+#include <nauQuaternion.h>
 
 #include <iostream>
 
@@ -42,9 +43,39 @@ struct Testing : public ::testing::Test {
 
 int main(int argc, char **argv)
 {
-  ::testing::InitGoogleTest(&argc,argv);
-  return RUN_ALL_TESTS();
+  int toStop = 0;
+  Matrix4 normalRotation;
+  Matrix4 quaterRotation;
   
+  Quaternion rotator;
+  ::testing::InitGoogleTest(&argc,argv);
+  std::cout << RUN_ALL_TESTS() << std::endl;
+
+
+
+  while (toStop != 1) {
+    system("cls");
+    normalRotation.rotateY(Math::degToRad(10.0f));
+    rotator.rotateAroundY(Math::degToRad(10.0f));
+    quaterRotation.setValues(rotator.rotationMatrix());
+
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        std::cout << normalRotation.m[i][j] << " ";
+      }
+      std::cout << std::endl;
+    }
+
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        std::cout << quaterRotation.m[i][j] << " ";
+      }
+      std::cout << std::endl;
+    }
+
+  }
+  std::cin >> toStop;
+
 }
 #ifdef MARCOTESTING
 TEST_F(Testing, Basic_Types)
