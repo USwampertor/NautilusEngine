@@ -53,6 +53,15 @@ namespace nauEngineSDK {
   }
 
   void
+  Matrix3::setValues(float v00, float v10, float v20,
+                     float v01, float v11, float v21,
+                     float v02, float v12, float v22) {
+    m[0][0] = v00; m[1][0] = v10; m[2][0] = v20;
+    m[0][1] = v01; m[1][1] = v11; m[2][1] = v21;
+    m[0][2] = v02; m[1][2] = v12; m[2][2] = v22;
+  }
+
+  void
   Matrix3::inverse() {
     float det = this->determinant();
     if (det == 0.0f) {

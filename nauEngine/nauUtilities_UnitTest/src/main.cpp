@@ -51,35 +51,11 @@ int main(int argc, char **argv)
   ::testing::InitGoogleTest(&argc,argv);
   std::cout << RUN_ALL_TESTS() << std::endl;
 
-
-
-  while (toStop != 1) {
-    system("cls");
-    normalRotation.rotateY(Math::degToRad(10.0f));
-    rotator.rotateAroundY(Math::degToRad(10.0f));
-    quaterRotation.setValues(rotator.rotationMatrix());
-
-    for (int i = 0; i < 4; ++i) {
-      for (int j = 0; j < 4; ++j) {
-        std::cout << normalRotation.m[i][j] << " ";
-      }
-      std::cout << std::endl;
-    }
-
-    for (int i = 0; i < 4; ++i) {
-      for (int j = 0; j < 4; ++j) {
-        std::cout << quaterRotation.m[i][j] << " ";
-      }
-      std::cout << std::endl;
-    }
-
-  }
   std::cin >> toStop;
 
 }
 #ifdef MARCOTESTING
-TEST_F(Testing, Basic_Types)
-{
+TEST_F(Testing, Basic_Types) {
   EXPECT_TRUE(sizeof(int8)   == 1);
   EXPECT_TRUE(sizeof(int16)  == 2);
   EXPECT_TRUE(sizeof(int32)  == 4);
@@ -97,8 +73,7 @@ TEST_F(Testing, Basic_Types)
   fails += ::testing::Test::HasFailure();
 }
 
-TEST_F(Testing, Basic_Types_Limits)
-{
+TEST_F(Testing, Basic_Types_Limits) {
   EXPECT_TRUE(static_cast<uint8>(-1)  == std::numeric_limits<uint8>::max());
   EXPECT_TRUE(static_cast<uint16>(-1) == std::numeric_limits<uint16>::max());
   EXPECT_TRUE(static_cast<uint32>(-1) == std::numeric_limits<uint32>::max());
@@ -106,8 +81,7 @@ TEST_F(Testing, Basic_Types_Limits)
   fails += ::testing::Test::HasFailure();
 }
 
-TEST_F(Testing, Math_Constants)
-{
+TEST_F(Testing, Math_Constants) {
   EXPECT_FLOAT_EQ(Math::PI, 3.141592f);
   EXPECT_FLOAT_EQ(Math::DEGREE, 57.295779f);
   EXPECT_NEAR(Math::RADIAN, 0.017453, 0.00001);
@@ -115,8 +89,7 @@ TEST_F(Testing, Math_Constants)
   fails += ::testing::Test::HasFailure();
 }
 
-TEST_F(Testing, Math_Arithmetics)
-{
+TEST_F(Testing, Math_Arithmetics) {
   EXPECT_EQ(Math::pow(3, 2), 9);
   EXPECT_EQ(Math::cos(0), 1);
   EXPECT_EQ(Math::sin(0), 0);
@@ -128,8 +101,7 @@ TEST_F(Testing, Math_Arithmetics)
   fails += ::testing::Test::HasFailure();
 }
 
-TEST_F(Testing, Matrices)
-{
+TEST_F(Testing, Matrices) {
   Matrix4 nautilusMatrix(0);
   Matrix4 nautilusMatrix2(0);
   Matrix4 comparing(0);
@@ -179,6 +151,62 @@ TEST_F(Testing, Matrices)
   }
 
 
+}
+
+TEST_F(Testing, Quaternions) {
+
+  Vector3 v;
+  Vector3 vPlacebo;
+  Quaternion q;
+  Quaternion q2;
+  Quaternion qPlacebo;
+
+  Matrix3 m;
+  Matrix3 mPlacebo;
+
+  vPlacebo = { 75.0f, 20.0f, 32.0f };
+  qPlacebo = { 0.707f, 0.0f, 0.0f, 0.707f };
+  mPlacebo.setValues(.79f, -0.49f, 0.34f, 0.41f, 0.044f, -0.90f, 0.43f, 0.86f, 0.24f);
+
+  q.setEulerDegrees(90, 0, 0);
+
+  for (int i = 0; i < 4; ++i) {
+    std::cout<< i << ": " << q[i] << " <----> " << qPlacebo[i] << std::endl;
+  }
+
+
+  std::cout << std::endl;
+
+  q.setValues(0.614f, -0.033f, 0.317f, 0.722f);
+
+  v = q.toEulerDegrees();
+
+  for (int i = 0; i < 3; ++i) {
+    std::cout << i << ": " << v[i] << " <----> " << vPlacebo[i] << std::endl;
+  }
+
+  std::cout << std::endl;
+
+  m = q.rotationMatrix();
+
+  for (uint32_t i = 0; i < 3; ++i) {
+    for (uint32_t j = 0; j < 3; ++j) {
+      std::cout << i << j << ": " << m.m[i][j] << " <----> " << mPlacebo.m[i][j] << std::endl;
+    }
+  }
+
+  std::cout << std::endl;
+
+  q2.setValues(2.0f, 3.0f, 4.0f, 1.0f);
+  q *= q2;
+
+  qPlacebo.setValues(-3.294, -2.158, 3.796, 0.248);
+
+  for (int i = 0; i < 4; ++i) {
+    std::cout << i << ": " << q[i] << " <----> " << qPlacebo[i] << std::endl;
+  }
+
+  std::cout << std::endl;
 }
 
 #else

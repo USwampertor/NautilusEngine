@@ -98,6 +98,20 @@ namespace nauEngineSDK {
     setValues(float value);
 
     /**
+     * @brief Sets the values inside the matrix
+     * @param This goes column mayor like this:
+     *        | v00 | v10 | v20 |
+     *        | v01 | v11 | v21 |
+     *        | v02 | v12 | v22 |
+     * @return 
+     *
+     */
+    void
+    setValues(float v00, float v10, float v20, 
+              float v01, float v11, float v21, 
+              float v02, float v12, float v22);
+
+    /**
      * @brief gets the inverse of the matrix (if possible)
      * @param
      * @return

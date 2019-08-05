@@ -254,19 +254,25 @@ namespace nauEngineSDK {
   Quaternion
   Quaternion::NormRotator() {
 
-    float halfAngle = Math::degToRad(w) * 0.5f;
+    float halfAngle = w * 0.5f;
     Vector3 imaginary = { x,y,z };
 
-    return Quaternion(w * Math::cos(halfAngle), imaginary * Math::sin(halfAngle));
+    return Quaternion(w * Math::cos(halfAngle), 
+                      imaginary.normalized() * Math::sin(halfAngle));
   }
 
   void
   Quaternion::toNormRotator() {
     float halfAngle = w * 0.5f;
-    x *= Math::sin(halfAngle);
-    y *= Math::sin(halfAngle);
-    z *= Math::sin(halfAngle);
-    w *= Math::cos(halfAngle);
+    Vector3 imaginary(x, y, z);
+    imaginary.normalize();
+
+    w = Math::cos(halfAngle);
+    imaginary *= Math::sin(halfAngle);
+
+    x = imaginary.x;
+    y = imaginary.y;
+    z = imaginary.z;
   }
 
   Quaternion
@@ -311,20 +317,6 @@ namespace nauEngineSDK {
   }
 
   void
-  Quaternion::rotateAroundDegrees(const float& theta, Vector3 axis) {
-    Quaternion p = *this;
-    Vector3 axisToRotate = axis.normalized();
-    Quaternion q = { Math::degToRad(theta), axisToRotate };
-
-    q.toNormRotator();
-
-    Quaternion qInverse = q.inversed();
-
-    Quaternion result = q * p * qInverse;
-    *this = result;
-  }
-
-  void
   Quaternion::rotateAroundRadians(const float& theta, Vector3 axis) {
     Quaternion p = *this;
     Vector3 axisToRotate = axis.normalized();
@@ -338,18 +330,16 @@ namespace nauEngineSDK {
     *this = result;
   }
 
+  void
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 axis) {
+    float radians = Math::degToRad(theta);
+    rotateAroundRadians(radians, axis);
+  }
+
   Vector3
   Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis) {
-    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
-    Vector3 axisToRotate = axis.normalized();
-    Quaternion q = { Math::degToRad(theta),axisToRotate };
-
-    q.toNormRotator();
-
-    Quaternion qInverse = q.inversed();
-
-    Quaternion result = q * p * qInverse;
-    return Vector3(result.x, result.y, result.z);
+    float radians = Math::radToDeg(theta);
+    return rotateAroundRadians(radians, toRotate, axis);
   }
 
   Vector3
@@ -377,25 +367,10 @@ namespace nauEngineSDK {
 
   Vector3
   Quaternion::rotateEulerDegrees(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
-    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
-
-    Quaternion qX = { Math::degToRad(xAngle), Vector3::RIGHT };
-    Quaternion qY = { Math::degToRad(yAngle), Vector3::UP };
-    Quaternion qZ = { Math::degToRad(zAngle), Vector3::FRONT };
-  
-    qX.toNormRotator();
-    qY.toNormRotator();
-    qZ.toNormRotator();
-
-    Quaternion qInverseX = qX.inversed();
-    Quaternion qInverseY = qY.inversed();
-    Quaternion qInverseZ = qZ.inversed();
-
-    Quaternion resultX = qX * p       * qInverseX;
-    Quaternion resultY = qY * resultX * qInverseY;
-    Quaternion resultZ = qZ * resultY * qInverseZ;
-
-    return Vector3(resultZ.x, resultZ.y, resultZ.z);
+    return rotateEulerRadians(toRotate,
+                              Math::degToRad(xAngle), 
+                              Math::degToRad(yAngle), 
+                              Math::degToRad(zAngle));
   }
 
   void
@@ -431,97 +406,58 @@ namespace nauEngineSDK {
   }
 
   void
-  Quaternion::setEulerDegrees(float newX, float newY, float newZ) {
-    newX = Math::degToRad(newX * 0.5f);
-    newY = Math::degToRad(newY * 0.5f);
-    newZ = Math::degToRad(newZ * 0.5f);
-  
-    float sinX = Math::sin(newX);
-    float sinY = Math::sin(newY);
-    float sinZ = Math::sin(newZ);
+  Quaternion::setEulerRadians(float newX, float newY, float newZ) {
 
-    float cosX = Math::cos(newX);
-    float cosY = Math::cos(newY);
-    float cosZ = Math::cos(newZ);
+    float sinX = Math::sin(newX * 0.5f);
+    float sinY = Math::sin(newY * 0.5f);
+    float sinZ = Math::sin(newZ * 0.5f);
 
-    w = (cosX * cosY * cosZ) + (sinX + sinY + sinZ);
-    x = (sinX * cosY * cosZ) - (cosX + sinY + sinZ);
-    y = (sinX * cosY * sinZ) + (cosX + sinY + cosZ);
-    z = (cosX * cosY * sinZ) - (sinX + sinY + cosZ);
+    float cosX = Math::cos(newX * 0.5f);
+    float cosY = Math::cos(newY * 0.5f);
+    float cosZ = Math::cos(newZ * 0.5f);
+
+    w = (cosX * cosY * cosZ) + (sinX * sinY * sinZ);
+    x = (sinX * cosY * cosZ) - (cosX * sinY * sinZ);
+    y = (cosX * sinY * cosZ) + (sinX * cosY * sinZ);
+    z = (cosX * cosY * sinZ) - (sinX * sinY * cosZ);
   }
 
   void
-  Quaternion::setEulerRadians(float newX, float newY, float newZ) {
-    newX *= 0.5f;
-    newY *= 0.5f;
-    newZ *= 0.5f;
-
-    float sinX = Math::sin(newX);
-    float sinY = Math::sin(newY);
-    float sinZ = Math::sin(newZ);
-
-    float cosX = Math::cos(newX);
-    float cosY = Math::cos(newY);
-    float cosZ = Math::cos(newZ);
-
-    w = (cosX * cosY * cosZ) + (sinX + sinY + sinZ);
-    x = (sinX * cosY * cosZ) - (cosX + sinY + sinZ);
-    y = (sinX * cosY * sinZ) + (cosX + sinY + cosZ);
-    z = (cosX * cosY * sinZ) - (sinX + sinY + cosZ);
+  Quaternion::setEulerDegrees(float newX, float newY, float newZ) {
+    setEulerRadians(Math::degToRad(newX), 
+                    Math::degToRad(newY), 
+                    Math::degToRad(newZ));
+    
   }
 
   Vector3
   Quaternion::toEulerDegrees() {
 
 
-    Vector3 angles;
-    
-    angles.y = Math::radToDeg(Math::asin(2.0f * (x * y + z * w)));
-
-    //North pole axis
-    if (Math::isNearSame(x * y + z * w, 0.5f)) {
-      angles.x = Math::radToDeg(2 * Math::atan2(x, w));
-      angles.z = 0.0f;
-    }
-    //South Pole axis
-    else if (Math::isNearSame(x * y + z * w, -0.5f)) {
-      angles.x = Math::radToDeg(2 * Math::atan2(x, w));
-      angles.z = 0.0f;
-    }
-    //No troubles
-    else {
-      angles.z = Math::radToDeg(Math::atan2(2.0f * (w * y - x * z),
-                                            1.0f - 2.0f * (y * y + z * z)));
-      angles.x = Math::radToDeg(Math::atan2(2.0f * (w * x - y * z),
-                                            1.0f - 2.0f * (x * x + y * y)));
-    }
-    return angles;
+    Vector3 v = this->toEulerRadians();
+    return Vector3(Math::radToDeg(v.x), 
+                   Math::radToDeg(v.y), 
+                   Math::radToDeg(v.z));
   }
 
   Vector3
   Quaternion::toEulerRadians() {
-    Vector3 angles;
     
-    angles.y = Math::asin(2.0f * (x * y + z * w));
+    Quaternion q = this->normalized();
 
-    //North pole axis
-    if (Math::isNearSame(x * y + z * w, 0.5f)) {
-      angles.x = 2 * Math::atan2(x, w);
-      angles.z = 0.0f;
-    }
-    //South Pole axis
-    else if (Math::isNearSame(x * y + z * w, -0.5f)) {
-      angles.x = 2 * Math::atan2(x, w);
-      angles.z = 0.0f;
-    }
-    //No troubles
-    else {
-      angles.z = Math::atan2(2.0f * (w * y - x * z),
-                             1.0f - 2.0f * (y * y + z * z));
-      angles.x = Math::atan2(2.0f * (w * x - y * z),
-                             1.0f - 2.0f * (x * x + y * y));
-    }
-    return angles;
+    Vector3 v;
+    
+    
+    v.x = Math::atan2(2 * ((q.w * q.x) + (q.y * q.z)),
+                      1 - (2 * (Math::sqr(q.x) + Math::sqr(q.y))));
+    
+    v.y = Math::asin(2 * (((q.w*q.y) - (q.x * q.z))));
+    
+    v.z = Math::atan2(2 * ((q.w*q.z) + (q.x*q.y)),
+                      1 - (2 * (Math::sqr(q.y) + Math::sqr(q.z))));
+    
+    return v;
+
   }
 
   Matrix3
