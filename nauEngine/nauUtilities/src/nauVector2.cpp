@@ -307,6 +307,19 @@ namespace nauEngineSDK {
     return false;
   }
 
+  String
+  Vector2::toString() {
+    String output;
+
+    output += "( ";
+    output += std::to_string(Math::roundp(x, 2));
+    output += ", ";
+    output += std::to_string(Math::roundp(y, 2));
+    output += " )";
+
+    return output;
+  }
+
   const Vector2 Vector2::ZERO = Vector2(0.0f, 0.0f);
   
   const Vector2 Vector2::ONES = Vector2(1.0f, 1.0f);

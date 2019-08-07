@@ -44,10 +44,7 @@ struct Testing : public ::testing::Test {
 int main(int argc, char **argv)
 {
   int toStop = 0;
-  Matrix4 normalRotation;
-  Matrix4 quaterRotation;
   
-  Quaternion rotator;
   ::testing::InitGoogleTest(&argc,argv);
   std::cout << RUN_ALL_TESTS() << std::endl;
 
@@ -101,6 +98,53 @@ TEST_F(Testing, Math_Arithmetics) {
   fails += ::testing::Test::HasFailure();
 }
 
+TEST_F(Testing, Vector_2) {
+  Vector2 a;
+  Vector2 b;
+  Vector2 r;
+  Vector2 t;
+  float f;
+
+}
+
+TEST_F(Testing, Vector_3) {
+  Vector3 a;
+  Vector3 b;
+  Vector3 r;
+  Vector3 t;
+  float f;
+
+  a.setValues(1, 0, 3);
+  b.setValues(2, 4, 5);
+  r = a + b;
+
+  t.setValues(3, 4, 8);
+
+  for (int i = 0; i < 3; ++i) {
+    EXPECT_FLOAT_EQ(r[i], t[i]);
+  }
+
+  f = Vector3::dot(a, b);
+
+  EXPECT_FLOAT_EQ(f, 17.0f);
+
+  r = Vector3::cross(a, b);
+  t.setValues(-12, 1, 4);
+
+  for (int i = 0; i < 3; ++i) {
+    EXPECT_FLOAT_EQ(r[i], t[i]);
+  }
+
+  r = a * 2;
+  t.setValues(2, 0, 6);
+
+  for (int i = 0; i < 3; ++i) {
+    EXPECT_FLOAT_EQ(r[i], t[i]);
+  }
+
+  std::cout << t.toString() << std::endl;
+}
+
 TEST_F(Testing, Matrices) {
   Matrix4 nautilusMatrix(0);
   Matrix4 nautilusMatrix2(0);
@@ -150,12 +194,13 @@ TEST_F(Testing, Matrices) {
     }
   }
 
-
 }
 
 TEST_F(Testing, Quaternions) {
 
   Vector3 v;
+  Vector3 a;
+  Vector3 r;
   Vector3 vPlacebo;
   Quaternion q;
   Quaternion q2;
@@ -170,43 +215,45 @@ TEST_F(Testing, Quaternions) {
 
   q.setEulerDegrees(90, 0, 0);
 
-  for (int i = 0; i < 4; ++i) {
-    std::cout<< i << ": " << q[i] << " <----> " << qPlacebo[i] << std::endl;
-  }
-
-
+  std::cout << q.toString()        << std::endl;
+  std::cout << qPlacebo.toString() << std::endl;
   std::cout << std::endl;
 
+
   q.setValues(0.614f, -0.033f, 0.317f, 0.722f);
-
-  v = q.toEulerDegrees();
-
-  for (int i = 0; i < 3; ++i) {
-    std::cout << i << ": " << v[i] << " <----> " << vPlacebo[i] << std::endl;
-  }
 
   std::cout << std::endl;
 
   m = q.rotationMatrix();
 
-  for (uint32_t i = 0; i < 3; ++i) {
-    for (uint32_t j = 0; j < 3; ++j) {
-      std::cout << i << j << ": " << m.m[i][j] << " <----> " << mPlacebo.m[i][j] << std::endl;
-    }
-  }
-
+  std::cout << m.toString()        << std::endl;
+  std::cout << mPlacebo.toString() << std::endl;
   std::cout << std::endl;
 
-  q2.setValues(2.0f, 3.0f, 4.0f, 1.0f);
-  q *= q2;
 
-  qPlacebo.setValues(-3.294, -2.158, 3.796, 0.248);
+  q.setValues(12, 30, 24, -60);
 
-  for (int i = 0; i < 4; ++i) {
-    std::cout << i << ": " << q[i] << " <----> " << qPlacebo[i] << std::endl;
-  }
+  q2.setValues(-2, -3, -4, 1);
+ 
+  Quaternion q3 = q * q2;
 
+  qPlacebo.setValues(84, 210, 288, 150);
+
+  std::cout << q3.toString()       << std::endl;
+  std::cout << qPlacebo.toString() << std::endl;
   std::cout << std::endl;
+
+
+  v = Vector3::UP;
+  a = Vector3::RIGHT;
+
+  q.rotateAroundDegrees(180, q);
+  qPlacebo.setValues(12, 30, 24, 60);
+
+  std::cout << q.toString()        << std::endl;
+  std::cout << qPlacebo.toString() << std::endl;
+  std::cout << std::endl;
+
 }
 
 #else

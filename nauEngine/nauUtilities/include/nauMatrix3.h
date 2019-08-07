@@ -228,6 +228,8 @@ namespace nauEngineSDK {
     Matrix3
     operator==(const Matrix3& b);
 
+    String
+    toString();
 
     /**
      * Member declaration

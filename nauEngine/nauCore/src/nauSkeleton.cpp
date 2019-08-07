@@ -13,7 +13,7 @@
 namespace nauEngineSDK {
   
   Skeleton::Skeleton(const Skeleton& other) {
-
+    *this = other;
   }
 
   bool

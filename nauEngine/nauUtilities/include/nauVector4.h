@@ -484,6 +484,15 @@ namespace nauEngineSDK {
     isSame(const Vector4& a, const Vector4& b, float error = Math::SMALLNUMBER);
 
     /**
+     * @brief Returns the vector as a printable string
+     * @param 
+     * @return A string with the values of the vector
+     *
+     */
+    String 
+    ToString();
+
+    /**
      * static const declaration
      */
 

@@ -461,6 +461,15 @@ namespace nauEngineSDK {
     isSame(const Vector2& a, const Vector2& b, float error = Math::SMALLNUMBER);
 
     /**
+     * @brief Returns the vector as a string
+     * @param 
+     * @return String with the values of the vector
+     *
+     */
+    String
+    toString();
+
+    /**
      * static const
      */
 

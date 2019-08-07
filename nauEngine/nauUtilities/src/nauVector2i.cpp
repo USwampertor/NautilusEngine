@@ -275,6 +275,20 @@ namespace nauEngineSDK {
     return false;
   }
 
+  String
+  Vector2i::toString() {
+    
+    String output;
+
+    output += "( ";
+    output += std::to_string(x);
+    output += ", ";
+    output += std::to_string(y);
+    output += " )";
+
+    return output;
+  }
+
   const Vector2i Vector2i::ZERO = Vector2i(0, 0);
 
   const Vector2i Vector2i::ONES = Vector2i(1, 1);

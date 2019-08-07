@@ -18,8 +18,8 @@ namespace nauEngineSDK {
 
   uint32
   SceneManager::getActiveSceneID() {
-    for (int i = 0; i < m_projectScenes.size(); ++i) {
-      if (m_projectScenes[i] == m_activeScene) { return i; }
+    for (uint32 i = 0; i < m_compilableScenes.size(); ++i) {
+      if (m_compilableScenes[i] == m_activeScene) { return i; }
     }
 #if NAU_DEBUG_MODE 
     Logger::instance().toIDE("Active scene is not in the build batch scenes!!!!", 
@@ -27,7 +27,7 @@ namespace nauEngineSDK {
 #endif
     Logger::instance().toConsole("Active scene is not in the build batch scenes!!!!", 
                                  LOGGER_LEVEL::ERRORED);
-    return -1;
+    return 0;
   }
 
   String
@@ -38,9 +38,9 @@ namespace nauEngineSDK {
   bool
   SceneManager::loadScene(uint32 ID) {
 
-    NAU_ASSERT(ID < m_projectScenes.size() && "ID is way bigger than the IDs registered!");
+    NAU_ASSERT(ID < m_compilableScenes.size() && "ID is way bigger than the IDs registered!");
 
-    m_activeScene = m_projectScenes[ID];
+    m_activeScene = m_compilableScenes[ID];
     m_activeScene->init();
     return true;
   }
@@ -51,8 +51,8 @@ namespace nauEngineSDK {
       if (name == scene->getName()) { 
         m_activeScene = scene; 
         m_activeScene->init();
+        return true;
       }
-      return true;
     }
 #if NAU_DEBUG_MODE 
     Logger::instance().toIDE("There's no scene with the given name!!!!", 

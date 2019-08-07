@@ -330,6 +330,21 @@ namespace nauEngineSDK {
            Math::abs(a.z - b.z) <= error;
   }
 
+  String
+  Vector3::toString() {
+
+    String output;
+
+    output += "( ";
+    output += std::to_string(Math::roundp(x, 2));
+    output += ", ";
+    output += std::to_string(Math::roundp(y, 2));
+    output += ", ";
+    output += std::to_string(Math::roundp(z, 2));
+    output += " )";
+
+    return output;
+  }
   
   const Vector3 Vector3::ZERO   = Vector3(0.0f, 0.0f, 0.0f);
 

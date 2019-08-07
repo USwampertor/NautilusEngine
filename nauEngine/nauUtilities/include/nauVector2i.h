@@ -426,6 +426,15 @@ namespace nauEngineSDK {
     isSame(const Vector2i& a, const Vector2i& b);
 
     /**
+     * @brief Returns the vector as a printable string
+     * @param 
+     * @return 
+     *
+     */
+    String
+    toString();
+
+    /**
      * static const
      */
 

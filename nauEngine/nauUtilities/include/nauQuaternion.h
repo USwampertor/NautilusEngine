@@ -505,18 +505,36 @@ class NAU_UTILITY_EXPORT Quaternion {
    * @return
    *
    */
-  void
-  rotateAroundDegrees(const float& theta, Vector3 axis);
+  Vector3
+  rotateAroundDegrees(const float& theta, Vector3 toRotate);
 
   /**
    * @brief Rotates THIS quaternion over an axis
    * @param theta Radians to rotate
-   * @param axis over which it will rotate
+   * @param point to rotate
+   * @return 
+   *
+   */
+  Vector3
+  rotateAroundRadians(const float& theta, Vector3 toRotate);
+
+  /**
+   * @brief 
+   * @param 
    * @return 
    *
    */
   void
-  rotateAroundRadians(const float& theta, Vector3 axis);
+  rotateAroundRadians(const float& theta, Quaternion axis);
+
+  /**
+   * @brief
+   * @param
+   * @return
+   *
+   */
+  void
+  rotateAroundDegrees(const float& theta, Quaternion axis);
 
   /**
    * @brief Rotates an amount of rad angles around a given axis
@@ -601,6 +619,15 @@ class NAU_UTILITY_EXPORT Quaternion {
    */
   Matrix3
   rotationMatrix();
+
+  /**
+   * @brief returns the quaternion as a string
+   * @param 
+   * @return 
+   *
+   */
+  String
+  toString();
 
 #ifdef PURE
 # undef PURE

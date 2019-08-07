@@ -60,9 +60,9 @@ namespace nauEngineSDK {
     virtual void*
     getRenderTarget() = 0;
 
-    float m_width;
+    uint32 m_width;
 
-    float m_height;
+    uint32 m_height;
 
   };
   

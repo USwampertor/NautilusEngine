@@ -43,7 +43,7 @@ namespace nauEngineSDK {
   void*
   RenderTargetViewDX::getRendereableTexture(Device* pDevice) {
     
-    D3D11_RENDER_TARGET_VIEW_DESC* targetDesc;
+    D3D11_RENDER_TARGET_VIEW_DESC* targetDesc = new D3D11_RENDER_TARGET_VIEW_DESC;
     m_pRenderTargetView->GetDesc(targetDesc);
 
 

@@ -349,6 +349,14 @@ namespace nauEngineSDK{
     bool
     operator==(const Matrix4& b);
    
+    /**
+     * @brief returns the matrix as a string
+     * @param 
+     * @return the matrix as a 4 x 4 string object
+     *
+     */
+    String
+    toString();
 
     /**
      * Member declaration

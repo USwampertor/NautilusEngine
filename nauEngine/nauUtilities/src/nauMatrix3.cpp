@@ -212,4 +212,35 @@ namespace nauEngineSDK {
     return true;
   }
 
+  String
+  Matrix3::toString() {
+    String output;
+
+    output += "( ";
+    output += std::to_string(Math::roundp(m[0][0], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[1][0], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[2][0], 2));
+    output += "\t\t) \n";
+
+    output += "( ";
+    output += std::to_string(Math::roundp(m[0][1], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[1][1], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[2][1], 2));
+    output += "\t\t) \n";
+
+    output += "( ";
+    output += std::to_string(Math::roundp(m[0][2], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[1][2], 2));
+    output += ",\t\t";
+    output += std::to_string(Math::roundp(m[2][2], 2));
+    output += "\t\t) \n";
+
+    return output;
+  }
+
 }

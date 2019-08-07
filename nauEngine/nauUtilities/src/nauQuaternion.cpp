@@ -35,14 +35,24 @@ namespace nauEngineSDK {
   Quaternion
   Quaternion::operator*(const Quaternion& other) const {
     
-    Vector3 oldImaginary = Vector3(x, y, z);
-    Vector3 otherImaginary = Vector3(other.x, other.y, other.z);
-    float nW = w * other.w - (oldImaginary | otherImaginary);
+    return Quaternion(w * other.x + x * other.w + y * other.z - z * other.y,
+                      w * other.y - x * other.z + y * other.w + z * other.x,
+                      w * other.z + x * other.y - y * other.x + z * other.w,
+                      w * other.w - x * other.x - y * other.y - z * other.z);
 
-    Vector3 newImaginary = otherImaginary * w + 
-                           oldImaginary * other.w + 
-                           oldImaginary ^ otherImaginary;
-    return Quaternion(nW, newImaginary);
+
+/*
+//     Vector3 imaginary = { x,y,z };
+//     Vector3 otherImag = { other.x,other.y,other.z };
+//     float dot = Vector3::dot(imaginary, otherImag);
+//     Vector3 cross = Vector3::cross(imaginary, otherImag);
+//     float nW = w * other.w - dot;
+// 
+//     Vector3 newImagin = otherImag * w + imaginary * other.w + cross;
+// 
+//     return Quaternion(nW, newImagin);
+*/
+
   }
   
   Quaternion
@@ -124,17 +134,27 @@ namespace nauEngineSDK {
   
   Quaternion&
   Quaternion::operator*=(const Quaternion& other) {
-    Vector3 oldImaginary = Vector3(x, y, z);
     
-    Vector3 otherImaginary = Vector3(other.x, other.y, other.z);
-    
-    float nW = w * other.w - (oldImaginary | otherImaginary);
+    Quaternion newQuat;
+    newQuat.w = w * other.w - x * other.x - y * other.y - z * other.z;
+    newQuat.x = w * other.x + x * other.w + y * other.z - z * other.y;
+    newQuat.y = w * other.y - x * other.z + y * other.w + z * other.x;
+    newQuat.z = w * other.z + x * other.y - y * other.x + z * other.w;
 
-    Vector3 newImaginary = otherImaginary * w + 
-                           oldImaginary * other.w + 
-                           oldImaginary ^ otherImaginary;
+    *this = newQuat;
 
-    *this = Quaternion(nW, newImaginary);
+/*
+//     Vector3 imaginary = { x,y,z };
+//     Vector3 otherImag = { other.x,other.y,other.z };
+//     float dot = Vector3::dot(imaginary, otherImag);
+//     Vector3 cross = Vector3::cross(imaginary, otherImag);
+//     float nW = w * other.w - dot;
+// 
+//     Vector3 newImagin = otherImag * w + imaginary * other.w + cross;
+// 
+//     *this = Quaternion(nW, newImagin);
+*/
+
     return *this;
   }
   
@@ -304,36 +324,58 @@ namespace nauEngineSDK {
   
   Vector3
   Quaternion::rotateAroundRadians(const float& theta, Vector3 toRotate, Vector3 axis) {
+    
+    Quaternion q = { 0,axis };
+    if (axis.magnitude() != 1.0f) {
+      q.normalize();
+    }
+
+    q.w = theta;
+
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
-    Vector3 axisToRotate = axis.normalized();
-    Quaternion q = { theta,axisToRotate };
-
-    q.toNormRotator();
-
+    
     Quaternion qInverse = q.inversed();
 
     Quaternion result = q * p * qInverse;
+
+    return Vector3(result.x, result.y, result.z);
+  }
+
+  Vector3
+  Quaternion::rotateAroundRadians(const float& theta, Vector3 toRotate) {
+    
+    Quaternion q = *this;
+    if (q.magnitude() != 1.0f) {
+      q.normalize();
+    }
+
+    q.w = theta;
+
+    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+    
+    Quaternion qInverse = q.inversed();
+
+    Quaternion result = q * p * qInverse;
+
     return Vector3(result.x, result.y, result.z);
   }
 
   void
-  Quaternion::rotateAroundRadians(const float& theta, Vector3 axis) {
+  Quaternion::rotateAroundRadians(const float& theta, Quaternion axis) {
+    Quaternion q = axis;
+
+    if (q.magnitude() != 1.0f) { q.normalize(); }
+    q.w = theta;
+
     Quaternion p = *this;
-    Vector3 axisToRotate = axis.normalized();
-    Quaternion q = { theta, axisToRotate };
-
-    q.toNormRotator();
-
-    Quaternion qInverse = q.inversed();
-
-    Quaternion result = q * p * qInverse;
-    *this = result;
+    Quaternion qInversed = q.inversed();
+    *this = q * p *qInversed;
   }
 
-  void
-  Quaternion::rotateAroundDegrees(const float& theta, Vector3 axis) {
+  Vector3
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate) {
     float radians = Math::degToRad(theta);
-    rotateAroundRadians(radians, axis);
+    return rotateAroundRadians(radians, toRotate);
   }
 
   Vector3
@@ -342,27 +384,25 @@ namespace nauEngineSDK {
     return rotateAroundRadians(radians, toRotate, axis);
   }
 
+  void
+  Quaternion::rotateAroundDegrees(const float& theta, Quaternion axis) {
+    float radians = Math::degToRad(theta);
+    rotateAroundRadians(radians, axis);
+  }
+  
   Vector3
   Quaternion::rotateEulerRadians(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
-    Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
+    
+    Quaternion q;
+    q.setEulerRadians(xAngle, yAngle, zAngle);
 
-    Quaternion qX = { xAngle, Vector3::RIGHT };
-    Quaternion qY = { yAngle, Vector3::UP };
-    Quaternion qZ = { zAngle, Vector3::FRONT };
-  
-    qX.toNormRotator();
-    qY.toNormRotator();
-    qZ.toNormRotator();
+    Quaternion qInverse = q.inversed();
 
-    Quaternion qInverseX = qX.inversed();
-    Quaternion qInverseY = qY.inversed();
-    Quaternion qInverseZ = qZ.inversed();
+    Quaternion p = { 0,toRotate };
 
-    Quaternion resultX = qX * p       * qInverseX;
-    Quaternion resultY = qY * resultX * qInverseY;
-    Quaternion resultZ = qZ * resultY * qInverseZ;
+    Quaternion r = q * p * qInverse;
 
-    return Vector3(resultZ.x, resultZ.y, resultZ.z);
+    return Vector3(r.x, r.y, r.z);
   }
 
   Vector3
@@ -377,20 +417,24 @@ namespace nauEngineSDK {
   Quaternion::rotateAroundX(const float& theta) {
     Quaternion q = Quaternion::RIGHT;
     q.w = theta;
-    q.toNormRotator();
+
+    Quaternion p = *this;
 
     Quaternion qInverse = q.inversed();
-    Quaternion result = q * *this *qInverse;
+
+    *this = q * p *qInverse;
   }
 
   void
   Quaternion::rotateAroundY(const float& theta) {
     Quaternion q = Quaternion::UP;
     q.w = theta;
-    q.toNormRotator();
+
+    Quaternion p = *this;
 
     Quaternion qInverse = q.inversed();
-    Quaternion result = q * *this *qInverse;
+
+    *this = q * p *qInverse;
   }
 
   void
@@ -398,11 +442,12 @@ namespace nauEngineSDK {
 
     Quaternion q = Quaternion::FRONT;
     q.w = theta;
-    q.toNormRotator();
+
+    Quaternion p = *this;
 
     Quaternion qInverse = q.inversed();
-    Quaternion result = q * *this *qInverse;
-    *this = result;
+
+    *this = q * p *qInverse;
   }
 
   void
@@ -432,8 +477,6 @@ namespace nauEngineSDK {
 
   Vector3
   Quaternion::toEulerDegrees() {
-
-
     Vector3 v = this->toEulerRadians();
     return Vector3(Math::radToDeg(v.x), 
                    Math::radToDeg(v.y), 
@@ -442,22 +485,8 @@ namespace nauEngineSDK {
 
   Vector3
   Quaternion::toEulerRadians() {
-    
-    Quaternion q = this->normalized();
-
-    Vector3 v;
-    
-    
-    v.x = Math::atan2(2 * ((q.w * q.x) + (q.y * q.z)),
-                      1 - (2 * (Math::sqr(q.x) + Math::sqr(q.y))));
-    
-    v.y = Math::asin(2 * (((q.w*q.y) - (q.x * q.z))));
-    
-    v.z = Math::atan2(2 * ((q.w*q.z) + (q.x*q.y)),
-                      1 - (2 * (Math::sqr(q.y) + Math::sqr(q.z))));
-    
+    Vector3 v(0,0,0);
     return v;
-
   }
 
   Matrix3
@@ -480,6 +509,23 @@ namespace nauEngineSDK {
     return m;
   }
 
+  String
+  Quaternion::toString() {
+
+    String output;
+
+    output += "( ";
+    output += std::to_string(Math::roundp(x, 2));
+    output += " i, ";
+    output += std::to_string(Math::roundp(y, 2));
+    output += " j, ";
+    output += std::to_string(Math::roundp(z, 2));
+    output += " k, ";
+    output += std::to_string(Math::roundp(w, 2));
+    output += " w )";
+
+    return output;
+  }
 
   const Quaternion Quaternion::ZERO   = Quaternion(0.0f);
   
