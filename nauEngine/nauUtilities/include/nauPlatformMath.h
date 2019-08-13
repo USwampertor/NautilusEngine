@@ -251,7 +251,7 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     powf(T value, float power) {
-      return static_cast<float>(std::powf(value, power));
+      return static_cast<float>(std::pow(value, power));
     }
 
     /**
