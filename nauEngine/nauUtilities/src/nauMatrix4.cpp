@@ -41,8 +41,8 @@ namespace nauEngineSDK {
   void
   Matrix4::transposed() {
     Matrix4 temp = *this;
-    for (int i = 0; i< 4; ++i) {
-      for (int j = 0; j < 4; ++j) {
+    for (uint32 i = 0; i< 4; ++i) {
+      for (uint32 j = 0; j < 4; ++j) {
         m[i][j] = temp.m[j][i];
       }
     }
@@ -50,7 +50,7 @@ namespace nauEngineSDK {
 
   void
   Matrix4::setValues(float value) {
-    memset(&_m,static_cast<int>(value),sizeof(_m));
+    memset(&_m,static_cast<int32>(value),sizeof(_m));
   }
 
   void
@@ -68,44 +68,44 @@ namespace nauEngineSDK {
   void
   Matrix4::setValues(Matrix3 mat3, bool offsetX, bool offsetY) {
 
-    int x = offsetX ? 1 : 0;
-    int y = offsetY ? 1 : 0;
+    uint32 x = offsetX ? 1 : 0;
+    uint32 y = offsetY ? 1 : 0;
 
-    m[0+x][0+y] = mat3.m[0][0];  m[1+x][0+y] = mat3.m[1][0]; m[2+x][0+y] = mat3.m[2][0];
-    m[0+x][1+y] = mat3.m[0][1];  m[1+x][1+y] = mat3.m[1][1]; m[2+x][1+y] = mat3.m[2][1];
-    m[0+x][2+y] = mat3.m[0][2];  m[1+x][2+y] = mat3.m[1][2]; m[2+x][2+y] = mat3.m[2][2];
+m[0 + x][0 + y] = mat3.m[0][0];  m[1 + x][0 + y] = mat3.m[1][0]; m[2 + x][0 + y] = mat3.m[2][0];
+m[0 + x][1 + y] = mat3.m[0][1];  m[1 + x][1 + y] = mat3.m[1][1]; m[2 + x][1 + y] = mat3.m[2][1];
+m[0 + x][2 + y] = mat3.m[0][2];  m[1 + x][2 + y] = mat3.m[1][2]; m[2 + x][2 + y] = mat3.m[2][2];
   }
 
   void
-  Matrix4::setValues(Matrix3 mat3) {
+    Matrix4::setValues(Matrix3 mat3) {
     m[0][0] = mat3.m[0][0];  m[1][0] = mat3.m[1][0]; m[2][0] = mat3.m[2][0];
     m[0][1] = mat3.m[0][1];  m[1][1] = mat3.m[1][1]; m[2][1] = mat3.m[2][1];
     m[0][2] = mat3.m[0][2];  m[1][2] = mat3.m[1][2]; m[2][2] = mat3.m[2][2];
   }
 
   void
-  Matrix4::translate(const float& x, const float& y, const float& z) {
+    Matrix4::translate(const float& x, const float& y, const float& z) {
     m[3][0] += x;
     m[3][1] += y;
     m[3][2] += z;
   }
 
   void
-  Matrix4::translate(const Vector3& position) {
+    Matrix4::translate(const Vector3& position) {
     m[3][0] += position.x;
     m[3][1] += position.y;
     m[3][2] += position.z;
   }
 
   void
-  Matrix4::scale(const float& x, const float &y, const float &z) {
+    Matrix4::scale(const float& x, const float &y, const float &z) {
     m[0][0] = x;
     m[1][1] = y;
     m[2][2] = z;
   }
 
   void
-  Matrix4::rotateX(const float& rads) {
+    Matrix4::rotateX(const float& rads) {
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
@@ -119,7 +119,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Matrix4::rotateY(const float& rads) {
+    Matrix4::rotateY(const float& rads) {
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
@@ -133,7 +133,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Matrix4::rotateZ(const float& rads) {
+    Matrix4::rotateZ(const float& rads) {
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     Matrix4 tmp = *this;
@@ -147,7 +147,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Matrix4::rotateAxis(const Vector3& constAxis, const float& rads) {
+    Matrix4::rotateAxis(const Vector3& constAxis, const float& rads) {
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     float min = (1 - Math::cos(rads));
@@ -164,6 +164,36 @@ namespace nauEngineSDK {
     m[1][2] = axis.z*axis.y*min + axis.x*sin;
     m[2][2] = cos + axis.z*axis.z*min;
 
+  }
+
+  Matrix3
+  Matrix4::getRotationMatrix() {
+    Matrix3 output = Matrix3::ZERO;
+
+    for (uint32 i = 0; i < 3; ++i) {
+      for (uint32 j = 0; j < 3; ++j) {
+        output.m[i][j] = m[i][j];
+      }
+    }
+
+    return output;
+  }
+
+  Matrix3
+  Matrix4::getSubMatrix3(bool offsetX, bool offsetY) {
+
+    uint32 x = offsetX ? 1 : 0;
+    uint32 y = offsetY ? 1 : 0;
+
+    Matrix3 output;
+
+    for (uint32 i = 0; i < 3; ++i) {
+      for (uint32 j = 0; i < 3; ++j) {
+        output.m[i + x][j + y] = m[i + x][j + y];
+      }
+    }
+
+    return output;
   }
 
   Matrix4

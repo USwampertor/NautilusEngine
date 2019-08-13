@@ -57,9 +57,9 @@ namespace nauEngineSDK {
     if (!m_finalPass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_computePass.init(pDevice, m_rendereableTextures)) return false;
 
-    m_testQuaternion.setValues(0, 0, 0, 1);
-    m_testQuaternion.toNormRotator();
-
+    m_testQuaternion = Quaternion::IDENTITY;
+    m_world.rotateY(Math::degToRad(13.0f));
+    m_testQuaternion.setRotationMatrix(m_world.getRotationMatrix());
     return true;
   }
 
@@ -136,9 +136,9 @@ namespace nauEngineSDK {
   void
   RenderManager::update() {
     
-    m_testQuaternion.rotateAroundDegrees(40.0f, Vector3::UP);
-    m_world.setValues(m_testQuaternion.rotationMatrix());
-    //m_world.rotateY(0.0005f);
+    //m_testQuaternion.rotateAroundY(Math::degToRad(0.0001f));
+    //m_world.setValues(m_testQuaternion.rotationMatrix());
+    m_world.rotateY(0.0005f);
     
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = m_mainCamera.getView();

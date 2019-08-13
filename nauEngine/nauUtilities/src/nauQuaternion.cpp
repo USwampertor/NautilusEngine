@@ -79,6 +79,17 @@ namespace nauEngineSDK {
     return Quaternion(x * scale, y * scale, z * scale, w * scale);
   }
 
+  Quaternion&
+  Quaternion::operator=(const Quaternion& other) {
+    x = other.x;
+    y = other.y;
+    z = other.z;
+
+    w = other.w;
+
+    return *this;
+  }
+
   bool
   Quaternion::operator==(const Quaternion& other) {
     return x == other.x && y == other.y && z == other.z && w == other.w;
@@ -283,6 +294,7 @@ namespace nauEngineSDK {
 
   void
   Quaternion::toNormRotator() {
+
     float halfAngle = w * 0.5f;
     Vector3 imaginary(x, y, z);
     imaginary.normalize();
@@ -332,6 +344,8 @@ namespace nauEngineSDK {
 
     q.w = theta;
 
+    q.toNormRotator();
+
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
     
     Quaternion qInverse = q.inversed();
@@ -350,6 +364,8 @@ namespace nauEngineSDK {
     }
 
     q.w = theta;
+
+    q.toNormRotator();
 
     Quaternion p = { toRotate.x, toRotate.y, toRotate.z, 0 };
     
@@ -370,24 +386,7 @@ namespace nauEngineSDK {
     Quaternion p = *this;
     Quaternion qInversed = q.inversed();
     *this = q * p *qInversed;
-  }
 
-  Vector3
-  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate) {
-    float radians = Math::degToRad(theta);
-    return rotateAroundRadians(radians, toRotate);
-  }
-
-  Vector3
-  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis) {
-    float radians = Math::radToDeg(theta);
-    return rotateAroundRadians(radians, toRotate, axis);
-  }
-
-  void
-  Quaternion::rotateAroundDegrees(const float& theta, Quaternion axis) {
-    float radians = Math::degToRad(theta);
-    rotateAroundRadians(radians, axis);
   }
   
   Vector3
@@ -398,12 +397,31 @@ namespace nauEngineSDK {
 
     Quaternion qInverse = q.inversed();
 
-    Quaternion p = { 0,toRotate };
+    Quaternion p = { 0, toRotate };
 
     Quaternion r = q * p * qInverse;
 
     return Vector3(r.x, r.y, r.z);
   }
+
+  Vector3
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate) {
+    float radians = Math::degToRad(theta);
+    return rotateAroundRadians(radians, toRotate);
+  }
+
+  Vector3
+  Quaternion::rotateAroundDegrees(const float& theta, Vector3 toRotate, Vector3 axis) {
+    float radians = Math::degToRad(theta);
+    return rotateAroundRadians(radians, toRotate, axis);
+  }
+
+  void
+  Quaternion::rotateAroundDegrees(const float& theta, Quaternion axis) {
+    float radians = Math::degToRad(theta);
+    rotateAroundRadians(radians, axis);
+  }
+  
 
   Vector3
   Quaternion::rotateEulerDegrees(Vector3 toRotate, float xAngle, float yAngle, float zAngle) {
@@ -417,24 +435,15 @@ namespace nauEngineSDK {
   Quaternion::rotateAroundX(const float& theta) {
     Quaternion q = Quaternion::RIGHT;
     q.w = theta;
-
-    Quaternion p = *this;
-
-    Quaternion qInverse = q.inversed();
-
-    *this = q * p *qInverse;
+    rotateAroundRadians(theta, q);
   }
 
   void
   Quaternion::rotateAroundY(const float& theta) {
     Quaternion q = Quaternion::UP;
     q.w = theta;
+    rotateAroundRadians(theta, q);
 
-    Quaternion p = *this;
-
-    Quaternion qInverse = q.inversed();
-
-    *this = q * p *qInverse;
   }
 
   void
@@ -442,12 +451,7 @@ namespace nauEngineSDK {
 
     Quaternion q = Quaternion::FRONT;
     q.w = theta;
-
-    Quaternion p = *this;
-
-    Quaternion qInverse = q.inversed();
-
-    *this = q * p *qInverse;
+    rotateAroundRadians(theta, q);
   }
 
   void
@@ -461,10 +465,11 @@ namespace nauEngineSDK {
     float cosY = Math::cos(newY * 0.5f);
     float cosZ = Math::cos(newZ * 0.5f);
 
-    w = (cosX * cosY * cosZ) + (sinX * sinY * sinZ);
     x = (sinX * cosY * cosZ) - (cosX * sinY * sinZ);
     y = (cosX * sinY * cosZ) + (sinX * cosY * sinZ);
     z = (cosX * cosY * sinZ) - (sinX * sinY * cosZ);
+    
+    w = (cosX * cosY * cosZ) + (sinX * sinY * sinZ);
   }
 
   void
@@ -495,18 +500,36 @@ namespace nauEngineSDK {
     Matrix3 m;
 
     m.m[0][0] = 1 - 2 * (y * y) - 2 * (z * z);
-    m.m[1][0] =     2 * (x * y) - 2 * (z * w);
-    m.m[2][0] =     2 * (x * z) + 2 * (y * w);
+    m.m[0][1] =     2 * (x * y) - 2 * (z * w);
+    m.m[0][2] =     2 * (x * z) + 2 * (y * w);
 
-    m.m[0][1] =     2 * (x * y) + 2 * (z * w);
+    m.m[1][0] =     2 * (x * y) + 2 * (z * w);
     m.m[1][1] = 1 - 2 * (x * x) - 2 * (z * z);
-    m.m[2][1] =     2 * (y * z) - 2 * (x * w);
+    m.m[1][2] =     2 * (y * z) - 2 * (x * w);
     
-    m.m[0][2] =     2 * (x * z) - 2 * (y * w);
-    m.m[1][2] =     2 * (y * z) + 2 * (x * w);
+    m.m[2][0] =     2 * (x * z) - 2 * (y * w);
+    m.m[2][1] =     2 * (y * z) + 2 * (x * w);
     m.m[2][2] = 1 - 2 * (x * x) - 2 * (y * y);
 
     return m;
+  }
+
+
+  void
+  Quaternion::setRotationMatrix(Matrix3 r) {
+
+    float t = r.m[0][0] + r.m[1][1] + r.m[2][2];
+    float result = Math::sqrt(1 + t);
+
+
+    x = Math::copySign(0.5f * Math::sqrt(1 + r.m[0][0] - r.m[1][1] - r.m[2][2]), 
+                       (r.m[2][1] - r.m[2][1]));
+    y = Math::copySign(0.5f * Math::sqrt(1 - r.m[0][0] + r.m[1][1] - r.m[2][2]), 
+                       (r.m[0][2] - r.m[2][0]));
+    z = Math::copySign(0.5f * Math::sqrt(1 - r.m[0][0] - r.m[1][1] + r.m[2][2]), 
+                       (r.m[1][0] - r.m[0][1]));
+    
+    w = result * 0.5f;
   }
 
   String
@@ -527,16 +550,18 @@ namespace nauEngineSDK {
     return output;
   }
 
-  const Quaternion Quaternion::ZERO   = Quaternion(0.0f);
+  const Quaternion Quaternion::ZERO     = Quaternion(0.0f);
   
-  const Quaternion Quaternion::PURE   = Quaternion(0.0f);
+  const Quaternion Quaternion::PURE     = Quaternion(0.0f);
+
+  const Quaternion Quaternion::IDENTITY = Quaternion(1.0f);
   
-  const Quaternion Quaternion::REAL   = Quaternion(Vector3(0.0f, 0.0f, 0.0f));
+  const Quaternion Quaternion::REAL     = Quaternion(Vector3(0.0f, 0.0f, 0.0f));
   
-  const Quaternion Quaternion::RIGHT  = Quaternion(Vector3(1.0f, 0.0f, 0.0f));
+  const Quaternion Quaternion::RIGHT    = Quaternion(Vector3(1.0f, 0.0f, 0.0f));
   
-  const Quaternion Quaternion::UP     = Quaternion(Vector3(0.0f, 1.0f, 0.0f));
+  const Quaternion Quaternion::UP       = Quaternion(Vector3(0.0f, 1.0f, 0.0f));
   
-  const Quaternion Quaternion::FRONT  = Quaternion(Vector3(0.0f, 0.0f, 1.0f));
+  const Quaternion Quaternion::FRONT    = Quaternion(Vector3(0.0f, 0.0f, 1.0f));
 
 }

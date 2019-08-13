@@ -150,6 +150,15 @@ class NAU_UTILITY_EXPORT Quaternion {
   operator*(const float& scale) const;
   
   /**
+   * @brief Operator = overload
+   * @param const Quaternion& other quaternion to evaluate
+   * @return Quaternion this
+   *
+   */
+  Quaternion&
+  operator=(const Quaternion& other);
+
+  /**
    * @brief == operator overload
    * @param the other vector to compare
    * @return true if this is == to v components
@@ -621,6 +630,15 @@ class NAU_UTILITY_EXPORT Quaternion {
   rotationMatrix();
 
   /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  setRotationMatrix(Matrix3 r);
+
+  /**
    * @brief returns the quaternion as a string
    * @param 
    * @return 
@@ -662,6 +680,11 @@ class NAU_UTILITY_EXPORT Quaternion {
    * Vector3 with z value 1
    */
   static const Quaternion FRONT;
+
+  /**
+   * Quaternion with real part 1.0f
+   */
+  static const Quaternion IDENTITY;
 
  public:
 

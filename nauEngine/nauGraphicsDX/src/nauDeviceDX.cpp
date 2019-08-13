@@ -103,7 +103,7 @@ namespace nauEngineSDK {
   }
 
   void
-  DeviceDX::draw(int size, int topology, int startIndex, int BaseVertex) {
+  DeviceDX::draw(int32 size, int32 topology, int32 startIndex, int32 BaseVertex) {
     m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     m_pImmediateContext->DrawIndexed(size, startIndex, BaseVertex);
   }

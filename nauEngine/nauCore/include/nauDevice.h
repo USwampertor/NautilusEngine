@@ -88,7 +88,7 @@ namespace nauEngineSDK {
      *
      */
     virtual void
-    draw(int size, int topology = 0, int startIndex = 0, int BaseVertex = 0) = 0;
+    draw(int32 size, int32 topology = 0, int32 startIndex = 0, int32 BaseVertex = 0) = 0;
 
     /**
      * @brief creates a buffer of specific type

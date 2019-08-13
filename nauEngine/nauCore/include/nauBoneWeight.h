@@ -16,7 +16,7 @@ namespace nauEngineSDK {
     /**
      * The bone's ID that will deform a vertex
      */
-    int m_ID;
+    uint32 m_ID;
 
     /**
      * The weight in the bone. Shouldn't be higher than 1 and will be 1

@@ -242,7 +242,7 @@ namespace nauEngineSDK {
     NAU_DEBUG_ONLY(sqrMagnitude());
     
     float unit = Math::invSqrt(sqr);
-    return Vector2i((x * static_cast<int>(unit)), (y * static_cast<int>(unit)));
+    return Vector2i((x * static_cast<int32>(unit)), (y * static_cast<int32>(unit)));
   }
 
   void
@@ -257,8 +257,8 @@ namespace nauEngineSDK {
     NAU_DEBUG_ONLY(sqrMagnitude());
 
     float unit = Math::invSqrt(sqr);
-    x *= static_cast<int>(unit);
-    y *= static_cast<int>(unit);
+    x *= static_cast<int32>(unit);
+    y *= static_cast<int32>(unit);
   }
 
   bool
@@ -268,7 +268,7 @@ namespace nauEngineSDK {
 
   bool
   Vector2i::isSame(const Vector2i& a, const Vector2i& b) {
-    int same = 0;
+    uint32 same = 0;
     if (a.x == b.x) { ++same; }
     if (a.y == b.y) { ++same; }
     if (2 == same)    { return true; }

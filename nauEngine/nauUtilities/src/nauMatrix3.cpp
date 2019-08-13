@@ -40,8 +40,8 @@ namespace nauEngineSDK {
   void
   Matrix3::transposed() {
     Matrix3 temp = *this;
-    for (int i = 0; i < 3; ++i) {
-      for (int j = 0; j < 3; ++j) {
+    for (uint32 i = 0; i < 3; ++i) {
+      for (uint32 j = 0; j < 3; ++j) {
         m[i][j] = temp.m[j][i];
       }
     }
@@ -49,7 +49,7 @@ namespace nauEngineSDK {
 
   void
   Matrix3::setValues(float value) {
-    memset(&_m, static_cast<int>(value), sizeof(_m));
+    memset(&_m, static_cast<int32>(value), sizeof(_m));
   }
 
   void
@@ -202,7 +202,7 @@ namespace nauEngineSDK {
     return *this;
   }
 
-  Matrix3
+  bool
   Matrix3::operator==(const Matrix3& b) {
     for (uint32 i = 0; i < 3; ++i) {
       for (uint32 j = 0; j < 3; ++j) {

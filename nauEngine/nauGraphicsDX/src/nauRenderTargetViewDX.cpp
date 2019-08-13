@@ -24,7 +24,7 @@ namespace nauEngineSDK {
   }
 
   void
-  RenderTargetViewDX::set(Device& pDevice, DepthStencil& depthStencil, int position) {
+  RenderTargetViewDX::set(Device& pDevice, DepthStencil& depthStencil, int32 position) {
 
     auto pd3dContext = reinterpret_cast<ID3D11DeviceContext*>(pDevice.getContext());
     auto pd3dDepthStencil = reinterpret_cast<ID3D11DepthStencilView*>(depthStencil.getView());

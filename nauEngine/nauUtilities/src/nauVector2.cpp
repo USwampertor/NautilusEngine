@@ -300,7 +300,7 @@ namespace nauEngineSDK {
 
   bool
   Vector2::isSame(const Vector2& a, const Vector2& b, float error) {
-    int same = 0;
+    uint32 same = 0;
     if (Math::abs(a.x - b.x) >= error) { ++same; }
     if (Math::abs(a.y - b.y) >= error) { ++same; }
     if (2 == same) { return true; }

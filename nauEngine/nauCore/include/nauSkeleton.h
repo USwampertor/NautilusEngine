@@ -96,7 +96,7 @@ public:
    * @return the int ID of the skeleton 
    *
    */
-  int
+  uint32
   getID();
 
 
@@ -105,7 +105,7 @@ private:
   /**
    * ID of the Skeleton
    */
-  int m_ID;
+  uint32 m_ID;
 
   /**
    * Root of the Bone

@@ -225,7 +225,7 @@ namespace nauEngineSDK {
      * @return true if *this is equal to b
      *
      */
-    Matrix3
+    bool
     operator==(const Matrix3& b);
 
     String

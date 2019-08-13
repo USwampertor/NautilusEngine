@@ -58,7 +58,7 @@ struct Bone
   /**
    * ID of the bone in the tree
    */
-  int m_ID;
+  uint32 m_ID;
 
   /**
    * Vertex Weight

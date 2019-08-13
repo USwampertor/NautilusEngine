@@ -84,7 +84,7 @@ namespace nauEngineSDK {
     return m_root;
   }
 
-  int
+  uint32
   Skeleton::getID() {
     return m_ID;
   }

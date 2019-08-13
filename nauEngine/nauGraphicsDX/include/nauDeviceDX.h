@@ -35,7 +35,7 @@ namespace nauEngineSDK {
     onRender() override;
 
     virtual void
-    draw(int size, int topology = 0, int startIndex = 0, int BaseVertex = 0) override;
+    draw(int32 size, int32 topology = 0, int32 startIndex = 0, int32 BaseVertex = 0) override;
 
     virtual bool
     createBuffer() override;

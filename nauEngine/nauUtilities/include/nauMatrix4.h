@@ -203,6 +203,25 @@ namespace nauEngineSDK{
     rotateAxis(const Vector3& axis, const float& rads);
 
     /**
+     * @brief returns the rotation matrix inside the Matrix4
+     * @param 
+     * @return Matrix3
+     *
+     */
+    Matrix3
+    getRotationMatrix();
+
+    /**
+     * @brief returns the subset Matrix3 inside the Matrix4
+     * @param offset in x from the origin
+     * @param offset in y from the origin
+     * @return 
+     *
+     */
+    Matrix3
+    getSubMatrix3(bool offsetX, bool offsetY);
+
+    /**
      * @brief for view matrix 
      * @param position of camera, objective to look, up axis
      * @return 

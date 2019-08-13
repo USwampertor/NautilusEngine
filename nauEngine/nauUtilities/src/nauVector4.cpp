@@ -364,7 +364,7 @@ namespace nauEngineSDK {
 
   bool
   Vector4::isSame(const Vector4& a, const Vector4& b, float error) {
-    int same = 0;
+    uint32 same = 0;
     if (Math::abs(a.x - b.x) >= error) { ++same; }
     if (Math::abs(a.y - b.y) >= error) { ++same; }
     if (Math::abs(a.z - b.z) >= error) { ++same; }
