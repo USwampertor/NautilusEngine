@@ -115,34 +115,38 @@ namespace nauEngineSDK {
         animation->m_channels.reserve(scene->mAnimations[i]->mNumChannels);
         for (uint32 j = 0; j < scene->mAnimations[i]->mNumChannels; ++j) {
           aiNodeAnim* aiAnimBone = scene->mAnimations[i]->mChannels[j];
-          Bone* b = sceneBones[aiAnimBone->mNodeName.C_Str()];
-          AnimationBone* newBone = new AnimationBone();
-          newBone->ID = b->m_ID;
-          newBone->m_name = aiAnimBone->mNodeName.C_Str();
+          auto it = sceneBones.find(aiAnimBone->mNodeName.C_Str());
+          if (it != sceneBones.end()) {
+            Bone* b = it->second;
+            AnimationBone* newBone = new AnimationBone();
+            newBone->ID = b->m_ID;
+            newBone->m_name = aiAnimBone->mNodeName.C_Str();
 
-          newBone->m_positions.reserve(aiAnimBone->mNumPositionKeys);
-          for (uint32 positions = 0; positions < aiAnimBone->mNumPositionKeys; ++positions) {
-            Vector3 v = { aiAnimBone->mPositionKeys[positions].mValue.x, 
-                          aiAnimBone->mPositionKeys[positions].mValue.y, 
-                          aiAnimBone->mPositionKeys[positions].mValue.z };
-            newBone->m_positions.push_back(std::make_pair(aiAnimBone->mPositionKeys[positions].mTime,v));
-          }
+            newBone->m_positions.reserve(aiAnimBone->mNumPositionKeys);
+            for (uint32 positions = 0; positions < aiAnimBone->mNumPositionKeys; ++positions) {
+              Vector3 v = { aiAnimBone->mPositionKeys[positions].mValue.x,
+                            aiAnimBone->mPositionKeys[positions].mValue.y,
+                            aiAnimBone->mPositionKeys[positions].mValue.z };
+              newBone->m_positions.push_back(std::make_pair(aiAnimBone->mPositionKeys[positions].mTime, v));
+            }
 
-          newBone->m_rotations.reserve(aiAnimBone->mNumRotationKeys);
-          for (uint32 rotations = 0; rotations < aiAnimBone->mNumRotationKeys; ++rotations) {
-            Quaternion q = { aiAnimBone->mRotationKeys[rotations].mValue.x,
-                             aiAnimBone->mRotationKeys[rotations].mValue.y,
-                             aiAnimBone->mRotationKeys[rotations].mValue.z,
-                             aiAnimBone->mRotationKeys[rotations].mValue.w };
-            newBone->m_rotations.push_back(std::make_pair(aiAnimBone->mRotationKeys[rotations].mTime, q));
-          }
+            newBone->m_rotations.reserve(aiAnimBone->mNumRotationKeys);
+            for (uint32 rotations = 0; rotations < aiAnimBone->mNumRotationKeys; ++rotations) {
+              Quaternion q = { aiAnimBone->mRotationKeys[rotations].mValue.x,
+                               aiAnimBone->mRotationKeys[rotations].mValue.y,
+                               aiAnimBone->mRotationKeys[rotations].mValue.z,
+                               aiAnimBone->mRotationKeys[rotations].mValue.w };
+              newBone->m_rotations.push_back(std::make_pair(aiAnimBone->mRotationKeys[rotations].mTime, q));
+            }
 
-          newBone->m_scale.reserve(aiAnimBone->mNumScalingKeys);
-          for (uint32 scales = 0; scales < aiAnimBone->mNumScalingKeys; ++scales) {
-            Vector3 v = { aiAnimBone->mScalingKeys[scales].mValue.x,
-                          aiAnimBone->mScalingKeys[scales].mValue.y,
-                          aiAnimBone->mScalingKeys[scales].mValue.z };
-            newBone->m_scale.push_back(std::make_pair(aiAnimBone->mScalingKeys[scales].mTime, v));
+            newBone->m_scale.reserve(aiAnimBone->mNumScalingKeys);
+            for (uint32 scales = 0; scales < aiAnimBone->mNumScalingKeys; ++scales) {
+              Vector3 v = { aiAnimBone->mScalingKeys[scales].mValue.x,
+                            aiAnimBone->mScalingKeys[scales].mValue.y,
+                            aiAnimBone->mScalingKeys[scales].mValue.z };
+              newBone->m_scale.push_back(std::make_pair(aiAnimBone->mScalingKeys[scales].mTime, v));
+            }
+
           }
         }
       }
