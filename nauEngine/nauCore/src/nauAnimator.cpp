@@ -71,4 +71,10 @@ namespace nauEngineSDK {
   Animator::reset() {
     m_frame = 0.0f;
   }
+
+  void
+  Animator::setSpeed(float newSpeed) {
+    m_speed = newSpeed;
+  }
+
 }

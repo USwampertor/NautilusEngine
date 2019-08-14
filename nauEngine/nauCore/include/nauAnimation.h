@@ -34,7 +34,7 @@ public:
   /**
    * The channels
    */
-  Vector<AnimationBone> m_channels;
+  Vector<AnimationBone*> m_channels;
 
   /**
    * the actual frame

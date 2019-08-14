@@ -17,6 +17,11 @@
 #include "nauResourceManager.h"
 
 namespace nauEngineSDK {
+
+//forward declaration
+class Animator;
+
+
 /**
  * nauModel
  * Description:

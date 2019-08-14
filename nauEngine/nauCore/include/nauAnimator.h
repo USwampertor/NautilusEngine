@@ -65,7 +65,12 @@ public:
   void
   pause();
 
-  float speed;
+  void
+  setSpeed(float newSpeed);
+
+ private:
+
+  float m_speed;
   
   Animation* m_current;
 

@@ -8,7 +8,9 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauModel.h"
+
 #include "nauComponent.h"
+#include "nauAnimator.h"
 
 namespace nauEngineSDK {
 
@@ -83,10 +85,38 @@ namespace nauEngineSDK {
         auto node = scene->mRootNode->FindNode(bone.second->m_name.c_str());
         modelNodes.push_back(node);
       }
-      m_skeleton = std::static_pointer_cast<Skeleton>(ResourceManager::instance().create(filePath,
-                                                                                         RESOURCETYPE::SKELETON));
+      m_skeleton = 
+        std::static_pointer_cast<Skeleton>(ResourceManager::instance().create(filePath,
+                                                                              RESOURCETYPE::SKELETON));
       m_skeleton->init(sceneBones, modelNodes);
     }
+
+    //We check if it has animations
+    if (scene->mNumAnimations > 0) {
+      //If it has animations, we will through each one
+      Sptr<Animator> animator = 
+        std::static_pointer_cast<Animator>(ResourceManager::instance().create(filePath,
+                                                                              RESOURCETYPE::ANIMATOR));
+
+      animator->getAnimations().reserve(scene->mNumAnimations);
+
+      for (uint32 i = 0; i < scene->mNumAnimations; ++i) {
+        Animation* animation = new Animation();
+
+        animation->m_name           = scene->mAnimations[i]->mName.C_Str();
+        animation->m_ticksPerSecond = scene->mAnimations[i]->mTicksPerSecond;
+        animation->m_duration       = scene->mAnimations[i]->mDuration;
+        animation->m_loop           = false;
+        animation->m_frame          = 0;
+
+        for (uint32 j = 0; j < scene->mAnimations[j]->mNumChannels; ++j) {
+          scene->mAnimations[i]->mChannels[j]->mNodeName;
+        }
+
+
+      }
+    }
+
   }
 
   void
