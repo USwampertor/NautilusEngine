@@ -44,13 +44,6 @@ public:
   void
   init(Vector<Bone*> bones);
 
-  /**
-   * @brief Initializes the skeleton with a map of bones
-   *        Use this if bones have already references to parents and children
-   * @param the Map<String, Bone*> object with all bones
-   * @return 
-   *
-   */
   virtual RESOURCETYPE::E
   getType() override { return RESOURCETYPE::SKELETON; }
 

@@ -30,18 +30,23 @@ struct AnimationBone {
   String m_name;
 
   /**
+   * ID of the bone
+   */
+  uint32 ID;
+
+  /**
    * The positions it will have in the animation
    */
-  Vector<Vector3> m_positions;
+  Vector<std::pair<float, Vector3>> m_positions;
 
   /**
    * The scales it will have in the animation
    */
-  Vector<Vector3> m_scale;
+  Vector<std::pair<float, Vector3>> m_scale;
 
   /**
    * The rotations it will have in the animation
    */
-  Vector<Quaternion> m_rotations;
+  Vector<std::pair<float, Quaternion>> m_rotations;
 };
 }

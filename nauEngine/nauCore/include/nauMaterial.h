@@ -13,6 +13,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauTexture.h"
+#include "nauResource.h"
 
 namespace nauEngineSDK {
 
@@ -33,7 +34,7 @@ enum NAU_CORE_EXPORT E {
 };
 }
 
-class Material
+class Material : public Resource
 {
 public:
 
@@ -54,8 +55,8 @@ public:
    * @return  the material with as much textures it could find, 
    *          null if it didn't find a material
    */
-  void
-  load(String path);
+  virtual bool
+  load(String path) override;
 
   /**
    * @brief 
@@ -83,6 +84,9 @@ public:
    */
   void
   setMap(Sptr<Texture> texture, MATERIAL_FLAG::E map = MATERIAL_FLAG::DEFAULT);
+
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::MATERIAL; }
 
 private:
 

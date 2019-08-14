@@ -10,6 +10,16 @@
 #include "nauAnimator.h"
 
 namespace nauEngineSDK {
+
+  bool
+  Animator::load(String path) {
+    FileStream mat;
+    mat.open(path);
+    mat.m_data.data();
+
+    return true;
+  }
+
   void
   Animator::play(String name) {
     for (auto animation : m_animations) {

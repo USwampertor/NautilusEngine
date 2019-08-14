@@ -25,6 +25,7 @@ namespace nauEngineSDK {
   class Skeleton;
   class Model;
   class Animator;
+  class Material;
 
 
 /**

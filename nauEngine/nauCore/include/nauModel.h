@@ -16,6 +16,8 @@
 #include "nauSkeleton.h"
 #include "nauResourceManager.h"
 
+#include <nauQuaternion.h>
+
 namespace nauEngineSDK {
 
 //forward declaration

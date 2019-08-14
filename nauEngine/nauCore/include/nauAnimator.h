@@ -11,9 +11,11 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauAnimation.h"
-#include "nauComponent.h"
-
 #include "nauLogger.h"
+#include "nauResource.h"
+
+#include <nauDataStream.h>
+
 
 namespace nauEngineSDK {
 
@@ -25,7 +27,7 @@ namespace nauEngineSDK {
   * Sample usage:
   *   Animator.Play("foo") will play the animation with the given name
   */
-class Animator : Component
+class NAU_CORE_EXPORT Animator : public Resource
 {
 public:
   /**
@@ -67,6 +69,12 @@ public:
 
   void
   setSpeed(float newSpeed);
+
+  virtual bool
+  load(String path) override;
+
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::ANIMATOR; }
 
  private:
 
