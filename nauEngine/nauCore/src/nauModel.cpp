@@ -55,7 +55,14 @@ namespace nauEngineSDK {
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 
       String errorMessage = modelImport.GetErrorString();
-      std::cout << "Error loading model... Loading default Error Model" << std::endl;
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE(String("Error loading model at path") + 
+                               filePath + 
+                               ", loading default Error Model");
+#endif
+      Logger::instance().toConsole(String("Error loading model at path") + 
+                                   filePath + 
+                                   ", loading default Error Model");
 
       scene = modelImport.ReadFile("resources/errorModel.stl", 
                                    aiProcessPreset_TargetRealtime_MaxQuality |
@@ -95,6 +102,7 @@ namespace nauEngineSDK {
     }
 
     //We check if it has animations
+
     if (scene->mNumAnimations > 0) {
       //If it has animations, we will through each one
       Sptr<Animator> animator = 
@@ -105,50 +113,7 @@ namespace nauEngineSDK {
 
       for (uint32 i = 0; i < scene->mNumAnimations; ++i) {
         Animation* animation = new Animation();
-
-        animation->m_name           = scene->mAnimations[i]->mName.C_Str();
-        animation->m_ticksPerSecond = scene->mAnimations[i]->mTicksPerSecond;
-        animation->m_duration       = scene->mAnimations[i]->mDuration;
-        animation->m_loop           = false;
-        animation->m_frame          = 0;
-        
-        animation->m_channels.reserve(scene->mAnimations[i]->mNumChannels);
-        for (uint32 j = 0; j < scene->mAnimations[i]->mNumChannels; ++j) {
-          aiNodeAnim* aiAnimBone = scene->mAnimations[i]->mChannels[j];
-          auto it = sceneBones.find(aiAnimBone->mNodeName.C_Str());
-          if (it != sceneBones.end()) {
-            Bone* b = it->second;
-            AnimationBone* newBone = new AnimationBone();
-            newBone->ID = b->m_ID;
-            newBone->m_name = aiAnimBone->mNodeName.C_Str();
-
-            newBone->m_positions.reserve(aiAnimBone->mNumPositionKeys);
-            for (uint32 positions = 0; positions < aiAnimBone->mNumPositionKeys; ++positions) {
-              Vector3 v = { aiAnimBone->mPositionKeys[positions].mValue.x,
-                            aiAnimBone->mPositionKeys[positions].mValue.y,
-                            aiAnimBone->mPositionKeys[positions].mValue.z };
-              newBone->m_positions.push_back(std::make_pair(aiAnimBone->mPositionKeys[positions].mTime, v));
-            }
-
-            newBone->m_rotations.reserve(aiAnimBone->mNumRotationKeys);
-            for (uint32 rotations = 0; rotations < aiAnimBone->mNumRotationKeys; ++rotations) {
-              Quaternion q = { aiAnimBone->mRotationKeys[rotations].mValue.x,
-                               aiAnimBone->mRotationKeys[rotations].mValue.y,
-                               aiAnimBone->mRotationKeys[rotations].mValue.z,
-                               aiAnimBone->mRotationKeys[rotations].mValue.w };
-              newBone->m_rotations.push_back(std::make_pair(aiAnimBone->mRotationKeys[rotations].mTime, q));
-            }
-
-            newBone->m_scale.reserve(aiAnimBone->mNumScalingKeys);
-            for (uint32 scales = 0; scales < aiAnimBone->mNumScalingKeys; ++scales) {
-              Vector3 v = { aiAnimBone->mScalingKeys[scales].mValue.x,
-                            aiAnimBone->mScalingKeys[scales].mValue.y,
-                            aiAnimBone->mScalingKeys[scales].mValue.z };
-              newBone->m_scale.push_back(std::make_pair(aiAnimBone->mScalingKeys[scales].mTime, v));
-            }
-
-          }
-        }
+        animation->init(scene->mAnimations[i], sceneBones);
       }
 
     }

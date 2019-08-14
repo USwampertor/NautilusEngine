@@ -10,12 +10,28 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+
 #include "nauAnimationBone.h"
+#include "nauBone.h"
+#include "nauResource.h"
+
+#include <assimp/config.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 namespace nauEngineSDK {
-struct Animation
+class Animation
 {
 public:
+
+  Animation() = default;
+
+  ~Animation() = default;
+
+  void
+  init(aiAnimation* animation, Map<String, Bone*> sceneBones);
+
   /**
    * String name of the animation
    */

@@ -12,6 +12,8 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include "nauLogger.h"
+
 #include "nauMesh.h"
 #include "nauSkeleton.h"
 #include "nauResourceManager.h"

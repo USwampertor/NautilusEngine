@@ -13,22 +13,30 @@
 
 namespace nauEngineSDK {
 
-  namespace RESOURCETYPE
-  {
-  enum E
-  {
-    NONE          = 0,
-    AUDIO         ,
-    TEXTURE       ,
-    CUBEMAP       ,
-    MATERIAL      ,
-    MODEL         ,
-    SKELETON      ,
-    ANIMATOR      ,
-    SCENE         ,
-    PROJECT       
-  };
-  }
+namespace RESOURCETYPE
+{
+enum E
+{
+  NONE          = 0,
+  AUDIO         ,
+  TEXTURE       ,
+  CUBEMAP       ,
+  MATERIAL      ,
+  MODEL         ,
+  SKELETON      ,
+  ANIMATOR      ,
+  SCENE         ,
+  PROJECT       
+};
+}
+
+namespace MODELDEFINES
+{
+#define MIXAMOANIMATION "mixamo.com"
+#define MIXAMOBONE      "mixamorig:"
+#define MIXAMOMODEL     "mixamo"
+#define ASSIMPANIMATION "_$Assimp"
+}
 
 
 class NAU_CORE_EXPORT Resource
