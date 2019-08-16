@@ -31,6 +31,9 @@ namespace nauEngineSDK {
       //We check that the animation was well generated
       if (toTokenize.find(ASSIMPANIMATION) != String::npos) {
         //It's possible that assimp did an oopsie at trying to recover animation
+        //Or the artist did animations not embeded in the model
+        //Mixamo does this, and its garbage, but eh
+        //In those cases, assimp adds a suffix
         //So its going to change the name to be able to find the bone
         toTokenize = toTokenize.substr(0, toTokenize.find(ASSIMPANIMATION));
       }
