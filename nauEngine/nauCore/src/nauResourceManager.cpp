@@ -15,6 +15,8 @@
 #include "nauSkeleton.h"
 #include "nauAnimator.h"
 #include "nauMaterial.h"
+#include "nauAnimation.h"
+
 
 namespace nauEngineSDK {
 
@@ -77,8 +79,12 @@ namespace nauEngineSDK {
     }
     else if (RESOURCETYPE::ANIMATOR == type) {
 
-      newExtension += ".png";
+      newExtension += ".atr";
       resource = std::static_pointer_cast<Resource>(std::make_shared<Animator>());
+    }
+    else if (RESOURCETYPE::ANIMATION == type) {
+      newExtension += ".atn";
+      resource = std::static_pointer_cast<Resource>(std::make_shared<Animation>());
     }
     m.insert(std::make_pair(name, resource));
 

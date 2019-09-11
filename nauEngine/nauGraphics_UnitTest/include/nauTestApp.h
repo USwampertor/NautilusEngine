@@ -11,14 +11,16 @@
 
 
 #include <nauPrerequisitesCore.h>
+
+#include <nauAnimationManager.h>
 #include <nauBaseApp.h>
-#include <nauGraphicsAPI.h>
-#include <nauTimer.h>
-#include <nauRenderManager.h>
-#include <nauSceneGraph.h>
-#include <nauResourceManager.h>
-#include <nauLogger.h>
 #include <nauDynamicLibrary.h>
+#include <nauGraphicsAPI.h>
+#include <nauLogger.h>
+#include <nauRenderManager.h>
+#include <nauResourceManager.h>
+#include <nauSceneGraph.h>
+#include <nauTimer.h>
 
 #include <imgui.h>
 #include <imgui_impl_dx11.h>

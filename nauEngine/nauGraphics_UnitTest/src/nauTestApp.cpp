@@ -81,6 +81,11 @@ namespace nauEngineSDK {
 
     //SCENEGRAPH INITIALIZATION
     m_sceneGraph.init();
+
+    //ANIMATION MANAGER
+    AnimationManager::startUp();
+
+
     ///TESTING MODEL
     int i = 0;
     

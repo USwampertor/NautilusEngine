@@ -26,7 +26,7 @@ namespace nauEngineSDK {
   class Model;
   class Animator;
   class Material;
-
+  class Animation;
 
 /**
  * ResourceManager

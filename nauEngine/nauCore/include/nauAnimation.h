@@ -21,14 +21,26 @@
 #include <assimp/postprocess.h>
 
 namespace nauEngineSDK {
-class Animation
+class Animation : public Resource
 {
 public:
-
+  /**
+   * Default constructor
+   */
   Animation() = default;
 
+  /**
+   * Default destructor
+   */
   ~Animation() = default;
 
+  /**
+   * @brief Initializes the animation given an aiAnimation and a Map of bones
+   * @param aiAnimation* animation set
+   * @param Map<String, Bone*> sceneBones the bones of the animation
+   * @return 
+   *
+   */
   void
   init(aiAnimation* animation, Map<String, Bone*> sceneBones);
 
@@ -61,6 +73,13 @@ public:
    * is it looping?
    */
   bool m_loop;
+
+  
+  virtual bool
+  load(String path) override;
+
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::ANIMATION; }
 
 };
 }

@@ -13,6 +13,8 @@
 #include "nauModule.h"
 
 #include "nauGameObject.h"
+#include "nauComponent.h"
+#include "nauAnimator.h"
 
 namespace nauEngineSDK {
 class AnimationManager : public Module<AnimationManager>
@@ -27,6 +29,15 @@ public:
    * Default destructor
    */
   ~AnimationManager() = default;
+
+  /**
+   * @brief Initializes the Animation Manager 
+   * @param 
+   * @return true if able to initialize 
+   *
+   */
+  bool
+  init();
 
   /**
    * @brief Gathers all objects with an animator component and animates them
@@ -63,8 +74,6 @@ public:
    */
   void
   computeAnimation(GameObject* gameObject);
-
-
 
 };
 }

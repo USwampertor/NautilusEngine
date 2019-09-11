@@ -49,7 +49,7 @@ public:
   Vector<String>
   getAnimationNames();
 
-  Vector<Animation*>
+  Vector<Sptr<Animation>>
   getAnimations();
   
   void
@@ -76,13 +76,16 @@ public:
   virtual RESOURCETYPE::E
   getType() override { return RESOURCETYPE::ANIMATOR; }
 
+  bool
+  isPlaying();
+
  private:
 
   float m_speed;
   
-  Animation* m_current;
+  Sptr<Animation> m_current;
 
-  Vector<Animation*> m_animations;
+  Vector<Sptr<Animation>> m_animations;
 
   bool m_active;
 

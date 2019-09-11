@@ -25,6 +25,7 @@ enum E
   MODEL         ,
   SKELETON      ,
   ANIMATOR      ,
+  ANIMATION     ,
   SCENE         ,
   PROJECT       
 };

@@ -62,7 +62,7 @@ namespace nauEngineSDK {
     return animations;
   }
 
-  Vector<Animation*>
+  Vector<Sptr<Animation>>
   Animator::getAnimations() {
     return m_animations;
   }
@@ -85,6 +85,11 @@ namespace nauEngineSDK {
   void
   Animator::setSpeed(float newSpeed) {
     m_speed = newSpeed;
+  }
+
+  bool
+  Animator::isPlaying() {
+    return m_active;
   }
 
 }

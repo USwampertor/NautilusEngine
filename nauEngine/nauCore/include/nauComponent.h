@@ -10,12 +10,14 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+
+#include "nauAnimator.h"
+#include "nauMaterial.h"
 #include "nauMesh.h"
 #include "nauModel.h"
-#include "nauTexture.h"
-#include "nauMaterial.h"
-
 #include "nauResourceManager.h"
+#include "nauTexture.h"
+
 
 #include <nauMath.h>
 
@@ -54,8 +56,8 @@ namespace nauEngineSDK {
      */
     virtual ~Component() {}
 
-    COMPONENT::E
-    getType();
+    virtual COMPONENT::E
+    getType() = 0;
 
    private:
 
@@ -114,6 +116,9 @@ namespace nauEngineSDK {
      */
     Map<MATERIAL_FLAG::E, Texture*> m_TextureMap;
 
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::MATERIAL; }
+
   };
 
 
@@ -144,6 +149,9 @@ namespace nauEngineSDK {
      */
     Model* m_model;
 
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::MESH; }
+
   };
 
   class AnimatorComponent : public Component
@@ -155,6 +163,8 @@ namespace nauEngineSDK {
 
     Animator* m;
 
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::ANIMATOR; }
   };
 
   class Collider : public Component
@@ -170,6 +180,9 @@ namespace nauEngineSDK {
      * Default destructor
      */
     ~Collider() = default;
+
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::COLLIDER; }
   };
 
   class BoxCollider : public Collider

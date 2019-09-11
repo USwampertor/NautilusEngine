@@ -75,5 +75,13 @@ namespace nauEngineSDK {
       }
     }
   }
+
+  bool
+  Animation::load(String path) {
+
+    return true;
+  }
+
+
 }
 

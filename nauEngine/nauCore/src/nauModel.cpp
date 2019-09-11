@@ -112,8 +112,11 @@ namespace nauEngineSDK {
       animator->getAnimations().reserve(scene->mNumAnimations);
 
       for (uint32 i = 0; i < scene->mNumAnimations; ++i) {
-        Animation* animation = new Animation();
+        Sptr<Animation> animation =
+        std::static_pointer_cast<Animation>(ResourceManager::instance().create(filePath,
+                                                                               RESOURCETYPE::ANIMATION));
         animation->init(scene->mAnimations[i], sceneBones);
+        animator->getAnimations().push_back(animation);
       }
 
     }
