@@ -67,6 +67,11 @@ namespace nauEngineSDK {
     return m_animations;
   }
 
+  Sptr<Animation>
+  Animator::getCurrentAnimation() {
+    return m_current;
+  }
+
   void
   Animator::crossFade() {
 

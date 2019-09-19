@@ -52,6 +52,9 @@ public:
   Vector<Sptr<Animation>>
   getAnimations();
   
+  Sptr<Animation>
+  getCurrentAnimation();
+
   void
   crossFade();
 

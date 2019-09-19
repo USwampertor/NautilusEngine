@@ -121,7 +121,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   m_app.m_factory = reinterpret_cast<CoreFactory*>(loadDLL(path));
 
   if (m_app.m_factory == nullptr) {
-    throw::std::exception("Factory failed to create");
+    //throw::std::exception("Factory failed to create");
     return FALSE;
   }
 

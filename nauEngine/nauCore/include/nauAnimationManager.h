@@ -16,8 +16,11 @@
 #include "nauComponent.h"
 #include "nauAnimator.h"
 
+//Forward class
+class Bone;
+
 namespace nauEngineSDK {
-class AnimationManager : public Module<AnimationManager>
+class NAU_CORE_EXPORT AnimationManager : public Module<AnimationManager>
 {
 public:
   /**
@@ -55,7 +58,7 @@ public:
    *
    */
   void
-  depthAnimator(GameObject* gameObjects);
+  depthAnimator(Bone* bone);
 
   /**
    * @brief Breath search animator
@@ -64,7 +67,7 @@ public:
    *
    */
   void
-  breathAnimator(GameObject* gameObjects);
+  breathAnimator(Bone* bone);
 
   /**
    * @brief Calculates animations with a compute pass
@@ -73,7 +76,7 @@ public:
    *
    */
   void
-  computeAnimation(GameObject* gameObject);
+  computeAnimation(Bone* bone);
 
 };
 }
