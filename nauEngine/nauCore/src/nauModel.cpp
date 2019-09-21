@@ -100,6 +100,53 @@ namespace nauEngineSDK {
                                                                               RESOURCETYPE::SKELETON));
       m_skeleton->init(sceneBones, modelNodes);
     }
+    //We assign the weights to each of the vertices in the system
+
+    Vector<uint32> offsets;
+    Vector<uint32> boneCounter;
+    uint32 accumulation = 0;
+    for (auto mesh : m_meshes) {
+      accumulation += mesh->m_vertexBuffer->size();
+      offsets.push_back(accumulation);
+    }
+    boneCounter.resize(offsets[offsets.size() - 1], 0);
+    for (auto bone : sceneBones) {
+      for (auto boneWeight : bone.second->m_weights) {
+        for (uint32 i = 0; i < offsets.size(); ++i) {
+          if (offsets[i] > boneWeight.m_ID) {
+            if (boneCounter[boneWeight.m_ID] == 0) {
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_ID =
+                bone.second->m_ID;
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_weight =
+                boneWeight.m_weight;
+            }
+            else if (boneCounter[boneWeight.m_ID] == 1) {
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_ID =
+                bone.second->m_ID;
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_weight =
+                boneWeight.m_weight;
+            }
+            else if (boneCounter[boneWeight.m_ID] == 2) {
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_ID =
+                bone.second->m_ID;
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_weight =
+                boneWeight.m_weight;
+            }
+            else if (boneCounter[boneWeight.m_ID] == 3) {
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_ID =
+                bone.second->m_ID;
+              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_weight =
+                boneWeight.m_weight;
+            }
+            else {
+              std::cout << "TEMP";
+            }
+            break;
+          }
+        }
+      }
+    }
+
 
     //We check if it has animations
 

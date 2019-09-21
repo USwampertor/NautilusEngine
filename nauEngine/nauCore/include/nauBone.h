@@ -35,7 +35,11 @@ struct Bone
 
   Bone(const aiBone& other) {
     m_name = other.mName.C_Str();
-    m_weights.resize(other.mNumWeights);
+    m_weights.reserve(other.mNumWeights);
+    for (uint32 i = 0; i < other.mNumWeights; ++i) {
+      VertexWeight w = { other.mWeights[i].mVertexId, other.mWeights[i].mWeight };
+      m_weights.push_back(w);
+    }
     aiMatrix4x4 m = other.mOffsetMatrix;
     m_offset.setValues(m.a1, m.b1, m.c1, m.d1,
                        m.a2, m.b2, m.c2, m.d2,
@@ -63,7 +67,7 @@ struct Bone
   /**
    * Vertex Weight
    */
-  Vector<VertexWeight*> m_weights;
+  Vector<VertexWeight> m_weights;
 
   /**
    * The parent of the bone

@@ -15,6 +15,10 @@
 namespace nauEngineSDK {
 struct VertexWeight
 {
+  VertexWeight(uint32 id, float weight) 
+    : m_ID(id), 
+      m_weight(weight) {}
+
   uint32 m_ID;
   float m_weight;
 };  

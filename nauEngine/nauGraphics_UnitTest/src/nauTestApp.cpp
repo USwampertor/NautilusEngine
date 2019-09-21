@@ -84,7 +84,7 @@ namespace nauEngineSDK {
 
     //ANIMATION MANAGER
     AnimationManager::startUp();
-    AnimationManager::instance().depthAnimator(nullptr);
+    AnimationManager::instance().init();
 
     ///TESTING MODEL
     
