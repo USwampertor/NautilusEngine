@@ -77,22 +77,7 @@ struct Vertex
   /**
    * Bone 0 reference
    */
-  BoneWeight m_bone0;
-
-  /**
-   * Bone 1 reference
-   */
-  BoneWeight m_bone1;
-
-  /**
-   * Bone 2 reference
-   */
-  BoneWeight m_bone2;
-
-  /**
-   * Bone 3 reference
-   */
-  BoneWeight m_bone3;
+  BoneWeight m_bone[4];
 
 };
 

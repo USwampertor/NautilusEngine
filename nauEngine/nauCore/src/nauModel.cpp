@@ -65,7 +65,9 @@ namespace nauEngineSDK {
                                    ", loading default Error Model");
 
       scene = modelImport.ReadFile("resources/errorModel.stl", 
-                                   aiProcessPreset_TargetRealtime_MaxQuality |
+                                   aiProcess_Triangulate |
+                                   aiProcess_GenSmoothNormals |
+                                   aiProcess_FlipUVs |
                                    aiProcess_ConvertToLeftHanded);
 
       if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
@@ -100,43 +102,68 @@ namespace nauEngineSDK {
                                                                               RESOURCETYPE::SKELETON));
       m_skeleton->init(sceneBones, modelNodes);
     }
-    //We assign the weights to each of the vertices in the system
 
+
+    Vector<Vertex> vertices;
+
+    for (auto mesh : m_meshes) {
+      vertices.insert(vertices.end(), 
+                      mesh->m_vertexBuffer->m_vertexData.begin(),
+                      mesh->m_vertexBuffer->m_vertexData.end());
+    }
+
+    for (auto bone : sceneBones) {
+      for (auto boneWeight : bone.second->m_weights) {
+
+      }
+    }
+
+    //We assign the weights to each of the vertices in the system
+    /*
     Vector<uint32> offsets;
     Vector<uint32> boneCounter;
     uint32 accumulation = 0;
+
     for (auto mesh : m_meshes) {
       accumulation += mesh->m_vertexBuffer->size();
       offsets.push_back(accumulation);
     }
+    
     boneCounter.resize(offsets[offsets.size() - 1], 0);
     for (auto bone : sceneBones) {
       for (auto boneWeight : bone.second->m_weights) {
         for (uint32 i = 0; i < offsets.size(); ++i) {
+
+          NAU_ASSERT(boneWeight.m_ID < offsets[offsets.size() - 1] && "VERTEX OUT OF RANGE");
+
           if (offsets[i] > boneWeight.m_ID) {
             if (boneCounter[boneWeight.m_ID] == 0) {
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_ID =
                 bone.second->m_ID;
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_weight =
                 boneWeight.m_weight;
+              ++boneCounter[boneWeight.m_ID];
             }
             else if (boneCounter[boneWeight.m_ID] == 1) {
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_ID =
                 bone.second->m_ID;
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_weight =
                 boneWeight.m_weight;
+              ++boneCounter[boneWeight.m_ID];
             }
             else if (boneCounter[boneWeight.m_ID] == 2) {
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_ID =
                 bone.second->m_ID;
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_weight =
                 boneWeight.m_weight;
+              ++boneCounter[boneWeight.m_ID];
             }
             else if (boneCounter[boneWeight.m_ID] == 3) {
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_ID =
                 bone.second->m_ID;
               m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_weight =
                 boneWeight.m_weight;
+              ++boneCounter[boneWeight.m_ID];
             }
             else {
               std::cout << "TEMP";
@@ -146,8 +173,7 @@ namespace nauEngineSDK {
         }
       }
     }
-
-
+    */
     //We check if it has animations
 
     if (scene->mNumAnimations > 0) {
