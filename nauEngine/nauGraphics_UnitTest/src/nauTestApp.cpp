@@ -88,7 +88,7 @@ namespace nauEngineSDK {
 
     ///TESTING MODEL
     
-    Node* model = new Node();
+    /*Node* model = new Node();
     
     GameObject* testModel = new GameObject(); 
     testModel->m_id = "Vela";
@@ -192,6 +192,7 @@ namespace nauEngineSDK {
     testModel->addComponent(com);
     model->setGameObject(testModel);
     m_sceneGraph.set(model);
+    */
     return true;
 
   }
