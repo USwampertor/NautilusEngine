@@ -32,10 +32,10 @@ namespace nauEngineSDK {
   float
   Clock::deltaTime(DELTA::E as) {
     if      (DELTA::DELTASECOND == as) {
-      m_delta * 0.001f;
+      m_delta *= 0.001f;
     }
     else if (DELTA::MICROSECOND == as) {
-      m_delta * 1000.0f;
+      m_delta *= 1000.0f;
     }
     return m_delta;
   }

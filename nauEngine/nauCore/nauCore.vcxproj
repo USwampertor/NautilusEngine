@@ -181,7 +181,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -190,7 +190,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)imgui/lib/$(PlatformTarget)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib;imguid.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc142-mtd.lib;imguid.lib</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -200,7 +200,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -209,7 +209,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)imgui/lib/$(PlatformTarget)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib;imguid.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;nauUtilitiesd.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc142-mtd.lib;imguid.lib</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -221,7 +221,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -232,7 +232,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)imgui/lib/$(PlatformTarget)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OpenCL.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib;imgui.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc142-mt.lib;imgui.lib</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -244,7 +244,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/Common/;$(DEVLIBS)assimp/$(PlatformTarget)/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)imgui/include/;$(CUDA_PATH)/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NAU_CORE_EXPORTS</PreprocessorDefinitions>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -255,7 +255,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)imgui/lib/$(PlatformTarget)/;$(CUDA_PATH)/lib/$(Platform)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OpenCL.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc140-mt.lib;imgui.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;nauUtilities.lib;EASTL.lib;%(AdditionalDependencies);assimp-vc142-mt.lib;imgui.lib</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)lib/$(PlatformTarget)/$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
