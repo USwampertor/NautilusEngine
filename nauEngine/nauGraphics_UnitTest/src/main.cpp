@@ -78,9 +78,9 @@ loadDLL(String path) {
   HINSTANCE myDll = LoadLibraryExA(folderPath.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
   if (!myDll) {
     DWORD err = GetLastError();
-    std::cout << "Could not find dll at given path: " << path << std::endl;
-    std::cout << err << std::endl;
-    std::cout << "Press any key to continue...";
+
+    String errorString = "Could not find dll at given path: ";
+
     return nullptr;
   }
   std::cout << "Loading " << path << "..." << std::endl;
@@ -114,7 +114,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
   MyRegisterClass(hInstance);
 
-  String path = "x86\\nauGraphicsDXd.dll";
+  String path = "nauGraphicsDXd.dll";
   
   //loadDLL(path);
 
