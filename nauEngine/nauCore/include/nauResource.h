@@ -27,7 +27,8 @@ enum E
   ANIMATOR      ,
   ANIMATION     ,
   SCENE         ,
-  PROJECT       
+  PROJECT       ,
+  SHADER        
 };
 }
 

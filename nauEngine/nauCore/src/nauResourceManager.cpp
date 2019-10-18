@@ -16,7 +16,7 @@
 #include "nauAnimator.h"
 #include "nauMaterial.h"
 #include "nauAnimation.h"
-
+#include "nauShader.h"
 
 namespace nauEngineSDK {
 

@@ -64,27 +64,40 @@ enum E
  * nauCodec.h ENGINE SPECIFIC FORMATS
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-  TXT,          //Text Format
   SCN,          //Scene Format
   SKL,          //Skeleton Format
   MTR,          //Material Format
   ANTN,         //Animation format
   ANTR,         //Animator format
+
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauCodec.h MISC FILE FORMATS
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+  TXT,          //Text Format
+
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/**
+ * nauCodec.h SHADER FILE FORMATS
+ */
+/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+
 };
 }
 
-class nauCodec
+class Codec
 {
 public:
   /**
    * Default constructor
    */
-  nauCodec()  = default;
+  Codec()  = default;
 
   /**
    * Default destructor
    */
-  ~nauCodec() = default;
+  ~Codec() = default;
 
   /**
    * @brief Checks if the actual object is a valid format

@@ -26,6 +26,9 @@
     <Filter Include="Source Files\Resources">
       <UniqueIdentifier>{7506ae57-487b-477c-9c2a-07c63de38072}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\IrinaIK">
+      <UniqueIdentifier>{0350cd0b-1a70-42c1-b643-75780c2c6805}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAnimation.h">
@@ -193,6 +196,15 @@
     <ClInclude Include="include\nauProject.h">
       <Filter>Source Files\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauNetwork.h">
+      <Filter>Source Files\IrinaIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauNeuralLayer.h">
+      <Filter>Source Files\IrinaIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauNeuron.h">
+      <Filter>Source Files\IrinaIK</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -281,6 +293,15 @@
     </ClCompile>
     <ClCompile Include="src\nauAnimation.cpp">
       <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauNetwork.cpp">
+      <Filter>Source Files\IrinaIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauNeuralLayer.cpp">
+      <Filter>Source Files\IrinaIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauNeuron.cpp">
+      <Filter>Source Files\IrinaIK</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
