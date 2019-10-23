@@ -15,6 +15,21 @@
 
 
 namespace nauEngineSDK {
+  using std::fstream;
+
+namespace NeuralLayerType
+{
+  enum E
+  {
+    NONE      = 0,
+    HIDDEN    = 1,
+    EXPOSED   = 2,
+    INPUT     = 3,
+    OUTPUT    = 4
+  };
+}
+
+  
 class Neuron;
 
 /**
@@ -70,12 +85,22 @@ public:
   /**
    * List of neurons in the layer
    */
-  Vector<Neuron*> m;
+  Vector<Neuron*> m_data;
 
   /**
    * Pointer to the next layer
    */
   NeuralLayer* m_next;
+
+  /**
+   * ID of the layer
+   */
+  uint32 m_ID;
+
+  /**
+   * type of the layer
+   */
+  NeuralLayerType::E m_type;
 
 };
 

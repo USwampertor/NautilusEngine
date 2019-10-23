@@ -18,16 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\nauNetwork.h" />
-    <ClInclude Include="include\nauNeuralLayer.h" />
-    <ClInclude Include="include\nauNeuron.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\nauNetwork.cpp" />
-    <ClCompile Include="src\nauNeuralLayer.cpp" />
-    <ClCompile Include="src\nauNeuron.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F9CE766F-6176-45D5-9D90-420E09720E4F}</ProjectGuid>

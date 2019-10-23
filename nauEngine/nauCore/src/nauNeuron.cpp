@@ -12,27 +12,30 @@
 namespace nauEngineSDK {
 
   void
-  Neuron::init() {
-
+  Neuron::init(uint32 newID) {
+    m_ID = newID;
+    m_weight = 0.0f;
   }
 
   void
   Neuron::reset() {
-
+    m_weight = 0;
   }
 
   Bone*
   Neuron::get() {
-
+    return m_data;
   }
 
   String
   Neuron::toString() {
     String toReturn;
-    toReturn += "Neuron: ID: ";
+    toReturn += "Neuron ID: ";
     toReturn += std::to_string(m_ID);
-    toReturn += " Weight: ";
+    toReturn += "\nWeight: ";
     toReturn += std::to_string(m_weight);
+
+    return toReturn;
   }
 
   void
@@ -41,9 +44,19 @@ namespace nauEngineSDK {
   }
 
   void
-  Neuron::operator>>(FileStream stream) {
-    
+  Neuron::operator<<(fstream stream) {
+    stream << m_ID << m_weight;
   }
 
+
+  void
+  Neuron::operator>>(FileStream stream) {
+    stream.m_file >> m_ID >> m_weight;
+  }
+
+  void
+  Neuron::operator>>(fstream stream) {
+    stream >> m_ID >> m_weight;
+  }
   
 }

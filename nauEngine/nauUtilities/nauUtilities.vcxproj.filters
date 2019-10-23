@@ -91,6 +91,9 @@
     <ClCompile Include="src\nauDynamicLibrary.cpp">
       <Filter>Archivos de origen\System</Filter>
     </ClCompile>
+    <ClCompile Include="src\nauColor.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h">
@@ -185,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="include\nauDynamicLibrary.h">
       <Filter>Archivos de origen\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauColor.h">
+      <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

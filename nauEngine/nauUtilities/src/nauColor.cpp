@@ -1,13 +1,13 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
- * @file nauNetwork.cpp
+ * @file nauColor.cpp
  * @author Marco "Swampy" Millan
- * @date 2019/03/19 2019
- * @brief Member definition
+ * @date 10/23/2019
+ * @brief Color member definition
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
-#include "nauNetwork.h"
+#include "nauColor.h"
 
 namespace nauEngineSDK {
 

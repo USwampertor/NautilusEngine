@@ -14,8 +14,12 @@
 #include "nauBone.h"
 
 #include <nauDataStream.h>
+#include <nauVector4.h>
 
 namespace nauEngineSDK {
+  using std::fstream;
+
+
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 /**
  * nauNeuron.h Forward declaration
@@ -51,7 +55,7 @@ class Neuron
    *
    */
   void
-  init();
+  init(uint32 newID);
 
   /**
    * @brief 
@@ -81,6 +85,15 @@ class Neuron
   toString();
 
   /**
+   * @brief Returns the weight of the neuron as a color, for display purposes
+   * @param 
+   * @return Vector4 a RGBA color
+   *
+   */
+  Vector4
+  toColor();
+
+  /**
    * @brief operator << overloading to be used for serialization
    * @param 
    * @return 
@@ -88,6 +101,10 @@ class Neuron
    */
   void 
   operator<<(FileStream stream);
+
+  void
+  operator<<(fstream stream);
+
 
   /**
    * @brief operator >> overloading to be used for serialization
@@ -98,10 +115,13 @@ class Neuron
   void 
   operator>>(FileStream stream);
 
+  void
+  operator>>(fstream stream);
+
   /**
    * Vertex used to store the info of the bones
    */
-  Bone m_data;
+  Bone* m_data;
 
   /**
    * Id of the Neuron
