@@ -92,7 +92,7 @@ namespace nauEngineSDK {
      *
      */
     Node*
-    getChild(int pos);
+    getChild(uint32 pos);
 
 
     Vector<Node*>

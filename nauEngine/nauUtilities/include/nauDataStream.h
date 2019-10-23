@@ -13,7 +13,7 @@
 #include "nauPrerequisitesUtil.h"
 
 namespace nauEngineSDK {
-  
+  using std::fstream;
 
 namespace STREAMACCESS
 {
@@ -300,7 +300,7 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
   virtual bool
   copy(const void* buffer) override;
 
-  std::fstream m_file;
+  fstream m_file;
 
 };
 
@@ -323,13 +323,7 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
    * Default destructor
    */
   ~MemStream() = default;
-
-  /**
-   * @brief returns if the dataStream is a file or memory
-   * @param 
-   * @return returns either a FILE or MEMORY enum if file
-   *
-   */
+  
   virtual STREAMTYPE::E
   isType() override;
 

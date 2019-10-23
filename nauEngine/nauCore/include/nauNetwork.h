@@ -12,10 +12,14 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauNeuralLayer.h"
+#include <nauModule.h>
 
-class NeuralNetwork
+namespace nauEngineSDK {
+
+
+class NeuralNetwork : public Module<NeuralNetwork>
 {
-public:
+ public:
   /**
    * Default Constructor
    */
@@ -27,13 +31,26 @@ public:
   ~NeuralNetwork() = default;
 
   /**
-   * Initializes the neural network
+   * @brief Loads the information stored previously in a database
+   * @param 
+   * @return 
+   *
+   */
+  void
+  load(String path);
+
+  /**
+   * @brief Initializes the neural network. Should be used only once tho
+   * @param 
+   * @return 
+   *
    */
   void
   init();
 
   /**
-   * @brief
+   * @brief Cleans and resets the information from the neural network. Should NOT
+   *        be used unless its super necessary.
    * @param
    * @return
    *
@@ -42,7 +59,7 @@ public:
   clean();
 
   /**
-   * @brief
+   * @brief Adjusts the network given a series of values inside the system.
    * @param
    * @return
    *
@@ -50,6 +67,7 @@ public:
   void
   adjust();
 
-  Vector<NeuralLayer*> m_layers;
+ public:
+  Vector<NeuralLayer*> m_layer;
 };
-
+}

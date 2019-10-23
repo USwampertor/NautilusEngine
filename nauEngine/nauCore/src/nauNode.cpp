@@ -52,7 +52,7 @@ namespace nauEngineSDK {
   }
 
   Node*
-  Node::getChild(int pos) {
+  Node::getChild(uint32 pos) {
     return m_children[pos];
   }
 

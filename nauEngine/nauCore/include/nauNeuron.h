@@ -13,6 +13,7 @@
 
 #include "nauBone.h"
 
+#include <nauDataStream.h>
 
 namespace nauEngineSDK {
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -44,32 +45,74 @@ class Neuron
   ~Neuron() = default;
 
   /**
-   * Virtual Neuron Initialization
+   * @brief 
+   * @param 
+   * @return 
+   *
    */
   void
   init();
 
   /**
-   * Neuron Reset
+   * @brief 
+   * @param 
+   * @return 
+   *
    */
   void
   reset();
 
   /**
-   * 
+   * @brief 
+   * @param 
+   * @return 
+   *
    */
   Bone*
   get();
 
   /**
-   * Pointer to another 
+   * @brief 
+   * @param 
+   * @return 
+   *
    */
-  Vector<NeuralLayer*> m_nextLayer;
+  String
+  toString();
+
+  /**
+   * @brief operator << overloading to be used for serialization
+   * @param 
+   * @return 
+   *
+   */
+  void 
+  operator<<(FileStream stream);
+
+  /**
+   * @brief operator >> overloading to be used for serialization
+   * @param 
+   * @return 
+   *
+   */
+  void 
+  operator>>(FileStream stream);
 
   /**
    * Vertex used to store the info of the bones
    */
-  Bone m;
+  Bone m_data;
+
+  /**
+   * Id of the Neuron
+   */
+  uint32 m_ID;
+
+  /**
+   * Weight of the Neuron
+   */
+  float m_weight;
+
 };
 
 }

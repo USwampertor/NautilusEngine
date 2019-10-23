@@ -444,7 +444,7 @@ namespace nauEngineSDK {
 
   void
   GAInputManager::removeDevice(InputDevice* device) {
-    for (int i = 0; i < DEVICE::GAMEPAD + 1; ++i) {
+    for (uint32 i = 0; i < DEVICE::GAMEPAD + 1; ++i) {
       for (auto registeredDevice : m_devices[i]) {
         if (device == registeredDevice) {
           registeredDevice->setActive(false);
@@ -565,7 +565,7 @@ namespace nauEngineSDK {
 
   bool
   GAInputManager::anyKey() {
-    for (int i = 0; i < KEY::LASTINPUT; ++i) {
+    for (uint32 i = 0; i < KEY::LASTINPUT; ++i) {
       if (m_inputMap.GetBool(i)) return true;
     }
     return false;
