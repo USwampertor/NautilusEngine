@@ -1,7 +1,7 @@
 /*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
 /**
  * @file nauColor.h
- * @author Marco "Swampy" Millan
+ * @author Marco "Swampy" Mill嫕
  * @date 10/23/2019
  * @brief Color struct in RGBA to have predefined colors for rendering purposes
  * 
@@ -12,6 +12,8 @@
 #include "nauPrerequisitesUtil.h"
 
 #include "nauVector4.h"
+
+#define MAX_COLOR_VALUE 255
 
 namespace nauEngineSDK {
 class Color
@@ -31,32 +33,42 @@ public:
   /**
    * Constructor with a copy of a color
    */
-  Color(const Color& copy);
+  Color(const Color& copy)
+    : m_r(copy.m_r),
+      m_g(copy.m_g),
+      m_b(copy.m_b),
+      m_a(copy.m_a) {}
 
   /**
    * Constructor with a Vector 4
    */
-  Color(Vector4 vector);
+  Color(Vector4 vector)
+    : m_r(vector.x),
+      m_g(vector.y),
+      m_b(vector.z),
+      m_a(vector.w) {}
 
   /**
    * Constructor with a Vector 3
    */
-  Color(Vector3 vector);
+  Color(Vector3 vector)
+    : m_r(vector.x),
+      m_g(vector.y),
+      m_b(vector.z) {}
 
   /**
    * Constructor with a RGBA color based on uint32 from 0 to 255
    */
-  Color(uint32 R, uint32 G = 0, uint32 B = 0, uint32 A = 1);
+  Color(uint32 R, uint32 G = 0, uint32 B = 0, uint32 A = 1)
+    : m_r(R),
+      m_g(G),
+      m_b(B),
+      m_a(A) {}
 
   /**
-   * Constructor with a RGBA color based on float from 0 to 1
-   */
-  Color(float R, float G = 0.0f, float B = 0.0f, float A = 1.0f);
-
-  /**
-   * @brief 
+   * @brief Returns a string with the information of the color
    * @param 
-   * @return 
+   * @return a String with (R: XXX, G: XXX, B: XXX, A: XXX)
    *
    */
   String
@@ -64,7 +76,7 @@ public:
 
   /**
    * @brief 
-   * @param 
+   * @param Vector3 HSV value
    * @return 
    *
    */
@@ -72,18 +84,64 @@ public:
   HSVToRGB(Vector3 hsv);
 
   /**
-   * @brief 
+   * @brief Blends two colors
+   * @param Color& A
+   * @param Color& B
+   * @return the blending of the two colors
+   *
+   */
+  static Color
+  blend(Color& A, Color& B);
+
+  /**
+   * @brief Operator * overload to multiply two colors
+   * @param Color& other color to combine
+   * @return the combination of the two colors
+   *
+   */
+  Color
+  operator*(Color& other);
+
+  /**
+   * @brief Operator + overload to sum two colors
+   * @param Color& other color to sum
+   * @return the combination of the two colors
+   *
+   */
+  Color
+  operator+(Color& other);
+
+  /**
+   * @brief Operator - overload to get the difference of two colors
+   * @param Color& other color to get the difference
+   * @return the difference between two colors
+   *
+   */
+  Color
+  operator-(Color& other);
+
+  /**
+   * @brief Operator / overload to get the division between two colors
+   * @param Color& other color to get the division
+   * @return the division between two colors
+   *
+   */
+  Color
+  operator/(Color& other);
+
+  /**
+   * @brief Returns the color as a vector3 in RGB format
    * @param 
-   * @return 
+   * @return a Vector3(R, G, B) in uint32
    *
    */
   Vector3
   toVector3();
 
   /**
-   * @brief 
+   * @brief Returns the color as a Vector4 in RGBA format
    * @param 
-   * @return 
+   * @return a Vector4(R, G, B, A) in uint32
    *
    */
   Vector4
