@@ -127,7 +127,7 @@ public:
    *
    */
   Color
-  operator/(Color& other);
+  operator/(uint32& other);
 
   /**
    * @brief Returns the color as a vector3 in RGB format

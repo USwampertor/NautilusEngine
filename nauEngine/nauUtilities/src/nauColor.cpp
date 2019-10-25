@@ -31,35 +31,44 @@ namespace nauEngineSDK {
 
   Color
   Color::blend(Color& A, Color& B) {
-    return  { Math::lerp(A.m_r, B.m_r, 0.5),
-              Math::lerp(A.m_g, B.m_g, 0.5),
-              Math::lerp(A.m_b, B.m_b, 0.5),
-              Math::lerp(A.m_a, B.m_a, 0.5)
-    };
+    return Color(Math::lerp(A.m_r, B.m_r, 0.5),
+                 Math::lerp(A.m_g, B.m_g, 0.5),
+                 Math::lerp(A.m_b, B.m_b, 0.5),
+                 Math::lerp(A.m_a, B.m_a, 0.5));
   }
 
   Color
   Color::operator*(Color& other) {
-    return Color::White;
 
+    return Color((m_r * other.m_r) / 255, 
+                 (m_g * other.m_g) / 255, 
+                 (m_b * other.m_b) / 255, 
+                 (m_a * other.m_a) / 255);
   }
 
   Color
   Color::operator+(Color& other) {
-    return Color::White;
+    return Color((m_r + other.m_r) / 255, 
+                 (m_g + other.m_g) / 255, 
+                 (m_b + other.m_b) / 255, 
+                 (m_a + other.m_a) / 255);
 
   }
 
   Color
   Color::operator-(Color& other) {
-    return Color::White;
-
+    return Color((m_r - other.m_r) / 255, 
+                 (m_g - other.m_g) / 255, 
+                 (m_b - other.m_b) / 255, 
+                 (m_a - other.m_a) / 255);
   }
 
   Color
-  Color::operator/(Color& other) {
-    return Color::White;
-
+  Color::operator/(uint32& other) {
+    return Color((m_r / other), 
+                 (m_g / other), 
+                 (m_b / other), 
+                 (m_a / other));
   }
 
   Vector3

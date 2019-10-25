@@ -12,6 +12,8 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauNeuralLayer.h"
+#include "nauPath.h"
+#include "nauLogger.h"
 
 #include <nauModule.h>
 #include <nauVector4.h>
@@ -34,12 +36,40 @@ class NeuralNetwork : public Module<NeuralNetwork>
 
   /**
    * @brief Loads the information stored previously in a database
+   * @param String the path to find the object
+   * @return 
+   *
+   */
+  bool
+  load(String path);
+
+  /**
+   * @brief Loads the information stores previously in a database
    * @param 
    * @return 
    *
    */
-  void
-  load(String path);
+  bool
+  load(Path path);
+
+  /**
+   * @brief Saves the information of the neural network in the file 
+   *        it was loaded from. If it is a new object, it will call save as
+   * @param 
+   * @return true if able to save
+   *
+   */
+  bool
+  save();
+
+  /**
+   * @brief Saves the object in a new file
+   * @param String fileName the file to save
+   * @return 
+   *
+   */
+  bool
+  saveAs(String fileName);
 
   /**
    * @brief Initializes the neural network. Should be used only once tho
@@ -112,6 +142,15 @@ class NeuralNetwork : public Module<NeuralNetwork>
   operator>>(fstream stream);
 
  public:
+
+  /**
+   * The layers in this neural network
+   */
   Vector<NeuralLayer*> m_layer;
+
+  /**
+   * A reference to a file if it has been loaded with
+   */
+  FileStream* m_file = nullptr;
 };
 }

@@ -12,6 +12,7 @@
 #include "nauPrerequisitesCore.h"
 
 #include "nauBone.h"
+#include "nauLogger.h"
 
 #include <nauDataStream.h>
 #include <nauVector4.h>

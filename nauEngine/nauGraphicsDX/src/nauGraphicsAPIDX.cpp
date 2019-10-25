@@ -18,7 +18,10 @@ namespace nauEngineSDK {
   GraphicsAPIDX::init(void* scrHandler) {
     m_device = new DeviceDX();
     if (!initDevice(scrHandler)) {
-      Logger::instance().toIDE("Failed to initialize device", LOGGER_LEVEL::ERRORED);
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Failed to initialize device", 
+                               LOGGER_LEVEL::ERRORED);
+#endif
       return false;
     }
 
@@ -36,10 +39,15 @@ namespace nauEngineSDK {
                                    static_cast<float>(m_device->m_height),
                                    0.0f,
                                    0.0f)) {
-      Logger::instance().toIDE("Failed to initialize device", LOGGER_LEVEL::ERRORED);
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Failed to initialize device", 
+                               LOGGER_LEVEL::ERRORED);
+#endif
       exit(828);
     }
+#if NAU_DEBUG_MODE
     Logger::instance().toIDE("Created Device", LOGGER_LEVEL::SUCCESS);
+#endif
     m_viewPort.setViewPort(m_device->getContext());
     return true;
   }

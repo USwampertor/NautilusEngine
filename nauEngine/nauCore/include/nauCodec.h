@@ -25,19 +25,21 @@ namespace CODECTYPE
 {
 enum E
 {
-  NONE            = 0,
   INVALID         = -1,
-  IMAGE           = 1<<0,
-  MODEL           = 1<<1,
-  MATERIAL        = 1<<2,
-  SKELETON        = 1<<3,
-  SCENE           = 1<<4,
-  AUDIO           = 1<<5,
+  NONE            = 0,
+  IMAGE           ,
+  MODEL           ,
+  MATERIAL        ,
+  SKELETON        ,
+  SCENE           ,
+  AUDIO           ,
+  IRINANN         ,
+
 };
 }
 
 
-namespace FORMAT
+namespace CODECFORMAT
 {
 enum E
 {
@@ -97,6 +99,7 @@ public:
   /**
    * Default destructor
    */
+  virtual
   ~Codec() = default;
 
   /**
@@ -105,8 +108,8 @@ public:
    * @return true if able to decode
    *
    */
-  bool
-  canDecode(String path);
+  virtual bool
+  canDecode(String path) = 0;
 
   /**
    * @brief Checks if the actual object is a valid format
@@ -114,8 +117,8 @@ public:
    * @return true if able to decode
    *
    */
-  bool
-  canDecode(Path path);
+  virtual bool
+  canDecode(Path path) = 0;
 
   /**
    * @brief Creates and retrieves the information stored inside the object
@@ -123,10 +126,71 @@ public:
    * @return 
    *
    */
-  bool
-  decode(String path);
+  virtual bool
+  decode(String path) = 0;
+
+  /**
+   * @brief Returns the type of codec it is
+   * @param 
+   * @return 
+   *
+   */
+  virtual CODECFORMAT::E
+  getFormat() = 0;
 
 };
+
+class CodecImage : public Codec
+{
+public:
+  /**
+   * Default constructor
+   */
+  CodecImage()  = default;
+
+  /**
+   * Default destructor
+   */
+  ~CodecImage() = default;
+
+  /**
+   * @brief Checks if the actual object is a valid format
+   * @param String path of the object
+   * @return true if able to decode
+   *
+   */
+  virtual bool
+  canDecode(String path) override;
+
+  /**
+   * @brief Checks if the actual object is a valid format
+   * @param Path object
+   * @return true if able to decode
+   *
+   */
+  virtual bool
+  canDecode(Path path) override;
+
+  /**
+   * @brief Creates and retrieves the information stored inside the object
+   * @param 
+   * @return 
+   *
+   */
+  virtual bool
+  decode(String path) override;
+
+  /**
+   * @brief Returns the type of codec it is
+   * @param 
+   * @return 
+   *
+   */
+  virtual CODECTYPE::E
+  getType() = 0;
+
+};
+
 }
 
 
