@@ -146,7 +146,7 @@ class NeuralNetwork : public Module<NeuralNetwork>
   /**
    * The layers in this neural network
    */
-  Vector<NeuralLayer*> m_layer;
+  Vector<NeuralLayer*> m_layers;
 
   /**
    * A reference to a file if it has been loaded with

@@ -37,10 +37,10 @@ namespace nauEngineSDK {
   bool
   NeuralNetwork::load(Path path) {
 
-    FileStream* file = new FileStream();
-    file->m_file.open(path.get().c_str(), fstream::binary);
+    m_file = new FileStream();
+    m_file->m_file.open(path.get().c_str(), fstream::binary);
 
-    if (!file->m_file.is_open()) {
+    if (!m_file->m_file.is_open()) {
 #if NAU_DEBUG_MODE
       Logger::instance().toIDE("Failed to load Neural Training information",
                                LOGGER_LEVEL::ERRORED);
@@ -62,6 +62,24 @@ namespace nauEngineSDK {
   bool
   NeuralNetwork::saveAs(String fileName) {
 
+    m_file->m_file.open(fileName.c_str(), fstream::binary);
+
+    if (!m_file->m_file.is_open()) {
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Failed to load Neural Training information",
+        LOGGER_LEVEL::ERRORED);
+#endif
+      Logger::instance().toConsole("Failed to load Neural Training information",
+        LOGGER_LEVEL::ERRORED);
+      return false;
+    }
+    //Write the amount of layers it has
+    m_file->m_file << m_layers.size();
+    for (auto layer : m_layers) {
+      m_file->m_file << layer;
+    }
+   
+    return true;
   }
 
   void
