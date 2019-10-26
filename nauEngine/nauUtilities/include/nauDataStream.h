@@ -145,7 +145,7 @@ public:
    *
    */
   virtual bool
-  open(String path) = 0;
+  open(String path, STREAMACCESS::E) = 0;
 
   /**
    * @brief creates a file
@@ -292,7 +292,7 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
   isType() override;
 
   virtual bool
-  open(String file) override;
+  open(String file, STREAMACCESS::E) override;
 
   virtual bool
   create(void* file) override;
@@ -300,6 +300,7 @@ class NAU_UTILITY_EXPORT FileStream : public DataStream
   virtual bool
   copy(const void* buffer) override;
 
+public:
   fstream m_file;
 
 };
@@ -328,7 +329,7 @@ class NAU_UTILITY_EXPORT MemStream : public DataStream
   isType() override;
 
   virtual bool
-  open(String path) override;
+  open(String path, STREAMACCESS::E) override;
 
   virtual bool
   create(void* path) override;

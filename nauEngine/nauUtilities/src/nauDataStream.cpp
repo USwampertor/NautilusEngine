@@ -81,7 +81,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  FileStream::open(String path) {
+  FileStream::open(String path, STREAMACCESS::E) {
 
     String temp = path;
     m_file.open(temp, std::ios::binary | std::ios::ate);
@@ -122,7 +122,7 @@ namespace nauEngineSDK {
   }
 
   bool
-  MemStream::open(String file) {
+  MemStream::open(String file, STREAMACCESS::E) {
     return copy(file.c_str());
   }
 

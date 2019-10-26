@@ -17,6 +17,18 @@ namespace nauEngineSDK {
 void
 NeuralLayer::operator<<(FileStream stream) {
   stream.m_file << m_ID << static_cast<int>(m_type) << m_data.size();
+  for (uint32 i = 0; i < m_data.size(); ++i) {
+    stream.m_file << m_data[i];
+  }
+}
+
+void
+NeuralLayer::operator<<(fstream stream) {
+  stream << m_ID << static_cast<int>(m_type) << m_data.size();
+
+  for (uint32 i = 0; i < m_data.size(); ++i) {
+    stream << m_data[i];
+  }
 }
 
 void
@@ -28,9 +40,15 @@ NeuralLayer::operator>>(FileStream stream) {
   m_type = static_cast<NeuralLayerType::E>(layerType);
   for (uint32 i = 0; i < layerSize; ++i) {
     Neuron* tmp = new Neuron();
+    
     m_data.push_back(tmp);
   }
 
+}
+
+void
+NeuralLayer::operator>>(fstream) {
+  
 }
 
 String

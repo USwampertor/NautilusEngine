@@ -89,7 +89,9 @@ namespace nauEngineSDK {
 
   void
   NeuralNetwork::clean() {
+    for (auto neuron :  m_layers) {
 
+    }
   }
 
   void

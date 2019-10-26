@@ -40,23 +40,65 @@ namespace nauEngineSDK {
 
   void
   Neuron::operator<<(FileStream stream) {
-    stream.m_file << m_ID << m_weight;
+    stream.m_file << m_ID << m_weight << m_data->m_ID;
+    stream.m_file.write(reinterpret_cast<char*>(&m_data->m_offset), 
+                        sizeof(Matrix4));
+
   }
 
   void
   Neuron::operator<<(fstream stream) {
-    stream << m_ID << m_weight;
+    stream << m_ID << m_weight << m_data->m_ID;
+    stream.write(reinterpret_cast<char*>(&m_data->m_offset),
+                 sizeof(Matrix4));
   }
 
+  void
+  Neuron::write(FileStream stream) {
+    stream.m_file << m_ID << m_weight << m_data->m_ID;
+    stream.m_file.write(reinterpret_cast<char*>(&m_data->m_offset), 
+                        sizeof(Matrix4));
+  }
+
+  void
+  Neuron::write(fstream stream) {
+    stream << m_ID << m_weight << m_data->m_ID;
+    stream.write(reinterpret_cast<char*>(&m_data->m_offset),
+                 sizeof(Matrix4));
+  }
 
   void
   Neuron::operator>>(FileStream stream) {
-    stream.m_file >> m_ID >> m_weight;
+    uint32 boneID = 0;
+    Matrix4 boneOffset;
+    stream.m_file >> m_ID >> m_weight >> boneID;
+    stream.m_file.read(reinterpret_cast<char*>(&boneOffset), sizeof(Matrix4));
   }
 
   void
   Neuron::operator>>(fstream stream) {
-    stream >> m_ID >> m_weight;
+    uint32 boneID = 0;
+    Matrix4 boneOffset;
+    stream >> m_ID >> m_weight >> boneID;
+    stream.read(reinterpret_cast<char*>(&boneOffset), sizeof(Matrix4));
+  }
+
+  void
+  Neuron::read(FileStream stream) {
+    uint32 boneID = 0;
+    Matrix4 boneOffset;
+
+    stream.m_file >> m_ID >> m_weight >> boneID;
+    stream.read(reinterpret_cast<char*>(&boneOffset), sizeof(Matrix4));
+
+  }
+
+  void
+  Neuron::read(fstream stream) {
+    uint32 boneID = 0;
+    Matrix4 boneOffset;
+    stream >> m_ID >> m_weight >> boneID;
+    stream.read(reinterpret_cast<char*>(&boneOffset), sizeof(Matrix4));
   }
   
 }

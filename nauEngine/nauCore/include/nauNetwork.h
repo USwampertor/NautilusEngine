@@ -3,7 +3,13 @@
  * @file nauNetwork.h
  * @author Marco "Swampy" Millan
  * @date 10/17/2019
- * @brief Neural Network System for IrinaIK project
+ * @brief NeuralNetwork is the main file of the IrinaIK Neural Network System for
+ *        3d animation correction in video games. This project is intended to 
+ *        generate a neural network that can handle animations and muscles that
+ *        correct the animation to handle terrain and stimulus from the level.
+ *        Files with the training of the neural network have the extension ".irn"
+ *        The project creates a neural network based on the amount of bones the
+ *        model 
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -18,10 +24,14 @@
 #include <nauModule.h>
 #include <nauVector4.h>
 
+#define IRINA_FILE_EXTENSION ".irn"
+
+#define IRINA_MAX_BONES 64
+
 namespace nauEngineSDK {
   using std::fstream;
 
-class NeuralNetwork : public Module<NeuralNetwork>
+class NeuralNetwork
 {
  public:
   /**

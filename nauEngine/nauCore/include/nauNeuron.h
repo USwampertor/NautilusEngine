@@ -95,6 +95,30 @@ class Neuron
   toColor();
 
   /**
+   * @brief Reads an fstream to get the info to fill the neuron
+   * @param 
+   * @return 
+   *
+   */
+  void
+  read(FileStream stream);
+
+  void
+  read(fstream stream);
+
+  /**
+   * @brief Writes the information of the neuron on an fstream
+   * @param 
+   * @return 
+   *
+   */
+  void
+  write(FileStream stream);
+
+  void
+  write(fstream stream);
+
+  /**
    * @brief operator << overloading to be used for serialization
    * @param 
    * @return 

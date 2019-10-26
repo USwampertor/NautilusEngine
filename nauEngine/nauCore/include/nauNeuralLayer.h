@@ -71,6 +71,9 @@ public:
   void 
   operator<<(FileStream stream);
 
+  void 
+  operator<<(fstream stream);
+
   /**
    * @brief 
    * @param 
@@ -79,6 +82,9 @@ public:
    */
   void 
   operator>>(FileStream stream);
+
+  void 
+  operator>>(fstream stream);
 
 public:
 
