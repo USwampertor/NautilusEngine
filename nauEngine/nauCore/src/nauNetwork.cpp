@@ -15,10 +15,10 @@ namespace nauEngineSDK {
   bool
   NeuralNetwork::load(String path) {
 
-    FileStream file;
-    file.m_file.open(path.c_str(), fstream::binary);
+    m_file = new FileStream();
+    m_file->m_file.open(path.c_str(), fstream::binary);
 
-    if (!file.m_file.is_open()) {
+    if (!m_file->m_file.is_open()) {
 #if NAU_DEBUG_MODE
       Logger::instance().toIDE("Failed to load Neural Training information", 
                                LOGGER_LEVEL::ERRORED);
@@ -29,7 +29,13 @@ namespace nauEngineSDK {
     }
 
     uint32 layers = 0;
-    file.m_file >> layers;
+    m_file->m_file >> layers;
+
+    for (uint32 i = 0; i < layers;  ++i) {
+      NeuralLayer layer;
+      layer.read(m_file->m_file);
+      m_layers.push_back(layer);
+    }
 
     return true;
   }
@@ -51,12 +57,26 @@ namespace nauEngineSDK {
     }
 
 
+    uint32 layers = 0;
+    m_file->m_file >> layers;
+
+    for (uint32 i = 0; i < layers; ++i) {
+      NeuralLayer layer;
+      layer.read(m_file->m_file);
+      m_layers.push_back(layer);
+    }
+
     return true;
   }
 
   bool
   NeuralNetwork::save() {
-    
+    if (m_file == nullptr) {
+      String newName = "";
+      newName.append(IRINA_FILE_EXTENSION);
+      saveAs(newName);
+    }
+    else { saveAs(m_file->m_path); }
   }
 
   bool
@@ -76,9 +96,8 @@ namespace nauEngineSDK {
     //Write the amount of layers it has
     m_file->m_file << m_layers.size();
     for (auto layer : m_layers) {
-      m_file->m_file << layer;
+      layer.write(*m_file);
     }
-   
     return true;
   }
 
@@ -89,38 +108,76 @@ namespace nauEngineSDK {
 
   void
   NeuralNetwork::clean() {
-    for (auto neuron :  m_layers) {
-
+    for (auto layer :  m_layers) {
+      for (auto neuron : layer.m_data) {
+        neuron.reset();
+      }
     }
   }
 
   void
   NeuralNetwork::adjust() {
-
+    for (auto layer : m_layers) {
+      for (auto neuron : layer.m_data) {
+      }
+    }
   }
 
   String
   NeuralNetwork::toString() {
+    String toReturn;
+    toReturn += "Neural Network IrinaIK \n";
+    toReturn += "Controlling model with ID: ";
+    return toReturn;
+  }
+
+
+  Vector<Vector<Color>>
+  NeuralNetwork::toColor() {
+    Vector<Vector<Color>> matrix;
+    for (auto layer : m_layers) {
+      matrix.push_back(layer.toColor());
+    }
+    return matrix;
+  }
+
+  void
+  NeuralNetwork::operator<<(FileStream& stream) {
 
   }
 
   void
-  NeuralNetwork::operator<<(FileStream stream) {
+  NeuralNetwork::operator<<(fstream& stream) {
 
   }
 
   void
-  NeuralNetwork::operator<<(fstream stream) {
+  NeuralNetwork::write(FileStream& stream) {
 
   }
 
   void
-  NeuralNetwork::operator>>(FileStream stream) {
+  NeuralNetwork::write(fstream& stream) {
 
   }
 
   void
-  NeuralNetwork::operator>>(fstream stream) {
+  NeuralNetwork::operator>>(FileStream& stream) {
 
   }
+
+  void
+  NeuralNetwork::operator>>(fstream& stream) {
+
+  }
+
+  void
+  NeuralNetwork::read(FileStream& stream) {
+
+  }
+  void
+  NeuralNetwork::read(FileStream& stream) {
+
+  }
+
 }

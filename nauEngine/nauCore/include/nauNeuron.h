@@ -13,6 +13,7 @@
 
 #include "nauBone.h"
 #include "nauLogger.h"
+#include "nauColor.h"
 
 #include <nauDataStream.h>
 #include <nauVector4.h>
@@ -91,7 +92,7 @@ class Neuron
    * @return Vector4 a RGBA color
    *
    */
-  Vector4
+  Color
   toColor();
 
   /**
@@ -101,10 +102,10 @@ class Neuron
    *
    */
   void
-  read(FileStream stream);
+  read(FileStream& stream);
 
   void
-  read(fstream stream);
+  read(fstream& stream);
 
   /**
    * @brief Writes the information of the neuron on an fstream
@@ -113,10 +114,10 @@ class Neuron
    *
    */
   void
-  write(FileStream stream);
+  write(FileStream& stream);
 
   void
-  write(fstream stream);
+  write(fstream& stream);
 
   /**
    * @brief operator << overloading to be used for serialization
@@ -125,10 +126,10 @@ class Neuron
    *
    */
   void 
-  operator<<(FileStream stream);
+  operator<<(FileStream& stream);
 
   void
-  operator<<(fstream stream);
+  operator<<(fstream& stream);
 
 
   /**
@@ -138,10 +139,10 @@ class Neuron
    *
    */
   void 
-  operator>>(FileStream stream);
+  operator>>(FileStream& stream);
 
   void
-  operator>>(fstream stream);
+  operator>>(fstream& stream);
 
   /**
    * Vertex used to store the info of the bones

@@ -38,8 +38,13 @@ namespace nauEngineSDK {
     return toReturn;
   }
 
+  Color
+  Neuron::toColor() {
+    return Color(255 * m_weight, 255 * m_weight, 255 * m_weight, 255);
+  }
+
   void
-  Neuron::operator<<(FileStream stream) {
+  Neuron::operator<<(FileStream& stream) {
     stream.m_file << m_ID << m_weight << m_data->m_ID;
     stream.m_file.write(reinterpret_cast<char*>(&m_data->m_offset), 
                         sizeof(Matrix4));
@@ -47,28 +52,26 @@ namespace nauEngineSDK {
   }
 
   void
-  Neuron::operator<<(fstream stream) {
+  Neuron::operator<<(fstream& stream) {
     stream << m_ID << m_weight << m_data->m_ID;
     stream.write(reinterpret_cast<char*>(&m_data->m_offset),
                  sizeof(Matrix4));
   }
 
   void
-  Neuron::write(FileStream stream) {
+  Neuron::write(FileStream& stream) {
     stream.m_file << m_ID << m_weight << m_data->m_ID;
-    stream.m_file.write(reinterpret_cast<char*>(&m_data->m_offset), 
-                        sizeof(Matrix4));
+    stream.m_file.write(reinterpret_cast<char*>(&m_data->m_offset), sizeof(Matrix4));
   }
 
   void
-  Neuron::write(fstream stream) {
+  Neuron::write(fstream& stream) {
     stream << m_ID << m_weight << m_data->m_ID;
-    stream.write(reinterpret_cast<char*>(&m_data->m_offset),
-                 sizeof(Matrix4));
+    stream.write(reinterpret_cast<char*>(&m_data->m_offset), sizeof(Matrix4));
   }
 
   void
-  Neuron::operator>>(FileStream stream) {
+  Neuron::operator>>(FileStream& stream) {
     uint32 boneID = 0;
     Matrix4 boneOffset;
     stream.m_file >> m_ID >> m_weight >> boneID;
@@ -76,7 +79,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Neuron::operator>>(fstream stream) {
+  Neuron::operator>>(fstream& stream) {
     uint32 boneID = 0;
     Matrix4 boneOffset;
     stream >> m_ID >> m_weight >> boneID;
@@ -84,7 +87,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Neuron::read(FileStream stream) {
+  Neuron::read(FileStream& stream) {
     uint32 boneID = 0;
     Matrix4 boneOffset;
 
@@ -94,7 +97,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Neuron::read(fstream stream) {
+  Neuron::read(fstream& stream) {
     uint32 boneID = 0;
     Matrix4 boneOffset;
     stream >> m_ID >> m_weight >> boneID;

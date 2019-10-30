@@ -17,9 +17,12 @@
 
 #include "nauPrerequisitesCore.h"
 
-#include "nauNeuralLayer.h"
-#include "nauPath.h"
 #include "nauLogger.h"
+
+#include "nauNeuralLayer.h"
+#include "nauNeuron.h"
+
+#include "nauPath.h"
 
 #include <nauModule.h>
 #include <nauVector4.h>
@@ -119,44 +122,92 @@ class NeuralNetwork
   toString();
 
   /**
-   * @brief returns the information of the neurons as an arrangement of colors
+   * @brief returns the information of the neurons as an arrangement of color matrix
    * @param 
-   * @return 
+   * @return Vector<Vector<Color>> matrix of colors by layer and amount of neurons
    *
    */
-  Vector4
+  Vector<Vector<Color>>
   toColor();
 
   /**
    * @brief Operator << for serialization
-   * @param 
+   * @param FileStream stream
    * @return 
    *
    */
   void
-  operator<<(FileStream stream);
-
-  void
-  operator<<(fstream stream);
+  operator<<(FileStream& stream);
 
   /**
-   * @brief Operator >> for serialization
-   * @param
+   * @brief Operator << for serialization
+   * @param fstream stream
    * @return
    *
    */
   void
-  operator>>(FileStream stream);
+  operator<<(fstream& stream);
 
+  /**
+   * @brief Writing function for the Neural network to stream information to a file
+   * @param FileStream stream
+   * @return 
+   *
+   */
   void
-  operator>>(fstream stream);
+  write(FileStream& stream);
+
+  /**
+   * @brief Writing function for the Neural Network to stream information to a file
+   * @param fstream stream
+   * @return 
+   *
+   */
+  void
+  write(fstream& stream);
+
+  /**
+   * @brief Operator >> for serialization
+   * @param FileStream stream
+   * @return
+   *
+   */
+  void
+  operator>>(FileStream& stream);
+
+  /**
+   * @brief Operator >> for serialization
+   * @param fstream stream 
+   * @return
+   *
+   */
+  void
+  operator>>(fstream& stream);
+
+  /**
+   * @brief Reading function for the Neural Network to stream information to a network
+   * @param FileStream stream
+   * @return 
+   *
+   */
+  void
+  read(FileStream& stream);
+
+  /**
+   * @brief Reading function for the Neural Network to stream information to a network
+   * @param fstream stream
+   * @return 
+   *
+   */
+  void
+  read(FileStream& stream);
 
  public:
 
   /**
    * The layers in this neural network
    */
-  Vector<NeuralLayer*> m_layers;
+  Vector<NeuralLayer> m_layers;
 
   /**
    * A reference to a file if it has been loaded with

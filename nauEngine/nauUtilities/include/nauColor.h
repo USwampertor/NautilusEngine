@@ -16,6 +16,13 @@
 #define MAX_COLOR_VALUE 255
 
 namespace nauEngineSDK {
+  /**
+   * Color
+   * Description:
+   * 	Class that holds 4 uint32 numbers that range from 0 to 255
+   * Sample usage:
+   * 	Color.blend() blends two colors
+   */
 class Color
 {
 public:
@@ -57,7 +64,11 @@ public:
       m_b(vector.z) {}
 
   /**
-   * Constructor with a RGBA color based on uint32 from 0 to 255
+   * @brief Constructor with a RGBA color based on uint32 from 0 to 255
+   * @param uint32 R red color from 0 to 255
+   * @param uint32 G green color from 0 to 255
+   * @param uint32 B blue color from 0 to 255
+   * @param uint32 A alpha channel from 0 to 255
    */
   Color(uint32 R, uint32 G = 0, uint32 B = 0, uint32 A = 1)
     : m_r(R),

@@ -63,35 +63,92 @@ public:
   toString();
 
   /**
-   * @brief 
+   * @brief Returns the layer as a vector of Color struct
    * @param 
-   * @return 
+   * @return Vector<Color>
    *
    */
-  void 
-  operator<<(FileStream stream);
-
-  void 
-  operator<<(fstream stream);
+  Vector<Color>
+  toColor();
 
   /**
-   * @brief 
-   * @param 
+   * @brief Writing operator for the neural layer
+   * @param FileStream stream
    * @return 
    *
    */
   void 
-  operator>>(FileStream stream);
+  operator<<(FileStream& stream);
 
+  /**
+   * @brief Writing operator for the neural layer
+   * @param fstream stream
+   * @return 
+   *
+   */
   void 
-  operator>>(fstream stream);
+  operator<<(fstream& stream);
+
+  /**
+   * @brief Write function to get information from the layer to the stream
+   * @param FileStream stream
+   * @return 
+   *
+   */
+  void
+  write(FileStream& stream);
+
+  /**
+   * @brief Write function to get information from the layer to the stream
+   * @param fstream stream
+   * @return 
+   *
+   */
+  void
+  write(fstream& stream);
+
+  /**
+   * @brief Reading operator >> for neural layer stream
+   * @param FileStream stream
+   * @return 
+   *
+   */
+  void 
+  operator>>(FileStream& stream);
+
+  /**
+   * @brief Reading operator >> for neural layer stream
+   * @param fstream stream
+   * @return 
+   *
+   */
+  void 
+  operator>>(fstream& stream);
+
+  /**
+   * @brief Reading function to insert information in the neural layer 
+   * @param FileStream stream
+   * @return 
+   *
+   */
+  void
+  read(FileStream& stream);
+
+  /**
+   * @brief Reading function to insert information in the neural layer
+   * @param fstream stream
+   * @return 
+   *
+   */
+  void
+  read(fstream& stream);
 
 public:
 
   /**
    * List of neurons in the layer
    */
-  Vector<Neuron*> m_data;
+  Vector<Neuron> m_data;
 
   /**
    * Pointer to the next layer

@@ -15,40 +15,91 @@ namespace nauEngineSDK {
 
 
 void
-NeuralLayer::operator<<(FileStream stream) {
+NeuralLayer::operator<<(FileStream& stream) {
   stream.m_file << m_ID << static_cast<int>(m_type) << m_data.size();
   for (uint32 i = 0; i < m_data.size(); ++i) {
-    stream.m_file << m_data[i];
+    m_data[i].write(stream);
   }
 }
 
 void
-NeuralLayer::operator<<(fstream stream) {
+NeuralLayer::operator<<(fstream& stream) {
   stream << m_ID << static_cast<int>(m_type) << m_data.size();
-
   for (uint32 i = 0; i < m_data.size(); ++i) {
-    stream << m_data[i];
+    m_data[i].write(stream);
   }
 }
 
 void
-NeuralLayer::operator>>(FileStream stream) {
+NeuralLayer::write(FileStream& stream) {
+  stream.m_file << m_ID << static_cast<int>(m_type) << m_data.size();
+  for (uint32 i = 0; i < m_data.size(); ++i) {
+    m_data[i].write(stream);
+  }
+}
+
+void
+NeuralLayer::write(fstream& stream) {
+  stream << m_ID << static_cast<int>(m_type) << m_data.size();
+  for (uint32 i = 0; i < m_data.size(); ++i) {
+    m_data[i].write(stream);
+  }
+}
+
+void
+NeuralLayer::operator>>(FileStream& stream) {
   SIZE_T layerSize = 0;
   uint32 layerType = 0;
   stream.m_file >> m_ID >> layerType >> layerSize;
 
   m_type = static_cast<NeuralLayerType::E>(layerType);
   for (uint32 i = 0; i < layerSize; ++i) {
-    Neuron* tmp = new Neuron();
-    
+    Neuron tmp;
+    tmp.read(stream);
     m_data.push_back(tmp);
   }
-
 }
 
 void
-NeuralLayer::operator>>(fstream) {
-  
+NeuralLayer::operator>>(fstream& stream) {
+  SIZE_T layerSize = 0;
+  uint32 layerType = 0;
+  stream >> m_ID >> layerType >> layerSize;
+  m_type = static_cast<NeuralLayerType::E>(layerType);
+
+  for (uint32 i = 0; i < layerSize; ++i) {
+    Neuron tmp;
+    tmp.read(stream);
+    m_data.push_back(tmp);
+  }
+}
+
+void
+NeuralLayer::read(FileStream& stream) {
+  SIZE_T layerSize = 0;
+  uint32 layerType = 0;
+  stream.m_file >> m_ID >> layerType >> layerSize;
+  m_type = static_cast<NeuralLayerType::E>(layerType);
+
+  for (uint32 i = 0; i < layerSize; ++i) {
+    Neuron tmp;
+    tmp.read(stream);
+    m_data.push_back(tmp);
+  }
+}
+
+void
+NeuralLayer::read(fstream& stream) {
+  SIZE_T layerSize = 0;
+  uint32 layerType = 0;
+  stream >> m_ID >> layerType >> layerSize;
+  m_type = static_cast<NeuralLayerType::E>(layerType);
+
+  for (uint32 i = 0; i < layerSize; ++i) {
+    Neuron tmp;
+    tmp.read(stream);
+    m_data.push_back(tmp);
+  }
 }
 
 String
@@ -63,6 +114,15 @@ NeuralLayer::toString() {
   toReturn += std::to_string(m_data.size());
 
   return toReturn;
+}
+
+Vector<Color>
+NeuralLayer::toColor() {
+  Vector<Color> layer;
+  for (auto neuron : m_data) {
+    layer.push_back(neuron.toColor());
+  }
+  return layer;
 }
 
 }
