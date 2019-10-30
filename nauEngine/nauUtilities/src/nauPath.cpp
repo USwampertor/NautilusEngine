@@ -11,5 +11,28 @@
 
 
 namespace nauEngineSDK {
+  String
+  Path::extension() {
+    String extension;
 
+    return extension;
+  }
+
+  String
+  Path::getFullPath() {
+    return m_url;
+  }
+
+  String
+  Path::getFileName() {
+    String fileName;
+
+
+    return fileName;
+  }
+
+  void
+  Path::set(String path) {
+    m_url = path;
+  }
 }

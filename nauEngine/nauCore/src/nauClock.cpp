@@ -55,7 +55,31 @@ namespace nauEngineSDK {
     hour += std::to_string(localTime.tm_min);
     hour += ": ";
     hour += std::to_string(localTime.tm_sec);
-    hour += "\n";
+
+    return hour;
+  }
+
+  String
+  Clock::toString() {
+    String hour = "";
+    std::time_t timeStamp;
+
+    system_clock::time_point today = system_clock::now();
+
+    timeStamp = system_clock::to_time_t(today);
+    std::tm localTime = *localtime(&timeStamp);
+
+    hour += std::to_string(localTime.tm_year);
+    hour += "-";
+    hour += std::to_string(localTime.tm_hour);
+    hour += "-";
+    hour += std::to_string(localTime.tm_mday);
+    hour += "-";
+    hour += std::to_string(localTime.tm_hour);
+    hour += "-";
+    hour += std::to_string(localTime.tm_min);
+    hour += "-";
+    hour += std::to_string(localTime.tm_sec);
 
     return hour;
   }

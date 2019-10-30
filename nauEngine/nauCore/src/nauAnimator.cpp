@@ -14,7 +14,7 @@ namespace nauEngineSDK {
   bool
   Animator::load(String path) {
     FileStream mat;
-    mat.open(path);
+    mat.open(path,STREAMACCESS::READ);
     mat.m_data.data();
 
     return true;

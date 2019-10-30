@@ -200,7 +200,7 @@ class NeuralNetwork
    *
    */
   void
-  read(FileStream& stream);
+  read(fstream& stream);
 
  public:
 

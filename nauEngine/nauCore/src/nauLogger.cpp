@@ -8,33 +8,37 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauLogger.h"
+#include <nauDataStream.h>
+
 
 namespace nauEngineSDK {
 
   void
   Logger::init() {
-    _m.clear();
+    m_data.clear();
   }
 
   void
   Logger::clear() {
-    _m.clear();
+    m_data.clear();
   }
 
   void
-  Logger::add(String newEntry) {
-    _m.push_back(newEntry);
+  Logger::add(String newEntry, LOGGER_LEVEL::E level) {
+    m_data.push_back(LoggerString(newEntry, level));
   }
 
   void
   Logger::toIDE(String newEntry, LOGGER_LEVEL::E level) {
 
-    String outputString;
+    String outputString = "(";
+    outputString.append(Clock::instance().hour());
+    outputString.append("): ");
 
-    if      (LOGGER_LEVEL::DEBUG   == level) { outputString = LGRDEBUGGRSIGN; }
-    else if (LOGGER_LEVEL::ERRORED == level) { outputString = LGRERROREDSIGN; }
-    else if (LOGGER_LEVEL::WARNING == level) { outputString = LGRWARNINGSIGN; }
-    else if (LOGGER_LEVEL::SUCCESS == level) { outputString = LGRSUCCESSSIGN; }
+    if      (LOGGER_LEVEL::DEBUG   == level) { outputString += LGRDEBUGGRSIGN; }
+    else if (LOGGER_LEVEL::ERRORED == level) { outputString += LGRERROREDSIGN; }
+    else if (LOGGER_LEVEL::WARNING == level) { outputString += LGRWARNINGSIGN; }
+    else if (LOGGER_LEVEL::SUCCESS == level) { outputString += LGRSUCCESSSIGN; }
 
     outputString += newEntry; 
 
@@ -43,17 +47,53 @@ namespace nauEngineSDK {
     OutputDebugString("\n");
 # elif NAU_COMPILER == NAU_COMPILER_GNUC
 #endif
+
+    add(outputString, level);
   }
 
   void
-  Logger::toScreen(String newEntry, LOGGER_LEVEL::E level) {
+  Logger::toScreen(String newEntry, 
+                   LOGGER_LEVEL::E level,
+                   Color color,
+                   float duration) {
+    String outputString = "(";
+    outputString.append(Clock::instance().hour());
+    outputString.append("): ");
+    outputString.append(newEntry);
 
+    add(outputString, level);
   }
 
   void
   Logger::toConsole(String newEntry, LOGGER_LEVEL::E level) {
 
+    String outputString = "(";
+    outputString.append(Clock::instance().hour());
+    outputString.append("): ");
+    outputString.append(newEntry);
+
+    add(outputString, level);
   }
 
+  void
+  Logger::dump() {
+
+    String fileName = "ERRORLOG";
+    fileName.append(Clock::instance().toString());
+    fileName.append(".txt");
+
+    FileStream dumpFile;
+
+    dumpFile.m_file.open(fileName, fstream::out);
+
+    if (!dumpFile.m_file.is_open()) {
+      toIDE("Couldn't create dump file", LOGGER_LEVEL::ERRORED);
+    }
+
+    for (auto errorString : m_data) {
+      dumpFile.m_file << errorString.m_data << '\n';
+    }
+    dumpFile.m_file.close();
+  }
 
 }

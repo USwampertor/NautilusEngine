@@ -22,6 +22,8 @@ namespace nauEngineSDK {
     toReturn += ", A: ";
     toReturn += std::to_string(m_a);
     toReturn += ")";
+
+    return toReturn;
   }
 
   void

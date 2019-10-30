@@ -37,6 +37,7 @@ namespace nauEngineSDK {
       m_layers.push_back(layer);
     }
 
+    m_file->m_file.close();
     return true;
   }
 
@@ -44,7 +45,7 @@ namespace nauEngineSDK {
   NeuralNetwork::load(Path path) {
 
     m_file = new FileStream();
-    m_file->m_file.open(path.get().c_str(), fstream::binary);
+    m_file->m_file.open(path.getFullPath(), fstream::binary);
 
     if (!m_file->m_file.is_open()) {
 #if NAU_DEBUG_MODE
@@ -65,6 +66,7 @@ namespace nauEngineSDK {
       layer.read(m_file->m_file);
       m_layers.push_back(layer);
     }
+    m_file->m_file.close();
 
     return true;
   }
@@ -74,9 +76,9 @@ namespace nauEngineSDK {
     if (m_file == nullptr) {
       String newName = "";
       newName.append(IRINA_FILE_EXTENSION);
-      saveAs(newName);
+      return saveAs(newName);
     }
-    else { saveAs(m_file->m_path); }
+    return saveAs(m_file->m_path);
   }
 
   bool
@@ -98,6 +100,7 @@ namespace nauEngineSDK {
     for (auto layer : m_layers) {
       layer.write(*m_file);
     }
+    m_file->m_file.close();
     return true;
   }
 
@@ -176,7 +179,7 @@ namespace nauEngineSDK {
 
   }
   void
-  NeuralNetwork::read(FileStream& stream) {
+  NeuralNetwork::read(fstream& stream) {
 
   }
 

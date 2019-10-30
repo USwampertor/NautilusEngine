@@ -37,7 +37,9 @@ namespace nauEngineSDK {
     ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 100,
                                    10));
     ImGui::Begin("Current Hour", 0, ImGuiWindowFlags_MenuBar);
-    ImGui::Text(Clock::instance().hour().c_str());
+    String hour = Clock::instance().hour();
+    hour.append("\n");
+    ImGui::Text(hour.c_str());
     ImGui::End();
     ImGui::EndFrame();
 
@@ -59,6 +61,10 @@ namespace nauEngineSDK {
     Logger::startUp();
     Logger::instance().init();
 
+    //CLOCK INITIALIZATION
+    Clock::startUp();
+    Clock::instance().init();
+    
     //API INITIALIZATION
 
     g_graphicsAPI = m_factory->createGraphicsAPI();
@@ -75,9 +81,6 @@ namespace nauEngineSDK {
     RenderManager::startUp();
     if (!RenderManager::instance().init(g_graphicsAPI->getDevice())) return false;
 
-    //CLOCK INITIALIZATION
-    Clock::startUp();
-    Clock::instance().init();
 
     //SCENEGRAPH INITIALIZATION
     m_sceneGraph.init();

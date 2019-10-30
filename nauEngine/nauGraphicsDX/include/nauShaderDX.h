@@ -10,7 +10,9 @@
 #pragma once
 
 #include "nauPrerequisitesDX.h"
+
 #include <nauShader.h>
+#include <nauLogger.h>
 
 namespace nauEngineSDK {
 

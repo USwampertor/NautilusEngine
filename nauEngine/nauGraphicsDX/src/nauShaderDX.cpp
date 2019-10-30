@@ -54,13 +54,17 @@ namespace nauEngineSDK {
                         &m_d3dBlob, 
                         &error);
     if (FAILED(result)) {
-      String errorString = static_cast<char*>(error->GetBufferPointer());
+      String errorString = "Error at compiling Shader ";
+      errorString += filename;
+      errorString += " due to the following errors: ";
+      errorString += static_cast<char*>(error->GetBufferPointer());
       std::cout << "Error at getting buffer" << errorString << std::endl;
-      //throw::std::exception("Error at getting buffer");
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
       if (error != nullptr) {
         error->Release();
       }
-      printf("Exiting with code 223. For further information, read error 223");
+      Logger::instance().toIDE("The application exited with error 223. For further information, read Documentation->Errors",LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
       exit(223);
       return false;
     }
@@ -93,10 +97,16 @@ namespace nauEngineSDK {
     GetCurrentDirectoryA(MAX_PATH, dirPath);
     String folderPath(dirPath);
     HRESULT hr = E_FAIL;
-    hr = ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
-    NAU_ASSERT(m_d3dBlob != nullptr && "Vertex Shader blob is NULL");
-    if (FAILED(hr)) {
-      printf("Failed to compile Vertex Shader");
+    //NAU_ASSERT(m_d3dBlob == nullptr && "Vertex Shader blob is NULL");
+
+    if (!ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS)) {
+      String errorString = "Error at compiling shader from file ";
+      errorString.append(fileName);
+      errorString += " due to the following errors: ";
+      errorString += static_cast<char*>("");
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+      Logger::instance().toIDE("The application exited with error 666. For further information, read Documentation->Errors", LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
       exit(666);
     }
     auto pDev = static_cast<ID3D11Device*>(pDevice);
@@ -106,7 +116,7 @@ namespace nauEngineSDK {
       &m_pVertexShader);
     if (FAILED(hr)) {
       printf("Failed to create Vertex Shader");
-      exit(666);
+      exit(667);
     }
   }
 

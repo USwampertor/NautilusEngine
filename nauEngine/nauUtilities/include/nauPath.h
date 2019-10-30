@@ -13,7 +13,7 @@
 
 
 namespace nauEngineSDK {
-class Path
+class NAU_UTILITY_EXPORT Path
 {
 public:
   /**
@@ -22,15 +22,53 @@ public:
   Path() = default;
 
   /**
+   * @brief Constructor with String parameter
+   */
+  Path(String url) : m_url(url) {}
+
+  /**
    * Default destructor
    */
   ~Path() = default;
 
+  /**
+   * @brief Returns the extension of the path
+   * @param 
+   * @return the string after the last "."
+   *
+   */
   String
   extension();
 
+  /**
+   * @brief Returns the full path
+   * @param 
+   * @return the full path of the file
+   *
+   */
   String
-  get();
+  getFullPath();
+
+  /**
+   * @brief Returns the File Name only
+   * @param 
+   * @return The file name
+   *
+   */
+  String
+  getFileName();
+
+  /**
+   * @brief Sets the path
+   * @param String path the path
+   * @return 
+   *
+   */
+  void
+  set(String path);
+
+private:
+  String m_url;
 };
 
 }
