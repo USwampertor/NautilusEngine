@@ -1,7 +1,7 @@
 /*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
 /**
  * @file nauShaderDX.cpp
- * @author Marco "Swampy" Millan
+ * @author Marco "Swampy" Mill嫕
  * @date 2018/10/31 2018
  * @brief Direct X implementation of all shader member declaration
  * 
@@ -27,21 +27,34 @@ namespace nauEngineSDK {
     
     HRESULT result = E_FAIL;
     ID3DBlob* error = nullptr;
+
+    //TODO: Change this for the FileStream
     std::ifstream file(filename.c_str());
     file.open(filename.c_str());
-    String shadersource;
-    if (!file.is_open())
-    {
+
+    if (!file.is_open()) {
+      //File was not found or could not be opened
+      String errorString = "";
+      errorString += "Shader file could not be found...";
+      errorString += filename;
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
       result = S_FALSE;
       return false;
+
+      //Should try to load a default shader in any case
     }
+    
+    String shadersource;
     shadersource = { std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>() };
+    
     file.close();
 
+    //Debug options
 #ifdef NAU_DEBUG_MODE
     FLAGS |= D3DCOMPILE_DEBUG;
 #endif
 
+    //Compiles the Shader
     result = D3DCompile(shadersource.c_str(), 
                         shadersource.size(), 
                         filename.c_str(),
@@ -53,19 +66,27 @@ namespace nauEngineSDK {
                         0, 
                         &m_d3dBlob, 
                         &error);
+
     if (FAILED(result)) {
-      String errorString = "Error at compiling Shader ";
+      
+      String errorString = "";
+      errorString += "Error at compiling Shader with name ";
       errorString += filename;
       errorString += " due to the following errors: ";
       errorString += static_cast<char*>(error->GetBufferPointer());
-      std::cout << "Error at getting buffer" << errorString << std::endl;
+      errorString += ". HRESULT returned FAILED with code: ";
+      errorString += std::to_string(static_cast<uint32>(HRESULT_CODE(result)));
+
       Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+      
       if (error != nullptr) {
         error->Release();
       }
-      Logger::instance().toIDE("The application exited with error 223. For further information, read Documentation->Errors",LOGGER_LEVEL::ERRORED);
+      
+      Logger::instance().toIDE("The application exited with error 665. For further information, read Documentation->Errors",LOGGER_LEVEL::ERRORED);
       Logger::instance().dump();
-      exit(223);
+      
+      exit(655);
       return false;
     }
 
@@ -96,26 +117,33 @@ namespace nauEngineSDK {
     char dirPath[MAX_PATH];
     GetCurrentDirectoryA(MAX_PATH, dirPath);
     String folderPath(dirPath);
+    
     HRESULT hr = E_FAIL;
     //NAU_ASSERT(m_d3dBlob == nullptr && "Vertex Shader blob is NULL");
 
     if (!ShaderDX::compile(fileName, entryPoint, "vs_5_0", D3DCOMPILE_ENABLE_STRICTNESS)) {
-      String errorString = "Error at compiling shader from file ";
-      errorString.append(fileName);
-      errorString += " due to the following errors: ";
-      errorString += static_cast<char*>("");
-      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
       Logger::instance().toIDE("The application exited with error 666. For further information, read Documentation->Errors", LOGGER_LEVEL::ERRORED);
       Logger::instance().dump();
       exit(666);
     }
+
     auto pDev = static_cast<ID3D11Device*>(pDevice);
     hr = pDev->CreateVertexShader(m_d3dBlob->GetBufferPointer(),
-      m_d3dBlob->GetBufferSize(),
-      nullptr,
-      &m_pVertexShader);
+                                  m_d3dBlob->GetBufferSize(),
+                                  nullptr,
+                                  &m_pVertexShader);
     if (FAILED(hr)) {
-      printf("Failed to create Vertex Shader");
+
+      String errorString = "";
+      errorString += "Error at trying to create Vertex Shader with name ";
+      errorString += fileName;
+      errorString += ". HRESULT returned FAILED with code: ";
+      errorString += std::to_string(static_cast<uint32>(HRESULT_CODE(hr)));
+      
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+
+      Logger::instance().toIDE("The application exited with error 667. For further information, read Documentation->Errors", LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
       exit(667);
     }
   }
@@ -144,11 +172,12 @@ namespace nauEngineSDK {
   void
   PixelShaderDX::createFromFile(void* pDevice, const char* fileName, const char* entryPoint) {
     HRESULT hr = E_FAIL;
-    hr = ShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS);
-    NAU_ASSERT(m_d3dBlob != nullptr && "Pixel Shader blob is NULL");
-    if (FAILED(hr)) {
-      printf("Failed to compile Vertex Shader");
-      exit(666);
+    //NAU_ASSERT(m_d3dBlob != nullptr && "Pixel Shader blob is NULL");
+
+    if (!ShaderDX::compile(fileName, entryPoint, "ps_5_0", D3DCOMPILE_ENABLE_STRICTNESS)) {
+      Logger::instance().toIDE("The application exited with error 666. For further information, read Documentation->Errors", LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
+      exit(676);
     }
 
     auto pDev = static_cast<ID3D11Device*>(pDevice);
@@ -157,8 +186,17 @@ namespace nauEngineSDK {
                                  nullptr,
                                  &m_pPixelShader);
     if (FAILED(hr)) {
-      printf("Failed to create Pixel Shader");
-      exit(666);
+      String errorString = "";
+      errorString += "Error at trying to create Pixel Shader with name ";
+      errorString += fileName;
+      errorString += ". HRESULT returned FAILED with code: ";
+      errorString += std::to_string(static_cast<uint32>(HRESULT_CODE(hr)));
+
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+
+      Logger::instance().toIDE("The application exited with error 667. For further information, read Documentation->Errors", LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
+      exit(677);
     }
 
   }
@@ -218,8 +256,15 @@ namespace nauEngineSDK {
 
     cl::Platform::get(&allPlatforms);
     if (allPlatforms.size() == 0) {
-      std::cout << "No platforms found. \n";
-      throw::std::exception("No support in this machine for Open CL");
+      //std::cout << "No platforms found. \n";
+      //throw::std::exception("No support in this machine for Open CL");
+
+      String errorString = "";
+      errorString += "Error trying to initialize Compute Shader.";
+      errorString += " No support in this machine for Open CL computing ";
+
+      Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+
     }
 
     for (auto platform : allPlatforms) {
