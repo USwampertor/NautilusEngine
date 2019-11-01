@@ -53,6 +53,15 @@ namespace nauEngineSDK {
     render() = 0;
 
     /**
+     * @brief Rendering section of the UI
+     * @param 
+     * @return 
+     *
+     */
+    virtual void
+    renderUI() = 0;
+
+    /**
      * @brief Updates events and inputs
      * @param 
      * @return 

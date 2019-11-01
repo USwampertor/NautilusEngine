@@ -19,10 +19,10 @@
 
 
 
-#define LGRWARNINGSIGN " !WARNING! "
-#define LGRERROREDSIGN " !!ERROR!! "
-#define LGRSUCCESSSIGN " -SUCCESS- "
-#define LGRDEBUGGRSIGN " --DEBUG-- "
+#define LGRWARNINGSIGN "!WARNING!"
+#define LGRERROREDSIGN "!!ERROR!!"
+#define LGRSUCCESSSIGN "-SUCCESS-"
+#define LGRDEBUGGRSIGN "--DEBUG--"
 
 namespace nauEngineSDK {
 
@@ -174,6 +174,15 @@ public:
    */
   void
   dump();
+
+  /**
+   * @brief Returns a Vector with all the strings stored in the Logger
+   * @param 
+   * @return Vector<String>
+   *
+   */
+  Vector<String>
+  get();
 
 private:
 

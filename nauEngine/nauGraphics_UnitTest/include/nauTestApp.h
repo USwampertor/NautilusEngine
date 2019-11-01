@@ -83,6 +83,9 @@ namespace nauEngineSDK {
     virtual void
     render() override;
 
+    virtual void
+    renderUI() override;
+
     virtual bool
     initApp(void* hwnd) override;
 

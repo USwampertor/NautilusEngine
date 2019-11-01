@@ -38,10 +38,13 @@ namespace nauEngineSDK {
       errorString += "Shader file could not be found...";
       errorString += filename;
       Logger::instance().toIDE(errorString, LOGGER_LEVEL::ERRORED);
+      //Should try to load a default shader in any case
+
+      //Logger::instance().toIDE("Attempting to load default shader", LOGGER_LEVEL::ERRORED);
+
       result = S_FALSE;
       return false;
 
-      //Should try to load a default shader in any case
     }
     
     String shadersource;
