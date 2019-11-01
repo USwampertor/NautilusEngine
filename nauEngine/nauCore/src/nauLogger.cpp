@@ -79,9 +79,7 @@ namespace nauEngineSDK {
   Logger::get() {
     Vector<String> output;
     for (auto logString : m_data) {
-      if (logString.m_type == LOGGER_LEVEL::ERRORED) {
-        output.push_back(logString.m_data);
-      }
+      output.push_back(logString.m_data);
     }
     return output;
   }
