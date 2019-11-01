@@ -83,6 +83,7 @@ namespace nauEngineSDK {
         output.push_back(logString.m_data);
       }
     }
+    return output;
   }
 
   void

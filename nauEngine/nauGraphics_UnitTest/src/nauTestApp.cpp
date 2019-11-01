@@ -15,11 +15,8 @@ namespace nauEngineSDK {
 
   void
   TestApp::render() {
-    
-    //ImGui Section of the render Pipeline
     renderUI();
 
-    //RenderManager section of the render Pipeline
     Vector<MeshComponent*> meshes;
     for (auto obj : m_sceneGraph.getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
@@ -27,15 +24,13 @@ namespace nauEngineSDK {
         meshes.push_back(reinterpret_cast<MeshComponent*>(mesh));
       }
     }
+    
 
-    //Renders all objects with the mesh component
+    ImGui::EndFrame();
+
     RenderManager::instance().render(meshes, g_graphicsAPI);
-
-    //ImGui Render that goes at the end
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-    
-    //Swaps the buffer
     g_graphicsAPI->swapBuffer();
 
   }
@@ -44,6 +39,8 @@ namespace nauEngineSDK {
   TestApp::renderUI() {
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
+    
+    // New Frame
     ImGui::NewFrame();
 
 
@@ -54,21 +51,9 @@ namespace nauEngineSDK {
     Vector<MeshComponent*> meshes;
     for (auto obj : m_sceneGraph.getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
-      if (mesh != nullptr) {
-        meshes.push_back(reinterpret_cast<MeshComponent*>(mesh));
-      }
       ImGui::Text((obj->getGameObject()->m_id).c_str());
     }
     ImGui::End();
-
-
-    ImGui::SetNextWindowPos(ImVec2(0, g_graphicsAPI->getWindowSize().y - 500));
-    ImGui::SetNextWindowSize(ImVec2(g_graphicsAPI->getWindowSize().x, 500));
-    ImGui::Begin("Log Window", 0, ImGuiWindowFlags_MenuBar);
-    Vector<String> logs = Logger::instance().get();
-    for (auto logStrings : logs) {
-      ImGui::Text(logStrings.c_str());
-    }
 
     ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 100, 10));
     ImGui::Begin("Current Hour", 0, ImGuiWindowFlags_MenuBar);
@@ -76,10 +61,14 @@ namespace nauEngineSDK {
     hour.append("\n");
     ImGui::Text(hour.c_str());
     ImGui::End();
-    ImGui::EndFrame();
 
-    ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 100, 100));
-    ImGui::Begin("Neural Network Activity", 0, ImGuiWindowFlags_MenuBar);
+    ImGui::SetNextWindowPos(ImVec2(0, g_graphicsAPI->getWindowSize().y - 200));
+    ImGui::SetNextWindowSize(ImVec2(g_graphicsAPI->getWindowSize().x, 200));
+    ImGui::Begin("Log Window", 0, ImGuiWindowFlags_MenuBar);
+    for (auto logString : Logger::instance().get()) {
+      ImGui::Text(logString.c_str());
+    }
+    ImGui::End();
 
   }
 
@@ -120,7 +109,7 @@ namespace nauEngineSDK {
 
     ///TESTING MODEL
     
-    /*Node* model = new Node();
+    Node* model = new Node();
     
     GameObject* testModel = new GameObject(); 
     testModel->m_id = "Vela";
@@ -224,7 +213,7 @@ namespace nauEngineSDK {
     testModel->addComponent(com);
     model->setGameObject(testModel);
     m_sceneGraph.set(model);
-    */
+    
     return true;
 
   }

@@ -67,13 +67,20 @@ typedef void* (*G_FACTORY)();
 void*
 loadDLL(String path) {
   
-  std::cout << path << std::endl;
+  String processor;
+
+#ifdef NAU_ARCH_TYPE == NAU_ARCHITECTURE_x86_32
+  processor = "x86";
+#else
+  processor = "x64";
+#endif
+
 
   char dirPath[MAX_PATH];
   GetCurrentDirectoryA(MAX_PATH, dirPath);
   String folderPath(dirPath);
 
-  folderPath = folderPath.append("\\").append(path);
+  folderPath = folderPath.append("\\").append(processor).append("\\").append(path);
 
   HINSTANCE myDll = LoadLibraryExA(folderPath.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
   if (!myDll) {
