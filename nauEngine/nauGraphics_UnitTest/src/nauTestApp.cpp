@@ -36,15 +36,30 @@ namespace nauEngineSDK {
   }
 
   void
-  TestApp::renderUI() {
+    TestApp::renderUI() {
+    ////////////////////////////////////////////////////////////////////////// New Frame DX11
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
-    
-    // New Frame
+
+    ////////////////////////////////////////////////////////////////////////// New Frame
     ImGui::NewFrame();
 
+    ////////////////////////////////////////////////////////////////////////// Menu Bar
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(ImVec2(g_graphicsAPI->getWindowSize().x, 30));
 
-    ImGui::SetNextWindowPos(ImVec2(30, 10));
+    ImGui::Begin("Menu", nullptr, ImGuiWindowFlags_MenuBar);
+    if (ImGui::BeginMenuBar()) {
+      if (ImGui::BeginMenu("Project")) {
+        if (ImGui::MenuItem("New")) {}
+        ImGui::EndMenu();
+      }
+      ImGui::EndMenuBar();
+    }
+    ImGui::End();
+
+    ////////////////////////////////////////////////////////////////////////// Scene Window
+    ImGui::SetNextWindowPos(ImVec2(0, 40));
     ImGui::SetNextWindowSize(ImVec2(300, g_graphicsAPI->getWindowSize().y - 200));
     ImGui::Begin("SceneGraph", 0, ImGuiWindowFlags_MenuBar);
     ImGui::Text("Scene 1");
@@ -55,13 +70,28 @@ namespace nauEngineSDK {
     }
     ImGui::End();
 
-    ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 100, 10));
-    ImGui::Begin("Current Hour", 0, ImGuiWindowFlags_MenuBar);
-    String hour = Clock::instance().hour();
+    ////////////////////////////////////////////////////////////////////////// Information Window
+    ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 200, 40));
+    ImGui::SetNextWindowSize(ImVec2(200, 200));
+    ImGui::Begin("System Information", 0, ImGuiWindowFlags_MenuBar);
+    String hour = "System hour";
+    hour += Clock::instance().hour();
     hour.append("\n");
     ImGui::Text(hour.c_str());
+
+    String average = "Application average: ";
+    average += std::to_string(100.0f / ImGui::GetIO().Framerate);
+    average.append("\n");
+    ImGui::Text(average.c_str());
+
+    String ms = "ms/frame";
+    ms += std::to_string(ImGui::GetIO().Framerate);
+    ms.append("\n");
+    ImGui::Text(ms.c_str());
+
     ImGui::End();
 
+////////////////////////////////////////////////////////////////////////// Log Window
     ImGui::SetNextWindowPos(ImVec2(0, g_graphicsAPI->getWindowSize().y - 200));
     ImGui::SetNextWindowSize(ImVec2(g_graphicsAPI->getWindowSize().x, 200));
     ImGui::Begin("Log Window", 0, ImGuiWindowFlags_MenuBar);
@@ -69,6 +99,8 @@ namespace nauEngineSDK {
       ImGui::Text(logString.c_str());
     }
     ImGui::End();
+
+////////////////////////////////////////////////////////////////////////// Inspector Window
 
   }
 
