@@ -205,6 +205,9 @@
     <ClInclude Include="include\nauNeuron.h">
       <Filter>Source Files\IrinaIK</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauUISystem.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -302,6 +305,9 @@
     </ClCompile>
     <ClCompile Include="src\nauNeuron.cpp">
       <Filter>Source Files\IrinaIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauUISystem.cpp">
+      <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

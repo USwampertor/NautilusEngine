@@ -74,6 +74,7 @@
     <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauTextureDescriptor.h" />
     <ClInclude Include="include\nauTimer.h" />
+    <ClInclude Include="include\nauUISystem.h" />
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
@@ -111,6 +112,7 @@
     <ClCompile Include="src\nauSceneManager.cpp" />
     <ClCompile Include="src\nauSkeleton.cpp" />
     <ClCompile Include="src\nauTimer.cpp" />
+    <ClCompile Include="src\nauUISystem.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
