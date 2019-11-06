@@ -80,11 +80,11 @@ namespace nauEngineSDK {
     ImGui::Text(hour.c_str());
 
     String average = "Application average: ";
-    average += std::to_string(100.0f / ImGui::GetIO().Framerate);
+    average += std::to_string(1000.0f / ImGui::GetIO().Framerate);
     average.append("\n");
     ImGui::Text(average.c_str());
 
-    String ms = "ms/frame";
+    String ms = "ms/frame: ";
     ms += std::to_string(ImGui::GetIO().Framerate);
     ms.append("\n");
     ImGui::Text(ms.c_str());
