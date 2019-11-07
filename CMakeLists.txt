@@ -75,4 +75,8 @@ target_link_libraries(UtilitiesTest Utilities ${CMAKE_THREAD_LIBS_INIT})
 
 target_link_libraries(UtilitiesTest gtestUtilities ${CMAKE_THREAD_LIBS_INIT})
 
+target_compile_options(UtilitiesTest PUBLIC $<$<CXX_COMPILER_ID:Clang>:-std=c++14>)
+target_link_libraries(UtilitiesTest $<$<AND:$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Intel>>,$<NOT:$<PLATFORM_ID:Windows>>>:-lstdc++fs>
+                                    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<NOT:$<OR:$<PLATFORM_ID:Windows>,$<PLATFORM_ID:MinGW>>>>:-lc++experimental>)
+
 
