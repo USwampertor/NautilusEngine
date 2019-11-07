@@ -1,32 +1,25 @@
 dist: trusty
-os: windows
-#sudo: false
+os: linux
+sudo: false
 language: cpp
-compiler: visualstudio2017
-
-before_install:
-  - eval "${MATRIX_EVAL}"
+compiler: gcc
 
 addons:
   apt:
     sources:
-#      - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-#      - gcc-7
-#      - g++-7
+      - gcc-7
+      - g++-7
       - cmake
 
-env: 
-  - MATRIX_EVAL="C_COMPILER=cl && CXX_COMPILER=cl"
-
-  script:
+script:
   - echo "Creating build directory..."
-#  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_C_COMPILER=$C_COMPILER -DCMAKE_CXX_COMPILER=$CXX_COMPILER
-  - cmake --build .
-  - ctest --output-on-failure
+  - cmake ..
+  - make 
   - ./UtilitiesTest
 
 after_script:

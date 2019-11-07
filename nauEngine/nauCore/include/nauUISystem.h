@@ -51,13 +51,32 @@ namespace UIRENDERFLAGS
 class NAU_CORE_EXPORT UISystem : public Module<UISystem>
 {
 public:
+
+  /**
+   * Default constructor
+   */
   UISystem() = default;
 
+  /**
+   * Default destructor
+   */
   ~UISystem() = default;
 
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
   bool
   init(void* hwnd);
 
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
   void
   render();
 
@@ -97,6 +116,12 @@ public:
   void
   renderInspector();
 
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
   void
   renderBaseUI();
 

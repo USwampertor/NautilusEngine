@@ -22,9 +22,11 @@
 #include <nauSceneGraph.h>
 #include <nauTimer.h>
 
-#include <imgui.h>
-#include <imgui_impl_dx11.h>
-#include <imgui_impl_win32.h>
+#include <nauUI.h>
+
+//#include <imgui.h>
+//#include <imgui_impl_dx11.h>
+//#include <imgui_impl_win32.h>
 
 #define IDS_APP_TITLE			103
 

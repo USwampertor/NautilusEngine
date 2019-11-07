@@ -18,9 +18,6 @@ namespace  nauEngineSDK {
     if (!init(hwnd)) { return false; }
     if (!ImGui_ImplWin32_Init(hwnd)) { return false; }
 
-    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) {
-
-    }
     return true;
   }
 
