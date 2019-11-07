@@ -1,5 +1,5 @@
 dist: trusty
-os: windows
+os: linux
 sudo: false
 language: cpp
 compiler: gcc
