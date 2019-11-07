@@ -16,7 +16,7 @@
 #include "imgui_impl_dx11.h"
 
 namespace nauEngineSDK {
-class NAU_CORE_EXPORT UISystemWindows : public UISystem
+class NAU_CORE_EXPORT UISystemWindows : public UISystem, public Module<UISystemWindows>
 {
 public:
   UISystemWindows() = default;
@@ -31,6 +31,12 @@ public:
 
   void
   endFrame();
+
+  void
+  render();
+
+  void
+  endRender();
 
 };
 

@@ -16,7 +16,7 @@ namespace nauEngineSDK {
   void
   TestApp::render() {
     renderUI();
-
+    //UI::instance().render();
     Vector<MeshComponent*> meshes;
     for (auto obj : m_sceneGraph.getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
@@ -27,8 +27,9 @@ namespace nauEngineSDK {
     
 
     ImGui::EndFrame();
-
+    //UI::instance().endFrame();
     RenderManager::instance().render(meshes, g_graphicsAPI);
+    //UI::instance().endRender();
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     g_graphicsAPI->swapBuffer();
@@ -125,6 +126,9 @@ namespace nauEngineSDK {
     ResourceManager::instance().init(g_graphicsAPI->getDevice());
     
     //UI INITIALIZATION
+    //UISystemWindows::startUp();
+    //UISystemWindows::instance().init(hwnd);
+
     if (!initUI(hwnd))      return false;
 
     //RENDER MANAGER INITIALIZATION
@@ -138,18 +142,19 @@ namespace nauEngineSDK {
     //ANIMATION MANAGER
     AnimationManager::startUp();
     AnimationManager::instance().init();
+#pragma region TestObject
 
     ///TESTING MODEL
-    
+
     Node* model = new Node();
-    
-    GameObject* testModel = new GameObject(); 
+
+    GameObject* testModel = new GameObject();
     testModel->m_id = "Vela";
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
     com->m_model->setDevice(g_graphicsAPI->getDevice());
     com->m_model->loadFromFile("resources/VelaAnimated.FBX");
-    
+
     MaterialComponent* mat1 = new MaterialComponent();
     Texture* pGunsTexture = g_graphicsAPI->getDevice()->createTexture();
     pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", g_graphicsAPI->getDevice());
@@ -164,7 +169,7 @@ namespace nauEngineSDK {
     pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Roughness.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[0])->m_material = mat1;
-    
+
     pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_BaseColor.tga", g_graphicsAPI->getDevice());
     mat1->setMaterial(pGunsTexture, MATERIAL_FLAG::BASECOLOR);
     pGunsTexture->loadFromFile("resources/Vela/Vela_Gun_Metallic.tga", g_graphicsAPI->getDevice());
@@ -190,7 +195,7 @@ namespace nauEngineSDK {
     mat2->setMaterial(pLegsTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[2])->m_material = mat2;
 
-    
+
     MaterialComponent* mat3 = new MaterialComponent();
     Texture* pMechTexture = g_graphicsAPI->getDevice()->createTexture();
     pMechTexture->loadFromFile("resources/Vela/Vela_Mechanical_BaseColor.tga", g_graphicsAPI->getDevice());
@@ -220,7 +225,7 @@ namespace nauEngineSDK {
     pCharTexture->loadFromFile("resources/Vela/Vela_Char_Roughness.tga", g_graphicsAPI->getDevice());
     mat4->setMaterial(pCharTexture, MATERIAL_FLAG::ROUGHNESS);
     (com->m_model->m_meshes[4])->m_material = mat4;
-    
+
     MaterialComponent* mat5 = new MaterialComponent();
     Texture* pPlateTexture = g_graphicsAPI->getDevice()->createTexture();
     pPlateTexture->loadFromFile("resources/Vela/Vela_Plate_BaseColor.tga", g_graphicsAPI->getDevice());
@@ -245,7 +250,9 @@ namespace nauEngineSDK {
     testModel->addComponent(com);
     model->setGameObject(testModel);
     m_sceneGraph.set(model);
-    
+
+#pragma endregion
+
     return true;
 
   }
@@ -257,11 +264,14 @@ namespace nauEngineSDK {
     ImGuiIO& io = ImGui::GetIO();
     if (!ImGui_ImplWin32_Init(hwnd)) return false;
 
+    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) {
+      auto dev = reinterpret_cast<ID3D11Device*>(g_graphicsAPI->getDevice()->get());
+      auto context = reinterpret_cast<ID3D11DeviceContext*>(g_graphicsAPI->getDevice()->getContext());
 
-    auto dev     = reinterpret_cast<ID3D11Device*>(g_graphicsAPI->getDevice()->get());
-    auto context = reinterpret_cast<ID3D11DeviceContext*>(g_graphicsAPI->getDevice()->getContext());
+      return ImGui_ImplDX11_Init(dev, context);
+    }
 
-    return ImGui_ImplDX11_Init(dev, context);
+    return true;
   }
 
   void

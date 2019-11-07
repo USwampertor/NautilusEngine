@@ -48,7 +48,7 @@ namespace UIRENDERFLAGS
 }
 
 
-class NAU_CORE_EXPORT UISystem : public Module<UISystem>
+class NAU_CORE_EXPORT UISystem
 {
 public:
 
@@ -60,7 +60,7 @@ public:
   /**
    * Default destructor
    */
-  ~UISystem() = default;
+  virtual ~UISystem() = default;
 
   /**
    * @brief 
@@ -79,6 +79,15 @@ public:
    */
   void
   render();
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  endRender();
 
   /**
    * @brief This to wrap the initialization process for the imgui frame renderings
@@ -129,7 +138,7 @@ public:
    * This object should exist and be initialized only once. This is the constant
    * reference for ImGui to exist.
    */
-  ImGuiIO& m_ui;
+  ImGuiIO m_ui;
 };
 
 }

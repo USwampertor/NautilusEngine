@@ -13,11 +13,20 @@ namespace nauEngineSDK {
 
   bool
   UISystem::init(void* hwnd) {
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    m_ui = io;
+
     return true;
   }
 
   void
   UISystem::render() {
+
+  }
+
+  void
+  UISystem::endRender() {
 
   }
 
