@@ -27,6 +27,7 @@ namespace nauEngineSDK {
   class Texture;
   class VertexBuffer;
   class ViewPort;
+  class UIAPI;
   ///
 
   namespace SHADERFLAGS {
@@ -304,8 +305,14 @@ namespace nauEngineSDK {
     virtual RasterizerState*
     createRasterizer() = 0;
 
-
-
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual UIAPI*
+    createUIHandler() = 0;
 
     /**
      * Member declaration

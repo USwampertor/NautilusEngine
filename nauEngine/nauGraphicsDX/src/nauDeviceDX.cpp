@@ -20,6 +20,7 @@
 #include "nauSwapChainDX.h"
 #include "nauTextureDX.h"
 #include "nauViewPortDX.h"
+#include "nauUIAPIDX.h"
 
 namespace nauEngineSDK {
   bool
@@ -268,4 +269,10 @@ namespace nauEngineSDK {
   DeviceDX::createRasterizer() {
     return new RasterizerStateDX();
   }
+
+  UIAPI*
+  DeviceDX::createUIHandler() {
+    return new UIAPIDX();
+  }
+
 }

@@ -93,6 +93,12 @@ namespace nauEngineSDK {
     virtual Vector2
     getWindowSize() override;
 
+    virtual String
+    getAPIName() override { return "DX11"; }
+
+    virtual APITYPE::E
+    getAPIType() override { return APITYPE::DX11; }
+
    public:
 
     /**

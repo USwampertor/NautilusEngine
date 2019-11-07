@@ -116,6 +116,9 @@ namespace nauEngineSDK {
     virtual RasterizerState*
     createRasterizer() override;
 
+    virtual UIAPI*
+    createUIHandler() override;
+
   public:
 
     /**

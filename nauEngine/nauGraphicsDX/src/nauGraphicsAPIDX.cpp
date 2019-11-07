@@ -80,4 +80,5 @@ namespace nauEngineSDK {
   GraphicsAPIDX::getWindowSize() {
     return Vector2(getDevice()->m_width, getDevice()->m_height);
   }
+
 }

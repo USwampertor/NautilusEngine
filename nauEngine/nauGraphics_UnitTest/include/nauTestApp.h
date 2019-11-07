@@ -81,7 +81,7 @@ namespace nauEngineSDK {
     start() override;
 
     virtual void
-    render() override;
+    render() override; 
 
     virtual void
     renderUI() override;

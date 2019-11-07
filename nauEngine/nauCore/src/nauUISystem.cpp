@@ -1,7 +1,7 @@
 /*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
 /**
  * @file nauUISystem.cpp
- * @author Marco "Swampy" Millan
+ * @author Marco "Swampy" Mill嫕
  * @date 11/5/2019
  * @brief UISystem member definition
  * 
@@ -12,15 +12,12 @@
 namespace nauEngineSDK {
 
   bool
-  UISystem::init() {
-
-
+  UISystem::init(void* hwnd) {
     return true;
   }
 
   void
   UISystem::render() {
-
 
   }
 

@@ -17,7 +17,10 @@
 #include <nauModule.h>
 
 #include "imgui.h"
+
 namespace nauEngineSDK {
+
+class GraphicsAPI;
 
 namespace UISTARTFLAGS
 {
@@ -53,7 +56,7 @@ public:
   ~UISystem() = default;
 
   bool
-  init();
+  init(void* hwnd);
 
   void
   render();

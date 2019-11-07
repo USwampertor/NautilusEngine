@@ -33,6 +33,7 @@
     <ClInclude Include="include\nauShaderResourceViewDX.h" />
     <ClInclude Include="include\nauSwapChainDX.h" />
     <ClInclude Include="include\nauTextureDX.h" />
+    <ClInclude Include="include\nauUIAPIDX.h" />
     <ClInclude Include="include\nauViewPortDX.h" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +50,7 @@
     <ClCompile Include="src\nauShaderResourceViewDX.cpp" />
     <ClCompile Include="src\nauSwapChainDX.cpp" />
     <ClCompile Include="src\nauTextureDX.cpp" />
+    <ClCompile Include="src\nauUIAPIDX.cpp" />
     <ClCompile Include="src\nauViewPortDX.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

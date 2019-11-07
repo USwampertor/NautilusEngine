@@ -238,6 +238,12 @@
     <ClInclude Include="include\nauUIAPI.h">
       <Filter>Source Files\Graphic Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="include\imgui_impl_dx11.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui_impl_win32.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -350,6 +356,12 @@
     </ClCompile>
     <ClCompile Include="src\nauUISystemWindows.cpp">
       <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_impl_dx11.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_impl_win32.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

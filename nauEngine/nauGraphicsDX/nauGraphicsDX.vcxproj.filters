@@ -52,6 +52,9 @@
     <ClInclude Include="include\nauSwapChainDX.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauUIAPIDX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauDepthStencilDX.cpp">
@@ -94,6 +97,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nauSwapChainDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauUIAPIDX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,8 @@
 #pragma once
 
 #include "nauPrerequisitesCore.h"
+#include "nauDevice.h"
+
 
 namespace nauEngineSDK {
 class NAU_CORE_EXPORT UIAPI 
@@ -19,7 +21,7 @@ public:
   virtual ~UIAPI() = default;
 
   virtual bool
-  init() = 0;
+  init(Device* device) = 0;
 
   virtual void
   newFrame() = 0;

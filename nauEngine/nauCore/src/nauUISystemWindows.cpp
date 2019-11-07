@@ -9,12 +9,19 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauUISystemWindows.h"
 
+#include "nauGraphicsAPI.h"
 
 namespace  nauEngineSDK {
 
   bool
-  UISystemWindows::init() {
-    if (!init()) return false;
+  UISystemWindows::init(void* hwnd) {
+    if (!init(hwnd)) { return false; }
+    if (!ImGui_ImplWin32_Init(hwnd)) { return false; }
+
+    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) {
+
+    }
+    return true;
   }
 
   void

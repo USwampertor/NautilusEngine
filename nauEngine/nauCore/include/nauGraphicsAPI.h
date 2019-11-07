@@ -18,6 +18,21 @@
 
 namespace nauEngineSDK {
  
+namespace APITYPE
+{
+  enum E
+  {
+    NONE,
+    DX10,
+    DX11,
+    DX12,
+    OGL2,
+    OGL3,
+    VLCN,
+    APL2,
+  };
+}
+
 
    /**
     * nauGraphics
@@ -56,7 +71,6 @@ namespace nauEngineSDK {
     virtual bool 
     initDevice(void* scrHandler) = 0;
 
-
     /**
      * @brief exposes the device and returns it
      * @param 
@@ -84,7 +98,6 @@ namespace nauEngineSDK {
     virtual void
     swapBuffer() = 0;
 
-
     /**
      * @brief clears the information retrieved
      * @param 
@@ -94,6 +107,12 @@ namespace nauEngineSDK {
     virtual void
     clear() = 0;
 
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
     virtual Vector2
     getWindowSize() = 0;
 
@@ -101,6 +120,12 @@ namespace nauEngineSDK {
     onStartUp() override {
       this->isStartedUp() = true;
     }
+
+    virtual String
+    getAPIName() = 0;
+
+    virtual APITYPE::E
+    getAPIType() = 0;
   };
   
   extern NAU_CORE_EXPORT GraphicsAPI*

@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="include\imconfig.h" />
     <ClInclude Include="include\imgui.h" />
+    <ClInclude Include="include\imgui_impl_dx11.h" />
+    <ClInclude Include="include\imgui_impl_win32.h" />
     <ClInclude Include="include\imgui_internal.h" />
     <ClInclude Include="include\imstb_rectpack.h" />
     <ClInclude Include="include\imstb_textedit.h" />
@@ -91,6 +93,8 @@
   <ItemGroup>
     <ClCompile Include="src\imgui.cpp" />
     <ClCompile Include="src\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\nauAnimation.cpp" />
     <ClCompile Include="src\nauAnimationManager.cpp" />
