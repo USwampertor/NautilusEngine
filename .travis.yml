@@ -1,8 +1,8 @@
 dist: trusty
-os: linux
+os: windows
 sudo: false
 language: cpp
-compiler: gcc
+#compiler: gcc
 
 addons:
   apt:
