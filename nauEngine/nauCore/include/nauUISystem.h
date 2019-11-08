@@ -21,6 +21,9 @@
 namespace nauEngineSDK {
 
 class GraphicsAPI;
+class MeshComponent;
+class Logger;
+class SceneManager;
 
 namespace UISTARTFLAGS
 {
@@ -133,6 +136,15 @@ public:
    */
   void
   renderBaseUI();
+
+  /**
+   * @brief 
+   * @param 
+   * @return 
+   *
+   */
+  void
+  finishUI();
 
   /**
    * This object should exist and be initialized only once. This is the constant

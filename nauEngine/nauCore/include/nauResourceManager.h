@@ -28,6 +28,7 @@ namespace nauEngineSDK {
   class Material;
   class Animation;
   class Shader;
+  class Scene;
 
 /**
  * ResourceManager

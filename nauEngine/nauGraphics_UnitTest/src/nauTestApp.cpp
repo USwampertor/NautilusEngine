@@ -15,10 +15,10 @@ namespace nauEngineSDK {
 
   void
   TestApp::render() {
-    renderUI();
-    //UI::instance().render();
+    //renderUI();
+    UI::instance().render();
     Vector<MeshComponent*> meshes;
-    for (auto obj : m_sceneGraph.getSceneGameObjects()) {
+    for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
       if (mesh != nullptr) {
         meshes.push_back(reinterpret_cast<MeshComponent*>(mesh));
@@ -26,12 +26,12 @@ namespace nauEngineSDK {
     }
     
 
-    ImGui::EndFrame();
-    //UI::instance().endFrame();
+    //ImGui::EndFrame();
+    UI::instance().endFrame();
     RenderManager::instance().render(meshes, g_graphicsAPI);
-    //UI::instance().endRender();
-    ImGui::Render();
-    ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+    UI::instance().endRender();
+    //ImGui::Render();
+    //ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     g_graphicsAPI->swapBuffer();
 
   }
@@ -65,7 +65,7 @@ namespace nauEngineSDK {
     ImGui::Begin("SceneGraph", 0, ImGuiWindowFlags_MenuBar);
     ImGui::Text("Scene 1");
     Vector<MeshComponent*> meshes;
-    for (auto obj : m_sceneGraph.getSceneGameObjects()) {
+    for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
       ImGui::Text((obj->getGameObject()->m_id).c_str());
     }
@@ -126,10 +126,11 @@ namespace nauEngineSDK {
     ResourceManager::instance().init(g_graphicsAPI->getDevice());
     
     //UI INITIALIZATION
-    //UISystemWindows::startUp();
-    //UISystemWindows::instance().init(hwnd);
+    UISystemWindows::startUp();
+    UISystemWindows::instance().init(hwnd);
 
-    if (!initUI(hwnd))      return false;
+    //if (!initUI(hwnd))      return false;
+
 
     //RENDER MANAGER INITIALIZATION
     RenderManager::startUp();
@@ -137,7 +138,10 @@ namespace nauEngineSDK {
 
 
     //SCENEGRAPH INITIALIZATION
-    m_sceneGraph.init();
+    SceneManager::startUp();
+    SceneManager::instance().init();
+
+    //m_sceneGraph.init();
 
     //ANIMATION MANAGER
     AnimationManager::startUp();
@@ -249,7 +253,7 @@ namespace nauEngineSDK {
 
     testModel->addComponent(com);
     model->setGameObject(testModel);
-    m_sceneGraph.set(model);
+    SceneManager::instance().getActiveScene()->m_sceneGraph->set(model);
 
 #pragma endregion
 
@@ -276,7 +280,8 @@ namespace nauEngineSDK {
 
   void
   TestApp::shutDown() {
-    ImGui::DestroyContext();
+    UISystemWindows::instance().finishUI();
+    //ImGui::DestroyContext();
   }
 
   void

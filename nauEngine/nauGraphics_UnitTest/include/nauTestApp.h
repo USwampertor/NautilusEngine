@@ -21,6 +21,7 @@
 #include <nauResourceManager.h>
 #include <nauSceneGraph.h>
 #include <nauTimer.h>
+#include <nauSceneManager.h>
 
 #include <nauUI.h>
 
@@ -105,7 +106,7 @@ namespace nauEngineSDK {
 
     CoreFactory* m_factory = nullptr;
 
-    SceneGraph m_sceneGraph;
+    //SceneGraph m_sceneGraph;
 
   };
 

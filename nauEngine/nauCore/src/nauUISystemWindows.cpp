@@ -10,6 +10,10 @@
 #include "nauUISystemWindows.h"
 
 #include "nauGraphicsAPI.h"
+#include "nauComponent.h"
+#include "nauMesh.h"
+#include "nauLogger.h"
+#include "nauSceneManager.h"
 
 namespace  nauEngineSDK {
 
@@ -42,32 +46,30 @@ namespace  nauEngineSDK {
 
   void
   UISystemWindows::render() {
+    
     ////////////////////////////////////////////////////////////////////////// New Frame DX11
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
 
-    ////////////////////////////////////////////////////////////////////////// New Frame
-    ImGui::NewFrame();
+    UISystem::newFrame();
 
-    ////////////////////////////////////////////////////////////////////////// Menu Bar
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::SetNextWindowSize(ImVec2(g_graphicsAPI->getWindowSize().x, 30));
+    UISystem::renderBaseUI();
 
-    ImGui::Begin("Menu", nullptr, ImGuiWindowFlags_MenuBar);
-    if (ImGui::BeginMenuBar()) {
-      if (ImGui::BeginMenu("Project")) {
-        if (ImGui::MenuItem("New")) {}
-        ImGui::EndMenu();
-      }
-      ImGui::EndMenuBar();
-    }
-    ImGui::End();
+    
+
+    ////////////////////////////////////////////////////////////////////////// Inspector Window
+
   }
 
   void
   UISystemWindows::endRender() {
-    ImGui::Render();
+    UISystem::endRender();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+  }
+
+  void
+  UISystemWindows::finishUI() {
+    UISystem::finishUI();
   }
 
 }

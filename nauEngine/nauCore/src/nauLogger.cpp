@@ -40,7 +40,7 @@ namespace nauEngineSDK {
     else if (LOGGER_LEVEL::WARNING == level) { outputString += LGRWARNINGSIGN; }
     else if (LOGGER_LEVEL::SUCCESS == level) { outputString += LGRSUCCESSSIGN; }
 
-    outputString += newEntry; 
+    outputString += newEntry;
 
 #if NAU_COMPILER == NAU_COMPILER_MSVC
     OutputDebugString(newEntry.c_str());

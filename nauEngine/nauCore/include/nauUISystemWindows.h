@@ -38,6 +38,9 @@ public:
   void
   endRender();
 
+  void
+  finishUI();
+
 };
 
 }

@@ -16,7 +16,7 @@
 #include "nauScene.h"
 
 namespace nauEngineSDK {
-class SceneManager : public Module<SceneManager>
+class NAU_CORE_EXPORT SceneManager : public Module<SceneManager>
 {
 public:
   /**
@@ -55,6 +55,15 @@ public:
    */
   String
   getActiveSceneName(); 
+
+  /**
+   * @brief Returns a pointer to the active scene
+   * @param 
+   * @return 
+   *
+   */
+  Sptr<Scene>
+  getActiveScene();
 
   /**
    * @brief Loads a scene with a given name

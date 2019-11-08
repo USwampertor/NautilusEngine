@@ -13,7 +13,12 @@ namespace nauEngineSDK {
 
   void
   SceneManager::init() {
+    Sptr<Scene> scene = std::static_pointer_cast<Scene>(ResourceManager::instance().create("Scene", RESOURCETYPE::SCENE));
+    scene->init();
 
+    m_projectScenes.push_back(scene);
+
+    m_activeScene = m_projectScenes[0];
   }
 
   uint32
@@ -21,10 +26,8 @@ namespace nauEngineSDK {
     for (uint32 i = 0; i < m_compilableScenes.size(); ++i) {
       if (m_compilableScenes[i] == m_activeScene) { return i; }
     }
-#if NAU_DEBUG_MODE 
     Logger::instance().toIDE("Active scene is not in the build batch scenes!!!!", 
                              LOGGER_LEVEL::ERRORED);
-#endif
     Logger::instance().toConsole("Active scene is not in the build batch scenes!!!!", 
                                  LOGGER_LEVEL::ERRORED);
     return 0;
@@ -33,6 +36,11 @@ namespace nauEngineSDK {
   String
   SceneManager::getActiveSceneName() {
     return m_activeScene->getName();
+  }
+
+  Sptr<Scene>
+  SceneManager::getActiveScene() {
+    return m_activeScene;
   }
 
   bool

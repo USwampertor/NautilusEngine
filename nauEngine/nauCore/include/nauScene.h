@@ -12,8 +12,10 @@
 #include "nauPrerequisitesCore.h"
 #include "nauSceneGraph.h"
 
+#include "nauResource.h"
+
 namespace nauEngineSDK {
-class Scene
+class Scene : public Resource
 {
 
 public:
@@ -26,6 +28,13 @@ public:
    * Default destructor
    */
   ~Scene() = default;
+
+  /**
+   * Copy constructor
+   */
+  Scene(const Scene& other) 
+    : m_sceneGraph(other.m_sceneGraph),
+      m_name(other.m_name) {}
 
   /**
    * @brief Initializes the scene
@@ -52,15 +61,6 @@ public:
    *
    */
   void
-  loadScene(String path);
-
-  /**
-   * @brief 
-   * @param 
-   * @return 
-   *
-   */
-  void
   saveScene(String path);
 
   /**
@@ -75,16 +75,23 @@ public:
   /**
    * @brief Returns the name of the scene
    * @param 
-   * @return String nameof the scene
+   * @return String name of the scene
    *
    */
   String
   getName();
 
-private:
+  virtual RESOURCETYPE::E
+  getType() override { return RESOURCETYPE::SCENE; }
+
+  virtual bool
+  load(String path) override;
+
+public:
 
   SceneGraph* m_sceneGraph = nullptr;
 
+private:
   String m_name;
 
 };
