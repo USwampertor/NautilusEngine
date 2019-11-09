@@ -79,7 +79,6 @@ namespace nauEngineSDK {
     ImGui::Text(SceneManager::instance().getActiveScene()->getName().c_str());
     Vector<MeshComponent*> meshes;
     for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
-      auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
       ImGui::Text((obj->getGameObject()->m_id).c_str());
     }
     ImGui::End();
@@ -88,7 +87,7 @@ namespace nauEngineSDK {
     ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 200, 40));
     ImGui::SetNextWindowSize(ImVec2(200, 200));
     ImGui::Begin("System Information", 0, ImGuiWindowFlags_MenuBar);
-    String hour = "System hour";
+    String hour = "System hour: ";
     hour += Clock::instance().hour();
     hour.append("\n");
     ImGui::Text(hour.c_str());

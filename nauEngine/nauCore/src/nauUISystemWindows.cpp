@@ -48,7 +48,7 @@ namespace  nauEngineSDK {
   UISystemWindows::render() {
     
     ////////////////////////////////////////////////////////////////////////// New Frame DX11
-    ImGui_ImplDX11_NewFrame();
+    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) { ImGui_ImplDX11_NewFrame(); }
     ImGui_ImplWin32_NewFrame();
 
     UISystem::newFrame();
@@ -64,7 +64,7 @@ namespace  nauEngineSDK {
   void
   UISystemWindows::endRender() {
     UISystem::endRender();
-    ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) { ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData()); }
   }
 
   void

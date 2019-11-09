@@ -102,7 +102,7 @@ public:
   newFrame();
 
   /**
-   * @brief This to wrap the finalization process for the imgui frame rendering
+   * @brief This to wrap the finalization process for the ImGui frame rendering
    * @param 
    * @return 
    *

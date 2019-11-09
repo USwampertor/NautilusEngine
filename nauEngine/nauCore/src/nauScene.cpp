@@ -35,7 +35,7 @@ namespace nauEngineSDK {
 
   void
   Scene::setName(String newName) {
-
+    m_name = newName;
   }
 
   bool

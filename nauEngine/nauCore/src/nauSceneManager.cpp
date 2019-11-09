@@ -15,7 +15,7 @@ namespace nauEngineSDK {
   SceneManager::init() {
     Sptr<Scene> scene = std::static_pointer_cast<Scene>(ResourceManager::instance().create("Scene", RESOURCETYPE::SCENE));
     scene->init();
-
+    scene->setName("Default Scene");
     m_projectScenes.push_back(scene);
 
     m_activeScene = m_projectScenes[0];
