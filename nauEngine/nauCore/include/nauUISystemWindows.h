@@ -16,30 +16,30 @@
 #include "imgui_impl_dx11.h"
 
 namespace nauEngineSDK {
-class NAU_CORE_EXPORT UISystemWindows : public UISystem, public Module<UISystemWindows>
+class NAU_CORE_EXPORT UISystemWindows : public UISystem
 {
 public:
   UISystemWindows() = default;
 
   ~UISystemWindows() = default;
 
-  bool
-  init(void* hwnd);
+  virtual bool
+  init(void* hwnd) override;
 
-  void
-  newFrame();
+  virtual void
+  newFrame() override;
 
-  void
-  endFrame();
+  virtual void
+  endFrame() override;
 
-  void
-  render();
+  virtual void
+  render() override;
 
-  void
-  endRender();
+  virtual void
+  endRender() override;
 
-  void
-  finishUI();
+  virtual void
+  finishUI() override;
 
 };
 

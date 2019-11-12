@@ -19,9 +19,5 @@
 
 
 namespace nauEngineSDK {
-#if NAU_PLATFORM == NAU_PLATFORM_WIN32
-  using UI = UISystemWindows;
-#else
   using UI = UISystem;
-#endif
 }

@@ -51,7 +51,7 @@ namespace UIRENDERFLAGS
 }
 
 
-class NAU_CORE_EXPORT UISystem
+class NAU_CORE_EXPORT UISystem : public Module<UISystem>
 {
 public:
 
@@ -71,7 +71,7 @@ public:
    * @return 
    *
    */
-  bool
+  virtual bool
   init(void* hwnd);
 
   /**
@@ -80,7 +80,7 @@ public:
    * @return 
    *
    */
-  void
+  virtual void
   render();
 
   /**
@@ -89,7 +89,7 @@ public:
    * @return 
    *
    */
-  void
+  virtual void
   endRender();
 
   /**
@@ -98,7 +98,7 @@ public:
    * @return 
    *
    */
-  void
+  virtual void
   newFrame();
 
   /**
@@ -107,7 +107,7 @@ public:
    * @return 
    *
    */
-  void
+  virtual void
   endFrame();
 
   /**
@@ -143,7 +143,7 @@ public:
    * @return 
    *
    */
-  void
+  virtual void
   finishUI();
 
   /**

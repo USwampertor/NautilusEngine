@@ -11,6 +11,8 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include <nauModule.h>
+
 namespace nauEngineSDK {
 
    /**
@@ -20,7 +22,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class BaseApp
+  class BaseApp //: public Module<BaseApp>
   {
    public:
     

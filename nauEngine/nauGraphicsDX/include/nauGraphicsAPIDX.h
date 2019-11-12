@@ -113,4 +113,11 @@ namespace nauEngineSDK {
 
   };
 
+
+  //MS_ALIGN(16)
+  //  extern "C" NAU_DIRECTX_EXPORT GraphicsAPI*
+  //  createPluginAPI() {
+  //  return new GraphicsAPIDX();
+  //}
+  //GCC_ALIGN(16)
 }

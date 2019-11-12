@@ -36,8 +36,10 @@ namespace nauEngineSDK {
 
   }
 
+#pragma region DEPRECATED FUNCTIONS
+
   void
-    TestApp::renderUI() {
+  TestApp::renderUI() {
     ////////////////////////////////////////////////////////////////////////// New Frame DX11
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
@@ -105,6 +107,27 @@ namespace nauEngineSDK {
 
   }
 
+
+  bool
+  TestApp::initUI(void* hwnd) {
+    //DEARIMGUI INITIALIZATION
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    if (!ImGui_ImplWin32_Init(hwnd)) return false;
+
+    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) {
+      auto dev = reinterpret_cast<ID3D11Device*>(g_graphicsAPI->getDevice()->get());
+      auto context = reinterpret_cast<ID3D11DeviceContext*>(g_graphicsAPI->getDevice()->getContext());
+
+      return ImGui_ImplDX11_Init(dev, context);
+    }
+
+    return true;
+  }
+
+
+#pragma endregion
+  
   bool
   TestApp::initApp(void* hwnd) {
 
@@ -126,8 +149,8 @@ namespace nauEngineSDK {
     ResourceManager::instance().init(g_graphicsAPI->getDevice());
     
     //UI INITIALIZATION
-    UISystemWindows::startUp();
-    UISystemWindows::instance().init(hwnd);
+    UI::startUp<UISystemWindows>();
+    UI::instance().init(hwnd);
 
     //if (!initUI(hwnd))      return false;
 
@@ -261,26 +284,9 @@ namespace nauEngineSDK {
 
   }
 
-  bool
-  TestApp::initUI(void* hwnd) {
-    //DEARIMGUI INITIALIZATION
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    if (!ImGui_ImplWin32_Init(hwnd)) return false;
-
-    if (g_graphicsAPI->getAPIType() == APITYPE::DX11) {
-      auto dev = reinterpret_cast<ID3D11Device*>(g_graphicsAPI->getDevice()->get());
-      auto context = reinterpret_cast<ID3D11DeviceContext*>(g_graphicsAPI->getDevice()->getContext());
-
-      return ImGui_ImplDX11_Init(dev, context);
-    }
-
-    return true;
-  }
-
   void
   TestApp::shutDown() {
-    UISystemWindows::instance().finishUI();
+    UI::instance().finishUI();
     //ImGui::DestroyContext();
   }
 
