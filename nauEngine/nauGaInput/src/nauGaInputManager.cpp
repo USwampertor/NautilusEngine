@@ -14,6 +14,14 @@ namespace nauEngineSDK {
   GAInputManager::init() {
     //Key Map with the GAInput map
 
+    Logger::instance().toIDE("Initializing Input Manager");
+
+    m_inputMap = new gainput::InputMap(m_manager);
+
+    for (uint32 i = 0; i < 4; ++i) { m_devices.push_back(Vector<InputDevice*>()); }
+
+
+
     m_keyMap.insert(std::make_pair(KEY::MOUSEX, gainput::MouseAxisX));
     m_keyMap.insert(std::make_pair(KEY::MOUSEY, gainput::MouseAxisY));
 
@@ -459,10 +467,10 @@ namespace nauEngineSDK {
                             KEY::CODE toMap,
                             bool isFloat) {
     if (isFloat) {
-      m_inputMap.MapFloat(toMap, m_devices[deviceType][ID]->getID(), m_keyMap[toMap]);
+      m_inputMap->MapFloat(toMap, m_devices[deviceType][ID]->getID(), m_keyMap[toMap]);
     }
     else {
-      m_inputMap.MapBool(toMap, m_devices[deviceType][ID]->getID(), m_keyMap[toMap]);
+      m_inputMap->MapBool(toMap, m_devices[deviceType][ID]->getID(), m_keyMap[toMap]);
     }
   }
 
@@ -472,11 +480,11 @@ namespace nauEngineSDK {
                             bool isFloat) {
     //If it needs to map itself as float
     if (isFloat) {
-      m_inputMap.MapFloat(newKey, device->getID(), m_keyMap[newKey]);
+      m_inputMap->MapFloat(newKey, device->getID(), m_keyMap[newKey]);
     }
     //It will map it as bool
     else {
-      m_inputMap.MapBool(newKey, device->getID(), m_keyMap[newKey]);
+      m_inputMap->MapBool(newKey, device->getID(), m_keyMap[newKey]);
     }
   }
 
@@ -504,58 +512,71 @@ namespace nauEngineSDK {
 
   bool
   GAInputManager::getKeyDown(KEY::CODE keycode) {
-    return m_inputMap.GetBoolPrevious(keycode);
+    return m_inputMap->GetBoolPrevious(keycode);
   }
 
   bool
   GAInputManager::getKeyUp(KEY::CODE keycode) {
-    return m_inputMap.GetBoolWasDown(keycode);
+    return m_inputMap->GetBoolWasDown(keycode);
   }
 
   bool
   GAInputManager::getKey(KEY::CODE keycode) {
-    return m_inputMap.GetBool(keycode);
+    return m_inputMap->GetBool(keycode);
   }
 
   bool
   GAInputManager::getButtonDown(KEY::CODE keycode) {
-    return m_inputMap.GetBoolPrevious(keycode);
+    return m_inputMap->GetBoolPrevious(keycode);
   }
 
   bool
   GAInputManager::getButtonUp(KEY::CODE keycode) {
-    return m_inputMap.GetBoolWasDown(keycode);
+    return m_inputMap->GetBoolWasDown(keycode);
   }
 
   bool
   GAInputManager::getButton(KEY::CODE keycode) {
-    return m_inputMap.GetBool(keycode);
+    return m_inputMap->GetBool(keycode);
   }
 
   bool
   GAInputManager::getMouseButtonDown(KEY::CODE keycode) {
-    return m_inputMap.GetBoolPrevious(keycode);
+    return m_inputMap->GetBoolPrevious(keycode);
   }
 
   bool
   GAInputManager::getMouseButtonUp(KEY::CODE keycode) {
-    return m_inputMap.GetBoolWasDown(keycode);
+    return m_inputMap->GetBoolWasDown(keycode);
   }
 
   bool
   GAInputManager::getMouseButton(KEY::CODE keycode) {
-    return m_inputMap.GetBool(keycode);
+    return m_inputMap->GetBool(keycode);
   }
 
   Vector2
   GAInputManager::getMousePosition() {
-    return Vector2(m_inputMap.GetFloat(KEY::MOUSEX), 
-                   m_inputMap.GetFloat(KEY::MOUSEY));
+    return Vector2(m_inputMap->GetFloat(KEY::MOUSEX), 
+                   m_inputMap->GetFloat(KEY::MOUSEY));
+  }
+
+  bool
+  GAInputManager::mouseMoved() {
+
+    return true;
+  }
+
+  float
+  GAInputManager::getMouseDelta() {
+
+
+    return 0.0f;
   }
 
   float
   GAInputManager::getScrollDelta() {
-    return m_inputMap.GetFloatDelta(KEY::MOUSESCROLL);
+    return m_inputMap->GetFloatDelta(KEY::MOUSESCROLL);
   }
 
   Vector3
@@ -566,7 +587,7 @@ namespace nauEngineSDK {
   bool
   GAInputManager::anyKey() {
     for (uint32 i = 0; i < KEY::LASTINPUT; ++i) {
-      if (m_inputMap.GetBool(i)) return true;
+      if (m_inputMap->GetBool(i)) return true;
     }
     return false;
   }

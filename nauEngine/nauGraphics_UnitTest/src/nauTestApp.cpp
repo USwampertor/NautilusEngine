@@ -140,8 +140,28 @@ namespace nauEngineSDK {
     Clock::instance().init();
     
     //API INITIALIZATION
+    DLLoader::startUp();
+    DLLoader::instance().init();
 
-    g_graphicsAPI = m_factory->createGraphicsAPI();
+    String pathDXAPI = "nauGraphicsDX";
+    String pathGAAPI = "nauGAInput";
+
+    g_graphicsAPI = reinterpret_cast<GraphicsAPI*>(DLLoader::instance().load(pathDXAPI, "createPluginAPI"));
+    g_inputManager = reinterpret_cast<InputManager*>(DLLoader::instance().load(pathGAAPI, "createPluginAPI"));
+    
+    if (!g_graphicsAPI) {
+      Logger::instance().toIDE("Couldn't load default Graphics API... Closing now",
+                               LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
+      exit(991);
+    }
+    if (!g_inputManager) {
+      Logger::instance().toIDE("Couldn't load default Input Manager... Closing now",
+                               LOGGER_LEVEL::ERRORED);
+      Logger::instance().dump();
+      exit(992);
+    }
+
     g_graphicsAPI->init(hwnd);
 
     //RESOURCE MANAGER INITIALIZATION
@@ -169,6 +189,10 @@ namespace nauEngineSDK {
     //ANIMATION MANAGER
     AnimationManager::startUp();
     AnimationManager::instance().init();
+
+    //INPUT MANAGER
+    g_inputManager->init();
+
 #pragma region TestObject
 
     ///TESTING MODEL

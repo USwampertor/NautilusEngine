@@ -12,11 +12,11 @@
 
 namespace nauEngineSDK {
   
-  GraphicsAPI*
-  CoreFactoryDX::createGraphicsAPI() {
-    //return g_graphicsAPI().instancePtr();
-    return new GraphicsAPIDX();
-  }
+  //GraphicsAPI*
+  //CoreFactoryDX::createGraphicsAPI() {
+  //  //return g_graphicsAPI().instancePtr();
+  //  return new GraphicsAPIDX();
+  //}
 
   Device*
   CoreFactoryDX::createDevice() {
@@ -45,12 +45,12 @@ namespace nauEngineSDK {
 
   SamplerState*
   CoreFactoryDX::createSamplerState() {
-    return new SamplerStateDX();
+    return nullptr;
   }
 
   ViewPort*
   CoreFactoryDX::createViewPort() {
-    return new ViewPortDX();
+    return nullptr;
   }
 
   DepthStencil*

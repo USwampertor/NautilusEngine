@@ -293,6 +293,10 @@ protected:
   float m_mouseScrollDelta;
 
 };
+
+extern NAU_CORE_EXPORT InputManager*
+g_inputManager;
+  
 }
 
 

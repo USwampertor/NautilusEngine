@@ -16,7 +16,7 @@ namespace nauEngineSDK {
 
 void
 NeuralLayer::operator<<(FileStream& stream) {
-  stream.m_file << m_ID << static_cast<int>(m_type) << m_data.size();
+  stream.m_file << m_ID << static_cast<int32>(m_type) << m_data.size();
   for (uint32 i = 0; i < m_data.size(); ++i) {
     m_data[i].write(stream);
   }
@@ -24,7 +24,7 @@ NeuralLayer::operator<<(FileStream& stream) {
 
 void
 NeuralLayer::operator<<(fstream& stream) {
-  stream << m_ID << static_cast<int>(m_type) << m_data.size();
+  stream << m_ID << static_cast<int32>(m_type) << m_data.size();
   for (uint32 i = 0; i < m_data.size(); ++i) {
     m_data[i].write(stream);
   }
@@ -32,7 +32,7 @@ NeuralLayer::operator<<(fstream& stream) {
 
 void
 NeuralLayer::write(FileStream& stream) {
-  stream.m_file << m_ID << static_cast<int>(m_type) << m_data.size();
+  stream.m_file << m_ID << static_cast<int32>(m_type) << m_data.size();
   for (uint32 i = 0; i < m_data.size(); ++i) {
     m_data[i].write(stream);
   }
@@ -40,7 +40,7 @@ NeuralLayer::write(FileStream& stream) {
 
 void
 NeuralLayer::write(fstream& stream) {
-  stream << m_ID << static_cast<int>(m_type) << m_data.size();
+  stream << m_ID << static_cast<int32>(m_type) << m_data.size();
   for (uint32 i = 0; i < m_data.size(); ++i) {
     m_data[i].write(stream);
   }

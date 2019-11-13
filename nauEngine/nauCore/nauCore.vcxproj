@@ -45,6 +45,7 @@
     <ClInclude Include="include\nauCoreFactory.h" />
     <ClInclude Include="include\nauDepthStencil.h" />
     <ClInclude Include="include\nauDevice.h" />
+    <ClInclude Include="include\nauDLLoader.h" />
     <ClInclude Include="include\nauGameObject.h" />
     <ClInclude Include="include\nauGraphicPass.h" />
     <ClInclude Include="include\nauGraphicsAPI.h" />
@@ -107,10 +108,12 @@
     <ClCompile Include="src\nauCodec.cpp" />
     <ClCompile Include="src\nauComponent.cpp" />
     <ClCompile Include="src\nauCoreFactory.cpp" />
+    <ClCompile Include="src\nauDLLoader.cpp" />
     <ClCompile Include="src\nauGameObject.cpp" />
     <ClCompile Include="src\nauGraphicPass.cpp" />
     <ClCompile Include="src\nauGraphicsAPI.cpp" />
     <ClCompile Include="src\nauGraphicsBuffer.cpp" />
+    <ClCompile Include="src\nauInputManager.cpp" />
     <ClCompile Include="src\nauLogger.cpp" />
     <ClCompile Include="src\nauMaterial.cpp" />
     <ClCompile Include="src\nauMesh.cpp" />

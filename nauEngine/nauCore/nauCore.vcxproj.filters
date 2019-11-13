@@ -43,9 +43,6 @@
     <ClInclude Include="include\nauAnimator.h">
       <Filter>Source Files\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauInputManager.h">
-      <Filter>Source Files\Input</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauDevice.h">
       <Filter>Source Files\Graphic Interfaces</Filter>
     </ClInclude>
@@ -244,6 +241,12 @@
     <ClInclude Include="include\imgui_impl_win32.h">
       <Filter>Source Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauInputManager.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauDLLoader.h">
+      <Filter>Source Files\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -362,6 +365,12 @@
     </ClCompile>
     <ClCompile Include="src\imgui_impl_win32.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauInputManager.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauDLLoader.cpp">
+      <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

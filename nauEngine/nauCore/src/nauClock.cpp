@@ -69,7 +69,7 @@ namespace nauEngineSDK {
     timeStamp = system_clock::to_time_t(today);
     std::tm localTime = *localtime(&timeStamp);
 
-    hour += std::to_string(localTime.tm_year);
+    hour += std::to_string(localTime.tm_year + 1900);
     hour += "-";
     hour += std::to_string(localTime.tm_hour);
     hour += "-";

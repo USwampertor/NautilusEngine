@@ -60,12 +60,14 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-TestApp m_app;
+//TestApp m_app;
+
+#pragma region DEPRECATED
 
 typedef void* (*G_FACTORY)();
 
 void*
-loadDLL(String path) {
+loadDLL(String path, String functionName) {
   
   String processor;
 
@@ -73,12 +75,27 @@ loadDLL(String path) {
   processor = "x86";
 #else
   processor = "x64";
-#endif
+#endif // NAU_ARCH_TYPE
+
+
 
 
   char dirPath[MAX_PATH];
   GetCurrentDirectoryA(MAX_PATH, dirPath);
+  
   String folderPath(dirPath);
+
+#if NAU_DEBUG_MODE
+  path.append("d");
+#endif // NAU_DEBUG_MODE
+
+#if NAU_PLATFORM == NAU_PLATFORM_WIN32
+  path.append(".dll");
+#elif NAU_PLATFORM == NAU_PLATFORM_LINUX
+  path.append(".so");
+#else
+  exit(004);
+#endif
 
   folderPath = folderPath.append("\\").append(processor).append("\\").append(path);
 
@@ -92,7 +109,7 @@ loadDLL(String path) {
   }
   std::cout << "Loading " << path << "..." << std::endl;
   
-  G_FACTORY t_api = (G_FACTORY)GetProcAddress(myDll, "createFactory");
+  G_FACTORY t_api = (G_FACTORY)GetProcAddress(myDll, functionName.c_str());
   if (!t_api) {
     std::cout << "could not find specified function" << std::endl;
 
@@ -107,6 +124,7 @@ loadDLL(String path) {
   //FreeLibrary(myDll);
 }
 
+#pragma endregion DEPRECATED
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -121,23 +139,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
   MyRegisterClass(hInstance);
 
-  String path = "nauGraphicsDXd.dll";
-  
-  //loadDLL(path);
+  String pathDXAPI = "nauGraphicsDX";
+  String pathGAAPI = "nauGAInput";
 
-  m_app.m_factory = reinterpret_cast<CoreFactory*>(loadDLL(path));
+  //g_graphicsAPI = reinterpret_cast<GraphicsAPI*>(loadDLL(pathDXAPI, "createPluginAPI"));
+  //g_inputManager = reinterpret_cast<InputManager*>(loadDLL(pathGAAPI, "createPluginAPI"));
 
-  if (m_app.m_factory == nullptr) {
-    //throw::std::exception("Factory failed to create");
-    return FALSE;
-  }
-
-  
+  BaseApp::startUp<TestApp>();
   //Initialize app
   if (!InitInstance(hInstance, nCmdShow)) {
     return FALSE;
   }
-  if (!m_app.initApp(g_hWnd)) {
+  if (!BaseApp::instance().initApp(g_hWnd)) {
     return FALSE;
   }
 
@@ -153,10 +166,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     }
-    m_app.update();
+    BaseApp::instance().update();
     
 
-    m_app.render();
+    BaseApp::instance().render();
   }
 
   return (int)msg.wParam;

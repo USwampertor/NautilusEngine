@@ -14,7 +14,7 @@
 
 #include "nauDepthStencilDX.h"
 #include "nauDeviceDX.h"
-#include "nauGraphicsAPIDX.h"
+//#include "nauGraphicsAPIDX.h"
 #include "nauGraphicsBufferDX.h"
 #include "nauInputLayoutDX.h"
 #include "nauShaderDX.h"
@@ -38,8 +38,8 @@ namespace nauEngineSDK {
      */
     ~CoreFactoryDX() = default;
 
-    virtual GraphicsAPI*
-    createGraphicsAPI() override;
+    //virtual GraphicsAPI*
+    //createGraphicsAPI() override;
 
     virtual Device*
     createDevice() override;
@@ -76,12 +76,12 @@ namespace nauEngineSDK {
 
   };
   
-  MS_ALIGN(16)
-  extern "C" NAU_DIRECTX_EXPORT CoreFactory*
-  createFactory() {
-    return new CoreFactoryDX();
-  }
-  GCC_ALIGN(16)
+  //MS_ALIGN(16)
+  //extern "C" NAU_DIRECTX_EXPORT CoreFactory*
+  //createFactory() {
+  //  return new CoreFactoryDX();
+  //}
+  //GCC_ALIGN(16)
 }
 
 

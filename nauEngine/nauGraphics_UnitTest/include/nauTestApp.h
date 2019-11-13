@@ -14,16 +14,18 @@
 
 #include <nauAnimationManager.h>
 #include <nauBaseApp.h>
-#include <nauDynamicLibrary.h>
+//#include <nauDynamicLibrary.h>
+#include <nauDLLoader.h>
 #include <nauGraphicsAPI.h>
+#include <nauInputManager.h>
 #include <nauLogger.h>
 #include <nauRenderManager.h>
 #include <nauResourceManager.h>
 #include <nauSceneGraph.h>
-#include <nauTimer.h>
 #include <nauSceneManager.h>
-
 #include <nauUI.h>
+#include <nauTimer.h>
+
 
 //#include <imgui.h>
 //#include <imgui_impl_dx11.h>
@@ -104,7 +106,7 @@ namespace nauEngineSDK {
     virtual void
     update() override;
 
-    CoreFactory* m_factory = nullptr;
+    //CoreFactory* m_factory = nullptr;
 
     //SceneGraph m_sceneGraph;
 

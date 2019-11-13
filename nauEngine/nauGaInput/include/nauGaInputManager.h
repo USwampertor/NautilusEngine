@@ -14,6 +14,7 @@
 #include "nauGAInputDevice.h"
 
 #include <nauInputManager.h>
+#include <nauLogger.h>
 
 namespace nauEngineSDK {
   class NAU_GAINPUT_EXPORT GAInputManager : public InputManager
@@ -27,7 +28,6 @@ namespace nauEngineSDK {
     /**
      * Default destructor
      */
-    virtual
     ~GAInputManager() = default;
 
     virtual void
@@ -92,6 +92,12 @@ namespace nauEngineSDK {
     virtual Vector2
     getMousePosition() override;
 
+    virtual bool
+    mouseMoved() override;
+
+    virtual float
+    getMouseDelta() override;
+
     virtual float
     getScrollDelta() override;
 
@@ -106,11 +112,19 @@ namespace nauEngineSDK {
 
     gainput::InputManager m_manager;
 
-    gainput::InputMap m_inputMap;
+    gainput::InputMap* m_inputMap = nullptr;
 
     Map<KEY::CODE, gainput::DeviceButtonId> m_keyMap;
     
   };
+
+
+  MS_ALIGN(16)
+  extern "C" NAU_GAINPUT_EXPORT InputManager*
+    createPluginAPI() {
+    return new GAInputManager();
+  }
+  GCC_ALIGN(16)
 }
 
 

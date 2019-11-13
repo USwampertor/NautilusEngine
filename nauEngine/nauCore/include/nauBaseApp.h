@@ -22,7 +22,7 @@ namespace nauEngineSDK {
     * Sample usage:
     * 	
     */
-  class BaseApp //: public Module<BaseApp>
+  class BaseApp : public Module<BaseApp>
   {
    public:
     
