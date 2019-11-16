@@ -90,6 +90,7 @@
     <ClInclude Include="include\nauVertex.h" />
     <ClInclude Include="include\nauViewPort.h" />
     <ClInclude Include="include\nauVertexWeight.h" />
+    <ClInclude Include="include\nauWindowsApp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\imgui.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="src\nauTimer.cpp" />
     <ClCompile Include="src\nauUISystem.cpp" />
     <ClCompile Include="src\nauUISystemWindows.cpp" />
+    <ClCompile Include="src\nauWindowsApp.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

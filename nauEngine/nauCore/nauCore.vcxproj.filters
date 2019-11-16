@@ -139,9 +139,6 @@
     <ClInclude Include="include\nauAnimationManager.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauBaseApp.h">
-      <Filter>Source Files\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauCodec.h">
       <Filter>Source Files\Resources</Filter>
     </ClInclude>
@@ -246,6 +243,12 @@
     </ClInclude>
     <ClInclude Include="include\nauDLLoader.h">
       <Filter>Source Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauBaseApp.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauWindowsApp.h">
+      <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -371,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="src\nauDLLoader.cpp">
       <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauWindowsApp.cpp">
+      <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
