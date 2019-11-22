@@ -15,6 +15,8 @@
 #include "nauLogger.h"
 #include "nauSceneManager.h"
 
+#include "nauInputManager.h"
+
 namespace  nauEngineSDK {
 
   bool
@@ -70,6 +72,27 @@ namespace  nauEngineSDK {
   void
   UISystemWindows::finishUI() {
     UISystem::finishUI();
+  }
+
+  bool
+  UISystemWindows::updateInput() {
+  
+    if (ImGui::GetCurrentContext() == nullptr) { return false; }
+
+    if (g_inputManager->getMouseButtonDown(KEY::MOUSE0)) { 
+      m_ui.MouseDown[0] = true; 
+      return false;
+    }
+    if (g_inputManager->getMouseButtonUp(KEY::MOUSE0)) { 
+      m_ui.MouseDown[0] = false; 
+      return false; 
+    }
+    if (g_inputManager->getScrollDelta() != 0.0f) {
+      m_ui.MouseWheel += g_inputManager->getScrollDelta();
+      return false;
+    }
+
+    return true;
   }
 
 }

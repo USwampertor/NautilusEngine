@@ -24,6 +24,7 @@ class GraphicsAPI;
 class MeshComponent;
 class Logger;
 class SceneManager;
+class InputManager;
 
 namespace UISTARTFLAGS
 {
@@ -145,6 +146,9 @@ public:
    */
   virtual void
   finishUI();
+
+  virtual bool
+  updateInput() = 0;
 
   /**
    * This object should exist and be initialized only once. This is the constant

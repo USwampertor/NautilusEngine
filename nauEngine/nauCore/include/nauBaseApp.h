@@ -15,20 +15,20 @@
 
 namespace nauEngineSDK {
 
-   /**
-    * nauBaseApp
-    * Description:
-    * 	base application for different implementation
-    * Sample usage:
-    * 	
-    */
+  /**
+   * nauBaseApp
+   * Description:
+   * 	base application for different implementation
+   * Sample usage:
+   *
+   */
   class BaseApp : public Module<BaseApp>
   {
-   public:
-    
-     /**
-     * default constructor
-     */
+  public:
+
+    /**
+    * default constructor
+    */
     BaseApp() = default;
 
     /**
@@ -42,13 +42,13 @@ namespace nauEngineSDK {
      * Anything that should go before rendering and starting to get inputs but
      * after the initialization of basic components should go here
      */
-    virtual void
+    virtual int32
     start() = 0;
 
     /**
      * @brief Render state of the base app, here it goes everything to render
-     * @param 
-     * @return 
+     * @param
+     * @return
      *
      */
     virtual void
@@ -56,8 +56,8 @@ namespace nauEngineSDK {
 
     /**
      * @brief Rendering section of the UI
-     * @param 
-     * @return 
+     * @param
+     * @return
      *
      */
     virtual void
@@ -65,8 +65,8 @@ namespace nauEngineSDK {
 
     /**
      * @brief Updates events and inputs
-     * @param 
-     * @return 
+     * @param
+     * @return
      *
      */
     virtual void
@@ -82,18 +82,18 @@ namespace nauEngineSDK {
     initApp(void* hwnd) = 0;
 
     /**
-     * @brief 
-     * @param 
-     * @return 
+     * @brief
+     * @param
+     * @return
      *
      */
     virtual bool
     initUI(void* hwnd) = 0;
-    
+
     /**
      * @brief Should be used to end or shut down basic Components for the application
-     * @param 
-     * @return 
+     * @param
+     * @return
      *
      */
     virtual void
@@ -106,6 +106,11 @@ namespace nauEngineSDK {
     virtual void
     close() = 0;
 
+  public:
+
+    String m_appName;
+
+    String m_windowClass;
 
   };
 }

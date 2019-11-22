@@ -9,6 +9,13 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauGaInputManager.h"
 
+#include <nauGraphicsAPI.h>
+
+#if NAU_PLATFORM == NAU_PLATFORM_WIN32
+#include <windows.h>
+#endif 
+
+
 namespace nauEngineSDK {
   void
   GAInputManager::init() {
@@ -17,13 +24,16 @@ namespace nauEngineSDK {
     Logger::instance().toIDE("Initializing Input Manager");
 
     m_inputMap = new gainput::InputMap(m_manager);
+    Vector2 windowSize = g_graphicsAPI->getWindowSize();
+    m_manager.SetDisplaySize(windowSize.x, windowSize.y);
+
 
     for (uint32 i = 0; i < 4; ++i) { m_devices.push_back(Vector<InputDevice*>()); }
 
-
-
     m_keyMap.insert(std::make_pair(KEY::MOUSEX, gainput::MouseAxisX));
     m_keyMap.insert(std::make_pair(KEY::MOUSEY, gainput::MouseAxisY));
+    m_keyMap.insert(std::make_pair(KEY::MOUSESCROLLDOWN, gainput::MouseButtonWheelDown));
+    m_keyMap.insert(std::make_pair(KEY::MOUSESCROLLUP,   gainput::MouseButtonWheelUp));
 
     m_keyMap.insert(std::make_pair(KEY::MOUSE0, gainput::MouseButton0));
     m_keyMap.insert(std::make_pair(KEY::MOUSE1, gainput::MouseButton1));
@@ -364,8 +374,18 @@ namespace nauEngineSDK {
 
     //Default Devices
     GAInputDevice* device = new GAInputDevice();
-    device->init(DEVICE::KEYBOARD, 
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceKeyboard>()));
+    device->init(DEVICE::MOUSE, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDeviceMouse>()));
+    mapButton(device, KEY::MOUSE0);
+    mapButton(device, KEY::MOUSE1);
+    mapButton(device, KEY::MOUSE2);
+    mapButton(device, KEY::MOUSESCROLLDOWN);
+    mapButton(device, KEY::MOUSESCROLLUP);
+    mapButton(device, KEY::MOUSEX, true);
+    mapButton(device, KEY::MOUSEY, true);
+    addDevice(device);
+
+    device = new GAInputDevice();
+    device->init(DEVICE::KEYBOARD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDeviceKeyboard>()));
     mapButton(device, KEY::A);
     mapButton(device, KEY::B);
     mapButton(device, KEY::C);
@@ -394,60 +414,50 @@ namespace nauEngineSDK {
     mapButton(device, KEY::Z);
     addDevice(device);
     
-    device = new GAInputDevice();
-    device->init(DEVICE::MOUSE,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceMouse>()));
-    mapButton(device, KEY::MOUSE0);
-    mapButton(device, KEY::MOUSE1);
-    mapButton(device, KEY::MOUSE2);
-    addDevice(device);
 
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
     device = new GAInputDevice();
-    device->init(DEVICE::GAMEPAD,
-      reinterpret_cast<void*>(m_manager.CreateDevice<gainput::InputDeviceBuiltIn>()));
+    device->init(DEVICE::GAMEPAD, reinterpret_cast<void*>(m_manager.CreateAndGetDevice<gainput::InputDevicePad>()));
     addDevice(device);
 
   }
 
   void
   GAInputManager::update() {
+    m_manager.Update();
+  }
 
+  void
+  GAInputManager::handleMessage(void* message) {
+    m_manager.HandleMessage(*(reinterpret_cast<MSG*>(message)));
   }
 
   void
@@ -557,26 +567,26 @@ namespace nauEngineSDK {
 
   Vector2
   GAInputManager::getMousePosition() {
-    return Vector2(m_inputMap->GetFloat(KEY::MOUSEX), 
-                   m_inputMap->GetFloat(KEY::MOUSEY));
+      return Vector2(m_inputMap->GetFloat(KEY::MOUSEX), 
+                     m_inputMap->GetFloat(KEY::MOUSEY));
   }
 
   bool
   GAInputManager::mouseMoved() {
-
-    return true;
+    return (getMouseDelta().x != 0.0f || getMouseDelta().y != 0.0f) ? true : false;
   }
 
-  float
+  Vector2
   GAInputManager::getMouseDelta() {
-
-
-    return 0.0f;
+    return Vector2(m_inputMap->GetFloatDelta(KEY::MOUSEX), 
+                   m_inputMap->GetFloatDelta(KEY::MOUSEY));
   }
 
   float
   GAInputManager::getScrollDelta() {
-    return m_inputMap->GetFloatDelta(KEY::MOUSESCROLL);
+    if      (m_inputMap->GetBoolPrevious(KEY::MOUSESCROLLDOWN)) { return -1.0f; }
+    else if (m_inputMap->GetBoolPrevious(KEY::MOUSESCROLLUP))   { return  1.0f; }
+    return 0.0f;
   }
 
   Vector3

@@ -4,13 +4,14 @@ namespace nauEngineSDK {
   void
   GAInputDevice::init(DEVICE::TYPE type, void* data) {
     m_device = type;
-    m_ID = reinterpret_cast<uint32>(data);
+    m_inputDevice = reinterpret_cast<gainput::InputDevice*>(data);
+    m_ID = m_inputDevice->GetDeviceId();
     clean();
   }
   
   void*
   GAInputDevice::get() {
-    return reinterpret_cast<void*>(m_ID);
+    return reinterpret_cast<void*>(m_inputDevice);
   }
   
   void

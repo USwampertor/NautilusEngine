@@ -16,6 +16,7 @@
 #include "imgui_impl_dx11.h"
 
 namespace nauEngineSDK {
+
 class NAU_CORE_EXPORT UISystemWindows : public UISystem
 {
 public:
@@ -41,6 +42,13 @@ public:
   virtual void
   finishUI() override;
 
+  virtual bool
+  updateInput() override;
+
+  //LRESULT
+  //windowsInputUpdate(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+  //bool
+  //windowInputUpdate();
 };
 
 }

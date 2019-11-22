@@ -14,44 +14,17 @@
 #include <string>
 #include <nauGraphicsAPI.h>
 
-#include "nauTestApp.h"
+//#include "nauTestApp.h"
 
-#define IDS_APP_TITLE			103
-
-#define IDR_MAINFRAME			128
-#define IDD_GRAFICAS21_DIALOG	102
-#define IDD_ABOUTBOX			103
-#define IDM_ABOUT				104
-#define IDM_EXIT				105
-#define IDI_GRAFICAS21			107
-#define IDI_SMALL				108
-#define IDC_GRAFICAS21			109
-#define IDC_MYICON				2
-#ifndef IDC_STATIC
-#define IDC_STATIC				-1
-#endif
-
-// Predetermined
-//
-#ifdef APSTUDIO_INVOKED
-#ifndef APSTUDIO_READONLY_SYMBOLS
-
-#define _APS_NO_MFC					130
-#define _APS_NEXT_RESOURCE_VALUE	129
-#define _APS_NEXT_COMMAND_VALUE		32771
-#define _APS_NEXT_CONTROL_VALUE		1000
-#define _APS_NEXT_SYMED_VALUE		110
-#endif
-#endif
-#define MAX_LOADSTRING 100
+#include <nauWindowsApp.h>
 
 using namespace nauEngineSDK;
 using std::vector;
 
 //Global variables
 HINSTANCE hInst;
-WCHAR szTitle[MAX_LOADSTRING] = L"myWindow";
-WCHAR szWindowClass[MAX_LOADSTRING] = L"myWindowClass";
+WCHAR szTitle[MAX_LOADSTRING] = L"Nautilus Engine";
+WCHAR szWindowClass[MAX_LOADSTRING] = L"Nautilus Class";
 
 HWND g_hWnd;
 //Forward declaration
@@ -128,36 +101,24 @@ loadDLL(String path, String functionName) {
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-  _In_opt_ HINSTANCE hPrevInstance,
-  _In_ LPWSTR    lpCmdLine,
-  _In_ int       nCmdShow)
-{
+                      _In_opt_ HINSTANCE hPrevInstance,
+                      _In_ LPWSTR    lpCmdLine,
+                      _In_ int       nCmdShow) {
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
   
-  //GraphicsAPI* m_api;
-
   MyRegisterClass(hInstance);
 
-  String pathDXAPI = "nauGraphicsDX";
-  String pathGAAPI = "nauGAInput";
+  BaseApp::startUp<WindowsApp>(hInstance, nCmdShow);
+  //if (!InitInstance(hInstance, nCmdShow)) { return FALSE; }
+  if (!BaseApp::instance().initApp(g_hWnd)) { return FALSE; }
 
-  //g_graphicsAPI = reinterpret_cast<GraphicsAPI*>(loadDLL(pathDXAPI, "createPluginAPI"));
-  //g_inputManager = reinterpret_cast<InputManager*>(loadDLL(pathGAAPI, "createPluginAPI"));
-
-  BaseApp::startUp<TestApp>();
-  //Initialize app
-  if (!InitInstance(hInstance, nCmdShow)) {
-    return FALSE;
-  }
-  if (!BaseApp::instance().initApp(g_hWnd)) {
-    return FALSE;
-  }
-
+  return BaseApp::instance().start();
+  /*
   HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(1));
-
+  
   MSG msg;
-
+  
   //Main Loop
   while (GetMessage(&msg, nullptr, 0, 0))
   {
@@ -168,30 +129,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
     BaseApp::instance().update();
     
-
+  
     BaseApp::instance().render();
   }
-
+  
   return (int)msg.wParam;
+  */
 }
 
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
   WNDCLASSEXW wcex;
 
-  wcex.cbSize = sizeof(WNDCLASSEX);
+  wcex.cbSize = sizeof(WNDCLASSEXW);
 
   wcex.style = CS_HREDRAW | CS_VREDRAW;
   wcex.lpfnWndProc = WndProc;
   wcex.cbClsExtra = 0;
   wcex.cbWndExtra = 0;
   wcex.hInstance = hInstance;
-  wcex.hIcon = LoadIconW(hInstance, MAKEINTRESOURCE(IDI_GRAFICAS21));
+  wcex.hIcon = LoadIconW(hInstance, MAKEINTRESOURCEW(IDI_GRAFICAS21));
   wcex.hCursor = LoadCursorW(nullptr, IDC_ARROW);
   wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
   wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
   wcex.lpszClassName = szWindowClass;
-  wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+  wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_SMALL));
 
   return RegisterClassExW(&wcex);
 }

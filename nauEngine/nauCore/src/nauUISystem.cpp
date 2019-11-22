@@ -10,10 +10,11 @@
 #include "nauUISystem.h"
 
 
-#include "nauGraphicsAPI.h"
 #include "nauComponent.h"
-#include "nauMesh.h"
+#include "nauGraphicsAPI.h"
+#include "nauInputManager.h"
 #include "nauLogger.h"
+#include "nauMesh.h"
 #include "nauSceneManager.h"
 
 namespace nauEngineSDK {
@@ -101,6 +102,25 @@ namespace nauEngineSDK {
     ms += std::to_string(ImGui::GetIO().Framerate);
     ms.append("\n");
     ImGui::Text(ms.c_str());
+
+    String mousePos = "Mouse position: ";
+    Vector2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
+                g_inputManager->getMousePosition().y * g_graphicsAPI->getWindowSize().y);
+    mousePos += std::to_string(pos.x);
+    mousePos.append("\n");
+    mousePos += "                ";
+    mousePos += std::to_string(pos.y);
+    mousePos.append("\n");
+    ImGui::Text(mousePos.c_str());
+
+    String mouseDelta = "Mouse delta: ";
+    Vector2 delta = g_inputManager->getMouseDelta();
+    mouseDelta += std::to_string(delta.x);
+    mouseDelta.append("\n");
+    mouseDelta += "             ";
+    mouseDelta += std::to_string(delta.y);
+    mouseDelta.append("\n");
+    ImGui::Text(mouseDelta.c_str());
 
     ImGui::End();
 

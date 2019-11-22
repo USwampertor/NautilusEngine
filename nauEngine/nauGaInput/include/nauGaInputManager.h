@@ -17,6 +17,7 @@
 #include <nauLogger.h>
 
 namespace nauEngineSDK {
+
   class NAU_GAINPUT_EXPORT GAInputManager : public InputManager
   {
   public:
@@ -35,6 +36,9 @@ namespace nauEngineSDK {
 
     virtual void
     update() override;
+
+    virtual void
+    handleMessage(void* message) override;
 
     virtual void
     removeDevice(InputDevice* device) override;
@@ -95,7 +99,7 @@ namespace nauEngineSDK {
     virtual bool
     mouseMoved() override;
 
-    virtual float
+    virtual Vector2
     getMouseDelta() override;
 
     virtual float

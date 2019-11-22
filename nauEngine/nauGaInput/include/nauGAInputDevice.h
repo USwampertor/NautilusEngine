@@ -29,6 +29,9 @@ public:
   
   virtual void
   clean() override;
+
+private:
+  gainput::InputDevice* m_inputDevice;
 };
 
 }

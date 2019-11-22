@@ -1,9 +1,11 @@
 #include "nauTestApp.h"
 
 namespace nauEngineSDK {
-  void
+
+  int32
   TestApp::start() {
     
+    return 0;
   }
 
   void

@@ -17,6 +17,9 @@
 #include <nauVector2.h>
 
 namespace nauEngineSDK {
+
+  class GraphicsAPI;
+
 class InputManager : public Module<InputManager>
 {
 public:
@@ -48,6 +51,14 @@ public:
    */
   virtual void
   update() = 0;
+
+  /**
+   * @brief Handles messages given to the input system
+   * @param void* data (normally a message object or structure)
+   * @return -
+   */
+  virtual void
+  handleMessage(void* message) = 0;
 
   /**
    * @brief 
@@ -231,7 +242,7 @@ public:
    * @return 
    *
    */
-  virtual float
+  virtual Vector2
   getMouseDelta() = 0;
 
   /**

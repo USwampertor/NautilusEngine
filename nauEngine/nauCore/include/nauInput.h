@@ -19,9 +19,10 @@ namespace DEVICE
 enum TYPE
 {
   NONE                = 0,
-  MOUSE               = 1,
-  KEYBOARD            = 2,
-  GAMEPAD             = 3
+  MOUSE               ,
+  KEYBOARD            ,
+  GAMEPAD             ,
+  SENSOR
 };
 }
 
@@ -177,7 +178,8 @@ enum CODE
   MOUSE14             ,
   MOUSE15             ,
   MOUSE16             ,
-  MOUSESCROLL         ,
+  MOUSESCROLLDOWN     ,
+  MOUSESCROLLUP       ,
   JOYSTICK0LEFTSTICKX ,
   JOYSTICK0LEFTSTICKY ,
   JOYSTICK0RIGHTSTICKX,

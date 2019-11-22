@@ -14,7 +14,6 @@
 
 #include <nauAnimationManager.h>
 #include <nauBaseApp.h>
-//#include <nauDynamicLibrary.h>
 #include <nauDLLoader.h>
 #include <nauGraphicsAPI.h>
 #include <nauInputManager.h>
@@ -31,34 +30,34 @@
 //#include <imgui_impl_dx11.h>
 //#include <imgui_impl_win32.h>
 
-#define IDS_APP_TITLE			103
-
-#define IDR_MAINFRAME			128
-#define IDD_GRAFICAS21_DIALOG	102
-#define IDD_ABOUTBOX			103
-#define IDM_ABOUT				104
-#define IDM_EXIT				105
-#define IDI_GRAFICAS21			107
-#define IDI_SMALL				108
-#define IDC_GRAFICAS21			109
-#define IDC_MYICON				2
-#ifndef IDC_STATIC
-#define IDC_STATIC				-1
-#endif
-
-// Predetermined
+//#define IDS_APP_TITLE			103
 //
-#ifdef APSTUDIO_INVOKED
-#ifndef APSTUDIO_READONLY_SYMBOLS
-
-#define _APS_NO_MFC					130
-#define _APS_NEXT_RESOURCE_VALUE	129
-#define _APS_NEXT_COMMAND_VALUE		32771
-#define _APS_NEXT_CONTROL_VALUE		1000
-#define _APS_NEXT_SYMED_VALUE		110
-#endif
-#endif
-#define MAX_LOADSTRING 100
+//#define IDR_MAINFRAME			128
+//#define IDD_GRAFICAS21_DIALOG	102
+//#define IDD_ABOUTBOX			103
+//#define IDM_ABOUT				104
+//#define IDM_EXIT				105
+//#define IDI_GRAFICAS21			107
+//#define IDI_SMALL				108
+//#define IDC_GRAFICAS21			109
+//#define IDC_MYICON				2
+//#ifndef IDC_STATIC
+//#define IDC_STATIC				-1
+//#endif
+//
+//// Predetermined
+////
+//#ifdef APSTUDIO_INVOKED
+//#ifndef APSTUDIO_READONLY_SYMBOLS
+//
+//#define _APS_NO_MFC					130
+//#define _APS_NEXT_RESOURCE_VALUE	129
+//#define _APS_NEXT_COMMAND_VALUE		32771
+//#define _APS_NEXT_CONTROL_VALUE		1000
+//#define _APS_NEXT_SYMED_VALUE		110
+//#endif
+//#endif
+//#define MAX_LOADSTRING 100
 
 
 namespace nauEngineSDK {
@@ -82,7 +81,7 @@ namespace nauEngineSDK {
      */
     ~TestApp() = default;
 
-    virtual void
+    virtual int32
     start() override;
 
     virtual void
