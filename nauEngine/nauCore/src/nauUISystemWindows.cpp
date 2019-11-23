@@ -51,6 +51,7 @@ namespace  nauEngineSDK {
     
     ////////////////////////////////////////////////////////////////////////// New Frame DX11
     if (g_graphicsAPI->getAPIType() == APITYPE::DX11) { ImGui_ImplDX11_NewFrame(); }
+
     ImGui_ImplWin32_NewFrame();
 
     UISystem::newFrame();

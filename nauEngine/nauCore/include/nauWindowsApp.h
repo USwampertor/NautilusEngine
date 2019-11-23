@@ -122,6 +122,15 @@ namespace nauEngineSDK {
     static LRESULT CALLBACK 
     WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
+    static void 
+    ImGui_ImplWin32_UpdateMousePos();
+
+    static bool 
+    ImGui_ImplWin32_UpdateMouseCursor();
+
+    static LRESULT
+    ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
     int m_commandShow;
   };
   

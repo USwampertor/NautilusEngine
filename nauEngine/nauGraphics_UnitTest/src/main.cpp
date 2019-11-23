@@ -100,14 +100,16 @@ loadDLL(String path, String functionName) {
 #pragma endregion DEPRECATED
 
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                      _In_opt_ HINSTANCE hPrevInstance,
-                      _In_ LPWSTR    lpCmdLine,
-                      _In_ int       nCmdShow) {
+int APIENTRY 
+wWinMain(_In_ HINSTANCE hInstance,
+         _In_opt_ HINSTANCE hPrevInstance,
+         _In_ LPWSTR    lpCmdLine,
+         _In_ int       nCmdShow) {
+
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
   
-  MyRegisterClass(hInstance);
+  //MyRegisterClass(hInstance);
 
   BaseApp::startUp<WindowsApp>(hInstance, nCmdShow);
   //if (!InitInstance(hInstance, nCmdShow)) { return FALSE; }
@@ -136,7 +138,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   return (int)msg.wParam;
   */
 }
-
+/*
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
   WNDCLASSEXW wcex;
@@ -229,3 +231,5 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
   }
   return (INT_PTR)FALSE;
 }
+
+*/

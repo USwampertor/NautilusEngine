@@ -42,7 +42,8 @@ namespace nauEngineSDK {
 
   void
   TestApp::renderUI() {
-    ////////////////////////////////////////////////////////////////////////// New Frame DX11
+   /* 
+   ////////////////////////////////////////////////////////////////////////// New Frame DX11
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
 
@@ -106,12 +107,14 @@ namespace nauEngineSDK {
     ImGui::End();
 
 ////////////////////////////////////////////////////////////////////////// Inspector Window
-
+  */
   }
 
 
   bool
   TestApp::initUI(void* hwnd) {
+
+    /*
     //DEARIMGUI INITIALIZATION
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
@@ -123,7 +126,7 @@ namespace nauEngineSDK {
 
       return ImGui_ImplDX11_Init(dev, context);
     }
-
+    */
     return true;
   }
 
