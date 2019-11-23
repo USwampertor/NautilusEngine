@@ -76,17 +76,26 @@ namespace  nauEngineSDK {
 
   bool
   UISystemWindows::updateInput() {
-  
-    if (ImGui::GetCurrentContext() == nullptr) { return false; }
+    
 
-    if (g_inputManager->getMouseButtonDown(KEY::MOUSE0)) { 
+    if (ImGui::GetCurrentContext() == nullptr) { return false; }
+    ImVec2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
+               g_inputManager->getMousePosition().y * g_graphicsAPI->getWindowSize().y);
+    m_ui.MousePos = pos;
+    ImVec2 delta(0, g_inputManager->getScrollDelta());
+    m_ui.MouseDelta = delta;
+
+    m_accumulatedDelta += delta.y * 100.0f;
+
+    if (g_inputManager->getMouseButtonDown(KEY::MOUSE0)) {
       m_ui.MouseDown[0] = true; 
       return false;
     }
-    if (g_inputManager->getMouseButtonUp(KEY::MOUSE0)) { 
+    else { 
       m_ui.MouseDown[0] = false; 
       return false; 
     }
+
     if (g_inputManager->getScrollDelta() != 0.0f) {
       m_ui.MouseWheel += g_inputManager->getScrollDelta();
       return false;

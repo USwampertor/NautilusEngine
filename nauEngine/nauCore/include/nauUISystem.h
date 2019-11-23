@@ -155,6 +155,11 @@ public:
    * reference for ImGui to exist.
    */
   ImGuiIO m_ui;
+
+  /**
+   * Testing accumulated delta
+   */
+  float m_accumulatedDelta = 0.0f;
 };
 
 }

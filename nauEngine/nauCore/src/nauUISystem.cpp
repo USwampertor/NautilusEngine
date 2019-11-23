@@ -24,7 +24,8 @@ namespace nauEngineSDK {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     m_ui = io;
-
+    m_ui.WantCaptureKeyboard = false;
+    m_ui.WantCaptureMouse = false;
     return true;
   }
 
@@ -57,7 +58,7 @@ namespace nauEngineSDK {
     ImGui::Begin("Menu", nullptr, ImGuiWindowFlags_MenuBar);
     if (ImGui::BeginMenuBar()) {
       if (ImGui::BeginMenu("Project")) {
-        if (ImGui::MenuItem("New")) {}
+        if (ImGui::MenuItem("New")) {  }
         ImGui::EndMenu();
       }
       ImGui::EndMenuBar();
@@ -121,6 +122,14 @@ namespace nauEngineSDK {
     mouseDelta += std::to_string(delta.y);
     mouseDelta.append("\n");
     ImGui::Text(mouseDelta.c_str());
+
+    String enterPressed = "Click pressed: ";
+    m_ui.MouseDown[0] ? enterPressed += "true" : enterPressed += "false";
+    enterPressed.append("\n");
+    enterPressed += "Accumulated delta: ";
+    enterPressed += std::to_string(m_accumulatedDelta);
+    enterPressed.append("\n");
+    ImGui::Text(enterPressed.c_str());
 
     ImGui::End();
 
