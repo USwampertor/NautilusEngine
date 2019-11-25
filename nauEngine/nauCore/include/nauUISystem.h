@@ -147,8 +147,6 @@ public:
   virtual void
   finishUI();
 
-  virtual bool
-  updateInput() = 0;
 
   /**
    * This object should exist and be initialized only once. This is the constant
@@ -160,6 +158,9 @@ public:
    * Testing accumulated delta
    */
   float m_accumulatedDelta = 0.0f;
+  
+  virtual bool
+  updateInput() { m_ui = ImGui::GetIO(); return true; }
 };
 
 }

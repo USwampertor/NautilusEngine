@@ -18,12 +18,12 @@ namespace nauEngineSDK {
     HACCEL hAccelTable = LoadAccelerators(m_hInst, MAKEINTRESOURCE(1));
     MSG msg;
 
-    while (GetMessage(&msg, nullptr, 0, 0)) {
+    while (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE)) {
       update();
-      if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
+      //if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
-      }
+      //}
       g_inputManager->handleMessage(&msg);
       render();
     }
@@ -34,7 +34,7 @@ namespace nauEngineSDK {
   WindowsApp::update() {
 
     g_inputManager->update();
-    //UI::instance().updateInput();
+    UI::instance().updateInput();
 
     RenderManager::instance().update();
     Clock::instance().update();
@@ -179,8 +179,8 @@ namespace nauEngineSDK {
     DLLoader::startUp();
     DLLoader::instance().init();
 
-    MyRegisterClass();
     
+    MyRegisterClass();
     if (!InitInstance()) {
       Logger::instance().toIDE("Couldn't initialize instance of Windows Class",
         LOGGER_LEVEL::ERRORED);
@@ -435,7 +435,7 @@ namespace nauEngineSDK {
         DestroyWindow(hWnd);
         break;
       default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        break;// return DefWindowProc(hWnd, message, wParam, lParam);
       }
     }
     break;
@@ -449,6 +449,7 @@ namespace nauEngineSDK {
       break;
     default:
       return DefWindowProc(hWnd, message, wParam, lParam);
+      break;
     }
     return 0;
   }
@@ -527,6 +528,9 @@ namespace nauEngineSDK {
 
   LRESULT
   WindowsApp::ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+
+    //ImGuiIO& io = ImGui::GetIO();
+
     if (ImGui::GetCurrentContext() == NULL)
       return 0;
 

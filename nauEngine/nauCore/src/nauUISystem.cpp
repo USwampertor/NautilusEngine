@@ -24,8 +24,6 @@ namespace nauEngineSDK {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     m_ui = io;
-    m_ui.WantCaptureKeyboard = false;
-    m_ui.WantCaptureMouse = false;
     return true;
   }
 
@@ -105,8 +103,7 @@ namespace nauEngineSDK {
     ImGui::Text(ms.c_str());
 
     String mousePos = "Mouse position: ";
-    Vector2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
-                g_inputManager->getMousePosition().y * g_graphicsAPI->getWindowSize().y);
+    Vector2 pos(m_ui.MousePos.x, m_ui.MousePos.y);
     mousePos += std::to_string(pos.x);
     mousePos.append("\n");
     mousePos += "                ";

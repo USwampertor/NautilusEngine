@@ -32,6 +32,7 @@ namespace  nauEngineSDK {
       return ImGui_ImplDX11_Init(dev, context);
     }
 
+    m_ui = ImGui::GetIO();
     return true;
   }
 
@@ -77,7 +78,7 @@ namespace  nauEngineSDK {
 
   bool
   UISystemWindows::updateInput() {
-    
+    UISystem::updateInput();
 
     if (ImGui::GetCurrentContext() == nullptr) { return false; }
     ImVec2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
