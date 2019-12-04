@@ -46,4 +46,5 @@
 #if NAU_COMPILER == NAU_COMPILER_MSVC
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <commdlg.h>
 #endif

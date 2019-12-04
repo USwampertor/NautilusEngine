@@ -38,6 +38,34 @@ namespace nauEngineSDK {
 
     RenderManager::instance().update();
     Clock::instance().update();
+
+    if (g_inputManager->getButton(KEY::K)) {
+
+    }
+
+    /*
+    if (g_inputManager->getButtonDown(KEY::K)) {
+      OPENFILENAME file;
+
+      char szFile[100];
+
+      file.lStructSize = sizeof(file);
+      file.hwndOwner = nullptr;
+      file.lpstrFile = szFile;
+      file.lpstrFile[0] = '\0';
+      file.nMaxFile = sizeof(file);
+      file.lpstrFilter = "All\0*.*\0Text\0*.TXT\0";
+      file.nFilterIndex = 1;
+      file.lpstrFileTitle = nullptr;
+      file.nMaxFileTitle = 0;
+      file.lpstrInitialDir = nullptr;
+      file.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+      file.hInstance = m_hInst;
+
+      GetOpenFileName(&file);
+      MessageBox(nullptr, file.lpstrFile, "File Name", MB_OK);
+    }
+    */
   }
 
   void
@@ -52,12 +80,9 @@ namespace nauEngineSDK {
     }
 
 
-    //ImGui::EndFrame();
     UI::instance().endFrame();
     RenderManager::instance().render(meshes, g_graphicsAPI);
     UI::instance().endRender();
-    //ImGui::Render();
-    //ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     g_graphicsAPI->swapBuffer();
 
   }

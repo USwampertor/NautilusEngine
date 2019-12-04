@@ -13,6 +13,7 @@
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
 #include <windows.h>
+#define GAINPUT_PLATFORM_WIN
 #endif 
 
 

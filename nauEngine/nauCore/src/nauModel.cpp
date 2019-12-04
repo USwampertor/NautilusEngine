@@ -49,9 +49,11 @@ namespace nauEngineSDK {
   Model::loadFromFile(String filePath) {
 
     Assimp::Importer modelImport;
-    const aiScene* scene = modelImport.ReadFile(filePath, 
-                                                aiProcessPreset_TargetRealtime_MaxQuality |
-                                                aiProcess_ConvertToLeftHanded);
+    uint32 assimpFlags = aiProcessPreset_TargetRealtime_MaxQuality |
+                         aiProcess_ConvertToLeftHanded;
+
+    const aiScene* scene = modelImport.ReadFile(filePath, assimpFlags);
+    
     if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 
       String errorMessage = modelImport.GetErrorString();
@@ -64,11 +66,7 @@ namespace nauEngineSDK {
                                    filePath + 
                                    ", loading default Error Model");
 
-      scene = modelImport.ReadFile("resources/errorModel.stl", 
-                                   aiProcess_Triangulate |
-                                   aiProcess_GenSmoothNormals |
-                                   aiProcess_FlipUVs |
-                                   aiProcess_ConvertToLeftHanded);
+      scene = modelImport.ReadFile("./resources/errorModel.stl", assimpFlags);
 
       if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
         std::cout << "Couldn't Load Error model..." << std::endl;
@@ -76,10 +74,13 @@ namespace nauEngineSDK {
       return;
     }
 
-    Map<String, Bone*> sceneBones;
-    Vector<aiNode*> modelNodes;
 
     processNode(scene->mRootNode, scene);
+/************************************************************************/
+/* Bones                                                                */
+/************************************************************************/
+    Map<String, Bone*> sceneBones;
+    Vector<aiNode*> modelNodes;
 
     if (m_hasBones) {
       uint32 index = 0;
@@ -103,79 +104,71 @@ namespace nauEngineSDK {
       m_skeleton->init(sceneBones, modelNodes);
     }
 
-
-    Vector<Vertex> vertices;
-
+/************************************************************************/
+/* Bone assignment                                                      */
+/************************************************************************/
+    ///*
+    Vector<Vector<uint32>> bCounter;
+    uint32 maxVertexSize = 0;
     for (auto mesh : m_meshes) {
-      vertices.insert(vertices.end(), 
-                      mesh->m_vertexBuffer->m_vertexData.begin(),
-                      mesh->m_vertexBuffer->m_vertexData.end());
+      Vector<uint32> vertexInMesh;
+      vertexInMesh.resize(mesh->m_vertexBuffer->m_vertexData.size(), 0);
+      maxVertexSize += mesh->m_vertexBuffer->m_vertexData.size();
+      bCounter.push_back(vertexInMesh);
     }
 
-    for (auto bone : sceneBones) {
-      for (auto boneWeight : bone.second->m_weights) {
+    Map<String, Bone*>* set = m_skeleton->getAllBones();
+    String log = "";
+    uint32 bonesLoaded = 0;
+    uint32 id = 0;
+    float weight = 0.0f;
 
-      }
-    }
+    uint32 w = 0;
+    uint32 i = 0;
+    uint32 j = 0;
 
-    //We assign the weights to each of the vertices in the system
-    /*
-    Vector<uint32> offsets;
-    Vector<uint32> boneCounter;
-    uint32 accumulation = 0;
+    for (i = 0; i < scene->mNumMeshes; ++i) {
+      if (scene->mMeshes[i]->HasBones()) {
+        for (j = 0; j < scene->mMeshes[i]->mNumBones; ++j) {
+          String name = scene->mMeshes[i]->mBones[j]->mName.C_Str();
+          if (set->find(name) != set->end()) {
+            log = "";
+            log = "Loading bone ";
+            log += std::to_string(j);
+            log += " of mesh: ";
+            log += std::to_string(i);
+            log += " with vertex size: ";
+            log += std::to_string(m_meshes[i]->m_vertexBuffer->m_vertexData.size());
+            Logger::instance().toIDE(log);
+            
+            auto bone = set->find(name)->second;
+            for (w = 0; w < bone->m_weights.size(); ++w) {
 
-    for (auto mesh : m_meshes) {
-      accumulation += mesh->m_vertexBuffer->size();
-      offsets.push_back(accumulation);
-    }
-    
-    boneCounter.resize(offsets[offsets.size() - 1], 0);
-    for (auto bone : sceneBones) {
-      for (auto boneWeight : bone.second->m_weights) {
-        for (uint32 i = 0; i < offsets.size(); ++i) {
+              id = bone->m_weights[w].m_ID;
+              bonesLoaded = 4;
 
-          NAU_ASSERT(boneWeight.m_ID < offsets[offsets.size() - 1] && "VERTEX OUT OF RANGE");
-
-          if (offsets[i] > boneWeight.m_ID) {
-            if (boneCounter[boneWeight.m_ID] == 0) {
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_ID =
-                bone.second->m_ID;
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone0.m_weight =
-                boneWeight.m_weight;
-              ++boneCounter[boneWeight.m_ID];
+              if (id < m_meshes[i]->m_vertexBuffer->m_vertexData.size() && (aiProcess_OptimizeMeshes | assimpFlags)) {
+                weight = bone->m_weights[w].m_weight;
+                bonesLoaded = bCounter[i][id];
+              }
+              
+              
+              if (bonesLoaded < 4) {
+                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_bone[bCounter[i][id]].m_ID = id;
+                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_bone[bCounter[i][id]].m_weight = weight;
+                ++bCounter[i][id];
+              }
             }
-            else if (boneCounter[boneWeight.m_ID] == 1) {
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_ID =
-                bone.second->m_ID;
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone1.m_weight =
-                boneWeight.m_weight;
-              ++boneCounter[boneWeight.m_ID];
-            }
-            else if (boneCounter[boneWeight.m_ID] == 2) {
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_ID =
-                bone.second->m_ID;
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone2.m_weight =
-                boneWeight.m_weight;
-              ++boneCounter[boneWeight.m_ID];
-            }
-            else if (boneCounter[boneWeight.m_ID] == 3) {
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_ID =
-                bone.second->m_ID;
-              m_meshes[i]->m_vertexBuffer->m_vertexData[boneWeight.m_ID].m_bone3.m_weight =
-                boneWeight.m_weight;
-              ++boneCounter[boneWeight.m_ID];
-            }
-            else {
-              std::cout << "TEMP";
-            }
-            break;
           }
         }
       }
     }
-    */
-    //We check if it has animations
 
+    //*/
+
+/************************************************************************/
+/* Animations                                                           */
+/************************************************************************/
     if (scene->mNumAnimations > 0) {
       //If it has animations, we will through each one
       Sptr<Animator> animator = 
@@ -225,6 +218,7 @@ namespace nauEngineSDK {
       pvertex.m_position.y = mesh->mVertices[i].y;
       pvertex.m_position.z = mesh->mVertices[i].z;
 
+
       if (mesh->HasTextureCoords(0)) {
         pvertex.m_uv.x = mesh->mTextureCoords[0][i].x;
         pvertex.m_uv.y = mesh->mTextureCoords[0][i].y;
@@ -249,7 +243,6 @@ namespace nauEngineSDK {
         pvertex.m_binormal.y = mesh->mBitangents->y;
         pvertex.m_binormal.z = mesh->mBitangents->z;
       }
-
 
       //If it didn't have normals, but did have tangent and bi normals, we calculate normals
       if (!mesh->HasNormals() && mesh->HasTangentsAndBitangents()) {

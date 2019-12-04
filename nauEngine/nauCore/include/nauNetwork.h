@@ -32,6 +32,10 @@
 #define IRINA_MAX_BONES 64
 
 namespace nauEngineSDK {
+
+  //Forward declaration
+  class Skeleton;
+
   using std::fstream;
 
 class NeuralNetwork
@@ -91,7 +95,16 @@ class NeuralNetwork
    *
    */
   void
-  init();
+  init(Skeleton skeleton);
+
+  /**
+   * @brief Processes the skeleton 
+   * @param Bone* actual bone 
+   * @return 
+   *
+   */
+  void
+  processSkeleton(NeuralLayer layer, Bone* actualBone);
 
   /**
    * @brief Cleans and resets the information from the neural network. Should NOT

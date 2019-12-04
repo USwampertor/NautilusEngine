@@ -39,9 +39,6 @@ namespace nauEngineSDK {
     aiNode* rootNode = nullptr;
 
     for (auto node : nodes) {
-#if NAU_DEBUG_MODE
-      Logger::instance().toIDE("Bone");
-#endif
       if (node->mParent->mName.C_Str() == "RootNode" || 
           node->mParent->mParent == nullptr) {
         rootNode = node;
@@ -52,6 +49,7 @@ namespace nauEngineSDK {
 
     if (rootNode != nullptr) {
       m_root = bones[rootNode->mName.C_Str()];
+      if (m_set.find(m_root->m_name) == m_set.end()) { m_set.insert(std::make_pair(m_root->m_name, m_root)); }
       processBone(bones, rootNode, m_root);
     }
     else {
@@ -70,6 +68,7 @@ namespace nauEngineSDK {
         Bone* newBone = bones[node->mChildren[i]->mName.C_Str()];
         newBone->m_parent = actualBone;
         actualBone->m_children.push_back(newBone);
+        if (m_set.find(newBone->m_name) == m_set.end()) { m_set.insert(std::make_pair(newBone->m_name, m_root)); }
         processBone(bones, node->mChildren[i], newBone);
       }
       else {
@@ -78,10 +77,22 @@ namespace nauEngineSDK {
     }
   }
 
+  void
+  Skeleton::processMuscles(Vector<Bone*> muscles) {
+    for (auto muscle :muscles) {
+
+      m_muscles.push_back(muscle);
+    }
+  }
 
   Bone*
   Skeleton::getRoot() {
     return m_root;
+  }
+
+  Map<String, Bone*>*
+  Skeleton::getAllBones() {
+    return &m_set;
   }
 
   uint32

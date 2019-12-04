@@ -9,6 +9,8 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauNetwork.h"
 
+#include "nauSkeleton.h"
+
 namespace nauEngineSDK {
 
 
@@ -105,8 +107,47 @@ namespace nauEngineSDK {
   }
 
   void
-  NeuralNetwork::init() {
+  NeuralNetwork::init(Skeleton skeleton) {
 
+    NeuralLayer base;
+    NeuralLayer firstHidden;
+    NeuralLayer secondHidden;
+    NeuralLayer output;
+
+   for (auto bone : skeleton.getRoot()->m_children ) {
+     Neuron neuron;
+     neuron.m_data = bone;
+     base.m_data.push_back(neuron);
+     processSkeleton(base, bone);
+   }
+
+   firstHidden = secondHidden = output = base;
+
+   m_layers.push_back(base);
+   m_layers.push_back(firstHidden);
+   m_layers.push_back(secondHidden);
+   m_layers.push_back(output);
+
+   for (uint32 i = 0; i < m_layers.size() - 1; ++i) {
+     m_layers[i].m_next = &m_layers[i + 1];
+   }
+
+   for (auto layer : m_layers) {
+     for (auto neuron : layer.m_data) {
+       neuron.m_weight;
+     }
+   }
+
+  }
+
+  void
+  NeuralNetwork::processSkeleton(NeuralLayer layer, Bone* actualBone) {
+    for (auto child : actualBone->m_children) {
+      Neuron neuron;
+      neuron.m_data = child;
+      layer.m_data.push_back(neuron);
+      if (child->m_children.size() > 0) { processSkeleton(layer, actualBone); }
+    }
   }
 
   void

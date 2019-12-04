@@ -68,6 +68,7 @@ public:
    *        skeleton
    * @param Map<String, Bone*> the bones of the model
    * @param Vector<ModelNode*> The nodes in the model scene controlling the hierarchy
+   * @param Bone* the actual bone the processor is right now
    * @return
    *
    */
@@ -84,6 +85,15 @@ public:
   getRoot();
 
   /**
+   * @brief Returns a map with all the bones from this Skeleton
+   * @param 
+   * @return Map<name, Bone*>
+   *
+   */
+  Map<String, Bone*>*
+  getAllBones();
+
+  /**
    * @brief returns the ID of the skeleton inside a model
    * @param 
    * @return the int ID of the skeleton 
@@ -92,6 +102,14 @@ public:
   uint32
   getID();
 
+  /**
+   * @brief This function processes muscles if the model has integrated them in it
+   * @param 
+   * @return 
+   *
+   */
+  void
+  processMuscles(Vector<Bone*> muscles);
 
 private:
 
@@ -104,6 +122,16 @@ private:
    * Root of the Bone
    */
   Bone* m_root = nullptr;
+
+  /**
+   * Reference to all bones in the skeleton 
+   */
+  Map<String, Bone*> m_set;
+
+  /**
+   * List of muscles in the model
+   */
+  Vector<Bone*> m_muscles;
 
 };
 }

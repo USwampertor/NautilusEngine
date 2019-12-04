@@ -22,7 +22,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	list<nauRandom*> lets you have a list of all different children
    */
-  class Random
+  class Random 
   {
    public:
     

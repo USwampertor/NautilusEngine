@@ -23,6 +23,8 @@
 #include "nauUI.h"
 #include "nauTimer.h"
 
+#include "nauNetwork.h"
+
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
@@ -132,6 +134,8 @@ namespace nauEngineSDK {
     ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
     int m_commandShow;
+
+    NeuralNetwork m_neuralNetwork;
   };
   
 }

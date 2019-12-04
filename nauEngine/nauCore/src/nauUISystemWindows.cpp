@@ -84,6 +84,8 @@ namespace  nauEngineSDK {
     ImVec2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
                g_inputManager->getMousePosition().y * g_graphicsAPI->getWindowSize().y);
     m_ui.MousePos = pos;
+    //ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
+
     ImVec2 delta(0, g_inputManager->getScrollDelta());
     m_ui.MouseDelta = delta;
 
