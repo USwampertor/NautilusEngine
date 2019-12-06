@@ -36,6 +36,15 @@ namespace nauEngineSDK {
     ~CameraManager() = default;
 
     /**
+     * @brief Initializes the camera manager
+     * @param 
+     * @return 
+     *
+     */
+    void
+    init();
+
+    /**
      * @brief Interpolates from A Camera to B Camera in an amount of time
      * @param Camera Origin, Camera Destiny, time to interpolate
      * @return 
@@ -55,13 +64,40 @@ namespace nauEngineSDK {
     getActiveView();
 
     /**
+     * @brief Gets the active camera in the scene
+     * @param 
+     * @return the active camera
+     *
+     */
+    Camera*
+    getActiveCamera();
+
+    /**
      * @brief Gets the view Matrix of any camera stored in the camera manager
      * @param the ID of the camera
      * @return the view matrix of ID camera
      *
      */
     Matrix4
-    getViewMatrix(String id);
+    getViewMatrix(uint32 id);
+
+    /**
+     * @brief Changes the active camera from the cameras in the scene
+     * @param the 
+     * @return 
+     *
+     */
+    void
+    changeActiveCamera(uint32 id);
+
+    /**
+     * @brief Adds a camera in the list of cameras in the scene
+     * @param Camera* pointer to a camera
+     * @return 
+     *
+     */
+    void
+    addCamera(Camera* camPtr);
 
   private:
 

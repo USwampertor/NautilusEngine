@@ -10,6 +10,8 @@
 
 #include "nauRenderManager.h"
 
+#include "nauCameraManager.h"
+
 namespace nauEngineSDK {
 
   bool
@@ -34,19 +36,19 @@ namespace nauEngineSDK {
     }
 
     ///DEFAULT OBJECT INITIALIZATION
-    m_fov = Math::degToRad(90.0f);
+    //m_fov = Math::degToRad(90.0f);
     m_world = Matrix4::IDENTITY;
 
-    m_mainCamera.m_objective.setValues(0.0f, 100.0f, 0.0f);
-    m_mainCamera.m_position.setValues(0.0f, 100.0f, -100.0f);
-    m_mainCamera.m_up = Vector3::UP;
+    //m_mainCamera.m_objective.setValues(0.0f, 100.0f, 0.0f);
+    //m_mainCamera.m_position.setValues(0.0f, 100.0f, -100.0f);
+    //m_mainCamera.m_up = Vector3::UP;
+    //
+    //m_mainCamera.createView();
 
-    m_mainCamera.createView();
-
-    m_projection.perspective(m_fov,
+    m_projection.perspective(CameraManager::instance().getActiveCamera()->m_fov,
                              static_cast<float>(pDevice->m_width / pDevice->m_height),
-                             m_screenNear,
-                             m_screenFar);
+                             CameraManager::instance().getActiveCamera()->m_near,
+                             CameraManager::instance().getActiveCamera()->m_far);
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice,m_rendereableTextures)) return false;
@@ -141,10 +143,10 @@ namespace nauEngineSDK {
     m_world.rotateY(0.0005f);
     
     m_gbPass.m_info.WorldMat = m_world;
-    m_gbPass.m_info.ViewMat = m_mainCamera.getView();
+    m_gbPass.m_info.ViewMat = CameraManager::instance().getActiveCamera()->getView();
     m_gbPass.m_info.Projection = m_projection;
-    m_gbPass.m_info.fNear = m_screenNear;
-    m_gbPass.m_info.fFar = m_screenFar;
+    m_gbPass.m_info.fNear = CameraManager::instance().getActiveCamera()->m_near;
+    m_gbPass.m_info.fFar = CameraManager::instance().getActiveCamera()->m_far;
     m_gbPass.updatePass();
 
     m_ssaoPass.updatePass();

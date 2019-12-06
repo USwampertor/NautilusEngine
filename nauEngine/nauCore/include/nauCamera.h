@@ -37,11 +37,19 @@ namespace nauEngineSDK {
      * Vector3 Front axis, the default is 0,0,1. Should be orthogonal to up
      * Vector3 Up axis, the default is 0,1,0. Should be orthogonal to front
      */
-    Camera(Vector3 position, Vector3 objective = Vector3::FRONT, Vector3 up = Vector3::UP) {
+    Camera(Vector3 position, 
+           Vector3 objective  = Vector3::FRONT, 
+           Vector3 up         = Vector3::UP, 
+           float fNear        = 0.01f, 
+           float fFar         = 1000.0f, 
+           float fov          = Math::degToRad(90.0f)) {
      
-      m_position  = position;
-      m_objective = objective;
-      m_up = up;
+      m_position      = position;
+      m_objective     = objective;
+      m_up            = up;
+      m_near          = fNear;
+      m_far           = fFar;
+      m_fov           = fov;
       createView();
     }
 
@@ -133,7 +141,7 @@ namespace nauEngineSDK {
     setObjective(Vector3 position);
 
     /**
-     * @brief Sets the objetive of the camera
+     * @brief Sets the objective of the camera
      * @param float x, float y and float z objective in world
      * @return
      *
@@ -178,6 +186,22 @@ namespace nauEngineSDK {
      * the view matrix
      */
     bool m_dirty;
+
+    /**
+     * The far screen position
+     */
+    float m_far;
+
+    /**
+     * The near screen position
+     */
+    float m_near;
+
+    /**
+     * The FOV of the camera
+     */
+    float m_fov;
+
   };
   
 }

@@ -17,7 +17,7 @@
 #include "nauModel.h"
 #include "nauResourceManager.h"
 #include "nauTexture.h"
-
+#include "nauCamera.h"
 
 #include <nauMath.h>
 
@@ -31,7 +31,8 @@ namespace nauEngineSDK {
       COLLIDER,
       SOURCE,
       ANIMATOR,
-      MATERIAL
+      MATERIAL,
+      CAMERA
     };
   }
 
@@ -65,6 +66,26 @@ namespace nauEngineSDK {
      * Component flag
      */
     COMPONENT::E m_type;
+
+  };
+
+  class NAU_CORE_EXPORT CameraComponent : public Component
+  {
+  public:
+    /**
+     * Default constructor
+     */
+    CameraComponent() = default;
+
+    /**
+     * Default destructor
+     */
+    ~CameraComponent() = default;
+
+    Camera* m_camera;
+
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::CAMERA; }
 
   };
   
@@ -109,6 +130,9 @@ namespace nauEngineSDK {
 
     bool m_base, m_normal, m_emissive, m_roughness, m_ambient, m_specular, m_metal;
   
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::MATERIAL; }
+   
    private:
 
     /**
@@ -116,8 +140,6 @@ namespace nauEngineSDK {
      */
     Map<MATERIAL_FLAG::E, Texture*> m_TextureMap;
 
-    virtual COMPONENT::E
-    getType() override { return COMPONENT::MATERIAL; }
 
   };
 

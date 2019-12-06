@@ -21,6 +21,8 @@
 
 namespace nauEngineSDK {
 
+  class CameraManager;
+
    /**
     * RenderManager
     * Description:
@@ -89,17 +91,17 @@ namespace nauEngineSDK {
 
     ///Basic Stuff
 
-    float m_fov;
+    //float m_fov;
 
-    float m_screenNear = 0.01f;
+    //float m_screenNear = 0.01f;
 
-    float m_screenFar = 1000.0f;
+    //float m_screenFar = 1000.0f;
 
     float m_light;
 
     ///Test Matrices
     
-    Camera m_mainCamera;
+    //Camera m_mainCamera;
 
     Matrix4 m_world;
 

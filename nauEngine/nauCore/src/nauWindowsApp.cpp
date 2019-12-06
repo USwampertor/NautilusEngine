@@ -232,7 +232,13 @@ namespace nauEngineSDK {
       Logger::instance().dump();
       exit(992);
     }
+
+    //GRAPHICS MANAGER INITIALIZATION
     g_graphicsAPI->init(m_hWnd);
+
+    //CAMERA MANAGER INITIALIZATION
+    CameraManager::startUp();
+    CameraManager::instance().init();
 
     //RESOURCE MANAGER INITIALIZATION
     ResourceManager::startUp();
@@ -257,6 +263,16 @@ namespace nauEngineSDK {
 
     //INPUT MANAGER
     g_inputManager->init();
+
+    Node* cameraNode = new Node();
+    GameObject*  defaultCamera = new GameObject();
+    defaultCamera->m_id = "Default Camera";
+    CameraComponent* cam = new CameraComponent();
+    cam->m_camera = CameraManager::instance().getActiveCamera();
+    defaultCamera->addComponent(cam);
+    cameraNode->setGameObject(defaultCamera);
+
+    SceneManager::instance().getActiveScene()->m_sceneGraph->set(cameraNode);
 
 #pragma region TestObject
 

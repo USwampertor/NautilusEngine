@@ -164,7 +164,7 @@ namespace nauEngineSDK {
   }
 
   void
-    GBPass::updatePass() {
+  GBPass::updatePass() {
     m_buffer->clear();
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));

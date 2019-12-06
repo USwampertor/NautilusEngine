@@ -132,14 +132,6 @@ namespace nauEngineSDK {
         for (j = 0; j < scene->mMeshes[i]->mNumBones; ++j) {
           String name = scene->mMeshes[i]->mBones[j]->mName.C_Str();
           if (set->find(name) != set->end()) {
-            log = "";
-            log = "Loading bone ";
-            log += std::to_string(j);
-            log += " of mesh: ";
-            log += std::to_string(i);
-            log += " with vertex size: ";
-            log += std::to_string(m_meshes[i]->m_vertexBuffer->m_vertexData.size());
-            Logger::instance().toIDE(log);
             
             auto bone = set->find(name)->second;
             for (w = 0; w < bone->m_weights.size(); ++w) {
