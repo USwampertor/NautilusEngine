@@ -59,7 +59,7 @@ namespace nauEngineSDK {
      *
      */
     void
-    render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi);
+    render(Vector<GameObject*> m_orderedList, GraphicsAPI* pApi);
 
     /**
      * @brief Adds a pass to the rendering pipeline
@@ -76,7 +76,7 @@ namespace nauEngineSDK {
      * @return 
      *
      */
-    Vector<MeshComponent*>
+    GameObject*
     createScreenAlignedQuad(Device* pDevice);
 
     /**

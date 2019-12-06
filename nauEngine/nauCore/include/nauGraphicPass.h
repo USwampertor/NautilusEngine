@@ -15,6 +15,7 @@
 #include "nauComponent.h"
 #include "nauDepthStencil.h"
 #include "nauDevice.h"
+#include "nauGameObject.h"
 #include "nauGraphicsBuffer.h"
 #include "nauInputLayout.h"
 #include "nauLogger.h"
@@ -68,7 +69,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) = 0;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) = 0;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) = 0;
 
     virtual void
     updatePass() = 0;
@@ -136,7 +137,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -162,7 +163,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -186,7 +187,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -210,7 +211,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -234,7 +235,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -259,7 +260,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -283,7 +284,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;
@@ -311,7 +312,7 @@ namespace nauEngineSDK {
     setShaderSampler(Device* pDevice) override;
 
     virtual void
-    render(Vector<MeshComponent*> m_orderedList, Device* pDevice) override;
+    render(Vector<GameObject*> m_orderedList, Device* pDevice) override;
 
     virtual void
     updatePass() override;

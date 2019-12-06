@@ -141,7 +141,7 @@ namespace nauEngineSDK {
   }
 
   void
-  GBPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  GBPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
     pDevice->setRenderTargets(m_renderTargets, *m_depthStencil);
 
@@ -158,7 +158,13 @@ namespace nauEngineSDK {
     m_info.m_emissive->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
-    for (auto model : m_orderedList) {
+    for (auto gObject : m_orderedList) {
+
+      m_info.WorldMat = gObject->m_transform;
+      updatePass();
+
+      auto model = reinterpret_cast<MeshComponent*>(gObject->getComponent(COMPONENT::MESH));
+
       model->m_model->drawMesh();
     }
   }
@@ -209,7 +215,7 @@ namespace nauEngineSDK {
   }
 
   void
-  SSAOPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  SSAOPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
     setPixelShader(pDevice);
     setVertexShader(pDevice);
 
@@ -259,7 +265,7 @@ namespace nauEngineSDK {
   }
 
   void
-  ReductionPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  ReductionPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
 
   }
@@ -301,7 +307,7 @@ namespace nauEngineSDK {
   }
 
   void
-  BlurPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  BlurPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
 
   }
@@ -343,7 +349,7 @@ namespace nauEngineSDK {
   }
 
   void
-  LightningPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  LightningPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
     setVertexShader(pDevice);
     setPixelShader(pDevice);
@@ -386,7 +392,7 @@ namespace nauEngineSDK {
   }
 
   void
-  LuminancePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  LuminancePass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
 
   }
@@ -463,7 +469,7 @@ namespace nauEngineSDK {
   }
 
   void
-  FinalPass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  FinalPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
     pDevice->setRenderTargets(m_renderTargets, *m_depthStencil);
     setPixelShader(pDevice);
     setVertexShader(pDevice);
@@ -473,11 +479,15 @@ namespace nauEngineSDK {
     m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
-    for (auto model : m_orderedList) {
-      model->m_model->m_meshes[0]->m_material->setMaterial(m_colorTexture, 
-                                                           MATERIAL_FLAG::BASECOLOR);
-      model->m_model->drawMesh();
-    }
+    auto model = reinterpret_cast<MeshComponent*>(m_orderedList[0]->getComponent(COMPONENT::MESH));
+    model->m_model->m_meshes[0]->m_material->setMaterial(m_colorTexture,
+      MATERIAL_FLAG::BASECOLOR);
+    model->m_model->drawMesh();
+
+  //  for (auto model : m_orderedList) {
+  //    model->m_model->m_meshes[0]->m_material->setMaterial(m_colorTexture, 
+  //                                                         MATERIAL_FLAG::BASECOLOR);
+  //  }
 
   }
 
@@ -513,7 +523,7 @@ namespace nauEngineSDK {
   }
 
   void
-  ComputePass::render(Vector<MeshComponent*> m_orderedList, Device* pDevice) {
+  ComputePass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
 
     setComputeShader(pDevice);
   }

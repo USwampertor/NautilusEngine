@@ -71,20 +71,20 @@ namespace nauEngineSDK {
   void
   WindowsApp::render() {
     UI::instance().render();
-    Vector<MeshComponent*> meshes;
+    Vector<GameObject*> gameObjects;
     for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
       if (mesh != nullptr) {
-        meshes.push_back(reinterpret_cast<MeshComponent*>(mesh));
+        gameObjects.push_back(obj->getGameObject());
       }
     }
 
 
     UI::instance().endFrame();
-    RenderManager::instance().render(meshes, g_graphicsAPI);
+    RenderManager::instance().render(gameObjects, g_graphicsAPI);
     UI::instance().endRender();
     g_graphicsAPI->swapBuffer();
-
+    gameObjects.clear();
   }
 
 #pragma region DEPRECATED FUNCTIONS

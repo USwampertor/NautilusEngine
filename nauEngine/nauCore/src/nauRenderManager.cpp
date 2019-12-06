@@ -66,7 +66,7 @@ namespace nauEngineSDK {
   }
 
   void
-  RenderManager::render(Vector<MeshComponent*> m_orderedList, GraphicsAPI* pApi) {
+  RenderManager::render(Vector<GameObject*> m_orderedList, GraphicsAPI* pApi) {
     
     Device* pDevice = pApi->getDevice();
     
@@ -76,7 +76,9 @@ namespace nauEngineSDK {
     //m_blurPass.render(createScreenAlignedQuad(pDevice), pDevice);
     //m_lightningPass.render(createScreenAlignedQuad(pDevice), pDevice);
     //m_luminancePass.render(createScreenAlignedQuad(pDevice), pDevice);
-    m_finalPass.render(createScreenAlignedQuad(pDevice), pDevice);
+    Vector<GameObject*> toolObjects;
+    toolObjects.push_back(createScreenAlignedQuad(pDevice));
+    m_finalPass.render(toolObjects, pDevice);
   }
 
   void
@@ -84,7 +86,7 @@ namespace nauEngineSDK {
 
   }
 
-  Vector<MeshComponent*>
+  GameObject*
   RenderManager::createScreenAlignedQuad(Device* pDevice) {
     Vector<MeshComponent*> quads;
     MeshComponent* quad = new MeshComponent();
@@ -132,7 +134,9 @@ namespace nauEngineSDK {
     quad->m_model->setDevice(pDevice);
     quads.push_back(quad);
 
-    return quads;
+    GameObject* gObject = new GameObject();
+    gObject->addComponent(quad);
+    return gObject;
   }
 
   void
