@@ -160,8 +160,9 @@ namespace nauEngineSDK {
 
     for (auto gObject : m_orderedList) {
 
-      m_info.WorldMat = gObject->m_transform;
-      updatePass();
+      //gObject->m_transform.rotateY(0.0005f);
+      //m_info.WorldMat = gObject->m_transform;
+      //updatePass();
 
       auto model = reinterpret_cast<MeshComponent*>(gObject->getComponent(COMPONENT::MESH));
 

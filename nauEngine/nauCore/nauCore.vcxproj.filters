@@ -172,9 +172,6 @@
     <ClInclude Include="include\nauPassPerInfo.h">
       <Filter>Source Files\System</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauGraphicPass.h">
-      <Filter>Source Files\System</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauConstantBufferMatrix.h">
       <Filter>Source Files\System</Filter>
     </ClInclude>
@@ -250,6 +247,9 @@
     <ClInclude Include="include\nauWindowsApp.h">
       <Filter>Source Files\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauGraphicPass.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -324,9 +324,6 @@
     <ClCompile Include="src\nauCoreFactory.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="src\nauGraphicPass.cpp">
-      <Filter>Source Files\System</Filter>
-    </ClCompile>
     <ClCompile Include="src\nauTimer.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -377,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="src\nauWindowsApp.cpp">
       <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nauGraphicPass.cpp">
+      <Filter>Source Files\Resources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

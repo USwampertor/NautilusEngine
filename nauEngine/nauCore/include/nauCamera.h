@@ -77,6 +77,15 @@ namespace nauEngineSDK {
     moveRight(float defaz);
 
     /**
+     * @brief moves up (or down) the camera
+     * @param float defaz, if negative, it'll go down
+     * @return 
+     *
+     */
+    void
+    moveUp(float defaz);
+
+    /**
      * @brief rotates the view matrix in a specific axis and angle
      * @param vector axis to rotate, float angle in rads
      * @return 

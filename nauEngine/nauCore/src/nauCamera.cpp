@@ -26,6 +26,14 @@ namespace nauEngineSDK {
   }
 
   void
+  Camera::moveUp(float defaz) {
+    m_position.y += defaz;
+    m_objective.y += defaz;
+    m_dirty = true;
+  }
+
+
+  void
   Camera::rotate(Vector3 axis, float rads) {
 
     float cos = Math::cos(rads);

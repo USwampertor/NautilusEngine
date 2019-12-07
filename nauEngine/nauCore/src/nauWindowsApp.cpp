@@ -39,10 +39,35 @@ namespace nauEngineSDK {
     RenderManager::instance().update();
     Clock::instance().update();
 
-    if (g_inputManager->getButton(KEY::K)) {
-
+    if (g_inputManager->getButton(KEY::W)) { 
+      CameraManager::instance().getActiveCamera()->moveForward(0.05f);
     }
-
+    if (g_inputManager->getButton(KEY::S)) {
+      CameraManager::instance().getActiveCamera()->moveForward(-0.05f);
+    }
+    if (g_inputManager->getButton(KEY::D)) { 
+      CameraManager::instance().getActiveCamera()->moveRight(0.05f);
+    }
+    if (g_inputManager->getButton(KEY::A)) {
+      CameraManager::instance().getActiveCamera()->moveRight(-0.05f);
+    }
+    if (g_inputManager->getButton(KEY::E)) {
+      CameraManager::instance().getActiveCamera()->moveUp(0.05f);
+    }
+    if (g_inputManager->getButton(KEY::Q)) {
+      CameraManager::instance().getActiveCamera()->moveUp(-0.05f);
+    }
+    if (g_inputManager->getButton(KEY::C)) {
+      CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, 0.05f);
+    }
+    if (g_inputManager->getButton(KEY::Z)) {
+      CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, -0.05f);
+    }
+    if (g_inputManager->getMouseButton(KEY::MOUSE0)) {
+      CameraManager::instance().getActiveCamera()->rotate(Vector3::UP,
+                                                          g_inputManager->getMouseDelta().x);
+    }
+    
     /*
     if (g_inputManager->getButtonDown(KEY::K)) {
       OPENFILENAME file;
