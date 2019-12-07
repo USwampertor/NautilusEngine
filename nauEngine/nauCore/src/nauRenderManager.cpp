@@ -144,7 +144,7 @@ namespace nauEngineSDK {
     
     //m_testQuaternion.rotateAroundY(Math::degToRad(0.0001f));
     //m_world.setValues(m_testQuaternion.rotationMatrix());
-    //m_world.rotateY(0.0005f);
+    m_world.rotateY(0.0005f);
     
     m_gbPass.m_info.WorldMat = m_world;
     m_gbPass.m_info.ViewMat = CameraManager::instance().getActiveCamera()->getView();

@@ -44,11 +44,6 @@ public:
 
   virtual bool
   updateInput() override;
-
-  //LRESULT
-  //windowsInputUpdate(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-  //bool
-  //windowInputUpdate();
 };
 
 }

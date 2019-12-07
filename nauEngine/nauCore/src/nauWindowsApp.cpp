@@ -24,6 +24,7 @@ namespace nauEngineSDK {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
       //}
+      UI::instance().updateInput();
       g_inputManager->handleMessage(&msg);
       render();
     }
@@ -62,10 +63,6 @@ namespace nauEngineSDK {
     }
     if (g_inputManager->getButton(KEY::Z)) {
       CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, -0.05f);
-    }
-    if (g_inputManager->getMouseButton(KEY::MOUSE0)) {
-      CameraManager::instance().getActiveCamera()->rotate(Vector3::UP,
-                                                          g_inputManager->getMouseDelta().x);
     }
     
     /*

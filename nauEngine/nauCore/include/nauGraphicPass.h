@@ -12,6 +12,7 @@
 
 #include "nauPrerequisitesCore.h"
 
+#include "nauCameraManager.h"
 #include "nauComponent.h"
 #include "nauDepthStencil.h"
 #include "nauDevice.h"
