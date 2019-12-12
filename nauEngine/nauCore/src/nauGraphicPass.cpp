@@ -160,7 +160,7 @@ namespace nauEngineSDK {
         auto boneSet = model->m_skeleton->getAllBones();
         for (auto it = boneSet->begin(); it != boneSet->end(); ++it) {
           m_info.bones[it->second->m_ID] = it->second->m_worldPosition * 
-                                           model->m_skeleton->m_root->m_worldPosition * 
+                                           model->m_skeleton->m_root->m_worldPosition;
                                            it->second->m_offset;
         }
           

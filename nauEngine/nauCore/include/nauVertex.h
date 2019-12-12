@@ -36,6 +36,7 @@ struct Vertex
     m_uv        = Vector2::ZERO;
     m_tangent   = Vector3::ZERO;
     m_binormal  = Vector3::ZERO;
+    m_IDs[0] = m_IDs[1] = m_IDs[2] = m_IDs[3] = -1;
   }
 
 
@@ -76,14 +77,15 @@ struct Vertex
   Vector3 m_binormal;
 
   /**
+   * Bone IDs reference
+   */
+  int32 m_IDs[4];
+
+  /**
    * Bone Weights
    */
   float m_weights[4];
 
-  /**
-   * Bone IDs reference
-   */
-  float m_IDs[4];
 
 
 };

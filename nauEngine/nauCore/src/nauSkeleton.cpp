@@ -82,7 +82,7 @@ namespace nauEngineSDK {
         newBone->m_worldPosition = newBone->m_parent->m_worldPosition * 
                                    newBone->m_localPosition;
         actualBone->m_children.push_back(newBone);
-        if (m_set.find(newBone->m_name) == m_set.end()) { m_set.insert(std::make_pair(newBone->m_name, m_root)); }
+        if (m_set.find(newBone->m_name) == m_set.end()) { m_set.insert(std::make_pair(newBone->m_name, newBone)); }
         processBone(bones, node->mChildren[i], newBone);
       }
       else {

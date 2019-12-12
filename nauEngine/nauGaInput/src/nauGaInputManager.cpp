@@ -36,9 +36,9 @@ namespace nauEngineSDK {
     m_keyMap.insert(std::make_pair(KEY::MOUSESCROLLDOWN, gainput::MouseButtonWheelDown));
     m_keyMap.insert(std::make_pair(KEY::MOUSESCROLLUP,   gainput::MouseButtonWheelUp));
 
-    m_keyMap.insert(std::make_pair(KEY::MOUSE0, gainput::MouseButton0));
+    m_keyMap.insert(std::make_pair(KEY::MOUSE0, gainput::MouseButtonLeft));
     m_keyMap.insert(std::make_pair(KEY::MOUSE1, gainput::MouseButton1));
-    m_keyMap.insert(std::make_pair(KEY::MOUSE2, gainput::MouseButton2));
+    m_keyMap.insert(std::make_pair(KEY::MOUSE2, gainput::MouseButtonRight));
     m_keyMap.insert(std::make_pair(KEY::MOUSE3, gainput::MouseButton3));
     m_keyMap.insert(std::make_pair(KEY::MOUSE4, gainput::MouseButton4));
     m_keyMap.insert(std::make_pair(KEY::MOUSE5, gainput::MouseButton5));

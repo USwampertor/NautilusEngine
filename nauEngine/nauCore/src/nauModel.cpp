@@ -89,8 +89,10 @@ namespace nauEngineSDK {
           for (uint32 j = 0; j < scene->mMeshes[i]->mNumBones; ++j) {
             Bone* newBone = new Bone(*scene->mMeshes[i]->mBones[j]);
             newBone->m_ID = index;
-            sceneBones.insert(std::make_pair(newBone->m_name, newBone));
-            ++index;
+            if (sceneBones.find(newBone->m_name) == sceneBones.end()) {
+              sceneBones.insert(std::make_pair(newBone->m_name, newBone));
+              ++index;
+            }
           }
         }
       }

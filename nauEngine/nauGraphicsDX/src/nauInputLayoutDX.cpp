@@ -102,6 +102,7 @@ namespace nauEngineSDK {
     binormal.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     binormal.InstanceDataStepRate = 0;
     offset += sizeof(float) * 3;
+    
     //IDs
     this->m_descVector.emplace_back();
     auto& Ids = m_descVector.back();
@@ -109,12 +110,13 @@ namespace nauEngineSDK {
     memset(&Ids, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
     Ids.SemanticName = "TEXCOORD";
     Ids.SemanticIndex = 1;
-    Ids.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    Ids.Format = DXGI_FORMAT_R32G32B32A32_SINT;
     Ids.InputSlot = 0;
     Ids.AlignedByteOffset = offset;
     Ids.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     Ids.InstanceDataStepRate = 0;
-    offset += sizeof(float) * 4;
+    offset += sizeof(int32) * 4;
+    
     //WEIGHTS
     this->m_descVector.emplace_back();
     auto& weights = m_descVector.back();
