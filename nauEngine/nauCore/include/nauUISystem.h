@@ -25,6 +25,7 @@ class MeshComponent;
 class Logger;
 class SceneManager;
 class InputManager;
+class GameObject;
 
 namespace UISTARTFLAGS
 {
@@ -159,6 +160,16 @@ public:
    */
   float m_accumulatedDelta = 0.0f;
   
+  /**
+   * if true, it will render the inspector of the game object
+   */
+  bool m_inspector = false;
+
+  /**
+   * Game Object being visualized in the inspector
+   */
+  GameObject* m_gameObjectPtr = nullptr;
+
   virtual bool
   updateInput() { return true; }
 };

@@ -146,8 +146,8 @@ namespace nauEngineSDK {
               
               
               if (bonesLoaded < 4) {
-                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_bone[bCounter[i][id]].m_ID = id;
-                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_bone[bCounter[i][id]].m_weight = weight;
+                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_IDs[bCounter[i][id]] = id;
+                m_meshes[i]->m_vertexBuffer->m_vertexData[id].m_weights[bCounter[i][id]] = weight;
                 ++bCounter[i][id];
               }
             }
@@ -163,8 +163,8 @@ namespace nauEngineSDK {
 /************************************************************************/
     if (scene->mNumAnimations > 0) {
       //If it has animations, we will through each one
-      Sptr<Animator> animator = 
-        std::static_pointer_cast<Animator>(ResourceManager::instance().create(filePath,
+      Sptr<Animachine> animator = 
+        std::static_pointer_cast<Animachine>(ResourceManager::instance().create(filePath,
                                                                               RESOURCETYPE::ANIMATOR));
 
       animator->getAnimations().reserve(scene->mNumAnimations);

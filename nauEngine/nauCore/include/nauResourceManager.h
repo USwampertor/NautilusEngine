@@ -24,7 +24,7 @@ namespace nauEngineSDK {
   class Texture;
   class Skeleton;
   class Model;
-  class Animator;
+  class Animachine;
   class Material;
   class Animation;
   class Shader;

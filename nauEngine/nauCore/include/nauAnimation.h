@@ -44,6 +44,15 @@ public:
   init(aiAnimation* animation, Map<String, Bone*> sceneBones);
 
   /**
+   * @brief Updates the frame the animation is running
+   * @param float deltaTime
+   * @return 
+   *
+   */
+  void
+  update(float deltaTime);
+
+  /**
    * String name of the animation
    */
   String m_name;

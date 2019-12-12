@@ -23,7 +23,7 @@
 namespace nauEngineSDK {
 
 //forward declaration
-class Animator;
+class Animachine;
 
 
 /**

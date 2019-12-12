@@ -12,7 +12,7 @@
 namespace nauEngineSDK {
 
   bool
-  Animator::load(String path) {
+  Animachine::load(String path) {
     FileStream mat;
     mat.open(path,STREAMACCESS::READ);
     mat.m_data.data();
@@ -21,7 +21,29 @@ namespace nauEngineSDK {
   }
 
   void
-  Animator::play(String name) {
+  Animachine::play(String name) {
+    setAnimation(name);
+    m_active = true;
+  }
+
+  void
+  Animachine::play() {
+    m_active = true;
+  }
+
+  void
+  Animachine::pause() {
+    m_active = false;
+  }
+
+  void
+  Animachine::stop() {
+    m_active = false;
+    m_frame = 0.0f;
+  }
+
+  void
+  Animachine::setAnimation(String name) {
     for (auto animation : m_animations) {
       if (animation->m_name == name) {
         m_current = animation;
@@ -30,31 +52,15 @@ namespace nauEngineSDK {
       }
     }
 #if NAU_DEBUG_MODE
-    Logger::instance().toIDE("Couldn't find an animation with that name", 
-                             LOGGER_LEVEL::ERRORED);
+    Logger::instance().toIDE("Couldn't find an animation with that name",
+      LOGGER_LEVEL::ERRORED);
 #endif
     Logger::instance().toConsole("Couldn't find an animation with that name",
-                                 LOGGER_LEVEL::ERRORED);
-  }
-
-  void
-  Animator::play() {
-    m_active = true;
-  }
-
-  void
-  Animator::pause() {
-    m_active = false;
-  }
-
-  void
-  Animator::stop() {
-    m_active = false;
-    m_frame = 0.0f;
+      LOGGER_LEVEL::ERRORED);
   }
 
   Vector<String>
-  Animator::getAnimationNames() {
+  Animachine::getAnimationNames() {
     Vector<String> animations;
     for (auto animation : m_animations) {
       animations.push_back(animation->m_name);
@@ -63,37 +69,37 @@ namespace nauEngineSDK {
   }
 
   Vector<Sptr<Animation>>
-  Animator::getAnimations() {
+  Animachine::getAnimations() {
     return m_animations;
   }
 
   Sptr<Animation>
-  Animator::getCurrentAnimation() {
+  Animachine::getCurrentAnimation() {
     return m_current;
   }
 
   void
-  Animator::crossFade() {
+  Animachine::crossFade() {
 
   }
 
   void
-  Animator::update() {
-    
+  Animachine::update(float deltaTime) {
+    m_current->update(deltaTime);
   }
 
   void
-  Animator::reset() {
+  Animachine::reset() {
     m_frame = 0.0f;
   }
 
   void
-  Animator::setSpeed(float newSpeed) {
+  Animachine::setSpeed(float newSpeed) {
     m_speed = newSpeed;
   }
 
   bool
-  Animator::isPlaying() {
+  Animachine::isPlaying() {
     return m_active;
   }
 

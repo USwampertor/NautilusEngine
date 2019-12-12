@@ -46,9 +46,13 @@ namespace nauEngineSDK {
       }
     }
 
-
     if (rootNode != nullptr) {
       m_root = bones[rootNode->mName.C_Str()];
+      aiMatrix4x4 m = rootNode->mTransformation;
+      m_root->m_worldPosition.setValues(m.a1, m.b1, m.c1, m.d1,
+                                        m.a2, m.b2, m.c2, m.d2,
+                                        m.a3, m.b3, m.c3, m.d3,
+                                        m.a4, m.b4, m.c4, m.d4);
       if (m_set.find(m_root->m_name) == m_set.end()) { m_set.insert(std::make_pair(m_root->m_name, m_root)); }
       processBone(bones, rootNode, m_root);
     }
@@ -58,6 +62,9 @@ namespace nauEngineSDK {
                                LOGGER_LEVEL::ERRORED);
 #endif
     }
+
+
+
   }
 
   void
@@ -66,7 +73,14 @@ namespace nauEngineSDK {
     for (uint32 i = 0; i < node->mNumChildren; ++i) {
       if (bones[node->mChildren[i]->mName.C_Str()] != nullptr) {
         Bone* newBone = bones[node->mChildren[i]->mName.C_Str()];
+        aiMatrix4x4 m = node->mTransformation;
         newBone->m_parent = actualBone;
+        newBone->m_localPosition.setValues(m.a1, m.b1, m.c1, m.d1,
+                                           m.a2, m.b2, m.c2, m.d2,
+                                           m.a3, m.b3, m.c3, m.d3,
+                                           m.a4, m.b4, m.c4, m.d4);
+        newBone->m_worldPosition = newBone->m_parent->m_worldPosition * 
+                                   newBone->m_localPosition;
         actualBone->m_children.push_back(newBone);
         if (m_set.find(newBone->m_name) == m_set.end()) { m_set.insert(std::make_pair(newBone->m_name, m_root)); }
         processBone(bones, node->mChildren[i], newBone);

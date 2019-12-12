@@ -24,6 +24,7 @@ namespace nauEngineSDK {
     Matrix4 WorldMat;
     Matrix4 ViewMat;
     Matrix4 Projection;
+    Matrix4 bones[64];
     float fNear;
     float fFar;
 

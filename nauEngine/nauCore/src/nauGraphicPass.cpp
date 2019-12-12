@@ -148,25 +148,35 @@ namespace nauEngineSDK {
     setPixelShader(pDevice);
     setVertexShader(pDevice);
 
-    m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
-
-    m_buffer->setVertexShader(pDevice->getContext());
-
-    m_inputLayout->setLayout(pDevice->getContext());
-
     m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_info.m_emissive->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
     for (auto gObject : m_orderedList) {
+      auto model = reinterpret_cast<MeshComponent*>(gObject->getComponent(COMPONENT::MESH))->m_model;
+      
 
-      //gObject->m_transform.rotateY(0.0005f);
-      //m_info.WorldMat = gObject->m_transform;
-      //updatePass();
+      if (model->hasBones()) {
+        auto boneSet = model->m_skeleton->getAllBones();
+        for (auto it = boneSet->begin(); it != boneSet->end(); ++it) {
+          m_info.bones[it->second->m_ID] = it->second->m_worldPosition * 
+                                           model->m_skeleton->m_root->m_worldPosition * 
+                                           it->second->m_offset;
+        }
+          
+      }
+      m_info.WorldMat = gObject->m_transform;
 
-      auto model = reinterpret_cast<MeshComponent*>(gObject->getComponent(COMPONENT::MESH));
+      updatePass();
 
-      model->m_model->drawMesh();
+      m_buffer->updateSubResource(pDevice->getContext(), 0, 0, 0);
+
+      m_buffer->setVertexShader(pDevice->getContext());
+
+      m_inputLayout->setLayout(pDevice->getContext());
+
+
+      model->drawMesh();
     }
   }
 
@@ -176,6 +186,7 @@ namespace nauEngineSDK {
     m_buffer->add(reinterpret_cast<char*>(&m_info.WorldMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.ViewMat), sizeof(Matrix4));
     m_buffer->add(reinterpret_cast<char*>(&m_info.Projection), sizeof(Matrix4));
+    m_buffer->add(reinterpret_cast<char*>(&m_info.bones), sizeof(Matrix4) * 64);
     m_buffer->add(reinterpret_cast<char*>(&m_info.fNear), sizeof(float));
     m_buffer->add(reinterpret_cast<char*>(&m_info.fFar), sizeof(float));
 

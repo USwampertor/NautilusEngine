@@ -81,6 +81,15 @@ namespace nauEngineSDK {
     void
     createComponent(COMPONENT::E type);
 
+    /**
+     * @brief Updates the game Object
+     * @param deltaTime
+     * @return 
+     *
+     */
+    void
+    update(float deltaTime);
+
   public:
 
     /**

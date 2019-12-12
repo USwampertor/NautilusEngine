@@ -27,18 +27,18 @@ namespace nauEngineSDK {
   * Sample usage:
   *   Animator.Play("foo") will play the animation with the given name
   */
-class NAU_CORE_EXPORT Animator : public Resource
+class NAU_CORE_EXPORT Animachine : public Resource
 {
 public:
   /**
    * Default constructor
    */
-  Animator() = default;
+  Animachine() = default;
 
   /**
    * Default destructor
    */
-  ~Animator() = default;
+  ~Animachine() = default;
 
   void
   play(String name);
@@ -56,10 +56,13 @@ public:
   getCurrentAnimation();
 
   void
+  setAnimation(String name);
+
+  void
   crossFade();
 
   void
-  update();
+  update(float deltaTime);
 
   void
   reset();

@@ -16,6 +16,7 @@
 #include "nauLogger.h"
 #include "nauMesh.h"
 #include "nauSceneManager.h"
+#include "nauGameObject.h"
 
 namespace nauEngineSDK {
 
@@ -66,20 +67,43 @@ namespace nauEngineSDK {
 
   void
   UISystem::renderInspector() {
+    for (auto component : m_gameObjectPtr->m_properties) {
+      if (ImGui::CollapsingHeader("Transform")) {
+        ImGui::SliderFloat("X", &m_gameObjectPtr->m_transform.m[3][0], 0.0f, 9999.0f, "ratio = %.3f");
+        ImGui::SliderFloat("Y", &m_gameObjectPtr->m_transform.m[3][1], 0.0f, 9999.0f, "ratio = %.3f");
+        ImGui::SliderFloat("Z", &m_gameObjectPtr->m_transform.m[3][2], 0.0f, 9999.0f, "ratio = %.3f");
+      }
+      if (component->getType() == COMPONENT::MESH) {
+        if (ImGui::CollapsingHeader("Mesh")) {
+        }
+      }
 
+      if (component->getType() == COMPONENT::ANIMATOR) {
+        if (ImGui::CollapsingHeader("Animator")) {
+          if (ImGui::SmallButton("Play")) {
+
+          }
+        }
+      }
+    }
   }
 
   void
   UISystem::renderBaseUI() {
     renderProjectMenu();
     ////////////////////////////////////////////////////////////////////////// Scene Window
+
     ImGui::SetNextWindowPos(ImVec2(0, 40));
     ImGui::SetNextWindowSize(ImVec2(300, g_graphicsAPI->getWindowSize().y - 200));
     ImGui::Begin("SceneGraph", 0, ImGuiWindowFlags_MenuBar);
     ImGui::Text(SceneManager::instance().getActiveScene()->getName().c_str());
     Vector<MeshComponent*> meshes;
     for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
-      ImGui::Text((obj->getGameObject()->m_id).c_str());
+      if (ImGui::Button((obj->getGameObject()->m_id).c_str())) { 
+        m_inspector = true;
+        m_gameObjectPtr = obj->getGameObject();
+      }
+      //ImGui::Text((obj->getGameObject()->m_id).c_str());
     }
     ImGui::End();
 
@@ -129,6 +153,15 @@ namespace nauEngineSDK {
     ImGui::Text(enterPressed.c_str());
 
     ImGui::End();
+
+    ////////////////////////////////////////////////////////////////////////// Inspector
+    if (m_inspector) {
+      ImGui::SetNextWindowPos(ImVec2(g_graphicsAPI->getWindowSize().x - 200, 300));
+      ImGui::SetNextWindowSize(ImVec2(200, 200));
+      ImGui::Begin("Inspector");
+      renderInspector();
+      ImGui::End();
+    }
 
     ////////////////////////////////////////////////////////////////////////// Log Window
     ImGui::SetNextWindowPos(ImVec2(0, g_graphicsAPI->getWindowSize().y - 200));

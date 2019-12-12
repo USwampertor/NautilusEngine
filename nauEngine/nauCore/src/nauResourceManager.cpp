@@ -81,7 +81,7 @@ namespace nauEngineSDK {
     else if (RESOURCETYPE::ANIMATOR == type) {
 
       newExtension += ".atr";
-      resource = std::static_pointer_cast<Resource>(std::make_shared<Animator>());
+      resource = std::static_pointer_cast<Resource>(std::make_shared<Animachine>());
     }
     else if (RESOURCETYPE::ANIMATION == type) {
       newExtension += ".atn";

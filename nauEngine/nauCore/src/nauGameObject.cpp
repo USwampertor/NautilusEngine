@@ -40,5 +40,13 @@ namespace nauEngineSDK {
     return nullptr;
   }
 
+  void
+  GameObject::update(float deltaTime) {
+    for (auto com : m_properties) {
+      if (com->getType() == COMPONENT::MESH) {
+        //reinterpret_cast<MeshComponent*>(com)->m_model->m_skeleton->m_root->m_worldPosition *= m_transform;
+      }
+    }
+  }
 
 }

@@ -111,17 +111,17 @@ public:
   void
   processMuscles(Vector<Bone*> muscles);
 
+  /**
+   * Root of the Bone
+   */
+  Bone* m_root = nullptr;
+
 private:
 
   /**
    * ID of the Skeleton
    */
   uint32 m_ID;
-
-  /**
-   * Root of the Bone
-   */
-  Bone* m_root = nullptr;
 
   /**
    * Reference to all bones in the skeleton 

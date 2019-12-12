@@ -16,6 +16,7 @@
 
 #include "nauPrerequisitesCore.h"
 #include "nauBoneWeight.h"
+#include "nauBone.h"
 
 namespace nauEngineSDK {
 
@@ -75,9 +76,14 @@ struct Vertex
   Vector3 m_binormal;
 
   /**
-   * Bone 0 reference
+   * Bone IDs reference
    */
-  BoneWeight m_bone[4];
+  int32 m_IDs[4];
+
+  /**
+   * Bone Weights
+   */
+  float m_weights[4];
 
 };
 

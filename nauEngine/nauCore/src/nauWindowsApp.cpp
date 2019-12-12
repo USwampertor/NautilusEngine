@@ -287,8 +287,12 @@ namespace nauEngineSDK {
     ///TESTING MODEL
 
     Node* model = new Node();
+    Node* model2 = new Node();
 
     GameObject* testModel = new GameObject();
+    GameObject* copy = new GameObject();
+
+    testModel->m_transform = Matrix4::IDENTITY;
     testModel->m_id = "Vela";
     MeshComponent* com = new MeshComponent();
     com->m_model = new Model();
@@ -390,6 +394,12 @@ namespace nauEngineSDK {
     testModel->addComponent(com);
     model->setGameObject(testModel);
     SceneManager::instance().getActiveScene()->m_sceneGraph->set(model);
+
+    *copy = *testModel;
+    copy->m_id = "Copy of Vela";
+    model2->setGameObject(copy);
+    model2->getGameObject()->m_transform.translate(0.01f, 0.0f, 0.0f);
+    //SceneManager::instance().getActiveScene()->m_sceneGraph->set(model2);
 
 #pragma endregion
 
