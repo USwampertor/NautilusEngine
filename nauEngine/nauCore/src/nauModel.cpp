@@ -183,7 +183,7 @@ namespace nauEngineSDK {
         std::static_pointer_cast<Animation>(ResourceManager::instance().create(newExtension,
                                                                                RESOURCETYPE::ANIMATION));
         animation->init(scene->mAnimations[i], sceneBones);
-        animator->getAnimations().push_back(animation);
+        animator->addAnimation(animation);
       }
 
     }

@@ -20,6 +20,13 @@ namespace nauEngineSDK {
     return true;
   }
 
+  bool
+  Animachine::addAnimation(Sptr<Animation> anim) {
+    m_animations.push_back(anim);
+
+    return true;
+  }
+
   void
   Animachine::play(String name) {
     setAnimation(name);

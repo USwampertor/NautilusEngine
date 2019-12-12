@@ -14,6 +14,8 @@ namespace nauEngineSDK {
   void
   InputLayoutDX::setInputDescriptor() {
     
+    uint32 offset = 0;
+
     //VERTEX
     this->m_descVector.emplace_back();
     auto& vectorDesc = m_descVector.back();
@@ -23,11 +25,12 @@ namespace nauEngineSDK {
     vectorDesc.SemanticIndex = 0;
     vectorDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
     vectorDesc.InputSlot = 0;
-    vectorDesc.AlignedByteOffset = 0;
+    vectorDesc.AlignedByteOffset = offset;
     vectorDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     vectorDesc.InstanceDataStepRate = 0;
     //add(&vectorDesc);
-    
+    offset += sizeof(float) * 4;
+
     this->m_descVector.emplace_back();
     auto& colorDesc = m_descVector.back();
     //COLOR
@@ -36,10 +39,11 @@ namespace nauEngineSDK {
     colorDesc.SemanticIndex = 0;
     colorDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
     colorDesc.InputSlot = 0;
-    colorDesc.AlignedByteOffset = 16;
+    colorDesc.AlignedByteOffset = offset;
     colorDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     colorDesc.InstanceDataStepRate = 0;
     //add(&colorDesc);
+    offset += sizeof(float) * 4;
 
     this->m_descVector.emplace_back();
     auto& normalDesc = m_descVector.back();
@@ -49,11 +53,13 @@ namespace nauEngineSDK {
     normalDesc.SemanticIndex = 0;
     normalDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
     normalDesc.InputSlot = 0;
-    normalDesc.AlignedByteOffset = 32;
+    normalDesc.AlignedByteOffset = offset;
     normalDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     normalDesc.InstanceDataStepRate = 0;
     //add(&normalDesc);
-    
+    offset += sizeof(float) * 4;
+
+
     this->m_descVector.emplace_back();
     auto& coordDesc = m_descVector.back();
     //TEXCOORD
@@ -62,10 +68,11 @@ namespace nauEngineSDK {
     coordDesc.SemanticIndex = 0;
     coordDesc.Format = DXGI_FORMAT_R32G32_FLOAT;
     coordDesc.InputSlot = 0;
-    coordDesc.AlignedByteOffset = 48;
+    coordDesc.AlignedByteOffset = offset;
     coordDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     coordDesc.InstanceDataStepRate = 0;
     //add(&coordDesc);
+    offset += sizeof(float) * 2;
 
     //TANGENT
     this->m_descVector.emplace_back();
@@ -76,11 +83,13 @@ namespace nauEngineSDK {
     tangentDesc.SemanticIndex = 0;
     tangentDesc.Format = DXGI_FORMAT_R32G32B32_FLOAT;
     tangentDesc.InputSlot = 0;
-    tangentDesc.AlignedByteOffset = 56;
+    tangentDesc.AlignedByteOffset = offset;
     tangentDesc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     tangentDesc.InstanceDataStepRate = 0;
+    offset += sizeof(float) * 3;
 
-    //TANGENT
+
+    //BINORMAL
     this->m_descVector.emplace_back();
     auto& binormal = m_descVector.back();
 
@@ -89,10 +98,39 @@ namespace nauEngineSDK {
     binormal.SemanticIndex = 0;
     binormal.Format = DXGI_FORMAT_R32G32B32_FLOAT;
     binormal.InputSlot = 0;
-    binormal.AlignedByteOffset = 68;
+    binormal.AlignedByteOffset = offset;
+    binormal.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+    binormal.InstanceDataStepRate = 0;
+    offset += sizeof(float) * 3;
+    /*
+    //IDs
+    this->m_descVector.emplace_back();
+    auto& Ids = m_descVector.back();
+
+    memset(&Ids, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
+    Ids.SemanticName = "TEXCOORD";
+    Ids.SemanticIndex = 1;
+    Ids.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+    Ids.InputSlot = 0;
+    Ids.AlignedByteOffset = offset;
+    Ids.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+    Ids.InstanceDataStepRate = 0;
+    offset += sizeof(float) * 4;
+    /*
+    //WEIGHTS
+    this->m_descVector.emplace_back();
+    auto& weights = m_descVector.back();
+
+    memset(&binormal, 0, sizeof(D3D11_INPUT_ELEMENT_DESC));
+    binormal.SemanticName = "TEXCOORD";
+    binormal.SemanticIndex = 3;
+    binormal.Format = DXGI_FORMAT_R32_FLOAT;
+    binormal.InputSlot = 3;
+    binormal.AlignedByteOffset = offset;
     binormal.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     binormal.InstanceDataStepRate = 0;
 
+    */
   }
 
   //TODO: DELETE THIS FUNCTION TO USE THE BLOB ONE

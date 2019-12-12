@@ -76,14 +76,15 @@ struct Vertex
   Vector3 m_binormal;
 
   /**
-   * Bone IDs reference
-   */
-  int32 m_IDs[4];
-
-  /**
    * Bone Weights
    */
   float m_weights[4];
+
+  /**
+   * Bone IDs reference
+   */
+  float m_IDs[4];
+
 
 };
 

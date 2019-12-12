@@ -82,6 +82,9 @@ public:
   virtual bool
   load(String path) override;
 
+  bool
+  addAnimation(Sptr<Animation> anim);
+
   virtual RESOURCETYPE::E
   getType() override { return RESOURCETYPE::ANIMATOR; }
 

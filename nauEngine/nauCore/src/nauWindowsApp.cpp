@@ -393,8 +393,10 @@ namespace nauEngineSDK {
 
     testModel->addComponent(com);
 
-    AnimatorComponent* comp = new AnimatorComponent();
-    comp->m = std::static_pointer_cast<Animachine>(ResourceManager::instance().load("resources/VelaAnimated.atr"));
+    AnimatorComponent* animator = new AnimatorComponent();
+    animator->m = std::static_pointer_cast<Animachine>(ResourceManager::instance().load("resources/VelaAnimated.atr"));
+    
+    testModel->addComponent(animator);
 
     model->setGameObject(testModel);
 

@@ -103,9 +103,24 @@ namespace nauEngineSDK {
 
       if (component->getType() == COMPONENT::ANIMATOR) {
         if (ImGui::CollapsingHeader("Animator")) {
-          if (ImGui::SmallButton("Play")) {
-
+          auto anim = reinterpret_cast<AnimatorComponent*>(component);
+          if (!anim->m->isPlaying()) {
+            if (ImGui::SmallButton("Play")) {
+              if (anim->m->getAnimations().size() > 0) {
+                if (anim->m->getCurrentAnimation() == nullptr) { anim->m->setAnimation(0); }
+                anim->m->play();
+              }
+            }
           }
+          else {
+            if (ImGui::SmallButton("Stop")) { anim->m->stop(); }
+          }
+          ImGui::Text("Animations");
+          for (auto animName : anim->m->getAnimationNames() )
+            if (ImGui::SmallButton(animName.c_str())) {
+              anim->m->setAnimation(animName);
+            }
+            ImGui::Text("\n");
         }
       }
     }
