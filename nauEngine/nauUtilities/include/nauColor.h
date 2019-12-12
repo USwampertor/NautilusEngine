@@ -50,18 +50,18 @@ public:
    * Constructor with a Vector 4
    */
   Color(Vector4 vector)
-    : m_r(vector.x),
-      m_g(vector.y),
-      m_b(vector.z),
-      m_a(vector.w) {}
+    : m_r(static_cast<uint32>(vector.x)),
+      m_g(static_cast<uint32>(vector.y)),
+      m_b(static_cast<uint32>(vector.z)),
+      m_a(static_cast<uint32>(vector.w)) {}
 
   /**
    * Constructor with a Vector 3
    */
   Color(Vector3 vector)
-    : m_r(vector.x),
-      m_g(vector.y),
-      m_b(vector.z) {}
+    : m_r(static_cast<uint32>(vector.x)),
+      m_g(static_cast<uint32>(vector.y)),
+      m_b(static_cast<uint32>(vector.z)) {}
 
   /**
    * @brief Constructor with a RGBA color based on uint32 from 0 to 255

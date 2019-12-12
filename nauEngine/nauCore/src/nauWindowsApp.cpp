@@ -282,6 +282,7 @@ namespace nauEngineSDK {
 
     SceneManager::instance().getActiveScene()->m_sceneGraph->set(cameraNode);
 
+
 #pragma region TestObject
 
     ///TESTING MODEL
@@ -410,7 +411,8 @@ namespace nauEngineSDK {
     SceneManager::instance().getActiveScene()->m_sceneGraph->set(model2);
 
 #pragma endregion
-
+    auto skeleton = reinterpret_cast<MeshComponent*>(model->getGameObject()->getComponent(COMPONENT::MESH))->m_model->m_skeleton;
+    m_neuralNetwork.init(skeleton);
     return true;
 
   }

@@ -107,14 +107,14 @@ namespace nauEngineSDK {
   }
 
   void
-  NeuralNetwork::init(Skeleton skeleton) {
+  NeuralNetwork::init(Sptr<Skeleton> skeleton) {
 
     NeuralLayer base;
     NeuralLayer firstHidden;
     NeuralLayer secondHidden;
     NeuralLayer output;
 
-   for (auto bone : skeleton.getRoot()->m_children ) {
+   for (auto bone : skeleton->getRoot()->m_children ) {
      Neuron neuron;
      neuron.m_data = bone;
      base.m_data.push_back(neuron);
@@ -146,7 +146,7 @@ namespace nauEngineSDK {
       Neuron neuron;
       neuron.m_data = child;
       layer.m_data.push_back(neuron);
-      if (child->m_children.size() > 0) { processSkeleton(layer, actualBone); }
+      if (child->m_children.size() > 0) { processSkeleton(layer, child); }
     }
   }
 

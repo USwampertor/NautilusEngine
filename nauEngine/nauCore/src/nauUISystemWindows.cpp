@@ -96,7 +96,7 @@ namespace  nauEngineSDK {
     }
     else { 
       m_ui->MouseDown[0] = false; 
-      return false; 
+
     }
 
     if (g_inputManager->getScrollDelta() != 0.0f) {
@@ -104,7 +104,7 @@ namespace  nauEngineSDK {
       return false;
     }
 
-    return true;
+    return false;
   }
 
 }

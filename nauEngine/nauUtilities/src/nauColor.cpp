@@ -28,7 +28,42 @@ namespace nauEngineSDK {
 
   void
   Color::HSVToRGB(Vector3 hsv) {
+    float C = hsv.y * hsv.z;
+    float X = static_cast<float>(C * (1 - Math::abs(std::fmod(hsv.x / 60.0f, 2) - 1)));
+    float m = hsv.z - C;
+    float Rs, Gs, Bs;
 
+    if (hsv.x >= 0 && hsv.x < 60) {
+      Rs = C;
+      Gs = X;
+      Bs = 0;
+    }
+    else if (hsv.x >= 60 && hsv.x < 120) {
+      Rs = X;
+      Gs = C;
+      Bs = 0;
+    }
+    else if (hsv.x >= 120 && hsv.x < 180) {
+      Rs = 0;
+      Gs = C;
+      Bs = X;
+    }
+    else if (hsv.x >= 180 && hsv.x < 240) {
+      Rs = 0;
+      Gs = X;
+      Bs = C;
+    }
+    else if (hsv.x >= 240 && hsv.x < 300) {
+      Rs = X;
+      Gs = 0;
+      Bs = C;
+    }
+    else {
+      Rs = C;
+      Gs = 0;
+      Bs = X;
+    }
+    setColor(Rs + m, Gs + m, Bs + m);
   }
 
   Color
@@ -75,10 +110,10 @@ namespace nauEngineSDK {
 
   void
   Color::setColor(float r, float g, float b, float a) {
-    m_r = r * 255;
-    m_g = g * 255;
-    m_b = b * 255;
-    m_a = a * 255;
+    m_r = static_cast<uint32>(r * 255.0f);
+    m_g = static_cast<uint32>(g * 255.0f);
+    m_b = static_cast<uint32>(b * 255.0f);
+    m_a = static_cast<uint32>(a * 255.0f);
   }
 
   void
@@ -91,12 +126,17 @@ namespace nauEngineSDK {
 
   Vector3
   Color::toVector3() {
-    return Vector3(m_r, m_g, m_b);
+    return Vector3(static_cast<float>(m_r), 
+                   static_cast<float>(m_g), 
+                   static_cast<float>(m_b));
   }
 
   Vector4
   Color::toVector4() {
-    return Vector4(m_r, m_g, m_b, m_a);
+    return Vector4(static_cast<float>(m_r), 
+                   static_cast<float>(m_g), 
+                   static_cast<float>(m_b), 
+                   static_cast<float>(m_a));
   }
 
   Vector4

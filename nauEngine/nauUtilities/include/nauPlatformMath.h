@@ -596,7 +596,9 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     lerp(T a, T b, float scale) {
-        return (a + (b - a)* scale);
+        return static_cast<T>(static_cast<float>(a) + 
+                              (static_cast<float>(b) - static_cast<float>(a))
+                              * scale);
     }
 
     /**

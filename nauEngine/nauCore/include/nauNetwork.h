@@ -95,7 +95,7 @@ class NeuralNetwork
    *
    */
   void
-  init(Skeleton skeleton);
+  init(Sptr<Skeleton> skeleton);
 
   /**
    * @brief Processes the skeleton 

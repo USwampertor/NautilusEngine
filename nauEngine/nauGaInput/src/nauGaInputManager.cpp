@@ -26,7 +26,8 @@ namespace nauEngineSDK {
 
     m_inputMap = new gainput::InputMap(m_manager);
     Vector2 windowSize = g_graphicsAPI->getWindowSize();
-    m_manager.SetDisplaySize(windowSize.x, windowSize.y);
+    m_manager.SetDisplaySize(static_cast<int>(windowSize.x), 
+                             static_cast<int>(windowSize.y));
 
 
     for (uint32 i = 0; i < 4; ++i) { m_devices.push_back(Vector<InputDevice*>()); }

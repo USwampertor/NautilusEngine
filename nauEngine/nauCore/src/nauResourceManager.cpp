@@ -43,7 +43,6 @@ namespace nauEngineSDK {
     else {
 #if NAU_DEBUG_MODE
       Logger::instance().toIDE(" Object with path " + path + " has not been loaded!");
-      return nullptr;
 #endif
     }
     return nullptr;
