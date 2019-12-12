@@ -35,7 +35,7 @@ namespace nauEngineSDK {
 
   void
   Camera::rotate(Vector3 axis, float rads) {
-
+    /*
     float cos = Math::cos(rads);
     float sin = Math::sin(rads);
     float min = (1 - Math::cos(rads));
@@ -60,6 +60,14 @@ namespace nauEngineSDK {
     direction.z = (dir.x*tmp.m[0][2] + dir.y*tmp.m[1][2] + dir.z*tmp.m[2][2]);
 
     m_objective += direction;
+    */
+
+    m_objective -= m_position;
+
+    Quaternion rotation = Quaternion::rotateAroundRadians(rads, axis);
+    Vector3 newLookAt = Quaternion::rotateAround(rotation, m_objective);
+
+    m_objective = newLookAt + m_position;
 
     m_dirty = true;
   }

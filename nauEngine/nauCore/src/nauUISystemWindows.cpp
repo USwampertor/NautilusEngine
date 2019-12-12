@@ -20,8 +20,8 @@
 namespace  nauEngineSDK {
 
   bool
-  UISystemWindows::init(void* hwnd) {
-    if (!UISystem::init(hwnd)) { return false; }
+  UISystemWindows::init(ImGuiIO& io, void* hwnd) {
+    if (!UISystem::init(io, hwnd)) { return false; }
     if (!ImGui_ImplWin32_Init(hwnd)) { return false; }
 
 
@@ -32,7 +32,6 @@ namespace  nauEngineSDK {
       return ImGui_ImplDX11_Init(dev, context);
     }
 
-    m_ui = ImGui::GetIO();
     return true;
   }
 
@@ -83,25 +82,25 @@ namespace  nauEngineSDK {
     if (ImGui::GetCurrentContext() == nullptr) { return false; }
     ImVec2 pos(g_inputManager->getMousePosition().x * g_graphicsAPI->getWindowSize().x,
                g_inputManager->getMousePosition().y * g_graphicsAPI->getWindowSize().y);
-    m_ui.MousePos = pos;
+    m_ui->MousePos = pos;
     //ImGui::SetCursorPos(ImVec2(pos.x, pos.y));
 
     ImVec2 delta(0, g_inputManager->getScrollDelta());
-    m_ui.MouseDelta = delta;
+    m_ui->MouseDelta = delta;
 
     m_accumulatedDelta += delta.y * 100.0f;
 
     if (g_inputManager->getMouseButtonDown(KEY::MOUSE0)) {
-      m_ui.MouseDown[0] = true; 
+      m_ui->MouseDown[0] = true; 
       return false;
     }
     else { 
-      m_ui.MouseDown[0] = false; 
+      m_ui->MouseDown[0] = false; 
       return false; 
     }
 
     if (g_inputManager->getScrollDelta() != 0.0f) {
-      m_ui.MouseWheel += g_inputManager->getScrollDelta();
+      m_ui->MouseWheel += g_inputManager->getScrollDelta();
       return false;
     }
 

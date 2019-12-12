@@ -20,10 +20,8 @@ namespace nauEngineSDK {
 
     while (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE)) {
       update();
-      //if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
-      //}
       UI::instance().updateInput();
       g_inputManager->handleMessage(&msg);
       render();
@@ -64,37 +62,24 @@ namespace nauEngineSDK {
     if (g_inputManager->getButton(KEY::Z)) {
       CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, -0.05f);
     }
-    
-    /*
-    if (g_inputManager->getButtonDown(KEY::K)) {
-      OPENFILENAME file;
-
-      char szFile[100];
-
-      file.lStructSize = sizeof(file);
-      file.hwndOwner = nullptr;
-      file.lpstrFile = szFile;
-      file.lpstrFile[0] = '\0';
-      file.nMaxFile = sizeof(file);
-      file.lpstrFilter = "All\0*.*\0Text\0*.TXT\0";
-      file.nFilterIndex = 1;
-      file.lpstrFileTitle = nullptr;
-      file.nMaxFileTitle = 0;
-      file.lpstrInitialDir = nullptr;
-      file.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-      file.hInstance = m_hInst;
-
-      GetOpenFileName(&file);
-      MessageBox(nullptr, file.lpstrFile, "File Name", MB_OK);
+    if (g_inputManager->getMouseButton(KEY::MOUSE0)) {
+      CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, 
+                                                          g_inputManager->getMouseDelta().x * 
+                                                          CameraManager::instance().m_cameraSpeed);
+      CameraManager::instance().getActiveCamera()->rotate(Vector3::RIGHT, 
+                                                          g_inputManager->getMouseDelta().y * 
+                                                          CameraManager::instance().m_cameraSpeed);
     }
-    */
+
+    
   }
 
   void
   WindowsApp::render() {
     UI::instance().render();
     Vector<GameObject*> gameObjects;
-    for (auto obj : SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
+    for (auto obj : 
+         SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
       auto mesh = obj->getGameObject()->getComponent(COMPONENT::MESH);
       if (mesh != nullptr) {
         gameObjects.push_back(obj->getGameObject());
@@ -268,7 +253,8 @@ namespace nauEngineSDK {
 
     //UI INITIALIZATION
     UI::startUp<UISystemWindows>();
-    UI::instance().init(m_hWnd);
+    ImGui::CreateContext();
+    UI::instance().init(ImGui::GetIO(),m_hWnd);
 
     //RENDER MANAGER INITIALIZATION
     RenderManager::startUp();
@@ -450,15 +436,12 @@ namespace nauEngineSDK {
   BOOL 
   WindowsApp::InitInstance() {
 
-    //std::wstring windowClass(m_windowClass.begin(), m_windowClass.end());
-    //std::wstring appName(m_appName.begin(), m_appName.end());
-
-    WCHAR szTitle[MAX_LOADSTRING] = L"Nautilus Engine";
-    WCHAR szWindowClass[MAX_LOADSTRING] = L"Nautilus Class";
+    std::wstring windowClass(m_windowClass.begin(), m_windowClass.end());
+    std::wstring appName = L"Nautilus Engine";
 
     m_hWnd = CreateWindowExW(0, 
-                             szWindowClass, 
-                             szTitle, 
+                             windowClass.c_str(), 
+                             appName.c_str(), 
                              WS_OVERLAPPEDWINDOW,
                              CW_USEDEFAULT, 
                              CW_USEDEFAULT, 
@@ -482,7 +465,7 @@ namespace nauEngineSDK {
   LRESULT CALLBACK 
   WindowsApp::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
-    if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return true;
+    //if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return true;
 
     switch (message)
     {
@@ -521,7 +504,7 @@ namespace nauEngineSDK {
   WindowsApp::MyRegisterClass() {
     
     WNDCLASSEXW wcex;
-    WCHAR szWindowClass[MAX_LOADSTRING] = L"Nautilus Class";
+    std::wstring szWindowClass = L"Nautilus Class";
 
     wcex.cbSize = sizeof(WNDCLASSEXW);
 
@@ -534,7 +517,7 @@ namespace nauEngineSDK {
     wcex.hCursor = LoadCursorW(nullptr, MAKEINTRESOURCEW(32512));
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
-    wcex.lpszClassName = szWindowClass;
+    wcex.lpszClassName = szWindowClass.c_str();
     wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -544,30 +527,30 @@ namespace nauEngineSDK {
   WindowsApp::ImGui_ImplWin32_UpdateMousePos() {
 
     // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
-    if (UI::instance().m_ui.WantSetMousePos) {
-      POINT pos = { static_cast<int>(UI::instance().m_ui.MousePos.x), 
-                    static_cast<int>(UI::instance().m_ui.MousePos.y) };
+    if (UI::instance().m_ui->WantSetMousePos) {
+      POINT pos = { static_cast<int>(UI::instance().m_ui->MousePos.x),
+                    static_cast<int>(UI::instance().m_ui->MousePos.y) };
       ::ClientToScreen(m_hWnd, &pos);
       ::SetCursorPos(pos.x, pos.y);
     }
 
     // Set mouse position
-    UI::instance().m_ui.MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
+    UI::instance().m_ui->MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
     POINT pos;
     if (HWND active_window = ::GetForegroundWindow())
       if (active_window == m_hWnd || ::IsChild(active_window, m_hWnd))
         if (::GetCursorPos(&pos) && ::ScreenToClient(m_hWnd, &pos))
-          UI::instance().m_ui.MousePos = ImVec2((float)pos.x, (float)pos.y);
+          UI::instance().m_ui->MousePos = ImVec2((float)pos.x, (float)pos.y);
   }
 
   bool 
   WindowsApp::ImGui_ImplWin32_UpdateMouseCursor() {
     
-    if (UI::instance().m_ui.ConfigFlags & ImGuiConfigFlags_NoMouseCursorChange) { return false; }
+    if (UI::instance().m_ui->ConfigFlags & ImGuiConfigFlags_NoMouseCursorChange) { return false; }
 
     ImGuiMouseCursor imgui_cursor = ImGui::GetMouseCursor();
-    if (imgui_cursor == ImGuiMouseCursor_None || UI::instance().m_ui.MouseDrawCursor) {
-      // Hide OS mouse cursor if imgui is drawing it or if it wants no cursor
+    if (imgui_cursor == ImGuiMouseCursor_None || UI::instance().m_ui->MouseDrawCursor) {
+      // Hide OS mouse cursor if ImGui is drawing it or if it wants no cursor
       ::SetCursor(NULL);
     }
     else {
@@ -609,7 +592,7 @@ namespace nauEngineSDK {
       if (msg == WM_XBUTTONDOWN || msg == WM_XBUTTONDBLCLK) { button = (GET_XBUTTON_WPARAM(wParam) == XBUTTON1) ? 3 : 4; }
       if (!ImGui::IsAnyMouseDown() && ::GetCapture() == NULL)
         ::SetCapture(hwnd);
-      UI::instance().m_ui.MouseDown[button] = true;
+      UI::instance().m_ui->MouseDown[button] = true;
       return 0;
     }
     case WM_LBUTTONUP:
@@ -621,30 +604,30 @@ namespace nauEngineSDK {
       if (msg == WM_RBUTTONUP) { button = 1; }
       if (msg == WM_MBUTTONUP) { button = 2; }
       if (msg == WM_XBUTTONUP) { button = (GET_XBUTTON_WPARAM(wParam) == XBUTTON1) ? 3 : 4; }
-      UI::instance().m_ui.MouseDown[button] = false;
+      UI::instance().m_ui->MouseDown[button] = false;
       if (!ImGui::IsAnyMouseDown() && ::GetCapture() == hwnd)
         ::ReleaseCapture();
       return 0;
     }
     case WM_MOUSEWHEEL:
-      UI::instance().m_ui.MouseWheel += (float)GET_WHEEL_DELTA_WPARAM(wParam) / (float)WHEEL_DELTA;
+      UI::instance().m_ui->MouseWheel += (float)GET_WHEEL_DELTA_WPARAM(wParam) / (float)WHEEL_DELTA;
       return 0;
     case WM_MOUSEHWHEEL:
-      UI::instance().m_ui.MouseWheelH += (float)GET_WHEEL_DELTA_WPARAM(wParam) / (float)WHEEL_DELTA;
+      UI::instance().m_ui->MouseWheelH += (float)GET_WHEEL_DELTA_WPARAM(wParam) / (float)WHEEL_DELTA;
       return 0;
     case WM_KEYDOWN:
     case WM_SYSKEYDOWN:
       if (wParam < 256)
-        UI::instance().m_ui.KeysDown[wParam] = 1;
+        UI::instance().m_ui->KeysDown[wParam] = 1;
       return 0;
     case WM_KEYUP:
     case WM_SYSKEYUP:
       if (wParam < 256)
-        UI::instance().m_ui.KeysDown[wParam] = 0;
+        UI::instance().m_ui->KeysDown[wParam] = 0;
       return 0;
     case WM_CHAR:
       // You can also use ToAscii()+GetKeyboardState() to retrieve characters.
-      UI::instance().m_ui.AddInputCharacter((unsigned int)wParam);
+      UI::instance().m_ui->AddInputCharacter((unsigned int)wParam);
       return 0;
     case WM_SETCURSOR:
       if (LOWORD(lParam) == HTCLIENT && ImGui_ImplWin32_UpdateMouseCursor())

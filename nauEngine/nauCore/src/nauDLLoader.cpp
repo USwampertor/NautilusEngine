@@ -13,36 +13,43 @@ namespace nauEngineSDK {
   void*
   DLLoader::load(String path, String functionName) {
 
-    String version = "";
-    String folderPath = "";
+    std::wstring version = L"";
+    std::wstring folderPath = L"";
+    std::wstring p(path.begin(), path.end());
+
     String logger = "";
 #ifdef NAU_ARCH_TYPE == NAU_ARCHITECTURE_x86_32
-    version = "x86";
+    version = L"x86";
 #else
-    version = "x64";
+    version = L"x64";
 #endif // NAU_ARCH_TYPE
 
 #if NAU_DEBUG_MODE
-    path.append("d");
+    p.append(L"d");
 #endif // NAU_DEBUG_MODE
 
 #if NAU_PLATFORM == NAU_PLATFORM_WIN32
-    path.append(".dll");
+    p.append(L".dll");
 
 
-    char dirPath[MAX_PATH];
-    GetCurrentDirectoryA(MAX_PATH, dirPath);
+    wchar_t dirPath[MAX_PATH];
+    GetCurrentDirectoryW(MAX_PATH, dirPath);
     folderPath.append(dirPath);
-    folderPath = folderPath.append("\\").append(version).append("\\").append(path);
+    folderPath = folderPath.append(L"\\").append(version).append(L"\\").append(p);
     
-    HINSTANCE myDll = LoadLibraryExA(folderPath.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
+    std::wstring str(folderPath.begin(), folderPath.end());
+    HINSTANCE myDll = LoadLibraryExW(p.c_str(), nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
     if (!myDll) {
       DWORD err = GetLastError();
+      
+      char dir[MAX_PATH];
+      GetCurrentDirectoryA(MAX_PATH, dir);
 
       logger = "Could not find library at given path: ";
-      logger += dirPath;
+      logger += dir;
       logger += " with given name: ";
       logger += path;
+      logger += " and errors: ";
       logger += err;
 
       Logger::instance().toIDE(logger, LOGGER_LEVEL::ERRORED);

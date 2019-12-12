@@ -99,6 +99,13 @@ namespace nauEngineSDK {
     void
     addCamera(Camera* camPtr);
 
+  public:
+
+    /**
+     * A multiplier for the camera speed
+     */
+    float m_cameraSpeed;
+
   private:
 
     /**

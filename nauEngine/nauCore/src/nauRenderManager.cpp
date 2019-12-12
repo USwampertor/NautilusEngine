@@ -52,7 +52,7 @@ namespace nauEngineSDK {
 
     ///BUFFER INITIALIZATION
     if (!m_gbPass.init(pDevice,m_rendereableTextures)) return false;
-    //if (!m_ssaoPass.init(pDevice, m_rendereableTextures)) return false;
+    if (!m_ssaoPass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_blurPass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_lightningPass.init(pDevice, m_rendereableTextures)) return false;
     //if (!m_luminancePass.init(pDevice, m_rendereableTextures)) return false;
@@ -162,8 +162,6 @@ namespace nauEngineSDK {
     m_luminancePass.updatePass();
 
     m_finalPass.updatePass();
-
-
 
     //constant buffer add everything
     //Constant Buffer setPixel and Vertex

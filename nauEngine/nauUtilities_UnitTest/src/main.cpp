@@ -277,7 +277,7 @@ TEST_F(Testing, Quaternions) {
 
   q = Quaternion::RIGHT;
 
-  r = q.rotateAroundDegrees(90, v);
+  //r = q.rotateAroundDegrees(90, v);
 
   std::cout << r.toString() << std::endl;
   std::cout << vPlacebo.toString() << std::endl;

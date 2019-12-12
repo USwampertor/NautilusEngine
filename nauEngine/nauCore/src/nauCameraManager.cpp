@@ -17,6 +17,8 @@ namespace nauEngineSDK {
                                 Vector3(0.0f, 100.0f, 0.0f));
     m_cameraList.push_back(camera);
     m_activeCamera = m_cameraList[0];
+
+    m_cameraSpeed = 4.0f;
   }
 
   Camera*

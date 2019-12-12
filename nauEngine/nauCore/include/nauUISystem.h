@@ -73,7 +73,7 @@ public:
    *
    */
   virtual bool
-  init(void* hwnd);
+  init(ImGuiIO& io, void* hwnd);
 
   /**
    * @brief 
@@ -94,7 +94,7 @@ public:
   endRender();
 
   /**
-   * @brief This to wrap the initialization process for the imgui frame renderings
+   * @brief This to wrap the initialization process for the ImGui frame renderings
    * @param 
    * @return 
    *
@@ -152,7 +152,7 @@ public:
    * This object should exist and be initialized only once. This is the constant
    * reference for ImGui to exist.
    */
-  ImGuiIO m_ui;
+  ImGuiIO* m_ui;
 
   /**
    * Testing accumulated delta
@@ -160,7 +160,7 @@ public:
   float m_accumulatedDelta = 0.0f;
   
   virtual bool
-  updateInput() { m_ui = ImGui::GetIO(); return true; }
+  updateInput() { return true; }
 };
 
 }

@@ -25,7 +25,7 @@ public:
   ~UISystemWindows() = default;
 
   virtual bool
-  init(void* hwnd) override;
+  init(ImGuiIO& io, void* hwnd) override;
 
   virtual void
   newFrame() override;

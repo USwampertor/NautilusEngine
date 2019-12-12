@@ -20,10 +20,10 @@
 namespace nauEngineSDK {
 
   bool
-  UISystem::init(void* hwnd) {
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    m_ui = io;
+  UISystem::init(ImGuiIO& io, void* hwnd) {
+    //ImGui::CreateContext();
+    //ImGuiIO& io = ImGui::GetIO();
+    m_ui = &io;
     return true;
   }
 
@@ -103,7 +103,7 @@ namespace nauEngineSDK {
     ImGui::Text(ms.c_str());
 
     String mousePos = "Mouse position: ";
-    Vector2 pos(m_ui.MousePos.x, m_ui.MousePos.y);
+    Vector2 pos(m_ui->MousePos.x, m_ui->MousePos.y);
     mousePos += std::to_string(pos.x);
     mousePos.append("\n");
     mousePos += "                ";
@@ -121,7 +121,7 @@ namespace nauEngineSDK {
     ImGui::Text(mouseDelta.c_str());
 
     String enterPressed = "Click pressed: ";
-    m_ui.MouseDown[0] ? enterPressed += "true" : enterPressed += "false";
+    m_ui->MouseDown[0] ? enterPressed += "true" : enterPressed += "false";
     enterPressed.append("\n");
     enterPressed += "Accumulated delta: ";
     enterPressed += std::to_string(m_accumulatedDelta);
