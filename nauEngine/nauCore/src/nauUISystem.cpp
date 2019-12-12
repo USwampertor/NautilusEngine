@@ -10,13 +10,14 @@
 #include "nauUISystem.h"
 
 
+#include "nauCameraManager.h"
 #include "nauComponent.h"
+#include "nauGameObject.h"
 #include "nauGraphicsAPI.h"
 #include "nauInputManager.h"
 #include "nauLogger.h"
 #include "nauMesh.h"
 #include "nauSceneManager.h"
-#include "nauGameObject.h"
 
 namespace nauEngineSDK {
 
@@ -69,10 +70,32 @@ namespace nauEngineSDK {
   UISystem::renderInspector() {
     for (auto component : m_gameObjectPtr->m_properties) {
       if (ImGui::CollapsingHeader("Transform")) {
-        ImGui::SliderFloat("X", &m_gameObjectPtr->m_transform.m[3][0], 0.0f, 9999.0f, "ratio = %.3f");
-        ImGui::SliderFloat("Y", &m_gameObjectPtr->m_transform.m[3][1], 0.0f, 9999.0f, "ratio = %.3f");
-        ImGui::SliderFloat("Z", &m_gameObjectPtr->m_transform.m[3][2], 0.0f, 9999.0f, "ratio = %.3f");
+        if (ImGui::CollapsingHeader("Position")) {
+          ImGui::SliderFloat("X", &m_gameObjectPtr->m_transform.m[0][3], -99.0f, 99.0f, "ratio = %.3f");
+          ImGui::SliderFloat("Y", &m_gameObjectPtr->m_transform.m[1][3], -99.0f, 99.0f, "ratio = %.3f");
+          ImGui::SliderFloat("Z", &m_gameObjectPtr->m_transform.m[2][3], -99.0f, 99.0f, "ratio = %.3f");
+        }
+        if (ImGui::CollapsingHeader("Scale")) {
+          ImGui::SliderFloat("X", &m_gameObjectPtr->m_transform.m[0][0], 0.0f, 100, "ratio = %.3f");
+          ImGui::SliderFloat("Y", &m_gameObjectPtr->m_transform.m[1][1], 0.0f, 100, "ratio = %.3f");
+          ImGui::SliderFloat("Z", &m_gameObjectPtr->m_transform.m[2][2], 0.0f, 100, "ratio = %.3f");
+        }
+        if (ImGui::CollapsingHeader("Rotation")) {
+
+          float rotationX;
+          float rotationY;
+          float rotationZ;
+
+          ImGui::SliderFloat("X", &rotationX, 0.0f, 2* Math::PI, "ratio = %.3f");
+          ImGui::SliderFloat("Y", &rotationY, 0.0f, 2* Math::PI, "ratio = %.3f");
+          ImGui::SliderFloat("Z", &rotationZ, 0.0f, 2* Math::PI, "ratio = %.3f");
+
+          //m_gameObjectPtr->m_transform.rotateX(rotationX);
+          //m_gameObjectPtr->m_transform.rotateY(rotationY);
+          //m_gameObjectPtr->m_transform.rotateZ(rotationZ);
+        }
       }
+      
       if (component->getType() == COMPONENT::MESH) {
         if (ImGui::CollapsingHeader("Mesh")) {
         }
@@ -144,13 +167,25 @@ namespace nauEngineSDK {
     mouseDelta.append("\n");
     ImGui::Text(mouseDelta.c_str());
 
-    String enterPressed = "Click pressed: ";
-    m_ui->MouseDown[0] ? enterPressed += "true" : enterPressed += "false";
-    enterPressed.append("\n");
+    String enterPressed = "";
     enterPressed += "Accumulated delta: ";
     enterPressed += std::to_string(m_accumulatedDelta);
     enterPressed.append("\n");
     ImGui::Text(enterPressed.c_str());
+
+    Vector<float> color;
+    color.resize(4, 0.0f);
+    Vector4 cameraColor = CameraManager::instance().getActiveCamera()->m_clearColor.toVector4F();
+    color[0] = cameraColor.x;
+    color[1] = cameraColor.y;
+    color[2] = cameraColor.z;
+    color[3] = cameraColor.w;
+    ImGui::ColorEdit4("Clear Color", color.data());
+    
+    CameraManager::instance().getActiveCamera()->m_clearColor.setColor(static_cast<float>(color[0]),
+                                                                       static_cast<float>(color[1]), 
+                                                                       static_cast<float>(color[2]),
+                                                                       static_cast<float>(color[3]));
 
     ImGui::End();
 

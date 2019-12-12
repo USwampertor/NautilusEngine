@@ -59,6 +59,9 @@ public:
   setAnimation(String name);
 
   void
+  setAnimation(uint32 animation);
+
+  void
   crossFade();
 
   void

@@ -37,8 +37,16 @@ namespace nauEngineSDK {
       return nullptr;
 #endif
     }
-
-    return resource;
+    if (m.find(path) != m.end()) {
+      return m[path];
+    }
+    else {
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE(" Object with path " + path + " has not been loaded!");
+      return nullptr;
+#endif
+    }
+    return nullptr;
   }
 
   void
@@ -49,10 +57,9 @@ namespace nauEngineSDK {
   Sptr<Resource>
   ResourceManager::create(String name, RESOURCETYPE::E type) {
     Sptr<Resource> resource;
-    uint32 lastDot;
-
-    lastDot = name.find_last_of('.');
-    String newExtension = name.substr(0, lastDot);
+    //uint32 lastDot;
+    //lastDot = name.find_last_of('.');
+    String newExtension = name; // name.substr(0, lastDot);
     
     if (RESOURCETYPE::SKELETON == type) {
       newExtension += ".skl";
@@ -91,7 +98,7 @@ namespace nauEngineSDK {
       newExtension += ".scn";
       resource = std::static_pointer_cast<Resource>(std::make_shared<Scene>());
     }
-    m.insert(std::make_pair(name, resource));
+    m.insert(std::make_pair(newExtension, resource));
 
     return resource;
   }

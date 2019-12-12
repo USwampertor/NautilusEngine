@@ -183,7 +183,7 @@ namespace nauEngineSDK {
 
     ~AnimatorComponent() = default;
 
-    Animachine* m;
+    Sptr<Animachine> m;
 
     virtual COMPONENT::E
     getType() override { return COMPONENT::ANIMATOR; }

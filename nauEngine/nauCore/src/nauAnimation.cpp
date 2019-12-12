@@ -74,6 +74,9 @@ namespace nauEngineSDK {
         m_channels.push_back(newBone);
       }
     }
+
+
+
   }
 
   void
@@ -87,6 +90,12 @@ namespace nauEngineSDK {
     return true;
   }
 
+  Vector<Matrix4>
+  Animation::getFrame() {
+    Vector<Matrix4> finalMatrix;
+
+    return finalMatrix;
+  }
 
 }
 

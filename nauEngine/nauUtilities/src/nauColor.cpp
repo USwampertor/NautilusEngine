@@ -73,6 +73,22 @@ namespace nauEngineSDK {
                  (m_a / other));
   }
 
+  void
+  Color::setColor(float r, float g, float b, float a) {
+    m_r = r * 255;
+    m_g = g * 255;
+    m_b = b * 255;
+    m_a = a * 255;
+  }
+
+  void
+  Color::setColor(uint32 r, uint32 g, uint32 b, uint32 a) {
+    m_r = r;
+    m_g = g;
+    m_b = b;
+    m_a = a;
+  }
+
   Vector3
   Color::toVector3() {
     return Vector3(m_r, m_g, m_b);
@@ -81,6 +97,11 @@ namespace nauEngineSDK {
   Vector4
   Color::toVector4() {
     return Vector4(m_r, m_g, m_b, m_a);
+  }
+
+  Vector4
+  Color::toVector4F() {
+    return Vector4(m_r / 255.0f, m_g / 255.0f, m_b / 255.0f, m_a / 255.0f);
   }
 
   const Color Color::Azure    = Color(240,255,255);

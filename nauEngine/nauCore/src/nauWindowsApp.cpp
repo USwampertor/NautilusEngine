@@ -62,7 +62,7 @@ namespace nauEngineSDK {
     if (g_inputManager->getButton(KEY::Z)) {
       CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, -0.05f);
     }
-    if (g_inputManager->getMouseButton(KEY::MOUSE0)) {
+    if (g_inputManager->getMouseButton(KEY::MOUSE1)) {
       CameraManager::instance().getActiveCamera()->rotate(Vector3::UP, 
                                                           g_inputManager->getMouseDelta().x * 
                                                           CameraManager::instance().m_cameraSpeed);
@@ -392,14 +392,20 @@ namespace nauEngineSDK {
     (com->m_model->m_meshes[6])->m_material = mat6;
 
     testModel->addComponent(com);
+
+    AnimatorComponent* comp = new AnimatorComponent();
+    comp->m = std::static_pointer_cast<Animachine>(ResourceManager::instance().load("resources/VelaAnimated.atr"));
+
     model->setGameObject(testModel);
-    SceneManager::instance().getActiveScene()->m_sceneGraph->set(model);
 
     *copy = *testModel;
     copy->m_id = "Copy of Vela";
     model2->setGameObject(copy);
-    model2->getGameObject()->m_transform.translate(0.01f, 0.0f, 0.0f);
-    //SceneManager::instance().getActiveScene()->m_sceneGraph->set(model2);
+    model2->getGameObject()->m_transform.translate(0.f, 0.0f, 100.0f);
+    
+    SceneManager::instance().getActiveScene()->m_sceneGraph->set(model);
+    
+    SceneManager::instance().getActiveScene()->m_sceneGraph->set(model2);
 
 #pragma endregion
 
@@ -532,7 +538,12 @@ namespace nauEngineSDK {
 
     return RegisterClassExW(&wcex);
   }
+  HINSTANCE WindowsApp::m_hInst;
+  HWND WindowsApp::m_hWnd;
 
+#pragma endregion WINDOWS FUNCTIONS
+
+  /*
   void 
   WindowsApp::ImGui_ImplWin32_UpdateMousePos() {
 
@@ -646,11 +657,6 @@ namespace nauEngineSDK {
     }
     return 0;
   }
-
-  HINSTANCE WindowsApp::m_hInst;
-  HWND WindowsApp::m_hWnd;
-
-#pragma endregion WINDOWS FUNCTIONS
-
+  */
 
 }

@@ -124,7 +124,7 @@ namespace nauEngineSDK {
   
     static LRESULT CALLBACK 
     WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
+    /*
     static void 
     ImGui_ImplWin32_UpdateMousePos();
 
@@ -133,7 +133,7 @@ namespace nauEngineSDK {
 
     static LRESULT
     ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-
+    */
     int m_commandShow;
 
     NeuralNetwork m_neuralNetwork;

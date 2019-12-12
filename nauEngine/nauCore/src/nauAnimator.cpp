@@ -59,6 +59,21 @@ namespace nauEngineSDK {
       LOGGER_LEVEL::ERRORED);
   }
 
+  void
+  Animachine::setAnimation(uint32 animation) {
+    if (animation < m_animations.size()) {
+      m_current = m_animations[animation];
+    }
+    else {
+#if NAU_DEBUG_MODE
+      Logger::instance().toIDE("Integer is higher than number of animations in the machine",
+        LOGGER_LEVEL::ERRORED);
+#endif
+      Logger::instance().toConsole("Integer is higher than number of animations in the machine",
+        LOGGER_LEVEL::ERRORED);
+    }
+  }
+
   Vector<String>
   Animachine::getAnimationNames() {
     Vector<String> animations;

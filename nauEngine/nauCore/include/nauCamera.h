@@ -13,6 +13,7 @@
 
 #include <nauMatrix4.h>
 #include <nauQuaternion.h>
+#include <nauColor.h>
 
 namespace nauEngineSDK {
 
@@ -50,6 +51,7 @@ namespace nauEngineSDK {
       m_near          = fNear;
       m_far           = fFar;
       m_fov           = fov;
+      m_clearColor = Color::Gray;
       createView();
     }
 
@@ -210,6 +212,11 @@ namespace nauEngineSDK {
      * The FOV of the camera
      */
     float m_fov;
+
+    /**
+     * the clear Color of the camera
+     */
+    Color m_clearColor;
 
   };
   

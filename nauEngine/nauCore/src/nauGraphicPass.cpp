@@ -148,8 +148,8 @@ namespace nauEngineSDK {
     setPixelShader(pDevice);
     setVertexShader(pDevice);
 
-    m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
-    m_info.m_emissive->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
+    m_info.m_color->clearView(pDevice, CameraManager::instance().getActiveCamera()->m_clearColor.toVector4F());
+    m_info.m_emissive->clearView(pDevice, CameraManager::instance().getActiveCamera()->m_clearColor.toVector4F());
     m_depthStencil->clearView(pDevice);
 
     for (auto gObject : m_orderedList) {

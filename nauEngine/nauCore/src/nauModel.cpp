@@ -98,8 +98,9 @@ namespace nauEngineSDK {
         auto node = scene->mRootNode->FindNode(bone.second->m_name.c_str());
         modelNodes.push_back(node);
       }
+      String newExtension = filePath.substr(0, filePath.find_last_of('.'));
       m_skeleton = 
-        std::static_pointer_cast<Skeleton>(ResourceManager::instance().create(filePath,
+        std::static_pointer_cast<Skeleton>(ResourceManager::instance().create(newExtension,
                                                                               RESOURCETYPE::SKELETON));
       m_skeleton->init(sceneBones, modelNodes);
     }
@@ -139,7 +140,7 @@ namespace nauEngineSDK {
               id = bone->m_weights[w].m_ID;
               bonesLoaded = 4;
 
-              if (id < m_meshes[i]->m_vertexBuffer->m_vertexData.size() && (aiProcess_OptimizeMeshes | assimpFlags)) {
+              if (id < m_meshes[i]->m_vertexBuffer->m_vertexData.size() && (aiProcess_OptimizeMeshes & assimpFlags)) {
                 weight = bone->m_weights[w].m_weight;
                 bonesLoaded = bCounter[i][id];
               }
@@ -163,15 +164,23 @@ namespace nauEngineSDK {
 /************************************************************************/
     if (scene->mNumAnimations > 0) {
       //If it has animations, we will through each one
+
+      String newExtension = filePath.substr(0, filePath.find_last_of('.'));
+
       Sptr<Animachine> animator = 
-        std::static_pointer_cast<Animachine>(ResourceManager::instance().create(filePath,
+        std::static_pointer_cast<Animachine>(ResourceManager::instance().create(newExtension,
                                                                               RESOURCETYPE::ANIMATOR));
 
       animator->getAnimations().reserve(scene->mNumAnimations);
 
       for (uint32 i = 0; i < scene->mNumAnimations; ++i) {
+
+        String newExtension = filePath.substr(0, filePath.find_last_of('.'));
+
+        newExtension.append(scene->mAnimations[i]->mName.C_Str());
+
         Sptr<Animation> animation =
-        std::static_pointer_cast<Animation>(ResourceManager::instance().create(filePath,
+        std::static_pointer_cast<Animation>(ResourceManager::instance().create(newExtension,
                                                                                RESOURCETYPE::ANIMATION));
         animation->init(scene->mAnimations[i], sceneBones);
         animator->getAnimations().push_back(animation);

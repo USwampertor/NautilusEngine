@@ -53,6 +53,15 @@ public:
   update(float deltaTime);
 
   /**
+   * @brief Returns the exact frame the animation should be at
+   * @param 
+   * @return 
+   *
+   */
+  Vector<Matrix4>
+  getFrame();
+
+  /**
    * String name of the animation
    */
   String m_name;

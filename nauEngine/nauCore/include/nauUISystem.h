@@ -26,6 +26,7 @@ class Logger;
 class SceneManager;
 class InputManager;
 class GameObject;
+class CameraManager;
 
 namespace UISTARTFLAGS
 {

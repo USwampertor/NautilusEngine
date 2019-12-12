@@ -23,7 +23,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	Color.blend() blends two colors
    */
-class Color
+class NAU_UTILITY_EXPORT Color
 {
 public:
 
@@ -141,6 +141,30 @@ public:
   operator/(uint32& other);
 
   /**
+   * @brief Sets a color based in (R, G, B, A)
+   * @param float R
+   * @param float G
+   * @param float B
+   * @param float A
+   * @return 
+   *
+   */
+  void
+  setColor(float r, float g, float b, float a = 1.0f);
+
+  /**
+   * @brief Sets a color based in (R, G, B, A)
+   * @param uint32 R
+   * @param uint32 G
+   * @param uint32 B
+   * @param uint32 A
+   * @return 
+   *
+   */
+  void
+  setColor(uint32 r, uint32 g, uint32 b, uint32 a);
+
+  /**
    * @brief Returns the color as a vector3 in RGB format
    * @param 
    * @return a Vector3(R, G, B) in uint32
@@ -152,11 +176,20 @@ public:
   /**
    * @brief Returns the color as a Vector4 in RGBA format
    * @param 
-   * @return a Vector4(R, G, B, A) in uint32
+   * @return a Vector4(R, G, B, A) in uint32 (0-255)
    *
    */
   Vector4
   toVector4();
+
+  /**
+   * @brief Returns the color as a Vector in RGBA format 
+   * @param 
+   * @return a Vector(R, G, B, A) in float (0.0f - 1.0f)
+   *
+   */
+  Vector4
+  toVector4F();
 
   static const Color Azure;
   static const Color Black;

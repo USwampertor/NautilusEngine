@@ -85,16 +85,16 @@ m[0 + x][2 + y] = mat3.m[0][2];  m[1 + x][2 + y] = mat3.m[1][2]; m[2 + x][2 + y]
 
   void
     Matrix4::translate(const float& x, const float& y, const float& z) {
-    m[3][0] += x;
-    m[3][1] += y;
-    m[3][2] += z;
+    m[0][3] += x;
+    m[1][3] += y;
+    m[2][3] += z;
   }
 
   void
     Matrix4::translate(const Vector3& position) {
-    m[3][0] += position.x;
-    m[3][1] += position.y;
-    m[3][2] += position.z;
+    m[0][3] += position.x;
+    m[1][3] += position.y;
+    m[2][3] += position.z;
   }
 
   void
