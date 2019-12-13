@@ -33,7 +33,9 @@ namespace nauEngineSDK {
 
   void
   CameraManager::transition(Camera* originCam, Camera* destinyCam, float time) {
-
+    UNREFERENCED_PARAMETER(originCam);
+    UNREFERENCED_PARAMETER(destinyCam);
+    UNREFERENCED_PARAMETER(time);
   }
 
   Matrix4

@@ -175,9 +175,9 @@ namespace nauEngineSDK {
 
       animator->getAnimations().reserve(scene->mNumAnimations);
 
-      for (uint32 i = 0; i < scene->mNumAnimations; ++i) {
+      for (i = 0; i < scene->mNumAnimations; ++i) {
 
-        String newExtension = filePath.substr(0, filePath.find_last_of('.'));
+        newExtension = filePath.substr(0, filePath.find_last_of('.'));
 
         newExtension.append(scene->mAnimations[i]->mName.C_Str());
 
@@ -194,14 +194,14 @@ namespace nauEngineSDK {
 
   void
   Model::processNode(aiNode* node, const aiScene* scene) {
-
-    for (uint32 i = 0; i < node->mNumMeshes; ++i) {
+    uint32 i = 0;
+    for (i = 0; i < node->mNumMeshes; ++i) {
       aiMesh* aimesh = scene->mMeshes[node->mMeshes[i]];
       m_meshes.push_back(processMesh(aimesh, scene));
       if (aimesh->HasBones()) { m_hasBones = true; }
     }
 
-    for (uint32 i = 0; i < node->mNumChildren; ++i) {
+    for (i = 0; i < node->mNumChildren; ++i) {
       processNode(node->mChildren[i], scene);
     }
 
@@ -209,6 +209,7 @@ namespace nauEngineSDK {
 
   Mesh*
   Model::processMesh(aiMesh* mesh, const aiScene* scene) {
+    UNREFERENCED_PARAMETER(scene);
 
     Mesh* m = new Mesh();
     m->m_vertexBuffer = m_device->createVertexBuffer();

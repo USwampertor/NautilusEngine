@@ -83,7 +83,7 @@ namespace nauEngineSDK {
 
   void
   RenderManager::addPass(GraphicPass* pass) {
-
+    UNREFERENCED_PARAMETER(pass);
   }
 
   GameObject*

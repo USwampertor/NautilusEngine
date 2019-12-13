@@ -23,6 +23,7 @@ namespace nauEngineSDK {
 
   bool
   UISystem::init(ImGuiIO& io, void* hwnd) {
+    UNREFERENCED_PARAMETER(hwnd);
     //ImGui::CreateContext();
     //ImGuiIO& io = ImGui::GetIO();
     m_ui = &io;

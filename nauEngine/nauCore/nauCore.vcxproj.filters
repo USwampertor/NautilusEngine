@@ -136,9 +136,6 @@
     <ClInclude Include="include\nauInputDevice.h">
       <Filter>Source Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauAnimationManager.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="include\nauCodec.h">
       <Filter>Source Files\Resources</Filter>
     </ClInclude>
@@ -296,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="src\nauGameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\nauAnimationManager.cpp">
-      <Filter>Source Files\Modules</Filter>
     </ClCompile>
     <ClCompile Include="src\nauCodec.cpp">
       <Filter>Source Files\Resources</Filter>

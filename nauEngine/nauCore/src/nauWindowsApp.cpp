@@ -15,7 +15,7 @@ namespace nauEngineSDK {
 
   int32
   WindowsApp::start() {
-    HACCEL hAccelTable = LoadAccelerators(m_hInst, MAKEINTRESOURCE(1));
+    //HACCEL hAccelTable = LoadAccelerators(m_hInst, MAKEINTRESOURCE(1));
     MSG msg;
 
     while (PeekMessageW(&msg, nullptr, 0, 0, PM_REMOVE)) {
@@ -99,7 +99,7 @@ namespace nauEngineSDK {
   WindowsApp::renderUI() {  }
   
   bool
-  WindowsApp::initUI(void* hwnd) { return true; }
+  WindowsApp::initUI(void* hwnd) { UNREFERENCED_PARAMETER(hwnd); return true; }
 
   /*
   void
@@ -195,7 +195,7 @@ namespace nauEngineSDK {
 
   bool
   WindowsApp::initApp(void* hwnd) {
-
+    UNREFERENCED_PARAMETER(hwnd);
     m_appName = "Nautilus Engine";
     m_windowClass = "Nautilus Class";
 
@@ -266,8 +266,8 @@ namespace nauEngineSDK {
     SceneManager::instance().init();
 
     //ANIMATION MANAGER
-    AnimationManager::startUp();
-    AnimationManager::instance().init();
+    //AnimationManager::startUp();
+    //AnimationManager::instance().init();
 
     //INPUT MANAGER
     g_inputManager->init();

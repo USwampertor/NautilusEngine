@@ -40,7 +40,10 @@ namespace nauEngineSDK {
 
   Color
   Neuron::toColor() {
-    return Color(255 * m_weight, 255 * m_weight, 255 * m_weight, 255);
+    return Color(static_cast<uint32>(255 * m_weight), 
+                 static_cast<uint32>(255 * m_weight), 
+                 static_cast<uint32>(255 * m_weight), 
+                 255);
   }
 
   void

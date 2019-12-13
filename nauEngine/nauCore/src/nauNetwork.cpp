@@ -187,41 +187,41 @@ namespace nauEngineSDK {
 
   void
   NeuralNetwork::operator<<(FileStream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::operator<<(fstream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::write(FileStream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::write(fstream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::operator>>(FileStream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::operator>>(fstream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
   void
   NeuralNetwork::read(FileStream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
   void
   NeuralNetwork::read(fstream& stream) {
-
+    UNREFERENCED_PARAMETER(stream);
   }
 
 }

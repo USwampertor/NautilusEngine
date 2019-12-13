@@ -8,13 +8,10 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
-//#include <d3d11.h>
 #include <vector>
 #include <stdio.h>
 #include <string>
 #include <nauGraphicsAPI.h>
-
-//#include "nauTestApp.h"
 
 #include <nauWindowsApp.h>
 

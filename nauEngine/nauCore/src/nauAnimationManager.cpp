@@ -25,8 +25,8 @@ namespace nauEngineSDK {
       auto animator = 
         reinterpret_cast<AnimatorComponent*>(puppet->getComponent(COMPONENT::ANIMATOR));
       if (animator->m->isPlaying()) {
-        auto mesh =
-          reinterpret_cast<MeshComponent*>(puppet->getComponent(COMPONENT::MESH));
+        //auto mesh =
+        //  reinterpret_cast<MeshComponent*>(puppet->getComponent(COMPONENT::MESH));
       }
     }
   }

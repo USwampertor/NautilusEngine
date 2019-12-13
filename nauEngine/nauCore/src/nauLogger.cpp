@@ -56,6 +56,9 @@ namespace nauEngineSDK {
                    LOGGER_LEVEL::E level,
                    Color color,
                    float duration) {
+    UNREFERENCED_PARAMETER(duration);
+    UNREFERENCED_PARAMETER(color);
+    
     String outputString = "(";
     outputString.append(Clock::instance().hour());
     outputString.append("): ");

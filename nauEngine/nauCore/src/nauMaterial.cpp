@@ -17,7 +17,8 @@ namespace nauEngineSDK {
     mat.open(path, STREAMACCESS::READ);
     mat.m_data.data();
 
-    char* pch = std::strtok(mat.m_data.data(), "=");
+    char* matData = std::strtok(mat.m_data.data(), "=");
+    UNREFERENCED_PARAMETER(matData);
 
     return true;
   }

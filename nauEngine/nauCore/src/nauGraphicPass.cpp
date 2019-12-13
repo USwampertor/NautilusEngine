@@ -132,12 +132,12 @@ namespace nauEngineSDK {
 
   void
   GBPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   GBPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
@@ -218,12 +218,12 @@ namespace nauEngineSDK {
 
   void
   SSAOPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   SSAOPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
@@ -268,18 +268,18 @@ namespace nauEngineSDK {
 
   void
   ReductionPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   ReductionPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  ReductionPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
-
-
+  ReductionPass::render(Vector<GameObject*> orderedList, Device* pDevice) {
+    UNREFERENCED_PARAMETER(pDevice);
+    UNREFERENCED_PARAMETER(orderedList);
   }
 
   void
@@ -310,17 +310,18 @@ namespace nauEngineSDK {
 
   void
   BlurPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   BlurPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  BlurPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
-
+  BlurPass::render(Vector<GameObject*> orderedList, Device* pDevice) {
+    UNREFERENCED_PARAMETER(pDevice); 
+    UNREFERENCED_PARAMETER(orderedList);
 
   }
 
@@ -352,16 +353,16 @@ namespace nauEngineSDK {
 
   void
   LightningPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   LightningPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  LightningPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
+  LightningPass::render(Vector<GameObject*> orderedList, Device* pDevice) {
 
     setVertexShader(pDevice);
     setPixelShader(pDevice);
@@ -395,18 +396,18 @@ namespace nauEngineSDK {
 
   void
   LuminancePass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   LuminancePass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  LuminancePass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
-
-
+  LuminancePass::render(Vector<GameObject*> orderedList, Device* pDevice) {
+    UNREFERENCED_PARAMETER(orderedList);
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
@@ -472,16 +473,16 @@ namespace nauEngineSDK {
 
   void
   FinalPass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   FinalPass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  FinalPass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
+  FinalPass::render(Vector<GameObject*> orderedList, Device* pDevice) {
     pDevice->setRenderTargets(m_renderTargets, *m_depthStencil);
     setPixelShader(pDevice);
     setVertexShader(pDevice);
@@ -491,7 +492,7 @@ namespace nauEngineSDK {
     m_info.m_color->clearView(pDevice, Vector4(0.5f, 0.5f, 0.5f, 1.0f));
     m_depthStencil->clearView(pDevice);
 
-    auto model = reinterpret_cast<MeshComponent*>(m_orderedList[0]->getComponent(COMPONENT::MESH));
+    auto model = reinterpret_cast<MeshComponent*>(orderedList[0]->getComponent(COMPONENT::MESH));
     model->m_model->m_meshes[0]->m_material->setMaterial(m_colorTexture,
       MATERIAL_FLAG::BASECOLOR);
     model->m_model->drawMesh();
@@ -526,17 +527,17 @@ namespace nauEngineSDK {
 
   void
   ComputePass::setLayout(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
   ComputePass::setShaderSampler(Device* pDevice) {
-
+    UNREFERENCED_PARAMETER(pDevice);
   }
 
   void
-  ComputePass::render(Vector<GameObject*> m_orderedList, Device* pDevice) {
-
+  ComputePass::render(Vector<GameObject*> orderedList, Device* pDevice) {
+    UNREFERENCED_PARAMETER(orderedList);
     setComputeShader(pDevice);
   }
 

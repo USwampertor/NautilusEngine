@@ -29,7 +29,6 @@
     <ClInclude Include="include\imstb_truetype.h" />
     <ClInclude Include="include\nauAnimation.h" />
     <ClInclude Include="include\nauAnimationBone.h" />
-    <ClInclude Include="include\nauAnimationManager.h" />
     <ClInclude Include="include\nauAnimator.h" />
     <ClInclude Include="include\nauAudioClip.h" />
     <ClInclude Include="include\nauAudioSource.h" />
@@ -99,7 +98,6 @@
     <ClCompile Include="src\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui_widgets.cpp" />
     <ClCompile Include="src\nauAnimation.cpp" />
-    <ClCompile Include="src\nauAnimationManager.cpp" />
     <ClCompile Include="src\nauAnimator.cpp" />
     <ClCompile Include="src\nauAudioClip.cpp" />
     <ClCompile Include="src\nauAudioSource.cpp" />

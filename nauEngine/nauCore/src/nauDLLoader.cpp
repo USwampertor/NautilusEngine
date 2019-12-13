@@ -50,7 +50,7 @@ namespace nauEngineSDK {
       logger += " with given name: ";
       logger += path;
       logger += " and errors: ";
-      logger += err;
+      logger += std::to_string(err);
 
       Logger::instance().toIDE(logger, LOGGER_LEVEL::ERRORED);
 
