@@ -116,6 +116,7 @@ namespace nauEngineSDK {
           else {
             if (ImGui::SmallButton("Stop")) { anim->m->stop(); }
           }
+          if (ImGui::SmallButton("Pause")) { anim->m->pause(); }
           ImGui::Text("Animations");
           for (auto animName : anim->m->getAnimationNames() )
             if (ImGui::SmallButton(animName.c_str())) {

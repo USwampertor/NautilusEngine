@@ -10,6 +10,9 @@
 
 #include "nauAnimation.h"
 
+
+#include "nauSkeleton.h"
+
 namespace nauEngineSDK {
   void
   Animation::init(aiAnimation* animation, Map<String, Bone*> sceneBones) {
@@ -95,6 +98,44 @@ namespace nauEngineSDK {
     Vector<Matrix4> finalMatrix;
 
     return finalMatrix;
+  }
+
+  bool
+  Animation::createBindAnimation(Sptr<Skeleton> skeleton, String fileName) {
+    String name = fileName;
+    name.append("BindPose");
+    auto boneMap = skeleton->getAllBones();
+
+    m_name = name;
+    m_ticksPerSecond = 1.0f;
+    m_duration = 1.0f;
+    m_loop = false;
+    m_frame = 0;
+
+    m_channels.reserve(boneMap->size());
+
+
+    for (auto it = boneMap->begin(); it != boneMap->end(); ++it) {
+      AnimationBone* newBone = new AnimationBone();
+      newBone->ID = it->second->m_ID;
+      newBone->m_name = it->second->m_name;
+
+      Vector3 position = { it->second->m_worldPosition.m[0][3],
+                           it->second->m_worldPosition.m[1][3],
+                           it->second->m_worldPosition.m[2][3] };
+      Quaternion rotation;
+      rotation.setRotationMatrix(it->second->m_worldPosition.getRotationMatrix());
+      Vector3 scale = { it->second->m_worldPosition.m[0][0],
+                        it->second->m_worldPosition.m[1][1],
+                        it->second->m_worldPosition.m[2][2] };
+
+      newBone->m_positions.push_back(std::make_pair(0.0f, position));
+      newBone->m_rotations.push_back(std::make_pair(0.0f, rotation));
+      newBone->m_scale.push_back(std::make_pair(0.0f, scale));
+      
+      m_channels.push_back(newBone);
+    }
+    return true;
   }
 
 }

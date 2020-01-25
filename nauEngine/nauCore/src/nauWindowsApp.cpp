@@ -71,7 +71,16 @@ namespace nauEngineSDK {
                                                           CameraManager::instance().m_cameraSpeed);
     }
 
-    
+    for (auto obj :
+      SceneManager::instance().getActiveScene()->m_sceneGraph->getSceneGameObjects()) {
+      if (obj->getGameObject()->getComponent(COMPONENT::ANIMATOR) != nullptr) {
+        auto animator = reinterpret_cast<AnimatorComponent*>(obj->getGameObject()->getComponent(COMPONENT::ANIMATOR));
+        if (animator->m->isPlaying()) {
+          animator->m->update(Clock::instance().deltaTime());
+        }
+        auto mesh = reinterpret_cast<MeshComponent*>(obj->getGameObject()->getComponent(COMPONENT::MESH));
+      }
+    }
   }
 
   void

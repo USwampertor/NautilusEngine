@@ -20,6 +20,13 @@
 #include <assimp/postprocess.h>
 
 namespace nauEngineSDK {
+
+
+/**
+ * FORWARD DECLARATION
+ */
+class Skeleton;
+
 class Animation : public Resource
 {
 public:
@@ -60,6 +67,9 @@ public:
    */
   Vector<Matrix4>
   getFrame();
+
+  bool
+  createBindAnimation(Sptr<Skeleton> skeleton, String fileName);
 
   /**
    * String name of the animation

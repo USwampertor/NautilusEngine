@@ -47,6 +47,11 @@ namespace nauEngineSDK {
   Animachine::stop() {
     m_active = false;
     m_frame = 0.0f;
+    for (auto animation : m_animations) {
+      if (animation->m_name.find("BindPose") != String::npos) {
+        setAnimation(animation->m_name);
+      }
+    }
   }
 
   void

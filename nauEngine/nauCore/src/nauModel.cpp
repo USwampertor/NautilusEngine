@@ -172,8 +172,13 @@ namespace nauEngineSDK {
       Sptr<Animachine> animator = 
         std::static_pointer_cast<Animachine>(ResourceManager::instance().create(newExtension,
                                                                               RESOURCETYPE::ANIMATOR));
+      animator->getAnimations().reserve(scene->mNumAnimations + 1);
 
-      animator->getAnimations().reserve(scene->mNumAnimations);
+      Sptr<Animation> bindPose = 
+        std::static_pointer_cast<Animation>(ResourceManager::instance().create(newExtension + "BindPose",
+                                                                               RESOURCETYPE::ANIMATION));
+      bindPose->createBindAnimation(m_skeleton, newExtension);
+      animator->addAnimation(bindPose);
 
       for (i = 0; i < scene->mNumAnimations; ++i) {
 
@@ -182,14 +187,12 @@ namespace nauEngineSDK {
         newExtension.append(scene->mAnimations[i]->mName.C_Str());
 
         Sptr<Animation> animation =
-        std::static_pointer_cast<Animation>(ResourceManager::instance().create(newExtension,
-                                                                               RESOURCETYPE::ANIMATION));
+         std::static_pointer_cast<Animation>(ResourceManager::instance().create(newExtension,
+                                                                                RESOURCETYPE::ANIMATION));
         animation->init(scene->mAnimations[i], sceneBones);
         animator->addAnimation(animation);
       }
-
     }
-
   }
 
   void
