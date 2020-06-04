@@ -97,6 +97,11 @@ namespace nauEngineSDK {
   Animation::getFrame() {
     Vector<Matrix4> finalMatrix;
 
+
+    for (auto frame : m_channels) {
+      
+    }
+
     return finalMatrix;
   }
 
