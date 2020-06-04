@@ -370,6 +370,38 @@ namespace nauEngineSDK {
     return toRotate + uv + uuv;
   }
 
+  Quaternion
+  Quaternion::slerp(Quaternion& q1, Quaternion& q2, float time) {
+    q1.normalize();
+    q2.normalize();
+
+    float dotProduct = Quaternion::dot(q1, q2);
+
+    if (dotProduct < 0.0f) {
+      q1 *= -1.0f;
+      dotProduct *= -1.0f;
+    }
+
+    float threshold = 0.9995f;
+
+    if (dotProduct > threshold) {
+      Quaternion result = q1 + ((q2 - q1) * time);
+      result.normalize();
+      return result;
+    }
+
+    float angleBetween = Math::acos(dotProduct);
+    float theta = angleBetween * time;
+    float sinTheta = Math::sin(theta);
+    float sinOfSin = Math::sin(sinTheta);
+
+    float s1 = Math::cos(theta) - dotProduct * sinTheta / sinOfSin;
+    float s2 = sinTheta / sinOfSin;
+
+    return (q1 * s1) + (q2 * s2);
+
+  }
+
 
   void
   Quaternion::rotateAroundRadians(const float& theta, Quaternion axis) {

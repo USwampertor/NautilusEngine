@@ -538,6 +538,18 @@ class NAU_UTILITY_EXPORT Quaternion {
   rotateAround(Quaternion q, Vector3 axis);
 
   /**
+   * @brief circular interpolates two quaternions
+   * @param Quaternion A
+   * @param Quaternion B
+   * @param float time between 0 and 1
+   * @return 
+   *
+   */
+  static Quaternion
+  slerp(Quaternion& q1, Quaternion& q2, float time);
+
+
+  /**
    * @brief 
    * @param 
    * @return 

@@ -9,6 +9,7 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #include "nauMatrix4.h"
+#include "nauQuaternion.h"
 
 namespace nauEngineSDK {
 
@@ -77,21 +78,41 @@ m[0 + x][2 + y] = mat3.m[0][2];  m[1 + x][2 + y] = mat3.m[1][2]; m[2 + x][2 + y]
   }
 
   void
-    Matrix4::setValues(Matrix3 mat3) {
+  Matrix4::setValues(Matrix3 mat3) {
     m[0][0] = mat3.m[0][0];  m[1][0] = mat3.m[1][0]; m[2][0] = mat3.m[2][0];
     m[0][1] = mat3.m[0][1];  m[1][1] = mat3.m[1][1]; m[2][1] = mat3.m[2][1];
     m[0][2] = mat3.m[0][2];  m[1][2] = mat3.m[1][2]; m[2][2] = mat3.m[2][2];
   }
 
   void
-    Matrix4::translate(const float& x, const float& y, const float& z) {
+  Matrix4::setTransformMatrix(Vector3 position, Quaternion rotation, Vector3 scale) {
+    *this = Matrix4::IDENTITY;
+
+  }
+
+  void
+  Matrix4::setPosition(const float& x, const float& y, const float& z) {
+    m[0][3] = x;
+    m[1][3] = y;
+    m[2][3] = z;
+  }
+
+  void
+  Matrix4::setPosition(const Vector3& position) {
+    m[0][3] = position.x;
+    m[1][3] = position.y;
+    m[2][3] = position.z;
+  }
+
+  void
+  Matrix4::translate(const float& x, const float& y, const float& z) {
     m[0][3] += x;
     m[1][3] += y;
     m[2][3] += z;
   }
 
   void
-    Matrix4::translate(const Vector3& position) {
+  Matrix4::translate(const Vector3& position) {
     m[0][3] += position.x;
     m[1][3] += position.y;
     m[2][3] += position.z;

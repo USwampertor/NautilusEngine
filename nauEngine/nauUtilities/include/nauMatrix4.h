@@ -20,6 +20,9 @@ namespace nauEngineSDK{
   /**
    * Enum for static specific matrices
    */
+
+  class Quaternion;
+
   namespace FORCE_INIT {
     enum E {
       ZERO,
@@ -133,6 +136,37 @@ namespace nauEngineSDK{
      */
     void
     setValues(Matrix3 mat3);
+
+    /**
+     * @brief Creates a Transformation matrix from a position, rotation and scale
+     * @param Vector3 Position the position to set
+     * @param Quaternion Rotation the rotation to set
+     * @param Vector3 Scale the scale to set
+     * @return 
+     *
+     */
+    void
+    setTransformMatrix(Vector3 position, Quaternion rotation, Vector3 scale);
+
+    /**
+     * @brief Sets a translation in the matrix with floats
+     * @param x position
+     * @param y position
+     * @param z position
+     * @return 
+     *
+     */
+    void
+    setPosition(const float& x, const float& y, const float& z);
+
+    /**
+     * @brief Sets a translation in the matrix with a Vector3
+     * @param Vector3 position
+     * @return
+     *
+     */
+    void
+    setPosition(const Vector3& position);
 
     /**
      * @brief Translates matrix with floats
