@@ -27,6 +27,7 @@ namespace nauEngineSDK {
   {
     enum E
     {
+      TRANSFORM,
       MESH,
       COLLIDER,
       SOURCE,
@@ -67,6 +68,25 @@ namespace nauEngineSDK {
      */
     COMPONENT::E m_type;
 
+  };
+
+  class NAU_CORE_EXPORT TransformComponent : public Component
+  {
+  public:
+    /**
+     * Default constructor
+     */
+    TransformComponent() = default;
+
+    /**
+     * Default destructor
+     */
+    ~TransformComponent() = default;
+
+    Transform* m;
+
+    virtual COMPONENT::E
+    getType() override { return COMPONENT::TRANSFORM; }
   };
 
   class NAU_CORE_EXPORT CameraComponent : public Component
