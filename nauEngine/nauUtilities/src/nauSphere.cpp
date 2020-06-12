@@ -25,7 +25,7 @@ namespace nauEngineSDK {
    */
   bool
   Sphere::collidingSphere(const Sphere& other) {
-    return Math::sqr(m_radius + other.m_radius) == 
-           Vector3::sqrDistance(m_center,other.m_center);
+    return Math::sqr(m_radius + other.m_radius) >
+           Vector3::sqrDistance(m_center , other.m_center);
   }
 }

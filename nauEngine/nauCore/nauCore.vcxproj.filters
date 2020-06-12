@@ -247,6 +247,9 @@
     <ClInclude Include="include\nauGraphicPass.h">
       <Filter>Source Files\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauTransform.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">

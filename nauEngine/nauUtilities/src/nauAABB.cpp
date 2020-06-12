@@ -13,13 +13,13 @@
 namespace nauEngineSDK {
   AABB::AABB(const Vector3& minTip, const Vector3& maxTip) 
     :
-    m_minCorner (minTip),
-    m_maxCorner (maxTip)
+    m_min (minTip),
+    m_max (maxTip)
     {}
   AABB::AABB(const Vector3& origin, float height, float width, float lenght) 
     :
-    m_minCorner (origin),
-    m_maxCorner (origin.x + width, origin.y + height,origin.z + lenght)
+    m_min (origin),
+    m_max (origin.x + width, origin.y + height,origin.z + lenght)
     {}
   
   /**
@@ -27,14 +27,14 @@ namespace nauEngineSDK {
    */
   bool
   AABB::collidingAABB(const AABB& other) {
-    return  insideBox(other.m_minCorner) && insideBox(other.m_maxCorner);
+    return  insideBox(other.m_min) && insideBox(other.m_max);
   }
   bool
   AABB::insideBox(const Vector3& other) {
     return  
-      (other.x > m_minCorner.x) && (other.x < m_maxCorner.x) &&
-      (other.y > m_minCorner.y) && (other.y < m_maxCorner.y) &&
-      (other.z > m_minCorner.z) && (other.z < m_maxCorner.z);
+      (other.x > m_min.x) && (other.x < m_max.x) &&
+      (other.y > m_min.y) && (other.y < m_max.y) &&
+      (other.z > m_min.z) && (other.z < m_max.z);
   }
 
 

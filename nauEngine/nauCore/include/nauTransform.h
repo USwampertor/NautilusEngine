@@ -28,26 +28,6 @@ struct NAU_CORE_EXPORT Transform
 
 
 public:
-  
-  Vector3
-  getLocalPosition();
-
-  Vector3
-  getWorldPosition();
-
-  Quaternion
-  getWorldRotation();
-
-  Quaternion
-  getLocalRotation();
-
-  Vector3
-  getLocalScale();
-
-  Vector3
-  getWorldScale();
-
-private:
   Vector3 position;
 
   Quaternion rotation;

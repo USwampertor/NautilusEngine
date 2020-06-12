@@ -94,6 +94,9 @@
     <ClCompile Include="src\nauColor.cpp">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="src\nauCapsule.cpp">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h">
@@ -190,6 +193,12 @@
       <Filter>Archivos de origen\System</Filter>
     </ClInclude>
     <ClInclude Include="include\nauColor.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauCollisions.h">
+      <Filter>Archivos de origen\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nauCapsule.h">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
   </ItemGroup>

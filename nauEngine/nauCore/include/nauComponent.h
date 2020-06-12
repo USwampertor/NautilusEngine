@@ -18,6 +18,7 @@
 #include "nauResourceManager.h"
 #include "nauTexture.h"
 #include "nauCamera.h"
+#include "nauTransform.h"
 
 #include <nauMath.h>
 
@@ -73,6 +74,25 @@ namespace nauEngineSDK {
   class NAU_CORE_EXPORT TransformComponent : public Component
   {
   public:
+
+    Vector3
+    getLocalPosition();
+
+    Vector3
+    getWorldPosition();
+
+    Quaternion
+    getWorldRotation();
+
+    Quaternion
+    getLocalRotation();
+
+    Vector3
+    getLocalScale();
+
+    Vector3
+    getWorldScale();
+
     /**
      * Default constructor
      */
@@ -84,6 +104,7 @@ namespace nauEngineSDK {
     ~TransformComponent() = default;
 
     Transform* m;
+
 
     virtual COMPONENT::E
     getType() override { return COMPONENT::TRANSFORM; }

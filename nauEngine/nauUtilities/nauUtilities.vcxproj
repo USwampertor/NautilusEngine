@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\nauAABB.cpp" />
     <ClCompile Include="src\nauBox2d.cpp" />
+    <ClCompile Include="src\nauCapsule.cpp" />
     <ClCompile Include="src\nauColor.cpp" />
     <ClCompile Include="src\nauDataStream.cpp" />
     <ClCompile Include="src\nauDynamicLibrary.cpp" />
@@ -47,6 +48,8 @@
   <ItemGroup>
     <ClInclude Include="include\nauAABB.h" />
     <ClInclude Include="include\nauBox2d.h" />
+    <ClInclude Include="include\nauCapsule.h" />
+    <ClInclude Include="include\nauCollisions.h" />
     <ClInclude Include="include\nauColor.h" />
     <ClInclude Include="include\nauDataStream.h" />
     <ClInclude Include="include\nauDynamicLibrary.h" />

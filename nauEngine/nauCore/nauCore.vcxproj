@@ -82,6 +82,7 @@
     <ClInclude Include="include\nauTexture.h" />
     <ClInclude Include="include\nauTextureDescriptor.h" />
     <ClInclude Include="include\nauTimer.h" />
+    <ClInclude Include="include\nauTransform.h" />
     <ClInclude Include="include\nauUI.h" />
     <ClInclude Include="include\nauUIAPI.h" />
     <ClInclude Include="include\nauUISystem.h" />

@@ -79,12 +79,12 @@ namespace nauEngineSDK {
     /**
      * the lower corner component
      */
-    Vector3 m_minCorner;
+    Vector3 m_min;
 
     /**
      * the higher corner component
      */
-    Vector3 m_maxCorner;
+    Vector3 m_max;
 
   };
 }

@@ -21,14 +21,14 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	2dBox for a sprite
   */
-  class Box2d
+  class Box2D
   {
    public:
 
     /**
      * Default constructor
      */
-    Box2d() = default;
+    Box2D() = default;
 
     /**
      * @brief Constructor with limits of box2d
@@ -36,7 +36,7 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    Box2d(const Vector2& min, const Vector2& max);
+    Box2D(const Vector2& min, const Vector2& max);
 
     /**
      * @brief Constructor with
@@ -44,12 +44,12 @@ namespace nauEngineSDK {
      * @return 
      * 
      */
-    Box2d(const Vector2& origin, float height, float width);
+    Box2D(const Vector2& origin, float height, float width);
     
     /**
      * Default Destructor
      */
-    ~Box2d() = default;
+    ~Box2D() = default;
 
     /**
      * Collisions
@@ -62,7 +62,7 @@ namespace nauEngineSDK {
      * 
      */
     bool
-    collidingBox2d(const Box2d& other);
+    collidingBox2d(const Box2D& other);
 
     /**
      * @brief checks if one of the points is inside the box
