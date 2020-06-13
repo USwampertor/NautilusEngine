@@ -301,12 +301,13 @@ namespace nauEngineSDK {
 
     /**
      * @brief the scale of b over a
-     * @param a nauVector2 that is the reflection and b nauVector2 that reflects over
+     * @param Vector2 that is the reflection and b 
+     * @param Vector2 that reflects over
      * @return scale of b in a
      *
      */
     static FORCEINLINE int32
-    dotScale(const Vector2i& a, const Vector2i& b);
+    projection(const Vector2i& a, const Vector2i& b);
 
     /**
      * @brief the square distance

@@ -289,13 +289,14 @@ namespace nauEngineSDK {
     cross(const Vector3& a, const Vector3& b);
 
     /**
-     * @brief the scale of b over a
-     * @param a Vector3 that is the reflection and b Vector3 that reflects over
+     * @brief the projection of b over a
+     * @param Vector3 a the one used as scale
+     * @param Vector3 b the one projecting on a
      * @return scale of b in a
      *
      */
     static float
-    dotScale(const Vector3& a, const Vector3& b);
+    projection(const Vector3& a, const Vector3& b);
 
     /**
      * @brief the square distance

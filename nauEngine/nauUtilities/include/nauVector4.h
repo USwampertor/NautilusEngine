@@ -310,7 +310,7 @@ namespace nauEngineSDK {
      *
      */
     static FORCEINLINE float
-    dotScale(const Vector4& a, const Vector4& b);
+    projection(const Vector4& a, const Vector4& b);
 
     /**
      * @brief the square distance

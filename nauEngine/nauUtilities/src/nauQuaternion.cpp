@@ -201,7 +201,7 @@ namespace nauEngineSDK {
   }
   
   float
-  Quaternion::dotScale(const Quaternion& a, const Quaternion& b) {
+  Quaternion::projection(const Quaternion& a, const Quaternion& b) {
     return a | b / a.sqrMagnitude();
   }
 

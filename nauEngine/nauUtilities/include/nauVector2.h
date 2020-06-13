@@ -299,12 +299,13 @@ namespace nauEngineSDK {
 
     /**
      * @brief the scale of b over a
-     * @param a nauVector2 that is the reflection and b nauVector2 that reflects over
+     * @param Vector2 a that is used to scale
+     * @param Vector2 that reflects over
      * @return scale of b in a
      *
      */
     static FORCEINLINE float
-    dotScale(const Vector2& a, const Vector2& b);
+    projection(const Vector2& a, const Vector2& b);
 
     /**
      * @brief the square distance

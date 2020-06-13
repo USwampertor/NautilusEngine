@@ -176,7 +176,7 @@ namespace nauEngineSDK {
   }
 
   FORCEINLINE float
-  Vector2::dotScale(const Vector2& a, const Vector2& b) {
+  Vector2::projection(const Vector2& a, const Vector2& b) {
     return (a | b) / a.magnitude();
   }
 

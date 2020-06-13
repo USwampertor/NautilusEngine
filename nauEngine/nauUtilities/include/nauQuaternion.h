@@ -302,7 +302,7 @@ class NAU_UTILITY_EXPORT Quaternion {
    *
    */
   static float
-  dotScale(const Quaternion& a, const Quaternion& b);
+  projection(const Quaternion& a, const Quaternion& b);
 
   /**
    * @brief gets the angle in radians between two quaternions

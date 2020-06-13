@@ -178,7 +178,7 @@ namespace nauEngineSDK {
   }
 
   FORCEINLINE int32
-  Vector2i::dotScale(const Vector2i& a, const Vector2i& b) {
+  Vector2i::projection(const Vector2i& a, const Vector2i& b) {
     return (a | b) / a.magnitude();
   }
 

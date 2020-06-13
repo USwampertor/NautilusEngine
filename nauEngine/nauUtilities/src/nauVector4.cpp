@@ -193,7 +193,7 @@ namespace nauEngineSDK {
   }
 
   float
-  Vector4::dotScale(const Vector4& a, const Vector4& b) {
+  Vector4::projection(const Vector4& a, const Vector4& b) {
     return (a | b) / Math::sqr(a.magnitude());
   }
 

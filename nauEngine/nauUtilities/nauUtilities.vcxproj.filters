@@ -195,10 +195,10 @@
     <ClInclude Include="include\nauColor.h">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauCollisions.h">
+    <ClInclude Include="include\nauCapsule.h">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
-    <ClInclude Include="include\nauCapsule.h">
+    <ClInclude Include="include\nauPhysics.h">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
