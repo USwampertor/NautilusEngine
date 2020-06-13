@@ -31,6 +31,40 @@ namespace nauEngineSDK {
   class Physics
   {
     /**
+     * Closest Points
+     */
+    inline static 
+    Vector3 ClosestPointOOBB(const Vector3& point, const OOBB& oobb) {
+      Vector3 distance = point - oobb.center;
+
+      Vector3 closestPoint = oobb.center;
+
+      float currentDistance = Vector3::dot(distance, oobb.m_xAxis);
+
+      if (currentDistance > oobb.widthX) { currentDistance = oobb.widthX; }
+      if (currentDistance < -oobb.widthX) { currentDistance = -oobb.widthX; }
+
+      closestPoint += oobb.m_xAxis * currentDistance;
+
+      float currentDistance = Vector3::dot(distance, oobb.m_yAxis);
+
+      if (currentDistance > oobb.heightY) { currentDistance = oobb.heightY; }
+      if (currentDistance < -oobb.heightY) { currentDistance = -oobb.heightY; }
+
+      closestPoint += oobb.m_yAxis * currentDistance;
+
+      float currentDistance = Vector3::dot(distance, oobb.m_zAxis);
+
+      if (currentDistance > oobb.lengthZ) { currentDistance = oobb.lengthZ; }
+      if (currentDistance < -oobb.lengthZ) { currentDistance = -oobb.lengthZ; }
+
+      closestPoint += oobb.m_zAxis * currentDistance;
+
+      return closestPoint;
+    }
+
+
+    /**
      * Collisions
      */
 
@@ -63,9 +97,9 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionOOBBPlane(const OOBB& oobb, const Plane& plane) {
-      float radius = (oobb.widthX / 2)  * Math::abs(Vector3::dot(plane, oobb.m_xAxis));
-                     (oobb.heightY / 2) * Math::abs(Vector3::dot(plane, oobb.m_yAxis));
-                     (oobb.lengthZ / 2) * Math::abs(Vector3::dot(plane, oobb.m_zAxis));
+      float radius = oobb.widthX  * Math::abs(Vector3::dot(plane, oobb.m_xAxis));
+                     oobb.heightY * Math::abs(Vector3::dot(plane, oobb.m_yAxis));
+                     oobb.lengthZ * Math::abs(Vector3::dot(plane, oobb.m_zAxis));
       float difference = Vector3::dot(plane, oobb.center) - plane.d;
       return Math::abs(difference) <= radius;
     }
@@ -78,7 +112,10 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionOOBBSphere(const OOBB& oobb, const Sphere& sphere) {
-      return false;
+      Vector3 closestPoint = ClosestPointOOBB(sphere.m_center, oobb);
+
+      Vector3 vector = closestPoint - sphere.m_center;
+      return vector.sqrMagnitude() <= sphere.m_radius * sphere.m_radius;
     }
 
     /**
