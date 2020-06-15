@@ -11,13 +11,14 @@
 
 #include "nauPrerequisitesUtil.h"
 
+#include "nauAABB.h"
+#include "nauBox2d.h"
+#include "nauOOBB.h"
+#include "nauPlane.h"
 #include "nauPlatformMath.h"
 #include "nauSphere.h"
-#include "nauBox2d.h"
-#include "nauAABB.h"
-#include "nauOOBB.h"
+#include "nauTriangle.h"
 #include "nauVector3.h"
-#include "nauPlane.h"
 
 namespace nauEngineSDK {
 
@@ -28,13 +29,93 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class Physics
+  class NAU_UTILITY_EXPORT Physics
   {
     /**
-     * Closest Points
+     * Closest Points and distances
      */
+
+    /**
+     * @brief Given a normalized plane, returns the closest point 
+     *        between a point and the plane
+     * @param const Vector3& point the point reference
+     * @param const Plane& plane the plane to get the nearest point
+     * @return Vector3 the point reflected on the plane nearest to the point
+     *
+     */
+    inline static
+    Vector3 closestPointPlane(const Vector3& point, const Plane& plane) {
+      float t = Vector3::dot(plane, point) - plane.d;
+      return point - (plane * t);
+    }
+
+    /**
+     * @brief Given a normalized plane, returns the distance between a plane
+     *        and a point in space
+     * @param const Vector3& point
+     * @param const Plane& plane
+     * @return float 
+     *
+     */
+    inline static
+    float distancePointPlane(const Vector3& point, const Plane& plane) {
+      return Vector3::dot(plane, point) - plane.d;
+    }
+
+    inline static
+    Vector3 closestPointTriangle(Vector3 point, Triangle triangle) {
+      Vector3 ab = triangle.m_b - triangle.m_a;
+      Vector3 ac = triangle.m_c - triangle.m_a;
+      Vector3 ap = point        - triangle.m_a;
+
+      float distance1 = Vector3::dot(ab, ap);
+      float distance2 = Vector3::dot(ac, ap);
+
+      if (distance1 <= 0.0f && distance2 <= 0.0f) { return triangle.m_a; }
+
+      Vector3 bp = point - triangle.m_b;
+
+      float distance3 = Vector3::dot(ab, bp);
+      float distance4 = Vector3::dot(ac, bp);
+      
+      if (distance3 >= 0.0f && distance4 <= distance3) { return triangle.m_b; }
+
+      float vc = distance1 * distance4 - distance3 * distance2;
+      if (vc <= 0.0f && distance1 >= 0.0f && distance3 <= 0.0f) {
+        float v = distance1 / (distance1 - distance3);
+        return triangle.m_a + (ab * v);
+      }
+
+      Vector3 cp = point - triangle.m_c;
+
+      float distance5 = Vector3::dot(ab, cp);
+      float distance6 = Vector3::dot(ac, cp);
+
+      if (distance6 >= 0.0f && distance5 <= distance6) { return triangle.m_c; }
+
+      float vb = distance5 * distance2 - distance1 * distance6;
+      if (vb <= 0.0f && distance2 >= 0.0f && distance6 <= 0.0f) {
+        float w = distance2 / (distance2 - distance6);
+        return triangle.m_a + (ac * w);
+      }
+
+      float va = distance3 * distance6 - distance5 * distance4;
+      if (va <= 0.0f && (distance4 - distance3) >= 0.0f && (distance5 - distance6) >= 0.0f) {
+        float w = (distance4 - distance3) / ((distance4 - distance3) + (distance5 - distance6));
+        return triangle.m_b + (triangle.m_c - triangle.m_b) * w;
+      }
+
+      float denom = 1.0f / (va + vb + vc);
+      float v = vb * denom;
+      float w = vc * denom;
+
+      return triangle.m_a + ab * v + ac * w;
+
+    }
+
+
     inline static 
-    Vector3 ClosestPointOOBB(const Vector3& point, const OOBB& oobb) {
+    Vector3 closestPointOOBB(const Vector3& point, const OOBB& oobb) {
       Vector3 distance = point - oobb.center;
 
       Vector3 closestPoint = oobb.center;
@@ -63,6 +144,22 @@ namespace nauEngineSDK {
       return closestPoint;
     }
 
+    inline static
+    Vector3 closestPointAABB(const Vector3& point, const AABB& aabb) {
+      
+      Vector3 closestPoint;
+      
+      for (int i = 0; i < 3; ++i) {
+        float v = point[i];
+        v = Math::max(v, aabb.m_min[i]);
+        v = Math::min(v, aabb.m_max[i]);
+
+        closestPoint[i] = v;
+      }
+
+      return closestPoint;
+    }
+    
 
     /**
      * Collisions
@@ -112,10 +209,9 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionOOBBSphere(const OOBB& oobb, const Sphere& sphere) {
-      Vector3 closestPoint = ClosestPointOOBB(sphere.m_center, oobb);
+      Vector3 closestPoint = closestPointOOBB(sphere.m_center, oobb);
 
-      Vector3 vector = closestPoint - sphere.m_center;
-      return vector.sqrMagnitude() <= sphere.m_radius * sphere.m_radius;
+      return collisionSpherePoint(sphere, closestPoint);
     }
 
     /**
@@ -139,11 +235,10 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionAABBSphere(const AABB& aabb, const Sphere& sphere) {
-      Vector3 boxPoint = { Math::max(aabb.m_min.x, Math::min(sphere.m_center.x, aabb.m_max.x)),
-                           Math::max(aabb.m_min.y, Math::min(sphere.m_center.y, aabb.m_max.y)),
-                           Math::max(aabb.m_min.z, Math::min(sphere.m_center.z, aabb.m_max.z)),
-      };
-      return collisionSpherePoint(sphere, boxPoint);
+      
+      Vector3 closestPoint = closestPointAABB(sphere.m_center, aabb);
+
+      return collisionSpherePoint(sphere, closestPoint);
     }
 
     /**
@@ -174,12 +269,23 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionSpherePoint(const Sphere& sphere, const Vector3& point) {
-      float distance = Math::sqrt((point.x - sphere.m_center.x) * (point.x - sphere.m_center.x) +
-                                  (point.y - sphere.m_center.y) * (point.y - sphere.m_center.y) +
-                                  (point.z - sphere.m_center.z) * (point.z - sphere.m_center.z));
-      return distance < sphere.m_radius;
+
+      Vector3 distance = point - sphere.m_center;
+      return distance.sqrMagnitude() <= sphere.m_radius * sphere.m_radius;
     }
 
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    inline static bool
+    collisionSphereTriangle(const Sphere& sphere, const Triangle& triangle) {
+      Vector3 closestPoint = closestPointTriangle(sphere.m_center, triangle);
+
+      return collisionSpherePoint(sphere, closestPoint);
+    }
 
     /**
      * @brief Collision between Sphere and Box2D objects
@@ -188,7 +294,7 @@ namespace nauEngineSDK {
      *
      */
     inline static bool
-    collisionBoxSphere(const Sphere& sphere, const Box2D& box) {
+    collisionBox2DSphere(const Sphere& sphere, const Box2D& box) {
 
       Vector2 sphereD;
       sphereD.x = Math::abs(sphere.m_center.x - (box.m_max.x / 2));

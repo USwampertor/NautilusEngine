@@ -22,7 +22,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	Collision detection of static aligned objects
   */
-  class AABB
+  class NAU_UTILITY_EXPORT AABB
   {
    public:
 

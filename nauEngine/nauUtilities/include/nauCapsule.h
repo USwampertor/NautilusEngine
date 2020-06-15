@@ -22,7 +22,7 @@ namespace nauEngineSDK {
    * Sample usage:
    * 	
    */
-  class Capsule
+  class NAU_UTILITY_EXPORT Capsule
   {
   public:
     /**

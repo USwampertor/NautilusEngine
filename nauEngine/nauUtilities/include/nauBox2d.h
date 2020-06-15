@@ -21,7 +21,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	2dBox for a sprite
   */
-  class Box2D
+  class NAU_UTILITY_EXPORT Box2D
   {
    public:
 

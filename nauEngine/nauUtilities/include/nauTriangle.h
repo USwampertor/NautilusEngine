@@ -50,17 +50,17 @@ namespace nauEngineSDK {
     /**
      * 1st vertex
      */
-    Vector3 m_vert0;
+    Vector3 m_a;
 
     /**
      * 2nd vertex
      */
-    Vector3 m_vert1;
+    Vector3 m_b;
 
     /**
      * 3rd vertex
      */
-    Vector3 m_vert2;
+    Vector3 m_c;
   };
 }
 

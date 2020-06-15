@@ -20,7 +20,7 @@ namespace nauEngineSDK {
   * Sample usage:
   * 	Camera frustrum
   */
-  class Frustrum
+  class NAU_UTILITY_EXPORT Frustrum
   {
   public:
     
