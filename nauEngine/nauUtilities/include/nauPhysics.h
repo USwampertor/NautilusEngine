@@ -13,6 +13,7 @@
 
 #include "nauAABB.h"
 #include "nauBox2d.h"
+#include "nauCapsule.h"
 #include "nauOOBB.h"
 #include "nauPlane.h"
 #include "nauPlatformMath.h"
@@ -31,6 +32,7 @@ namespace nauEngineSDK {
    */
   class NAU_UTILITY_EXPORT Physics
   {
+   public:
     /**
      * Closest Points and distances
      */
@@ -50,16 +52,77 @@ namespace nauEngineSDK {
     }
 
     /**
-     * @brief Given a normalized plane, returns the distance between a plane
-     *        and a point in space
-     * @param const Vector3& point
-     * @param const Plane& plane
-     * @return float 
+     * @brief 
+     * @param 
+     * @return 
      *
      */
     inline static
-    float distancePointPlane(const Vector3& point, const Plane& plane) {
-      return Vector3::dot(plane, point) - plane.d;
+    float closestPointSegmentSegment(const Vector3& point1_A, const Vector3& point1_B,
+                                     const Vector3& point2_A, const Vector3& point2_B) {
+      float s;
+      float t;
+      Vector3 c1;
+      Vector3 c2;
+
+      Vector3 distance1 = point1_B - point1_A;
+      Vector3 distance2 = point2_B - point2_A;
+
+      Vector3 r = point1_A - point2_A;
+
+      float a = distance1.sqrMagnitude();
+      float e = distance2.sqrMagnitude();
+      float f = Vector3::dot(distance2, r);
+
+      if (a <= std::numeric_limits<float>::epsilon() && 
+          e <= std::numeric_limits<float>::epsilon()) {
+        
+        return r.sqrMagnitude();
+      }
+
+      if (a <= std::numeric_limits<float>::epsilon()) {
+        // First segment degenerates into a point
+        s = 0.0f;
+        t = Math::clamp(f / e, 0.0f, 1.0f);
+      }
+      else {
+        float c = Vector3::dot(distance1, r);
+        if (e <= std::numeric_limits<float>::epsilon()) {
+          // Second segment degenerates into a point
+          t = 0.0f;
+          s = Math::clamp(-c / a, 0.0f, 1.0f); // t = 0 => s = (b*t - c) / a = -c / a
+        }
+        else {
+          // The general non degenerate case starts here
+          float b = Vector3::dot(distance1, distance2);
+          float denom = a * e - b * b; // Always nonnegative
+          // If segments not parallel, compute closest point on L1 to L2 and
+          // clamp to segment S1. Else pick arbitrary s (here 0)
+          if (denom != 0.0f) {
+            s = Math::clamp((b*f - c * e) / denom, 0.0f, 1.0f);
+          }
+          else s = 0.0f;
+          // Compute point on L2 closest to S1(s) using
+          // t = Dot((P1 + D1*s) - P2,D2) / Dot(D2,D2) = (b*s + f) / e
+          t = (b*s + f) / e;
+          // If t in [0,1] done. Else clamp t, recompute s for the new value
+          // of t using s = Dot((P2 + D2*t) - P1,D1) / Dot(D1,D1)= (t*b - c) / a
+          // and clamp s to [0, 1]
+          if (t < 0.0f) {
+            t = 0.0f;
+            s = Math::clamp(-c / a, 0.0f, 1.0f);
+          }
+          else if (t > 1.0f) {
+            t = 1.0f;
+            s = Math::clamp((b - c) / a, 0.0f, 1.0f);
+          }
+        }
+      }
+
+      c1 = point1_A + distance1 * s;
+      c2 = point2_A + distance1 * t;
+
+      return (c1 - c2).sqrMagnitude();
     }
 
     inline static
@@ -127,14 +190,14 @@ namespace nauEngineSDK {
 
       closestPoint += oobb.m_xAxis * currentDistance;
 
-      float currentDistance = Vector3::dot(distance, oobb.m_yAxis);
+      currentDistance = Vector3::dot(distance, oobb.m_yAxis);
 
       if (currentDistance > oobb.heightY) { currentDistance = oobb.heightY; }
       if (currentDistance < -oobb.heightY) { currentDistance = -oobb.heightY; }
 
       closestPoint += oobb.m_yAxis * currentDistance;
 
-      float currentDistance = Vector3::dot(distance, oobb.m_zAxis);
+      currentDistance = Vector3::dot(distance, oobb.m_zAxis);
 
       if (currentDistance > oobb.lengthZ) { currentDistance = oobb.lengthZ; }
       if (currentDistance < -oobb.lengthZ) { currentDistance = -oobb.lengthZ; }
@@ -194,8 +257,8 @@ namespace nauEngineSDK {
      */
     inline static bool
     collisionOOBBPlane(const OOBB& oobb, const Plane& plane) {
-      float radius = oobb.widthX  * Math::abs(Vector3::dot(plane, oobb.m_xAxis));
-                     oobb.heightY * Math::abs(Vector3::dot(plane, oobb.m_yAxis));
+      float radius = oobb.widthX  * Math::abs(Vector3::dot(plane, oobb.m_xAxis)) +
+                     oobb.heightY * Math::abs(Vector3::dot(plane, oobb.m_yAxis)) +
                      oobb.lengthZ * Math::abs(Vector3::dot(plane, oobb.m_zAxis));
       float difference = Vector3::dot(plane, oobb.center) - plane.d;
       return Math::abs(difference) <= radius;
@@ -288,6 +351,20 @@ namespace nauEngineSDK {
     }
 
     /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    inline static bool
+    collisionSphereCapsule(const Sphere& sphere, const Capsule& capsule) {
+      float sqDistance = sqDistPointSegment(sphere.m_center, capsule.m_A, capsule.m_B);
+      float radius = sphere.m_radius + capsule.m_radius;
+      return sqDistance <= radius * radius;
+
+    }
+
+    /**
      * @brief Collision between Sphere and Box2D objects
      * @param nauSphere sphere, nauBox2D box
      * @return true if colliding
@@ -312,6 +389,48 @@ namespace nauEngineSDK {
       return cornerDistance <= Math::sqr(sphere.m_radius);
     }
 
+    /**
+     * Distances
+     */
+
+     /**
+      * @brief Given a normalized plane, returns the distance between a plane
+      *        and a point in space
+      * @param const Vector3& point
+      * @param const Plane& plane
+      * @return float
+      *
+      */
+    inline static
+      float distancePointPlane(const Vector3& point, const Plane& plane) {
+      return Vector3::dot(plane, point) - plane.d;
+    }
+
+
+
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    inline static
+    float sqDistPointSegment(const Vector3& point, 
+                             const Vector3& segment_A, 
+                             const Vector3& segment_B) {
+    
+      Vector3 segment_AB = segment_B - segment_A;
+      Vector3 segment_AP = point - segment_A;
+      Vector3 segment_BP = point - segment_B;
+
+      float e = Vector3::dot(segment_AP, segment_AB);
+      if (e <= 0.0f) { return segment_AB.sqrMagnitude(); }
+
+      float f = segment_AB.sqrMagnitude();
+
+      if (e >= f) { return segment_BP.sqrMagnitude(); }
+      return segment_AP.sqrMagnitude() - ((e * e) / f);
+    }
 
   };
 

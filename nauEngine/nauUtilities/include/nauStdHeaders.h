@@ -63,6 +63,9 @@ namespace nauEngineSDK {
 
   using Mutex = std::mutex;
 
+  template<typename T>
+  using Limits = std::numeric_limits<T>;
+  
 }
 
 
