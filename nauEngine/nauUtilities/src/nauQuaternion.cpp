@@ -9,6 +9,7 @@
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 
 #include "nauQuaternion.h"
+#include "nauRotator.h"
 
 namespace nauEngineSDK {
 
@@ -268,6 +269,40 @@ namespace nauEngineSDK {
       *this = *this / this->magnitude();
     }
     else { *this = Quaternion::IDENTITY; }
+  }
+
+  Rotator
+  Quaternion::toRotator() const {
+    const float SingularityTest = z*x - w*y;
+    const float YawY = 2.f*(w*z + x*y);
+    const float YawX = (1.f - 2.f*(Math::sqr(y) + Math::sqr(z)));
+
+    //Reference:
+    // Prince don't kill me
+
+    const float SINGULARITY_THRESHOLD = 0.4999995f;
+    Rotator RotatorFromQuat;
+
+    if (-SINGULARITY_THRESHOLD > SingularityTest) {
+      RotatorFromQuat.m_pitch = -90.f;
+      RotatorFromQuat.m_yaw   = Math::radToDeg(Math::atan2(YawY, YawX));
+      RotatorFromQuat.m_roll  = Rotator::normalizeAxis(-RotatorFromQuat.m_yaw -
+                                                       (2.0f * Math::radToDeg(Math::atan2(x, w))));
+    }
+    else if (SINGULARITY_THRESHOLD < SingularityTest) {
+      RotatorFromQuat.m_pitch = 90.f;
+      RotatorFromQuat.m_yaw   = Math::radToDeg(Math::atan2(YawY, YawX));
+      RotatorFromQuat.m_roll  = Rotator::normalizeAxis(RotatorFromQuat.m_yaw -
+                                                      (2.f *Math::radToDeg(Math::atan2(x, w))));
+    }
+    else {
+      RotatorFromQuat.m_pitch = Math::radToDeg(Math::fastasin(2.f*(SingularityTest)));
+      RotatorFromQuat.m_yaw   = Math::radToDeg(Math::atan2(YawY, YawX));
+      RotatorFromQuat.m_roll  = Math::radToDeg(Math::atan2(-2.f*(w*x + y*z),
+                                                           (1.f - 2.f*(x*x + y*y))));
+    }
+
+    return RotatorFromQuat;
   }
 
   Quaternion

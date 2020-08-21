@@ -87,7 +87,7 @@ public:
   double m_ticksPerSecond;
 
   /**
-   * The channels
+   * The channels refer to each bone that is animated
    */
   Vector<AnimationBone*> m_channels;
 

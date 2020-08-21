@@ -76,38 +76,32 @@ namespace nauEngineSDK {
 
       if (a <= std::numeric_limits<float>::epsilon() && 
           e <= std::numeric_limits<float>::epsilon()) {
-        
         return r.sqrMagnitude();
       }
 
       if (a <= std::numeric_limits<float>::epsilon()) {
-        // First segment degenerates into a point
         s = 0.0f;
         t = Math::clamp(f / e, 0.0f, 1.0f);
       }
       else {
         float c = Vector3::dot(distance1, r);
         if (e <= std::numeric_limits<float>::epsilon()) {
-          // Second segment degenerates into a point
+
           t = 0.0f;
-          s = Math::clamp(-c / a, 0.0f, 1.0f); // t = 0 => s = (b*t - c) / a = -c / a
+          s = Math::clamp(-c / a, 0.0f, 1.0f);
         }
         else {
-          // The general non degenerate case starts here
+
           float b = Vector3::dot(distance1, distance2);
-          float denom = a * e - b * b; // Always nonnegative
-          // If segments not parallel, compute closest point on L1 to L2 and
-          // clamp to segment S1. Else pick arbitrary s (here 0)
+          float denom = a * e - b * b;
+
           if (denom != 0.0f) {
             s = Math::clamp((b*f - c * e) / denom, 0.0f, 1.0f);
           }
-          else s = 0.0f;
-          // Compute point on L2 closest to S1(s) using
-          // t = Dot((P1 + D1*s) - P2,D2) / Dot(D2,D2) = (b*s + f) / e
+          else { s = 0.0f; }
+
           t = (b*s + f) / e;
-          // If t in [0,1] done. Else clamp t, recompute s for the new value
-          // of t using s = Dot((P2 + D2*t) - P1,D1) / Dot(D1,D1)= (t*b - c) / a
-          // and clamp s to [0, 1]
+
           if (t < 0.0f) {
             t = 0.0f;
             s = Math::clamp(-c / a, 0.0f, 1.0f);
@@ -322,7 +316,7 @@ namespace nauEngineSDK {
       float difference = Vector3::dot(plane, center) - plane.d;
       return Math::abs(difference) <= radius;
     }
-
+    
 
     /**
      * @brief 

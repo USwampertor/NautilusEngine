@@ -99,7 +99,7 @@ namespace nauEngineSDK {
 
 
     for (auto frame : m_channels) {
-      
+     
     }
 
     return finalMatrix;

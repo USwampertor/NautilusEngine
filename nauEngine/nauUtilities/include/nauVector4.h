@@ -493,6 +493,15 @@ namespace nauEngineSDK {
     ToString();
 
     /**
+     * @brief Transforms a Vector4 to Vector3
+     * @param 
+     * @return a Vector3 of this
+     *
+     */
+    Vector3
+    toVector3() const;
+
+    /**
      * static const declaration
      */
 

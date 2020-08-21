@@ -17,6 +17,8 @@
 #include "nauVector3.h"
 
 namespace nauEngineSDK {
+  class Rotator;
+
 class NAU_UTILITY_EXPORT Quaternion {
 
  public:
@@ -426,6 +428,15 @@ class NAU_UTILITY_EXPORT Quaternion {
    */
   void
   normalize();
+
+  /**
+   * @brief gets a Rotator objet based on this quaternion 
+   * @param 
+   * @return a Rotator based on this quaternion
+   *
+   */
+  Rotator
+  toRotator() const;
 
   /**
    * @brief Converts the quaternion to a rotator quaternion

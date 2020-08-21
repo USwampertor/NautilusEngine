@@ -367,6 +367,32 @@ namespace nauEngineSDK {
     }
 
     /**
+     * @brief gets the mod of value as float
+     * @param float
+     * @param denominator
+     * @return a module 
+     *
+     */
+    template<typename T>
+    static T
+    mod(T number, T denom) {
+      return number % denom;
+    }
+
+    /**
+     * @brief gets the float mod of value as float
+     * @param T number
+     * @param T denominator
+     * @return a module
+     *
+     */
+    template<typename T>
+    static T
+    fmod(T number, T denom) {
+      return std::fmod(number, denom);
+    }
+
+    /**
      * @brief floors the given value to the nearest integer
      * @param value to floor
      * @return floored value
@@ -510,8 +536,9 @@ namespace nauEngineSDK {
     }
 
     /**
-     * @brief returns the max value between two numbers
-     * @param A value, B value
+     * @brief breaks A value into an integral and a fraction
+     * @param fracpart the fraction
+     * @param intPart where is going to store the integer
      * @return highest value
      *
      */
@@ -670,7 +697,16 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     fastacos(T rad) {
-      return static_cast<T>(0);
+      float root = sqrt(abs(1.0f - Value));
+      float result = -0.0187293f;
+      result *= Value;
+      result += 0.0742610f;
+      result *= Value;
+      result -= 0.2121144f;
+      result *= Value;
+      result += 1.5707288f;
+      result *= root;
+      return result;
     }
 
     /**
@@ -682,7 +718,16 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     fastasin(T rad) {
-    
+      float root = sqrt(abs(1.0f - Value));
+      float result = -0.0187293f;
+      result *= Value;
+      result += 0.0742610f;
+      result *= Value;
+      result -= 0.2121144f;
+      result *= Value;
+      result += 1.5707288f;
+      result = HALF_PI - root * result;
+      return result;
     }
 
     /**
@@ -743,7 +788,13 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     fasttanh(T rad) {
-      return rad;
+      return (rad * 
+              (135135.0f + Math::sqr(rad) * 
+                (17325.0f + Math::sqr(rad) * 
+                  (378.0f + Math::sqr(rad))))) /
+              135135.0f + 
+              Math::sqr(rad) * 
+              (62370.0f + Math::sqr(rad) * (3150.0f + Math::sqr(rad) * 28.0f));
     }
 
     /**

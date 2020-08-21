@@ -22,6 +22,7 @@ namespace nauEngineSDK{
    */
 
   class Quaternion;
+  class Rotator;
 
   namespace FORCE_INIT {
     enum E {
@@ -90,6 +91,15 @@ namespace nauEngineSDK{
      * 
      */
     void
+    transpose();
+
+    /**
+     * @brief returns a transposed version of the matrix
+     * @param 
+     * @return a transposed version of this
+     * 
+     */
+    Matrix4
     transposed();
 
     /**
@@ -147,6 +157,17 @@ namespace nauEngineSDK{
      */
     void
     setTransformMatrix(Vector3 position, Quaternion rotation, Vector3 scale);
+
+    /**
+     * @brief Creates a Transformation matrix from a position, rotation and scale
+     * @param Vector3 Position the position to set
+     * @param Quaternion Rotation the rotation to set
+     * @param Vector3 Scale the scale to set
+     * @return 
+     *
+     */
+    void
+    setTransformMatrix(Vector3 position, Rotator rotation);
 
     /**
      * @brief Sets a translation in the matrix with floats
@@ -254,6 +275,15 @@ namespace nauEngineSDK{
      */
     Matrix3
     getSubMatrix3(bool offsetX, bool offsetY);
+
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    Vector4
+    getTransformVector(const Vector4& vector) const;
 
     /**
      * @brief for view matrix 

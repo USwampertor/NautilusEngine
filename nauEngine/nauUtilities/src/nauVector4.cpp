@@ -391,6 +391,11 @@ namespace nauEngineSDK {
     return output;
   }
 
+  Vector3
+  Vector4::toVector3() const {
+    return Vector3(x, y, z);
+  }
+
   const Vector4 Vector4::ZERO   = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
 
   const Vector4 Vector4::ONES   = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -410,3 +415,4 @@ namespace nauEngineSDK {
   const Vector4 Vector4::FRONT  = Vector4(0.0f, 0.0F, 1.0f, 1.0f);
 
 }
+

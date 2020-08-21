@@ -10,6 +10,7 @@
 
 #include "nauMatrix4.h"
 #include "nauQuaternion.h"
+#include "nauRotator.h"
 
 namespace nauEngineSDK {
 
@@ -40,7 +41,7 @@ namespace nauEngineSDK {
   }
 
   void
-  Matrix4::transposed() {
+  Matrix4::transpose() {
     Matrix4 temp = *this;
     for (uint32 i = 0; i< 4; ++i) {
       for (uint32 j = 0; j < 4; ++j) {
@@ -48,6 +49,14 @@ namespace nauEngineSDK {
       }
     }
   }
+
+  Matrix4
+  Matrix4::transposed() {
+    Matrix4 newMatrix = *this;
+    newMatrix.transpose();
+    return newMatrix;
+  }
+
 
   void
   Matrix4::setValues(float value) {
@@ -87,8 +96,43 @@ m[0 + x][2 + y] = mat3.m[0][2];  m[1 + x][2 + y] = mat3.m[1][2]; m[2 + x][2 + y]
   void
   Matrix4::setTransformMatrix(Vector3 position, Quaternion rotation, Vector3 scale) {
     *this = Matrix4::IDENTITY;
+    this->setPosition(position.x, position.y, position.z);
+    this->scale(scale.x, scale.y, scale.z);
+  }
+
+  void
+  Matrix4::setTransformMatrix(Vector3 position, Rotator rotation) {
+    float pitchSin  = Math::sin(Math::degToRad(rotation.m_pitch));
+    float yawSin    = Math::sin(Math::degToRad(rotation.m_yaw));
+    float rollSin   = Math::sin(Math::degToRad(rotation.m_roll));
+
+    float pitchCos  = Math::cos(Math::degToRad(rotation.m_pitch));
+    float yawCos    = Math::cos(Math::degToRad(rotation.m_yaw));
+    float rollCos   = Math::cos(Math::degToRad(rotation.m_roll));
+
+    m[0][0] = pitchCos * yawCos;
+    m[1][0] = pitchCos * yawSin;
+    m[2][0] = pitchSin;
+    m[3][0] = 0.f;
+
+    m[0][1] = rollSin * pitchSin * yawCos - rollCos * yawSin;
+    m[1][1] = rollSin * pitchSin * yawSin + rollCos * yawCos;
+    m[2][1] = -rollSin * pitchCos;
+    m[3][1] = 0.f;
+
+    m[0][2] = -(rollCos * pitchSin * yawCos + rollSin * yawSin);
+    m[1][2] = yawCos * rollSin - rollCos * pitchSin * yawSin;
+    m[2][2] = rollCos * pitchCos;
+    m[3][2] = 0.f;
+
+    m[0][3] = position.x;
+    m[1][3] = position.y;
+    m[2][3] = position.z;
+    m[3][3] = 1.f;
 
   }
+
+
 
   void
   Matrix4::setPosition(const float& x, const float& y, const float& z) {
@@ -215,6 +259,18 @@ m[0 + x][2 + y] = mat3.m[0][2];  m[1 + x][2 + y] = mat3.m[1][2]; m[2 + x][2 + y]
     }
 
     return output;
+  }
+
+  Vector4
+  Matrix4::getTransformVector(const Vector4& vector) const {
+    Vector4 res;
+
+    res.x = vector.x * m[0][0] + vector.y * m[1][0] + vector.z * m[2][0] + vector.w * m[3][0];
+    res.y = vector.x * m[0][1] + vector.y * m[1][1] + vector.z * m[2][1] + vector.w * m[3][1];
+    res.z = vector.x * m[0][2] + vector.y * m[1][2] + vector.z * m[2][2] + vector.w * m[3][2];
+    res.w = vector.x * m[0][3] + vector.y * m[1][3] + vector.z * m[2][3] + vector.w * m[3][3];
+
+    return res;
   }
 
   Matrix4
