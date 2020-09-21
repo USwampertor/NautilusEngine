@@ -289,9 +289,9 @@ TEST_F(Testing, Quaternions) {
   std::cout << q.rotationMatrix().toString() << std::endl;
   std::cout << m4.getRotationMatrix().toString() << std::endl;
 
-  m4.rotateX(Math::degToRad(12.34));
-  m4.rotateY(Math::degToRad(34.23));
-  m4.rotateZ(Math::degToRad(45.34));
+  m4.rotateX(Math::degToRad(12.34f));
+  m4.rotateY(Math::degToRad(34.23f));
+  m4.rotateZ(Math::degToRad(45.34f));
 
   q.setRotationMatrix(m4.getRotationMatrix());
 
@@ -301,8 +301,8 @@ TEST_F(Testing, Quaternions) {
   m4 = Matrix4::IDENTITY;
   q.setRotationMatrix(m4.getRotationMatrix());
 
-  q.rotateAroundY(Math::degToRad(90.0));
-  m4.rotateY(Math::degToRad(90.0));
+  q.rotateAroundY(Math::degToRad(90.0f));
+  m4.rotateY(Math::degToRad(90.0f));
 
   std::cout << "<=== ROTATION TEST ===>" << std::endl;
 

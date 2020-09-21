@@ -3,7 +3,7 @@
  * @file nauPlatformMath.cpp
  * @author Marco "Swampy" Millan
  * @date 2018/09/23 2018
- * @brief Platform cpp to runtime define some variables
+ * @brief Platform member definition to runtime define some variables
  * 
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
@@ -16,6 +16,8 @@
 namespace nauEngineSDK {
   const float PlatformMath::PI = std::atan(1.0f) * 4.0f;
 
+  const float PlatformMath::HALF_PI = PI / 2.0f;
+
   const float PlatformMath::DEGREE = 180.0f/PlatformMath::PI;
 
   const float PlatformMath::RADIAN = PlatformMath::PI/180.0f;
@@ -27,4 +29,7 @@ namespace nauEngineSDK {
 
   const float PlatformMath::SMALLNUMBER = 0.0000001f;
 
+  const float PlatformMath::EPSILONF = std::numeric_limits<float>::epsilon();
+
+  const float PlatformMath::EPSILOND = std::numeric_limits<double>::epsilon();
 }

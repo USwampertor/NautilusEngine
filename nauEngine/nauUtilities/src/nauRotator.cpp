@@ -51,18 +51,20 @@ namespace nauEngineSDK {
     return m_yaw != other.m_yaw || m_pitch != other.m_pitch || m_roll != other.m_roll;
   }
   
-  bool
+  Rotator
   Rotator::operator+=(const Rotator& other) {
     m_yaw   += other.m_yaw;
     m_pitch += other.m_pitch;
     m_roll  += other.m_roll;
+    return *this;
   }
   
-  bool
+  Rotator
   Rotator::operator-=(const Rotator& other) {
     m_yaw   -= other.m_yaw;
     m_pitch -= other.m_pitch;
     m_roll  -= other.m_roll;
+    return *this;
   }
   
   Rotator
@@ -70,6 +72,7 @@ namespace nauEngineSDK {
     m_yaw   *= scale;
     m_pitch *= scale;
     m_roll  *= scale;
+    return *this;
   }
   
   
@@ -143,7 +146,7 @@ namespace nauEngineSDK {
     return rotator;
   }
   
-  Rotator
+  void
   Rotator::normalize() {
     m_yaw   = normalizeAxis(m_yaw);
     m_pitch = normalizeAxis(m_pitch);
@@ -163,7 +166,7 @@ namespace nauEngineSDK {
     return rotator;
   }
   
-  Rotator
+  void
   Rotator::deNormalize() {
     m_yaw   = clampAxis(m_yaw);
     m_pitch = clampAxis(m_pitch);

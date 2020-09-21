@@ -58,10 +58,10 @@ namespace nauEngineSDK {
     bool
     operator!=(const Rotator& other) const;
 
-    bool
+    Rotator
     operator+=(const Rotator& other);
 
-    bool
+    Rotator
     operator-=(const Rotator& other);
 
     Rotator
@@ -93,7 +93,7 @@ namespace nauEngineSDK {
     Rotator
     normalized() const;
 
-    Rotator
+    void
     normalize();
 
     static float
@@ -102,7 +102,7 @@ namespace nauEngineSDK {
     Rotator
     deNormalized() const;
 
-    Rotator
+    void
     deNormalize();
 
     Rotator

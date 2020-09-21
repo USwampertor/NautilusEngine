@@ -697,13 +697,13 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     fastacos(T rad) {
-      float root = sqrt(abs(1.0f - Value));
+      float root = sqrt(abs(1.0f - rad));
       float result = -0.0187293f;
-      result *= Value;
+      result *= rad;
       result += 0.0742610f;
-      result *= Value;
+      result *= rad;
       result -= 0.2121144f;
-      result *= Value;
+      result *= rad;
       result += 1.5707288f;
       result *= root;
       return result;
@@ -718,13 +718,13 @@ namespace nauEngineSDK {
     template<typename T>
     static T 
     fastasin(T rad) {
-      float root = sqrt(abs(1.0f - Value));
+      float root = sqrt(abs(1.0f - rad));
       float result = -0.0187293f;
-      result *= Value;
+      result *= rad;
       result += 0.0742610f;
-      result *= Value;
+      result *= rad;
       result -= 0.2121144f;
-      result *= Value;
+      result *= rad;
       result += 1.5707288f;
       result = HALF_PI - root * result;
       return result;
@@ -806,6 +806,10 @@ namespace nauEngineSDK {
      */
     static const float PI;
 
+    /**
+     * HALF of Constant PI 3.141592~
+     */
+    static const float HALF_PI;
 
     /**
      * Constant EULER 2.71828182
@@ -831,6 +835,16 @@ namespace nauEngineSDK {
      * A kinda small number. Used for floating precision, but not as precise as SMALLNUMBER
      */
     static const float KINDASMALLNUMBER;
+
+    /**
+     * An epsilon for floats, using the b / 2 system
+     */
+    static const float EPSILONF;
+
+    /**
+     * An epsilon for doubles, using the b / 2 system
+     */
+    static const float EPSILOND;
 
     /**
      * Collisions

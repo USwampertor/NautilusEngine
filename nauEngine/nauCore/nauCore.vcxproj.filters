@@ -250,6 +250,9 @@
     <ClInclude Include="include\nauTransform.h">
       <Filter>Source Files\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="include\resource.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nauAnimator.cpp">
@@ -375,5 +378,10 @@
     <ClCompile Include="src\nauGraphicPass.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc">
+      <Filter>Source Files\Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

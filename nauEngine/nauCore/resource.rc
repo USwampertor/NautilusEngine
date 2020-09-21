@@ -1,0 +1,11 @@
+#include "./include/resource.h"
+
+#ifndef resources_rc
+
+#define resources_rc
+
+MAINICON ICON "engineIcon.ico"
+
+IDI_ICON1 ICON "engineIcon.ico"
+
+#endif

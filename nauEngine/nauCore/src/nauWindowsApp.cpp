@@ -8,6 +8,7 @@
  */
 /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
 #include "nauWindowsApp.h"
+#include "resource.h"
 
 namespace nauEngineSDK {
 
@@ -547,7 +548,8 @@ namespace nauEngineSDK {
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
     wcex.lpszClassName = szWindowClass.c_str();
-    wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_SMALL));
+    wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_ICON1));
+    wcex.hIcon = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_ICON1));
 
     return RegisterClassExW(&wcex);
   }
