@@ -4,8 +4,6 @@
 
 #define resources_rc
 
-MAINICON ICON "engineIcon.ico"
-
-IDI_ICON1 ICON "engineIcon.ico"
+MAINICON ICON "icon.ico"
 
 #endif

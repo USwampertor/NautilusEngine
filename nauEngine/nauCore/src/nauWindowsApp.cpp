@@ -264,7 +264,7 @@ namespace nauEngineSDK {
     //UI INITIALIZATION
     UI::startUp<UISystemWindows>();
     ImGui::CreateContext();
-    UI::instance().init(ImGui::GetIO(),m_hWnd);
+    UI::instance().init(ImGui::GetIO(), m_hWnd);
 
     //RENDER MANAGER INITIALIZATION
     RenderManager::startUp();
@@ -543,16 +543,17 @@ namespace nauEngineSDK {
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = m_hInst;
-    wcex.hIcon = LoadIconW(m_hInst, MAKEINTRESOURCEW(IDI_GRAFICAS21));
+    //wcex.hIcon = LoadIconW(m_hInst, MAKEINTRESOURCEW(IDI_GRAFICAS21));
     wcex.hCursor = LoadCursorW(nullptr, MAKEINTRESOURCEW(32512));
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_GRAFICAS21);
     wcex.lpszClassName = szWindowClass.c_str();
-    wcex.hIconSm = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_ICON1));
-    wcex.hIcon = LoadIconW(wcex.hInstance, MAKEINTRESOURCEW(IDI_ICON1));
-
+    wcex.hIcon    = LoadIconW(nullptr, MAKEINTRESOURCEW(MAINICON));
+    wcex.hIconSm  = LoadIconW(nullptr, MAKEINTRESOURCEW(MAINICON));
+    
     return RegisterClassExW(&wcex);
   }
+
   HINSTANCE WindowsApp::m_hInst;
   HWND WindowsApp::m_hWnd;
 
