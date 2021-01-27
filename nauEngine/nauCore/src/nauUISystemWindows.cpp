@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauUISystemWindows.cpp
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief Windows Defined System implementation
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #include "nauUISystemWindows.h"
 
 #include "nauGraphicsAPI.h"

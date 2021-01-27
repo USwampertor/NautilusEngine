@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauPlatformMath.cpp
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief Platform member definition to runtime define some variables
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 
 #include "nauPlatformMath.h"
 

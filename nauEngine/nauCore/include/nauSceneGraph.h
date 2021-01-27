@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauSceneGraph.h
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief Scenegraph manages all gameObjects ingame
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 
 #pragma once
 #include "nauPrerequisitesCore.h"

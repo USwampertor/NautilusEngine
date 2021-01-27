@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauMemoryAllocator.cpp
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief Memory allocator definition of variables
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #include "nauPrerequisitesUtil.h"
 
 namespace nauEngineSDK {

@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauRenderTargetViewDX.cpp
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief member definition
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #include "nauRenderTargetViewDX.h"
 
 namespace nauEngineSDK {

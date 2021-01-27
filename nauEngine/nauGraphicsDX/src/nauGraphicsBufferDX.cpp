@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauGraphicsBufferDX.cpp
  * @author Marco "Swampy" Millan
@@ -6,16 +6,16 @@
  * @brief DirectX hardware declaration
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 
 #include "nauGraphicsBufferDX.h"
 
 namespace nauEngineSDK {
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauGraphicsBufferDX.cpp DirectX vertex hardware function declaration
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   void
   VertexBufferDX::createHardware(void* pDevice, uint32 usage) {
     
@@ -63,11 +63,11 @@ namespace nauEngineSDK {
     pDC->IASetVertexBuffers(0, 1, &m_pBuffer, &str, &off);
   }
 
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauGraphicsBufferDX.cpp DirectX index hardware function declaration
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   void
   IndexBufferDX::createHardware(void* pDevice, uint32 usage) {
     
@@ -102,11 +102,11 @@ namespace nauEngineSDK {
     pDC->IASetIndexBuffer(this->m_pBuffer, DXGI_FORMAT_R32_UINT, 0);
   }
 
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauGraphicsBufferDX.cpp DirectX constant hardware function declaration
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   void
   ConstantBufferDX::createHardware(void* pDevice, uint32 usage) {
     

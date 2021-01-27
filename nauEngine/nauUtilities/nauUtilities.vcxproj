@@ -79,6 +79,7 @@
     <ClInclude Include="include\nauVector2i.h" />
     <ClInclude Include="include\nauVector3.h" />
     <ClInclude Include="include\nauVector4.h" />
+    <ClInclude Include="include\nauWindowsFileSystem.h" />
     <ClInclude Include="include\nauWindowsMath.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

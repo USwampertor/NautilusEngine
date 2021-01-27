@@ -1,4 +1,4 @@
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauColor.h
  * @author Marco "Swampy" Mill嫕
@@ -6,7 +6,7 @@
  * @brief Color struct in RGBA to have predefined colors for rendering purposes
  * 
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #pragma once
 
 #include "nauPrerequisitesUtil.h"

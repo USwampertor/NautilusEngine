@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauPlatformDefines.h
  * @author Marco "Swampy" Millan
@@ -6,7 +6,7 @@
  * @brief File defines the platform types
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #pragma once
 
 
@@ -35,11 +35,11 @@
 //Define if on a crash we want to report warnings or uNknown symbols
 #define NAU_DEBUG_DETAILED_SYMBOLS 1
 
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * Compiler type and version
  */
- /*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+ /*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 
 #if defined(_clang__)
 # define NAU_COMPILER NAU_COMPILER_CLANG

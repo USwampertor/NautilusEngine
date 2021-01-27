@@ -1,4 +1,4 @@
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauFileSystem.h
  * @author Marco "Swampy" Millan
@@ -6,15 +6,15 @@
  * @brief File System management
  * 
  */
-/*||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||°°°||*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #pragma once
 
 #include "nauPrerequisitesUtil.h"
 #include "nauStdHeaders.h"
-
+#include "nauModule.h"
 
 namespace nauEngineSDK {
-  class FileSystem
+  class NAU_UTILITY_EXPORT FileSystem : public Module<FileSystem>
   {
   public:
 
@@ -29,26 +29,35 @@ namespace nauEngineSDK {
     ~FileSystem() = default;
 
     /**
-     * @brief returns the working path where it is right now
-     * @param 
-     * @return the path in a String object
-     *
-     */
-    String
-    getAbsolutePath();
-
-    /**
-     * @brief returns the working path where it is right now
+     * @brief Initializes the module 
      * @param 
      * @return 
      *
      */
-    String
-    getRelativePath();
+    virtual void
+    init(void* handler) = 0;
 
+    /**
+     * @brief Opens a File that the user can set 
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    open() = 0;
 
-
+    /**
+     * @brief 
+     * @param 
+     * @return 
+     *
+     */
+    virtual bool
+    save() = 0;
   };
   
+  extern NAU_UTILITY_EXPORT FileSystem*
+    g_FileSystem;
+
 }
 

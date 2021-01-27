@@ -1,4 +1,4 @@
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * @file nauShaderDX.cpp
  * @author Marco "Swampy" Mill嫕
@@ -6,18 +6,18 @@
  * @brief Direct X implementation of all shader member declaration
  * 
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 #include "nauShaderDX.h"
 #include "nauDeviceDX.h"
 
 
 namespace nauEngineSDK {
 
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Shader member declaration
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 
   bool
   ShaderDX::compile(String filename, 
@@ -102,11 +102,11 @@ namespace nauEngineSDK {
   }
 
 
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Vertex shader member declaration
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   
   bool
   VertexShaderDX::init(Device* pDevice) {
@@ -161,11 +161,11 @@ namespace nauEngineSDK {
   VertexShaderDX::getShader() {
     return m_pVertexShader;
   }
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Pixel shader member declaration
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   
   bool
   PixelShaderDX::init(Device* pDevice) {
@@ -214,11 +214,11 @@ namespace nauEngineSDK {
   PixelShaderDX::getShader() {
     return m_pPixelShader;
   }
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   
   bool
   GeometryShaderDX::init(Device* pDevice) {
@@ -240,11 +240,11 @@ namespace nauEngineSDK {
   GeometryShaderDX::getShader() {
     return m_pGeometryShader;
   }
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
  */
-/*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+/*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   
   bool
   ComputeShaderDX::init(Device* pDevice) {
@@ -401,11 +401,11 @@ namespace nauEngineSDK {
     return m_pComputeShader;
   }
 
-  /*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+  /*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
 /**
  * nauShaderDX.cpp Geometry shader member declaration
  */
- /*||偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|偽院|*/
+ /*0***0***0***0***0***0***0***0***0***0***0***0***0***0***0***0*/
   
   bool
   TextureShaderDX::init(Device* pDevice) {

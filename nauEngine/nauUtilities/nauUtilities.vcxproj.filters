@@ -201,5 +201,8 @@
     <ClInclude Include="include\nauPhysics.h">
       <Filter>Archivos de origen\Primitives</Filter>
     </ClInclude>
+    <ClInclude Include="include\nauWindowsFileSystem.h">
+      <Filter>Archivos de origen\FileSystem</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
