@@ -93,11 +93,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/;$(DEVLIBS)curl/include/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)curl/lib/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;nauCored.lib;libcurl_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -106,11 +106,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/;$(DEVLIBS)curl/include/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;nauCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)curl/lib/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;gtest_maind.lib;nauCored.lib;libcurl_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -121,13 +121,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/;$(DEVLIBS)curl/include/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)curl/lib/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;gtest_main.lib;nauCore.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,13 +138,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include/;$(DEVLIBS)googletest/include/;$(SolutionDir)nauCore/include/;$(DEVLIBS)EASTL/include/;$(DEVLIBS)EASTL/test/packages/EABase/include/;$(SolutionDir)nauGraphicsDX/include/;$(SolutionDir)nauUtilities/include/;$(DEVLIBS)stb/include/;$(DEVLIBS)assimp/include/;$(DEVLIBS)curl/include/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;nauCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib/$(PlatformTarget)/;$(DEVLIBS)googletest/lib/$(PlatformTarget)/;$(DEVLIBS)assimp/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)EASTL/$(PlatformTarget)/$(Configuration)/;$(DEVLIBS)curl/lib/$(PlatformTarget)/$(Configuration)/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest.lib;gtest_main.lib;nauCore.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

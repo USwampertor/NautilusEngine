@@ -91,7 +91,7 @@ namespace nauEngineSDK {
     /**
      * @brief Returns a string with the year, month, day and hour f the computer
      * @param 
-     * @return YYYY-MM-DD-HH-MM-SS
+     * @return YYYY/MM/DD HH:MM:SS
      *
      */
     String 

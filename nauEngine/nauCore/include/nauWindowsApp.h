@@ -137,6 +137,8 @@ namespace nauEngineSDK {
     int m_commandShow;
 
     NeuralNetwork m_neuralNetwork;
+
+    float m_curlTime = 0.0f;
   };
   
 }
